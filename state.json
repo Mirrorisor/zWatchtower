@@ -2,11 +2,18 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-10-31T22:26:40.702Z",
-      "finishedAt": "2026-10-31T22:29:24.618Z",
+      "startedAt": "2026-10-31T22:58:12.405Z",
+      "finishedAt": "2026-10-31T23:01:02.854Z",
       "status": "ran",
-      "ok": true,
-      "alerts": [],
+      "ok": false,
+      "alerts": [
+        "privileged vault instruction set_stock_quote via multisig at 2026-10-31T22:54:20.000Z (5dgugazCouEWzfWzaeoRzwherU97QHLuHvNu3SoKf2x2NBtKryroxVvrfkVfRyPFpj3yf4ZiXp6nWGMtYP6xnfcn)",
+        "multisig vault_transaction_execute at 2026-10-31T22:54:20.000Z (5dgugazCouEWzfWzaeoRzwherU97QHLuHvNu3SoKf2x2NBtKryroxVvrfkVfRyPFpj3yf4ZiXp6nWGMtYP6xnfcn)",
+        "multisig proposal_approve at 2026-10-31T22:53:37.000Z (2eX9b6Nd413xQhG43bdpnz4hPtWtUSVBYTDrNMC86os1QNuo2SS49idy5MKkvZHLD1qsopfA53mNqtoU3tJnFKzr)",
+        "multisig proposal_approve at 2026-10-31T22:53:33.000Z (3yBhxtTDFnsAwepV2kAXn9DiLm4WxhZcZWSgWgE5kkeMaQpoN3vLTV64fWtX4sVGW1d6JohHEHt8xhXRfWbumWdk)",
+        "multisig vault_transaction_create at 2026-10-31T22:49:37.000Z (SeBuTXEtZT1BW5zixCWcwrvTyWUYGN9nLDWV4kBM9Bq8dP9McB6ee2xt5fkAfXHHYEzWdjY4aLzsgSkuxfypru5)",
+        "multisig proposal_create at 2026-10-31T22:49:37.000Z (SeBuTXEtZT1BW5zixCWcwrvTyWUYGN9nLDWV4kBM9Bq8dP9McB6ee2xt5fkAfXHHYEzWdjY4aLzsgSkuxfypru5)"
+      ],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 463604102,
@@ -22,41 +29,46 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 23,
-          "sell_tax": 21,
-          "withdraw_tax": 28,
-          "register_launchlab_coin": 1,
-          "declare_payee": 1,
-          "settle_tax": 7,
-          "convert_tax_begin": 3,
-          "convert_tax_end": 3,
-          "settle": 9,
-          "draw_grove": 1,
-          "close_grove": 1
+          "sell_tax": 19,
+          "withdraw_tax": 20,
+          "settle_tax": 11,
+          "convert_tax_begin": 7,
+          "convert_tax_end": 7,
+          "close_rewards_run": 2,
+          "release_rewards": 2,
+          "settle": 11,
+          "set_stock_quote": 1,
+          "convert_sapling_begin": 1,
+          "convert_sapling_end": 1,
+          "settle_sapling": 1,
+          "draw_grove": 2,
+          "close_grove": 2
         },
-        "unrecognised": 8,
+        "unrecognised": 17,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-10-31T22:01:01.696Z",
-      "finishedAt": "2026-10-31T22:01:11.323Z",
+      "startedAt": "2026-10-31T23:01:03.346Z",
+      "finishedAt": "2026-10-31T23:01:12.466Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-10-31T22:01:11.317Z",
-        "runs": 11,
-        "passed": 10,
-        "flagged": 1,
-        "unchecked": 1,
+        "checkedAt": "2026-10-31T23:01:12.462Z",
+        "runs": 8,
+        "passed": 6,
+        "flagged": 2,
+        "unchecked": 2,
         "firstUnchecked": 1373,
-        "zecPaidInDoneRuns": "0.41291012",
+        "zecPaidInDoneRuns": "0.43632472",
         "onChainChecks": true,
         "notes": [
-          "run 1373: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
+          "run 1373: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1377: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
         ],
-        "maxRunId": 1375
+        "maxRunId": 1377
       }
     },
     "float": {
@@ -96,8 +108,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-10-31T22:36:47.587Z",
-      "finishedAt": "2026-10-31T22:36:48.114Z",
+      "startedAt": "2026-10-31T23:01:12.467Z",
+      "finishedAt": "2026-10-31T23:01:12.885Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -116,26 +128,26 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-10-31T22:36:48.114Z",
-      "finishedAt": "2026-10-31T22:37:11.883Z",
+      "startedAt": "2026-10-31T23:01:12.885Z",
+      "finishedAt": "2026-10-31T23:01:36.417Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "burns": 82,
-        "burnsVerified": 82,
-        "boughtBackZat": "262505029",
+        "burns": 84,
+        "burnsVerified": 84,
+        "boughtBackZat": "280200501",
         "venues": {
-          "pump amm": 64,
-          "raydium cpmm": 15,
+          "pump amm": 65,
+          "raydium cpmm": 16,
           "raydium launchlab": 2,
           "pump bonding curve": 1
         },
         "perCoin": {
           "0": {
             "mint": "147a97vXeJMM8pgFrEeMVmts4MciKAEEwRN6anYQszec",
-            "burns": 15,
-            "zat": "48602255"
+            "burns": 16,
+            "zat": "61632157"
           },
           "ZILLIONS": {
             "mint": "3sKZuSZF7onqPYFrWu3bH4Lh141duydt9MAmSd46jaLJ",
@@ -154,8 +166,8 @@
           },
           "SHINU": {
             "mint": "AZ9NHodnyb6wPYian1Fd9HF1mfvPNkJEecExVT1Sevjg",
-            "burns": 5,
-            "zat": "15949592"
+            "burns": 6,
+            "zat": "20615162"
           },
           "JACKJACK": {
             "mint": "2RSt56ovXGXk2HYvruPBK6v9UJk88nKXTnyVWg9XmU3z",
@@ -194,14 +206,14 @@
           }
         },
         "pot": {
-          "balanceZat": "8849351",
-          "shownZat": "8849351",
-          "inflowZat": "467865321",
-          "buybackZat": "459015970",
+          "balanceZat": "103079",
+          "shownZat": "103079",
+          "inflowZat": "482189351",
+          "buybackZat": "482086272",
           "movements": {
             "setup": 1,
-            "inflow": 1535,
-            "buyback": 154
+            "inflow": 1542,
+            "buyback": 156
           },
           "reconciled": true,
           "caughtUp": true
@@ -212,19 +224,26 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "buyback 2fwrrw3brJ3Tm882VtJUQZjDdSKB9tdUWLjcZtriYt6fqpkjWVYJS2UezXkJvmH1NAs3r68DtWWNM9mDdYtBmSBR drew 4665570 zat but is not in Sapling's burn list",
-          "headline 454350400 zat bought back, listed burns add up to 161334122"
+          "buyback 3RUEdCDGdHu6pRHnABGoAdFTqGtad3TCqLS5nUPe9gkJDKZc8f9QcmubT2LLCkWZJvtQMhq5Egf4bMMVFQXLdwhF drew 10040400 zat but is not in Sapling's burn list",
+          "headline 472045872 zat bought back, listed burns add up to 172976939"
         ]
       }
     }
   },
   "openAlerts": {
-    "keys": {},
+    "keys": {
+      "privileged vault instruction set_stock_quote via multisig at 2026-10-31T22:54:20.000Z (5dgugazCouEWzfWzaeoRzwherU97QHLuHvNu3SoKf2x2NBtKryroxVvrfkVfRyPFpj3yf4ZiXp6nWGMtYP6xnfcn)": "2026-10-31T23:01:02.854Z",
+      "multisig vault_transaction_execute at 2026-10-31T22:54:20.000Z (5dgugazCouEWzfWzaeoRzwherU97QHLuHvNu3SoKf2x2NBtKryroxVvrfkVfRyPFpj3yf4ZiXp6nWGMtYP6xnfcn)": "2026-10-31T23:01:02.854Z",
+      "multisig proposal_approve at 2026-10-31T22:53:37.000Z (2eX9b6Nd413xQhG43bdpnz4hPtWtUSVBYTDrNMC86os1QNuo2SS49idy5MKkvZHLD1qsopfA53mNqtoU3tJnFKzr)": "2026-10-31T23:01:02.854Z",
+      "multisig proposal_approve at 2026-10-31T22:53:33.000Z (3yBhxtTDFnsAwepV2kAXn9DiLm4WxhZcZWSgWgE5kkeMaQpoN3vLTV64fWtX4sVGW1d6JohHEHt8xhXRfWbumWdk)": "2026-10-31T23:01:02.854Z",
+      "multisig vault_transaction_create at 2026-10-31T22:49:37.000Z (SeBuTXEtZT1BW5zixCWcwrvTyWUYGN9nLDWV4kBM9Bq8dP9McB6ee2xt5fkAfXHHYEzWdjY4aLzsgSkuxfypru5)": "2026-10-31T23:01:02.854Z",
+      "multisig proposal_create at 2026-10-31T22:49:37.000Z (SeBuTXEtZT1BW5zixCWcwrvTyWUYGN9nLDWV4kBM9Bq8dP9McB6ee2xt5fkAfXHHYEzWdjY4aLzsgSkuxfypru5)": "2026-10-31T23:01:02.854Z"
+    },
     "rewards": {},
     "float": {},
     "tax": {},
     "flywheel": {}
   },
-  "rewardsMaxRun": 1375,
-  "rewardsFrom": 1365
+  "rewardsMaxRun": 1377,
+  "rewardsFrom": 1370
 }
