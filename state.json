@@ -2,13 +2,11 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-10-31T03:23:24.892Z",
-      "finishedAt": "2026-10-31T03:26:18.045Z",
+      "startedAt": "2026-10-31T03:32:42.732Z",
+      "finishedAt": "2026-10-31T03:33:08.207Z",
       "status": "ran",
-      "ok": false,
-      "alerts": [
-        "vault config changed: bytes changed at 342-343"
-      ],
+      "ok": true,
+      "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 463011500,
@@ -23,26 +21,12 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "settle": 13,
-          "settle_sapling": 3,
-          "observe_sapling": 29,
-          "draw_pool_pot": 1,
-          "protocol_pool_deposit": 1,
-          "close_pool_pot": 1,
-          "protocol_pool_lock": 1,
-          "settle_tax": 15,
-          "sell_tax": 15,
-          "withdraw_tax": 15,
-          "draw_grove": 2,
-          "close_grove": 2,
-          "close_rewards_run": 2,
-          "release_rewards": 2,
-          "claim_payee": 1,
-          "convert_sapling_begin": 1,
-          "convert_sapling_end": 1,
-          "draw_lp": 1
+          "observe_sapling": 8,
+          "settle_tax": 4,
+          "sell_tax": 4,
+          "withdraw_tax": 4
         },
-        "unrecognised": 10,
+        "unrecognised": 0,
         "baseline": false
       }
     },
@@ -66,8 +50,8 @@
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-10-31T02:25:50.338Z",
-      "finishedAt": "2026-10-31T02:33:18.098Z",
+      "startedAt": "2026-10-31T03:33:08.521Z",
+      "finishedAt": "2026-10-31T03:40:35.649Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -130,9 +114,7 @@
     }
   },
   "openAlerts": {
-    "keys": {
-      "vault config changed: bytes changed at 342-343": "2026-10-31T03:26:18.045Z"
-    },
+    "keys": {},
     "rewards": {
       "reward run 9 : error: HTTP error for https://api.mainnet-beta.solana.com": "2026-10-31T02:25:50.110Z",
       "reward run 12 : error: HTTP error for https://api.mainnet-beta.solana.com": "2026-10-31T02:25:50.110Z",
