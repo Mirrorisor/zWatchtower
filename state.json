@@ -2,23 +2,17 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-10-31T20:58:20.031Z",
-      "finishedAt": "2026-10-31T21:00:04.247Z",
+      "startedAt": "2026-10-31T21:26:31.689Z",
+      "finishedAt": "2026-10-31T21:27:46.193Z",
       "status": "ran",
       "ok": false,
       "alerts": [
-        "privileged vault instruction set_stock_quote via multisig at 2026-10-31T20:52:47.000Z (2GauZ4gvTK7ppYx9pELivriGYA8FdBJWTPpqBguYVUSCwh3dDvkB8DvyeVtHzn3aymro5ZRS5wnd2SevzJQQRf2c)",
-        "multisig batch_execute_transaction at 2026-10-31T20:52:48.000Z (41xckvhvLvVejsjTPfnPgUp4aNiddpF4MTyh6yQ9rdfs4j9qki5sh89NujiLroDTUUFFe2CwdjfEV1mwVvtoto3a)",
-        "multisig batch_execute_transaction at 2026-10-31T20:52:47.000Z (2GauZ4gvTK7ppYx9pELivriGYA8FdBJWTPpqBguYVUSCwh3dDvkB8DvyeVtHzn3aymro5ZRS5wnd2SevzJQQRf2c)",
-        "multisig proposal_approve at 2026-10-31T20:52:14.000Z (3aBXkSD9V6mCPiDaB43pwJ6CiG6yVQQpfDRjFpqRp9fzT2xDThHi59Sjt9f3q2VzwT3bP5LF4n6srti5vZ5miGk1)",
-        "multisig proposal_approve at 2026-10-31T20:52:12.000Z (5p6fYz6NsEddr2zMSMx1rZANob2okweSULPZd4NJphSZJ8CYxwP9ygUgNHN2Ln75eD2Y6Y9hNwWuf7tTxJgY55Wu)",
-        "multisig proposal_activate at 2026-10-31T20:50:18.000Z (2d52PpRtfxnujKDMFm5fL563DiSjppdd4jsRrN5xbcCPuiK8dXq6uJcxhnAoeeRu68o4Wh6N23XaUWZDqojaH6Je)",
-        "multisig proposal_create at 2026-10-31T20:50:17.000Z (PtvDxLUrt7KEtJ1Myfr2BKiuNZUrH2Et4pKmprqGixoEJsbJC46PXBComNRFhp1Y3gdyJvxcJ2pLdYRrpEXRdEC)"
+        "vault config changed: bytes changed at 137-168 (0000000000000000000000000000000000000000000000000000000000000000 -> 2a9b688f22f82e6c3b51c23985fbe9e0574b299bc2d326fe880589e9dc928043)"
       ],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 463604102,
-        "configSha256": "7300b7c0b67ffbe4f2803bf8f574bd0055326209097acab315b91d71c7c12839",
+        "configSha256": "5f5405ef1d7154a78e8e8d6e150025e65e2c0b33f40d31ae20263e99ea81fb87",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -29,16 +23,14 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 31,
-          "set_stock_quote": 1,
-          "settle": 10,
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1,
-          "close_rewards_run": 3,
-          "release_rewards": 3
+          "release_rewards": 1,
+          "settle": 12,
+          "observe_sapling": 22,
+          "register_launchlab_coin": 1,
+          "declare_payee": 1,
+          "settle_sapling": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 3,
         "baseline": false
       }
     },
@@ -105,15 +97,15 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-10-31T21:07:42.726Z",
-      "finishedAt": "2026-10-31T21:07:43.214Z",
+      "startedAt": "2026-10-31T21:27:46.577Z",
+      "finishedAt": "2026-10-31T21:27:47.371Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "coins": 56,
-        "matching": 56,
-        "feeChangeable": 55,
+        "coins": 57,
+        "matching": 57,
+        "feeChangeable": 56,
         "feeRenounced": 1,
         "advertisedRange": [
           200,
@@ -125,8 +117,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-10-31T21:07:43.215Z",
-      "finishedAt": "2026-10-31T21:07:52.047Z",
+      "startedAt": "2026-10-31T21:27:47.371Z",
+      "finishedAt": "2026-10-31T21:27:54.293Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -228,13 +220,7 @@
   },
   "openAlerts": {
     "keys": {
-      "privileged vault instruction set_stock_quote via multisig at 2026-10-31T20:52:47.000Z (2GauZ4gvTK7ppYx9pELivriGYA8FdBJWTPpqBguYVUSCwh3dDvkB8DvyeVtHzn3aymro5ZRS5wnd2SevzJQQRf2c)": "2026-10-31T21:00:04.247Z",
-      "multisig batch_execute_transaction at 2026-10-31T20:52:48.000Z (41xckvhvLvVejsjTPfnPgUp4aNiddpF4MTyh6yQ9rdfs4j9qki5sh89NujiLroDTUUFFe2CwdjfEV1mwVvtoto3a)": "2026-10-31T21:00:04.247Z",
-      "multisig batch_execute_transaction at 2026-10-31T20:52:47.000Z (2GauZ4gvTK7ppYx9pELivriGYA8FdBJWTPpqBguYVUSCwh3dDvkB8DvyeVtHzn3aymro5ZRS5wnd2SevzJQQRf2c)": "2026-10-31T21:00:04.247Z",
-      "multisig proposal_approve at 2026-10-31T20:52:14.000Z (3aBXkSD9V6mCPiDaB43pwJ6CiG6yVQQpfDRjFpqRp9fzT2xDThHi59Sjt9f3q2VzwT3bP5LF4n6srti5vZ5miGk1)": "2026-10-31T21:00:04.247Z",
-      "multisig proposal_approve at 2026-10-31T20:52:12.000Z (5p6fYz6NsEddr2zMSMx1rZANob2okweSULPZd4NJphSZJ8CYxwP9ygUgNHN2Ln75eD2Y6Y9hNwWuf7tTxJgY55Wu)": "2026-10-31T21:00:04.247Z",
-      "multisig proposal_activate at 2026-10-31T20:50:18.000Z (2d52PpRtfxnujKDMFm5fL563DiSjppdd4jsRrN5xbcCPuiK8dXq6uJcxhnAoeeRu68o4Wh6N23XaUWZDqojaH6Je)": "2026-10-31T21:00:04.247Z",
-      "multisig proposal_create at 2026-10-31T20:50:17.000Z (PtvDxLUrt7KEtJ1Myfr2BKiuNZUrH2Et4pKmprqGixoEJsbJC46PXBComNRFhp1Y3gdyJvxcJ2pLdYRrpEXRdEC)": "2026-10-31T21:00:04.247Z"
+      "vault config changed: bytes changed at 137-168 (0000000000000000000000000000000000000000000000000000000000000000 -> 2a9b688f22f82e6c3b51c23985fbe9e0574b299bc2d326fe880589e9dc928043)": "2026-10-31T21:27:46.193Z"
     },
     "rewards": {},
     "float": {},
