@@ -2,70 +2,45 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-10-31T17:56:39.591Z",
-      "finishedAt": "2026-10-31T17:58:58.050Z",
-      "status": "ran",
-      "ok": true,
+      "startedAt": "2026-10-31T18:27:47.103Z",
+      "finishedAt": "2026-10-31T18:28:40.483Z",
+      "status": "error",
+      "ok": null,
       "alerts": [],
-      "summary": {
-        "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
-        "lastDeploySlot": 463604102,
-        "configSha256": "6ff7df7ddb117ab587d46a00c95beeb84d9d025dc12abbe0084e444077d2f6fe",
-        "walletsInConfig": [
-          "treasury",
-          "rewards",
-          "buyback",
-          "lpWallet",
-          "lpPot",
-          "admin",
-          "recovery"
-        ],
-        "vaultInstructions": {
-          "observe_sapling": 46,
-          "settle": 17,
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 1,
-          "draw_grove": 1,
-          "close_grove": 1,
-          "settle_tax": 2,
-          "sell_tax": 2,
-          "withdraw_tax": 2,
-          "close_rewards_run": 3,
-          "release_rewards": 3,
-          "settle_sapling": 2,
-          "claim_payee": 1
-        },
-        "unrecognised": 3,
-        "baseline": false
-      }
+      "error": "getTransaction: {\"code\":-32015,\"message\":\"Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \\\"maxSupportedTransactionVersion\\\": 1\"}"
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-10-31T17:58:58.052Z",
-      "finishedAt": "2026-10-31T17:59:13.391Z",
+      "startedAt": "2026-10-31T18:28:40.484Z",
+      "finishedAt": "2026-10-31T18:28:56.207Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-10-31T17:59:13.385Z",
+        "checkedAt": "2026-10-31T18:28:56.200Z",
         "runs": 10,
-        "passed": 8,
-        "flagged": 2,
-        "unchecked": 2,
-        "firstUnchecked": 1360,
-        "zecPaidInDoneRuns": "0.40360152",
+        "passed": 3,
+        "flagged": 7,
+        "unchecked": 7,
+        "firstUnchecked": 1361,
+        "zecPaidInDoneRuns": "0.41838480",
         "onChainChecks": true,
         "notes": [
-          "run 1360: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1363: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
+          "run 1361: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1362: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1363: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1365: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1366: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1367: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1368: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
         ],
-        "maxRunId": 1367
+        "maxRunId": 1368
       }
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-10-31T17:02:08.368Z",
-      "finishedAt": "2026-10-31T17:09:23.169Z",
+      "startedAt": "2026-10-31T18:28:56.207Z",
+      "finishedAt": "2026-10-31T18:36:11.263Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -99,15 +74,15 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-10-31T17:59:13.392Z",
-      "finishedAt": "2026-10-31T17:59:14.563Z",
+      "startedAt": "2026-10-31T18:36:11.264Z",
+      "finishedAt": "2026-10-31T18:36:11.913Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "coins": 54,
-        "matching": 54,
-        "feeChangeable": 53,
+        "coins": 55,
+        "matching": 55,
+        "feeChangeable": 54,
         "feeRenounced": 1,
         "advertisedRange": [
           200,
@@ -119,17 +94,17 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-10-31T17:59:14.564Z",
-      "finishedAt": "2026-10-31T17:59:21.496Z",
+      "startedAt": "2026-10-31T18:36:11.914Z",
+      "finishedAt": "2026-10-31T18:36:26.268Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "burns": 79,
-        "burnsVerified": 79,
-        "boughtBackZat": "252004199",
+        "burns": 80,
+        "burnsVerified": 80,
+        "boughtBackZat": "255157138",
         "venues": {
-          "pump amm": 61,
+          "pump amm": 62,
           "raydium cpmm": 15,
           "raydium launchlab": 2,
           "pump bonding curve": 1
@@ -152,8 +127,8 @@
           },
           "ZCASHCHAN": {
             "mint": "ACqTXUGTbgUDq6REYZQtB9E7BprHrnuJooC1tQKFmmoq",
-            "burns": 3,
-            "zat": "9053734"
+            "burns": 4,
+            "zat": "12206673"
           },
           "SHINU": {
             "mint": "AZ9NHodnyb6wPYian1Fd9HF1mfvPNkJEecExVT1Sevjg",
@@ -197,13 +172,13 @@
           }
         },
         "pot": {
-          "balanceZat": "31983",
-          "shownZat": "31983",
-          "inflowZat": "447034492",
+          "balanceZat": "922396",
+          "shownZat": "922396",
+          "inflowZat": "447924905",
           "buybackZat": "447002509",
           "movements": {
             "setup": 1,
-            "inflow": 1513,
+            "inflow": 1516,
             "buyback": 151
           },
           "reconciled": true,
@@ -215,8 +190,7 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "buyback KkAeHq4Vb5W9ACKNoCQ8g3NeWA3DzQ6V8DNSz34VwFnPDz9LwtgC5KMVxxTGAAREs9GDVYMttKxYTLfXgsJbXnw drew 3152939 zat but is not in Sapling's burn list",
-          "headline 443849570 zat bought back, listed burns add up to 160604169"
+          "headline 447002509 zat bought back, listed burns add up to 160584831"
         ]
       }
     }
@@ -228,6 +202,6 @@
     "tax": {},
     "flywheel": {}
   },
-  "rewardsMaxRun": 1364,
-  "rewardsFrom": 1358
+  "rewardsMaxRun": 1365,
+  "rewardsFrom": 1359
 }
