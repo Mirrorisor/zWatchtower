@@ -2,13 +2,11 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-10-31T21:57:59.252Z",
-      "finishedAt": "2026-10-31T22:01:01.331Z",
+      "startedAt": "2026-10-31T22:26:40.702Z",
+      "finishedAt": "2026-10-31T22:29:24.618Z",
       "status": "ran",
-      "ok": false,
-      "alerts": [
-        "vault config changed: bytes changed at 137-168 (2a9b688f22f82e6c3b51c23985fbe9e0574b299bc2d326fe880589e9dc928043 -> 0000000000000000000000000000000000000000000000000000000000000000)"
-      ],
+      "ok": true,
+      "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 463604102,
@@ -23,23 +21,19 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 26,
-          "sell_tax": 18,
-          "withdraw_tax": 22,
-          "draw_grove": 1,
-          "close_grove": 1,
-          "settle_tax": 3,
-          "collect_creator_fee": 2,
-          "collect_pool_fees": 2,
-          "close_rewards_run": 2,
-          "release_rewards": 1,
-          "settle": 8,
-          "draw_lp": 1,
-          "freeze_tax_config": 1,
+          "observe_sapling": 23,
+          "sell_tax": 21,
+          "withdraw_tax": 28,
           "register_launchlab_coin": 1,
-          "declare_payee": 1
+          "declare_payee": 1,
+          "settle_tax": 7,
+          "convert_tax_begin": 3,
+          "convert_tax_end": 3,
+          "settle": 9,
+          "draw_grove": 1,
+          "close_grove": 1
         },
-        "unrecognised": 3,
+        "unrecognised": 8,
         "baseline": false
       }
     },
@@ -67,8 +61,8 @@
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-10-31T21:00:20.338Z",
-      "finishedAt": "2026-10-31T21:07:42.725Z",
+      "startedAt": "2026-10-31T22:29:26.086Z",
+      "finishedAt": "2026-10-31T22:36:47.587Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -102,15 +96,15 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-10-31T22:01:11.324Z",
-      "finishedAt": "2026-10-31T22:01:11.884Z",
+      "startedAt": "2026-10-31T22:36:47.587Z",
+      "finishedAt": "2026-10-31T22:36:48.114Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "coins": 58,
-        "matching": 58,
-        "feeChangeable": 56,
+        "coins": 59,
+        "matching": 59,
+        "feeChangeable": 57,
         "feeRenounced": 2,
         "advertisedRange": [
           200,
@@ -122,17 +116,17 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-10-31T22:01:11.885Z",
-      "finishedAt": "2026-10-31T22:01:29.305Z",
+      "startedAt": "2026-10-31T22:36:48.114Z",
+      "finishedAt": "2026-10-31T22:37:11.883Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "burns": 80,
-        "burnsVerified": 80,
-        "boughtBackZat": "255157138",
+        "burns": 82,
+        "burnsVerified": 82,
+        "boughtBackZat": "262505029",
         "venues": {
-          "pump amm": 62,
+          "pump amm": 64,
           "raydium cpmm": 15,
           "raydium launchlab": 2,
           "pump bonding curve": 1
@@ -155,13 +149,13 @@
           },
           "ZCASHCHAN": {
             "mint": "ACqTXUGTbgUDq6REYZQtB9E7BprHrnuJooC1tQKFmmoq",
-            "burns": 4,
-            "zat": "12206673"
+            "burns": 5,
+            "zat": "16368242"
           },
           "SHINU": {
             "mint": "AZ9NHodnyb6wPYian1Fd9HF1mfvPNkJEecExVT1Sevjg",
-            "burns": 4,
-            "zat": "12763270"
+            "burns": 5,
+            "zat": "15949592"
           },
           "JACKJACK": {
             "mint": "2RSt56ovXGXk2HYvruPBK6v9UJk88nKXTnyVWg9XmU3z",
@@ -200,14 +194,14 @@
           }
         },
         "pot": {
-          "balanceZat": "420361",
-          "shownZat": "420361",
-          "inflowZat": "450609192",
-          "buybackZat": "450188831",
+          "balanceZat": "8849351",
+          "shownZat": "8849351",
+          "inflowZat": "467865321",
+          "buybackZat": "459015970",
           "movements": {
             "setup": 1,
-            "inflow": 1524,
-            "buyback": 152
+            "inflow": 1535,
+            "buyback": 154
           },
           "reconciled": true,
           "caughtUp": true
@@ -218,16 +212,14 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "buyback 3NchYTdbz3P4RF2jNVraztLqE7dLQsHYherm1fFbbg9YVHUESbZFt3SWVvUSTD51X4pZvyhJkiztsVSVKpEnEQvM drew 3186322 zat but is not in Sapling's burn list",
-          "headline 447002509 zat bought back, listed burns add up to 160584831"
+          "buyback 2fwrrw3brJ3Tm882VtJUQZjDdSKB9tdUWLjcZtriYt6fqpkjWVYJS2UezXkJvmH1NAs3r68DtWWNM9mDdYtBmSBR drew 4665570 zat but is not in Sapling's burn list",
+          "headline 454350400 zat bought back, listed burns add up to 161334122"
         ]
       }
     }
   },
   "openAlerts": {
-    "keys": {
-      "vault config changed: bytes changed at 137-168 (2a9b688f22f82e6c3b51c23985fbe9e0574b299bc2d326fe880589e9dc928043 -> 0000000000000000000000000000000000000000000000000000000000000000)": "2026-10-31T22:01:01.331Z"
-    },
+    "keys": {},
     "rewards": {},
     "float": {},
     "tax": {},
