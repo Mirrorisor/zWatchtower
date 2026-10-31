@@ -220,7 +220,7 @@ function renderAlerts(list) {
   if (!list.length) return (el.innerHTML = `<div class="empty">No alerts recorded.</div>`);
   el.innerHTML = `<table><thead><tr><th>When</th><th>Check</th><th>Event</th><th>Detail</th></tr></thead><tbody>
     ${list.map((a) => `<tr><td>${esc(a.at.slice(0, 16).replace("T", " "))}</td><td>${esc(a.check)}</td>
-      <td class="type-${esc(a.type)}">${a.type === "raised" ? "Raised" : "Resolved"}</td><td>${esc(a.text)}</td></tr>`).join("")}
+      <td class="type-${esc(a.type)}">${a.type === "raised" ? "Raised" : a.type === "withdrawn" ? "Withdrawn" : "Resolved"}</td><td>${esc(a.text)}</td></tr>`).join("")}
   </tbody></table>`;
 }
 

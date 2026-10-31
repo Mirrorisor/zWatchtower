@@ -39,6 +39,11 @@ https://mirrorisor.github.io/zWatchtower/. Alerts go to the webhook in the
 `WATCHTOWER_WEBHOOK` repository secret (Slack, or Discord with `/slack` on the
 end of the webhook URL). GitHub can start scheduled runs a few minutes late.
 
+Solana's free public RPC often limits GitHub's servers. Lookups it refuses are
+never reported as findings: the check notes them and tries again next run.
+For faster, complete runs, put a private RPC URL (Helius, Triton, QuickNode;
+free tiers work) in the `WATCHTOWER_SOLANA_RPC` secret.
+
 # Run the service
 
 `watchtower.mjs` runs all five checks on their own schedules, keeps the

@@ -57,10 +57,23 @@ function loadConfig() {
   if (opt("--port")) cfg.port = Number(opt("--port"));
   cfg.dataDir = resolve(cfg.dataDir);
   if (process.env.WATCHTOWER_WEBHOOK) cfg.webhook = process.env.WATCHTOWER_WEBHOOK;
+  if (process.env.WATCHTOWER_SOLANA_RPC) cfg.solanaRpc = process.env.WATCHTOWER_SOLANA_RPC;
   return cfg;
 }
 
 // ---- persistence ----------------------------------------------------------
+
+// Alerts that were really the watchtower's own lookups failing (an earlier
+// version raised these). They are withdrawn, not reported as resolved.
+const OWN_FAILURE = /HTTP error for |rate-limited|fetch failed|ETIMEDOUT|ECONNRESET/;
+function withdrawOwnFailures(store) {
+  for (const [check, open] of Object.entries(store.state.openAlerts ?? {})) {
+    const bad = Object.keys(open).filter((a) => OWN_FAILURE.test(a));
+    for (const a of bad) delete open[a];
+    if (bad.length) store.append("alerts.jsonl", { check, at: new Date().toISOString(), type: "withdrawn",
+      text: `${bad.length} alert(s) withdrawn: they were the watchtower's own failed lookups, not findings` });
+  }
+}
 
 class Store {
   constructor(dir) {
@@ -144,7 +157,7 @@ function normalise(name, report) {
       alerts: failing.map((r) => `reward run ${r.id} ${r.coin ?? ""}: ${r.problems.join("; ")}`),
       summary: { ...report.summary,
         notes: report.flagged.filter((r) => !r.problems?.length && r.note).map((r) => `run ${r.id}: ${r.note}`),
-        maxRunId: Math.max(0, ...report.results.filter((r) => !r.notFound).map((r) => r.id)) },
+        maxRunId: Math.max(0, ...report.results.filter((r) => !r.notFound && !r.unchecked).map((r) => r.id)) },
     };
   }
   if (name === "tax") return {
@@ -194,8 +207,12 @@ async function runCheck(name, cfg, store) {
         ok: null, alerts: [], error: (res.err || res.signal || `exit ${res.code}`).toString().trim().slice(-500) };
     }
     await handleAlerts(name, entry, cfg, store);
-    if (name === "rewards" && entry.summary?.maxRunId)
+    if (name === "rewards" && entry.summary?.maxRunId) {
       store.state.rewardsMaxRun = Math.max(store.state.rewardsMaxRun, entry.summary.maxRunId);
+      // runs we could not check are re-checked next time
+      if (entry.summary.firstUnchecked)
+        store.state.rewardsMaxRun = Math.min(store.state.rewardsMaxRun, entry.summary.firstUnchecked + cfg.checks.rewards.recheckLast - 1);
+    }
     store.state.latest[name] = entry;
     store.append("history.jsonl", entry);
     store.save();
@@ -285,6 +302,7 @@ function serve(cfg, store) {
 async function main() {
   const cfg = loadConfig();
   const store = new Store(cfg.dataDir);
+  withdrawOwnFailures(store);
   const names = Object.keys(cfg.checks).filter((n) => cfg.checks[n].everyMinutes > 0);
   if (opt("--export") && !args.includes("--once")) return exportSite(cfg, store, resolve(opt("--export")));
   if (args.includes("--once")) {

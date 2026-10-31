@@ -116,7 +116,10 @@ const server = createServer((req, res) => {
       return send({ hero: { zat: String(zat), burns: world.burns.length }, burns: world.burns, pot: { zat: String(world.balance) } });
     }
     const { method, params } = JSON.parse(body);
-    if (method === "getTransaction") return send({ result: world.potTxs[params[0]] ?? fx.txs[params[0]] ?? null });
+    if (method === "getTransaction") {
+      if (world.blank?.has(params[0])) return send({ result: null });
+      return send({ result: world.potTxs[params[0]] ?? fx.txs[params[0]] ?? null });
+    }
     if (method === "getTokenAccountBalance") return send({ result: { value: { amount: String(world.balance) } } });
     if (method === "getSignaturesForAddress") {
       const all = Object.keys(world.potTxs).reverse(); // newest first
@@ -128,9 +131,9 @@ const server = createServer((req, res) => {
 });
 await new Promise((ok) => server.listen(0, ok));
 const base = `http://127.0.0.1:${server.address().port}`;
-const run = () => new Promise((done) => {
+const run = (extra = [], state = statePath) => new Promise((done) => {
   const p = spawn(process.execPath, [join(here, "../flywheel-check.mjs"), "--json", "--rpc", base, "--api", base,
-    "--state", statePath, "--pause", "0"]);
+    "--state", state, "--pause", "0", ...extra]);
   let out = "", err = ""; p.stdout.on("data", (d) => (out += d)); p.stderr.on("data", (d) => (err += d));
   p.on("close", (code) => { let report = null; try { report = JSON.parse(out); } catch {} done({ code, report, err }); });
 });
@@ -167,6 +170,24 @@ try {
   x = await run();
   check("end to end: pot balance mismatch raises an alert",
     x.report.alerts.some((a) => /pot holds .* but the movements seen add up to/.test(a)), JSON.stringify(x.report?.alerts));
+  // a public RPC returning nothing is never Sapling's problem: the work waits
+  const st2 = join(dir, "state2.json");
+  world.blank = new Set(["Inflow1", cpmm.signature]);
+  x = await run([], st2);
+  check("end to end: blank RPC answers raise no alert and don't crash", x.code === 0 && x.report.alerts.length === 0 &&
+    x.report.notes.some((n) => /paused at Inflow1/.test(n)) && x.report.pot.caughtUp === false, x.err || JSON.stringify(x.report?.notes));
+  world.blank = new Set([cpmm.signature]);
+  x = await run([], st2);
+  check("end to end: a listed burn missing twice is still not an alert", !x.report.alerts.some((a) => /not found/.test(a)), JSON.stringify(x.report?.alerts));
+  x = await run([], st2);
+  check("end to end: missing on a third run, it is", x.report.alerts.some((a) => new RegExp(cpmm.signature + ": transaction not found").test(a)), JSON.stringify(x.report?.alerts));
+  world.blank = new Set();
+
+  // a small budget reads the pot history over several runs, then reconciles
+  const st3 = join(dir, "state3.json");
+  let runs = 0;
+  do { x = await run(["--max-tx", "2"], st3); runs++; } while (!x.report?.pot.caughtUp && runs < 10);
+  check("end to end: a capped run resumes until caught up", runs > 1 && x.report.pot.caughtUp && x.report.burnsVerified === 3, `${runs} runs`);
 } finally {
   server.close();
   if (existsSync(dir)) rmSync(dir, { recursive: true, force: true });

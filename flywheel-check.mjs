@@ -30,6 +30,7 @@ const statePath = opt("--state", "flywheel-state.json");
 const apiBase = opt("--api", "https://sapling.cash");
 const asJson = args.includes("--json");
 const pauseMs = Number(opt("--pause", "250"));
+const maxTx = Number(opt("--max-tx", "150")); // transactions read per run at most
 
 const sleep = (ms) => new Promise((s) => setTimeout(s, ms));
 async function getJson(url, init) {
@@ -65,29 +66,55 @@ async function main() {
   const fresh = !existsSync(statePath);
   const state = fresh ? { burns: {}, pot: { lastSig: null, total: "0", complete: false, kinds: {} }, signers: [] }
     : JSON.parse(readFileSync(statePath, "utf8"));
+  state.missing ??= {};
   const alerts = [], notes = [];
+  const save = () => writeFileSync(statePath, JSON.stringify(state, null, 2));
+  // Our own lookups can fail or come back empty under a public RPC's limits.
+  // That is never reported as Sapling's problem: the work waits for the next run.
+  let budget = maxTx;
+  const lookup = async (sig) => {
+    budget--;
+    try { return { tx: await getTx(sig) }; } catch (e) { return { error: e.message }; }
+  };
 
   // 1. every listed burn, checked once (re-checked while it has problems)
   const live = await getJson(`${apiBase}/api/flywheel/live`);
   const listed = live.burns ?? [];
+  let skipped = 0;
   for (const b of listed) {
     const prev = state.burns[b.signature];
     if (prev && prev.problems.length === 0 && prev.zat === String(b.zat) && prev.burned === String(b.burned)) continue;
-    const res = checkBurn(await getTx(b.signature), b);
+    if (budget <= 0) { skipped++; continue; }
+    const { tx, error } = await lookup(b.signature);
+    if (error) { skipped++; continue; }
+    if (!tx) {
+      // not found: only a problem once three separate runs agree
+      state.missing[b.signature] = (state.missing[b.signature] ?? 0) + 1;
+      if (state.missing[b.signature] < 3) { skipped++; continue; }
+    } else delete state.missing[b.signature];
+    const res = checkBurn(tx, b);
     res.symbol = b.symbol; res.at = b.at;
     state.burns[b.signature] = res;
     await sleep(pauseMs);
   }
+  if (skipped) notes.push(`${skipped} listed burn(s) not checked yet; they are tried again next run`);
   for (const r of Object.values(state.burns)) {
     for (const p of r.problems) alerts.push(`flywheel burn ${r.symbol ?? ""} ${r.signature}: ${p}`);
   }
+  save();
 
-  // 2. every movement of the pot since last time
+  // 2. every movement of the pot since last time, oldest first, as far as the
+  // budget allows; the rest is picked up next run
+  const baseline = !state.pot.caughtUp; // signer keys seen before catching up are the baseline
   const sigs = await newPotSignatures(state.pot.lastSig ?? undefined);
   if (!state.pot.lastSig) state.pot.complete = true; // first run walks back to the pot's creation
   let total = BigInt(state.pot.total);
+  let done = 0;
   for (const s of sigs) {
-    const c = classifyPotTx(await getTx(s.signature));
+    if (budget <= 0) break;
+    const { tx, error } = await lookup(s.signature);
+    if (error || !tx) { notes.push(`pot history paused at ${s.signature}: ${error ?? "not returned by the RPC"}`); break; }
+    const c = classifyPotTx(tx);
     total += BigInt(c.delta);
     state.pot.kinds[c.kind] = (state.pot.kinds[c.kind] ?? 0) + 1;
     for (const p of c.problems) {
@@ -103,19 +130,24 @@ async function main() {
     if (c.kind === "buyback" || c.kind === "inflow") {
       for (const k of c.signers) {
         if (!state.signers.includes(k)) {
-          if (!fresh) alerts.push(`flywheel: new signing key ${k} (${c.kind} ${c.signature})`);
+          if (!baseline) alerts.push(`flywheel: new signing key ${k} (${c.kind} ${c.signature})`);
           state.signers.push(k);
         }
       }
     }
     state.pot.lastSig = s.signature;
+    state.pot.total = String(total);
+    if (++done % 25 === 0) save();
     await sleep(pauseMs);
   }
   state.pot.total = String(total);
+  state.pot.caughtUp = done === sigs.length;
+  if (!state.pot.caughtUp) notes.push(`pot history: ${sigs.length - done} transaction(s) still to read; continuing next run`);
+  save();
 
   // 3. balances
   const bal = BigInt((await rpc("getTokenAccountBalance", [GROVE_ACCOUNT])).value.amount);
-  if (state.pot.complete && bal !== total) {
+  if (state.pot.complete && state.pot.caughtUp && bal !== total) {
     alerts.push(`flywheel pot holds ${bal} zat but the movements seen add up to ${total}`);
   }
   if (live.pot?.zat != null && BigInt(live.pot.zat) !== bal) {
@@ -141,7 +173,8 @@ async function main() {
     venues: results.reduce((a, r) => ((a[r.venue] = (a[r.venue] ?? 0) + 1), a), {}),
     perCoin: Object.fromEntries(Object.entries(perCoin).map(([k, v]) => [k, { ...v, zat: String(v.zat) }])),
     pot: { balanceZat: String(bal), shownZat: live.pot?.zat ?? null, inflowZat: state.pot.inflowZat ?? "0",
-      buybackZat: state.pot.buybackZat ?? "0", movements: state.pot.kinds, reconciled: state.pot.complete && bal === total },
+      buybackZat: state.pot.buybackZat ?? "0", movements: state.pot.kinds, reconciled: state.pot.complete && state.pot.caughtUp && bal === total,
+      caughtUp: state.pot.caughtUp },
     signers: state.signers,
     alerts, notes,
   };

@@ -205,6 +205,12 @@ async function recentInstructions(address, programId, table, sinceSig) {
   return { newest: sigs[0]?.signature ?? sinceSig ?? null, instructions: out };
 }
 
+// Bytes the program rewrites on its own during normal operation: an i64 Unix
+// timestamp at 342 (seen moving 30-31 Oct 2026 with no admin action). A change
+// that only touches these is not reported.
+const VOLATILE_CONFIG_BYTES = [[342, 349]];
+const volatile = ([x, y]) => VOLATILE_CONFIG_BYTES.some(([a, b]) => x >= a && y <= b);
+
 function diffConfig(before, after) {
   const changes = [];
   for (const label of new Set([...Object.keys(before.present), ...Object.keys(after.present)])) {
@@ -218,7 +224,9 @@ function diffConfig(before, after) {
     const last = ranges.at(-1);
     if (last && last[1] === i - 1) last[1] = i; else ranges.push([i, i]);
   }
-  if (ranges.length) changes.push(`bytes changed at ${ranges.map(([x, y]) => x === y ? x : `${x}-${y}`).join(", ")}`);
+  const real = ranges.filter((r) => !volatile(r));
+  if (real.length) changes.push(`bytes changed at ${real.map(([x, y]) => x === y ? x : `${x}-${y}`).join(", ")}` +
+    ` (${real.map(([x, y]) => `${a.subarray(x, y + 1).toString("hex")} -> ${b.subarray(x, y + 1).toString("hex")}`).join(", ")})`);
   return changes;
 }
 

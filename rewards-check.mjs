@@ -64,7 +64,14 @@ async function rpc(method, params) {
   return j.result;
 }
 
+// Our own lookup failing (rate limit, blocked IP, timeout) says nothing about
+// the run, so it is a note and the run counts as not checked on chain.
 async function checkRelease(run) {
+  try { return await checkReleaseOnChain(run); }
+  catch (err) { return { release: "unchecked", releaseError: err.message }; }
+}
+
+async function checkReleaseOnChain(run) {
   if (!run.releaseSignature) return { release: "none" };
   const tx = await rpc("getTransaction", [
     run.releaseSignature,
@@ -142,7 +149,8 @@ async function checkRun(id) {
 
   if (rpcUrl) {
     Object.assign(out, await checkRelease(run));
-    if (out.release !== "ok") p(`release: ${out.release}`);
+    if (out.release === "unchecked") out.note = `release not checked on chain (${out.releaseError})`;
+    else if (out.release !== "ok") p(`release: ${out.release}`);
     if (out.hashInEvent === false) p("snapshot hash not found in release event");
   }
   out.pot = run.pot;
@@ -165,13 +173,14 @@ async function main() {
   for (let i = 0; i < ids.length; i += concurrency) {
     const batch = ids.slice(i, i + concurrency);
     results.push(...(await Promise.all(batch.map((id) =>
-      checkRun(id).catch((err) => ({ id, problems: [`error: ${err.message}`] }))))));
+      checkRun(id).catch((err) => ({ id, unchecked: true, problems: [], note: `not checked: ${err.message}` }))))));
     if (!asJson) process.stderr.write(`\rchecked ${results.length}/${ids.length}`);
   }
   if (!asJson) process.stderr.write("\n");
 
   const runs = results.filter((r) => !r.notFound);
   const flagged = runs.filter((r) => r.problems.length || r.note);
+  const unchecked = runs.filter((r) => r.unchecked || r.release === "unchecked");
   const done = runs.filter((r) => r.status === "done");
   const paid = done.reduce((a, r) => a + BigInt(r.paid || 0), 0n);
   const summary = {
@@ -179,6 +188,8 @@ async function main() {
     runs: runs.length,
     passed: runs.length - flagged.length,
     flagged: flagged.length,
+    unchecked: unchecked.length,
+    firstUnchecked: unchecked.length ? Math.min(...unchecked.map((r) => r.id)) : null,
     zecPaidInDoneRuns: (Number(paid) / 1e8).toFixed(8),
     onChainChecks: Boolean(rpcUrl),
   };

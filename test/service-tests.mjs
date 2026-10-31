@@ -128,7 +128,16 @@ const exported = ["index.html", "api/status.json", "api/alerts.json", "api/histo
 const st = exported ? JSON.parse(readFileSync(join(site, "api/status.json"), "utf8")) : {};
 check("--export writes the dashboard and its data", exported && st.checks?.keys && st.schedule?.flywheel);
 
-// 9. the server: API and dashboard
+// 9. alerts that were really our own failed lookups are withdrawn, not left open
+const statePathS = join(dataDir, "state.json");
+const sst = JSON.parse(readFileSync(statePathS, "utf8"));
+sst.openAlerts.rewards = { ...sst.openAlerts.rewards, "reward run 5 : error: HTTP error for https://api.mainnet-beta.solana.com": "x" };
+writeFileSync(statePathS, JSON.stringify(sst));
+r = await once({ keys: keysReport(), rewards: rewardsReport([115]), float: floatReport() });
+check("own failed lookups are withdrawn quietly", !Object.keys(r.state.openAlerts.rewards).some((a) => /HTTP error/.test(a)) &&
+  !r.newPosts.some((p) => /HTTP error/.test(p)));
+
+// 10. the server: API and dashboard
 writeFileSync(scenarioPath, JSON.stringify({ keys: keysReport(), rewards: rewardsReport([115]), float: floatReport() }));
 const port = 18000 + Math.floor(Math.random() * 1000);
 const srv = spawn(process.execPath, [join(here, "../watchtower.mjs"), "--config",
