@@ -1,0 +1,296 @@
+# zWatchtower
+
+[![tests](https://github.com/Mirrorisor/zwatchtower/actions/workflows/test.yml/badge.svg)](https://github.com/Mirrorisor/zwatchtower/actions/workflows/test.yml)
+
+An open-source watchdog for [Sapling](https://sapling.cash), the Zcash-native
+launchpad on Solana. Five independent checks turn what Sapling users would
+otherwise take on trust into public, repeatable checks. They read only public
+chain data and Sapling's own published files: no viewing keys, no user
+addresses, nothing signed, nothing needed from Sapling.
+
+## Independence
+
+zWatchtower is not affiliated with Sapling. If the project ever has a coin on
+Sapling, that is disclosed here, its fees go somewhere neutral (the Zcash
+Foundation or a public hosting wallet), and alerts are never held back or
+softened because of it. Every check is code in this repo and every result
+can be reproduced by running it.
+
+## The checks
+
+- `rewards-check.mjs`: re-checks every holder-reward run.
+- `float-check.mjs`: finds every Zcash order address Sapling pays out from,
+  and checks the ZEC held there against the published caps.
+- `keys-check.mjs`: alerts when the vault program is upgraded, its config
+  changes, or a privileged or multisig action happens.
+- `tax-check.mjs`: checks each Raydium LaunchLab coin's on-chain transfer fee
+  against the tax Sapling advertises, and alerts on any scheduled change.
+- `flywheel-check.mjs`: checks every buy-and-burn Sapling lists against the
+  chain, and accounts for every movement of the flywheel's tax pot.
+
+Node 18 or later, no dependencies.
+
+# Run the service
+
+`watchtower.mjs` runs all five checks on their own schedules, keeps the
+results, posts each alert once to a webhook, and serves the dashboard.
+
+```
+cp watchtower.config.example.json watchtower.config.json   # edit as needed
+npm start                     # dashboard on http://localhost:8787
+npm run once                  # every check once, then exit (for cron)
+npm test                      # all offline tests
+```
+
+Default schedule: keys every 5 minutes, coin taxes and the flywheel every 15, rewards every 30, float every 60.
+The rewards check is incremental after its first full pass: each pass re-checks
+the last 5 runs plus any new ones, and failures from older runs stay open.
+
+Alerts are posted once when they appear and once when they clear. A check
+that fails to run (an RPC outage, say) shows as "check failed" and leaves
+alerts as they were, so an outage is never reported as a problem with Sapling.
+
+| Path | What |
+| --- | --- |
+| `/` | dashboard |
+| `/api/status` | latest result of each check, open alerts |
+| `/api/history?check=keys&limit=20` | past results, newest first |
+| `/api/alerts` | alerts raised and resolved, newest first |
+| `/healthz` | liveness |
+
+Config (`watchtower.config.json`): `solanaRpc` (a private RPC avoids public
+rate limits), `webhook` (Slack or Discord-style, receives `{ "text": … }`),
+`threexplKey` or `zebra` for the float check, `squadsMultisig` to watch
+upgrade proposals, and per-check `everyMinutes`.
+
+Data lives in `dataDir`: `state.json`, `history.jsonl`, `alerts.jsonl`, and the
+keys check's baseline `keys-state.json`. Delete them to start fresh.
+
+# Float check
+
+Sapling's shielded payouts land at a one-time transparent "order address" and
+are forwarded as a shielded note minutes later. Order addresses are derived
+from the two account public keys in
+`https://sapling.cash/.well-known/sapling-exits.json` (stamps SPEC §10.1), so
+`lib/derive.mjs` can list them all.
+
+```
+node float-check.mjs                    # 3xpl sandbox API, full history
+node float-check.mjs --api-key KEY      # paid 3xpl API, much faster
+node float-check.mjs --source zebra --zebra http://127.0.0.1:8232   # own node
+```
+
+Reports the current float against the custody cap (200 ZEC) and in-flight cap
+(50), any payout not forwarded within `--stuck-minutes` (default 60), hold
+times, and the peak float ever reached. Exit code 1 if anything is stuck or
+over a cap.
+
+Derivation is checked against the BIP32 test vector and against Sapling's own
+certificate for order address 18 (t1auBszcWwx8MCYKDkGNxEcD4WZgK81E34s).
+
+## First results (2026-10-28, indexes 0–59 of both keys)
+
+- 14 used order addresses (6 for sales and sends, 8 for Zcash accounts),
+  matching Rings' 14 shielded exits.
+- 2.29777685 ZEC delivered; less 14 × 0.00015 network fee = 2.2957 ZEC,
+  exactly Rings' "delivered, shielded" figure.
+- Current float 0; nothing stuck. Peak float 0.5717 ZEC (2 Oct).
+- Hold times: 1.6–5.7 minutes for sales and sends, 20.6–25.2 minutes for
+  Zcash accounts.
+- Zcash Foundation donation sends come from addresses that are not derived
+  from either published key, so they are outside this check.
+
+# Keys check
+
+```
+node keys-check.mjs --rpc https://api.mainnet-beta.solana.com
+node keys-check.mjs --rpc URL --state keys-state.json --webhook https://hooks.example/...
+node keys-check.mjs --rpc URL --squads-multisig <Squads multisig account>
+```
+
+Run it on a schedule (every few minutes, from cron or similar). The first run
+records a baseline in the state file; each later run compares against it.
+
+It alerts when:
+
+- the vault program's upgrade authority is not the published 2-of-3 Squads
+  vault (3eCXkz…57sMtf), or the program is frozen
+- the vault program is redeployed (its last-deploy slot changes)
+- the vault Config account changes: reports which known wallets (treasury,
+  rewards, buyback, LP wallet) appeared or disappeared, and which bytes moved
+- the config account is not owned by the vault program
+- a privileged vault instruction runs (retire_roots, set_lp, init_donation,
+  set_donation, pause_donations, set_zec_payees, pause_zec_payees)
+- a Squads proposal is created, activated, approved
+  or executed, so an upgrade is visible before it lands
+
+- the multisig's members, threshold or time lock change
+
+Instruction names come from Anchor's "Instruction: Name" log lines, with the
+discriminator table as a fallback. Routine keeper work (settle,
+observe_sapling, release_rewards, close_rewards_run, roots_to_pot, draw_lp,
+draw_donation, draw_zec_payee) is counted, not alerted. Anything run through
+the multisig or signed by the admin is privileged, named or not. Other
+unrecognised names are listed; config changes they make are still caught by
+the config fingerprint. `--webhook` posts alerts as JSON `{ "text": ... }`,
+which Slack and Discord-style webhooks accept.
+
+The multisig account (7f4Yok…X59) is watched by default; `--no-squads` skips it.
+
+## First live run (2026-10-29)
+
+- Config account 8z2Rv1…QyRy is owned by the vault program and holds the
+  treasury, rewards, buyback, LP wallet and LP pot, plus the admin
+  (5H1gfdDcrtPq7V11uh457dHjZ75caZv6xNd7CeBiPAaV, offset 8) and recovery
+  (Dpyf8nA6xPSTnjaX7K3hgq3uPJncJSJRtYjudPHoCwuv, offset 169) keys.
+- Upgrade authority is the Squads vault 3eCXkz…57sMtf, as published.
+- Upgrade history: initial deploy 2026-09-25, then 8 upgrades, all through
+  the multisig; the latest 2026-10-29 04:28 UTC.
+- The multisig is **2-of-4** with no time lock, and the admin key is a member.
+  Sapling's docs say 2-of-3.
+- The multisig has run `SetStockQuote` on the vault, an admin action the docs
+  don't list.
+
+Tests: `node test/keys-tests.mjs` (19 cases).
+
+# Rewards check
+
+Independently re-checks every Sapling holder-reward run from public data.
+It reads `https://sapling.cash/api/rewards/<id>` and, optionally, a Solana RPC.
+
+## Run it
+
+```
+node rewards-check.mjs                                   # every run, API checks
+node rewards-check.mjs --rpc https://api.mainnet-beta.solana.com   # plus on-chain checks
+node rewards-check.mjs --from 1000 --to 1071 --json > report.json
+```
+
+Node 18 or later. Exit code 1 means at least one run failed a check.
+
+## What it checks
+
+For each run:
+
+1. `sha256(JSON.stringify(snapshot))` equals the published `snapshotHash`
+2. every holder is worth at least $20 at the run's own recorded prices
+3. every share is `floor(pot × balance / Σ balances)`
+4. one payout row per snapshot holder, no extras
+5. `pot = paid + rolledOver + rentZec`
+6. `paid = confirmed shares − rent`
+7. with `--rpc`: the release transaction exists, succeeded, moved exactly the pot
+   to the rewards wallet, and its event data carries the snapshot hash
+
+## Not yet checked
+
+- That the snapshot's balances match the chain at `snapshotSlot`, and that no
+  eligible holder was left out. Needs historical token balances, which public
+  Solana RPCs don't serve; an indexer or archive node is required.
+- The source of the keeper's prices (`zecPerToken`, `zecUsd`).
+
+## Tests
+
+```
+node test/run-tests.mjs     # rewards check
+node test/float-tests.mjs   # float check
+node test/keys-tests.mjs    # keys check
+```
+
+Uses real runs captured on 2026-10-28 plus tampered copies; each tampered copy
+must be caught.
+
+## First results (2026-10-28, run in a browser against the live API)
+
+- 1,071 runs published; 1,070 pass checks 1–6.
+- Run 845 ($ZDOG, 2026-10-22) is marked failed with no pot, but lists a release
+  signature that does not exist on Solana. No ZEC moved; the record is stale.
+- Spot check of run 1070's release on chain: it moved exactly its pot,
+  0.0210818 ZEC, to the rewards wallet.
+
+
+# Tax check (Raydium LaunchLab coins)
+
+Since 2026-10-29, new Sapling coins launch on Raydium LaunchLab as Token-2022
+mints. Each carries a transfer fee (the "tax", 2–5%) that Sapling's vault
+program withdraws, partly sells for holder rewards and partly uses for
+flywheel buybacks (`WithdrawTax`, `SellTax`, `DrawGrove`, ...).
+
+```
+node tax-check.mjs --rpc https://api.mainnet-beta.solana.com --state data/tax-state.json
+```
+
+For every LaunchLab coin listed by `/api/coins` (and any coin seen before):
+
+1. the mint is owned by Token-2022, with no mint or freeze authority
+2. no risky extensions: permanent delegate, transfer hook, pausable, default
+   account state, non-transferable, close authority, confidential transfers
+3. the fee in force this epoch equals the advertised `taxBps`
+4. no different fee is scheduled for a later epoch (Token-2022 applies a new
+   fee two epochs after it is set, about four days, so this is the warning window)
+5. the fee withdraw authority is Sapling's vault PDA `69nv6e…GLEY`, and the
+   fee config authority is either none or the vault PDA `WLHv2U…VJh`
+
+## First live run (2026-10-29, epoch 1071)
+
+- 16 LaunchLab coins; all 16 charge exactly the advertised tax; no change
+  scheduled; no mint or freeze authority; no risky extensions.
+- Both authorities are program-derived addresses (off the ed25519 curve), so
+  only the vault program, upgraded through the multisig, can use them.
+- On 15 of 16 coins the fee config authority is still set, so the rate can be
+  changed. `maximumFee` is unlimited. Only the graduated coin has renounced it.
+- Sapling's docs do not yet describe the Raydium launches or the flywheel.
+
+
+# Flywheel check (buy back and burn)
+
+Sapling says a share of every trade "buys back and burns the top 10 Sapling
+coins". On chain this works as follows:
+
+- Coin taxes, in ZEC on Solana (`A7bdiY…QXaS`), are paid into a pot held by a
+  vault PDA (`Df8mXW…2PYa`, token account `Eqg9vQ…5kkF`) by the vault
+  instruction `SettleTax`.
+- Each buyback is one transaction: `DrawGrove` moves ZEC from the pot to the
+  buyback wallet `7fAC78…f9Pdu`, which buys the coin on Raydium CPMM, Raydium
+  LaunchLab or the pump AMM and burns everything it bought; `CloseGrove`
+  returns any unspent ZEC to the pot.
+
+```
+node flywheel-check.mjs --rpc https://api.mainnet-beta.solana.com --state data/flywheel-state.json
+```
+
+It checks:
+
+1. every burn in `/api/flywheel/live`: the transaction succeeded, called only
+   the expected programs, ran `DrawGrove … CloseGrove`, the pot paid exactly the
+   listed ZEC, the listed amount of the listed coin was burned, and the buyback
+   wallet ended with no ZEC and none of the coin
+2. every transaction on the pot account is a `SettleTax` inflow or a
+   `DrawGrove … CloseGrove` buyback; anything else that moves the pot is an alert
+3. the pot's balance equals the sum of every movement since it was created,
+   and the balance Sapling shows
+4. the keys that sign settlements and buybacks don't change unannounced
+
+## First live run (2026-10-29 11:08 UTC)
+
+- 20 burns listed, 20 confirmed on chain exactly as listed: 14 on the pump
+  AMM, 5 on Raydium CPMM, 1 on LaunchLab. Coins: ZILLIONS, 0, BLACKCAT, all in
+  the current top 10.
+- The pot has had 370 transactions since it was created through the multisig
+  on 2026-10-28 16:58 UTC: 349 `SettleTax` deposits from 14 coins'
+  tax accounts (0.76977236 ZEC), 20 buybacks (0.76974978 ZEC out). The
+  remaining 2,258 zat is the balance on chain and the balance Sapling shows.
+  Sapling's headline "bought back" figure matches the outflow exactly.
+- The coins burned are net of each coin's own transfer tax (Raydium coins
+  burn about 5% less than the pool sent).
+- One buyback (ZILLIONS, 0.62 ZEC) is 81% of everything bought back so far.
+
+## Worth asking Sapling
+
+- The buyback wallet `7fAC78…` is an ordinary key, not a program address. It
+  briefly holds the pot's ZEC and the bought coins inside each transaction.
+  Does `CloseGrove` check that the burn happened, or could that key keep the
+  coins? Every past buyback burned everything; the check would catch one
+  that didn't, but only after the fact.
+- How is a coin's tax split between holder rewards and the flywheel pot?
+- How is "top 10" decided at the moment of a buyback? The rank isn't
+  recorded on chain, so it can't be checked historically.

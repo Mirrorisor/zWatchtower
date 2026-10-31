@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>zWatchtower</title>
+<style>
+  :root {
+    --bg: #f6f5f1; --surface: #ffffff; --ink: #1c1d1a; --muted: #62645d; --rule: #e2e0d8;
+    --ok: #1f7a4a; --ok-bg: #e4f2ea; --warn: #9a5b00; --warn-bg: #fbefd9;
+    --bad: #b3261e; --bad-bg: #fbe5e3; --idle: #62645d; --idle-bg: #ecebe6; --accent: #2f5d50;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141513; --surface: #1d1f1c; --ink: #ecebe6; --muted: #a2a49c; --rule: #2f322d;
+      --ok: #6fcf97; --ok-bg: #173323; --warn: #f2b45c; --warn-bg: #3a2b12;
+      --bad: #f28b82; --bad-bg: #3b1c1a; --idle: #a2a49c; --idle-bg: #262824; --accent: #8fc5b4;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 1040px; margin: 0 auto; padding: 32px 16px 48px; }
+  header h1 { margin: 0; font-size: 26px; letter-spacing: -0.01em; }
+  header p { margin: 6px 0 0; color: var(--muted); max-width: 680px; }
+  .meta { margin-top: 10px; font-size: 13px; color: var(--muted); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-top: 24px; }
+  .card { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 18px; }
+  .card h2 { margin: 0; font-size: 16px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .card .what { margin: 4px 0 14px; font-size: 13px; color: var(--muted); }
+  .badge { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+  .badge.ok { color: var(--ok); background: var(--ok-bg); }
+  .badge.alert { color: var(--bad); background: var(--bad-bg); }
+  .badge.error { color: var(--warn); background: var(--warn-bg); }
+  .badge.idle { color: var(--idle); background: var(--idle-bg); }
+  .big { font-size: 28px; font-weight: 650; letter-spacing: -0.02em; }
+  .big small { font-size: 14px; font-weight: 400; color: var(--muted); }
+  .bar { height: 8px; background: var(--idle-bg); border-radius: 4px; margin: 8px 0 14px; overflow: hidden; }
+  .bar span { display: block; height: 100%; background: var(--accent); min-width: 2px; }
+  dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; font-size: 13px; }
+  dt { color: var(--muted); }
+  dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+  .ran { margin-top: 12px; font-size: 12px; color: var(--muted); }
+  .notes { margin: 10px 0 0; padding-left: 18px; font-size: 13px; color: var(--muted); }
+  section.alerts { margin-top: 28px; }
+  section.alerts h2 { font-size: 16px; margin: 0 0 10px; }
+  table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--rule);
+    border-radius: 10px; overflow: hidden; font-size: 13px; }
+  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  tr:last-child td { border-bottom: 0; }
+  td.type-raised { color: var(--bad); font-weight: 600; }
+  td.type-resolved { color: var(--ok); font-weight: 600; }
+  .empty { color: var(--muted); padding: 14px; background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; font-size: 13px; }
+  footer { margin-top: 32px; font-size: 12px; color: var(--muted); }
+  footer a { color: var(--accent); }
+  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+  @media (max-width: 520px) { th:nth-child(2), td:nth-child(2) { display: none; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>zWatchtower</h1>
+    <p>An independent monitor of sapling.cash. It reads only public chain data and Sapling's own published files, with no viewing keys and no user addresses.</p>
+    <div class="meta" id="meta">Loading…</div>
+  </header>
+
+  <div class="grid">
+    <article class="card" id="float">
+      <h2>Payout float <span class="badge idle">not yet run</span></h2>
+      <p class="what">ZEC waiting at Sapling's Zcash order addresses before it is forwarded, shielded.</p>
+      <div class="body"></div>
+    </article>
+    <article class="card" id="rewards">
+      <h2>Holder rewards <span class="badge idle">not yet run</span></h2>
+      <p class="what">Every reward run re-checked: snapshot fingerprint, $20 minimum, shares and totals.</p>
+      <div class="body"></div>
+    </article>
+    <article class="card" id="keys">
+      <h2>Keys and upgrades <span class="badge idle">not yet run</span></h2>
+      <p class="what">Upgrade authority, program redeploys, config changes and privileged actions.</p>
+      <div class="body"></div>
+    </article>
+    <article class="card" id="tax">
+      <h2>Coin taxes (Raydium) <span class="badge idle">not yet run</span></h2>
+      <p class="what">Each LaunchLab coin's transfer fee in force on chain against the rate Sapling advertises, plus who can change it.</p>
+      <div class="body"></div>
+    </article>
+    <article class="card" id="flywheel">
+      <h2>Flywheel buybacks <span class="badge idle">not yet run</span></h2>
+      <p class="what">Every listed buy-and-burn checked on chain, and every movement of the tax pot accounted for.</p>
+      <div class="body"></div>
+    </article>
+  </div>
+
+  <section class="alerts">
+    <h2>Alerts</h2>
+    <div id="alerts"><div class="empty">No alerts recorded.</div></div>
+  </section>
+
+  <footer>
+    Not affiliated with Sapling. Sources: Sapling's <a href="https://github.com/saplingcash/stamps">stamps spec</a>,
+    published exit keys, reward runs and docs; Solana and Zcash public chain data. Raw data:
+    <a href="/api/status">/api/status</a> · <a href="/api/alerts">/api/alerts</a>.
+  </footer>
+</main>
+
+<script>
+const $ = (sel, el = document) => el.querySelector(sel);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const zec = (n, d = 4) => n == null ? "–" : `${Number(n).toFixed(d)} ZEC`;
+const ago = (iso) => {
+  if (!iso) return "never";
+  const m = Math.round((Date.now() - Date.parse(iso)) / 60000);
+  return m < 1 ? "just now" : m < 60 ? `${m} min ago` : m < 1440 ? `${Math.round(m / 60)} h ago` : `${Math.round(m / 1440)} d ago`;
+};
+const short = (a) => a && a.length > 14 ? `${a.slice(0, 6)}…${a.slice(-6)}` : (a ?? "–");
+const rows = (pairs) => `<dl>${pairs.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${v}</dd>`).join("")}</dl>`;
+
+function badge(card, entry) {
+  const b = $(".badge", card);
+  if (!entry) { b.className = "badge idle"; b.textContent = "not yet run"; return; }
+  if (entry.status === "error") { b.className = "badge error"; b.textContent = "check failed"; return; }
+  b.className = entry.ok ? "badge ok" : "badge alert";
+  b.textContent = entry.ok ? "OK" : `${entry.alerts.length} alert${entry.alerts.length === 1 ? "" : "s"}`;
+}
+function footerLine(entry) {
+  if (!entry) return "";
+  const err = entry.status === "error" ? `<div class="notes">The check could not run: ${esc(entry.error)}</div>` : "";
+  return `${err}<div class="ran">Last run ${ago(entry.finishedAt)}</div>`;
+}
+
+function renderFloat(e) {
+  const card = $("#float"); badge(card, e);
+  if (!e?.summary) return ($(".body", card).innerHTML = footerLine(e));
+  const s = e.summary;
+  const pct = s.custodyCapZec ? Math.min(100, (s.currentFloatZec / s.custodyCapZec) * 100) : 0;
+  const hold = s.holdMinutes ?? {};
+  $(".body", card).innerHTML = `
+    <div class="big">${zec(s.currentFloatZec)} <small>of ${s.custodyCapZec} ZEC cap</small></div>
+    <div class="bar" title="${pct.toFixed(2)}% of the custody cap"><span style="width:${pct}%"></span></div>
+    ${rows([
+      ["In flight", `${s.inFlight} of ${s.inFlightCap}`],
+      ["Payouts seen", s.deliveries],
+      ["Delivered in total", zec(s.deliveredZec)],
+      ["Peak float", `${zec(s.peakFloatZec)}${s.peakAt ? ` · ${s.peakAt.slice(0, 10)}` : ""}`],
+      ["Hold time (median, max)", hold.median == null ? "–" : `${hold.median.toFixed(1)} · ${hold.max.toFixed(1)} min`],
+    ])}${footerLine(e)}`;
+}
+
+function renderRewards(e) {
+  const card = $("#rewards"); badge(card, e);
+  if (!e?.summary) return ($(".body", card).innerHTML = footerLine(e));
+  const s = e.summary;
+  const notes = (s.notes ?? []).length ? `<ul class="notes">${s.notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>` : "";
+  $(".body", card).innerHTML = `
+    <div class="big">${s.passed.toLocaleString()} <small>of ${s.runs.toLocaleString()} runs passed this pass</small></div>
+    ${rows([
+      ["Newest run", s.maxRunId ? `#${s.maxRunId}` : "–"],
+      ["Flagged", s.flagged],
+      ["ZEC paid in checked runs", zec(Number(s.zecPaidInDoneRuns))],
+      ["On-chain release check", s.onChainChecks ? "on" : "off"],
+    ])}${notes}${footerLine(e)}`;
+}
+
+function renderKeys(e) {
+  const card = $("#keys"); badge(card, e);
+  if (!e?.summary) return ($(".body", card).innerHTML = footerLine(e));
+  const s = e.summary;
+  const ix = Object.entries(s.vaultInstructions ?? {}).map(([k, v]) => `${esc(k)} ${v}`).join(", ") || "none new";
+  $(".body", card).innerHTML = `
+    <div class="big" style="font-size:20px">${s.upgradeAuthority ? "Squads multisig" : "–"} <small>holds upgrades</small></div>
+    ${rows([
+      ["Upgrade authority", `<span class="mono">${esc(short(s.upgradeAuthority))}</span>`],
+      ["Last deploy slot", s.lastDeploySlot?.toLocaleString() ?? "–"],
+      ["Config fingerprint", `<span class="mono">${esc(s.configSha256?.slice(0, 12) ?? "–")}</span>`],
+      ["Wallets in config", esc((s.walletsInConfig ?? []).join(", ") || "–")],
+      ["Recent vault instructions", ix],
+      ["Unrecognised", s.unrecognised],
+    ])}${footerLine(e)}`;
+}
+
+function renderTax(e) {
+  const card = $("#tax"); badge(card, e);
+  if (!e?.summary) return ($(".body", card).innerHTML = footerLine(e));
+  const s = e.summary;
+  const range = s.advertisedRange ? `${s.advertisedRange[0] / 100}–${s.advertisedRange[1] / 100}%` : "–";
+  const notes = (s.notes ?? []).length ? `<ul class="notes">${s.notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>` : "";
+  $(".body", card).innerHTML = `
+    <div class="big">${s.matching} <small>of ${s.coins} coins charge the advertised tax</small></div>
+    ${rows([
+      ["Advertised range", range],
+      ["Rate still changeable", `${s.feeChangeable} coin${s.feeChangeable === 1 ? "" : "s"}`],
+      ["Rate locked for good", `${s.feeRenounced} coin${s.feeRenounced === 1 ? "" : "s"}`],
+      ["Solana epoch", s.epoch ?? "–"],
+    ])}${notes}${footerLine(e)}`;
+}
+
+function renderFlywheel(e) {
+  const card = $("#flywheel"); badge(card, e);
+  if (!e?.summary) return ($(".body", card).innerHTML = footerLine(e));
+  const s = e.summary, p = s.pot ?? {};
+  const z = (v) => zec(Number(v ?? 0) / 1e8, 6);
+  const venues = Object.entries(s.venues ?? {}).map(([k, v]) => `${esc(k)} ${v}`).join(", ") || "–";
+  const notes = (s.notes ?? []).length ? `<ul class="notes">${s.notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>` : "";
+  $(".body", card).innerHTML = `
+    <div class="big">${s.burnsVerified} <small>of ${s.burns} burns match the chain</small></div>
+    ${rows([
+      ["Bought back and burned", z(s.boughtBackZat)],
+      ["Tax paid into the pot", z(p.inflowZat)],
+      ["Left in the pot", `${z(p.balanceZat)}${p.reconciled ? " · reconciled" : " · not reconciled"}`],
+      ["Venues", venues],
+      ["Signing keys", (s.signers ?? []).map((k) => `<span class="mono">${esc(short(k))}</span>`).join(" ") || "–"],
+    ])}${notes}${footerLine(e)}`;
+}
+
+function renderAlerts(list) {
+  const el = $("#alerts");
+  if (!list.length) return (el.innerHTML = `<div class="empty">No alerts recorded.</div>`);
+  el.innerHTML = `<table><thead><tr><th>When</th><th>Check</th><th>Event</th><th>Detail</th></tr></thead><tbody>
+    ${list.map((a) => `<tr><td>${esc(a.at.slice(0, 16).replace("T", " "))}</td><td>${esc(a.check)}</td>
+      <td class="type-${esc(a.type)}">${a.type === "raised" ? "Raised" : "Resolved"}</td><td>${esc(a.text)}</td></tr>`).join("")}
+  </tbody></table>`;
+}
+
+async function refresh() {
+  try {
+    const [status, alerts] = await Promise.all([
+      fetch("/api/status").then((r) => r.json()),
+      fetch("/api/alerts?limit=50").then((r) => r.json()),
+    ]);
+    const c = status.checks ?? {};
+    renderFloat(c.float); renderRewards(c.rewards); renderKeys(c.keys); renderTax(c.tax); renderFlywheel(c.flywheel); renderAlerts(alerts);
+    const open = Object.values(status.openAlerts ?? {}).reduce((n, o) => n + Object.keys(o).length, 0);
+    const sched = status.schedule ?? {};
+    $("#meta").textContent = `${open ? `${open} open alert${open === 1 ? "" : "s"}` : "No open alerts"} · ` +
+      `checks every ${sched.keys} / ${sched.rewards} / ${sched.float} / ${sched.tax} / ${sched.flywheel} min (keys / rewards / float / tax / flywheel) · updated ${new Date().toLocaleTimeString()}`;
+  } catch (e) {
+    $("#meta").textContent = "Could not reach the watchtower API.";
+  }
+}
+refresh();
+setInterval(refresh, 60000);
+</script>
+</body>
+</html>

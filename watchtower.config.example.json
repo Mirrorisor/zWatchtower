@@ -1,0 +1,17 @@
+{
+  "port": 8787,
+  "dataDir": "./data",
+  "solanaRpc": "https://api.mainnet-beta.solana.com",
+  "webhook": null,
+  "threexplKey": null,
+  "zebra": null,
+  "squadsMultisig": null,
+  "checks": {
+    "keys": { "everyMinutes": 5 },
+    "rewards": { "everyMinutes": 30, "recheckLast": 5, "onChain": true },
+    "float": { "everyMinutes": 60, "stuckMinutes": 60 },
+    "tax": { "everyMinutes": 15 },
+    "flywheel": { "everyMinutes": 15 }
+  },
+  "timeoutMinutes": 30
+}
