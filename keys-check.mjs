@@ -258,8 +258,10 @@ async function main() {
   }
   if (config.error) alerts.push(config.error);
   else if (config.owner !== VAULT_PROGRAM) alerts.push(`config account owner is ${config.owner}, not the vault program`);
-  else if (state && config.sha256 !== state.config.sha256)
-    alerts.push(`vault config changed: ${diffConfig(state.config, config).join("; ")}`);
+  else if (state && config.sha256 !== state.config.sha256) {
+    const changes = diffConfig(state.config, config);
+    if (changes.length) alerts.push(`vault config changed: ${changes.join("; ")}`); // only the timestamp moved: nothing to report
+  }
 
   for (const ix of vault.instructions.filter((x) => x.kind === "privileged"))
     alerts.push(`privileged vault instruction ${ix.name}${ix.caller === SQUADS_V4 ? " via multisig" : ""} at ${ix.time} (${ix.signature})`);
