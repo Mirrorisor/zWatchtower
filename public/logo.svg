@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="75%">
+      <stop offset="0" stop-color="#16324a"/>
+      <stop offset="1" stop-color="#07121d"/>
+    </radialGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f4b740" stop-opacity="0"/>
+      <stop offset="1" stop-color="#f4b740" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="beam2" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0" stop-color="#f4b740" stop-opacity="0"/>
+      <stop offset="1" stop-color="#f4b740" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" rx="0" fill="url(#bg)"/>
+  <!-- sweeping beams -->
+  <polygon points="512,330 70,200 70,420" fill="url(#beam2)"/>
+  <polygon points="512,330 954,200 954,420" fill="url(#beam)"/>
+  <!-- lantern room -->
+  <rect x="452" y="282" width="120" height="96" rx="14" fill="#f4b740"/>
+  <rect x="474" y="300" width="76" height="60" rx="8" fill="#fff4d6"/>
+  <!-- roof -->
+  <polygon points="430,286 512,212 594,286" fill="#e8edf2"/>
+  <circle cx="512" cy="200" r="14" fill="#e8edf2"/>
+  <!-- gallery -->
+  <rect x="420" y="378" width="184" height="26" rx="8" fill="#e8edf2"/>
+  <!-- tower body: tapered -->
+  <polygon points="452,404 572,404 616,820 408,820" fill="#e8edf2"/>
+  <!-- stylised z cut into the tower -->
+  <polygon points="470,470 556,470 556,500 508,580 560,580 562,610 466,610 466,580 514,500 468,500" fill="#0b1b2a"/>
+  <!-- door -->
+  <path d="M488,820 v-90 a24,24 0 0 1 48,0 v90 z" fill="#0b1b2a"/>
+  <!-- base / ground -->
+  <rect x="330" y="820" width="364" height="34" rx="10" fill="#c9d3dc"/>
+  <!-- chain-link ring hint -->
+  <circle cx="512" cy="512" r="470" fill="none" stroke="#f4b740" stroke-opacity="0.35" stroke-width="10" stroke-dasharray="2 34" stroke-linecap="round"/>
+</svg>

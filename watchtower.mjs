@@ -265,7 +265,8 @@ const statusBody = (cfg, store) => ({
 // (GitHub Pages). The page reads api/status.json and api/alerts.json.
 function exportSite(cfg, store, dir) {
   mkdirSync(join(dir, "api"), { recursive: true });
-  copyFileSync(join(here, "public", "index.html"), join(dir, "index.html"));
+  for (const f of ["index.html", "logo.svg", "logo.png"])
+    if (existsSync(join(here, "public", f))) copyFileSync(join(here, "public", f), join(dir, f));
   writeFileSync(join(dir, "api", "status.json"), JSON.stringify(statusBody(cfg, store)));
   writeFileSync(join(dir, "api", "alerts.json"), JSON.stringify(store.read("alerts.jsonl", () => true, 500)));
   writeFileSync(join(dir, "api", "history.json"), JSON.stringify(store.read("history.jsonl", () => true, 500)));
@@ -283,6 +284,8 @@ function serve(cfg, store) {
     };
     const limit = Math.min(500, Number(url.searchParams.get("limit") ?? 100));
     if (url.pathname === "/") { res.writeHead(200, { "content-type": "text/html; charset=utf-8" }); return res.end(page()); }
+    const logo = { "/logo.svg": "image/svg+xml", "/logo.png": "image/png" }[url.pathname];
+    if (logo) { res.writeHead(200, { "content-type": logo }); return res.end(readFileSync(join(here, "public", url.pathname.slice(1)))); }
     if (url.pathname === "/healthz") return json({ ok: true });
     const path = url.pathname.replace(/\.json$/, "");
     if (path === "/api/status") return json(statusBody(cfg, store));

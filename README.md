@@ -1,3 +1,5 @@
+<img src="public/logo.png" alt="zWatchtower" width="120">
+
 # zWatchtower
 
 [![tests](https://github.com/Mirrorisor/zWatchtower/actions/workflows/test.yml/badge.svg)](https://github.com/Mirrorisor/zWatchtower/actions/workflows/test.yml)
