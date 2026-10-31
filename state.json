@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-10-31T15:13:37.745Z",
-      "finishedAt": "2026-10-31T15:14:50.215Z",
+      "startedAt": "2026-10-31T15:44:56.506Z",
+      "finishedAt": "2026-10-31T15:46:59.027Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,13 +21,10 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 26,
-          "settle_tax": 2,
-          "sell_tax": 2,
-          "withdraw_tax": 2,
-          "settle": 8,
+          "observe_sapling": 24,
           "close_rewards_run": 1,
-          "release_rewards": 1
+          "release_rewards": 1,
+          "settle": 9
         },
         "unrecognised": 0,
         "baseline": false
@@ -35,26 +32,22 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-10-31T15:14:50.217Z",
-      "finishedAt": "2026-10-31T15:14:59.273Z",
+      "startedAt": "2026-10-31T15:46:59.029Z",
+      "finishedAt": "2026-10-31T15:47:02.490Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-10-31T15:14:59.267Z",
-        "runs": 7,
-        "passed": 4,
-        "flagged": 3,
-        "unchecked": 3,
-        "firstUnchecked": 1355,
-        "zecPaidInDoneRuns": "0.26570135",
+        "checkedAt": "2026-10-31T15:47:02.484Z",
+        "runs": 8,
+        "passed": 8,
+        "flagged": 0,
+        "unchecked": 0,
+        "firstUnchecked": null,
+        "zecPaidInDoneRuns": "0.28513299",
         "onChainChecks": true,
-        "notes": [
-          "run 1355: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1357: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1358: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
-        ],
-        "maxRunId": 1360
+        "notes": [],
+        "maxRunId": 1361
       }
     },
     "float": {
@@ -94,8 +87,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-10-31T15:22:22.762Z",
-      "finishedAt": "2026-10-31T15:22:23.765Z",
+      "startedAt": "2026-10-31T15:47:02.491Z",
+      "finishedAt": "2026-10-31T15:47:03.199Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -114,8 +107,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-10-31T15:22:23.766Z",
-      "finishedAt": "2026-10-31T15:22:34.447Z",
+      "startedAt": "2026-10-31T15:47:03.199Z",
+      "finishedAt": "2026-10-31T15:47:10.632Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -222,6 +215,6 @@
     "tax": {},
     "flywheel": {}
   },
-  "rewardsMaxRun": 1359,
+  "rewardsMaxRun": 1361,
   "rewardsFrom": 1354
 }
