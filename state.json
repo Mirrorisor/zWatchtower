@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-10-31T15:44:56.506Z",
-      "finishedAt": "2026-10-31T15:46:59.027Z",
+      "startedAt": "2026-10-31T16:16:50.875Z",
+      "finishedAt": "2026-10-31T16:18:12.455Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 463604102,
-        "configSha256": "54e98448f1169351fae3315652e9ed3cb766251d92ebc1f4be5c12ebcd23b769",
+        "configSha256": "d92de6c6d6a58575b4754493092e814b423882c690f13d31cf5d9763b5df5af9",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -21,33 +21,38 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 24,
+          "observe_sapling": 25,
           "close_rewards_run": 1,
           "release_rewards": 1,
-          "settle": 9
+          "draw_lp": 1,
+          "settle": 11,
+          "settle_tax": 1,
+          "sell_tax": 1,
+          "withdraw_tax": 1,
+          "collect_protocol_pool_fees": 4
         },
-        "unrecognised": 0,
+        "unrecognised": 4,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-10-31T15:46:59.029Z",
-      "finishedAt": "2026-10-31T15:47:02.490Z",
+      "startedAt": "2026-10-31T16:18:12.457Z",
+      "finishedAt": "2026-10-31T16:18:15.988Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-10-31T15:47:02.484Z",
-        "runs": 8,
-        "passed": 8,
+        "checkedAt": "2026-10-31T16:18:15.982Z",
+        "runs": 7,
+        "passed": 7,
         "flagged": 0,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.28513299",
+        "zecPaidInDoneRuns": "0.24647709",
         "onChainChecks": true,
         "notes": [],
-        "maxRunId": 1361
+        "maxRunId": 1362
       }
     },
     "float": {
@@ -87,8 +92,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-10-31T15:47:02.491Z",
-      "finishedAt": "2026-10-31T15:47:03.199Z",
+      "startedAt": "2026-10-31T16:18:15.989Z",
+      "finishedAt": "2026-10-31T16:18:16.780Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -107,8 +112,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-10-31T15:47:03.199Z",
-      "finishedAt": "2026-10-31T15:47:10.632Z",
+      "startedAt": "2026-10-31T16:18:16.780Z",
+      "finishedAt": "2026-10-31T16:18:24.154Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -185,13 +190,13 @@
           }
         },
         "pot": {
-          "balanceZat": "2254191",
-          "shownZat": "2254191",
-          "inflowZat": "446103761",
+          "balanceZat": "2475549",
+          "shownZat": "2475549",
+          "inflowZat": "446325119",
           "buybackZat": "443849570",
           "movements": {
             "setup": 1,
-            "inflow": 1509,
+            "inflow": 1510,
             "buyback": 150
           },
           "reconciled": true,
@@ -215,6 +220,6 @@
     "tax": {},
     "flywheel": {}
   },
-  "rewardsMaxRun": 1361,
-  "rewardsFrom": 1354
+  "rewardsMaxRun": 1362,
+  "rewardsFrom": 1356
 }
