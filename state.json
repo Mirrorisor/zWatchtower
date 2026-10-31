@@ -2,11 +2,19 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-10-31T20:19:30.803Z",
-      "finishedAt": "2026-10-31T20:20:49.366Z",
+      "startedAt": "2026-10-31T20:58:20.031Z",
+      "finishedAt": "2026-10-31T21:00:04.247Z",
       "status": "ran",
-      "ok": true,
-      "alerts": [],
+      "ok": false,
+      "alerts": [
+        "privileged vault instruction set_stock_quote via multisig at 2026-10-31T20:52:47.000Z (2GauZ4gvTK7ppYx9pELivriGYA8FdBJWTPpqBguYVUSCwh3dDvkB8DvyeVtHzn3aymro5ZRS5wnd2SevzJQQRf2c)",
+        "multisig batch_execute_transaction at 2026-10-31T20:52:48.000Z (41xckvhvLvVejsjTPfnPgUp4aNiddpF4MTyh6yQ9rdfs4j9qki5sh89NujiLroDTUUFFe2CwdjfEV1mwVvtoto3a)",
+        "multisig batch_execute_transaction at 2026-10-31T20:52:47.000Z (2GauZ4gvTK7ppYx9pELivriGYA8FdBJWTPpqBguYVUSCwh3dDvkB8DvyeVtHzn3aymro5ZRS5wnd2SevzJQQRf2c)",
+        "multisig proposal_approve at 2026-10-31T20:52:14.000Z (3aBXkSD9V6mCPiDaB43pwJ6CiG6yVQQpfDRjFpqRp9fzT2xDThHi59Sjt9f3q2VzwT3bP5LF4n6srti5vZ5miGk1)",
+        "multisig proposal_approve at 2026-10-31T20:52:12.000Z (5p6fYz6NsEddr2zMSMx1rZANob2okweSULPZd4NJphSZJ8CYxwP9ygUgNHN2Ln75eD2Y6Y9hNwWuf7tTxJgY55Wu)",
+        "multisig proposal_activate at 2026-10-31T20:50:18.000Z (2d52PpRtfxnujKDMFm5fL563DiSjppdd4jsRrN5xbcCPuiK8dXq6uJcxhnAoeeRu68o4Wh6N23XaUWZDqojaH6Je)",
+        "multisig proposal_create at 2026-10-31T20:50:17.000Z (PtvDxLUrt7KEtJ1Myfr2BKiuNZUrH2Et4pKmprqGixoEJsbJC46PXBComNRFhp1Y3gdyJvxcJ2pLdYRrpEXRdEC)"
+      ],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 463604102,
@@ -21,41 +29,49 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 26,
-          "settle": 8,
+          "observe_sapling": 31,
+          "set_stock_quote": 1,
+          "settle": 10,
           "settle_tax": 1,
           "sell_tax": 1,
           "withdraw_tax": 1,
-          "collect_protocol_pool_fees": 4
+          "close_rewards_run": 3,
+          "release_rewards": 3
         },
-        "unrecognised": 4,
+        "unrecognised": 0,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-10-31T20:20:49.367Z",
-      "finishedAt": "2026-10-31T20:20:51.389Z",
+      "startedAt": "2026-10-31T21:00:04.950Z",
+      "finishedAt": "2026-10-31T21:00:20.337Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-10-31T20:20:51.384Z",
-        "runs": 6,
-        "passed": 6,
-        "flagged": 0,
-        "unchecked": 0,
-        "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.24607970",
+        "checkedAt": "2026-10-31T21:00:20.332Z",
+        "runs": 9,
+        "passed": 4,
+        "flagged": 5,
+        "unchecked": 5,
+        "firstUnchecked": 1366,
+        "zecPaidInDoneRuns": "0.31721752",
         "onChainChecks": true,
-        "notes": [],
-        "maxRunId": 1370
+        "notes": [
+          "run 1366: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1369: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1370: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1372: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1373: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
+        ],
+        "maxRunId": 1373
       }
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-10-31T19:50:01.113Z",
-      "finishedAt": "2026-10-31T19:57:27.106Z",
+      "startedAt": "2026-10-31T21:00:20.338Z",
+      "finishedAt": "2026-10-31T21:07:42.725Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -89,8 +105,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-10-31T20:20:51.390Z",
-      "finishedAt": "2026-10-31T20:20:52.211Z",
+      "startedAt": "2026-10-31T21:07:42.726Z",
+      "finishedAt": "2026-10-31T21:07:43.214Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -109,8 +125,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-10-31T20:20:52.212Z",
-      "finishedAt": "2026-10-31T20:21:06.064Z",
+      "startedAt": "2026-10-31T21:07:43.215Z",
+      "finishedAt": "2026-10-31T21:07:52.047Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -187,13 +203,13 @@
           }
         },
         "pot": {
-          "balanceZat": "1560851",
-          "shownZat": "1560851",
-          "inflowZat": "448563360",
+          "balanceZat": "1796468",
+          "shownZat": "1796468",
+          "inflowZat": "448798977",
           "buybackZat": "447002509",
           "movements": {
             "setup": 1,
-            "inflow": 1519,
+            "inflow": 1520,
             "buyback": 151
           },
           "reconciled": true,
@@ -211,7 +227,15 @@
     }
   },
   "openAlerts": {
-    "keys": {},
+    "keys": {
+      "privileged vault instruction set_stock_quote via multisig at 2026-10-31T20:52:47.000Z (2GauZ4gvTK7ppYx9pELivriGYA8FdBJWTPpqBguYVUSCwh3dDvkB8DvyeVtHzn3aymro5ZRS5wnd2SevzJQQRf2c)": "2026-10-31T21:00:04.247Z",
+      "multisig batch_execute_transaction at 2026-10-31T20:52:48.000Z (41xckvhvLvVejsjTPfnPgUp4aNiddpF4MTyh6yQ9rdfs4j9qki5sh89NujiLroDTUUFFe2CwdjfEV1mwVvtoto3a)": "2026-10-31T21:00:04.247Z",
+      "multisig batch_execute_transaction at 2026-10-31T20:52:47.000Z (2GauZ4gvTK7ppYx9pELivriGYA8FdBJWTPpqBguYVUSCwh3dDvkB8DvyeVtHzn3aymro5ZRS5wnd2SevzJQQRf2c)": "2026-10-31T21:00:04.247Z",
+      "multisig proposal_approve at 2026-10-31T20:52:14.000Z (3aBXkSD9V6mCPiDaB43pwJ6CiG6yVQQpfDRjFpqRp9fzT2xDThHi59Sjt9f3q2VzwT3bP5LF4n6srti5vZ5miGk1)": "2026-10-31T21:00:04.247Z",
+      "multisig proposal_approve at 2026-10-31T20:52:12.000Z (5p6fYz6NsEddr2zMSMx1rZANob2okweSULPZd4NJphSZJ8CYxwP9ygUgNHN2Ln75eD2Y6Y9hNwWuf7tTxJgY55Wu)": "2026-10-31T21:00:04.247Z",
+      "multisig proposal_activate at 2026-10-31T20:50:18.000Z (2d52PpRtfxnujKDMFm5fL563DiSjppdd4jsRrN5xbcCPuiK8dXq6uJcxhnAoeeRu68o4Wh6N23XaUWZDqojaH6Je)": "2026-10-31T21:00:04.247Z",
+      "multisig proposal_create at 2026-10-31T20:50:17.000Z (PtvDxLUrt7KEtJ1Myfr2BKiuNZUrH2Et4pKmprqGixoEJsbJC46PXBComNRFhp1Y3gdyJvxcJ2pLdYRrpEXRdEC)": "2026-10-31T21:00:04.247Z"
+    },
     "rewards": {},
     "float": {},
     "tax": {},
