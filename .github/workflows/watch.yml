@@ -1,0 +1,64 @@
+# Runs the checks every 15 minutes, keeps every result on the `status`
+# branch, and publishes the dashboard to GitHub Pages.
+# Alerts go to the webhook in the WATCHTOWER_WEBHOOK secret, if set.
+name: watch
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      WATCHTOWER_WEBHOOK: ${{ secrets.WATCHTOWER_WEBHOOK }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Load results so far (status branch)
+        run: |
+          remote="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}"
+          if git ls-remote --exit-code --heads origin status >/dev/null; then
+            git clone --quiet --depth 1 --branch status "$remote" data
+          else
+            git init --quiet -b status data
+            git -C data remote add origin "$remote"
+          fi
+
+      - name: Run the checks that are due
+        run: node watchtower.mjs --once --due --export site --config watchtower.ci.json || echo "alerts open (see the dashboard)"
+
+      - name: Save results
+        run: |
+          cd data
+          git add -A
+          if ! git diff --cached --quiet; then
+            git -c user.name="zwatchtower-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit --quiet -m "results $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push --quiet origin status
+          fi
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - id: deploy
+        uses: actions/deploy-pages@v4

@@ -8,6 +8,10 @@
 //   node watchtower.mjs                         # uses watchtower.config.json if present
 //   node watchtower.mjs --config my.json
 //   node watchtower.mjs --once                  # run every check once, then exit
+//   node watchtower.mjs --once --due            # only the checks whose interval has passed
+//   node watchtower.mjs --export site           # write the dashboard + API as static files
+//
+// WATCHTOWER_WEBHOOK in the environment overrides the config's webhook.
 //
 // Endpoints:
 //   GET /                      dashboard
@@ -17,7 +21,7 @@
 //   GET /healthz               200 while the scheduler is alive
 import { spawn } from "node:child_process";
 import { createServer } from "node:http";
-import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync, copyFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -52,6 +56,7 @@ function loadConfig() {
   for (const k of Object.keys(DEFAULTS.checks)) cfg.checks[k] = { ...DEFAULTS.checks[k], ...(user.checks?.[k] ?? {}) };
   if (opt("--port")) cfg.port = Number(opt("--port"));
   cfg.dataDir = resolve(cfg.dataDir);
+  if (process.env.WATCHTOWER_WEBHOOK) cfg.webhook = process.env.WATCHTOWER_WEBHOOK;
   return cfg;
 }
 
@@ -232,6 +237,24 @@ function reRunIdBelow(alert, store) {
 
 // ---- HTTP -------------------------------------------------------------------
 
+const statusBody = (cfg, store) => ({
+  generatedAt: new Date().toISOString(),
+  schedule: Object.fromEntries(Object.entries(cfg.checks).map(([k, v]) => [k, v.everyMinutes])),
+  checks: store.state.latest,
+  openAlerts: store.state.openAlerts,
+});
+
+// Static copy of the dashboard and its API, for hosting without a server
+// (GitHub Pages). The page reads api/status.json and api/alerts.json.
+function exportSite(cfg, store, dir) {
+  mkdirSync(join(dir, "api"), { recursive: true });
+  copyFileSync(join(here, "public", "index.html"), join(dir, "index.html"));
+  writeFileSync(join(dir, "api", "status.json"), JSON.stringify(statusBody(cfg, store)));
+  writeFileSync(join(dir, "api", "alerts.json"), JSON.stringify(store.read("alerts.jsonl", () => true, 500)));
+  writeFileSync(join(dir, "api", "history.json"), JSON.stringify(store.read("history.jsonl", () => true, 500)));
+  writeFileSync(join(dir, ".nojekyll"), "");
+}
+
 function serve(cfg, store) {
   const page = () => readFileSync(join(here, "public", "index.html"));
   const server = createServer((req, res) => {
@@ -244,17 +267,13 @@ function serve(cfg, store) {
     const limit = Math.min(500, Number(url.searchParams.get("limit") ?? 100));
     if (url.pathname === "/") { res.writeHead(200, { "content-type": "text/html; charset=utf-8" }); return res.end(page()); }
     if (url.pathname === "/healthz") return json({ ok: true });
-    if (url.pathname === "/api/status") return json({
-      generatedAt: new Date().toISOString(),
-      schedule: Object.fromEntries(Object.entries(cfg.checks).map(([k, v]) => [k, v.everyMinutes])),
-      checks: store.state.latest,
-      openAlerts: store.state.openAlerts,
-    });
-    if (url.pathname === "/api/history") {
+    const path = url.pathname.replace(/\.json$/, "");
+    if (path === "/api/status") return json(statusBody(cfg, store));
+    if (path === "/api/history") {
       const check = url.searchParams.get("check");
       return json(store.read("history.jsonl", (r) => !check || r.check === check, limit));
     }
-    if (url.pathname === "/api/alerts") return json(store.read("alerts.jsonl", () => true, limit));
+    if (path === "/api/alerts") return json(store.read("alerts.jsonl", () => true, limit));
     json({ error: "not found" }, 404);
   });
   server.listen(cfg.port, () => console.log(`watchtower listening on http://localhost:${cfg.port}`));
@@ -267,8 +286,16 @@ async function main() {
   const cfg = loadConfig();
   const store = new Store(cfg.dataDir);
   const names = Object.keys(cfg.checks).filter((n) => cfg.checks[n].everyMinutes > 0);
+  if (opt("--export") && !args.includes("--once")) return exportSite(cfg, store, resolve(opt("--export")));
   if (args.includes("--once")) {
-    for (const n of names) await runCheck(n, cfg, store);
+    // --due: skip a check that ran less than its interval ago (2 min slack, so a
+    // 15-minute cron that starts a little early still runs a 15-minute check)
+    const due = (n) => {
+      const last = Date.parse(store.state.latest[n]?.finishedAt ?? 0);
+      return !args.includes("--due") || !last || Date.now() - last >= cfg.checks[n].everyMinutes * 60000 - 120000;
+    };
+    for (const n of names.filter(due)) await runCheck(n, cfg, store);
+    if (opt("--export")) exportSite(cfg, store, resolve(opt("--export")));
     const failing = names.filter((n) => store.state.latest[n]?.ok === false);
     process.exitCode = failing.length ? 1 : 0;
     return;

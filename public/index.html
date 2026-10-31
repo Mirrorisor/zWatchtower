@@ -102,7 +102,7 @@
   <footer>
     Not affiliated with Sapling. Sources: Sapling's <a href="https://github.com/saplingcash/stamps">stamps spec</a>,
     published exit keys, reward runs and docs; Solana and Zcash public chain data. Raw data:
-    <a href="/api/status">/api/status</a> · <a href="/api/alerts">/api/alerts</a>.
+    <a href="api/status.json">status</a> · <a href="api/alerts.json">alerts</a> · <a href="https://github.com/Mirrorisor/zWatchtower">source code</a>.
   </footer>
 </main>
 
@@ -227,11 +227,11 @@ function renderAlerts(list) {
 async function refresh() {
   try {
     const [status, alerts] = await Promise.all([
-      fetch("/api/status").then((r) => r.json()),
-      fetch("/api/alerts?limit=50").then((r) => r.json()),
+      fetch("api/status.json", { cache: "no-store" }).then((r) => r.json()),
+      fetch("api/alerts.json", { cache: "no-store" }).then((r) => r.json()),
     ]);
     const c = status.checks ?? {};
-    renderFloat(c.float); renderRewards(c.rewards); renderKeys(c.keys); renderTax(c.tax); renderFlywheel(c.flywheel); renderAlerts(alerts);
+    renderFloat(c.float); renderRewards(c.rewards); renderKeys(c.keys); renderTax(c.tax); renderFlywheel(c.flywheel); renderAlerts(alerts.slice(0, 50));
     const open = Object.values(status.openAlerts ?? {}).reduce((n, o) => n + Object.keys(o).length, 0);
     const sched = status.schedule ?? {};
     $("#meta").textContent = `${open ? `${open} open alert${open === 1 ? "" : "s"}` : "No open alerts"} · ` +

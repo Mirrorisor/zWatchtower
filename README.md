@@ -30,6 +30,15 @@ can be reproduced by running it.
 
 Node 18 or later, no dependencies.
 
+# Live on GitHub
+
+`.github/workflows/watch.yml` runs every 15 minutes on GitHub Actions: it runs
+each check whose interval has passed (`--once --due`), saves every result to
+the `status` branch, and publishes the dashboard to GitHub Pages at
+https://mirrorisor.github.io/zWatchtower/. Alerts go to the webhook in the
+`WATCHTOWER_WEBHOOK` repository secret (Slack, or Discord with `/slack` on the
+end of the webhook URL). GitHub can start scheduled runs a few minutes late.
+
 # Run the service
 
 `watchtower.mjs` runs all five checks on their own schedules, keeps the

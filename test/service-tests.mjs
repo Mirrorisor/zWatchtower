@@ -113,7 +113,22 @@ r = await once({ keys: keysReport(), rewards: rewardsReport([115]), float: float
   { index: 19, address: "t1Rhb49CvegUVNtbLV8baoReeD6W7XDwxs4", zec: 0.25, minutes: 95 }]) });
 check("stuck payout is raised", r.newPosts.some((p) => p.includes("NEW: payout stuck at order address 19")), r.newPosts.join(" | "));
 
-// 8. the server: API and dashboard
+// 8. --due skips checks that ran recently; --export writes a static site
+const runArgs = (extra) => new Promise((done) => {
+  const c = spawn(process.execPath, [join(here, "../watchtower.mjs"), "--once", ...extra, "--config", config()],
+    { env: { ...process.env, SCENARIO: scenarioPath, ARGS_LOG: argsLog } });
+  c.on("close", (status) => done(status));
+});
+const before = readFileSync(argsLog, "utf8").trim().split("\n").length;
+const site = join(dir, "site");
+await runArgs(["--due", "--export", site]);
+const ranNow = readFileSync(argsLog, "utf8").trim().split("\n").length - before;
+check("--due runs nothing that ran moments ago", ranNow === 0, `${ranNow} ran`);
+const exported = ["index.html", "api/status.json", "api/alerts.json", "api/history.json"].every((f) => existsSync(join(site, f)));
+const st = exported ? JSON.parse(readFileSync(join(site, "api/status.json"), "utf8")) : {};
+check("--export writes the dashboard and its data", exported && st.checks?.keys && st.schedule?.flywheel);
+
+// 9. the server: API and dashboard
 writeFileSync(scenarioPath, JSON.stringify({ keys: keysReport(), rewards: rewardsReport([115]), float: floatReport() }));
 const port = 18000 + Math.floor(Math.random() * 1000);
 const srv = spawn(process.execPath, [join(here, "../watchtower.mjs"), "--config",
@@ -121,7 +136,7 @@ const srv = spawn(process.execPath, [join(here, "../watchtower.mjs"), "--config"
   "--port", String(port)], { env: { ...process.env, SCENARIO: scenarioPath, ARGS_LOG: argsLog } });
 await new Promise((s) => setTimeout(s, 1500));
 try {
-  const status = await fetch(`http://127.0.0.1:${port}/api/status`).then((x) => x.json());
+  const status = await fetch(`http://127.0.0.1:${port}/api/status.json`).then((x) => x.json());
   check("/api/status serves all five checks", ["keys", "rewards", "float", "tax", "flywheel"].every((k) => status.checks[k]));
   const alerts = await fetch(`http://127.0.0.1:${port}/api/alerts`).then((x) => x.json());
   check("/api/alerts lists raised and resolved events, newest first",
