@@ -1,6 +1,6 @@
 # zWatchtower
 
-[![tests](https://github.com/Mirrorisor/zwatchtower/actions/workflows/test.yml/badge.svg)](https://github.com/Mirrorisor/zwatchtower/actions/workflows/test.yml)
+[![tests](https://github.com/Mirrorisor/zWatchtower/actions/workflows/test.yml/badge.svg)](https://github.com/Mirrorisor/zWatchtower/actions/workflows/test.yml)
 
 An open-source watchdog for [Sapling](https://sapling.cash), the Zcash-native
 launchpad on Solana. Five independent checks turn what Sapling users would
