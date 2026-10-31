@@ -2,40 +2,12 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-10-31T16:59:37.329Z",
-      "finishedAt": "2026-10-31T17:01:59.683Z",
-      "status": "ran",
-      "ok": true,
+      "startedAt": "2026-10-31T17:26:53.947Z",
+      "finishedAt": "2026-10-31T17:27:20.616Z",
+      "status": "error",
+      "ok": null,
       "alerts": [],
-      "summary": {
-        "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
-        "lastDeploySlot": 463604102,
-        "configSha256": "6ff7df7ddb117ab587d46a00c95beeb84d9d025dc12abbe0084e444077d2f6fe",
-        "walletsInConfig": [
-          "treasury",
-          "rewards",
-          "buyback",
-          "lpWallet",
-          "lpPot",
-          "admin",
-          "recovery"
-        ],
-        "vaultInstructions": {
-          "close_rewards_run": 2,
-          "observe_sapling": 34,
-          "release_rewards": 2,
-          "settle": 35,
-          "draw_lp": 2,
-          "draw_lp_sapling": 1,
-          "settle_sapling": 3,
-          "claim_payee": 4,
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1
-        },
-        "unrecognised": 8,
-        "baseline": false
-      }
+      "error": "getTransaction: rate-limited"
     },
     "rewards": {
       "check": "rewards",
@@ -99,8 +71,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-10-31T17:09:23.170Z",
-      "finishedAt": "2026-10-31T17:09:23.883Z",
+      "startedAt": "2026-10-31T17:27:20.618Z",
+      "finishedAt": "2026-10-31T17:27:21.258Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -119,8 +91,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-10-31T17:09:23.883Z",
-      "finishedAt": "2026-10-31T17:09:28.748Z",
+      "startedAt": "2026-10-31T17:27:21.258Z",
+      "finishedAt": "2026-10-31T17:27:25.429Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
