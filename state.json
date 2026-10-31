@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-10-31T19:47:11.893Z",
-      "finishedAt": "2026-10-31T19:49:51.213Z",
+      "startedAt": "2026-10-31T20:19:30.803Z",
+      "finishedAt": "2026-10-31T20:20:49.366Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,48 +21,34 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 59,
-          "settle_tax": 3,
-          "sell_tax": 3,
-          "withdraw_tax": 3,
-          "convert_sapling_begin": 1,
-          "convert_sapling_end": 1,
-          "settle": 20,
-          "draw_lp": 2,
-          "draw_lp_sapling": 1,
-          "close_rewards_run": 2,
-          "release_rewards": 2,
-          "settle_sapling": 2,
-          "register_launchlab_coin": 1,
-          "declare_payee": 1,
-          "claim_payee": 1
+          "observe_sapling": 26,
+          "settle": 8,
+          "settle_tax": 1,
+          "sell_tax": 1,
+          "withdraw_tax": 1,
+          "collect_protocol_pool_fees": 4
         },
-        "unrecognised": 8,
+        "unrecognised": 4,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-10-31T19:49:51.215Z",
-      "finishedAt": "2026-10-31T19:50:01.112Z",
+      "startedAt": "2026-10-31T20:20:49.367Z",
+      "finishedAt": "2026-10-31T20:20:51.389Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-10-31T19:50:01.107Z",
-        "runs": 7,
-        "passed": 3,
-        "flagged": 4,
-        "unchecked": 4,
-        "firstUnchecked": 1367,
-        "zecPaidInDoneRuns": "0.26880108",
+        "checkedAt": "2026-10-31T20:20:51.384Z",
+        "runs": 6,
+        "passed": 6,
+        "flagged": 0,
+        "unchecked": 0,
+        "firstUnchecked": null,
+        "zecPaidInDoneRuns": "0.24607970",
         "onChainChecks": true,
-        "notes": [
-          "run 1367: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1368: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1369: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1370: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
-        ],
+        "notes": [],
         "maxRunId": 1370
       }
     },
@@ -103,8 +89,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-10-31T19:57:27.106Z",
-      "finishedAt": "2026-10-31T19:57:28.176Z",
+      "startedAt": "2026-10-31T20:20:51.390Z",
+      "finishedAt": "2026-10-31T20:20:52.211Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -123,8 +109,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-10-31T19:57:28.177Z",
-      "finishedAt": "2026-10-31T19:57:36.570Z",
+      "startedAt": "2026-10-31T20:20:52.212Z",
+      "finishedAt": "2026-10-31T20:21:06.064Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -201,13 +187,13 @@
           }
         },
         "pot": {
-          "balanceZat": "1351069",
-          "shownZat": "1351069",
-          "inflowZat": "448353578",
+          "balanceZat": "1560851",
+          "shownZat": "1560851",
+          "inflowZat": "448563360",
           "buybackZat": "447002509",
           "movements": {
             "setup": 1,
-            "inflow": 1518,
+            "inflow": 1519,
             "buyback": 151
           },
           "reconciled": true,
@@ -232,5 +218,5 @@
     "flywheel": {}
   },
   "rewardsMaxRun": 1370,
-  "rewardsFrom": 1364
+  "rewardsFrom": 1365
 }
