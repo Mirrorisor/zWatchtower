@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-10-31T04:49:18.472Z",
-      "finishedAt": "2026-10-31T04:51:39.673Z",
+      "startedAt": "2026-10-31T05:26:56.565Z",
+      "finishedAt": "2026-10-31T05:29:32.117Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,39 +21,38 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 33,
           "settle_tax": 16,
           "sell_tax": 16,
           "withdraw_tax": 16,
-          "draw_grove": 2,
-          "close_grove": 2,
-          "settle": 12,
-          "claim_payee": 1,
-          "draw_zec_payee": 2,
-          "close_rewards_run": 1,
-          "release_rewards": 1
+          "observe_sapling": 30,
+          "convert_sapling_begin": 1,
+          "convert_sapling_end": 1,
+          "settle": 6,
+          "settle_sapling": 3,
+          "draw_grove": 1,
+          "close_grove": 1,
+          "claim_payee": 1
         },
-        "unrecognised": 1,
+        "unrecognised": 6,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-10-31T04:51:40.021Z",
-      "finishedAt": "2026-10-31T04:51:48.980Z",
+      "startedAt": "2026-10-31T05:29:32.119Z",
+      "finishedAt": "2026-10-31T05:29:40.221Z",
       "status": "ran",
       "ok": false,
       "alerts": [
-        "reward run 1341 : error: HTTP error for https://api.mainnet-beta.solana.com",
-        "reward run 1342 : error: HTTP error for https://api.mainnet-beta.solana.com",
+        "reward run 1338 : error: HTTP error for https://api.mainnet-beta.solana.com",
         "reward run 1343 : error: HTTP error for https://api.mainnet-beta.solana.com"
       ],
       "summary": {
-        "checkedAt": "2026-10-31T04:51:48.974Z",
-        "runs": 7,
+        "checkedAt": "2026-10-31T05:29:40.213Z",
+        "runs": 6,
         "passed": 4,
-        "flagged": 3,
-        "zecPaidInDoneRuns": "1.43959812",
+        "flagged": 2,
+        "zecPaidInDoneRuns": "0.70911300",
         "onChainChecks": true,
         "notes": [],
         "maxRunId": 1343
@@ -96,8 +95,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-10-31T04:59:10.527Z",
-      "finishedAt": "2026-10-31T04:59:11.303Z",
+      "startedAt": "2026-10-31T05:29:41.408Z",
+      "finishedAt": "2026-10-31T05:29:42.308Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1448,13 +1447,12 @@
       "reward run 1330 : error: HTTP error for https://api.mainnet-beta.solana.com": "2026-10-31T02:25:50.110Z",
       "reward run 1331 : error: HTTP error for https://api.mainnet-beta.solana.com": "2026-10-31T02:25:50.110Z",
       "reward run 1332 : error: HTTP error for https://api.mainnet-beta.solana.com": "2026-10-31T02:25:50.110Z",
-      "reward run 1341 : error: HTTP error for https://api.mainnet-beta.solana.com": "2026-10-31T04:10:31.189Z",
-      "reward run 1342 : error: HTTP error for https://api.mainnet-beta.solana.com": "2026-10-31T04:10:31.189Z",
-      "reward run 1343 : error: HTTP error for https://api.mainnet-beta.solana.com": "2026-10-31T04:51:48.980Z"
+      "reward run 1343 : error: HTTP error for https://api.mainnet-beta.solana.com": "2026-10-31T04:51:48.980Z",
+      "reward run 1338 : error: HTTP error for https://api.mainnet-beta.solana.com": "2026-10-31T05:29:40.221Z"
     },
     "float": {},
     "tax": {}
   },
   "rewardsMaxRun": 1343,
-  "rewardsFrom": 1337
+  "rewardsFrom": 1338
 }
