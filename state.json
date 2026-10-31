@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-10-31T12:34:08.357Z",
-      "finishedAt": "2026-10-31T12:35:24.394Z",
+      "startedAt": "2026-10-31T13:27:38.801Z",
+      "finishedAt": "2026-10-31T13:29:23.304Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 463604102,
-        "configSha256": "11e39cfe6f4709d289131afbc4058fa05123cca7edd482d69c8c1a8b2cfbb1a9",
+        "configSha256": "54e98448f1169351fae3315652e9ed3cb766251d92ebc1f4be5c12ebcd23b769",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -21,15 +21,14 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 29,
-          "claim_payee": 2,
-          "settle": 8,
+          "observe_sapling": 43,
+          "convert_sapling_begin": 1,
+          "convert_sapling_end": 1,
+          "settle": 16,
           "settle_sapling": 1,
-          "settle_tax": 2,
-          "sell_tax": 2,
-          "withdraw_tax": 2,
-          "draw_grove": 1,
-          "close_grove": 1
+          "close_rewards_run": 2,
+          "release_rewards": 2,
+          "draw_lp": 1
         },
         "unrecognised": 3,
         "baseline": false
@@ -37,27 +36,22 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-10-31T12:35:24.396Z",
-      "finishedAt": "2026-10-31T12:35:32.220Z",
+      "startedAt": "2026-10-31T13:29:23.305Z",
+      "finishedAt": "2026-10-31T13:29:30.328Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-10-31T12:35:32.212Z",
-        "runs": 6,
-        "passed": 2,
-        "flagged": 4,
-        "unchecked": 4,
-        "firstUnchecked": 1351,
-        "zecPaidInDoneRuns": "0.48319193",
+        "checkedAt": "2026-10-31T13:29:30.321Z",
+        "runs": 9,
+        "passed": 9,
+        "flagged": 0,
+        "unchecked": 0,
+        "firstUnchecked": null,
+        "zecPaidInDoneRuns": "1.16986737",
         "onChainChecks": true,
-        "notes": [
-          "run 1351: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1353: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1354: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1356: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
-        ],
-        "maxRunId": 1356
+        "notes": [],
+        "maxRunId": 1358
       }
     },
     "float": {
@@ -97,8 +91,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-10-31T12:42:46.934Z",
-      "finishedAt": "2026-10-31T12:42:47.320Z",
+      "startedAt": "2026-10-31T13:29:30.328Z",
+      "finishedAt": "2026-10-31T13:29:30.841Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -117,8 +111,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-10-31T12:42:47.320Z",
-      "finishedAt": "2026-10-31T12:46:30.314Z",
+      "startedAt": "2026-10-31T13:29:30.841Z",
+      "finishedAt": "2026-10-31T13:31:47.291Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -197,12 +191,12 @@
         "pot": {
           "balanceZat": "359805",
           "shownZat": "359805",
-          "inflowZat": "328956434",
-          "buybackZat": "326244438",
+          "inflowZat": "371713054",
+          "buybackZat": "371450187",
           "movements": {
             "setup": 1,
-            "inflow": 1125,
-            "buyback": 113
+            "inflow": 1261,
+            "buyback": 127
           },
           "reconciled": false,
           "caughtUp": false
@@ -213,7 +207,7 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "pot history: 415 transaction(s) still to read; continuing next run",
+          "pot history: 265 transaction(s) still to read; continuing next run",
           "headline 443849570 zat bought back, listed burns add up to 160604169"
         ]
       }
@@ -226,6 +220,6 @@
     "tax": {},
     "flywheel": {}
   },
-  "rewardsMaxRun": 1355,
-  "rewardsFrom": 1351
+  "rewardsMaxRun": 1358,
+  "rewardsFrom": 1350
 }
