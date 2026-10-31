@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-10-31T16:16:50.875Z",
-      "finishedAt": "2026-10-31T16:18:12.455Z",
+      "startedAt": "2026-10-31T16:59:37.329Z",
+      "finishedAt": "2026-10-31T17:01:59.683Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 463604102,
-        "configSha256": "d92de6c6d6a58575b4754493092e814b423882c690f13d31cf5d9763b5df5af9",
+        "configSha256": "6ff7df7ddb117ab587d46a00c95beeb84d9d025dc12abbe0084e444077d2f6fe",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -21,44 +21,51 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 25,
-          "close_rewards_run": 1,
-          "release_rewards": 1,
-          "draw_lp": 1,
-          "settle": 11,
+          "close_rewards_run": 2,
+          "observe_sapling": 34,
+          "release_rewards": 2,
+          "settle": 35,
+          "draw_lp": 2,
+          "draw_lp_sapling": 1,
+          "settle_sapling": 3,
+          "claim_payee": 4,
           "settle_tax": 1,
           "sell_tax": 1,
-          "withdraw_tax": 1,
-          "collect_protocol_pool_fees": 4
+          "withdraw_tax": 1
         },
-        "unrecognised": 4,
+        "unrecognised": 8,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-10-31T16:18:12.457Z",
-      "finishedAt": "2026-10-31T16:18:15.988Z",
+      "startedAt": "2026-10-31T17:01:59.685Z",
+      "finishedAt": "2026-10-31T17:02:08.367Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-10-31T16:18:15.982Z",
-        "runs": 7,
-        "passed": 7,
-        "flagged": 0,
-        "unchecked": 0,
-        "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.24647709",
+        "checkedAt": "2026-10-31T17:02:08.360Z",
+        "runs": 8,
+        "passed": 4,
+        "flagged": 4,
+        "unchecked": 4,
+        "firstUnchecked": 1359,
+        "zecPaidInDoneRuns": "0.31662116",
         "onChainChecks": true,
-        "notes": [],
-        "maxRunId": 1362
+        "notes": [
+          "run 1359: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1360: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1361: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1364: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
+        ],
+        "maxRunId": 1364
       }
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-10-31T15:14:59.274Z",
-      "finishedAt": "2026-10-31T15:22:22.761Z",
+      "startedAt": "2026-10-31T17:02:08.368Z",
+      "finishedAt": "2026-10-31T17:09:23.169Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -92,8 +99,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-10-31T16:18:15.989Z",
-      "finishedAt": "2026-10-31T16:18:16.780Z",
+      "startedAt": "2026-10-31T17:09:23.170Z",
+      "finishedAt": "2026-10-31T17:09:23.883Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -112,8 +119,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-10-31T16:18:16.780Z",
-      "finishedAt": "2026-10-31T16:18:24.154Z",
+      "startedAt": "2026-10-31T17:09:23.883Z",
+      "finishedAt": "2026-10-31T17:09:28.748Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -190,13 +197,13 @@
           }
         },
         "pot": {
-          "balanceZat": "2475549",
-          "shownZat": "2475549",
-          "inflowZat": "446325119",
+          "balanceZat": "2975744",
+          "shownZat": "2975744",
+          "inflowZat": "446825314",
           "buybackZat": "443849570",
           "movements": {
             "setup": 1,
-            "inflow": 1510,
+            "inflow": 1512,
             "buyback": 150
           },
           "reconciled": true,
@@ -220,6 +227,6 @@
     "tax": {},
     "flywheel": {}
   },
-  "rewardsMaxRun": 1362,
-  "rewardsFrom": 1356
+  "rewardsMaxRun": 1363,
+  "rewardsFrom": 1357
 }
