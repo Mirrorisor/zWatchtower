@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-10-31T13:27:38.801Z",
-      "finishedAt": "2026-10-31T13:29:23.304Z",
+      "startedAt": "2026-10-31T14:03:52.709Z",
+      "finishedAt": "2026-10-31T14:05:00.321Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,43 +21,47 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 43,
-          "convert_sapling_begin": 1,
-          "convert_sapling_end": 1,
-          "settle": 16,
-          "settle_sapling": 1,
-          "close_rewards_run": 2,
-          "release_rewards": 2,
-          "draw_lp": 1
+          "observe_sapling": 29,
+          "settle_tax": 2,
+          "sell_tax": 2,
+          "withdraw_tax": 2,
+          "settle": 5,
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1,
+          "close_rewards_run": 1,
+          "release_rewards": 1
         },
-        "unrecognised": 3,
+        "unrecognised": 0,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-10-31T13:29:23.305Z",
-      "finishedAt": "2026-10-31T13:29:30.328Z",
+      "startedAt": "2026-10-31T14:05:00.323Z",
+      "finishedAt": "2026-10-31T14:05:10.593Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-10-31T13:29:30.321Z",
-        "runs": 9,
-        "passed": 9,
-        "flagged": 0,
-        "unchecked": 0,
-        "firstUnchecked": null,
-        "zecPaidInDoneRuns": "1.16986737",
+        "checkedAt": "2026-10-31T14:05:10.588Z",
+        "runs": 7,
+        "passed": 5,
+        "flagged": 2,
+        "unchecked": 2,
+        "firstUnchecked": 1356,
+        "zecPaidInDoneRuns": "0.23534955",
         "onChainChecks": true,
-        "notes": [],
-        "maxRunId": 1358
+        "notes": [
+          "run 1356: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1357: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
+        ],
+        "maxRunId": 1359
       }
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-10-31T12:35:32.221Z",
-      "finishedAt": "2026-10-31T12:42:46.933Z",
+      "startedAt": "2026-10-31T14:05:10.594Z",
+      "finishedAt": "2026-10-31T14:12:37.804Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -91,8 +95,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-10-31T13:29:30.328Z",
-      "finishedAt": "2026-10-31T13:29:30.841Z",
+      "startedAt": "2026-10-31T14:12:37.805Z",
+      "finishedAt": "2026-10-31T14:12:38.585Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -111,8 +115,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-10-31T13:29:30.841Z",
-      "finishedAt": "2026-10-31T13:31:47.291Z",
+      "startedAt": "2026-10-31T14:12:38.585Z",
+      "finishedAt": "2026-10-31T14:16:00.697Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -189,14 +193,14 @@
           }
         },
         "pot": {
-          "balanceZat": "359805",
-          "shownZat": "359805",
-          "inflowZat": "371713054",
-          "buybackZat": "371450187",
+          "balanceZat": "1517713",
+          "shownZat": "1517713",
+          "inflowZat": "412555459",
+          "buybackZat": "412523435",
           "movements": {
             "setup": 1,
-            "inflow": 1261,
-            "buyback": 127
+            "inflow": 1398,
+            "buyback": 140
           },
           "reconciled": false,
           "caughtUp": false
@@ -207,7 +211,7 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "pot history: 265 transaction(s) still to read; continuing next run",
+          "pot history: 118 transaction(s) still to read; continuing next run",
           "headline 443849570 zat bought back, listed burns add up to 160604169"
         ]
       }
@@ -220,6 +224,6 @@
     "tax": {},
     "flywheel": {}
   },
-  "rewardsMaxRun": 1358,
-  "rewardsFrom": 1350
+  "rewardsMaxRun": 1359,
+  "rewardsFrom": 1353
 }
