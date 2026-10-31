@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-10-31T14:03:52.709Z",
-      "finishedAt": "2026-10-31T14:05:00.321Z",
+      "startedAt": "2026-10-31T14:40:49.768Z",
+      "finishedAt": "2026-10-31T14:42:00.857Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,15 +21,11 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 29,
+          "observe_sapling": 28,
+          "settle": 12,
           "settle_tax": 2,
           "sell_tax": 2,
-          "withdraw_tax": 2,
-          "settle": 5,
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 1,
-          "close_rewards_run": 1,
-          "release_rewards": 1
+          "withdraw_tax": 2
         },
         "unrecognised": 0,
         "baseline": false
@@ -37,23 +33,24 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-10-31T14:05:00.323Z",
-      "finishedAt": "2026-10-31T14:05:10.593Z",
+      "startedAt": "2026-10-31T14:42:00.858Z",
+      "finishedAt": "2026-10-31T14:42:09.736Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-10-31T14:05:10.588Z",
-        "runs": 7,
-        "passed": 5,
-        "flagged": 2,
-        "unchecked": 2,
+        "checkedAt": "2026-10-31T14:42:09.730Z",
+        "runs": 6,
+        "passed": 3,
+        "flagged": 3,
+        "unchecked": 3,
         "firstUnchecked": 1356,
-        "zecPaidInDoneRuns": "0.23534955",
+        "zecPaidInDoneRuns": "0.18613508",
         "onChainChecks": true,
         "notes": [
           "run 1356: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1357: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
+          "run 1358: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1359: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
         ],
         "maxRunId": 1359
       }
@@ -95,8 +92,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-10-31T14:12:37.805Z",
-      "finishedAt": "2026-10-31T14:12:38.585Z",
+      "startedAt": "2026-10-31T14:42:09.736Z",
+      "finishedAt": "2026-10-31T14:42:10.176Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -115,8 +112,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-10-31T14:12:38.585Z",
-      "finishedAt": "2026-10-31T14:16:00.697Z",
+      "startedAt": "2026-10-31T14:42:10.177Z",
+      "finishedAt": "2026-10-31T14:45:36.808Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -193,17 +190,17 @@
           }
         },
         "pot": {
-          "balanceZat": "1517713",
-          "shownZat": "1517713",
-          "inflowZat": "412555459",
-          "buybackZat": "412523435",
+          "balanceZat": "1939140",
+          "shownZat": "1939140",
+          "inflowZat": "445788710",
+          "buybackZat": "443849570",
           "movements": {
             "setup": 1,
-            "inflow": 1398,
-            "buyback": 140
+            "inflow": 1508,
+            "buyback": 150
           },
-          "reconciled": false,
-          "caughtUp": false
+          "reconciled": true,
+          "caughtUp": true
         },
         "signers": [
           "7yJnPdEDFS7KZbKvPsK8QgHqC61hoE2H5W8EpmNAuMCC",
@@ -211,8 +208,7 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "pot history: 118 transaction(s) still to read; continuing next run",
-          "headline 443849570 zat bought back, listed burns add up to 160604169"
+          "headline 440648191 zat bought back, listed burns add up to 160605519"
         ]
       }
     }
@@ -225,5 +221,5 @@
     "flywheel": {}
   },
   "rewardsMaxRun": 1359,
-  "rewardsFrom": 1353
+  "rewardsFrom": 1354
 }
