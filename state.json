@@ -2,17 +2,17 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-01T03:14:50.602Z",
-      "finishedAt": "2026-11-01T03:17:31.325Z",
+      "startedAt": "2026-11-01T04:00:48.321Z",
+      "finishedAt": "2026-11-01T04:03:32.312Z",
       "status": "ran",
       "ok": false,
       "alerts": [
-        "vault config changed: bytes changed at 138-168 (00000000000000000000000000000000000000000000000000000000000000 -> cc2c36acf883c7c590336427e1a388a02c042dee62798aef980920c3afb6e9)"
+        "vault config changed: bytes changed at 138-168 (cc2c36acf883c7c590336427e1a388a02c042dee62798aef980920c3afb6e9 -> 00000000000000000000000000000000000000000000000000000000000000)"
       ],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 463872407,
-        "configSha256": "f4170d414bbb720488a5aeb5fc4852262b6cb1869215b1d0d069da9854a9dd22",
+        "configSha256": "7e0580bf73be95be979cac2206e8232564f7f6218ddaf4acae7585a8a98fa341",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -23,44 +23,43 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "release_rewards": 4,
+          "observe_sapling": 37,
+          "sell_tax": 15,
+          "withdraw_tax": 15,
+          "collect_protocol_pool_fees": 5,
+          "settle_tax": 7,
+          "convert_tax_begin": 5,
+          "convert_tax_end": 5,
           "settle": 8,
-          "sell_tax": 19,
-          "withdraw_tax": 20,
-          "observe_sapling": 35,
-          "settle_tax": 3,
-          "convert_tax_begin": 3,
-          "convert_tax_end": 3,
-          "close_rewards_run": 3,
-          "draw_grove": 3,
-          "close_grove": 3,
-          "convert_sapling_begin": 1,
-          "convert_sapling_end": 1
+          "settle_sapling": 1,
+          "draw_grove": 2,
+          "close_grove": 2,
+          "register_launchlab_coin": 1,
+          "declare_payee": 1,
+          "close_rewards_run": 2,
+          "release_rewards": 1
         },
-        "unrecognised": 8,
+        "unrecognised": 18,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-01T03:17:31.735Z",
-      "finishedAt": "2026-11-01T03:17:47.949Z",
+      "startedAt": "2026-11-01T04:03:32.734Z",
+      "finishedAt": "2026-11-01T04:03:41.593Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-11-01T03:17:47.942Z",
-        "runs": 15,
-        "passed": 8,
-        "flagged": 7,
-        "unchecked": 7,
-        "firstUnchecked": 1385,
-        "zecPaidInDoneRuns": "7.28642549",
+        "checkedAt": "2026-11-01T04:03:41.587Z",
+        "runs": 8,
+        "passed": 4,
+        "flagged": 4,
+        "unchecked": 4,
+        "firstUnchecked": 1388,
+        "zecPaidInDoneRuns": "5.22996181",
         "onChainChecks": true,
         "notes": [
-          "run 1385: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1386: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1387: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1388: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1389: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1390: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
@@ -106,15 +105,15 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-01T03:25:13.613Z",
-      "finishedAt": "2026-11-01T03:25:14.513Z",
+      "startedAt": "2026-11-01T04:03:41.594Z",
+      "finishedAt": "2026-11-01T04:03:41.963Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "coins": 60,
-        "matching": 60,
-        "feeChangeable": 58,
+        "coins": 61,
+        "matching": 61,
+        "feeChangeable": 59,
         "feeRenounced": 2,
         "advertisedRange": [
           200,
@@ -126,8 +125,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-01T03:25:14.513Z",
-      "finishedAt": "2026-11-01T03:25:36.862Z",
+      "startedAt": "2026-11-01T04:03:41.964Z",
+      "finishedAt": "2026-11-01T04:04:05.805Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -226,14 +225,14 @@
           }
         },
         "pot": {
-          "balanceZat": "215739",
-          "shownZat": "215739",
-          "inflowZat": "580843711",
-          "buybackZat": "580627972",
+          "balanceZat": "710638",
+          "shownZat": "710638",
+          "inflowZat": "584818546",
+          "buybackZat": "584107908",
           "movements": {
             "setup": 1,
-            "inflow": 1588,
-            "buyback": 173
+            "inflow": 1593,
+            "buyback": 174
           },
           "reconciled": true,
           "caughtUp": true
@@ -244,15 +243,15 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "buyback 5fosUVprLJ3fgkmSnCbQgDqvWX1Lvip3b7k2Y3iaJJJG8gfgshcqZrz8T552KfgvrGr1hHCTwifPtEbga518FBoF drew 3084555 zat but is not in Sapling's burn list",
-          "headline 577543417 zat bought back, listed burns add up to 223058751"
+          "buyback 5Ns4Bv3AdfiSf8Gb8PX3NuMxZNVmbszygvEDmmcuKes3jZD3n5S9CDgQ876jYZmNAEG4C7EXwACoXtFtmHSJx1pY drew 3479936 zat but is not in Sapling's burn list",
+          "headline 569756515 zat bought back, listed burns add up to 221998180"
         ]
       }
     }
   },
   "openAlerts": {
     "keys": {
-      "vault config changed: bytes changed at 138-168 (00000000000000000000000000000000000000000000000000000000000000 -> cc2c36acf883c7c590336427e1a388a02c042dee62798aef980920c3afb6e9)": "2026-11-01T03:17:31.325Z"
+      "vault config changed: bytes changed at 138-168 (cc2c36acf883c7c590336427e1a388a02c042dee62798aef980920c3afb6e9 -> 00000000000000000000000000000000000000000000000000000000000000)": "2026-11-01T04:03:32.312Z"
     },
     "rewards": {},
     "float": {},
@@ -271,6 +270,6 @@
       "flywheel burn 1993 2U7Zt4HrSdRbEh4z1B834fY4tpruhAshq38BtZj3mmNTP2JFaw4HCipfV7qu6iceCfr8P6taU7NqHow561SccxoW: unexpected program in buyback: JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4, 11111111111111111111111111111111": "2026-11-01T03:25:36.862Z"
     }
   },
-  "rewardsMaxRun": 1389,
-  "rewardsFrom": 1377
+  "rewardsMaxRun": 1391,
+  "rewardsFrom": 1384
 }
