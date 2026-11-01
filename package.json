@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node watchtower.mjs",
     "once": "node watchtower.mjs --once",
-    "test": "node test/run-tests.mjs && node test/float-tests.mjs && node test/keys-tests.mjs && node test/tax-tests.mjs && node test/flywheel-tests.mjs && node test/service-tests.mjs"
+    "test": "node test/run-tests.mjs && node test/float-tests.mjs && node test/keys-tests.mjs && node test/tax-tests.mjs && node test/flywheel-tests.mjs && node test/xpost-tests.mjs && node test/service-tests.mjs"
   },
   "license": "Apache-2.0"
 }

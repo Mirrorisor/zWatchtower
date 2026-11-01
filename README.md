@@ -61,6 +61,22 @@ never reported as findings: the check notes them and tries again next run.
 For faster, complete runs, put a private RPC URL (Helius, Triton, QuickNode;
 free tiers work) in the `WATCHTOWER_SOLANA_RPC` secret.
 
+## Posting alerts to X
+
+New findings are posted to X automatically: program upgrades (with how fast
+they were caught), admin instructions (grouped by name), and any check that
+finds something wrong, plus a post when it clears. Routine multisig proposal
+and approval steps are not posted. At most 3 posts a run and 10 a day; over
+that, one post says how many more.
+
+Without X keys it only previews: every post it would have made is logged in
+`x-posts.jsonl` on the `status` branch and at `api/x-posts.json` on the
+dashboard. To post for real, add four repository secrets from an app in the
+X Developer Console (OAuth 1.0a, Read and Write): `X_API_KEY`,
+`X_API_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_SECRET`. Optional repository
+variables: `X_DAILY_SUMMARY=1` for one status post a day, `X_INCLUDE_LINKS=1`
+to add the dashboard link (X charges more for posts with links).
+
 # Run the service
 
 `watchtower.mjs` runs all five checks on their own schedules, keeps the

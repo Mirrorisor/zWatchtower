@@ -24,6 +24,7 @@ import { createServer } from "node:http";
 import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync, copyFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { composePosts, composeSummary, fit, postToX } from "./lib/xpost.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
@@ -58,6 +59,20 @@ function loadConfig() {
   cfg.dataDir = resolve(cfg.dataDir);
   if (process.env.WATCHTOWER_WEBHOOK) cfg.webhook = process.env.WATCHTOWER_WEBHOOK;
   if (process.env.WATCHTOWER_SOLANA_RPC) cfg.solanaRpc = process.env.WATCHTOWER_SOLANA_RPC;
+  // Posting to X: with all four keys set it posts; without them it only
+  // records what it would have posted (x-posts.jsonl, status "preview").
+  const env = process.env;
+  cfg.x = {
+    creds: env.X_API_KEY && env.X_API_SECRET && env.X_ACCESS_TOKEN && env.X_ACCESS_SECRET
+      ? { apiKey: env.X_API_KEY, apiSecret: env.X_API_SECRET, accessToken: env.X_ACCESS_TOKEN, accessSecret: env.X_ACCESS_SECRET }
+      : null,
+    link: env.X_INCLUDE_LINKS === "1" ? (cfg.publicUrl ?? "mirrorisor.github.io/zWatchtower") : null, // links cost more per post
+    perRun: Number(env.X_MAX_PER_RUN ?? 3),
+    perDay: Number(env.X_MAX_PER_DAY ?? 10),
+    dailySummary: env.X_DAILY_SUMMARY === "1",
+    postUrl: env.X_POST_URL, // tests point this at a local server
+    ...(user.x ?? {}),
+  };
   return cfg;
 }
 
@@ -194,6 +209,7 @@ const running = new Set();
 async function runCheck(name, cfg, store) {
   if (running.has(name)) return;
   running.add(name);
+  if (!args.includes("--once") && store.state.x) store.state.x.thisRun = 0; // long-running service: cap per check run
   const started = new Date().toISOString();
   try {
     const res = await runCommand(commandFor(name, cfg, store), cfg.timeoutMinutes * 60000);
@@ -240,11 +256,40 @@ async function handleAlerts(name, entry, cfg, store) {
     store.append("alerts.jsonl", { check: name, at: entry.finishedAt, type: "resolved", text: a });
   }
   store.state.openAlerts[name] = open;
+  await publishToX(name, raised, resolved, cfg, store);
   if (cfg.webhook && (raised.length || resolved.length)) {
     const lines = [...raised.map((a) => `NEW: ${a}`), ...resolved.map((a) => `RESOLVED: ${a}`)];
     await postWebhook(cfg.webhook, `zWatchtower (${name} check)\n${lines.join("\n")}`);
   }
 }
+// Posts at most perRun this run and perDay per UTC day; anything over the cap
+// becomes one "and N more" line. Every post (or preview) is logged.
+async function publishToX(name, raised, resolved, cfg, store, override) {
+  const texts = override ?? composePosts(name, raised, resolved);
+  if (!texts.length) return;
+  const day = new Date().toISOString().slice(0, 10);
+  const x = (store.state.x ??= {});
+  if (x.day !== day) { x.day = day; x.today = 0; }
+  x.thisRun ??= 0;
+  const room = Math.max(0, Math.min(cfg.x.perRun - x.thisRun, cfg.x.perDay - x.today));
+  let send = texts.slice(0, room);
+  if (texts.length > room && room > 0) {
+    send = texts.slice(0, room - 1);
+    send.push(`${texts.length - send.length} more ${name} alerts this run. Full list on the zWatchtower dashboard.`);
+  }
+  for (const t of send) {
+    const text = fit(cfg.x.link ? `${t}\n${cfg.x.link}` : t);
+    const row = { at: new Date().toISOString(), check: name, text };
+    if (!cfg.x.creds) row.status = "preview";
+    else {
+      try { row.id = await postToX(text, cfg.x.creds, cfg.x.postUrl); row.status = "posted"; }
+      catch (e) { row.status = "error"; row.error = e.message; }
+    }
+    if (row.status !== "error") { x.today++; x.thisRun++; }
+    store.append("x-posts.jsonl", row);
+  }
+}
+
 // Incremental rewards passes start at state.rewardsFrom; an alert about an
 // earlier run was not re-checked, so it stays open.
 function reRunIdBelow(alert, store) {
@@ -270,6 +315,7 @@ function exportSite(cfg, store, dir) {
   writeFileSync(join(dir, "api", "status.json"), JSON.stringify(statusBody(cfg, store)));
   writeFileSync(join(dir, "api", "alerts.json"), JSON.stringify(store.read("alerts.jsonl", () => true, 500)));
   writeFileSync(join(dir, "api", "history.json"), JSON.stringify(store.read("history.jsonl", () => true, 500)));
+  writeFileSync(join(dir, "api", "x-posts.json"), JSON.stringify(store.read("x-posts.jsonl", () => true, 200)));
   writeFileSync(join(dir, ".nojekyll"), "");
 }
 
@@ -315,7 +361,15 @@ async function main() {
       const last = Date.parse(store.state.latest[n]?.finishedAt ?? 0);
       return !args.includes("--due") || !last || Date.now() - last >= cfg.checks[n].everyMinutes * 60000 - 120000;
     };
+    if (store.state.x) store.state.x.thisRun = 0;
     for (const n of names.filter(due)) await runCheck(n, cfg, store);
+    // one summary post a day, on the first run after 00:00 UTC
+    const day = new Date().toISOString().slice(0, 10);
+    if (cfg.x.dailySummary && store.state.xSummaryDay !== day && Object.keys(store.state.latest).length) {
+      store.state.xSummaryDay = day;
+      await publishToX("summary", [], [], cfg, store, [composeSummary(store.state.latest)]);
+      store.save();
+    }
     if (opt("--export")) exportSite(cfg, store, resolve(opt("--export")));
     const failing = names.filter((n) => store.state.latest[n]?.ok === false);
     process.exitCode = failing.length ? 1 : 0;

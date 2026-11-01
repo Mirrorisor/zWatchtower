@@ -27,6 +27,13 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       WATCHTOWER_WEBHOOK: ${{ secrets.WATCHTOWER_WEBHOOK }}
       WATCHTOWER_SOLANA_RPC: ${{ secrets.WATCHTOWER_SOLANA_RPC }}
+      # Posting to X: all four keys post; none of them only previews (status branch, x-posts.jsonl)
+      X_API_KEY: ${{ secrets.X_API_KEY }}
+      X_API_SECRET: ${{ secrets.X_API_SECRET }}
+      X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+      X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
+      X_DAILY_SUMMARY: ${{ vars.X_DAILY_SUMMARY }}
+      X_INCLUDE_LINKS: ${{ vars.X_INCLUDE_LINKS }}
     steps:
       - uses: actions/checkout@v4
 

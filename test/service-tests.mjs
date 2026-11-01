@@ -43,13 +43,13 @@ const floatReport = (stuck = []) => ({ currentFloatZec: 0, custodyCapZec: 200, i
   inFlightCap: 50, withinCaps: true, stuck, deliveries: 14, deliveredZec: 2.29777685,
   holdMinutes: { median: 20.6, p95: 25.2, max: 25.2 }, peakFloatZec: 0.5716808, peakAt: "2026-10-02T23:13:00.000Z" });
 
-async function once(scenario) {
+async function once(scenario, extraEnv = {}) {
   writeFileSync(scenarioPath, JSON.stringify(scenario));
   const before = posts.length;
   // async, so this process's webhook listener can answer while the service runs
   const r = await new Promise((done) => {
     const c = spawn(process.execPath, [join(here, "../watchtower.mjs"), "--once", "--config", config()],
-      { env: { ...process.env, SCENARIO: scenarioPath, ARGS_LOG: argsLog } });
+      { env: { ...process.env, SCENARIO: scenarioPath, ARGS_LOG: argsLog, ...extraEnv } });
     let stdout = "", stderr = "";
     c.stdout.on("data", (d) => (stdout += d));
     c.stderr.on("data", (d) => (stderr += d));
@@ -137,7 +137,39 @@ r = await once({ keys: keysReport(), rewards: rewardsReport([115]), float: float
 check("own failed lookups are withdrawn quietly", !Object.keys(r.state.openAlerts.rewards).some((a) => /HTTP error/.test(a)) &&
   !r.newPosts.some((p) => /HTTP error/.test(p)));
 
-// 10. the server: API and dashboard
+// 10. X posts: previewed without keys, posted with them, and capped
+const xLog = () => existsSync(join(dataDir, "x-posts.jsonl"))
+  ? readFileSync(join(dataDir, "x-posts.jsonl"), "utf8").trim().split("\n").map((l) => JSON.parse(l)) : [];
+const upgradeAlerts = (slot) => [`vault program upgraded: last deploy slot ${slot} -> ${slot + 1}`,
+  "multisig vault_transaction_execute at 2026-10-31T23:24:37.000Z (54Toh)", "multisig proposal_approve at 2026-10-31T23:22:48.000Z (3cDV)"];
+r = await once({ keys: keysReport(upgradeAlerts(1)), rewards: rewardsReport([115]), float: floatReport() });
+let xs = xLog();
+check("without X keys, posts are only previewed", xs.length >= 1 && xs.every((x) => x.status === "preview") &&
+  /Sapling just upgraded its vault program at 23:24 UTC, through its Squads multisig/.test(xs.at(-1).text), JSON.stringify(xs.at(-1)));
+
+const xPosts = [];
+const xServer = createServer((req, res) => {
+  let b = ""; req.on("data", (d) => (b += d));
+  req.on("end", () => { xPosts.push({ auth: req.headers.authorization, body: JSON.parse(b) });
+    res.writeHead(201, { "content-type": "application/json" }); res.end(JSON.stringify({ data: { id: String(xPosts.length) } })); });
+});
+await new Promise((ok) => xServer.listen(0, ok));
+const xEnv = { X_API_KEY: "k", X_API_SECRET: "s", X_ACCESS_TOKEN: "t", X_ACCESS_SECRET: "u",
+  X_POST_URL: `http://127.0.0.1:${xServer.address().port}/2/tweets`, X_MAX_PER_RUN: "2" };
+r = await once({ keys: keysReport([...upgradeAlerts(5),
+  "privileged vault instruction set_gas via multisig at 2026-10-29T20:23:48.000Z (3MUt)",
+  "privileged vault instruction set_stock_quote via multisig at 2026-10-31T20:52:47.000Z (2Gau)"]),
+  rewards: rewardsReport([115]), float: floatReport() }, xEnv);
+xs = xLog();
+check("with keys, posts go to X signed with OAuth", xPosts.length === 2 && xPosts.every((p) => /^OAuth .*oauth_signature="/.test(p.auth)),
+  `${xPosts.length} posted`);
+check("over the per-run cap, the last post says how many more", /2 more keys alerts this run/.test(xPosts.at(-1)?.body.text ?? ""),
+  xPosts.at(-1)?.body.text);
+check("every post is logged with its X id", xs.filter((x) => x.status === "posted").length === 2 && xs.at(-1).id === "2");
+check("an old event doesn't claim a fast catch", !/Flagged \d+ minutes/.test(xPosts[0]?.body.text ?? ""), xPosts[0]?.body.text);
+xServer.close();
+
+// 11. the server: API and dashboard
 writeFileSync(scenarioPath, JSON.stringify({ keys: keysReport(), rewards: rewardsReport([115]), float: floatReport() }));
 const port = 18000 + Math.floor(Math.random() * 1000);
 const srv = spawn(process.execPath, [join(here, "../watchtower.mjs"), "--config",
