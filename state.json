@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-01T18:52:27.229Z",
-      "finishedAt": "2026-11-01T18:55:15.921Z",
+      "startedAt": "2026-11-01T19:27:20.348Z",
+      "finishedAt": "2026-11-01T19:29:05.446Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,42 +21,37 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 29,
-          "sell_tax": 22,
-          "withdraw_tax": 24,
-          "settle_tax": 10,
-          "convert_tax_begin": 3,
-          "convert_tax_end": 3,
-          "settle_sapling": 1,
-          "settle": 6,
-          "draw_grove": 3,
-          "close_grove": 3,
-          "close_rewards_run": 1,
-          "release_rewards": 1
+          "observe_sapling": 28,
+          "sell_tax": 10,
+          "withdraw_tax": 12,
+          "settle_tax": 5,
+          "convert_tax_begin": 4,
+          "convert_tax_end": 4,
+          "draw_grove": 1,
+          "close_grove": 1,
+          "settle": 4
         },
-        "unrecognised": 7,
+        "unrecognised": 8,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-01T18:55:15.923Z",
-      "finishedAt": "2026-11-01T18:55:34.477Z",
+      "startedAt": "2026-11-01T19:29:05.448Z",
+      "finishedAt": "2026-11-01T19:29:21.795Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-11-01T18:55:34.470Z",
-        "runs": 16,
+        "checkedAt": "2026-11-01T19:29:21.787Z",
+        "runs": 14,
         "passed": 5,
-        "flagged": 11,
-        "unchecked": 11,
-        "firstUnchecked": 1407,
-        "zecPaidInDoneRuns": "1.39001505",
+        "flagged": 9,
+        "unchecked": 9,
+        "firstUnchecked": 1411,
+        "zecPaidInDoneRuns": "0.84573362",
         "onChainChecks": true,
         "notes": [
-          "run 1407: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1409: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1411: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1412: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1413: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
@@ -72,8 +67,8 @@
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-01T18:14:32.133Z",
-      "finishedAt": "2026-11-01T18:21:55.637Z",
+      "startedAt": "2026-11-01T19:29:21.795Z",
+      "finishedAt": "2026-11-01T19:36:37.415Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -107,8 +102,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-01T18:55:34.477Z",
-      "finishedAt": "2026-11-01T18:55:34.918Z",
+      "startedAt": "2026-11-01T19:36:37.416Z",
+      "finishedAt": "2026-11-01T19:36:37.954Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -127,21 +122,21 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-01T18:55:34.918Z",
-      "finishedAt": "2026-11-01T18:56:01.182Z",
+      "startedAt": "2026-11-01T19:36:37.955Z",
+      "finishedAt": "2026-11-01T19:36:43.636Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "burns": 120,
-        "burnsVerified": 120,
-        "boughtBackZat": "452753416",
+        "burns": 122,
+        "burnsVerified": 122,
+        "boughtBackZat": "466002107",
         "venues": {
           "pump amm": 75,
           "raydium cpmm": 17,
           "raydium launchlab": 2,
           "pump bonding curve": 1,
-          "jupiter": 25
+          "jupiter": 27
         },
         "perCoin": {
           "0": {
@@ -151,8 +146,8 @@
           },
           "1993": {
             "mint": "7Ypg1rKLu8q32E1AQEDjaPCg8dfGeCSsMkFnK98zcash",
-            "burns": 25,
-            "zat": "113319648"
+            "burns": 27,
+            "zat": "126568339"
           },
           "ZILLIONS": {
             "mint": "3sKZuSZF7onqPYFrWu3bH4Lh141duydt9MAmSd46jaLJ",
@@ -216,14 +211,14 @@
           }
         },
         "pot": {
-          "balanceZat": "815173",
-          "shownZat": "815173",
-          "inflowZat": "654557060",
-          "buybackZat": "653741887",
+          "balanceZat": "1999616",
+          "shownZat": "1999616",
+          "inflowZat": "659847094",
+          "buybackZat": "657847478",
           "movements": {
             "setup": 1,
-            "inflow": 1695,
-            "buyback": 192
+            "inflow": 1701,
+            "buyback": 193
           },
           "reconciled": true,
           "caughtUp": true
@@ -234,8 +229,7 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "buyback 2v3PmAr7tvuKEHcNAKCpSf8eqwm5nH26xNYuZcGUX4ySEMdrjv8iDFxqdbJ9UFdGyHtCtuN3X5zk1HKjaHThp6pV drew 9143100 zat but is not in Sapling's burn list",
-          "headline 644598787 zat bought back, listed burns add up to 228837022"
+          "headline 657847478 zat bought back, listed burns add up to 235844282"
         ]
       }
     }
@@ -247,8 +241,8 @@
     "tax": {},
     "flywheel": {}
   },
-  "rewardsMaxRun": 1411,
-  "rewardsFrom": 1404,
+  "rewardsMaxRun": 1415,
+  "rewardsFrom": 1406,
   "x": {
     "day": "2026-11-01",
     "today": 2,
