@@ -208,7 +208,9 @@ async function recentInstructions(address, programId, table, sinceSig) {
 // Bytes the program rewrites on its own during normal operation: an i64 Unix
 // timestamp at 342 (seen moving 30-31 Oct 2026 with no admin action). A change
 // that only touches these is not reported.
-const VOLATILE_CONFIG_BYTES = [[342, 349]];
+// Also bytes 137-168: a coin mint the program writes in and clears again within
+// the hour during buybacks (ZILLIONS and $0 seen 31 Oct - 1 Nov 2026).
+const VOLATILE_CONFIG_BYTES = [[137, 168], [342, 349]];
 const volatile = ([x, y]) => VOLATILE_CONFIG_BYTES.some(([a, b]) => x >= a && y <= b);
 
 function diffConfig(before, after) {

@@ -147,7 +147,8 @@ async function main() {
 
   // 3. balances
   const bal = BigInt((await rpc("getTokenAccountBalance", [GROVE_ACCOUNT])).value.amount);
-  if (state.pot.complete && state.pot.caughtUp && bal !== total) {
+  const seenAny = Object.keys(state.pot.kinds ?? {}).length > 0;
+  if (state.pot.complete && state.pot.caughtUp && seenAny && bal !== total) {
     alerts.push(`flywheel pot holds ${bal} zat but the movements seen add up to ${total}`);
   }
   if (live.pot?.zat != null && BigInt(live.pot.zat) !== bal) {
