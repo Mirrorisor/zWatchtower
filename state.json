@@ -2,30 +2,63 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-01T09:49:05.283Z",
-      "finishedAt": "2026-11-01T09:49:26.400Z",
-      "status": "error",
-      "ok": null,
-      "alerts": [],
-      "error": "getTransaction: rate-limited"
-    },
-    "rewards": {
-      "check": "rewards",
-      "startedAt": "2026-11-01T09:49:26.402Z",
-      "finishedAt": "2026-11-01T09:49:28.663Z",
+      "startedAt": "2026-11-01T10:25:51.436Z",
+      "finishedAt": "2026-11-01T10:28:37.695Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-11-01T09:49:28.657Z",
+        "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
+        "lastDeploySlot": 463872407,
+        "configSha256": "f8f7f2b933a0981e890d8d8dc5961a7dfcfcfebf8a45009a4a184439305caecd",
+        "walletsInConfig": [
+          "treasury",
+          "rewards",
+          "buyback",
+          "lpWallet",
+          "lpPot",
+          "admin",
+          "recovery"
+        ],
+        "vaultInstructions": {
+          "observe_sapling": 41,
+          "sell_tax": 18,
+          "withdraw_tax": 18,
+          "settle_tax": 6,
+          "convert_tax_begin": 5,
+          "convert_tax_end": 5,
+          "settle": 6,
+          "settle_sapling": 1,
+          "collect_creator_fee": 2,
+          "collect_pool_fees": 2,
+          "draw_grove": 1,
+          "close_grove": 1
+        },
+        "unrecognised": 11,
+        "baseline": false
+      }
+    },
+    "rewards": {
+      "check": "rewards",
+      "startedAt": "2026-11-01T10:28:37.698Z",
+      "finishedAt": "2026-11-01T10:28:46.480Z",
+      "status": "ran",
+      "ok": true,
+      "alerts": [],
+      "summary": {
+        "checkedAt": "2026-11-01T10:28:46.474Z",
         "runs": 6,
-        "passed": 6,
-        "flagged": 0,
-        "unchecked": 0,
-        "firstUnchecked": null,
+        "passed": 3,
+        "flagged": 3,
+        "unchecked": 3,
+        "firstUnchecked": 1397,
         "zecPaidInDoneRuns": "0.77925484",
         "onChainChecks": true,
-        "notes": [],
+        "notes": [
+          "run 1397: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1401: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1402: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
+        ],
         "maxRunId": 1402
       }
     },
@@ -66,8 +99,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-01T09:56:43.758Z",
-      "finishedAt": "2026-11-01T09:56:44.277Z",
+      "startedAt": "2026-11-01T10:28:46.481Z",
+      "finishedAt": "2026-11-01T10:28:46.932Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -86,8 +119,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-01T09:56:44.277Z",
-      "finishedAt": "2026-11-01T09:57:17.535Z",
+      "startedAt": "2026-11-01T10:28:46.932Z",
+      "finishedAt": "2026-11-01T10:29:17.259Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -193,14 +226,14 @@
           }
         },
         "pot": {
-          "balanceZat": "2957897",
-          "shownZat": "2957897",
-          "inflowZat": "617999823",
-          "buybackZat": "615041926",
+          "balanceZat": "2252427",
+          "shownZat": "2252427",
+          "inflowZat": "621407577",
+          "buybackZat": "619155150",
           "movements": {
             "setup": 1,
-            "inflow": 1640,
-            "buyback": 183
+            "inflow": 1644,
+            "buyback": 184
           },
           "reconciled": true,
           "caughtUp": true
@@ -211,7 +244,8 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "headline 615041926 zat bought back, listed burns add up to 223960795"
+          "buyback 29W1SF2UoJBHaoobwQtvPmAMpRuR52EDFj4FKgZLv2VC3mVBPgipV5Hoh7ECgERRb7if8K25v7YF7tgWrJG4yj9z drew 4113224 zat but is not in Sapling's burn list",
+          "headline 611412767 zat bought back, listed burns add up to 223540247"
         ]
       }
     }
@@ -242,6 +276,6 @@
       "flywheel burn 1993 5dnSWYC239oEjYK6oZF8BiGn81CkEZWFUB6nZgSAW3SDWoP3ro7ScQozWupsMXo3A8kwn2u1M9yrPCUiDJiX4rJE: unexpected program in buyback: JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4, 11111111111111111111111111111111": "2026-11-01T09:57:17.535Z"
     }
   },
-  "rewardsMaxRun": 1402,
+  "rewardsMaxRun": 1401,
   "rewardsFrom": 1397
 }
