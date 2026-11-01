@@ -2,11 +2,14 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-01T22:13:36.078Z",
-      "finishedAt": "2026-11-01T22:15:05.431Z",
+      "startedAt": "2026-11-01T22:44:48.849Z",
+      "finishedAt": "2026-11-01T22:46:44.265Z",
       "status": "ran",
-      "ok": true,
-      "alerts": [],
+      "ok": false,
+      "alerts": [
+        "multisig proposal_activate at 2026-11-01T22:18:21.000Z (5LnAH99wFZLKTp75Sf8uftsQqgEgDDhnc7biXYGehMgkmN45TdQ28BhxbXmxtnvSKNe3GDFq4D7wXJQRV3Gso4Zt)",
+        "multisig proposal_create at 2026-11-01T22:18:02.000Z (z2JibWqCcorwUkfTqmhxTVYVfE8k1RYE57JGJL52mhRVoz7kvQNYzZi4qL8hqKjY9QMDggKRojYsHvf7tqAeVm6)"
+      ],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
@@ -21,41 +24,42 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 26,
-          "draw_grove": 2,
-          "close_grove": 2,
-          "settle_tax": 4,
-          "convert_tax_begin": 3,
-          "convert_tax_end": 3,
-          "settle": 3,
-          "sell_tax": 8,
-          "withdraw_tax": 8,
+          "observe_sapling": 25,
+          "sell_tax": 12,
+          "withdraw_tax": 12,
+          "convert_sapling_begin": 1,
+          "convert_sapling_end": 1,
+          "settle_sapling": 1,
+          "settle": 4,
+          "settle_tax": 2,
+          "convert_tax_begin": 1,
+          "convert_tax_end": 1,
           "collect_creator_fee": 1,
           "collect_pool_fees": 1
         },
-        "unrecognised": 6,
+        "unrecognised": 5,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-01T22:15:05.433Z",
-      "finishedAt": "2026-11-01T22:15:13.504Z",
+      "startedAt": "2026-11-01T22:46:44.686Z",
+      "finishedAt": "2026-11-01T22:46:52.939Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-11-01T22:15:13.497Z",
+        "checkedAt": "2026-11-01T22:46:52.934Z",
         "runs": 6,
         "passed": 3,
         "flagged": 3,
         "unchecked": 3,
-        "firstUnchecked": 1420,
+        "firstUnchecked": 1422,
         "zecPaidInDoneRuns": "1.52766757",
         "onChainChecks": true,
         "notes": [
-          "run 1420: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1421: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1422: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1423: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1424: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
         ],
         "maxRunId": 1424
@@ -98,8 +102,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-01T22:22:36.265Z",
-      "finishedAt": "2026-11-01T22:22:36.953Z",
+      "startedAt": "2026-11-01T22:46:52.940Z",
+      "finishedAt": "2026-11-01T22:46:53.458Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -118,32 +122,32 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-01T22:22:36.954Z",
-      "finishedAt": "2026-11-01T22:22:40.825Z",
+      "startedAt": "2026-11-01T22:46:53.459Z",
+      "finishedAt": "2026-11-01T22:46:56.675Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "burns": 123,
-        "burnsVerified": 123,
-        "boughtBackZat": "469399882",
+        "burns": 125,
+        "burnsVerified": 125,
+        "boughtBackZat": "476979827",
         "venues": {
           "pump amm": 75,
-          "raydium cpmm": 17,
+          "raydium cpmm": 18,
           "raydium launchlab": 2,
           "pump bonding curve": 1,
-          "jupiter": 28
+          "jupiter": 29
         },
         "perCoin": {
           "0": {
             "mint": "147a97vXeJMM8pgFrEeMVmts4MciKAEEwRN6anYQszec",
-            "burns": 17,
-            "zat": "65745381"
+            "burns": 18,
+            "zat": "69161620"
           },
           "1993": {
             "mint": "7Ypg1rKLu8q32E1AQEDjaPCg8dfGeCSsMkFnK98zcash",
-            "burns": 28,
-            "zat": "129966114"
+            "burns": 29,
+            "zat": "134129820"
           },
           "ZILLIONS": {
             "mint": "3sKZuSZF7onqPYFrWu3bH4Lh141duydt9MAmSd46jaLJ",
@@ -225,15 +229,16 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "buyback 2t2L3D2m5nRyuRC2MFtfu2GmiU6Hf3wEYfUbA7qM4DKXM7ryzzX1V5hQGqAEecQuzqqCiXS2j9e7NFw8vQHkKtcv drew 3416239 zat but is not in Sapling's burn list",
-          "buyback 2iQDHzTpmtyeHK8bB5324aUwg3uofG6Le31fa82ABqyvitUeZxsTr5HuJHug1fUgDD2W73uUM9timNygFNdpDrRV drew 4163706 zat but is not in Sapling's burn list",
-          "headline 661245253 zat bought back, listed burns add up to 236074845"
+          "headline 668825198 zat bought back, listed burns add up to 237438719"
         ]
       }
     }
   },
   "openAlerts": {
-    "keys": {},
+    "keys": {
+      "multisig proposal_activate at 2026-11-01T22:18:21.000Z (5LnAH99wFZLKTp75Sf8uftsQqgEgDDhnc7biXYGehMgkmN45TdQ28BhxbXmxtnvSKNe3GDFq4D7wXJQRV3Gso4Zt)": "2026-11-01T22:46:44.265Z",
+      "multisig proposal_create at 2026-11-01T22:18:02.000Z (z2JibWqCcorwUkfTqmhxTVYVfE8k1RYE57JGJL52mhRVoz7kvQNYzZi4qL8hqKjY9QMDggKRojYsHvf7tqAeVm6)": "2026-11-01T22:46:44.265Z"
+    },
     "rewards": {},
     "float": {},
     "tax": {},
