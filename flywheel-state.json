@@ -1319,19 +1319,68 @@
       "burnAuthority": "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
       "symbol": "ZEBRA",
       "at": "2026-10-31T23:00:02.127Z"
+    },
+    "4sFAzyYykNhFMwyt3oEarFCZW6pmKfPKChZb96N6abidj9JUkLfeyM9cPbGeSY6HS3Gpc7rDVK8ewkoeMhJycwDc": {
+      "signature": "4sFAzyYykNhFMwyt3oEarFCZW6pmKfPKChZb96N6abidj9JUkLfeyM9cPbGeSY6HS3Gpc7rDVK8ewkoeMhJycwDc",
+      "mint": "7Ypg1rKLu8q32E1AQEDjaPCg8dfGeCSsMkFnK98zcash",
+      "zat": "3880802",
+      "burned": "504996662062",
+      "problems": [
+        "unexpected program in buyback: JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4, 11111111111111111111111111111111"
+      ],
+      "signers": [
+        "7yJnPdEDFS7KZbKvPsK8QgHqC61hoE2H5W8EpmNAuMCC",
+        "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu"
+      ],
+      "venue": "raydium cpmm",
+      "burnAuthority": "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
+      "symbol": "1993",
+      "at": "2026-11-01T00:31:06.505Z"
+    },
+    "2iKQ5LpyY13HRnqUmWL6UNLkwdPezmw4mSbNe1Y4W1Atutp1GgyD1jTrUKMYCGKxqryNHbVpRqreD3G9CX657HeW": {
+      "signature": "2iKQ5LpyY13HRnqUmWL6UNLkwdPezmw4mSbNe1Y4W1Atutp1GgyD1jTrUKMYCGKxqryNHbVpRqreD3G9CX657HeW",
+      "mint": "7Ypg1rKLu8q32E1AQEDjaPCg8dfGeCSsMkFnK98zcash",
+      "zat": "6158632",
+      "burned": "822740018881",
+      "problems": [
+        "unexpected program in buyback: JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4, 11111111111111111111111111111111"
+      ],
+      "signers": [
+        "7yJnPdEDFS7KZbKvPsK8QgHqC61hoE2H5W8EpmNAuMCC",
+        "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu"
+      ],
+      "venue": "raydium cpmm",
+      "burnAuthority": "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
+      "symbol": "1993",
+      "at": "2026-11-01T00:15:59.942Z"
+    },
+    "M8YunBV1ycAcq5CDA93u2X3wvDhcXoLKAUk656kdL6xrJxH2eqRLydBW1w2B1iRe542U5ZXVUnS8kpYcXFk4dcd": {
+      "signature": "M8YunBV1ycAcq5CDA93u2X3wvDhcXoLKAUk656kdL6xrJxH2eqRLydBW1w2B1iRe542U5ZXVUnS8kpYcXFk4dcd",
+      "mint": "8TUn4HHBybSR4oatWshpeM7i1keT5esWCZE6zc8EB1uC",
+      "zat": "7054240",
+      "burned": "5993674033064",
+      "problems": [],
+      "signers": [
+        "7yJnPdEDFS7KZbKvPsK8QgHqC61hoE2H5W8EpmNAuMCC",
+        "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu"
+      ],
+      "venue": "pump amm",
+      "burnAuthority": "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
+      "symbol": "SHIELD",
+      "at": "2026-11-01T00:00:38.228Z"
     }
   },
   "pot": {
-    "lastSig": "kBPPHn46j3y6WHJ2kY6u7CdYkzetHRMGpkChBRdyNWLa77iKjM1qYy8tg735D6JjZjcJej2tmSxz9dADKWMZbe4",
-    "total": "2769782",
+    "lastSig": "4sFAzyYykNhFMwyt3oEarFCZW6pmKfPKChZb96N6abidj9JUkLfeyM9cPbGeSY6HS3Gpc7rDVK8ewkoeMhJycwDc",
+    "total": "0",
     "complete": true,
     "kinds": {
       "setup": 1,
-      "inflow": 1558,
-      "buyback": 160
+      "inflow": 1561,
+      "buyback": 162
     },
-    "inflowZat": "508749368",
-    "buybackZat": "505979586",
+    "inflowZat": "516019020",
+    "buybackZat": "516019020",
     "caughtUp": true
   },
   "signers": [
