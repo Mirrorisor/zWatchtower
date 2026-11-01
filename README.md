@@ -12,11 +12,26 @@ addresses, nothing signed, nothing needed from Sapling.
 
 ## Independence
 
-zWatchtower is not affiliated with Sapling. If the project ever has a coin on
-Sapling, that is disclosed here, its fees go somewhere neutral (the Zcash
-Foundation or a public hosting wallet), and alerts are never held back or
-softened because of it. Every check is code in this repo and every result
-can be reproduced by running it.
+zWatchtower is not affiliated with Sapling. Every check is code in this repo
+and every result can be reproduced by running it.
+
+### The $ZWATCH coin
+
+zWatchtower has a coin on Sapling: [$ZWATCH](https://sapling.cash/coin/9Kz9RmVm8tqXRLZDRxaPZm2tkhjCrp7X8RUz1Ayzcash)
+(mint `9Kz9RmVm8tqXRLZDRxaPZm2tkhjCrp7X8RUz1Ayzcash`), launched 1 Nov 2026 12:17 UTC on Raydium LaunchLab and
+entered in Sapling's Race to $1M privacy tech track.
+
+- **Its 1% creator share goes to the Zcash Foundation, permanently.** That was
+  set on chain at launch; nobody, the team included, can redirect it.
+- **The team's holding:** the launch wallet `4KPboYtTrodVbHqJQWVyRybCfzuj7iT3FoUHNpEiuuDQ`
+  bought 3,353,573 ZWATCH (0.34% of supply) for 0.0079862 ZEC at launch. Any
+  change is posted here first.
+- **Same rules as every Sapling Raydium coin:** 3% transfer tax (Sapling's 2%
+  + the 1% above), no mint or freeze authority, and, like 59 of Sapling's 61
+  other Raydium coins, Sapling's program can still change the tax rate.
+  zWatchtower's tax check watches $ZWATCH like any other coin.
+- **The coin changes nothing about the checks.** Alerts about Sapling are never
+  held back or softened, including ones that could hurt the coin's price.
 
 ## The checks
 
