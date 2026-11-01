@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-01T01:44:44.997Z",
-      "finishedAt": "2026-11-01T01:47:34.950Z",
+      "startedAt": "2026-11-01T02:29:19.241Z",
+      "finishedAt": "2026-11-01T02:32:02.886Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,24 +21,18 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 31,
+          "observe_sapling": 30,
           "sell_tax": 21,
-          "withdraw_tax": 20,
-          "settle_tax": 4,
-          "convert_tax_begin": 3,
-          "convert_tax_end": 3,
-          "convert_sapling_begin": 1,
-          "convert_sapling_end": 1,
-          "draw_lp": 1,
-          "settle": 10,
-          "claim_payee": 2,
+          "withdraw_tax": 21,
+          "settle_tax": 8,
+          "convert_tax_begin": 6,
+          "convert_tax_end": 6,
+          "settle": 9,
           "draw_grove": 2,
           "close_grove": 2,
-          "settle_sapling": 1,
-          "register_launchlab_coin": 1,
-          "declare_payee": 1,
-          "close_rewards_run": 1,
-          "release_rewards": 1
+          "claim_payee": 1,
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1
         },
         "unrecognised": 13,
         "baseline": false
@@ -46,29 +40,28 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-01T01:47:34.952Z",
-      "finishedAt": "2026-11-01T01:47:49.953Z",
+      "startedAt": "2026-11-01T02:32:02.888Z",
+      "finishedAt": "2026-11-01T02:32:15.818Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-11-01T01:47:49.948Z",
-        "runs": 9,
-        "passed": 3,
-        "flagged": 6,
-        "unchecked": 6,
+        "checkedAt": "2026-11-01T02:32:15.812Z",
+        "runs": 10,
+        "passed": 5,
+        "flagged": 5,
+        "unchecked": 5,
         "firstUnchecked": 1378,
-        "zecPaidInDoneRuns": "4.57207517",
+        "zecPaidInDoneRuns": "4.43147622",
         "onChainChecks": true,
         "notes": [
           "run 1378: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1382: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1381: not checked: Cannot read properties of null (reading 'holders')",
           "run 1383: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1384: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1385: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1386: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
+          "run 1386: not checked: Cannot read properties of null (reading 'holders')"
         ],
-        "maxRunId": 1386
+        "maxRunId": 1385
       }
     },
     "float": {
@@ -108,8 +101,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-01T01:55:05.008Z",
-      "finishedAt": "2026-11-01T01:55:05.571Z",
+      "startedAt": "2026-11-01T02:32:15.819Z",
+      "finishedAt": "2026-11-01T02:32:16.360Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -128,8 +121,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-01T01:55:05.571Z",
-      "finishedAt": "2026-11-01T01:55:42.959Z",
+      "startedAt": "2026-11-01T02:32:16.360Z",
+      "finishedAt": "2026-11-01T02:32:40.517Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -139,15 +132,16 @@
         "flywheel burn 1993 4ZxWnmYSyhP48t3FskrgQNjTh27FTSrnCJcH12vyDJHqQMy6ozyJW6QNLpE8LD2UjvzDebLEoc2Td6oLnET3rByn: unexpected program in buyback: JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4, 11111111111111111111111111111111",
         "flywheel burn 1993 2K6vKZ87iM8QHUmUCBFmBcf3fCSCqoDjKaeVXmdvXAom7pMiPUW9Zb7mR3cuUKx7dMvV3URTcGjzH7pabXG8DTUH: unexpected program in buyback: JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4, 11111111111111111111111111111111",
         "flywheel burn 1993 44zvke14135RFA87FFbw3FpPr9uuBsyaDa95hK4ZT6XtikYU9SwN3C7pwoRfFM1XMuikMvPy6MyZBKzq5j9PitxV: unexpected program in buyback: JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4, 11111111111111111111111111111111",
-        "flywheel burn 1993 44S77Rh7VEATTP58kC3bzdpjuc5UJZ6V1F3qHt7QBqz7t2wn6oiqp2netZPbHSoP19tshLg6eLEeQpf4sN9b9PKx: unexpected program in buyback: JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4, 11111111111111111111111111111111"
+        "flywheel burn 1993 44S77Rh7VEATTP58kC3bzdpjuc5UJZ6V1F3qHt7QBqz7t2wn6oiqp2netZPbHSoP19tshLg6eLEeQpf4sN9b9PKx: unexpected program in buyback: JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4, 11111111111111111111111111111111",
+        "flywheel burn 1993 4tV5t9p37kQXVjVk2vKH46aTopx7QEyxLQKcynjFaNHshgmcf4DuQR9JTTD1ny3BT2EyEJ4tLJKVbmqk5oVCvmuT: unexpected program in buyback: JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4, 11111111111111111111111111111111"
       ],
       "summary": {
-        "burns": 96,
-        "burnsVerified": 89,
-        "boughtBackZat": "351934931",
+        "burns": 98,
+        "burnsVerified": 90,
+        "boughtBackZat": "369162299",
         "venues": {
-          "pump amm": 70,
-          "raydium cpmm": 23,
+          "pump amm": 71,
+          "raydium cpmm": 24,
           "raydium launchlab": 2,
           "pump bonding curve": 1
         },
@@ -159,8 +153,8 @@
           },
           "1993": {
             "mint": "7Ypg1rKLu8q32E1AQEDjaPCg8dfGeCSsMkFnK98zcash",
-            "burns": 7,
-            "zat": "37800716"
+            "burns": 8,
+            "zat": "47345876"
           },
           "ZILLIONS": {
             "mint": "3sKZuSZF7onqPYFrWu3bH4Lh141duydt9MAmSd46jaLJ",
@@ -214,8 +208,8 @@
           },
           "ZEBRA": {
             "mint": "GYHdoj51x95dZabW4n4s7fXLXXnqjcqti8LRQfwgn3W2",
-            "burns": 3,
-            "zat": "16473981"
+            "burns": 4,
+            "zat": "24156189"
           },
           "SHIELD": {
             "mint": "8TUn4HHBybSR4oatWshpeM7i1keT5esWCZE6zc8EB1uC",
@@ -224,14 +218,14 @@
           }
         },
         "pot": {
-          "balanceZat": "10568657",
-          "shownZat": "10568657",
-          "inflowZat": "554348959",
-          "buybackZat": "543780302",
+          "balanceZat": "8748845",
+          "shownZat": "4725134",
+          "inflowZat": "569756515",
+          "buybackZat": "561007670",
           "movements": {
             "setup": 1,
-            "inflow": 1575,
-            "buyback": 167
+            "inflow": 1583,
+            "buyback": 169
           },
           "reconciled": true,
           "caughtUp": true
@@ -242,7 +236,8 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "headline 543780302 zat bought back, listed burns add up to 205105063"
+          "Sapling shows the pot at 4725134 zat, chain says 8748845 (may be a moment out of date)",
+          "headline 561007670 zat bought back, listed burns add up to 216347684"
         ]
       }
     }
@@ -259,9 +254,10 @@
       "flywheel burn 1993 4ZxWnmYSyhP48t3FskrgQNjTh27FTSrnCJcH12vyDJHqQMy6ozyJW6QNLpE8LD2UjvzDebLEoc2Td6oLnET3rByn: unexpected program in buyback: JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4, 11111111111111111111111111111111": "2026-11-01T01:55:42.959Z",
       "flywheel burn 1993 2K6vKZ87iM8QHUmUCBFmBcf3fCSCqoDjKaeVXmdvXAom7pMiPUW9Zb7mR3cuUKx7dMvV3URTcGjzH7pabXG8DTUH: unexpected program in buyback: JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4, 11111111111111111111111111111111": "2026-11-01T01:55:42.959Z",
       "flywheel burn 1993 44zvke14135RFA87FFbw3FpPr9uuBsyaDa95hK4ZT6XtikYU9SwN3C7pwoRfFM1XMuikMvPy6MyZBKzq5j9PitxV: unexpected program in buyback: JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4, 11111111111111111111111111111111": "2026-11-01T01:55:42.959Z",
-      "flywheel burn 1993 44S77Rh7VEATTP58kC3bzdpjuc5UJZ6V1F3qHt7QBqz7t2wn6oiqp2netZPbHSoP19tshLg6eLEeQpf4sN9b9PKx: unexpected program in buyback: JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4, 11111111111111111111111111111111": "2026-11-01T01:55:42.959Z"
+      "flywheel burn 1993 44S77Rh7VEATTP58kC3bzdpjuc5UJZ6V1F3qHt7QBqz7t2wn6oiqp2netZPbHSoP19tshLg6eLEeQpf4sN9b9PKx: unexpected program in buyback: JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4, 11111111111111111111111111111111": "2026-11-01T01:55:42.959Z",
+      "flywheel burn 1993 4tV5t9p37kQXVjVk2vKH46aTopx7QEyxLQKcynjFaNHshgmcf4DuQR9JTTD1ny3BT2EyEJ4tLJKVbmqk5oVCvmuT: unexpected program in buyback: JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4, 11111111111111111111111111111111": "2026-11-01T02:32:40.517Z"
     }
   },
   "rewardsMaxRun": 1382,
-  "rewardsFrom": 1378
+  "rewardsFrom": 1377
 }

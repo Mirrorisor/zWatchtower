@@ -1453,19 +1453,51 @@
       "burnAuthority": "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
       "symbol": "1993",
       "at": "2026-11-01T00:46:14.236Z"
+    },
+    "4tV5t9p37kQXVjVk2vKH46aTopx7QEyxLQKcynjFaNHshgmcf4DuQR9JTTD1ny3BT2EyEJ4tLJKVbmqk5oVCvmuT": {
+      "signature": "4tV5t9p37kQXVjVk2vKH46aTopx7QEyxLQKcynjFaNHshgmcf4DuQR9JTTD1ny3BT2EyEJ4tLJKVbmqk5oVCvmuT",
+      "mint": "7Ypg1rKLu8q32E1AQEDjaPCg8dfGeCSsMkFnK98zcash",
+      "zat": "9545160",
+      "burned": "1198009471444",
+      "problems": [
+        "unexpected program in buyback: JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4, 11111111111111111111111111111111"
+      ],
+      "signers": [
+        "7yJnPdEDFS7KZbKvPsK8QgHqC61hoE2H5W8EpmNAuMCC",
+        "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu"
+      ],
+      "venue": "raydium cpmm",
+      "burnAuthority": "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
+      "symbol": "1993",
+      "at": "2026-11-01T02:17:49.300Z"
+    },
+    "5dyKBQhQSXMmLaSwYtLQAZuLpienmNxk57jjo69b7Ruh8WK5p2ELg4NDGK6Y3nkDKnEhNM6P5WanjuJ92SSvk8fE": {
+      "signature": "5dyKBQhQSXMmLaSwYtLQAZuLpienmNxk57jjo69b7Ruh8WK5p2ELg4NDGK6Y3nkDKnEhNM6P5WanjuJ92SSvk8fE",
+      "mint": "GYHdoj51x95dZabW4n4s7fXLXXnqjcqti8LRQfwgn3W2",
+      "zat": "7682208",
+      "burned": "3525904559458",
+      "problems": [],
+      "signers": [
+        "7yJnPdEDFS7KZbKvPsK8QgHqC61hoE2H5W8EpmNAuMCC",
+        "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu"
+      ],
+      "venue": "pump amm",
+      "burnAuthority": "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
+      "symbol": "ZEBRA",
+      "at": "2026-11-01T02:02:42.938Z"
     }
   },
   "pot": {
-    "lastSig": "3oQbKT9x52tWsaFu65anoJadtZaQJwwRVoHWFvBjHaphft6zUjt8zvBd1KanEjKrKwXFk4duWxudL1oLmAHPkVpX",
-    "total": "10568657",
+    "lastSig": "saWX5XJpp5TmgNPSkNz4RwNMd3UM5BuZ4rtoCt5EGXw8cuYktZejSrU7iHTqePNYaYaBoFRf4Cd5rbWa7BjjH6u",
+    "total": "8748845",
     "complete": true,
     "kinds": {
       "setup": 1,
-      "inflow": 1575,
-      "buyback": 167
+      "inflow": 1583,
+      "buyback": 169
     },
-    "inflowZat": "554348959",
-    "buybackZat": "543780302",
+    "inflowZat": "569756515",
+    "buybackZat": "561007670",
     "caughtUp": true
   },
   "signers": [
