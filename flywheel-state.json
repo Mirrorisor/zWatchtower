@@ -1730,18 +1730,35 @@
       "burnAuthority": "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
       "symbol": "0",
       "at": "2026-11-01T10:00:57.838Z"
+    },
+    "3bZ9FArCLWxF2qDKdht6Q5JREqj2L1SP1FDmEMCU3WpJhfgGDEDqknihtEvFAKkmMBSrxYQPUGejXyd4vgBpZsMB": {
+      "signature": "3bZ9FArCLWxF2qDKdht6Q5JREqj2L1SP1FDmEMCU3WpJhfgGDEDqknihtEvFAKkmMBSrxYQPUGejXyd4vgBpZsMB",
+      "mint": "7Ypg1rKLu8q32E1AQEDjaPCg8dfGeCSsMkFnK98zcash",
+      "zat": "3321624",
+      "burned": "450342896015",
+      "problems": [
+        "unexpected program in buyback: JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4, 11111111111111111111111111111111"
+      ],
+      "signers": [
+        "7yJnPdEDFS7KZbKvPsK8QgHqC61hoE2H5W8EpmNAuMCC",
+        "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu"
+      ],
+      "venue": "raydium cpmm",
+      "burnAuthority": "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
+      "symbol": "1993",
+      "at": "2026-11-01T10:31:59.093Z"
     }
   },
   "pot": {
-    "lastSig": "4XTqnQGYDDugpK1fjQDD1JHw6tDXbjFEudr8QP64KwCcohLP9qAnkXpEKzCpZEoRjNrRFYETNRzZArCBgFNFhWb7",
-    "total": "1409814",
+    "lastSig": "3CAQ7eLrJ94HNkDVbuLeh3evY27mS93GEbVQoCYcbZCk7CaS3S4rXiVjxARH182GNjsy6ZyvALPkKaV7EzX1vTCL",
+    "total": "2475751",
     "complete": true,
     "kinds": {
       "setup": 1,
-      "inflow": 1647,
+      "inflow": 1650,
       "buyback": 185
     },
-    "inflowZat": "623886588",
+    "inflowZat": "624952525",
     "buybackZat": "622476774",
     "caughtUp": true
   },
