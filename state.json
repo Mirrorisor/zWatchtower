@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-01T19:27:20.348Z",
-      "finishedAt": "2026-11-01T19:29:05.446Z",
+      "startedAt": "2026-11-01T19:59:22.446Z",
+      "finishedAt": "2026-11-01T20:00:57.710Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,48 +21,42 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 28,
-          "sell_tax": 10,
-          "withdraw_tax": 12,
-          "settle_tax": 5,
-          "convert_tax_begin": 4,
-          "convert_tax_end": 4,
-          "draw_grove": 1,
-          "close_grove": 1,
-          "settle": 4
+          "observe_sapling": 26,
+          "sell_tax": 5,
+          "withdraw_tax": 5,
+          "settle_tax": 3,
+          "convert_tax_begin": 3,
+          "convert_tax_end": 3,
+          "close_rewards_run": 3,
+          "release_rewards": 3,
+          "settle": 9
         },
-        "unrecognised": 8,
+        "unrecognised": 6,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-01T19:29:05.448Z",
-      "finishedAt": "2026-11-01T19:29:21.795Z",
+      "startedAt": "2026-11-01T20:00:57.711Z",
+      "finishedAt": "2026-11-01T20:01:11.212Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-11-01T19:29:21.787Z",
-        "runs": 14,
-        "passed": 5,
-        "flagged": 9,
-        "unchecked": 9,
-        "firstUnchecked": 1411,
-        "zecPaidInDoneRuns": "0.84573362",
+        "checkedAt": "2026-11-01T20:01:11.206Z",
+        "runs": 13,
+        "passed": 10,
+        "flagged": 3,
+        "unchecked": 3,
+        "firstUnchecked": 1418,
+        "zecPaidInDoneRuns": "1.81219754",
         "onChainChecks": true,
         "notes": [
-          "run 1411: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1412: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1413: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1414: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1415: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1416: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1417: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1418: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1419: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
+          "run 1421: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1422: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
         ],
-        "maxRunId": 1419
+        "maxRunId": 1422
       }
     },
     "float": {
@@ -102,8 +96,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-01T19:36:37.416Z",
-      "finishedAt": "2026-11-01T19:36:37.954Z",
+      "startedAt": "2026-11-01T20:01:11.212Z",
+      "finishedAt": "2026-11-01T20:01:11.563Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -122,8 +116,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-01T19:36:37.955Z",
-      "finishedAt": "2026-11-01T19:36:43.636Z",
+      "startedAt": "2026-11-01T20:01:11.564Z",
+      "finishedAt": "2026-11-01T20:01:16.613Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -211,13 +205,13 @@
           }
         },
         "pot": {
-          "balanceZat": "1999616",
-          "shownZat": "1999616",
-          "inflowZat": "659847094",
+          "balanceZat": "2726150",
+          "shownZat": "2726150",
+          "inflowZat": "660573628",
           "buybackZat": "657847478",
           "movements": {
             "setup": 1,
-            "inflow": 1701,
+            "inflow": 1703,
             "buyback": 193
           },
           "reconciled": true,
@@ -241,8 +235,8 @@
     "tax": {},
     "flywheel": {}
   },
-  "rewardsMaxRun": 1415,
-  "rewardsFrom": 1406,
+  "rewardsMaxRun": 1422,
+  "rewardsFrom": 1410,
   "x": {
     "day": "2026-11-01",
     "today": 2,
