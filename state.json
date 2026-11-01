@@ -2,24 +2,18 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-01T16:41:59.346Z",
-      "finishedAt": "2026-11-01T16:44:11.366Z",
+      "startedAt": "2026-11-01T17:13:50.625Z",
+      "finishedAt": "2026-11-01T17:15:22.977Z",
       "status": "ran",
       "ok": false,
       "alerts": [
-        "vault program upgraded: last deploy slot 463872407 -> 464160709",
-        "multisig proposal_approve at 2026-11-01T16:39:14.000Z (22dDrbKcTs6bgkfyBHcKfDc55n2oXwnRx64fL2kQfaSDt49VdAC1c4bLAoKDdBB5LHAGCsLaZ3dH8dUtu19QgkBq)",
-        "multisig proposal_approve at 2026-11-01T16:37:39.000Z (XyGiesGhNQLCXKti1LZPRQNtcNucyR7X66yDsTNkBVXJfJqUQUv79UrDxHHeimzYZsfRpaUP4Ef3EzFz8r9BGEB)",
-        "multisig proposal_approve at 2026-11-01T16:37:34.000Z (3m6DYDJQiWwgqZgqF8QQRCjW7NTX1MEj8AEzsR77PvMzukbKyYZX52bUtAuVJGGa9GN7uBirxmYkYX9agZdcDSic)",
-        "multisig proposal_approve at 2026-11-01T16:37:32.000Z (58Th12oWaT3ejK3Y7HBgFvHm8R4GgN7gSofmyEvyWfgUQtS7DRd1VjEfZbhLAnPZj2iF2aoq94CF5QiKm4R7zPuY)",
-        "multisig vault_transaction_create at 2026-11-01T16:34:56.000Z (5K4VvgUSKya3ex3biJixAtD91Z2yb3S4FCzXTA7fJt2JmWQCcuSThTNoPUkxxUDqJuoKhasBJbziKW3ycBmHTssU)",
-        "multisig proposal_create at 2026-11-01T16:34:56.000Z (5K4VvgUSKya3ex3biJixAtD91Z2yb3S4FCzXTA7fJt2JmWQCcuSThTNoPUkxxUDqJuoKhasBJbziKW3ycBmHTssU)",
-        "multisig vault_transaction_create at 2026-11-01T16:34:53.000Z (5RkUfG3rpKGjYs9VSTTSAbcgN6noVvmvZ8BTU4q9WxRQXQoaAz9YTvPsfg7jEvB4a4GiBrrSjEmp4np99QkYTKNY)",
-        "multisig proposal_create at 2026-11-01T16:34:53.000Z (5RkUfG3rpKGjYs9VSTTSAbcgN6noVvmvZ8BTU4q9WxRQXQoaAz9YTvPsfg7jEvB4a4GiBrrSjEmp4np99QkYTKNY)"
+        "vault program upgraded: last deploy slot 464160709 -> 464166898",
+        "multisig vault_transaction_execute at 2026-11-01T16:56:24.000Z (RHVDc27gQJ8aqTCfVGZU6Zhao8B91mdFYXe6KhB7QANqkS4reRxPMpq37JkbLGhAoRnuYc8w5EL3AocNccJzqKT)",
+        "multisig vault_transaction_execute at 2026-11-01T16:55:37.000Z (4zePyJ1y27uxA1zDhMCYiEHduDZZbbkG2ZVza27LfCrdGaRhmDuz6xusmfDjxeTokheA9c7HsG85fT2NUfruxPoD)"
       ],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
-        "lastDeploySlot": 464160709,
+        "lastDeploySlot": 464166898,
         "configSha256": "f1c98440cc3844740aecc5b2bdbd0b99d8d9afdf74eca1848db61263e78bae03",
         "walletsInConfig": [
           "treasury",
@@ -31,47 +25,41 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 32,
-          "settle_tax": 6,
+          "observe_sapling": 26,
           "sell_tax": 6,
-          "withdraw_tax": 6,
-          "convert_tax_begin": 3,
-          "convert_tax_end": 3,
-          "settle": 9,
-          "convert_sapling_begin": 1,
-          "convert_sapling_end": 1,
-          "draw_grove": 1,
-          "close_grove": 1,
-          "collect_protocol_pool_fees": 6,
+          "withdraw_tax": 7,
+          "settle_tax": 4,
+          "settle": 12,
+          "convert_tax_begin": 1,
+          "convert_tax_end": 1,
           "close_rewards_run": 1,
-          "release_rewards": 1,
-          "settle_sapling": 1
+          "release_rewards": 1
         },
-        "unrecognised": 15,
+        "unrecognised": 2,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-01T16:44:11.966Z",
-      "finishedAt": "2026-11-01T16:44:27.280Z",
+      "startedAt": "2026-11-01T17:15:23.458Z",
+      "finishedAt": "2026-11-01T17:15:39.574Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-11-01T16:44:27.275Z",
+        "checkedAt": "2026-11-01T17:15:39.568Z",
         "runs": 10,
         "passed": 4,
         "flagged": 6,
         "unchecked": 6,
-        "firstUnchecked": 1407,
+        "firstUnchecked": 1406,
         "zecPaidInDoneRuns": "0.58030892",
         "onChainChecks": true,
         "notes": [
-          "run 1407: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1409: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1411: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1406: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1410: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1412: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1413: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1414: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1415: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
         ],
@@ -115,8 +103,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-01T16:51:49.826Z",
-      "finishedAt": "2026-11-01T16:51:50.665Z",
+      "startedAt": "2026-11-01T17:15:39.574Z",
+      "finishedAt": "2026-11-01T17:15:40.069Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -135,8 +123,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-01T16:51:50.665Z",
-      "finishedAt": "2026-11-01T16:51:54.701Z",
+      "startedAt": "2026-11-01T17:15:40.070Z",
+      "finishedAt": "2026-11-01T17:15:41.894Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -224,13 +212,13 @@
           }
         },
         "pot": {
-          "balanceZat": "1401539",
-          "shownZat": "1401539",
-          "inflowZat": "633707585",
+          "balanceZat": "2056335",
+          "shownZat": "2056335",
+          "inflowZat": "634362381",
           "buybackZat": "632306046",
           "movements": {
             "setup": 1,
-            "inflow": 1678,
+            "inflow": 1680,
             "buyback": 188
           },
           "reconciled": true,
@@ -249,26 +237,20 @@
   },
   "openAlerts": {
     "keys": {
-      "vault program upgraded: last deploy slot 463872407 -> 464160709": "2026-11-01T16:44:11.366Z",
-      "multisig proposal_approve at 2026-11-01T16:39:14.000Z (22dDrbKcTs6bgkfyBHcKfDc55n2oXwnRx64fL2kQfaSDt49VdAC1c4bLAoKDdBB5LHAGCsLaZ3dH8dUtu19QgkBq)": "2026-11-01T16:44:11.366Z",
-      "multisig proposal_approve at 2026-11-01T16:37:39.000Z (XyGiesGhNQLCXKti1LZPRQNtcNucyR7X66yDsTNkBVXJfJqUQUv79UrDxHHeimzYZsfRpaUP4Ef3EzFz8r9BGEB)": "2026-11-01T16:44:11.366Z",
-      "multisig proposal_approve at 2026-11-01T16:37:34.000Z (3m6DYDJQiWwgqZgqF8QQRCjW7NTX1MEj8AEzsR77PvMzukbKyYZX52bUtAuVJGGa9GN7uBirxmYkYX9agZdcDSic)": "2026-11-01T16:44:11.366Z",
-      "multisig proposal_approve at 2026-11-01T16:37:32.000Z (58Th12oWaT3ejK3Y7HBgFvHm8R4GgN7gSofmyEvyWfgUQtS7DRd1VjEfZbhLAnPZj2iF2aoq94CF5QiKm4R7zPuY)": "2026-11-01T16:44:11.366Z",
-      "multisig vault_transaction_create at 2026-11-01T16:34:56.000Z (5K4VvgUSKya3ex3biJixAtD91Z2yb3S4FCzXTA7fJt2JmWQCcuSThTNoPUkxxUDqJuoKhasBJbziKW3ycBmHTssU)": "2026-11-01T16:44:11.366Z",
-      "multisig proposal_create at 2026-11-01T16:34:56.000Z (5K4VvgUSKya3ex3biJixAtD91Z2yb3S4FCzXTA7fJt2JmWQCcuSThTNoPUkxxUDqJuoKhasBJbziKW3ycBmHTssU)": "2026-11-01T16:44:11.366Z",
-      "multisig vault_transaction_create at 2026-11-01T16:34:53.000Z (5RkUfG3rpKGjYs9VSTTSAbcgN6noVvmvZ8BTU4q9WxRQXQoaAz9YTvPsfg7jEvB4a4GiBrrSjEmp4np99QkYTKNY)": "2026-11-01T16:44:11.366Z",
-      "multisig proposal_create at 2026-11-01T16:34:53.000Z (5RkUfG3rpKGjYs9VSTTSAbcgN6noVvmvZ8BTU4q9WxRQXQoaAz9YTvPsfg7jEvB4a4GiBrrSjEmp4np99QkYTKNY)": "2026-11-01T16:44:11.366Z"
+      "vault program upgraded: last deploy slot 464160709 -> 464166898": "2026-11-01T17:15:22.977Z",
+      "multisig vault_transaction_execute at 2026-11-01T16:56:24.000Z (RHVDc27gQJ8aqTCfVGZU6Zhao8B91mdFYXe6KhB7QANqkS4reRxPMpq37JkbLGhAoRnuYc8w5EL3AocNccJzqKT)": "2026-11-01T17:15:22.977Z",
+      "multisig vault_transaction_execute at 2026-11-01T16:55:37.000Z (4zePyJ1y27uxA1zDhMCYiEHduDZZbbkG2ZVza27LfCrdGaRhmDuz6xusmfDjxeTokheA9c7HsG85fT2NUfruxPoD)": "2026-11-01T17:15:22.977Z"
     },
     "rewards": {},
     "float": {},
     "tax": {},
     "flywheel": {}
   },
-  "rewardsMaxRun": 1411,
+  "rewardsMaxRun": 1410,
   "rewardsFrom": 1406,
   "x": {
     "day": "2026-11-01",
-    "today": 1,
+    "today": 2,
     "thisRun": 1
   }
 }
