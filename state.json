@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-01T21:01:49.188Z",
-      "finishedAt": "2026-11-01T21:03:12.992Z",
+      "startedAt": "2026-11-01T21:40:40.421Z",
+      "finishedAt": "2026-11-01T21:41:54.253Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,38 +21,42 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 27,
-          "close_rewards_run": 1,
-          "release_rewards": 1,
-          "settle": 5,
-          "settle_tax": 2,
+          "observe_sapling": 31,
+          "settle_tax": 1,
           "convert_tax_begin": 1,
           "convert_tax_end": 1,
+          "settle": 4,
           "sell_tax": 2,
-          "withdraw_tax": 2
+          "withdraw_tax": 2,
+          "close_rewards_run": 1,
+          "release_rewards": 1,
+          "settle_sapling": 1
         },
-        "unrecognised": 2,
+        "unrecognised": 3,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-01T21:03:12.994Z",
-      "finishedAt": "2026-11-01T21:03:15.711Z",
+      "startedAt": "2026-11-01T21:41:54.255Z",
+      "finishedAt": "2026-11-01T21:42:03.395Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-11-01T21:03:15.705Z",
+        "checkedAt": "2026-11-01T21:42:03.390Z",
         "runs": 7,
-        "passed": 7,
-        "flagged": 0,
-        "unchecked": 0,
-        "firstUnchecked": null,
-        "zecPaidInDoneRuns": "1.43774853",
+        "passed": 5,
+        "flagged": 2,
+        "unchecked": 2,
+        "firstUnchecked": 1421,
+        "zecPaidInDoneRuns": "1.57265772",
         "onChainChecks": true,
-        "notes": [],
-        "maxRunId": 1423
+        "notes": [
+          "run 1421: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1423: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
+        ],
+        "maxRunId": 1424
       }
     },
     "float": {
@@ -92,8 +96,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-01T21:10:43.379Z",
-      "finishedAt": "2026-11-01T21:10:44.192Z",
+      "startedAt": "2026-11-01T21:42:03.396Z",
+      "finishedAt": "2026-11-01T21:42:03.785Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -112,8 +116,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-01T21:10:44.192Z",
-      "finishedAt": "2026-11-01T21:10:51.504Z",
+      "startedAt": "2026-11-01T21:42:03.785Z",
+      "finishedAt": "2026-11-01T21:42:07.245Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -201,13 +205,13 @@
           }
         },
         "pot": {
-          "balanceZat": "1558146",
-          "shownZat": "1558146",
-          "inflowZat": "662803399",
+          "balanceZat": "2630887",
+          "shownZat": "2630887",
+          "inflowZat": "663876140",
           "buybackZat": "661245253",
           "movements": {
             "setup": 1,
-            "inflow": 1708,
+            "inflow": 1709,
             "buyback": 194
           },
           "reconciled": true,
@@ -231,8 +235,8 @@
     "tax": {},
     "flywheel": {}
   },
-  "rewardsMaxRun": 1423,
-  "rewardsFrom": 1417,
+  "rewardsMaxRun": 1424,
+  "rewardsFrom": 1418,
   "x": {
     "day": "2026-11-01",
     "today": 2,
