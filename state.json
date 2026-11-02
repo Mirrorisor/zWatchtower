@@ -2,37 +2,62 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-02T11:34:20.301Z",
-      "finishedAt": "2026-11-02T11:35:59.558Z",
-      "status": "error",
-      "ok": null,
-      "alerts": [],
-      "error": "getTransaction: {\"code\":-32015,\"message\":\"Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \\\"maxSupportedTransactionVersion\\\": 1\"}"
-    },
-    "rewards": {
-      "check": "rewards",
-      "startedAt": "2026-11-02T11:35:59.560Z",
-      "finishedAt": "2026-11-02T11:36:30.918Z",
+      "startedAt": "2026-11-02T12:32:50.263Z",
+      "finishedAt": "2026-11-02T12:35:34.792Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-11-02T11:36:30.910Z",
-        "runs": 26,
-        "passed": 8,
-        "flagged": 18,
-        "unchecked": 18,
-        "firstUnchecked": 1445,
-        "zecPaidInDoneRuns": "1.50701387",
+        "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
+        "lastDeploySlot": 464166898,
+        "configSha256": "b5950e0eb5f7aef3c065dc7cd509c07c747f6248e903c2e9c5968abe301743cf",
+        "walletsInConfig": [
+          "treasury",
+          "rewards",
+          "buyback",
+          "lpWallet",
+          "lpPot",
+          "admin",
+          "recovery"
+        ],
+        "vaultInstructions": {
+          "observe_sapling": 49,
+          "collect_protocol_pool_fees": 7,
+          "settle_tax": 7,
+          "convert_tax_begin": 3,
+          "convert_tax_end": 3,
+          "settle_sapling": 1,
+          "settle": 9,
+          "sell_tax": 11,
+          "withdraw_tax": 12,
+          "draw_grove": 1,
+          "close_grove": 1
+        },
+        "unrecognised": 14,
+        "baseline": false
+      }
+    },
+    "rewards": {
+      "check": "rewards",
+      "startedAt": "2026-11-02T12:35:34.794Z",
+      "finishedAt": "2026-11-02T12:35:59.448Z",
+      "status": "ran",
+      "ok": true,
+      "alerts": [],
+      "summary": {
+        "checkedAt": "2026-11-02T12:35:59.440Z",
+        "runs": 19,
+        "passed": 4,
+        "flagged": 15,
+        "unchecked": 15,
+        "firstUnchecked": 1444,
+        "zecPaidInDoneRuns": "0.87121756",
         "onChainChecks": true,
         "notes": [
+          "run 1444: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1445: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1446: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1447: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1448: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1449: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1450: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1451: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1452: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1453: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1454: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
@@ -85,8 +110,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-02T11:44:01.720Z",
-      "finishedAt": "2026-11-02T11:44:02.690Z",
+      "startedAt": "2026-11-02T12:35:59.448Z",
+      "finishedAt": "2026-11-02T12:36:00.396Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -105,21 +130,21 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-02T11:44:02.691Z",
-      "finishedAt": "2026-11-02T11:44:08.779Z",
+      "startedAt": "2026-11-02T12:36:00.397Z",
+      "finishedAt": "2026-11-02T12:36:14.958Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "burns": 136,
-        "burnsVerified": 136,
-        "boughtBackZat": "530143199",
+        "burns": 137,
+        "burnsVerified": 137,
+        "boughtBackZat": "533538109",
         "venues": {
           "pump amm": 77,
           "raydium cpmm": 18,
           "raydium launchlab": 2,
           "pump bonding curve": 1,
-          "jupiter": 38
+          "jupiter": 39
         },
         "perCoin": {
           "0": {
@@ -129,8 +154,8 @@
           },
           "1993": {
             "mint": "7Ypg1rKLu8q32E1AQEDjaPCg8dfGeCSsMkFnK98zcash",
-            "burns": 38,
-            "zat": "181183970"
+            "burns": 39,
+            "zat": "184578880"
           },
           "ZILLIONS": {
             "mint": "3sKZuSZF7onqPYFrWu3bH4Lh141duydt9MAmSd46jaLJ",
@@ -194,14 +219,14 @@
           }
         },
         "pot": {
-          "balanceZat": "1948108",
-          "shownZat": "1948108",
-          "inflowZat": "723936678",
-          "buybackZat": "721988570",
+          "balanceZat": "2124943",
+          "shownZat": "2124943",
+          "inflowZat": "727508423",
+          "buybackZat": "725383480",
           "movements": {
             "setup": 1,
-            "inflow": 1791,
-            "buyback": 207
+            "inflow": 1797,
+            "buyback": 208
           },
           "reconciled": true,
           "caughtUp": true
@@ -212,14 +237,14 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "headline 721988570 zat bought back, listed burns add up to 233856315"
+          "headline 725383480 zat bought back, listed burns add up to 233186483"
         ]
       }
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-02T11:44:08.780Z",
-      "finishedAt": "2026-11-02T11:54:45.252Z",
+      "startedAt": "2026-11-02T12:36:14.959Z",
+      "finishedAt": "2026-11-02T12:45:58.324Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -250,8 +275,8 @@
     "flywheel": {},
     "coins": {}
   },
-  "rewardsMaxRun": 1449,
-  "rewardsFrom": 1437,
+  "rewardsMaxRun": 1448,
+  "rewardsFrom": 1444,
   "x": {
     "day": "2026-11-01",
     "today": 5,
