@@ -94,6 +94,14 @@ check("partial trade history: no launch claims, a note instead", c.facts.creator
   check("events: an unflagged coin passing $10k is not", cardEvents(undefined, base).length === 0);
 }
 
+// shielded launches: Sapling shows "shielded launch" instead of a wallet
+{
+  const sh = buildCard({ ...bad, creator: "shielded launch", launcher: "shielded launch" }, badTrades, null, null);
+  check("a shielded launch: no creator claims, early buyers still counted, a note says why",
+    sh.creator === null && sh.creatorHidden && sh.facts.creatorLaunchPct === undefined && sh.facts.earlyBuyersPct === 23 &&
+    sh.notes.some((n) => /shielded Zcash wallet/.test(n)), JSON.stringify({ facts: sh.facts, notes: sh.notes }));
+}
+
 // creator track records
 {
   const cr = "4KPboYtTrodVbHqJQWVyRybCfzuj7iT3FoUHNpEiuuDQ";
@@ -250,24 +258,25 @@ try {
   check("end to end: a coin that drops under the line loses its card", JSON.parse(readFileSync(out, "utf8")).cards.length === 0, JSON.stringify(w.report));
   // creator scan: every coin's creator, and a warning for a new coin from a serial seller
   rmSync(st, { force: true });
-  const smallCoin = (mint, launchedAt, sold) => ({ mint, detail: { ...zwatch, mint, symbol: mint.toUpperCase(), name: mint,
+  const smallCoin = (mint, launchedAt, sold, extra = {}) => ({ mint, detail: { ...zwatch, mint, symbol: mint.toUpperCase(), name: mint, ...extra,
     launchedAt, marketCapUsd: 900, marketCapZec: "100000" }, trades: [
       ...(sold ? [{ signature: `${mint}-s`, blockTime: new Date(Date.parse(launchedAt) + 60000).toISOString(), isBuy: false, user: creator, tokenAmount: "50000000000000" }] : []),
       { signature: `${mint}-b`, blockTime: launchedAt, isBuy: true, user: creator, tokenAmount: "50000000000000" }] });
-  extraCoins = [smallCoin("cc", "2026-10-20T00:00:00.000Z", true), smallCoin("dd", "2026-10-21T00:00:00.000Z", true)];
+  extraCoins = [smallCoin("cc", "2026-10-20T00:00:00.000Z", true), smallCoin("dd", "2026-10-21T00:00:00.000Z", true),
+    smallCoin("hh", "2026-10-22T00:00:00.000Z", true, { creator: "shielded launch", launcher: "shielded launch" })];
   const s1 = await run("10000");
   const p1 = JSON.parse(readFileSync(out, "utf8"));
   const ser = p1.serialCreators?.find((x) => x.creator === creator);
-  check("end to end: every coin's creator is read, not only carded ones", p1.launchesKnown === 4 &&
-    ser?.launched === 4 && ser.soldOut === 2 && s1.report.notes.some((n) => /creator scan: 4 coin\(s\) read this run, 4 of 4 known/.test(n)),
+  check("end to end: every coin's creator is read, not only carded ones; a shielded launch isn't a creator", p1.launchesKnown === 5 &&
+    ser?.launched === 4 && ser.soldOut === 2 && s1.report.notes.some((n) => /creator scan: 5 coin\(s\) read this run, 5 of 5 read so far \(1 launched shielded, creator not public\)/.test(n)),
     JSON.stringify({ known: p1.launchesKnown, ser, notes: s1.report.notes }));
-  extraCoins.push(smallCoin("ee", new Date(Date.now() - 3600e3).toISOString(), false));
+  extraCoins.push(smallCoin("ee", new Date(Date.now() - 3600e3).toISOString(), false, { symbol: "CC" }));
   const s2 = await run("10000");
   check("end to end: a new coin by a creator who sold out of most of their coins is a warning, once",
-    s2.report.events.some((e) => /^New coin \$EE was launched by a creator who sold out of 2 of their 3 other Sapling coins checked \(\$CC, \$DD\)\./.test(e)),
+    s2.report.events.some((e) => /^New coin \$CC \(ee…ee\) was launched by a creator who sold out of 2 of their 3 other Sapling coins checked \(\$CC, \$DD\)\. It copies the name of an older coin, \$CC \(cc…cc\)\./.test(e)),
     JSON.stringify(s2.report.events));
   const s3 = await run("10000");
-  check("end to end: and only once", !s3.report.events.some((e) => /\$EE/.test(e)), JSON.stringify(s3.report.events));
+  check("end to end: and only once", !s3.report.events.some((e) => /ee…ee/.test(e)), JSON.stringify(s3.report.events));
   extraCoins = [];
 } finally {
   server.close();

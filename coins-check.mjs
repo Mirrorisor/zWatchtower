@@ -12,7 +12,7 @@
 // Usage:
 //   node coins-check.mjs --rpc URL --state coins-state.json --out coins.json --json
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
-import { buildCard, repeatHolders, cardEvents, launchSummary, creatorRecords, creatorHistory, serialCreators,
+import { buildCard, repeatHolders, cardEvents, launchSummary, creatorRecords, creatorHistory, serialCreators, creatorOf as creatorOfDetail, isAddress,
   LIMITS, EARLY_SECONDS, SOLD_OUT_PCT, PRIOR_SOLD_OUT } from "./lib/coins.mjs";
 
 // Bump when a change to how cards are read would move facts by itself: the
@@ -192,19 +192,24 @@ async function main() {
   // early warning: a coin launched in the last day by a creator who sold out of most of their others
   for (const mint of scannedNow) {
     const l = state.launches[mint];
-    if (l.warned || !l.creator || !l.launchedAt || nowMs - Date.parse(l.launchedAt) > RESCAN_MS) continue;
+    if (l.warned || !isAddress(l.creator) || !l.launchedAt || nowMs - Date.parse(l.launchedAt) > RESCAN_MS) continue;
     const h = creatorHistory(records.get(l.creator) ?? [], mint);
     if (h.soldOut >= PRIOR_SOLD_OUT && h.soldOut * 2 >= h.checked) {
       l.warned = true;
       if (state.engine === ENGINE) {
-        const text = `New coin $${l.symbol} was launched by a creator who sold out of ${h.soldOut} of their ${h.checked} other Sapling coins checked (${h.soldOutCoins.slice(0, 3).map((x) => "$" + x).join(", ")}${h.soldOut > 3 ? "…" : ""}).`;
+        // same name as an older Sapling coin? a copycat is worth saying
+        const older = Object.values(state.launches).find((o) => o.mint !== mint && o.symbol && o.symbol.toLowerCase() === String(l.symbol).toLowerCase() &&
+          o.launchedAt && Date.parse(o.launchedAt) < Date.parse(l.launchedAt));
+        const text = `New coin $${l.symbol} (${mint.slice(0, 4)}…${mint.slice(-4)}) was launched by a creator who sold out of ${h.soldOut} of their ${h.checked} other Sapling coins checked (${h.soldOutCoins.slice(0, 3).map((x) => "$" + x).join(", ")}${h.soldOut > 3 ? "…" : ""}).` +
+          (older ? ` It copies the name of an older coin, $${older.symbol} (${older.mint.slice(0, 4)}…${older.mint.slice(-4)}).` : "");
         events.push(text);
         state.events.unshift({ at: new Date().toISOString(), mint, symbol: l.symbol, text });
       }
     }
   }
-  const known = Object.values(state.launches).filter((l) => l.creator).length;
-  notes.push(`creator scan: ${scannedNow.length} coin(s) read this run, ${known} of ${coins.length} known${scanErrors ? `, ${scanErrors} not read` : ""}`);
+  const known = Object.values(state.launches).filter((l) => l.scannedAt && l.symbol).length;
+  const hidden = Object.values(state.launches).filter((l) => l.scannedAt && !isAddress(l.creator)).length;
+  notes.push(`creator scan: ${scannedNow.length} coin(s) read this run, ${known} of ${coins.length} read so far (${hidden} launched shielded, creator not public)${scanErrors ? `, ${scanErrors} not read` : ""}`);
 
   // new coins first, then the stalest cards
   const picks = [...shortlist].sort((a, b) =>
@@ -240,9 +245,9 @@ async function main() {
       const trades = hist.kept;
       let holders = null;
       try { holders = await largestHolders(c.mint); } catch (e) { rpcFailures++; holderErrors[statusOf(e)] = (holderErrors[statusOf(e)] ?? 0) + 1; }
-      const creatorOf = detail.launcher ?? detail.creator ?? null;
+      const who = creatorOfDetail(detail);
       const card = buildCard(detail, trades, mintInfo[c.mint] ?? null, holders,
-        { tradesComplete: complete, creatorRecord: creatorOf ? records.get(creatorOf) ?? [] : null });
+        { tradesComplete: complete, creatorRecord: who ? records.get(who) ?? [] : null });
       if (card.notes.some((n) => /couldn't be checked/.test(n))) { tradeGaps++; if (why) { card.notes.push(why); const k = why.startsWith("Launch not") ? "still reading" : "history starts after launch"; gapWhy[k] = (gapWhy[k] ?? 0) + 1; } }
       // keep facts from an earlier, fuller look if this one couldn't see them
       const prev = state.cards[c.mint];
