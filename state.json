@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-02T22:28:08.482Z",
-      "finishedAt": "2026-11-02T22:28:23.452Z",
+      "startedAt": "2026-11-02T23:07:21.887Z",
+      "finishedAt": "2026-11-02T23:07:36.571Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
-        "configSha256": "4956c9eaf51513f3213a50968b422397a6e80ee542397754e53403f8e48cf7cb",
+        "configSha256": "489d430dad17dc77e45f1363ce318c8cae57e1d374807e3a0372591d7b01fbf3",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -21,42 +21,47 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "settle_tax": 14,
-          "sell_tax": 26,
-          "withdraw_tax": 28,
-          "observe_sapling": 21,
-          "settle_sapling": 1,
-          "settle": 3,
           "draw_grove": 2,
           "close_grove": 2,
-          "convert_tax_begin": 1,
-          "convert_tax_end": 1,
+          "observe_sapling": 23,
+          "settle_tax": 17,
+          "sell_tax": 20,
+          "withdraw_tax": 19,
+          "settle": 11,
+          "register_launchlab_coin": 1,
+          "declare_payee": 1,
+          "release_rewards": 2,
           "close_rewards_run": 1,
-          "release_rewards": 1,
-          "claim_payee": 1
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1,
+          "settle_sapling": 1
         },
-        "unrecognised": 4,
+        "unrecognised": 3,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-02T22:28:23.455Z",
-      "finishedAt": "2026-11-02T22:28:24.887Z",
+      "startedAt": "2026-11-02T23:07:36.573Z",
+      "finishedAt": "2026-11-02T23:07:38.764Z",
       "status": "ran",
-      "ok": true,
-      "alerts": [],
+      "ok": false,
+      "alerts": [
+        "reward run 1486 ZDOG: 79 shares not floor(pot*balance/sum); paid != confirmed shares - rent"
+      ],
       "summary": {
-        "checkedAt": "2026-11-02T22:28:24.879Z",
-        "runs": 7,
+        "checkedAt": "2026-11-02T23:07:38.757Z",
+        "runs": 9,
         "passed": 7,
-        "flagged": 0,
-        "unchecked": 0,
-        "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.37717633",
+        "flagged": 2,
+        "unchecked": 1,
+        "firstUnchecked": 1487,
+        "zecPaidInDoneRuns": "1.12588018",
         "onChainChecks": true,
-        "notes": [],
-        "maxRunId": 1484
+        "notes": [
+          "run 1487: run status \"snapshotted\""
+        ],
+        "maxRunId": 1487
       }
     },
     "float": {
@@ -128,15 +133,15 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-02T22:36:18.462Z",
-      "finishedAt": "2026-11-02T22:36:18.965Z",
+      "startedAt": "2026-11-02T23:07:39.049Z",
+      "finishedAt": "2026-11-02T23:07:41.368Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "coins": 93,
-        "matching": 93,
-        "feeChangeable": 91,
+        "coins": 94,
+        "matching": 94,
+        "feeChangeable": 92,
         "feeRenounced": 2,
         "advertisedRange": [
           200,
@@ -148,19 +153,19 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-02T22:36:18.966Z",
-      "finishedAt": "2026-11-02T22:36:31.889Z",
+      "startedAt": "2026-11-02T23:07:41.368Z",
+      "finishedAt": "2026-11-02T23:07:47.686Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "burns": 148,
-        "burnsVerified": 148,
-        "boughtBackZat": "593909503",
+        "burns": 150,
+        "burnsVerified": 150,
+        "boughtBackZat": "604094635",
         "venues": {
           "pump amm": 82,
           "raydium cpmm": 18,
-          "raydium launchlab": 5,
+          "raydium launchlab": 7,
           "pump bonding curve": 1,
           "jupiter": 42
         },
@@ -237,19 +242,19 @@
           },
           "ZDOG": {
             "mint": "B7h7XLtQMTWMNTzrt35TnRVixsi93vCpDuGLK4Rzcash",
-            "burns": 3,
-            "zat": "13077620"
+            "burns": 5,
+            "zat": "23262752"
           }
         },
         "pot": {
-          "balanceZat": "1082637",
-          "shownZat": "1082637",
-          "inflowZat": "786837511",
-          "buybackZat": "785754874",
+          "balanceZat": "56046",
+          "shownZat": "56046",
+          "inflowZat": "795996052",
+          "buybackZat": "795940006",
           "movements": {
             "setup": 1,
-            "inflow": 1885,
-            "buyback": 219
+            "inflow": 1903,
+            "buyback": 221
           },
           "reconciled": true,
           "caughtUp": true
@@ -260,41 +265,46 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "headline 785754874 zat bought back, listed burns add up to 224747204"
+          "headline 795940006 zat bought back, listed burns add up to 221833526"
         ]
       }
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-02T22:36:31.890Z",
-      "finishedAt": "2026-11-02T22:36:52.738Z",
+      "startedAt": "2026-11-02T23:07:47.687Z",
+      "finishedAt": "2026-11-02T23:09:43.280Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [
-        "$ZDOG ($30.5k) just passed $10.0k market cap with 1 flag: Creator has sold 100% of what they bought."
+        "New coin $NEARKAT was launched by a creator who sold out of 2 of their 3 other Sapling coins checked ($ZDOG, $.).",
+        "New coin $tst was launched by a creator who sold out of 2 of their 3 other Sapling coins checked ($ZDOG, $.).",
+        "New coin $crime was launched by a creator who sold out of 4 of their 4 other Sapling coins checked ($GNILPAS, $BLACKCAT, $ZDOG…).",
+        "New coin $ZEBRA was launched by a creator who sold out of 2 of their 2 other Sapling coins checked ($ZDOG, $.)."
       ],
       "summary": {
-        "coins": 473,
-        "carded": 13,
-        "refreshed": 13,
-        "flagged": 11,
+        "coins": 474,
+        "carded": 12,
+        "refreshed": 12,
+        "flagged": 10,
         "flagCounts": {
           "N wallet(s) bought N in the first N seconds": 8,
-          "Creator has sold N of what they bought": 6,
+          "Creator has sold N of what they bought": 5,
+          "Creator sold out of N of their N other coins checked": 1,
           "Creator bought N of supply at launch": 2
         },
         "notes": [
+          "creator scan: 60 coin(s) read this run, 60 of 474 known",
           "1 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 1)",
           "22 shortlisted coin(s) were under $10,000 on their own page, so no card",
-          "21 wallet(s) are in the top 10 of more than one coin"
+          "19 wallet(s) are in the top 10 of more than one coin"
         ]
       }
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-02T22:36:53.361Z",
-      "finishedAt": "2026-11-02T22:38:25.886Z",
+      "startedAt": "2026-11-02T23:09:43.529Z",
+      "finishedAt": "2026-11-02T23:10:31.567Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -304,7 +314,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 326,
+            "seenInTxs": 401,
             "withJupiter": 34,
             "seeds": [
               "upgradeAuthority",
@@ -342,12 +352,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 74
+            "seenInTxs": 77
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 68
+            "seenInTxs": 71
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -367,7 +377,7 @@
           {
             "id": "LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj",
             "authority": "FytDrVzDybM1TwFQPGb8qaxZR7dBCzNeqT3vtQsceZQK",
-            "seenInTxs": 9
+            "seenInTxs": 14
           },
           {
             "id": "LockrWmn6K5twhz3y9w1dQERbmgSaRkfnTeTKbpofwE",
@@ -377,7 +387,7 @@
           {
             "id": "L2TExMFKdjpN9kozasaurPirfHy9P8sbXoAN1qA3S95",
             "authority": null,
-            "seenInTxs": 3
+            "seenInTxs": 4
           },
           {
             "id": "MNFSTqtC93rEfYHB6hF82sKdZpUDFWkViLByLd1k1Ms",
@@ -405,30 +415,38 @@
             "seenInTxs": 1
           }
         ],
+        "terminal": {
+          "guards": [
+            "GzMQc5VQGggFnicdAKc7MmkQV3dn3i12ux9dbLKqzy6F"
+          ],
+          "txsRead": 94,
+          "tokensSeen": 2,
+          "tokensChecked": 2,
+          "breakingRules": []
+        },
         "programsSeen": 16,
-        "txsRead": 448,
-        "notes": [
-          "tx 4ZqbHEdq… not read",
-          "tx 4zz2KgRZ… not read",
-          "first run: every program found is the baseline, so none is reported as new"
-        ]
+        "txsRead": 126,
+        "notes": []
       }
     }
   },
   "openAlerts": {
     "keys": {},
-    "rewards": {},
+    "rewards": {
+      "reward run 1486 ZDOG: 79 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-02T23:07:38.764Z"
+    },
     "float": {},
     "tax": {},
     "flywheel": {},
     "coins": {},
     "programs": {}
   },
-  "rewardsMaxRun": 1484,
-  "rewardsFrom": 1478,
+  "rewardsMaxRun": 1487,
+  "rewardsFrom": 1479,
   "x": {
     "day": "2026-11-02",
-    "today": 1,
-    "thisRun": 1
-  }
+    "today": 4,
+    "thisRun": 3
+  },
+  "xSummaryDay": "2026-11-02"
 }
