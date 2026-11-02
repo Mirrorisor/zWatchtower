@@ -97,6 +97,32 @@ async function checkReleaseOnChain(run) {
   };
 }
 
+// When shares don't match the published formula, test simple alternatives so
+// the report says which one Sapling's numbers fit (or that none does).
+function diagnoseShares(holders, payouts, run, pot, sum, e) {
+  const rows = holders.map(([owner, bal]) => ({ owner, bal: BigInt(bal), row: payouts.get(owner) })).filter((x) => x.row);
+  const shareSum = rows.reduce((a, x) => a + BigInt(x.row.share), 0n);
+  const fits = (potX, sumX, filter = () => true) => rows.filter(filter)
+    .every((x) => BigInt(x.row.share) === (potX * x.bal) / sumX);
+  const rent = BigInt(run.rentZec || 0), rolled = BigInt(run.rolledOver || 0), paid = BigInt(run.paid);
+  const eligible = (x) => !e || (Number(x.bal) / 10 ** TOKEN_DECIMALS) * Number(e.zecPerToken) * Number(e.zecUsd) >= MIN_HOLDING_USD;
+  const sumEligible = rows.filter(eligible).reduce((a, x) => a + x.bal, 0n);
+  const tries = {
+    "pot minus rent": rent > 0n && fits(pot - rent, sum),
+    "pot minus rolled over": rolled > 0n && fits(pot - rolled, sum),
+    "paid plus rent": fits(paid + rent, sum),
+    "sum of eligible holders only": sumEligible > 0n && fits(pot, sumEligible),
+  };
+  const bad = rows.filter((x) => BigInt(x.row.share) !== (pot * x.bal) / sum);
+  return {
+    pot: String(pot), sumOfBalances: String(sum), sumOfShares: String(shareSum), paid: String(paid), rent: String(rent),
+    rolledOver: String(rolled), holders: holders.length, payoutRows: payouts.size,
+    explainedBy: Object.entries(tries).filter(([, ok]) => ok).map(([k]) => k),
+    sample: bad.slice(0, 3).map((x) => ({ owner: x.owner.slice(0, 6), balance: String(x.bal), expected: String((pot * x.bal) / sum),
+      share: x.row.share, status: x.row.status })),
+  };
+}
+
 async function checkRun(id) {
   const j = await getJson(API + id);
   if (j.notFound) return { id, notFound: true };
@@ -138,7 +164,10 @@ async function checkRun(id) {
     }
   }
   const extra = (j.payouts || []).length - (s.holders.length - missing);
-  if (badShares) p(`${badShares} shares not floor(pot*balance/sum)`);
+  if (badShares) {
+    p(`${badShares} shares not floor(pot*balance/sum)`);
+    out.diagnosis = diagnoseShares(s.holders, payouts, run, pot, sum, e);
+  }
   if (missing) p(`${missing} holders without a payout row`);
   if (extra) p(`${extra} payout rows for non-holders`);
   if (below) p(`${below} holders below the $${MIN_HOLDING_USD} minimum`);

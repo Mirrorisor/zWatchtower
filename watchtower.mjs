@@ -180,6 +180,7 @@ function normalise(name, report) {
       alerts: failing.map((r) => `reward run ${r.id} ${r.coin ?? ""}: ${r.problems.join("; ")}`),
       summary: { ...report.summary,
         notes: report.flagged.filter((r) => !r.problems?.length && r.note).map((r) => `run ${r.id}: ${r.note}`),
+        diagnoses: failing.filter((r) => r.diagnosis).map((r) => ({ id: r.id, coin: r.coin, ...r.diagnosis })),
         maxRunId: Math.max(0, ...report.results.filter((r) => !r.notFound && !r.unchecked).map((r) => r.id)) },
     };
   }
