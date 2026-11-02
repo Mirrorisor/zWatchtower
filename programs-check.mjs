@@ -14,7 +14,7 @@
 //   node programs-check.mjs --rpc URL --state programs-state.json --json
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { encode as b58encode } from "./lib/base58.mjs";
-import { programsInTx, programAlerts, COMMON, LOADER_UPGRADEABLE, JUPITER } from "./lib/programs.mjs";
+import { programsInTx, programAlerts, tokensHandled, mintRuleBreaks, COMMON, LOADER_UPGRADEABLE, JUPITER } from "./lib/programs.mjs";
 
 const args = process.argv.slice(2);
 const opt = (n, d) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] : d; };
@@ -23,6 +23,8 @@ const statePath = opt("--state", "programs-state.json");
 const perSeed = Number(opt("--per-seed", "50"));
 const pauseMs = Number(opt("--pause", "120"));
 const asJson = args.includes("--json");
+const guardTxs = Number(opt("--guard-txs", "100"));
+const pinnedGuard = opt("--guard", null);
 
 const VAULT_PROGRAM = "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF";
 // Whoever holds these can upgrade a program: Sapling's Squads vault, its admin
@@ -140,6 +142,49 @@ async function main() {
   state.programs = now;
   writeFileSync(statePath, JSON.stringify(state));
 
+  // ---- the Terminal guard's token rules ----------------------------------
+  // Which tokens did Terminal trades buy or sell, and does each obey the rules
+  // Sapling's docs say the guard enforces? Reported, not alerted, until the
+  // way tokens are picked out of a trade has been checked on live data.
+  const guards = pinnedGuard ? [pinnedGuard] : Object.entries(now)
+    .filter(([id, p]) => p.sapling && id !== VAULT_PROGRAM && (seen[id]?.withJupiter ?? 0) > 0).map(([id]) => id);
+  state.terminal ??= { lastSig: {}, tokens: {} };
+  const tokens = state.terminal.tokens; // mint -> { bought, sold, firstTx, breaks }
+  let guardTxsRead = 0;
+  for (const g of guards) {
+    let sigs = [];
+    try { sigs = await rpc("getSignaturesForAddress", [g, { limit: guardTxs, ...(state.terminal.lastSig[g] ? { until: state.terminal.lastSig[g] } : {}) }]); }
+    catch (e) { notes.push(`guard ${g.slice(0, 8)}…: signatures not read`); continue; }
+    if (sigs.length) state.terminal.lastSig[g] = sigs[0].signature;
+    for (const s of sigs) {
+      if (s.err) continue;
+      let tx;
+      try { tx = await rpc("getTransaction", [s.signature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 }]); }
+      catch { continue; }
+      guardTxsRead++;
+      const { bought, sold } = tokensHandled(tx);
+      for (const m of bought) { (tokens[m] ??= { bought: 0, sold: 0, firstTx: s.signature, breaks: null }).bought++; }
+      for (const m of sold) { (tokens[m] ??= { bought: 0, sold: 0, firstTx: s.signature, breaks: null }).sold++; }
+      await sleep(pauseMs);
+    }
+  }
+  const unread = Object.keys(tokens).filter((m) => tokens[m].breaks === null);
+  for (let i = 0; i < unread.length; i += 100) {
+    const batch = unread.slice(i, i + 100);
+    try {
+      const res = await rpc("getMultipleAccounts", [batch, { encoding: "jsonParsed" }]);
+      batch.forEach((m, j) => {
+        const info = res?.value?.[j]?.data?.parsed?.info;
+        if (info) tokens[m].breaks = mintRuleBreaks(info);
+      });
+    } catch { notes.push("Terminal token mints not read this run"); }
+  }
+  const breaking = Object.entries(tokens).filter(([, t]) => t.breaks?.length)
+    .map(([mint, t]) => ({ mint, breaks: t.breaks, bought: t.bought, sold: t.sold, firstTx: t.firstTx }));
+  const terminal = { guards, txsRead: guardTxsRead, tokensSeen: Object.keys(tokens).length,
+    tokensChecked: Object.values(tokens).filter((t) => t.breaks !== null).length, breakingRules: breaking };
+  writeFileSync(statePath, JSON.stringify(state));
+
   const sapling = Object.entries(now).filter(([, p]) => p.sapling).map(([id, p]) => ({
     id, authority: p.authority, lastDeploySlot: p.slot,
     seenInTxs: seen[id]?.txs ?? 0, withJupiter: seen[id]?.withJupiter ?? 0, seeds: seen[id]?.seeds ?? [],
@@ -148,7 +193,7 @@ async function main() {
   const others = Object.entries(now).filter(([, p]) => !p.sapling)
     .map(([id, p]) => ({ id, authority: p.authority, seenInTxs: seen[id]?.txs ?? 0 }))
     .sort((a, b) => b.seenInTxs - a.seenInTxs).slice(0, 15);
-  const report = { checkedAt: new Date().toISOString(), txsRead, saplingPrograms: sapling, otherPrograms: others,
+  const report = { checkedAt: new Date().toISOString(), txsRead, saplingPrograms: sapling, otherPrograms: others, terminal,
     programsSeen: Object.keys(now).length, notes, alerts };
   console.log(asJson ? JSON.stringify(report, null, 2) : report);
 }

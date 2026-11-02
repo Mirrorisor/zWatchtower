@@ -198,7 +198,7 @@ function normalise(name, report) {
   if (name === "programs") return {
     ok: report.alerts.length === 0,
     alerts: report.alerts,
-    summary: { saplingPrograms: report.saplingPrograms, otherPrograms: report.otherPrograms,
+    summary: { saplingPrograms: report.saplingPrograms, otherPrograms: report.otherPrograms, terminal: report.terminal ?? null,
       programsSeen: report.programsSeen, txsRead: report.txsRead, notes: report.notes },
   };
   if (name === "flywheel") return {

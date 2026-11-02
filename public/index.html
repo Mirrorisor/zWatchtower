@@ -235,7 +235,9 @@ function renderPrograms(e) {
     <div class="big">${list.length} <small>program${list.length === 1 ? "" : "s"} Sapling can upgrade</small></div>
     ${rows(list.map((p) => [short(p.id),
       `${esc(p.role)} · upgrade authority <span class="mono">${esc(short(p.authority ?? "none"))}</span> · slot ${p.lastDeploySlot ?? "–"} · <a href="https://solscan.io/account/${esc(p.id)}">Solscan</a>`]))}
-    ${rows([["Transactions read", s.txsRead ?? "–"], ["Programs seen in all", s.programsSeen ?? "–"]])}${notes}${footerLine(e)}`;
+    ${rows([["Transactions read", s.txsRead ?? "–"], ["Programs seen in all", s.programsSeen ?? "–"],
+      ...(s.terminal?.tokensSeen ? [["Terminal tokens checked", `${s.terminal.tokensChecked} of ${s.terminal.tokensSeen}` +
+        (s.terminal.breakingRules?.length ? ` · ${s.terminal.breakingRules.length} outside the guard's stated rules` : " · all within the guard's stated rules")]] : [])])}${notes}${footerLine(e)}`;
 }
 
 function renderAlerts(list) {

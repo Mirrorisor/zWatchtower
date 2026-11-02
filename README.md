@@ -113,6 +113,15 @@ the Terminal's `sapling_accounts` guard, which holds Terminal users' tokens,
 is found this way and marked by its trades through Jupiter. The vault's own
 upgrades stay with `keys-check.mjs`.
 
+It then reads the guard's own transactions, picks out the token each
+Terminal trade bought or sold (the one the trade's holding only received or
+only sent; pools, routes and the ZEC payment both send and receive), and
+checks each token's mint against what Sapling's docs say the guard refuses:
+a freeze authority, a permanent delegate, pausing, accounts frozen by
+default, non-transferable tokens, transfer hooks, or a transfer fee over 5%.
+Tokens outside those rules are reported; they become alerts once the way
+tokens are picked out has been checked on live data.
+
 ### Privacy of payouts
 
 The float check also looks up every forward out of Sapling's Zcash order
