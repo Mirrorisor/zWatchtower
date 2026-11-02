@@ -62,4 +62,9 @@ const summary = composeSummary({
 });
 check("daily summary reads well", summary === "zWatchtower daily: 4 of 5 checks green. 61 of 61 Raydium coins charge their advertised tax. Flywheel pot reconciled to the zat. 0 ZEC waiting in payouts. Open alerts: flywheel.", summary);
 
+const withCoins = composeSummary({ keys: { status: "ran", ok: true }, rewards: { status: "ran", ok: true }, float: { status: "ran", ok: true },
+  tax: { status: "ran", ok: true }, flywheel: { status: "ran", ok: true }, coins: { status: "ran", ok: true, summary: { carded: 14, flagged: 9 } },
+  programs: { status: "ran", ok: true } });
+check("daily summary counts every check and the report cards", /7 of 7 checks green/.test(withCoins) && /14 coins over \$10k graded, 9 flagged/.test(withCoins), withCoins);
+
 process.exitCode = failures ? 1 : 0;

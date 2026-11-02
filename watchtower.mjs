@@ -351,7 +351,8 @@ function exportSite(cfg, store, dir) {
         if (/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(card.mint)) writeFileSync(join(dir, "badges", `${card.mint}.svg`), badgeSvg(card));
     } catch (e) { console.error(`badges not written: ${e.message}`); }
   }
-  if (existsSync(join(here, "public", "coins.html"))) copyFileSync(join(here, "public", "coins.html"), join(dir, "coins.html"));
+  for (const f of ["coins.html", "posts.html"])
+    if (existsSync(join(here, "public", f))) copyFileSync(join(here, "public", f), join(dir, f));
   writeFileSync(join(dir, ".nojekyll"), "");
 }
 
@@ -366,6 +367,7 @@ function serve(cfg, store) {
     };
     const limit = Math.min(500, Number(url.searchParams.get("limit") ?? 100));
     if (url.pathname === "/") { res.writeHead(200, { "content-type": "text/html; charset=utf-8" }); return res.end(page()); }
+    if (url.pathname === "/posts.html") { res.writeHead(200, { "content-type": "text/html; charset=utf-8" }); return res.end(readFileSync(join(here, "public", "posts.html"))); }
     if (url.pathname === "/coins.html") { res.writeHead(200, { "content-type": "text/html; charset=utf-8" }); return res.end(readFileSync(join(here, "public", "coins.html"))); }
     if (url.pathname === "/api/coins.json") {
       const f = join(cfg.dataDir, "coins.json");
@@ -405,9 +407,10 @@ async function main() {
     };
     if (store.state.x) store.state.x.thisRun = 0;
     for (const n of names.filter(due)) await runCheck(n, cfg, store);
-    // one summary post a day, on the first run after 00:00 UTC
+    // one summary post a day, on the first run after 00:00 UTC; without X keys
+    // it is always written as a preview, ready to copy from the posts page
     const day = new Date().toISOString().slice(0, 10);
-    if (cfg.x.dailySummary && store.state.xSummaryDay !== day && Object.keys(store.state.latest).length) {
+    if ((cfg.x.dailySummary || !cfg.x.creds) && store.state.xSummaryDay !== day && Object.keys(store.state.latest).length) {
       store.state.xSummaryDay = day;
       await publishToX("summary", [], [], cfg, store, [composeSummary(store.state.latest)]);
       store.save();
