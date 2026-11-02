@@ -25,7 +25,9 @@ entered in Sapling's Race to $1M privacy tech track.
   set on chain at launch; nobody, the team included, can redirect it.
 - **The team's holding:** the launch wallet `4KPboYtTrodVbHqJQWVyRybCfzuj7iT3FoUHNpEiuuDQ`
   bought 3,353,573 ZWATCH (0.34% of supply) for 0.0079862 ZEC at launch. Any
-  change is posted here first.
+  change is posted here first. The team holds no other wallet: the 0.96% bought
+  3 seconds after launch by `6bD2YsuNF2MjMdYiLHRzmHswx3BzmtRgkFhJuBF6czBs` was
+  someone else.
 - **Same rules as every Sapling Raydium coin:** 3% transfer tax (Sapling's 2%
   + the 1% above), no mint or freeze authority, and, like 59 of Sapling's 61
   other Raydium coins, Sapling's program can still change the tax rate.
