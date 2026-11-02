@@ -2,89 +2,49 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-02T02:38:47.023Z",
-      "finishedAt": "2026-11-02T02:41:39.330Z",
-      "status": "ran",
-      "ok": true,
+      "startedAt": "2026-11-02T03:30:25.752Z",
+      "finishedAt": "2026-11-02T03:33:13.444Z",
+      "status": "error",
+      "ok": null,
       "alerts": [],
-      "summary": {
-        "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
-        "lastDeploySlot": 464166898,
-        "configSha256": "7c366c00e2e260740c90f839c317055ca1186639c79dbc4b5a83540234902ae9",
-        "walletsInConfig": [
-          "treasury",
-          "rewards",
-          "buyback",
-          "lpWallet",
-          "lpPot",
-          "admin",
-          "recovery"
-        ],
-        "vaultInstructions": {
-          "sell_tax": 14,
-          "withdraw_tax": 15,
-          "settle_tax": 8,
-          "convert_tax_begin": 3,
-          "convert_tax_end": 3,
-          "close_rewards_run": 4,
-          "observe_sapling": 29,
-          "release_rewards": 4,
-          "convert_sapling_begin": 1,
-          "convert_sapling_end": 1,
-          "draw_lp": 1,
-          "draw_lp_sapling": 1,
-          "settle_sapling": 2,
-          "settle": 11,
-          "register_launchlab_coin": 1,
-          "draw_pool_pot": 1,
-          "protocol_pool_deposit": 1,
-          "close_pool_pot": 1,
-          "protocol_pool_lock": 1,
-          "collect_creator_fee": 2,
-          "collect_pool_fees": 2,
-          "draw_grove": 1,
-          "close_grove": 1,
-          "convert_tax_sapling_begin": 1,
-          "convert_tax_sapling_end": 1
-        },
-        "unrecognised": 18,
-        "baseline": false
-      }
+      "error": "getSignaturesForAddress: {\"code\":-32019,\"message\":\"Failed to query long-term storage; please try again\"}"
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-02T02:41:39.332Z",
-      "finishedAt": "2026-11-02T02:41:56.870Z",
+      "startedAt": "2026-11-02T03:33:13.445Z",
+      "finishedAt": "2026-11-02T03:33:38.717Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-11-02T02:41:56.864Z",
-        "runs": 13,
-        "passed": 4,
-        "flagged": 9,
-        "unchecked": 9,
-        "firstUnchecked": 1425,
-        "zecPaidInDoneRuns": "2.13274931",
+        "checkedAt": "2026-11-02T03:33:38.711Z",
+        "runs": 18,
+        "passed": 7,
+        "flagged": 11,
+        "unchecked": 11,
+        "firstUnchecked": 1431,
+        "zecPaidInDoneRuns": "2.47356856",
         "onChainChecks": true,
         "notes": [
-          "run 1425: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1426: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1430: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1431: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1432: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1433: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1434: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1435: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1436: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
+          "run 1436: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1437: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1438: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1439: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1440: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1441: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
         ],
-        "maxRunId": 1436
+        "maxRunId": 1441
       }
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-02T01:48:23.352Z",
-      "finishedAt": "2026-11-02T01:55:38.443Z",
+      "startedAt": "2026-11-02T03:33:38.718Z",
+      "finishedAt": "2026-11-02T03:41:08.188Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -118,8 +78,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-02T02:41:56.871Z",
-      "finishedAt": "2026-11-02T02:41:57.777Z",
+      "startedAt": "2026-11-02T03:41:08.189Z",
+      "finishedAt": "2026-11-02T03:41:08.898Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -138,21 +98,21 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-02T02:41:57.778Z",
-      "finishedAt": "2026-11-02T02:42:16.831Z",
+      "startedAt": "2026-11-02T03:41:08.898Z",
+      "finishedAt": "2026-11-02T03:41:25.341Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "burns": 131,
-        "burnsVerified": 131,
-        "boughtBackZat": "509438188",
+        "burns": 132,
+        "burnsVerified": 132,
+        "boughtBackZat": "514411830",
         "venues": {
           "pump amm": 76,
           "raydium cpmm": 18,
           "raydium launchlab": 2,
           "pump bonding curve": 1,
-          "jupiter": 34
+          "jupiter": 35
         },
         "perCoin": {
           "0": {
@@ -162,8 +122,8 @@
           },
           "1993": {
             "mint": "7Ypg1rKLu8q32E1AQEDjaPCg8dfGeCSsMkFnK98zcash",
-            "burns": 34,
-            "zat": "163482125"
+            "burns": 35,
+            "zat": "168455767"
           },
           "ZILLIONS": {
             "mint": "3sKZuSZF7onqPYFrWu3bH4Lh141duydt9MAmSd46jaLJ",
@@ -227,14 +187,14 @@
           }
         },
         "pot": {
-          "balanceZat": "1419370",
-          "shownZat": "1419370",
-          "inflowZat": "702702929",
-          "buybackZat": "701283559",
+          "balanceZat": "2669867",
+          "shownZat": "2669867",
+          "inflowZat": "708927068",
+          "buybackZat": "706257201",
           "movements": {
             "setup": 1,
-            "inflow": 1754,
-            "buyback": 202
+            "inflow": 1763,
+            "buyback": 203
           },
           "reconciled": true,
           "caughtUp": true
@@ -245,63 +205,31 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "headline 701283559 zat bought back, listed burns add up to 251094728"
+          "headline 706257201 zat bought back, listed burns add up to 251906801"
         ]
       }
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-02T02:42:16.832Z",
-      "finishedAt": "2026-11-02T02:43:58.462Z",
+      "startedAt": "2026-11-02T03:41:25.342Z",
+      "finishedAt": "2026-11-02T03:57:40.401Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "coins": 451,
-        "carded": 2,
-        "refreshed": 2,
-        "flagged": 0,
-        "flagCounts": {},
+        "carded": 42,
+        "refreshed": 40,
+        "flagged": 15,
+        "flagCounts": {
+          "N wallet(s) bought N in the first N seconds": 5,
+          "Creator has sold N of what they bought": 13,
+          "Creator bought N of supply at launch": 2
+        },
         "notes": [
-          "GNILPAS: not refreshed (https://sapling.cash/api/coins/HU9NV8anebM7dzxxStx4W1gyX1y5xZfmh3Eoxvfzcash/trades?limit=1000&before=3hE9BK1VgDs34kvW1dv)",
-          "NEARKAT: not refreshed (https://sapling.cash/api/coins/F2wVEzvT56ZvwA97462Pzh168yDYabT24yRq3Z3zcash/trades?limit=1000&before=3V9BerqU1sMuJqWg4gw)",
-          "1sz: not refreshed (https://sapling.cash/api/coins/229dnGW7jTcL966oN1BLSS5C3Taw2Xj5pyxmcRZkZzec/trades?limit=1000&before=5rnXhkJmFEuM2FHoCej)",
-          "Black: not refreshed (https://sapling.cash/api/coins/4PQcGV93kSBTxC2JmQQHzeBCLr2fpVztRRm93k6zcash/trades?limit=1000&before=WBHbZKgVnFRNQgqDd8g)",
-          "ZRO: not refreshed (https://sapling.cash/api/coins/iYN6d8KJgo5E5DDzTPzXZmYjooXgggE2T3vFPqzcash/trades?limit=1000&before=2JNMVTCJQtEYPYGxXPuz)",
-          "BEPPE: not refreshed (https://sapling.cash/api/coins/DiJnWQyfkcrGqybinMSkFaDwhq8pkXGJ7Y3gMeUzcash/trades?limit=1000&before=bAUkW3nTG1GedT8W61S)",
-          "SAPLING: not refreshed (https://sapling.cash/api/coins/BZFYNPeQAEW3HWQ4DNsTVahC1n4ZjTgn6jB2nnBbB96W/trades?limit=1000&before=3X5gkKuay5fF8iVjzuZ)",
-          "1993: not refreshed (https://sapling.cash/api/coins/7Ypg1rKLu8q32E1AQEDjaPCg8dfGeCSsMkFnK98zcash/trades?limit=1000&before=2UmNAGvDD57Eiav1HnL)",
-          "MERT: not refreshed (https://sapling.cash/api/coins/AfRByHCECV2TZtZy1qqNGtMHU6fA2rbc56KDWrDVsnDR/trades?limit=1000&before=3T4jn9Q8Hc8k8jp3SsW)",
-          "HSOL: not refreshed (https://sapling.cash/api/coins/2A1awDVu7yYTEdUVdMBpKmPNLQNM74bx8PAu1Dos1rwZ/trades?limit=1000&before=4toN5xDaXAQqdto3RMs)",
-          "LOAN: not refreshed (https://sapling.cash/api/coins/4SBQXtFSGkVK6vZSggxoYE8JWMXSUESPLGEEbvciuWtP/trades?limit=1000&before=3P1SZMbt9Sf6Hu6RbtW)",
-          "ZILLIONS: not refreshed (https://sapling.cash/api/coins/3sKZuSZF7onqPYFrWu3bH4Lh141duydt9MAmSd46jaLJ/trades?limit=1000&before=3DDooJ92t1SjR85i9gq)",
-          "0: not refreshed (https://sapling.cash/api/coins/147a97vXeJMM8pgFrEeMVmts4MciKAEEwRN6anYQszec/trades?limit=1000&before=2E6wjb9dEFr59Sz1g16)",
-          "SHINU: not refreshed (https://sapling.cash/api/coins/AZ9NHodnyb6wPYian1Fd9HF1mfvPNkJEecExVT1Sevjg/trades?limit=1000&before=3gTutmnR9GEZnkcPbm4)",
-          "SEEDLING: not refreshed (https://sapling.cash/api/coins/JAxk7phmXL9G2syv6DJ72ibddzTDhybmhZTNjpgKwF5A/trades?limit=1000&before=j7iUzrm5FDnY9ScQhNB)",
-          "YELLOWCAT: not refreshed (https://sapling.cash/api/coins/GDBC4PGbWEmfhp43pp6T7djGJnbCD97LJwjbDTmfk8Ng/trades?limit=1000&before=4Rs8iu35EWpLus3K17D)",
-          "BLACKCAT: not refreshed (https://sapling.cash/api/coins/8LmWjjAh6ujYTcXeMFh6FkT7nn6CDeEwYucMdaxgYn6s/trades?limit=1000&before=2NWrM1aq4j9yEQCz2St)",
-          "ZEBRA: not refreshed (https://sapling.cash/api/coins/GYHdoj51x95dZabW4n4s7fXLXXnqjcqti8LRQfwgn3W2/trades?limit=1000&before=64i3egQeHPsnrynaNps)",
-          "INVISIBLE: not refreshed (https://sapling.cash/api/coins/2HcvsX12NyuLnhDXoU6yWL2XLcr3snCTQ7RhqVmZuCgr/trades?limit=1000&before=2gUW6cXmm24GaFY2VNG)",
-          ".: not refreshed (https://sapling.cash/api/coins/7Q5dmHjTkf9EqsuwEd23e7hcKGaA1RXJR7Xz1xgzcash/trades?limit=1000&before=4vwGpwHxvfYdRUCbwNN)",
-          "**: not refreshed (https://sapling.cash/api/coins/9NEXffD3SY8D5VJ6Qsn7bYRvVNfCb5S1iqtVDVoNiGBk/trades?limit=1000&before=3ADbJYWhE4MoDYDWfUr)",
-          "SINU: not refreshed (https://sapling.cash/api/coins/3GcMkBFTjvadjAxkzoEZ6ok72Ctqfa1FyD5QJu6zcash/trades?limit=1000&before=4DhYbkwba8GzqkFATQ4)",
-          "SI: not refreshed (https://sapling.cash/api/coins/9fmMZT12zGX5J7NbDqRW8iweLpXoUZLjhqPL2Jc4jUCw/trades?limit=1000&before=5xFi6u6sdt5cbyRiJr8)",
-          "SHIELD: not refreshed (https://sapling.cash/api/coins/8TUn4HHBybSR4oatWshpeM7i1keT5esWCZE6zc8EB1uC/trades?limit=1000&before=4p1B1E9T5SBmRDU5oxS)",
-          "ZDOG: not refreshed (https://sapling.cash/api/coins/58eo3pKwDZ2GKT2XvRumuns6RustWyvqtgfyubA3kYAJ/trades?limit=1000&before=4N1WkiYGHqTjJdmj5GV)",
-          "ZCASHCHAN: not refreshed (https://sapling.cash/api/coins/ACqTXUGTbgUDq6REYZQtB9E7BprHrnuJooC1tQKFmmoq/trades?limit=1000&before=h2SFTSVc6tXZQj5du93)",
-          "PRIVACY: not refreshed (https://sapling.cash/api/coins/J4BcBzEN6xybbLftX1nXxXVhVBdeoocDhLVoweVo6Wgk/trades?limit=1000&before=W1HHqvWb8zC3eXYZuVq)",
-          "APT: not refreshed (https://sapling.cash/api/coins/FwDL85ig4VdECxtfQ7DyeovXzr6XtHLdzW2HZJ2dbPBn/trades?limit=1000&before=5ZsepFh52ryjrrDKmGp)",
-          "Rebate: not refreshed (https://sapling.cash/api/coins/3zR43ZBN4sGJGvndE1MZbFg164n5wtiMxUDpwgpstzvf/trades?limit=1000&before=5hcvdEiszaJ772jPe6z)",
-          "YOLK: not refreshed (https://sapling.cash/api/coins/HB2xdQdsXkPnWdwxuehhHYnVRcXPFGJk2CEzmjyYrUdT/trades?limit=1000&before=2kRKuWyRDm69xzDFNi6)",
-          "JACKJACK: not refreshed (https://sapling.cash/api/coins/2RSt56ovXGXk2HYvruPBK6v9UJk88nKXTnyVWg9XmU3z/trades?limit=1000&before=3Hj8NRnKmJ6afWnx3pm)",
-          "Doodle: not refreshed (https://sapling.cash/api/coins/F9Rff8Na1GzAFsfNP9BLrpCr5GVYP8VoBghARGWkGmh6/trades?limit=1000&before=4aghyV4xzTd7KWzZrRm)",
-          "Doodlepad: not refreshed (https://sapling.cash/api/coins/4ZwkP4MfLnVuP3W5jyFRLffUvWMX1uSjpvFN1bTQd26A/trades?limit=1000&before=LMdQ8XqrqkU4Gm8tALh)",
-          "FUN: not refreshed (https://sapling.cash/api/coins/DHn3MH97UtCrKs5eT62EPxjAUquW4D1KyXXqYXCvJRVy/trades?limit=1000&before=N9bvvgJZrVNk8vSqPoR)",
-          "FUN: not refreshed (https://sapling.cash/api/coins/FfrvTXWuTDjP66s6EVZ4iEYsTQSrW6T2qU3kYf3bMwp9/trades?limit=1000&before=4VMhMV78j7vsk5c9LEm)",
-          "NU7: not refreshed (https://sapling.cash/api/coins/7XZjAdgYsTUgKEqoAi1JYDYCoMv4unFfwYQZVfrvhWch/trades?limit=1000&before=3Cmh6KZrmj8drYTKFCk)",
-          "SCAT: not refreshed (https://sapling.cash/api/coins/9TWhfpJbLLsovxTpafj4ceYwc6rgTDkaU1Co8w2cV8Ta/trades?limit=1000&before=2rX76rej5tbJqpQq2fF)",
-          "ZUSD: not refreshed (https://sapling.cash/api/coins/7w9TSTcNb7bjczttp7TpU3xoPTgtZjHrHushr2e9hGJc/trades?limit=1000&before=4p5wdSeSNjercpRAcff)",
-          "holder concentration not read for 2 coin(s) this run (RPC limits); tried again later"
+          "holder concentration not read for 40 coin(s) this run (rate-limited x40); tried again later",
+          "trade paging: none found yet; tried before: HTTP 400, cursor: ignored, until: ignored, offset: ignored, page: ignored; largest page 500",
+          "18 coin(s): trade history didn't reach the launch, so launch buys weren't judged"
         ]
       }
     }
@@ -314,7 +242,7 @@
     "flywheel": {},
     "coins": {}
   },
-  "rewardsMaxRun": 1429,
+  "rewardsMaxRun": 1435,
   "rewardsFrom": 1424,
   "x": {
     "day": "2026-11-01",
