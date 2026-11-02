@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-02T10:45:00.301Z",
-      "finishedAt": "2026-11-02T10:45:01.287Z",
+      "startedAt": "2026-11-02T11:34:20.301Z",
+      "finishedAt": "2026-11-02T11:35:59.558Z",
       "status": "error",
       "ok": null,
       "alerts": [],
@@ -11,26 +11,22 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-02T10:45:01.288Z",
-      "finishedAt": "2026-11-02T10:45:26.649Z",
+      "startedAt": "2026-11-02T11:35:59.560Z",
+      "finishedAt": "2026-11-02T11:36:30.918Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-11-02T10:45:26.641Z",
-        "runs": 22,
-        "passed": 3,
-        "flagged": 19,
-        "unchecked": 19,
-        "firstUnchecked": 1438,
-        "zecPaidInDoneRuns": "1.33526522",
+        "checkedAt": "2026-11-02T11:36:30.910Z",
+        "runs": 26,
+        "passed": 8,
+        "flagged": 18,
+        "unchecked": 18,
+        "firstUnchecked": 1445,
+        "zecPaidInDoneRuns": "1.50701387",
         "onChainChecks": true,
         "notes": [
-          "run 1438: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1441: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1442: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1443: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1444: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1445: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1446: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1447: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1448: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
@@ -44,15 +40,18 @@
           "run 1456: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1457: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1458: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1459: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
+          "run 1459: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1460: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1461: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1462: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
         ],
-        "maxRunId": 1459
+        "maxRunId": 1462
       }
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-02T09:48:17.107Z",
-      "finishedAt": "2026-11-02T09:55:39.244Z",
+      "startedAt": "2026-11-02T11:36:30.919Z",
+      "finishedAt": "2026-11-02T11:44:01.720Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -86,8 +85,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-02T10:45:26.650Z",
-      "finishedAt": "2026-11-02T10:45:27.122Z",
+      "startedAt": "2026-11-02T11:44:01.720Z",
+      "finishedAt": "2026-11-02T11:44:02.690Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -106,21 +105,21 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-02T10:45:27.122Z",
-      "finishedAt": "2026-11-02T10:45:39.304Z",
+      "startedAt": "2026-11-02T11:44:02.691Z",
+      "finishedAt": "2026-11-02T11:44:08.779Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "burns": 135,
-        "burnsVerified": 135,
-        "boughtBackZat": "527134220",
+        "burns": 136,
+        "burnsVerified": 136,
+        "boughtBackZat": "530143199",
         "venues": {
           "pump amm": 77,
           "raydium cpmm": 18,
           "raydium launchlab": 2,
           "pump bonding curve": 1,
-          "jupiter": 37
+          "jupiter": 38
         },
         "perCoin": {
           "0": {
@@ -130,8 +129,8 @@
           },
           "1993": {
             "mint": "7Ypg1rKLu8q32E1AQEDjaPCg8dfGeCSsMkFnK98zcash",
-            "burns": 37,
-            "zat": "178174991"
+            "burns": 38,
+            "zat": "181183970"
           },
           "ZILLIONS": {
             "mint": "3sKZuSZF7onqPYFrWu3bH4Lh141duydt9MAmSd46jaLJ",
@@ -195,13 +194,13 @@
           }
         },
         "pot": {
-          "balanceZat": "0",
-          "shownZat": "0",
-          "inflowZat": "721988570",
+          "balanceZat": "1948108",
+          "shownZat": "1948108",
+          "inflowZat": "723936678",
           "buybackZat": "721988570",
           "movements": {
             "setup": 1,
-            "inflow": 1788,
+            "inflow": 1791,
             "buyback": 207
           },
           "reconciled": true,
@@ -213,15 +212,14 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "buyback 4vJWEeGZCWiLt8PB1fzJfSqTAn718kN1LviHyBw1hWKWFX5NdFXXmTxgaLKekeSvHG2WeQyQxEN7sqUsREX6y3ar drew 3008979 zat but is not in Sapling's burn list",
-          "headline 718979591 zat bought back, listed burns add up to 236893319"
+          "headline 721988570 zat bought back, listed burns add up to 233856315"
         ]
       }
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-02T10:45:39.305Z",
-      "finishedAt": "2026-11-02T10:55:30.510Z",
+      "startedAt": "2026-11-02T11:44:08.780Z",
+      "finishedAt": "2026-11-02T11:54:45.252Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -252,8 +250,8 @@
     "flywheel": {},
     "coins": {}
   },
-  "rewardsMaxRun": 1442,
-  "rewardsFrom": 1438,
+  "rewardsMaxRun": 1449,
+  "rewardsFrom": 1437,
   "x": {
     "day": "2026-11-01",
     "today": 5,
