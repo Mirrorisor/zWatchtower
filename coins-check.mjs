@@ -21,7 +21,7 @@ const apiBase = opt("--api", "https://sapling.cash");
 const statePath = opt("--state", "coins-state.json");
 const outPath = opt("--out", "coins.json");
 const maxCoins = Number(opt("--max-coins", "40"));
-const maxPages = Number(opt("--max-pages", "20"));
+const maxPages = Number(opt("--max-pages", "60")); // 500 trades a page
 // Only coins worth at least this much (USD) get a card. Sapling's coin list
 // overstates coins still on their launch curve, so the list only shortlists;
 // each coin's own page decides.
@@ -94,6 +94,7 @@ async function allTrades(mint, launchedAt) {
   const oldestTime = () => Math.min(...[...seen.values()].map((t) => Date.parse(t.blockTime)));
   const atLaunch = () => Boolean(launchedAt && seen.size && oldestTime() - Date.parse(launchedAt) <= 5000);
   if (!first.length || atLaunch()) return { trades: [...seen.values()], complete: true };
+  let ranOut = false;
 
   for (let page = 1; page < maxPages; page++) {
     const oldest = [...seen.values()].reduce((a, t) => (Date.parse(t.blockTime) < Date.parse(a.blockTime) ? t : a));
@@ -110,13 +111,17 @@ async function allTrades(mint, launchedAt) {
       } catch (e) { paging.tried[name] ??= statusOf(e); }
       await sleep(pauseMs);
     }
+    if (fresh && !fresh.length) ranOut = true;
     if (!fresh || !fresh.length) break;
     if (atLaunch()) return { trades: [...seen.values()], complete: true };
     await sleep(pauseMs);
   }
   // no paging that works: one page is the whole history only if it wasn't full
   const complete = atLaunch() || (seen.size === first.length && paging.pageCap > first.length && paging.pageCap >= 50);
-  return { trades: [...seen.values()], complete };
+  const why = complete ? null : ranOut
+    ? `Sapling's trade history for this coin starts ${new Date(oldestTime()).toISOString().slice(0, 16).replace("T", " ")} UTC, after its launch`
+    : `More than ${seen.size} trades; the launch is further back than this check reads`;
+  return { trades: [...seen.values()], complete, why };
 }
 
 async function largestHolders(mint) {
@@ -158,6 +163,7 @@ async function main() {
   let refreshed = 0, rpcFailures = 0, tradeGaps = 0;
   const holderErrors = {};
   let belowLine = 0;
+  const gapWhy = {};
   for (const c of picks) {
     try {
       const detail = await getJson(`${apiBase}/api/coins/${c.mint}`);
@@ -168,11 +174,11 @@ async function main() {
         state.refreshedAt[c.mint] = new Date().toISOString();
         belowLine++; await sleep(pauseMs); continue;
       }
-      const { trades, complete } = await allTrades(c.mint, detail.launchedAt);
+      const { trades, complete, why } = await allTrades(c.mint, detail.launchedAt);
       let holders = null;
       try { holders = await largestHolders(c.mint); } catch (e) { rpcFailures++; holderErrors[statusOf(e)] = (holderErrors[statusOf(e)] ?? 0) + 1; }
       const card = buildCard(detail, trades, mintInfo[c.mint] ?? null, holders, { tradesComplete: complete });
-      if (card.notes.some((n) => /couldn't be checked/.test(n))) tradeGaps++;
+      if (card.notes.some((n) => /couldn't be checked/.test(n))) { tradeGaps++; if (why) { card.notes.push(why); gapWhy[why.startsWith("More") ? "page limit" : "history starts after launch"] = (gapWhy[why.startsWith("More") ? "page limit" : "history starts after launch"] ?? 0) + 1; } }
       // keep facts from an earlier, fuller look if this one couldn't see them
       const prev = state.cards[c.mint];
       if (prev && holders === null && prev.facts?.top10Pct != null) {
@@ -191,7 +197,7 @@ async function main() {
   }
   if (rpcFailures) notes.push(`holder concentration not read for ${rpcFailures} coin(s) this run (${Object.entries(holderErrors).map(([k, n]) => `${k} x${n}`).join(", ")}); tried again later`);
   notes.push(`trade paging: ${paging.style ? `using "${paging.style}"` : "none found yet"}; tried ${Object.entries(paging.tried).map(([k, v]) => `${k}: ${v}`).join(", ") || "none"}; largest page ${paging.pageCap}`);
-  if (tradeGaps) notes.push(`${tradeGaps} coin(s): trade history didn't reach the launch, so launch buys weren't judged`);
+  if (tradeGaps) notes.push(`${tradeGaps} coin(s): trade history didn't reach the launch, so launch buys weren't judged (${Object.entries(gapWhy).map(([k, n]) => `${k}: ${n}`).join(", ")})`);
 
   // the list is fresh every run, so market cap and holders always are
   const byMint = new Map(coins.map((c) => [c.mint, c]));
