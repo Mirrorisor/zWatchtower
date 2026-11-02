@@ -12,7 +12,7 @@
 // Usage:
 //   node coins-check.mjs --rpc URL --state coins-state.json --out coins.json --json
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
-import { buildCard, LIMITS, EARLY_SECONDS } from "./lib/coins.mjs";
+import { buildCard, repeatHolders, LIMITS, EARLY_SECONDS } from "./lib/coins.mjs";
 
 const args = process.argv.slice(2);
 const opt = (n, d) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] : d; };
@@ -57,71 +57,77 @@ async function listCoins() {
     .filter((c) => c.mint);
 }
 
-// Trades, newest first. Sapling's trade API pages in a way not yet known, so
-// each paging style is tried once per run and the first that returns older
-// trades is used for the rest of the run. Failures never lose the first page.
-const PAGING = [
-  ["before", (seen, oldest) => ({ before: oldest.signature })],
-  // Sapling answered HTTP 400 to a signature, so it may want a time
-  ["before=iso", (seen, oldest) => ({ before: oldest.blockTime })],
-  ["before=ms", (seen, oldest) => ({ before: String(Date.parse(oldest.blockTime)) })],
-  ["before=s", (seen, oldest) => ({ before: String(Math.floor(Date.parse(oldest.blockTime) / 1000)) })],
-  ["beforeTime", (seen, oldest) => ({ beforeTime: oldest.blockTime })],
-  ["cursor", (seen, oldest) => ({ cursor: oldest.signature })],
-  ["until", (seen, oldest) => ({ until: oldest.signature })],
-  ["offset", (seen) => ({ offset: String(seen.size) })],
-  ["page", (seen, oldest, page) => ({ page: String(page + 1) })],
-];
-const paging = { style: null, tried: {}, pageCap: 0 };
+// Trades come newest first, 500 a page, and Sapling pages them only by time:
+// ?before=<unix seconds> returns trades strictly older than that second
+// (a signature, ISO time or milliseconds are refused with HTTP 400).
+//
+// A coin's launch never changes, so its history is read once and kept, and
+// a long history is read over several runs. Only the trades a card needs are
+// kept: the creator's, and everything in the first seconds after launch.
+// Each later run reads only the trades since the last one.
 const statusOf = (e) => {
   const m = e.message.match(/HTTP \d+|rate-limited|"code":\s*(-?\d+)[^}]*?"message":\s*"([^"]{0,60})/);
   return m ? (m[1] ? `RPC ${m[1]} ${m[2]}` : m[0]) : e.message.slice(0, 60);
 };
 
-async function tradesPage(mint, extra) {
-  const q = new URLSearchParams({ limit: "1000", ...extra });
+async function tradesPage(mint, beforeSec) {
+  const q = new URLSearchParams({ limit: "1000", ...(beforeSec != null ? { before: String(beforeSec) } : {}) });
   const batch = await getJson(`${apiBase}/api/coins/${mint}/trades?${q}`) ?? [];
   return Array.isArray(batch) ? batch : (batch.trades ?? []);
 }
 
-// complete: we know we have every trade back to the launch.
-async function allTrades(mint, launchedAt) {
-  const seen = new Map();
-  const add = (list) => { const fresh = list.filter((t) => !seen.has(t.signature)); for (const t of fresh) seen.set(t.signature, t); return fresh; };
-  const first = await tradesPage(mint, {});
-  add(first);
-  paging.pageCap = Math.max(paging.pageCap, first.length);
-  const oldestTime = () => Math.min(...[...seen.values()].map((t) => Date.parse(t.blockTime)));
-  const atLaunch = () => Boolean(launchedAt && seen.size && oldestTime() - Date.parse(launchedAt) <= 5000);
-  if (!first.length || atLaunch()) return { trades: [...seen.values()], complete: true };
-  let ranOut = false;
-
-  for (let page = 1; page < maxPages; page++) {
-    const oldest = [...seen.values()].reduce((a, t) => (Date.parse(t.blockTime) < Date.parse(a.blockTime) ? t : a));
-    const styles = paging.style ? PAGING.filter(([n]) => n === paging.style)
-      : PAGING.filter(([n]) => !(n in paging.tried) || paging.tried[n] === "works");
-    let fresh = null;
-    for (const [name, make] of styles) {
-      try {
-        const list = await tradesPage(mint, make(seen, oldest, page));
-        const got = add(list);
-        if (got.length) { paging.style = name; paging.tried[name] = "works"; fresh = got; break; }
-        if (!list.length && paging.style === name) { fresh = []; break; } // history ran out
-        paging.tried[name] ??= list.length ? "ignored" : "empty";
-      } catch (e) { paging.tried[name] ??= statusOf(e); }
-      await sleep(pauseMs);
-    }
-    if (fresh && !fresh.length) ranOut = true;
-    if (!fresh || !fresh.length) break;
-    if (atLaunch()) return { trades: [...seen.values()], complete: true };
+// Page back from `before` (null: the newest) until a page reaches stopMs,
+// history runs out, or the page budget is spent. A page that ends partway
+// through a second is followed by one that re-reads that second, so no trade
+// in it is skipped; repeats are dropped by signature.
+async function walk(mint, before, stopMs, budget, add, oldest = Infinity) {
+  let newest = null, pages = 0, ranOut = false;
+  while (pages < budget) {
+    const list = await tradesPage(mint, before); pages++;
+    if (!list.length) { ranOut = true; break; }
+    add(list);
+    const ts = list.map((t) => Date.parse(t.blockTime));
+    newest ??= Math.max(...ts);
+    const o = Math.min(...ts), sec = Math.floor(o / 1000);
+    before = o < oldest ? sec + 1 : sec;
+    oldest = Math.min(oldest, o);
+    if (stopMs != null && o <= stopMs) break;
     await sleep(pauseMs);
   }
-  // no paging that works: one page is the whole history only if it wasn't full
-  const complete = atLaunch() || (seen.size === first.length && paging.pageCap > first.length && paging.pageCap >= 50);
-  const why = complete ? null : ranOut
-    ? `Sapling's trade history for this coin starts ${new Date(oldestTime()).toISOString().slice(0, 16).replace("T", " ")} UTC, after its launch`
-    : `More than ${seen.size} trades; the launch is further back than this check reads`;
-  return { trades: [...seen.values()], complete, why };
+  return { oldest, newest, pages, ranOut, before };
+}
+
+const slim = (t) => ({ signature: t.signature, blockTime: t.blockTime, isBuy: t.isBuy, user: t.user, tokenAmount: t.tokenAmount });
+
+async function readHistory(mint, detail, hist) {
+  const creator = detail.launcher ?? detail.creator ?? null;
+  const launchMs = detail.launchedAt ? Date.parse(detail.launchedAt) : null;
+  hist ??= { kept: [], newestMs: null, oldestMs: null, complete: false, startsAfterLaunch: false, pagesRead: 0 };
+  const known = new Set(hist.kept.map((t) => t.signature));
+  const keep = (t) => t.user === creator || (launchMs != null && Date.parse(t.blockTime) - launchMs <= (EARLY_SECONDS + 5) * 1000);
+  const add = (list) => { for (const t of list) if (keep(t) && !known.has(t.signature)) { known.add(t.signature); hist.kept.push(slim(t)); } };
+  const budget = maxPages;   // for each direction
+  if (hist.newestMs != null) {                       // trades since last time
+    const r = await walk(mint, null, hist.newestMs, budget, add);
+    hist.pagesRead += r.pages;
+    if (r.newest != null) hist.newestMs = Math.max(hist.newestMs, r.newest);
+  }
+  if (!hist.complete && budget > 0) {                // back towards the launch
+    const r = await walk(mint, hist.before ?? null, null, budget, add, hist.oldestMs ?? Infinity);
+    hist.before = r.before;               // where the next run carries on
+    hist.pagesRead += r.pages;
+    hist.newestMs ??= r.newest;
+    if (Number.isFinite(r.oldest)) hist.oldestMs = Math.min(hist.oldestMs ?? Infinity, r.oldest);
+    if (r.ranOut) {
+      hist.complete = true;
+      hist.startsAfterLaunch = Boolean(launchMs != null && hist.oldestMs != null && hist.oldestMs - launchMs > 5000);
+    }
+  }
+  const when = (ms) => new Date(ms).toISOString().slice(0, 16).replace("T", " ") + " UTC";
+  const why = !hist.complete
+    ? `Launch not reached yet: read back to ${when(hist.oldestMs)} so far (${hist.pagesRead} pages); continues next run`
+    : hist.startsAfterLaunch ? `Sapling's trade history for this coin starts ${when(hist.oldestMs)}, after its launch` : null;
+  return { hist, complete: hist.complete && !hist.startsAfterLaunch, why };
 }
 
 async function largestHolders(mint) {
@@ -134,6 +140,7 @@ async function largestHolders(mint) {
 
 async function main() {
   const state = existsSync(statePath) ? JSON.parse(readFileSync(statePath, "utf8")) : { cards: {}, refreshedAt: {} };
+  state.history ??= {};
   const notes = [];
   const coins = await listCoins();
   let zecUsd = state.zecUsd ?? null;
@@ -174,15 +181,17 @@ async function main() {
         state.refreshedAt[c.mint] = new Date().toISOString();
         belowLine++; await sleep(pauseMs); continue;
       }
-      const { trades, complete, why } = await allTrades(c.mint, detail.launchedAt);
+      const { hist, complete, why } = await readHistory(c.mint, detail, state.history[c.mint]);
+      state.history[c.mint] = hist;
+      const trades = hist.kept;
       let holders = null;
       try { holders = await largestHolders(c.mint); } catch (e) { rpcFailures++; holderErrors[statusOf(e)] = (holderErrors[statusOf(e)] ?? 0) + 1; }
       const card = buildCard(detail, trades, mintInfo[c.mint] ?? null, holders, { tradesComplete: complete });
-      if (card.notes.some((n) => /couldn't be checked/.test(n))) { tradeGaps++; if (why) { card.notes.push(why); gapWhy[why.startsWith("More") ? "page limit" : "history starts after launch"] = (gapWhy[why.startsWith("More") ? "page limit" : "history starts after launch"] ?? 0) + 1; } }
+      if (card.notes.some((n) => /couldn't be checked/.test(n))) { tradeGaps++; if (why) { card.notes.push(why); const k = why.startsWith("Launch not") ? "still reading" : "history starts after launch"; gapWhy[k] = (gapWhy[k] ?? 0) + 1; } }
       // keep facts from an earlier, fuller look if this one couldn't see them
       const prev = state.cards[c.mint];
       if (prev && holders === null && prev.facts?.top10Pct != null) {
-        card.facts.top10Pct = prev.facts.top10Pct; card.facts.topWallet = prev.facts.topWallet;
+        card.facts.top10Pct = prev.facts.top10Pct; card.facts.top10 = prev.facts.top10; card.facts.topWallet = prev.facts.topWallet;
         card.notes.push(`Holder concentration from ${state.refreshedAt[c.mint].slice(0, 10)}`);
         if (prev.facts.top10Pct > LIMITS.top10Pct) card.flags.push(`Top 10 wallets hold ${prev.facts.top10Pct}% of supply`);
         card.flagCount = card.flags.length;
@@ -196,7 +205,6 @@ async function main() {
     await sleep(pauseMs);
   }
   if (rpcFailures) notes.push(`holder concentration not read for ${rpcFailures} coin(s) this run (${Object.entries(holderErrors).map(([k, n]) => `${k} x${n}`).join(", ")}); tried again later`);
-  notes.push(`trade paging: ${paging.style ? `using "${paging.style}"` : "none found yet"}; tried ${Object.entries(paging.tried).map(([k, v]) => `${k}: ${v}`).join(", ") || "none"}; largest page ${paging.pageCap}`);
   if (tradeGaps) notes.push(`${tradeGaps} coin(s): trade history didn't reach the launch, so launch buys weren't judged (${Object.entries(gapWhy).map(([k, n]) => `${k}: ${n}`).join(", ")})`);
 
   // the list is fresh every run, so market cap and holders always are
@@ -214,11 +222,14 @@ async function main() {
   for (const [mint, card] of Object.entries(state.cards)) {
     if (!shortlisted.has(mint) || (card.marketCapUsd ?? 0) < minMcapUsd) delete state.cards[mint];
   }
+  for (const mint of Object.keys(state.history)) if (!byMint.has(mint)) delete state.history[mint];
   const cards = Object.values(state.cards);
+  const repeats = repeatHolders(cards, state.history);
+  if (repeats.length) notes.push(`${repeats.length} wallet(s) are in the top 10 of more than one coin`);
   const publicCards = cards.map((c) => ({ ...c, refreshedAt: state.refreshedAt[c.mint] }))
     .sort((a, b) => Number(b.marketCapZec ?? 0) - Number(a.marketCapZec ?? 0));
   writeFileSync(outPath, JSON.stringify({ generatedAt: new Date().toISOString(), zecUsd, minMcapUsd, limits: LIMITS,
-    earlySeconds: EARLY_SECONDS, cards: publicCards }));
+    earlySeconds: EARLY_SECONDS, cards: publicCards, repeatHolders: repeats }));
   writeFileSync(statePath, JSON.stringify(state));
 
   const flagCounts = {};

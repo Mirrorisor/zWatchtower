@@ -66,6 +66,9 @@
     td.flagcell { margin-top: 6px; }
     .sortbar { display: flex; }
   }
+  .repeats { padding-left: 1.1rem; line-height: 1.7; }
+  .repeats code { font-size: .9em; }
+  #repeats h2 { font-size: 1.05rem; margin: 1.5rem 0 .25rem; }
 </style>
 </head>
 <body>
@@ -103,10 +106,16 @@
     </table>
   </div>
 
+  <section id="repeats" hidden>
+    <h2>Wallets in the top 10 of more than one coin</h2>
+    <p class="muted">Big holders that turn up across coins. Often a trader or fund; worth knowing when it also created a coin or bought in its first seconds.</p>
+    <ul id="repeatList" class="repeats"></ul>
+  </section>
+
   <details class="how" id="how">
     <summary>How the flags work</summary>
     <ul id="limits"></ul>
-    <p>Cards refresh a few dozen coins at a time, so each shows when it was last read. "Top 10" leaves out pools, bonding curves and other program accounts. Where Sapling's trade history doesn't reach back to a coin's launch, launch facts are left blank rather than guessed.</p>
+    <p>Cards refresh a few dozen coins at a time, so each shows when it was last read. "Top 10" leaves out pools, bonding curves and other program accounts. Where Sapling's trade history doesn't reach back to a coin's launch, launch facts are left blank rather than guessed. A coin's history is read once and kept, so a long one fills in over a few runs.</p>
   </details>
 
   <footer id="foot">Source: <a href="https://github.com/Mirrorisor/zWatchtower">zWatchtower on GitHub</a> (coins-check.mjs). Raw data: <a href="api/coins.json">coins.json</a>.</footer>
@@ -130,6 +139,12 @@ function render() {
   const q = $("#q").value.trim().toLowerCase();
   const only = $("#flaggedOnly").checked;
   const L = data.limits;
+  const reps = data.repeatHolders ?? [];
+  if (reps.length) {
+    $("#repeats").hidden = false;
+    $("#repeatList").innerHTML = reps.map((r) => `<li><a href="https://solscan.io/account/${esc(r.owner)}"><code>${esc(r.owner.slice(0, 6))}…${esc(r.owner.slice(-4))}</code></a>
+      holds ${r.coins.map((c) => `$${esc(c.symbol)} ${p(c.pct)}`).join(", ")}${r.created.length ? ` · <b>created ${r.created.map((s) => "$" + esc(s)).join(", ")}</b>` : ""}${r.earlyBuyerIn.length ? ` · <b>bought in the first 10 s of ${r.earlyBuyerIn.map((s) => "$" + esc(s)).join(", ")}</b>` : ""}</li>`).join("");
+  }
   let rows = data.cards.filter((c) => (!only || c.flagCount) &&
     (!q || [c.symbol, c.name, c.mint].some((x) => (x || "").toLowerCase().includes(q))));
   rows.sort((a, b) => { const x = val(a, sortKey), y = val(b, sortKey); return (x > y ? 1 : x < y ? -1 : 0) * sortDir; });
@@ -159,7 +174,8 @@ async function load() {
   try {
     data = await fetch("api/coins.json", { cache: "no-store" }).then((r) => r.json());
   } catch { $("#rows").innerHTML = '<tr><td colspan="9" class="muted">Report cards are not available yet.</td></tr>'; return; }
-  for (const c of data.cards) c.mcapUsd = c.marketCapZec != null && data.zecUsd ? Number(c.marketCapZec) / 1e8 * data.zecUsd : c.marketCapUsd ?? null;
+  // the coin's own page; Sapling's list overstates coins still on their launch curve
+  for (const c of data.cards) c.mcapUsd = c.marketCapUsd ?? null;
   const flagged = data.cards.filter((c) => c.flagCount).length;
   const kinds = {};
   for (const c of data.cards) for (const f of c.flags) {

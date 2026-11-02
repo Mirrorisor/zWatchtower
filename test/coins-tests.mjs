@@ -1,6 +1,6 @@
 // Coin report cards: $ZWATCH's real launch (1 Nov 2026), and made-up coins
 // that must trip each flag.
-import { buildCard, isOnCurve } from "../lib/coins.mjs";
+import { buildCard, isOnCurve, repeatHolders } from "../lib/coins.mjs";
 
 let failures = 0;
 const check = (label, cond, detail) => {
@@ -64,6 +64,20 @@ c = buildCard(bad, badTrades.slice(3), null, null);
 check("partial trade history: no launch claims, a note instead", c.facts.creatorLaunchPct === undefined &&
   c.notes.some((n) => /couldn't be checked/.test(n)) && c.flagCount === 0, JSON.stringify(c));
 
+// wallets in the top 10 of several coins
+{
+  const cA = { symbol: "A", mint: "mA", creator: "W1", launchedAt: "2026-11-01T00:00:00.000Z",
+    facts: { top10: [{ owner: "W1", pct: 4 }, { owner: "W2", pct: 3 }] } };
+  const cB = { symbol: "B", mint: "mB", creator: "W9", launchedAt: "2026-11-01T00:00:00.000Z",
+    facts: { top10: [{ owner: "W2", pct: 6 }, { owner: "W1", pct: 1 }, { owner: "W3", pct: 1 }] } };
+  const hist = { mB: { kept: [{ user: "W2", isBuy: true, blockTime: "2026-11-01T00:00:03.000Z" }] } };
+  const r = repeatHolders([cA, cB], hist);
+  const w2 = r.find((x) => x.owner === "W2"), w1 = r.find((x) => x.owner === "W1");
+  check("repeat holders: two wallets in both coins, one-coin wallets left out", r.length === 2 && !r.some((x) => x.owner === "W3"), JSON.stringify(r));
+  check("repeat holders: biggest holding first, early buys and creators noted",
+    w2.coins[0].symbol === "B" && w2.earlyBuyerIn.join() === "B" && w1.created.join() === "A", JSON.stringify(r));
+}
+
 // ---- end to end: coins-check.mjs against a fake Sapling API and RPC ----
 import { mkdtempSync, rmSync, readFileSync, existsSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -75,9 +89,12 @@ const here = dirname(fileURLToPath(import.meta.url));
 const dir = mkdtempSync(join(tmpdir(), "coins-test-"));
 // coin B has 3 pages of trades, served 2 at a time, newest first
 const B = { ...bad, mint: "BbbbB", symbol: "BAD" };
-const pages = [...badTrades].map((t, i) => ({ ...t, signature: `s${i}` }))
+// a second buyer in the same second as the sniper, so a 2-trade page ends
+// partway through that second
+const pages = [...badTrades, { blockTime: "2026-11-01T00:00:02.000Z", isBuy: true, user: "5H1gfdDcrtPq7V11uh457dHjZ75caZv6xNd7CeBiPAaV", tokenAmount: "10000000000000" }]
+  .map((t, i) => ({ ...t, signature: `s${i}` }))
   .sort((a, b) => Date.parse(b.blockTime) - Date.parse(a.blockTime));
-let mode = "before";
+let extra = [];   // trades that happen after the first run
 const server = createServer((req, res) => {
   let body = ""; req.on("data", (d) => (body += d));
   req.on("end", () => {
@@ -88,16 +105,15 @@ const server = createServer((req, res) => {
       [B.mint, "BAD", "Bad coin", "m", "999999999", 40, "0", "launchlab"]]);
     if (u.pathname === `/api/coins/${zwatch.mint}`) return send(zwatch);
     if (u.pathname === `/api/coins/${B.mint}`) return send(B);
-    if (u.pathname === `/api/coins/${zwatch.mint}/trades`) return send(zwatchTrades.map((t) => ({ ...t })));
-    if (u.pathname === `/api/coins/${B.mint}/trades`) {
-      if (mode === "offset") {
-        if (u.searchParams.has("before")) return send({ error: "bad param" }, 400);
-        const off = Number(u.searchParams.get("offset") ?? 0);
-        return send(pages.slice(off, off + 2));
-      }
+    if (u.pathname === `/api/coins/${zwatch.mint}/trades`) {
       const before = u.searchParams.get("before");
-      const start = before ? pages.findIndex((t) => t.signature === before) + 1 : 0;
-      return send(pages.slice(start, start + 2));
+      return send(zwatchTrades.filter((t) => !before || Date.parse(t.blockTime) < Number(before) * 1000).map((t) => ({ ...t })));
+    }
+    if (u.pathname === `/api/coins/${B.mint}/trades`) {
+      const before = u.searchParams.get("before");
+      if (before && !/^\d{10}$/.test(before)) return send({ error: "bad before" }, 400);   // as Sapling: seconds only
+      const all = [...extra, ...pages];
+      return send(all.filter((t) => !before || Date.parse(t.blockTime) < Number(before) * 1000).slice(0, 2));
     }
     if (u.pathname === "/rpc") {
       const { method, params } = JSON.parse(body);
@@ -115,9 +131,9 @@ const server = createServer((req, res) => {
 await new Promise((ok) => server.listen(0, ok));
 const base = `http://127.0.0.1:${server.address().port}`;
 const out = join(dir, "coins.json"), st = join(dir, "state.json");
-const run = (minUsd = "0") => new Promise((done) => {
+const run = (minUsd = "0", maxPages = "60") => new Promise((done) => {
   const p = spawn(process.execPath, [join(here, "../coins-check.mjs"), "--json", "--api", base, "--rpc", `${base}/rpc`,
-    "--state", st, "--out", out, "--pause", "0", "--min-mcap-usd", minUsd]);
+    "--state", st, "--out", out, "--pause", "0", "--min-mcap-usd", minUsd, "--max-pages", maxPages]);
   let o = "", e = ""; p.stdout.on("data", (d) => (o += d)); p.stderr.on("data", (d) => (e += d));
   p.on("close", (code) => { let report = null; try { report = JSON.parse(o); } catch {} done({ code, report, err: e }); });
 });
@@ -132,14 +148,30 @@ try {
   check("end to end: a rate-limited holder lookup is a note, not a crash", zCard && zCard.facts.top10Pct === undefined &&
     x.report.notes.some((n) => /concentration not read for 1/.test(n)), JSON.stringify(x.report?.notes));
   check("end to end: report counts flagged coins", x.report.flagged === 1 && x.report.carded === 2, JSON.stringify(x.report));
-  // Sapling rejecting "before" (as on the first live run): fall back to another style
-  mode = "offset";
+  check("end to end: a page ending partway through a second loses no trade", badCard?.facts.earlyBuyers === 2 &&
+    badCard?.facts.earlyBuyersPct === 16, JSON.stringify(badCard?.facts));
+  check("end to end: wallets in the top 10 of both coins are listed", pub.repeatHolders?.length === 0, JSON.stringify(pub.repeatHolders));
+
+  // a long history read over several runs, one page per run, then kept
   rmSync(st, { force: true });
-  const y = await run();
-  const pub2 = JSON.parse(readFileSync(out, "utf8"));
-  const b2 = pub2.cards.find((c) => c.mint === B.mint);
-  check("end to end: a rejected paging style falls back to one that works", b2?.facts.creatorLaunchPct === 8 &&
-    y.report.notes.some((n) => /using "offset"; tried before: HTTP 400.*offset: works/.test(n)), JSON.stringify(y.report?.notes));
+  const reads = [];
+  for (let i = 0; i < 6; i++) {
+    const r = await run("0", "1");
+    reads.push(JSON.parse(readFileSync(out, "utf8")).cards.find((c) => c.mint === B.mint));
+    if (i === 0) check("end to end: a launch not reached yet says so", r.code === 0 && reads[0].facts.creatorLaunchPct === undefined &&
+      reads[0].notes.some((n) => /Launch not reached yet/.test(n)), JSON.stringify(reads[0].notes));
+  }
+  const done = reads[5];
+  check("end to end: the history resumes across runs until the launch", done.facts.creatorLaunchPct === 8 &&
+    done.facts.earlyBuyers === 2 && done.facts.creatorSoldPct === 80, JSON.stringify(done.facts));
+  // later, the creator sells the rest: only the new trades are read
+  extra = [{ signature: "late", blockTime: "2026-11-01T05:00:00.000Z", isBuy: false, user: creator, tokenAmount: "16000000000000" }];
+  await run("0", "1");
+  const after = JSON.parse(readFileSync(out, "utf8")).cards.find((c) => c.mint === B.mint);
+  check("end to end: trades after the launch is kept are still counted", after.facts.creatorSoldPct === 100 &&
+    after.facts.creatorLaunchPct === 8, JSON.stringify(after.facts));
+  extra = [];
+
   // only coins worth $10k+ on their own page get a card; B's list figure is
   // inflated (as Sapling's is for coins on their launch curve) but its page says $2.9k
   B.marketCapUsd = 2904; zwatch.marketCapUsd = 25000;
