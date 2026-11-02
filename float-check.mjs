@@ -22,6 +22,7 @@
 //   node float-check.mjs --source zebra --zebra http://127.0.0.1:8232
 import { readFileSync } from "node:fs";
 import { orderAddresses } from "./lib/derive.mjs";
+import { classifyForward } from "./lib/privacy.mjs";
 
 const args = process.argv.slice(2);
 const opt = (n, d) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] : d; };
@@ -95,6 +96,26 @@ async function zebraAddress(address) {
 }
 
 const lookup = source === "zebra" ? zebraAddress : threexplAddress;
+
+// ---- privacy: where did each forward go? ---------------------------------
+// Sapling says it forwards every delivery "as a shielded note". A forward
+// whose outputs all land in a shielded pool keeps the payout private; one
+// that pays a transparent address (t1…/t3…) does not. 3xpl lists a
+// transaction's movements as address/effect events; shielded value shows
+// under a pool name rather than an address, and the names seen are reported
+// so the classification can be checked.
+async function threexplTx(hash) {
+  const base = apiKey ? "https://api.3xpl.com" : "https://sandbox-api.3xpl.com";
+  const url = `${base}/zcash/transaction/${hash}?data=events` + (apiKey ? `&token=${apiKey}` : "");
+  for (let attempt = 0; attempt < 6; attempt++) {
+    const r = await fetch(url);
+    if (r.status === 429) { await sleep(5000 * (attempt + 1)); continue; }
+    if (!r.ok) throw new Error(`3xpl tx ${hash}: HTTP ${r.status}`);
+    return r.json();
+  }
+  throw new Error(`3xpl tx ${hash}: still rate-limited`);
+}
+
 
 // ---- analysis -------------------------------------------------------------
 
@@ -174,6 +195,22 @@ async function main() {
   if (!asJson) process.stderr.write("\n");
   const report = { checkedAt: new Date().toISOString(), source, scanned,
     ...analyse(rows, exits.caps, Date.now()) };
+  if (source === "3xpl" && !args.includes("--no-privacy")) {
+    const privacy = { forwards: 0, shielded: 0, transparent: 0, mixed: 0, unknown: 0, poolNames: [], errors: 0, sample: null };
+    for (const r of rows) for (const e of r.events) {
+      if (e.effect >= 0n || !e.tx) continue;
+      try {
+        const j = await threexplTx(e.tx);
+        const evs = (j.data?.events?.["zcash-main"] ?? []).map((x) => ({ address: x.address, effect: x.effect }));
+        privacy.sample ??= { tx: e.tx, events: evs.slice(0, 12) };
+        const c = classifyForward(evs, r.address);
+        privacy.forwards++; privacy[c.kind]++;
+        for (const p of c.pools) if (!privacy.poolNames.includes(p)) privacy.poolNames.push(p);
+      } catch { privacy.errors++; }
+      await sleep(delayMs);
+    }
+    report.privacy = privacy;
+  }
   if (source === "zebra") {
     delete report.peakFloatZec; delete report.peakAt; delete report.holdMinutes;
     report.note = "zebra source: current float and stuck UTXOs only";

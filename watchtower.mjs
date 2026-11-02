@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // zWatchtower service
 //
-// Runs the five checks on their own schedules, keeps their latest result and
+// Runs the checks on their own schedules, keeps their latest result and
 // history on disk, posts each new alert once to a webhook, and serves a JSON
 // API plus the public dashboard (public/index.html).
 //
@@ -45,6 +45,7 @@ const DEFAULTS = {
     tax: { everyMinutes: 15 },
     flywheel: { everyMinutes: 15 },
     coins: { everyMinutes: 30, maxCoins: 40 },
+    programs: { everyMinutes: 30 },
   },
   timeoutMinutes: 30,
   // Override the command for a check (tests use this): { keys: ["node", "fake.mjs"] }
@@ -136,6 +137,8 @@ function commandFor(name, cfg, store) {
   if (name === "coins") return [node, join(here, "coins-check.mjs"), "--json", "--rpc", cfg.solanaRpc,
     "--state", join(cfg.dataDir, "coins-state.json"), "--out", join(cfg.dataDir, "coins.json"),
     "--max-coins", String(cfg.checks.coins.maxCoins)];
+  if (name === "programs") return [node, join(here, "programs-check.mjs"), "--json", "--rpc", cfg.solanaRpc,
+    "--state", join(cfg.dataDir, "programs-state.json")];
   if (name === "float") return [node, join(here, "float-check.mjs"), "--json",
     "--stuck-minutes", String(cfg.checks.float.stuckMinutes),
     ...(cfg.zebra ? ["--source", "zebra", "--zebra", cfg.zebra] : []),
@@ -191,6 +194,12 @@ function normalise(name, report) {
     summary: { coins: report.coins, carded: report.carded, refreshed: report.refreshed, flagged: report.flagged,
       flagCounts: report.flagCounts, notes: report.notes },
   };
+  if (name === "programs") return {
+    ok: report.alerts.length === 0,
+    alerts: report.alerts,
+    summary: { saplingPrograms: report.saplingPrograms, otherPrograms: report.otherPrograms,
+      programsSeen: report.programsSeen, txsRead: report.txsRead, notes: report.notes },
+  };
   if (name === "flywheel") return {
     ok: report.alerts.length === 0,
     alerts: report.alerts,
@@ -205,7 +214,7 @@ function normalise(name, report) {
       currentFloatZec: report.currentFloatZec, custodyCapZec: report.custodyCapZec,
       inFlight: report.inFlight, inFlightCap: report.inFlightCap, deliveries: report.deliveries,
       deliveredZec: report.deliveredZec, holdMinutes: report.holdMinutes,
-      peakFloatZec: report.peakFloatZec, peakAt: report.peakAt, scanned: report.scanned } };
+      peakFloatZec: report.peakFloatZec, peakAt: report.peakAt, scanned: report.scanned, privacy: report.privacy ?? null } };
   }
 }
 

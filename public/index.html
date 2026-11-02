@@ -96,6 +96,11 @@
       <p class="what">Every listed buy-and-burn checked on chain, and every movement of the tax pot accounted for.</p>
       <div class="body"></div>
     </article>
+    <article class="card" id="programs">
+      <h2>Sapling's programs <span class="badge idle">not yet run</span></h2>
+      <p class="what">Every program Sapling can upgrade, found in its own wallets' transactions, including the unpublished one behind the Terminal. Any upgrade, change of control, or new program is flagged.</p>
+      <div class="body"></div>
+    </article>
   </div>
 
   <section class="alerts">
@@ -150,6 +155,8 @@ function renderFloat(e) {
       ["Delivered in total", zec(s.deliveredZec)],
       ["Peak float", `${zec(s.peakFloatZec)}${s.peakAt ? ` · ${s.peakAt.slice(0, 10)}` : ""}`],
       ["Hold time (median, max)", hold.median == null ? "–" : `${hold.median.toFixed(1)} · ${hold.max.toFixed(1)} min`],
+      ...(s.privacy?.forwards ? [["Forwarded shielded", `${s.privacy.shielded} of ${s.privacy.forwards}` +
+        (s.privacy.transparent || s.privacy.mixed ? ` · ${s.privacy.transparent + s.privacy.mixed} to a public address` : "")]] : []),
     ])}${footerLine(e)}`;
 }
 
@@ -219,6 +226,18 @@ function renderFlywheel(e) {
     ])}${notes}${footerLine(e)}`;
 }
 
+function renderPrograms(e) {
+  const card = $("#programs"); badge(card, e);
+  if (!e?.summary) return ($(".body", card).innerHTML = footerLine(e));
+  const s = e.summary, list = s.saplingPrograms ?? [];
+  const notes = (s.notes ?? []).length ? `<ul class="notes">${s.notes.slice(0, 5).map((n) => `<li>${esc(n)}</li>`).join("")}</ul>` : "";
+  $(".body", card).innerHTML = `
+    <div class="big">${list.length} <small>program${list.length === 1 ? "" : "s"} Sapling can upgrade</small></div>
+    ${rows(list.map((p) => [short(p.id),
+      `${esc(p.role)} · upgrade authority <span class="mono">${esc(short(p.authority ?? "none"))}</span> · slot ${p.lastDeploySlot ?? "–"} · <a href="https://solscan.io/account/${esc(p.id)}">Solscan</a>`]))}
+    ${rows([["Transactions read", s.txsRead ?? "–"], ["Programs seen in all", s.programsSeen ?? "–"]])}${notes}${footerLine(e)}`;
+}
+
 function renderAlerts(list) {
   const el = $("#alerts");
   if (!list.length) return (el.innerHTML = `<div class="empty">No alerts recorded.</div>`);
@@ -235,11 +254,11 @@ async function refresh() {
       fetch("api/alerts.json", { cache: "no-store" }).then((r) => r.json()),
     ]);
     const c = status.checks ?? {};
-    renderFloat(c.float); renderRewards(c.rewards); renderKeys(c.keys); renderTax(c.tax); renderFlywheel(c.flywheel); renderAlerts(alerts.slice(0, 50));
+    renderFloat(c.float); renderRewards(c.rewards); renderKeys(c.keys); renderTax(c.tax); renderFlywheel(c.flywheel); renderPrograms(c.programs); renderAlerts(alerts.slice(0, 50));
     const open = Object.values(status.openAlerts ?? {}).reduce((n, o) => n + Object.keys(o).length, 0);
     const sched = status.schedule ?? {};
     $("#meta").textContent = `${open ? `${open} open alert${open === 1 ? "" : "s"}` : "No open alerts"} · ` +
-      `checks every ${sched.keys} / ${sched.rewards} / ${sched.float} / ${sched.tax} / ${sched.flywheel} min (keys / rewards / float / tax / flywheel) · updated ${new Date().toLocaleTimeString()}`;
+      `checks every ${sched.keys} / ${sched.rewards} / ${sched.float} / ${sched.tax} / ${sched.flywheel} / ${sched.programs ?? 30} min (keys / rewards / float / tax / flywheel / programs) · updated ${new Date().toLocaleTimeString()}`;
   } catch (e) {
     $("#meta").textContent = "Could not reach the watchtower API.";
   }

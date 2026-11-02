@@ -87,6 +87,29 @@ back to a coin's launch, launch facts are left blank rather than guessed.
 Each run refreshes 40 cards (new coins first, then the stalest), so the
 public RPC's limits are respected; market cap and holders refresh every run.
 
+### Sapling's programs
+
+`programs-check.mjs` reads the transactions of Sapling's own wallets
+(treasury, rewards, buyback, liquidity, flywheel pot, admin and the multisig
+vault that upgrades its code), lists every program they run, and reads who can
+upgrade each. Programs Sapling controls (upgrade authority = its multisig
+vault or admin) are watched: any upgrade, any change of control, and any new
+one appearing is an alert. Sapling publishes only its vault program's address;
+the Terminal's `sapling_accounts` guard, which holds Terminal users' tokens,
+is found this way and marked by its trades through Jupiter. The vault's own
+upgrades stay with `keys-check.mjs`.
+
+### Privacy of payouts
+
+The float check also looks up every forward out of Sapling's Zcash order
+addresses and counts how many went to a shielded pool and how many to a
+transparent address, since Sapling says each is forwarded "as a shielded
+note". The pool names 3xpl reports are listed with the counts so the
+classification can be checked; until it has been checked on live data it is
+reported, not alerted on. Terminal sales are paid out by NEAR Intents
+straight to the seller's wallet and, per Sapling's docs, are not shielded;
+zWatchtower doesn't follow those, since that would mean tracking users.
+
 ### Coin changes
 
 Each run compares every card with the last one and posts what changed, once:

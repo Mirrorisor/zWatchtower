@@ -17,7 +17,7 @@ function run(extra, mutate) {
     accountsPubkey: "29768824dfc70b2055cdc455003be2ac4b7e54a7a76f0fb4b4817f8aa58fb47103e4042b70f0991afcd9efff5240e55c23035c3343b7fbe04f718e2e3fa82dac60",
     caps: { custodyZat: "20000000000", inFlight: 50 },
   };
-  const preload = `
+  const preload = `globalThis.__transparentTx = ${JSON.stringify(globalThis.transparentTx ?? null)};
     const events = ${JSON.stringify(events)};
     const exits = ${JSON.stringify(exits)};
     globalThis.fetch = async (url) => {
@@ -30,6 +30,14 @@ function run(extra, mutate) {
         const bal = ev.reduce((a, e) => a + BigInt(e[1]), 0n);
         return ok({ data: { balances: { "zcash-main": { zcash: { balance: String(bal) } } },
           events: { "zcash-main": ev.map(([time, effect, transaction]) => ({ time, effect, transaction })) } } });
+      }
+      const t = url.match(/zcash\\/transaction\\/([^?]+)/);
+      if (t) {
+        // every forward goes to the Orchard pool, except one sent to a t-address
+        const to = t[1] === globalThis.__transparentTx ? "t1Rv4exT7bqhZqi2j7xz8bUHDMxwosrjADU" : "zcash-orchard-pool";
+        return ok({ data: { events: { "zcash-main": [
+          { address: "t1FromOrderAddressXXXXXXXXXXXXXXXXX", effect: "-100000" },
+          { address: to, effect: "99000" }, { address: "the-void", effect: "1000" }] } } });
       }
       throw new Error("unexpected fetch " + url);
     };`;
@@ -65,5 +73,16 @@ const b = run(["--stuck-minutes", "60"], (ev) => {
 check("unforwarded payout is flagged as stuck", b.report.stuck.length === 1 && b.report.stuck[0].index === 18,
   JSON.stringify(b.report.stuck[0]));
 check("exit code 1 when something is stuck", b.code === 1);
+
+// privacy: where each forward went
+check("every forward is classified, fee left out", a.report.privacy?.forwards === 14 &&
+  a.report.privacy.shielded === a.report.privacy.forwards && a.report.privacy.poolNames.join() === "zcash-orchard-pool", JSON.stringify(a.report.privacy));
+const fx = JSON.parse(readFileSync(join(here, "fixtures/order-addresses-2026-10-28.json"), "utf8"));
+const firstForward = Object.entries(fx).filter(([k]) => k !== "_note").flatMap(([, ev]) => ev).find(([, eff]) => BigInt(eff) < 0n)?.[2];
+globalThis.transparentTx = firstForward;
+const t = run([]);
+check("a forward to a t-address is counted as transparent", t.report.privacy.transparent === 1 &&
+  t.report.privacy.shielded === t.report.privacy.forwards - 1, JSON.stringify(t.report.privacy));
+check("--no-privacy skips it", run(["--no-privacy"]).report.privacy === undefined);
 
 process.exitCode = failures ? 1 : 0;
