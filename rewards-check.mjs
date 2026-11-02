@@ -97,6 +97,27 @@ async function checkReleaseOnChain(run) {
   };
 }
 
+// For up to 3 confirmed payout rows that name their transaction, the ZEC the
+// holder actually received in it.
+async function sampleReceived(holders, payouts) {
+  const out = [];
+  for (const [owner] of holders) {
+    const row = payouts.get(owner);
+    const sig = row && Object.entries(row).find(([k, v]) => /sig/i.test(k) && typeof v === "string" && v.length > 60)?.[1];
+    if (!sig || row.status !== "confirmed") continue;
+    try {
+      const tx = await rpc("getTransaction", [sig, { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 }]);
+      const m = tx?.meta;
+      const post = m?.postTokenBalances?.find((b) => b.owner === owner && b.mint === ZEC_MINT);
+      const pre = post && m.preTokenBalances.find((b) => b.accountIndex === post.accountIndex);
+      out.push({ owner: owner.slice(0, 6), share: row.share, rentZec: row.rentZec ?? null,
+        received: post ? String(BigInt(post.uiTokenAmount.amount) - BigInt(pre ? pre.uiTokenAmount.amount : 0)) : "no ZEC account change" });
+    } catch (e) { out.push({ owner: owner.slice(0, 6), error: e.message.slice(0, 60) }); }
+    if (out.length >= 3) break;
+  }
+  return out.length ? out : "payout rows don't name a transaction";
+}
+
 // When shares don't match the published formula, test simple alternatives so
 // the report says which one Sapling's numbers fit (or that none does).
 function diagnoseShares(holders, payouts, run, pot, sum, e) {
@@ -114,7 +135,11 @@ function diagnoseShares(holders, payouts, run, pot, sum, e) {
     "sum of eligible holders only": sumEligible > 0n && fits(pot, sumEligible),
   };
   const bad = rows.filter((x) => BigInt(x.row.share) !== (pot * x.bal) / sum);
+  // how far off: formula share / published share, per row
+  const ratios = rows.filter((x) => BigInt(x.row.share) > 0n).map((x) => Number((pot * x.bal) / sum) / Number(x.row.share));
   return {
+    ratio: ratios.length ? { min: Math.min(...ratios).toFixed(4), max: Math.max(...ratios).toFixed(4) } : null,
+    rowFields: Object.keys(rows[0]?.row ?? {}),
     pot: String(pot), sumOfBalances: String(sum), sumOfShares: String(shareSum), paid: String(paid), rent: String(rent),
     rolledOver: String(rolled), holders: holders.length, payoutRows: payouts.size,
     explainedBy: Object.entries(tries).filter(([, ok]) => ok).map(([k]) => k),
@@ -167,6 +192,8 @@ async function checkRun(id) {
   if (badShares) {
     p(`${badShares} shares not floor(pot*balance/sum)`);
     out.diagnosis = diagnoseShares(s.holders, payouts, run, pot, sum, e);
+    // what did a few holders actually receive on chain?
+    if (rpcUrl) out.diagnosis.onChain = await sampleReceived(s.holders, payouts);
   }
   if (missing) p(`${missing} holders without a payout row`);
   if (extra) p(`${extra} payout rows for non-holders`);
