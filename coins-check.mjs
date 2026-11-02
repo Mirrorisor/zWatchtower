@@ -22,6 +22,10 @@ const statePath = opt("--state", "coins-state.json");
 const outPath = opt("--out", "coins.json");
 const maxCoins = Number(opt("--max-coins", "40"));
 const maxPages = Number(opt("--max-pages", "20"));
+// Only coins worth at least this much (USD) get a card. Sapling's coin list
+// overstates coins still on their launch curve, so the list only shortlists;
+// each coin's own page decides.
+const minMcapUsd = Number(opt("--min-mcap-usd", "10000"));
 const pauseMs = Number(opt("--pause", "300"));
 const asJson = args.includes("--json");
 
@@ -127,9 +131,17 @@ async function main() {
   const state = existsSync(statePath) ? JSON.parse(readFileSync(statePath, "utf8")) : { cards: {}, refreshedAt: {} };
   const notes = [];
   const coins = await listCoins();
+  let zecUsd = state.zecUsd ?? null;
+  if (!zecUsd && coins.length) {
+    const d = await getJson(`${apiBase}/api/coins/${coins[0].mint}`).catch(() => null);
+    if (d?.marketCapUsd && Number(d.marketCapZec)) zecUsd = d.marketCapUsd / (Number(d.marketCapZec) / 1e8);
+  }
+  const listUsd = (c) => (zecUsd ? Number(c.marketCapZec ?? 0) / 1e8 * zecUsd : Infinity);
+  const shortlist = coins.filter((c) => listUsd(c) >= minMcapUsd);
+  const shortlisted = new Set(shortlist.map((c) => c.mint));
 
   // new coins first, then the stalest cards
-  const picks = [...coins].sort((a, b) =>
+  const picks = [...shortlist].sort((a, b) =>
     (state.refreshedAt[a.mint] ? Date.parse(state.refreshedAt[a.mint]) : 0) -
     (state.refreshedAt[b.mint] ? Date.parse(state.refreshedAt[b.mint]) : 0)).slice(0, maxCoins);
 
@@ -145,12 +157,17 @@ async function main() {
 
   let refreshed = 0, rpcFailures = 0, tradeGaps = 0;
   const holderErrors = {};
-  let zecUsd = state.zecUsd ?? null;
+  let belowLine = 0;
   for (const c of picks) {
     try {
       const detail = await getJson(`${apiBase}/api/coins/${c.mint}`);
       if (!detail) continue;
       if (detail.marketCapUsd && Number(detail.marketCapZec)) zecUsd = detail.marketCapUsd / (Number(detail.marketCapZec) / 1e8);
+      if (detail.marketCapUsd != null && detail.marketCapUsd < minMcapUsd) {
+        delete state.cards[c.mint];
+        state.refreshedAt[c.mint] = new Date().toISOString();
+        belowLine++; await sleep(pauseMs); continue;
+      }
       const { trades, complete } = await allTrades(c.mint, detail.launchedAt);
       let holders = null;
       try { holders = await largestHolders(c.mint); } catch (e) { rpcFailures++; holderErrors[statusOf(e)] = (holderErrors[statusOf(e)] ?? 0) + 1; }
@@ -186,10 +203,15 @@ async function main() {
   }
   state.zecUsd = zecUsd;
 
+  if (belowLine) notes.push(`${belowLine} shortlisted coin(s) were under $${minMcapUsd.toLocaleString("en-US")} on their own page, so no card`);
+  // a card stays public only while the coin is still above the line
+  for (const [mint, card] of Object.entries(state.cards)) {
+    if (!shortlisted.has(mint) || (card.marketCapUsd ?? 0) < minMcapUsd) delete state.cards[mint];
+  }
   const cards = Object.values(state.cards);
   const publicCards = cards.map((c) => ({ ...c, refreshedAt: state.refreshedAt[c.mint] }))
     .sort((a, b) => Number(b.marketCapZec ?? 0) - Number(a.marketCapZec ?? 0));
-  writeFileSync(outPath, JSON.stringify({ generatedAt: new Date().toISOString(), zecUsd, limits: LIMITS,
+  writeFileSync(outPath, JSON.stringify({ generatedAt: new Date().toISOString(), zecUsd, minMcapUsd, limits: LIMITS,
     earlySeconds: EARLY_SECONDS, cards: publicCards }));
   writeFileSync(statePath, JSON.stringify(state));
 
@@ -199,7 +221,7 @@ async function main() {
     flagCounts[k] = (flagCounts[k] ?? 0) + 1;
   }
   const report = {
-    checkedAt: new Date().toISOString(), coins: coins.length, carded: cards.length, refreshed,
+    checkedAt: new Date().toISOString(), coins: coins.length, minMcapUsd, shortlisted: shortlist.length, carded: cards.length, refreshed,
     flagged: cards.filter((c) => c.flagCount > 0).length, flagCounts, notes, alerts: [],
   };
   console.log(asJson ? JSON.stringify(report, null, 2) : report);

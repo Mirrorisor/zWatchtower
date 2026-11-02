@@ -115,9 +115,9 @@ const server = createServer((req, res) => {
 await new Promise((ok) => server.listen(0, ok));
 const base = `http://127.0.0.1:${server.address().port}`;
 const out = join(dir, "coins.json"), st = join(dir, "state.json");
-const run = () => new Promise((done) => {
+const run = (minUsd = "0") => new Promise((done) => {
   const p = spawn(process.execPath, [join(here, "../coins-check.mjs"), "--json", "--api", base, "--rpc", `${base}/rpc`,
-    "--state", st, "--out", out, "--pause", "0"]);
+    "--state", st, "--out", out, "--pause", "0", "--min-mcap-usd", minUsd]);
   let o = "", e = ""; p.stdout.on("data", (d) => (o += d)); p.stderr.on("data", (d) => (e += d));
   p.on("close", (code) => { let report = null; try { report = JSON.parse(o); } catch {} done({ code, report, err: e }); });
 });
@@ -140,6 +140,19 @@ try {
   const b2 = pub2.cards.find((c) => c.mint === B.mint);
   check("end to end: a rejected paging style falls back to one that works", b2?.facts.creatorLaunchPct === 8 &&
     y.report.notes.some((n) => /using "offset"; tried before: HTTP 400.*offset: works/.test(n)), JSON.stringify(y.report?.notes));
+  // only coins worth $10k+ on their own page get a card; B's list figure is
+  // inflated (as Sapling's is for coins on their launch curve) but its page says $2.9k
+  B.marketCapUsd = 2904; zwatch.marketCapUsd = 25000;
+  rmSync(st, { force: true });
+  const z = await run("10000");
+  const pub3 = JSON.parse(readFileSync(out, "utf8"));
+  check("end to end: only coins above $10k on their own page are carded", pub3.cards.length === 1 &&
+    pub3.cards[0].mint === zwatch.mint && z.report.notes.some((n) => /1 shortlisted coin\(s\) were under \$10,000/.test(n)),
+    JSON.stringify({ cards: pub3.cards.map((c) => c.symbol), notes: z.report.notes }));
+  zwatch.marketCapUsd = 2904; zwatch.marketCapZec = "236071258";
+  rmSync(st, { force: true });
+  const w = await run("10000");
+  check("end to end: a coin that drops under the line loses its card", JSON.parse(readFileSync(out, "utf8")).cards.length === 0, JSON.stringify(w.report));
 } finally {
   server.close();
   rmSync(dir, { recursive: true, force: true });

@@ -44,8 +44,8 @@ entered in Sapling's Race to $1M privacy tech track.
   against the tax Sapling advertises, and alerts on any scheduled change.
 - `flywheel-check.mjs`: checks every buy-and-burn Sapling lists against the
   chain, and accounts for every movement of the flywheel's tax pot.
-- `coins-check.mjs`: a safety report card for every coin launched on Sapling
-  (see "Coin report cards" below).
+- `coins-check.mjs`: a safety report card for every Sapling coin worth
+  $10,000 or more (see "Coin report cards" below).
 
 Node 18 or later, no dependencies.
 
@@ -65,8 +65,10 @@ free tiers work) in the `WATCHTOWER_SOLANA_RPC` secret.
 
 ## Coin report cards
 
-`coins-check.mjs` keeps a report card for every coin launched on Sapling,
-published at https://mirrorisor.github.io/zWatchtower/coins.html. Each card
+`coins-check.mjs` keeps a report card for every Sapling coin with a market
+cap of $10,000 or more (`--min-mcap-usd`; the figure on the coin's own page
+decides, since Sapling's coin list overstates coins still on their launch
+curve; a coin that falls under the line loses its card), published at https://mirrorisor.github.io/zWatchtower/coins.html. Each card
 is facts plus a flag when a fact crosses a line (`lib/coins.mjs`):
 
 | Fact | Source | Flagged when |
