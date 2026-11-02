@@ -5,7 +5,7 @@
 [![tests](https://github.com/Mirrorisor/zWatchtower/actions/workflows/test.yml/badge.svg)](https://github.com/Mirrorisor/zWatchtower/actions/workflows/test.yml)
 
 An open-source watchdog for [Sapling](https://sapling.cash), the Zcash-native
-launchpad on Solana. Five independent checks turn what Sapling users would
+launchpad on Solana. Six independent checks turn what Sapling users would
 otherwise take on trust into public, repeatable checks. They read only public
 chain data and Sapling's own published files: no viewing keys, no user
 addresses, nothing signed, nothing needed from Sapling.
@@ -44,6 +44,8 @@ entered in Sapling's Race to $1M privacy tech track.
   against the tax Sapling advertises, and alerts on any scheduled change.
 - `flywheel-check.mjs`: checks every buy-and-burn Sapling lists against the
   chain, and accounts for every movement of the flywheel's tax pot.
+- `coins-check.mjs`: a safety report card for every coin launched on Sapling
+  (see "Coin report cards" below).
 
 Node 18 or later, no dependencies.
 
@@ -60,6 +62,26 @@ Solana's free public RPC often limits GitHub's servers. Lookups it refuses are
 never reported as findings: the check notes them and tries again next run.
 For faster, complete runs, put a private RPC URL (Helius, Triton, QuickNode;
 free tiers work) in the `WATCHTOWER_SOLANA_RPC` secret.
+
+## Coin report cards
+
+`coins-check.mjs` keeps a report card for every coin launched on Sapling,
+published at https://mirrorisor.github.io/zWatchtower/coins.html. Each card
+is facts plus a flag when a fact crosses a line (`lib/coins.mjs`):
+
+| Fact | Source | Flagged when |
+| --- | --- | --- |
+| Creator's buy at launch, % of supply | Sapling trades | over 5% |
+| Creator has sold, % of what they bought | Sapling trades | over 50% |
+| Other wallets' buys in the first 10 seconds, % of supply | Sapling trades | over 10% |
+| Top 10 wallets' share (pools, curves and program accounts left out) | Solana | over 50% |
+| Mint or freeze authority | Solana | either is set |
+| Tax rate still changeable, where the creator fee goes | Solana, Sapling | noted, not flagged |
+
+Flags are facts, not verdicts. Where Sapling's trade history doesn't reach
+back to a coin's launch, launch facts are left blank rather than guessed.
+Each run refreshes 40 cards (new coins first, then the stalest), so the
+public RPC's limits are respected; market cap and holders refresh every run.
 
 ## Posting alerts to X
 
@@ -79,7 +101,7 @@ to add the dashboard link (X charges more for posts with links).
 
 # Run the service
 
-`watchtower.mjs` runs all five checks on their own schedules, keeps the
+`watchtower.mjs` runs all six checks on their own schedules, keeps the
 results, posts each alert once to a webhook, and serves the dashboard.
 
 ```

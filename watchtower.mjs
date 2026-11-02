@@ -44,6 +44,7 @@ const DEFAULTS = {
     float: { everyMinutes: 60, stuckMinutes: 60 },
     tax: { everyMinutes: 15 },
     flywheel: { everyMinutes: 15 },
+    coins: { everyMinutes: 30, maxCoins: 40 },
   },
   timeoutMinutes: 30,
   // Override the command for a check (tests use this): { keys: ["node", "fake.mjs"] }
@@ -132,6 +133,9 @@ function commandFor(name, cfg, store) {
     "--state", join(cfg.dataDir, "tax-state.json")];
   if (name === "flywheel") return [node, join(here, "flywheel-check.mjs"), "--json", "--rpc", cfg.solanaRpc,
     "--state", join(cfg.dataDir, "flywheel-state.json")];
+  if (name === "coins") return [node, join(here, "coins-check.mjs"), "--json", "--rpc", cfg.solanaRpc,
+    "--state", join(cfg.dataDir, "coins-state.json"), "--out", join(cfg.dataDir, "coins.json"),
+    "--max-coins", String(cfg.checks.coins.maxCoins)];
   if (name === "float") return [node, join(here, "float-check.mjs"), "--json",
     "--stuck-minutes", String(cfg.checks.float.stuckMinutes),
     ...(cfg.zebra ? ["--source", "zebra", "--zebra", cfg.zebra] : []),
@@ -180,6 +184,11 @@ function normalise(name, report) {
     alerts: report.alerts,
     summary: { coins: report.coins, matching: report.matching, feeChangeable: report.feeChangeable,
       feeRenounced: report.feeRenounced, advertisedRange: report.advertisedRange, epoch: report.epoch, notes: report.notes },
+  };
+  if (name === "coins") return {
+    ok: true, alerts: [], // informational: flags are facts about coins, not faults in Sapling
+    summary: { coins: report.coins, carded: report.carded, refreshed: report.refreshed, flagged: report.flagged,
+      flagCounts: report.flagCounts, notes: report.notes },
   };
   if (name === "flywheel") return {
     ok: report.alerts.length === 0,
@@ -316,6 +325,9 @@ function exportSite(cfg, store, dir) {
   writeFileSync(join(dir, "api", "alerts.json"), JSON.stringify(store.read("alerts.jsonl", () => true, 500)));
   writeFileSync(join(dir, "api", "history.json"), JSON.stringify(store.read("history.jsonl", () => true, 500)));
   writeFileSync(join(dir, "api", "x-posts.json"), JSON.stringify(store.read("x-posts.jsonl", () => true, 200)));
+  const coins = join(cfg.dataDir, "coins.json");
+  if (existsSync(coins)) copyFileSync(coins, join(dir, "api", "coins.json"));
+  if (existsSync(join(here, "public", "coins.html"))) copyFileSync(join(here, "public", "coins.html"), join(dir, "coins.html"));
   writeFileSync(join(dir, ".nojekyll"), "");
 }
 
@@ -330,6 +342,12 @@ function serve(cfg, store) {
     };
     const limit = Math.min(500, Number(url.searchParams.get("limit") ?? 100));
     if (url.pathname === "/") { res.writeHead(200, { "content-type": "text/html; charset=utf-8" }); return res.end(page()); }
+    if (url.pathname === "/coins.html") { res.writeHead(200, { "content-type": "text/html; charset=utf-8" }); return res.end(readFileSync(join(here, "public", "coins.html"))); }
+    if (url.pathname === "/api/coins.json") {
+      const f = join(cfg.dataDir, "coins.json");
+      res.writeHead(existsSync(f) ? 200 : 404, { "content-type": "application/json" });
+      return res.end(existsSync(f) ? readFileSync(f) : "{}");
+    }
     const logo = { "/logo.svg": "image/svg+xml", "/logo.png": "image/png" }[url.pathname];
     if (logo) { res.writeHead(200, { "content-type": logo }); return res.end(readFileSync(join(here, "public", url.pathname.slice(1)))); }
     if (url.pathname === "/healthz") return json({ ok: true });

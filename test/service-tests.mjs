@@ -25,7 +25,7 @@ const fake = (name) => [process.execPath, join(here, "fake-check.mjs"), name];
 const config = (extra = {}) => {
   const p = join(dir, "config.json");
   writeFileSync(p, JSON.stringify({ dataDir, webhook: hookUrl,
-    commands: { keys: fake("keys"), rewards: fake("rewards"), float: fake("float"), tax: fake("tax"), flywheel: fake("flywheel") }, ...extra }));
+    commands: { keys: fake("keys"), rewards: fake("rewards"), float: fake("float"), tax: fake("tax"), flywheel: fake("flywheel"), coins: fake("coins") }, ...extra }));
   return p;
 };
 
@@ -173,12 +173,12 @@ xServer.close();
 writeFileSync(scenarioPath, JSON.stringify({ keys: keysReport(), rewards: rewardsReport([115]), float: floatReport() }));
 const port = 18000 + Math.floor(Math.random() * 1000);
 const srv = spawn(process.execPath, [join(here, "../watchtower.mjs"), "--config",
-  config({ checks: { keys: { everyMinutes: 60 }, rewards: { everyMinutes: 60 }, float: { everyMinutes: 60 }, tax: { everyMinutes: 60 }, flywheel: { everyMinutes: 60 } } }),
+  config({ checks: { keys: { everyMinutes: 60 }, rewards: { everyMinutes: 60 }, float: { everyMinutes: 60 }, tax: { everyMinutes: 60 }, flywheel: { everyMinutes: 60 }, coins: { everyMinutes: 60 } } }),
   "--port", String(port)], { env: { ...process.env, SCENARIO: scenarioPath, ARGS_LOG: argsLog } });
 await new Promise((s) => setTimeout(s, 1500));
 try {
   const status = await fetch(`http://127.0.0.1:${port}/api/status.json`).then((x) => x.json());
-  check("/api/status serves all five checks", ["keys", "rewards", "float", "tax", "flywheel"].every((k) => status.checks[k]));
+  check("/api/status serves all six checks", ["keys", "rewards", "float", "tax", "flywheel", "coins"].every((k) => status.checks[k]));
   const alerts = await fetch(`http://127.0.0.1:${port}/api/alerts`).then((x) => x.json());
   check("/api/alerts lists raised and resolved events, newest first",
     alerts.length >= 4 && alerts[0].at >= alerts.at(-1).at, `${alerts.length} events`);
