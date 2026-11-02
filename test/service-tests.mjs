@@ -169,6 +169,15 @@ check("every post is logged with its X id", xs.filter((x) => x.status === "poste
 check("an old event doesn't claim a fast catch", !/Flagged \d+ minutes/.test(xPosts[0]?.body.text ?? ""), xPosts[0]?.body.text);
 xServer.close();
 
+// coin events: previewed once each, logged, never left open as alerts
+const evt = "$SHIELD ($13.6k): the creator has now sold everything they bought.";
+r = await once({ keys: keysReport(), rewards: rewardsReport([115]), float: floatReport(),
+  coins: { coins: 2, carded: 2, refreshed: 2, flagged: 1, flagCounts: {}, notes: [], alerts: [], events: [evt] } });
+xs = xLog();
+const evLog = existsSync(join(dataDir, "coin-events.jsonl")) ? readFileSync(join(dataDir, "coin-events.jsonl"), "utf8") : "";
+check("a coin event becomes an X post and is logged", xs.some((x) => x.check === "coins" && x.text.startsWith(evt)) &&
+  evLog.includes("now sold everything") && Object.keys(r.state.openAlerts.coins ?? {}).length === 0, JSON.stringify(xs.at(-1)));
+
 // 11. the server: API and dashboard
 writeFileSync(scenarioPath, JSON.stringify({ keys: keysReport(), rewards: rewardsReport([115]), float: floatReport() }));
 const port = 18000 + Math.floor(Math.random() * 1000);

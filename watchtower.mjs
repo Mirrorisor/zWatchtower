@@ -187,6 +187,7 @@ function normalise(name, report) {
   };
   if (name === "coins") return {
     ok: true, alerts: [], // informational: flags are facts about coins, not faults in Sapling
+    events: report.events ?? [], // posted once each, never "open"
     summary: { coins: report.coins, carded: report.carded, refreshed: report.refreshed, flagged: report.flagged,
       flagCounts: report.flagCounts, notes: report.notes },
   };
@@ -232,6 +233,11 @@ async function runCheck(name, cfg, store) {
         ok: null, alerts: [], error: (res.err || res.signal || `exit ${res.code}`).toString().trim().slice(-500) };
     }
     await handleAlerts(name, entry, cfg, store);
+    if (entry.events?.length) {
+      for (const text of entry.events) store.append("coin-events.jsonl", { at: entry.finishedAt, text });
+      await publishToX(name, [], [], cfg, store, entry.events);
+      if (cfg.webhook) await postWebhook(cfg.webhook, `zWatchtower (coin report cards)\n${entry.events.join("\n")}`);
+    }
     if (name === "rewards" && entry.summary?.maxRunId) {
       store.state.rewardsMaxRun = Math.max(store.state.rewardsMaxRun, entry.summary.maxRunId);
       // runs we could not check are re-checked next time

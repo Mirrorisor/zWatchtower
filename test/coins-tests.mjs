@@ -1,6 +1,6 @@
 // Coin report cards: $ZWATCH's real launch (1 Nov 2026), and made-up coins
 // that must trip each flag.
-import { buildCard, isOnCurve, repeatHolders } from "../lib/coins.mjs";
+import { buildCard, isOnCurve, repeatHolders, cardEvents } from "../lib/coins.mjs";
 
 let failures = 0;
 const check = (label, cond, detail) => {
@@ -76,6 +76,22 @@ check("partial trade history: no launch claims, a note instead", c.facts.creator
   check("repeat holders: two wallets in both coins, one-coin wallets left out", r.length === 2 && !r.some((x) => x.owner === "W3"), JSON.stringify(r));
   check("repeat holders: biggest holding first, early buys and creators noted",
     w2.coins[0].symbol === "B" && w2.earlyBuyerIn.join() === "B" && w1.created.join() === "A", JSON.stringify(r));
+}
+
+// events: posted once, only for real changes
+{
+  const base = { symbol: "X", marketCapUsd: 25000, flags: [], flagCount: 0, facts: { creatorSoldPct: 10, top10Pct: 30 } };
+  const sold = { ...base, flags: ["Creator has sold 60% of what they bought"], flagCount: 1, facts: { creatorSoldPct: 60, top10Pct: 30 } };
+  check("events: a creator selling past the line is posted", cardEvents(base, sold).join() === "$X ($25.0k): creator has sold 60% of what they bought.", cardEvents(base, sold).join());
+  const all = { ...sold, flags: ["Creator has sold 100% of what they bought"], facts: { creatorSoldPct: 100, top10Pct: 30 } };
+  check("events: then selling the rest is posted", /now sold everything/.test(cardEvents(sold, all).join()));
+  check("events: nothing changed, nothing posted", cardEvents(all, all).length === 0);
+  const early = { ...base, flags: ["9 wallets bought 30% in the first 10 seconds"], flagCount: 1 };
+  check("events: a launch flag appearing late (history finished reading) is not news", cardEvents(base, early).length === 0);
+  const unread = { ...base, facts: {} };
+  check("events: sells found only once the launch is read are not news", cardEvents(unread, sold).length === 0);
+  check("events: a flagged coin passing $10k is posted", /\$X \(\$25\.0k\) just passed \$10\.0k market cap with 1 flag: Creator has sold 60%/.test(cardEvents(undefined, sold).join()), cardEvents(undefined, sold).join());
+  check("events: an unflagged coin passing $10k is not", cardEvents(undefined, base).length === 0);
 }
 
 // ---- end to end: coins-check.mjs against a fake Sapling API and RPC ----
@@ -166,8 +182,13 @@ try {
     done.facts.earlyBuyers === 2 && done.facts.creatorSoldPct === 80, JSON.stringify(done.facts));
   // later, the creator sells the rest: only the new trades are read
   extra = [{ signature: "late", blockTime: "2026-11-01T05:00:00.000Z", isBuy: false, user: creator, tokenAmount: "16000000000000" }];
-  await run("0", "1");
-  const after = JSON.parse(readFileSync(out, "utf8")).cards.find((c) => c.mint === B.mint);
+  const late = await run("0", "1");
+  const afterPub = JSON.parse(readFileSync(out, "utf8"));
+  const after = afterPub.cards.find((c) => c.mint === B.mint);
+  check("end to end: the creator dumping the rest is an event, posted once", late.report.events.length === 1 &&
+    /\$BAD .*now sold everything/.test(late.report.events[0]) && afterPub.events[0].symbol === "BAD", JSON.stringify(late.report.events));
+  const again = await run("0", "1");
+  check("end to end: the same change is not posted twice", again.report.events.length === 0, JSON.stringify(again.report.events));
   check("end to end: trades after the launch is kept are still counted", after.facts.creatorSoldPct === 100 &&
     after.facts.creatorLaunchPct === 8, JSON.stringify(after.facts));
   extra = [];

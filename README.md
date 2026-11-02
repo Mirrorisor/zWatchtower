@@ -87,6 +87,16 @@ back to a coin's launch, launch facts are left blank rather than guessed.
 Each run refreshes 40 cards (new coins first, then the stalest), so the
 public RPC's limits are respected; market cap and holders refresh every run.
 
+### Coin changes
+
+Each run compares every card with the last one and posts what changed, once:
+a creator selling past half of what they bought (or selling the rest), the
+top 10 wallets passing 50%, a mint or freeze authority appearing, and a
+flagged coin passing $10,000. These go to X and the webhook like alerts, are
+listed under "Recent changes" on the coins page, and are logged in
+`coin-events.jsonl`. Launch facts appearing once a long history finishes
+reading are not posted: the launch didn't change, the reading caught up.
+
 ## Posting alerts to X
 
 New findings are posted to X automatically: program upgrades (with how fast

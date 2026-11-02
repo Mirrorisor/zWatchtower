@@ -12,7 +12,11 @@
 // Usage:
 //   node coins-check.mjs --rpc URL --state coins-state.json --out coins.json --json
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
-import { buildCard, repeatHolders, LIMITS, EARLY_SECONDS } from "./lib/coins.mjs";
+import { buildCard, repeatHolders, cardEvents, LIMITS, EARLY_SECONDS } from "./lib/coins.mjs";
+
+// Bump when a change to how cards are read would move facts by itself: the
+// first run after it sets a new baseline and posts no events.
+const ENGINE = 2;
 
 const args = process.argv.slice(2);
 const opt = (n, d) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] : d; };
@@ -141,6 +145,8 @@ async function largestHolders(mint) {
 async function main() {
   const state = existsSync(statePath) ? JSON.parse(readFileSync(statePath, "utf8")) : { cards: {}, refreshedAt: {} };
   state.history ??= {};
+  state.events ??= [];
+  const events = [];
   const notes = [];
   const coins = await listCoins();
   let zecUsd = state.zecUsd ?? null;
@@ -196,6 +202,12 @@ async function main() {
         if (prev.facts.top10Pct > LIMITS.top10Pct) card.flags.push(`Top 10 wallets hold ${prev.facts.top10Pct}% of supply`);
         card.flagCount = card.flags.length;
       }
+      if (state.engine === ENGINE) {
+        for (const text of cardEvents(state.cards[c.mint], card, minMcapUsd)) {
+          events.push(text);
+          state.events.unshift({ at: new Date().toISOString(), mint: c.mint, symbol: card.symbol, text });
+        }
+      }
       state.cards[c.mint] = card;
       state.refreshedAt[c.mint] = new Date().toISOString();
       refreshed++;
@@ -225,11 +237,14 @@ async function main() {
   for (const mint of Object.keys(state.history)) if (!byMint.has(mint)) delete state.history[mint];
   const cards = Object.values(state.cards);
   const repeats = repeatHolders(cards, state.history);
+  if (state.engine !== ENGINE) notes.push(`card reading changed (engine ${ENGINE}): this run sets the baseline, no events posted`);
+  state.engine = ENGINE;
+  state.events = state.events.slice(0, 100);
   if (repeats.length) notes.push(`${repeats.length} wallet(s) are in the top 10 of more than one coin`);
   const publicCards = cards.map((c) => ({ ...c, refreshedAt: state.refreshedAt[c.mint] }))
     .sort((a, b) => Number(b.marketCapZec ?? 0) - Number(a.marketCapZec ?? 0));
   writeFileSync(outPath, JSON.stringify({ generatedAt: new Date().toISOString(), zecUsd, minMcapUsd, limits: LIMITS,
-    earlySeconds: EARLY_SECONDS, cards: publicCards, repeatHolders: repeats }));
+    earlySeconds: EARLY_SECONDS, cards: publicCards, repeatHolders: repeats, events: state.events.slice(0, 30) }));
   writeFileSync(statePath, JSON.stringify(state));
 
   const flagCounts = {};
@@ -239,7 +254,7 @@ async function main() {
   }
   const report = {
     checkedAt: new Date().toISOString(), coins: coins.length, minMcapUsd, shortlisted: shortlist.length, carded: cards.length, refreshed,
-    flagged: cards.filter((c) => c.flagCount > 0).length, flagCounts, notes, alerts: [],
+    flagged: cards.filter((c) => c.flagCount > 0).length, flagCounts, notes, alerts: [], events,
   };
   console.log(asJson ? JSON.stringify(report, null, 2) : report);
 }
