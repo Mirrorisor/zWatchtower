@@ -132,6 +132,7 @@
     <summary>How the flags work</summary>
     <ul id="limits"></ul>
     <p>"Creator's other coins" counts every other Sapling coin the same wallet launched; a card is flagged when the creator sold out of at least 2 of them and most of the ones checked. Any coin with a card has a badge (under "Badge") its team can post, linking back here.</p>
+    <p>Think a flag is wrong? Use "Dispute" on the card. Every dispute gets a public answer, and mistakes are fixed and listed in <a href="https://github.com/Mirrorisor/zWatchtower/blob/main/CORRECTIONS.md">corrections</a>.</p>
     <p>Cards refresh a few dozen coins at a time, so each shows when it was last read. "Top 10" leaves out pools, bonding curves and other program accounts. Where Sapling's trade history doesn't reach back to a coin's launch, launch facts are left blank rather than guessed. A coin's history is read once and kept, so a long one fills in over a few runs.</p>
   </details>
 
@@ -149,6 +150,7 @@ const site = location.href.replace(/[^/]*$/, "");
 const cardUrl = (c) => `${site}coins.html#${c.mint}`;
 const badgeHtml = (c) => `<a href="${cardUrl(c)}"><img src="${site}badges/${c.mint}.svg" alt="zWatchtower report card for $${c.symbol}"></a>`;
 const badgeMd = (c) => `[![zWatchtower report card for $${c.symbol}](${site}badges/${c.mint}.svg)](${cardUrl(c)})`;
+const disputeUrl = (c) => `https://github.com/Mirrorisor/zWatchtower/issues/new?template=dispute-a-flag.yml&title=${encodeURIComponent(`Dispute: $${c.symbol} – `)}&mint=${encodeURIComponent(c.mint)}`;
 let data = null, sortKey = "mcap", sortDir = -1;
 const val = (c, k) => ({
   symbol: (c.symbol || "").toLowerCase(), mcap: c.mcapUsd ?? -1, holders: c.holders ?? -1,
@@ -200,7 +202,8 @@ function render() {
         <div class="note">Read ${ago(c.refreshedAt)} · <details class="badge"><summary>Badge</summary>
           <img src="badges/${esc(c.mint)}.svg" alt="zWatchtower badge for $${esc(c.symbol)}">
           <input readonly onclick="this.select()" value="${esc(badgeHtml(c))}" aria-label="Badge HTML">
-          <input readonly onclick="this.select()" value="${esc(badgeMd(c))}" aria-label="Badge Markdown"></details></div></td>
+          <input readonly onclick="this.select()" value="${esc(badgeMd(c))}" aria-label="Badge Markdown"></details>
+          · <a href="${disputeUrl(c)}">Dispute</a></div></td>
     </tr>`).join("") : '<tr><td colspan="9" class="muted">No coins match.</td></tr>';
   for (const b of document.querySelectorAll("th button")) {
     const th = b.closest("th");

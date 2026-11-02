@@ -328,6 +328,7 @@ function reRunIdBelow(alert, store) {
 // ---- HTTP -------------------------------------------------------------------
 
 const statusBody = (cfg, store) => ({
+  apiVersion: 1, // see docs/API.md: fields are only added within a version, never renamed or removed
   generatedAt: new Date().toISOString(),
   schedule: Object.fromEntries(Object.entries(cfg.checks).map(([k, v]) => [k, v.everyMinutes])),
   checks: store.state.latest,

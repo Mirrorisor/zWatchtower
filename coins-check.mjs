@@ -299,7 +299,7 @@ async function main() {
   if (repeats.length) notes.push(`${repeats.length} wallet(s) are in the top 10 of more than one coin`);
   const publicCards = cards.map((c) => ({ ...c, refreshedAt: state.refreshedAt[c.mint] }))
     .sort((a, b) => Number(b.marketCapZec ?? 0) - Number(a.marketCapZec ?? 0));
-  writeFileSync(outPath, JSON.stringify({ generatedAt: new Date().toISOString(), zecUsd, minMcapUsd, limits: LIMITS,
+  writeFileSync(outPath, JSON.stringify({ apiVersion: 1, generatedAt: new Date().toISOString(), zecUsd, minMcapUsd, limits: LIMITS,
     earlySeconds: EARLY_SECONDS, cards: publicCards, repeatHolders: repeats, events: state.events.slice(0, 30),
     soldOutPct: SOLD_OUT_PCT, serialCreators: serial, launchesKnown: known }));
   writeFileSync(statePath, JSON.stringify(state));

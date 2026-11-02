@@ -1,0 +1,43 @@
+name: Dispute a flag or fact
+description: Think a coin's report card, an alert or a check result is wrong? Tell us here. Every dispute gets a public answer.
+title: "Dispute: $SYMBOL – "
+labels: ["dispute"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        zWatchtower's flags are facts read from Sapling's data and the chain, not verdicts. If one is wrong, or missing context, we want to know.
+        Every dispute is answered in public. If we were wrong, the fix goes in [CORRECTIONS.md](https://github.com/Mirrorisor/zWatchtower/blob/main/CORRECTIONS.md).
+        **Never post a seed phrase or private key.** We will never ask for one.
+  - type: input
+    id: mint
+    attributes:
+      label: Coin mint address (or the check, for a non-coin alert)
+      placeholder: 9Kz9RmVm8tqXRLZDRxaPZm2tkhjCrp7X8RUz1Ayzcash
+    validations:
+      required: true
+  - type: textarea
+    id: flag
+    attributes:
+      label: Which flag, fact or alert?
+      description: Copy it from the card or dashboard.
+      placeholder: "Creator has sold 100% of what they bought"
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it's wrong or missing context
+      description: Transaction signatures, wallet addresses or links help us check quickly.
+    validations:
+      required: true
+  - type: dropdown
+    id: who
+    attributes:
+      label: You are
+      options:
+        - The coin's creator or team
+        - A holder
+        - Someone else
+    validations:
+      required: true

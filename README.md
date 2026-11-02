@@ -134,6 +134,14 @@ alert. Terminal sales are paid out by NEAR Intents
 straight to the seller's wallet and, per Sapling's docs, are not shielded;
 zWatchtower doesn't follow those, since that would mean tracking users.
 
+### Public data and disputes
+
+Everything on the dashboard is free JSON anyone can build on, documented and
+versioned in [docs/API.md](docs/API.md). Think a flag is wrong? Use the
+"Dispute a flag or fact" issue form (linked from every card). Every dispute
+gets a public answer; mistakes are fixed and listed in
+[CORRECTIONS.md](CORRECTIONS.md).
+
 ### Coin changes
 
 Each run compares every card with the last one and posts what changed, once:
