@@ -12,7 +12,8 @@
 // Usage:
 //   node coins-check.mjs --rpc URL --state coins-state.json --out coins.json --json
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
-import { buildCard, repeatHolders, cardEvents, LIMITS, EARLY_SECONDS } from "./lib/coins.mjs";
+import { buildCard, repeatHolders, cardEvents, launchSummary, creatorRecords, creatorHistory, serialCreators,
+  LIMITS, EARLY_SECONDS, SOLD_OUT_PCT, PRIOR_SOLD_OUT } from "./lib/coins.mjs";
 
 // Bump when a change to how cards are read would move facts by itself: the
 // first run after it sets a new baseline and posts no events.
@@ -26,6 +27,11 @@ const statePath = opt("--state", "coins-state.json");
 const outPath = opt("--out", "coins.json");
 const maxCoins = Number(opt("--max-coins", "40"));
 const maxPages = Number(opt("--max-pages", "60")); // 500 trades a page
+// Creator track records: every coin (not just carded ones) is read once a day,
+// a few pages each; most small coins' whole history fits in one page.
+const scanCoins = Number(opt("--scan-coins", "60"));
+const scanPages = Number(opt("--scan-pages", "4"));
+const RESCAN_MS = 24 * 3600 * 1000;
 // Only coins worth at least this much (USD) get a card. Sapling's coin list
 // overstates coins still on their launch curve, so the list only shortlists;
 // each coin's own page decides.
@@ -103,14 +109,14 @@ async function walk(mint, before, stopMs, budget, add, oldest = Infinity) {
 
 const slim = (t) => ({ signature: t.signature, blockTime: t.blockTime, isBuy: t.isBuy, user: t.user, tokenAmount: t.tokenAmount });
 
-async function readHistory(mint, detail, hist) {
+async function readHistory(mint, detail, hist, pageBudget = maxPages) {
   const creator = detail.launcher ?? detail.creator ?? null;
   const launchMs = detail.launchedAt ? Date.parse(detail.launchedAt) : null;
   hist ??= { kept: [], newestMs: null, oldestMs: null, complete: false, startsAfterLaunch: false, pagesRead: 0 };
   const known = new Set(hist.kept.map((t) => t.signature));
   const keep = (t) => t.user === creator || (launchMs != null && Date.parse(t.blockTime) - launchMs <= (EARLY_SECONDS + 5) * 1000);
   const add = (list) => { for (const t of list) if (keep(t) && !known.has(t.signature)) { known.add(t.signature); hist.kept.push(slim(t)); } };
-  const budget = maxPages;   // for each direction
+  const budget = pageBudget;   // for each direction
   if (hist.newestMs != null) {                       // trades since last time
     const r = await walk(mint, null, hist.newestMs, budget, add);
     hist.pagesRead += r.pages;
@@ -158,6 +164,48 @@ async function main() {
   const shortlist = coins.filter((c) => listUsd(c) >= minMcapUsd);
   const shortlisted = new Set(shortlist.map((c) => c.mint));
 
+  // ---- creator scan: who launched each coin, and did they sell out?
+  state.launches ??= {};
+  const nowMs = Date.now();
+  const toScan = coins.filter((c) => !state.launches[c.mint] || nowMs - Date.parse(state.launches[c.mint].scannedAt) > RESCAN_MS)
+    .sort((a, b) => (state.launches[a.mint] ? Date.parse(state.launches[a.mint].scannedAt) : 0) -
+      (state.launches[b.mint] ? Date.parse(state.launches[b.mint].scannedAt) : 0))
+    .slice(0, scanCoins);
+  const scannedNow = [];
+  let scanErrors = 0;
+  for (const c of toScan) {
+    try {
+      const detail = await getJson(`${apiBase}/api/coins/${c.mint}`);
+      if (!detail) { state.launches[c.mint] = { mint: c.mint, symbol: c.symbol, creator: null, scannedAt: new Date().toISOString() }; continue; }
+      if (detail.marketCapUsd && Number(detail.marketCapZec)) zecUsd = detail.marketCapUsd / (Number(detail.marketCapZec) / 1e8);
+      const { hist, complete } = await readHistory(c.mint, detail, state.history[c.mint], scanPages);
+      state.history[c.mint] = hist;
+      const was = state.launches[c.mint];
+      state.launches[c.mint] = { ...launchSummary({ ...detail, mint: c.mint }, hist.kept, complete),
+        warned: was?.warned ?? false, scannedAt: new Date().toISOString() };
+      scannedNow.push(c.mint);
+    } catch (e) { scanErrors++; }
+    await sleep(pauseMs);
+  }
+  for (const mint of Object.keys(state.launches)) if (!coins.some((c) => c.mint === mint)) delete state.launches[mint];
+  const records = creatorRecords(state.launches);
+  // early warning: a coin launched in the last day by a creator who sold out of most of their others
+  for (const mint of scannedNow) {
+    const l = state.launches[mint];
+    if (l.warned || !l.creator || !l.launchedAt || nowMs - Date.parse(l.launchedAt) > RESCAN_MS) continue;
+    const h = creatorHistory(records.get(l.creator) ?? [], mint);
+    if (h.soldOut >= PRIOR_SOLD_OUT && h.soldOut * 2 >= h.checked) {
+      l.warned = true;
+      if (state.engine === ENGINE) {
+        const text = `New coin $${l.symbol} was launched by a creator who sold out of ${h.soldOut} of their ${h.checked} other Sapling coins checked (${h.soldOutCoins.slice(0, 3).map((x) => "$" + x).join(", ")}${h.soldOut > 3 ? "…" : ""}).`;
+        events.push(text);
+        state.events.unshift({ at: new Date().toISOString(), mint, symbol: l.symbol, text });
+      }
+    }
+  }
+  const known = Object.values(state.launches).filter((l) => l.creator).length;
+  notes.push(`creator scan: ${scannedNow.length} coin(s) read this run, ${known} of ${coins.length} known${scanErrors ? `, ${scanErrors} not read` : ""}`);
+
   // new coins first, then the stalest cards
   const picks = [...shortlist].sort((a, b) =>
     (state.refreshedAt[a.mint] ? Date.parse(state.refreshedAt[a.mint]) : 0) -
@@ -192,7 +240,9 @@ async function main() {
       const trades = hist.kept;
       let holders = null;
       try { holders = await largestHolders(c.mint); } catch (e) { rpcFailures++; holderErrors[statusOf(e)] = (holderErrors[statusOf(e)] ?? 0) + 1; }
-      const card = buildCard(detail, trades, mintInfo[c.mint] ?? null, holders, { tradesComplete: complete });
+      const creatorOf = detail.launcher ?? detail.creator ?? null;
+      const card = buildCard(detail, trades, mintInfo[c.mint] ?? null, holders,
+        { tradesComplete: complete, creatorRecord: creatorOf ? records.get(creatorOf) ?? [] : null });
       if (card.notes.some((n) => /couldn't be checked/.test(n))) { tradeGaps++; if (why) { card.notes.push(why); const k = why.startsWith("Launch not") ? "still reading" : "history starts after launch"; gapWhy[k] = (gapWhy[k] ?? 0) + 1; } }
       // keep facts from an earlier, fuller look if this one couldn't see them
       const prev = state.cards[c.mint];
@@ -235,6 +285,7 @@ async function main() {
     if (!shortlisted.has(mint) || (card.marketCapUsd ?? 0) < minMcapUsd) delete state.cards[mint];
   }
   for (const mint of Object.keys(state.history)) if (!byMint.has(mint)) delete state.history[mint];
+  const serial = serialCreators(records);
   const cards = Object.values(state.cards);
   const repeats = repeatHolders(cards, state.history);
   if (state.engine !== ENGINE) notes.push(`card reading changed (engine ${ENGINE}): this run sets the baseline, no events posted`);
@@ -244,7 +295,8 @@ async function main() {
   const publicCards = cards.map((c) => ({ ...c, refreshedAt: state.refreshedAt[c.mint] }))
     .sort((a, b) => Number(b.marketCapZec ?? 0) - Number(a.marketCapZec ?? 0));
   writeFileSync(outPath, JSON.stringify({ generatedAt: new Date().toISOString(), zecUsd, minMcapUsd, limits: LIMITS,
-    earlySeconds: EARLY_SECONDS, cards: publicCards, repeatHolders: repeats, events: state.events.slice(0, 30) }));
+    earlySeconds: EARLY_SECONDS, cards: publicCards, repeatHolders: repeats, events: state.events.slice(0, 30),
+    soldOutPct: SOLD_OUT_PCT, serialCreators: serial, launchesKnown: known }));
   writeFileSync(statePath, JSON.stringify(state));
 
   const flagCounts = {};

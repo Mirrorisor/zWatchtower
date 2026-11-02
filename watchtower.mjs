@@ -25,6 +25,7 @@ import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync, cop
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { composePosts, composeSummary, fit, postToX } from "./lib/xpost.mjs";
+import { badgeSvg } from "./lib/badge.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
@@ -341,7 +342,15 @@ function exportSite(cfg, store, dir) {
   writeFileSync(join(dir, "api", "history.json"), JSON.stringify(store.read("history.jsonl", () => true, 500)));
   writeFileSync(join(dir, "api", "x-posts.json"), JSON.stringify(store.read("x-posts.jsonl", () => true, 200)));
   const coins = join(cfg.dataDir, "coins.json");
-  if (existsSync(coins)) copyFileSync(coins, join(dir, "api", "coins.json"));
+  if (existsSync(coins)) {
+    copyFileSync(coins, join(dir, "api", "coins.json"));
+    // a badge per carded coin: badges/<mint>.svg
+    mkdirSync(join(dir, "badges"), { recursive: true });
+    try {
+      for (const card of JSON.parse(readFileSync(coins, "utf8")).cards ?? [])
+        if (/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(card.mint)) writeFileSync(join(dir, "badges", `${card.mint}.svg`), badgeSvg(card));
+    } catch (e) { console.error(`badges not written: ${e.message}`); }
+  }
   if (existsSync(join(here, "public", "coins.html"))) copyFileSync(join(here, "public", "coins.html"), join(dir, "coins.html"));
   writeFileSync(join(dir, ".nojekyll"), "");
 }

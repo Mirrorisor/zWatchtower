@@ -1,6 +1,6 @@
 // Coin report cards: $ZWATCH's real launch (1 Nov 2026), and made-up coins
 // that must trip each flag.
-import { buildCard, isOnCurve, repeatHolders, cardEvents } from "../lib/coins.mjs";
+import { buildCard, isOnCurve, repeatHolders, cardEvents, creatorHistory, launchSummary, creatorRecords, serialCreators } from "../lib/coins.mjs";
 
 let failures = 0;
 const check = (label, cond, detail) => {
@@ -94,6 +94,38 @@ check("partial trade history: no launch claims, a note instead", c.facts.creator
   check("events: an unflagged coin passing $10k is not", cardEvents(undefined, base).length === 0);
 }
 
+// creator track records
+{
+  const cr = "4KPboYtTrodVbHqJQWVyRybCfzuj7iT3FoUHNpEiuuDQ";
+  const mk = (mint, sold, extra = {}) => ({ mint, symbol: mint.toUpperCase(), creator: cr, complete: true, creatorBought: true, creatorSoldPct: sold, ...extra });
+  const coins = [mk("a", 100), mk("b", 95), mk("c", 10), mk("d", null, { complete: false, creatorBought: null }), mk("e", 0, { creatorBought: false }), mk("self", 0)];
+  const h = creatorHistory(coins, "self");
+  check("creator record: other coins counted, only fully read ones where they bought are judged",
+    h.launched === 5 && h.checked === 3 && h.soldOut === 2 && h.soldOutCoins.join() === "A,B", JSON.stringify(h));
+  const c = buildCard({ ...zwatch, mint: "self" }, zwatchTrades, null, null, { creatorRecord: coins });
+  check("a creator who sold out of most of their other coins is flagged", c.flags.some((f) => f === "Creator sold out of 2 of their 3 other coins checked"), c.flags.join(" | "));
+  const ok = buildCard({ ...zwatch, mint: "self" }, zwatchTrades, null, null, { creatorRecord: [mk("a", 100), mk("c", 10), mk("x", 0), mk("y", 5)] });
+  check("one sold-out coin among several is not flagged", !ok.flags.some((f) => /other coins/.test(f)) && ok.facts.creatorOtherCoins.soldOut === 1, JSON.stringify(ok.facts.creatorOtherCoins));
+  check("a creator's past appearing on a card is not posted as news", cardEvents({ ...ok, flags: [] }, c).length === 0);
+  const l = launchSummary(zwatch, zwatchTrades, true);
+  check("launch summary: $ZWATCH's creator bought and hasn't sold", l.creatorBought === true && l.creatorSoldPct === 0 && l.creatorLaunchPct === 0.3353, JSON.stringify(l));
+  const ser = serialCreators(creatorRecords({ a: mk("a", 100), b: mk("b", 95), z: { ...mk("z", 0), creator: "someoneElse" } }));
+  check("serial creators: only creators with 2+ coins, sold-out counts", ser.length === 1 && ser[0].soldOut === 2 && ser[0].launched === 2, JSON.stringify(ser));
+}
+
+// badges
+{
+  const { badgeSvg, badgeFor } = await import("../lib/badge.mjs");
+  const clean = { symbol: "OK", mint: "m1", flagCount: 0, flags: [], facts: { creatorSoldPct: 0 } };
+  const two = { symbol: "BAD", mint: "m2", flagCount: 2, flags: ["a", "b"], facts: { creatorSoldPct: 100 } };
+  const unread = { symbol: "NEW", mint: "m3", flagCount: 0, flags: [], facts: {} };
+  check("badge: no flags is green", badgeFor(clean).right === "$OK · no flags" && badgeFor(clean).color === "#2e8b57");
+  check("badge: flags are counted", badgeFor(two).right === "$BAD · 2 flags");
+  check("badge: an unread launch doesn't claim no flags", badgeFor(unread).right === "$NEW · launch not checked");
+  const svg = badgeSvg({ ...two, symbol: "<x>" });
+  check("badge: valid SVG, text escaped, ids unique per coin", svg.startsWith("<svg") && !svg.includes("<x>") && svg.includes('id="rm2"'));
+}
+
 // ---- end to end: coins-check.mjs against a fake Sapling API and RPC ----
 import { mkdtempSync, rmSync, readFileSync, existsSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -111,12 +143,22 @@ const pages = [...badTrades, { blockTime: "2026-11-01T00:00:02.000Z", isBuy: tru
   .map((t, i) => ({ ...t, signature: `s${i}` }))
   .sort((a, b) => Date.parse(b.blockTime) - Date.parse(a.blockTime));
 let extra = [];   // trades that happen after the first run
+let extraCoins = []; // small coins added later: { mint, detail, trades }
 const server = createServer((req, res) => {
   let body = ""; req.on("data", (d) => (body += d));
   req.on("end", () => {
     const send = (x, code = 200) => { res.writeHead(code, { "content-type": "application/json" }); res.end(JSON.stringify(x)); };
     const u = new URL(req.url, "http://x");
+    const xc = extraCoins.find((c) => u.pathname.startsWith(`/api/coins/${c.mint}`));
+    if (xc) {
+      if (u.pathname.endsWith("/trades")) {
+        const before = u.searchParams.get("before");
+        return send(xc.trades.filter((t) => !before || Date.parse(t.blockTime) < Number(before) * 1000));
+      }
+      return send(xc.detail);
+    }
     if (u.pathname === "/api/search/coins") return send([
+      ...extraCoins.map((c) => [c.mint, c.detail.symbol, c.detail.name, "m", "100000", 1, "0", "launchlab"]),
       [zwatch.mint, "ZWATCH", "zWatchtower", "m", "236071258", 2, "0", "launchlab"],
       [B.mint, "BAD", "Bad coin", "m", "999999999", 40, "0", "launchlab"]]);
     if (u.pathname === `/api/coins/${zwatch.mint}`) return send(zwatch);
@@ -206,6 +248,27 @@ try {
   rmSync(st, { force: true });
   const w = await run("10000");
   check("end to end: a coin that drops under the line loses its card", JSON.parse(readFileSync(out, "utf8")).cards.length === 0, JSON.stringify(w.report));
+  // creator scan: every coin's creator, and a warning for a new coin from a serial seller
+  rmSync(st, { force: true });
+  const smallCoin = (mint, launchedAt, sold) => ({ mint, detail: { ...zwatch, mint, symbol: mint.toUpperCase(), name: mint,
+    launchedAt, marketCapUsd: 900, marketCapZec: "100000" }, trades: [
+      ...(sold ? [{ signature: `${mint}-s`, blockTime: new Date(Date.parse(launchedAt) + 60000).toISOString(), isBuy: false, user: creator, tokenAmount: "50000000000000" }] : []),
+      { signature: `${mint}-b`, blockTime: launchedAt, isBuy: true, user: creator, tokenAmount: "50000000000000" }] });
+  extraCoins = [smallCoin("cc", "2026-10-20T00:00:00.000Z", true), smallCoin("dd", "2026-10-21T00:00:00.000Z", true)];
+  const s1 = await run("10000");
+  const p1 = JSON.parse(readFileSync(out, "utf8"));
+  const ser = p1.serialCreators?.find((x) => x.creator === creator);
+  check("end to end: every coin's creator is read, not only carded ones", p1.launchesKnown === 4 &&
+    ser?.launched === 4 && ser.soldOut === 2 && s1.report.notes.some((n) => /creator scan: 4 coin\(s\) read this run, 4 of 4 known/.test(n)),
+    JSON.stringify({ known: p1.launchesKnown, ser, notes: s1.report.notes }));
+  extraCoins.push(smallCoin("ee", new Date(Date.now() - 3600e3).toISOString(), false));
+  const s2 = await run("10000");
+  check("end to end: a new coin by a creator who sold out of most of their coins is a warning, once",
+    s2.report.events.some((e) => /^New coin \$EE was launched by a creator who sold out of 2 of their 3 other Sapling coins checked \(\$CC, \$DD\)\./.test(e)),
+    JSON.stringify(s2.report.events));
+  const s3 = await run("10000");
+  check("end to end: and only once", !s3.report.events.some((e) => /\$EE/.test(e)), JSON.stringify(s3.report.events));
+  extraCoins = [];
 } finally {
   server.close();
   rmSync(dir, { recursive: true, force: true });

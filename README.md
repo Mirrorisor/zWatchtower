@@ -87,6 +87,20 @@ back to a coin's launch, launch facts are left blank rather than guessed.
 Each run refreshes 40 cards (new coins first, then the stalest), so the
 public RPC's limits are respected; market cap and holders refresh every run.
 
+### Creator track records and badges
+
+Every Sapling coin, not only the ones over $10,000, is read once a day: who
+launched it, and whether they sold out (sold at least 90% of what they
+bought). A card shows the creator's other coins, and is flagged when the
+creator sold out of at least two of them and most of those checked. A coin
+launched in the last day by such a creator is posted as a warning, once.
+The coins page lists creators with more than one coin.
+
+Every coin with a card has a badge at `badges/<mint>.svg`, with an embed
+snippet on the coins page that links back to the card: green for no flags,
+amber for one or two, red for three or more, grey while the launch hasn't
+been read.
+
 ### Sapling's programs
 
 `programs-check.mjs` reads the transactions of Sapling's own wallets

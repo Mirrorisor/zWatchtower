@@ -68,6 +68,11 @@
   }
   .repeats { padding-left: 1.1rem; line-height: 1.7; }
   .repeats code { font-size: .9em; }
+  details.badge { display: inline; }
+  details.badge summary { display: inline; cursor: pointer; text-decoration: underline; }
+  details.badge[open] { display: block; margin-top: .4rem; }
+  details.badge img { display: block; margin: .3rem 0; }
+  details.badge input { display: block; width: 100%; font: 12px ui-monospace, monospace; margin: .2rem 0; padding: .25rem; }
   #repeats h2, #events h2 { font-size: 1.05rem; margin: 1.5rem 0 .25rem; }
 </style>
 </head>
@@ -111,6 +116,12 @@
     <ul id="eventList" class="repeats"></ul>
   </section>
 
+  <section id="serial" hidden>
+    <h2>Creators with more than one coin</h2>
+    <p class="muted" id="serialIntro"></p>
+    <ul id="serialList" class="repeats"></ul>
+  </section>
+
   <section id="repeats" hidden>
     <h2>Wallets in the top 10 of more than one coin</h2>
     <p class="muted">Big holders that turn up across coins. Often a trader or fund; worth knowing when it also created a coin or bought in its first seconds.</p>
@@ -120,6 +131,7 @@
   <details class="how" id="how">
     <summary>How the flags work</summary>
     <ul id="limits"></ul>
+    <p>"Creator's other coins" counts every other Sapling coin the same wallet launched; a card is flagged when the creator sold out of at least 2 of them and most of the ones checked. Any coin with a card has a badge (under "Badge") its team can post, linking back here.</p>
     <p>Cards refresh a few dozen coins at a time, so each shows when it was last read. "Top 10" leaves out pools, bonding curves and other program accounts. Where Sapling's trade history doesn't reach back to a coin's launch, launch facts are left blank rather than guessed. A coin's history is read once and kept, so a long one fills in over a few runs.</p>
   </details>
 
@@ -133,6 +145,10 @@ const usd = (n) => n == null ? "–" : n >= 1e6 ? `$${(n / 1e6).toFixed(2)}M` : 
 const p = (v) => v == null ? "–" : `${v < 1 && v > 0 ? v.toFixed(2) : Math.round(v * 10) / 10}%`;
 const ago = (iso) => { const h = Math.round((Date.now() - Date.parse(iso)) / 3600000); return h < 1 ? "under an hour ago" : h < 48 ? `${h} h ago` : `${Math.round(h / 24)} d ago`; };
 
+const site = location.href.replace(/[^/]*$/, "");
+const cardUrl = (c) => `${site}coins.html#${c.mint}`;
+const badgeHtml = (c) => `<a href="${cardUrl(c)}"><img src="${site}badges/${c.mint}.svg" alt="zWatchtower report card for $${c.symbol}"></a>`;
+const badgeMd = (c) => `[![zWatchtower report card for $${c.symbol}](${site}badges/${c.mint}.svg)](${cardUrl(c)})`;
 let data = null, sortKey = "mcap", sortDir = -1;
 const val = (c, k) => ({
   symbol: (c.symbol || "").toLowerCase(), mcap: c.mcapUsd ?? -1, holders: c.holders ?? -1,
@@ -149,6 +165,14 @@ function render() {
     $("#events").hidden = false;
     $("#eventList").innerHTML = evs.slice(0, 10).map((e) => `<li>${esc(e.text)} <span class="note">${ago(e.at)}</span></li>`).join("");
   }
+  const ser = (data.serialCreators ?? []).filter((x) => x.launched >= 2);
+  if (ser.length) {
+    $("#serial").hidden = false;
+    $("#serialIntro").textContent = `From every Sapling coin, not just the ones above $10k (${data.launchesKnown ?? "?"} read so far). "Sold out" means the creator sold at least ${data.soldOutPct ?? 90}% of what they bought; coins whose history doesn't reach the launch, or where the creator didn't buy, aren't judged.`;
+    $("#serialList").innerHTML = ser.slice(0, 15).map((x) => `<li><a href="https://solscan.io/account/${esc(x.creator)}"><code>${esc(x.creator.slice(0, 6))}…${esc(x.creator.slice(-4))}</code></a>
+      launched ${x.launched} coins, sold out of <b>${x.soldOut} of ${x.checked}</b> checked:
+      ${x.coins.slice(0, 8).map((k) => `$${esc(k.symbol)}${k.soldPct == null ? "" : k.bought === false ? " (didn't buy)" : ` (${p(k.soldPct)} sold)`}`).join(", ")}${x.coins.length > 8 ? "…" : ""}</li>`).join("");
+  }
   const reps = data.repeatHolders ?? [];
   if (reps.length) {
     $("#repeats").hidden = false;
@@ -160,7 +184,7 @@ function render() {
   rows.sort((a, b) => { const x = val(a, sortKey), y = val(b, sortKey); return (x > y ? 1 : x < y ? -1 : 0) * sortDir; });
   const hot = (v, lim, extra = "") => ` class="num${v != null && v > lim ? " hot" : ""}${extra ? " " + extra : ""}"`;
   $("#rows").innerHTML = rows.length ? rows.map((c) => `
-    <tr>
+    <tr id="${esc(c.mint)}">
       <td class="coin"><b><a href="https://sapling.cash/coin/${esc(c.mint)}">$${esc(c.symbol)}</a></b>
         <small>${esc(c.name)}${c.graduated ? " · graduated" : ""}${c.taxPct != null ? ` · ${c.taxPct}% tax` : ""}</small></td>
       <td class="num" data-label="Market cap">${usd(c.mcapUsd)}</td>
@@ -171,8 +195,12 @@ function render() {
       <td${hot(c.facts.top10Pct, L.top10Pct)} data-label="Top 10">${p(c.facts.top10Pct)}</td>
       <td data-label="Fees go to">${esc(c.feesTo)}</td>
       <td class="flagcell">${c.flagCount ? `<ul class="flags">${c.flags.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>` : '<span class="pill ok">No flags</span>'}
+        ${c.facts.creatorOtherCoins?.launched ? `<div class="note">Creator's other coins: ${c.facts.creatorOtherCoins.launched} launched, sold out of ${c.facts.creatorOtherCoins.soldOut} of ${c.facts.creatorOtherCoins.checked} checked</div>` : ""}
         ${c.notes.length ? `<div class="note">${c.notes.map(esc).join(" · ")}</div>` : ""}
-        <div class="note">Read ${ago(c.refreshedAt)}</div></td>
+        <div class="note">Read ${ago(c.refreshedAt)} · <details class="badge"><summary>Badge</summary>
+          <img src="badges/${esc(c.mint)}.svg" alt="zWatchtower badge for $${esc(c.symbol)}">
+          <input readonly onclick="this.select()" value="${esc(badgeHtml(c))}" aria-label="Badge HTML">
+          <input readonly onclick="this.select()" value="${esc(badgeMd(c))}" aria-label="Badge Markdown"></details></div></td>
     </tr>`).join("") : '<tr><td colspan="9" class="muted">No coins match.</td></tr>';
   for (const b of document.querySelectorAll("th button")) {
     const th = b.closest("th");
@@ -189,7 +217,7 @@ async function load() {
   const flagged = data.cards.filter((c) => c.flagCount).length;
   const kinds = {};
   for (const c of data.cards) for (const f of c.flags) {
-    const k = /Creator bought/.test(f) ? "Big creator buy" : /Creator has sold/.test(f) ? "Creator sold" : /first/.test(f) ? "Early buyers"
+    const k = /other coins/.test(f) ? "Serial seller" : /Creator bought/.test(f) ? "Big creator buy" : /Creator has sold/.test(f) ? "Creator sold" : /first/.test(f) ? "Early buyers"
       : /Top 10/.test(f) ? "Concentrated" : /minted|frozen/.test(f) ? "Mint or freeze" : "Other";
     kinds[k] = (kinds[k] ?? 0) + 1;
   }
