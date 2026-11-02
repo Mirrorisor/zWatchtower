@@ -77,6 +77,7 @@ const dir = mkdtempSync(join(tmpdir(), "coins-test-"));
 const B = { ...bad, mint: "BbbbB", symbol: "BAD" };
 const pages = [...badTrades].map((t, i) => ({ ...t, signature: `s${i}` }))
   .sort((a, b) => Date.parse(b.blockTime) - Date.parse(a.blockTime));
+let mode = "before";
 const server = createServer((req, res) => {
   let body = ""; req.on("data", (d) => (body += d));
   req.on("end", () => {
@@ -89,6 +90,11 @@ const server = createServer((req, res) => {
     if (u.pathname === `/api/coins/${B.mint}`) return send(B);
     if (u.pathname === `/api/coins/${zwatch.mint}/trades`) return send(zwatchTrades.map((t) => ({ ...t })));
     if (u.pathname === `/api/coins/${B.mint}/trades`) {
+      if (mode === "offset") {
+        if (u.searchParams.has("before")) return send({ error: "bad param" }, 400);
+        const off = Number(u.searchParams.get("offset") ?? 0);
+        return send(pages.slice(off, off + 2));
+      }
       const before = u.searchParams.get("before");
       const start = before ? pages.findIndex((t) => t.signature === before) + 1 : 0;
       return send(pages.slice(start, start + 2));
@@ -126,6 +132,14 @@ try {
   check("end to end: a rate-limited holder lookup is a note, not a crash", zCard && zCard.facts.top10Pct === undefined &&
     x.report.notes.some((n) => /concentration not read for 1/.test(n)), JSON.stringify(x.report?.notes));
   check("end to end: report counts flagged coins", x.report.flagged === 1 && x.report.carded === 2, JSON.stringify(x.report));
+  // Sapling rejecting "before" (as on the first live run): fall back to another style
+  mode = "offset";
+  rmSync(st, { force: true });
+  const y = await run();
+  const pub2 = JSON.parse(readFileSync(out, "utf8"));
+  const b2 = pub2.cards.find((c) => c.mint === B.mint);
+  check("end to end: a rejected paging style falls back to one that works", b2?.facts.creatorLaunchPct === 8 &&
+    y.report.notes.some((n) => /using "offset"; tried before: HTTP 400.*offset: works/.test(n)), JSON.stringify(y.report?.notes));
 } finally {
   server.close();
   rmSync(dir, { recursive: true, force: true });

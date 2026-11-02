@@ -53,29 +53,60 @@ async function listCoins() {
     .filter((c) => c.mint);
 }
 
-// Trades, newest first, paged back until Sapling's history runs out.
+// Trades, newest first. Sapling's trade API pages in a way not yet known, so
+// each paging style is tried once per run and the first that returns older
+// trades is used for the rest of the run. Failures never lose the first page.
+const PAGING = [
+  ["before", (seen, oldest) => ({ before: oldest.signature })],
+  ["cursor", (seen, oldest) => ({ cursor: oldest.signature })],
+  ["until", (seen, oldest) => ({ until: oldest.signature })],
+  ["offset", (seen) => ({ offset: String(seen.size) })],
+  ["page", (seen, oldest, page) => ({ page: String(page + 1) })],
+];
+const paging = { style: null, tried: {}, pageCap: 0 };
+const statusOf = (e) => {
+  const m = e.message.match(/HTTP \d+|rate-limited|"code":\s*(-?\d+)[^}]*?"message":\s*"([^"]{0,60})/);
+  return m ? (m[1] ? `RPC ${m[1]} ${m[2]}` : m[0]) : e.message.slice(0, 60);
+};
+
+async function tradesPage(mint, extra) {
+  const q = new URLSearchParams({ limit: "1000", ...extra });
+  const batch = await getJson(`${apiBase}/api/coins/${mint}/trades?${q}`) ?? [];
+  return Array.isArray(batch) ? batch : (batch.trades ?? []);
+}
+
 // complete: we know we have every trade back to the launch.
 async function allTrades(mint, launchedAt) {
   const seen = new Map();
-  let before = null, complete = false;
-  for (let page = 0; page < maxPages; page++) {
-    const q = new URLSearchParams({ limit: "1000" });
-    if (before) q.set("before", before);
-    const batch = await getJson(`${apiBase}/api/coins/${mint}/trades?${q}`) ?? [];
-    const list = Array.isArray(batch) ? batch : (batch.trades ?? []);
-    if (!list.length) { complete = true; break; } // nothing older
-    const fresh = list.filter((t) => !seen.has(t.signature));
-    for (const t of fresh) seen.set(t.signature, t);
-    if (!fresh.length) {
-      // the API ignored "before": one page is all we can get. It is the whole
-      // history if it is short or already starts at the launch.
-      const oldest = Math.min(...list.map((t) => Date.parse(t.blockTime)));
-      complete = list.length < 50 || Boolean(launchedAt && oldest - Date.parse(launchedAt) <= 5000);
-      break;
+  const add = (list) => { const fresh = list.filter((t) => !seen.has(t.signature)); for (const t of fresh) seen.set(t.signature, t); return fresh; };
+  const first = await tradesPage(mint, {});
+  add(first);
+  paging.pageCap = Math.max(paging.pageCap, first.length);
+  const oldestTime = () => Math.min(...[...seen.values()].map((t) => Date.parse(t.blockTime)));
+  const atLaunch = () => Boolean(launchedAt && seen.size && oldestTime() - Date.parse(launchedAt) <= 5000);
+  if (!first.length || atLaunch()) return { trades: [...seen.values()], complete: true };
+
+  for (let page = 1; page < maxPages; page++) {
+    const oldest = [...seen.values()].reduce((a, t) => (Date.parse(t.blockTime) < Date.parse(a.blockTime) ? t : a));
+    const styles = paging.style ? PAGING.filter(([n]) => n === paging.style)
+      : PAGING.filter(([n]) => !(n in paging.tried) || paging.tried[n] === "works");
+    let fresh = null;
+    for (const [name, make] of styles) {
+      try {
+        const list = await tradesPage(mint, make(seen, oldest, page));
+        const got = add(list);
+        if (got.length) { paging.style = name; paging.tried[name] = "works"; fresh = got; break; }
+        if (!list.length && paging.style === name) { fresh = []; break; } // history ran out
+        paging.tried[name] ??= list.length ? "ignored" : "empty";
+      } catch (e) { paging.tried[name] ??= statusOf(e); }
+      await sleep(pauseMs);
     }
-    before = fresh.reduce((a, t) => (Date.parse(t.blockTime) < Date.parse(a.blockTime) ? t : a)).signature;
+    if (!fresh || !fresh.length) break;
+    if (atLaunch()) return { trades: [...seen.values()], complete: true };
     await sleep(pauseMs);
   }
+  // no paging that works: one page is the whole history only if it wasn't full
+  const complete = atLaunch() || (seen.size === first.length && paging.pageCap > first.length && paging.pageCap >= 50);
   return { trades: [...seen.values()], complete };
 }
 
@@ -108,6 +139,7 @@ async function main() {
   }
 
   let refreshed = 0, rpcFailures = 0, tradeGaps = 0;
+  const holderErrors = {};
   let zecUsd = state.zecUsd ?? null;
   for (const c of picks) {
     try {
@@ -116,7 +148,7 @@ async function main() {
       if (detail.marketCapUsd && Number(detail.marketCapZec)) zecUsd = detail.marketCapUsd / (Number(detail.marketCapZec) / 1e8);
       const { trades, complete } = await allTrades(c.mint, detail.launchedAt);
       let holders = null;
-      try { holders = await largestHolders(c.mint); } catch { rpcFailures++; }
+      try { holders = await largestHolders(c.mint); } catch (e) { rpcFailures++; holderErrors[statusOf(e)] = (holderErrors[statusOf(e)] ?? 0) + 1; }
       const card = buildCard(detail, trades, mintInfo[c.mint] ?? null, holders, { tradesComplete: complete });
       if (card.notes.some((n) => /couldn't be checked/.test(n))) tradeGaps++;
       // keep facts from an earlier, fuller look if this one couldn't see them
@@ -131,11 +163,12 @@ async function main() {
       state.refreshedAt[c.mint] = new Date().toISOString();
       refreshed++;
     } catch (e) {
-      notes.push(`${c.symbol}: not refreshed (${e.message.slice(0, 120)})`);
+      notes.push(`${c.symbol}: not refreshed (${statusOf(e)})`);
     }
     await sleep(pauseMs);
   }
-  if (rpcFailures) notes.push(`holder concentration not read for ${rpcFailures} coin(s) this run (RPC limits); tried again later`);
+  if (rpcFailures) notes.push(`holder concentration not read for ${rpcFailures} coin(s) this run (${Object.entries(holderErrors).map(([k, n]) => `${k} x${n}`).join(", ")}); tried again later`);
+  notes.push(`trade paging: ${paging.style ? `using "${paging.style}"` : "none found yet"}; tried ${Object.entries(paging.tried).map(([k, v]) => `${k}: ${v}`).join(", ") || "none"}; largest page ${paging.pageCap}`);
   if (tradeGaps) notes.push(`${tradeGaps} coin(s): trade history didn't reach the launch, so launch buys weren't judged`);
 
   // the list is fresh every run, so market cap and holders always are
