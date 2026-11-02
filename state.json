@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-02T19:33:52.166Z",
-      "finishedAt": "2026-11-02T19:34:09.046Z",
+      "startedAt": "2026-11-02T20:24:26.984Z",
+      "finishedAt": "2026-11-02T20:24:42.504Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,25 +21,16 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 46,
-          "settle": 12,
+          "sell_tax": 14,
+          "withdraw_tax": 15,
+          "register_launchlab_coin": 5,
+          "observe_sapling": 35,
+          "declare_payee": 5,
+          "settle": 17,
+          "settle_tax": 5,
           "settle_sapling": 3,
-          "sell_tax": 8,
-          "withdraw_tax": 8,
-          "close_rewards_run": 3,
-          "release_rewards": 3,
-          "claim_payee": 1,
-          "settle_tax": 4,
-          "draw_lp": 1,
-          "draw_lp_sapling": 1,
-          "convert_tax_begin": 2,
-          "convert_tax_end": 2,
-          "draw_grove": 1,
-          "close_grove": 1,
-          "register_launchlab_coin": 4,
-          "declare_payee": 2,
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 1
+          "convert_tax_begin": 1,
+          "convert_tax_end": 1
         },
         "unrecognised": 15,
         "baseline": false
@@ -47,19 +38,19 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-02T19:34:09.048Z",
-      "finishedAt": "2026-11-02T19:34:12.030Z",
+      "startedAt": "2026-11-02T20:24:42.506Z",
+      "finishedAt": "2026-11-02T20:24:45.262Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-11-02T19:34:12.022Z",
-        "runs": 9,
-        "passed": 9,
+        "checkedAt": "2026-11-02T20:24:45.255Z",
+        "runs": 6,
+        "passed": 6,
         "flagged": 0,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "1.55283519",
+        "zecPaidInDoneRuns": "0.25591574",
         "onChainChecks": true,
         "notes": [],
         "maxRunId": 1478
@@ -102,15 +93,15 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-02T19:41:27.348Z",
-      "finishedAt": "2026-11-02T19:41:28.169Z",
+      "startedAt": "2026-11-02T20:24:45.262Z",
+      "finishedAt": "2026-11-02T20:24:46.020Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "coins": 86,
-        "matching": 86,
-        "feeChangeable": 84,
+        "coins": 91,
+        "matching": 91,
+        "feeChangeable": 89,
         "feeRenounced": 2,
         "advertisedRange": [
           200,
@@ -122,8 +113,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-02T19:41:28.169Z",
-      "finishedAt": "2026-11-02T19:41:30.356Z",
+      "startedAt": "2026-11-02T20:24:46.021Z",
+      "finishedAt": "2026-11-02T20:24:48.108Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -211,13 +202,13 @@
           }
         },
         "pot": {
-          "balanceZat": "838788",
-          "shownZat": "838788",
-          "inflowZat": "770353030",
+          "balanceZat": "1830853",
+          "shownZat": "1830853",
+          "inflowZat": "771345095",
           "buybackZat": "769514242",
           "movements": {
             "setup": 1,
-            "inflow": 1840,
+            "inflow": 1844,
             "buyback": 215
           },
           "reconciled": true,
@@ -235,26 +226,26 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-02T19:41:30.356Z",
-      "finishedAt": "2026-11-02T19:41:50.151Z",
+      "startedAt": "2026-11-02T20:24:48.108Z",
+      "finishedAt": "2026-11-02T20:25:10.090Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "coins": 466,
-        "carded": 13,
-        "refreshed": 13,
-        "flagged": 11,
+        "coins": 471,
+        "carded": 12,
+        "refreshed": 12,
+        "flagged": 10,
         "flagCounts": {
           "N wallet(s) bought N in the first N seconds": 8,
-          "Creator has sold N of what they bought": 6,
-          "Creator bought N of supply at launch": 3
+          "Creator has sold N of what they bought": 5,
+          "Creator bought N of supply at launch": 2
         },
         "notes": [
           "1 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 1)",
           "23 shortlisted coin(s) were under $10,000 on their own page, so no card",
-          "21 wallet(s) are in the top 10 of more than one coin"
+          "19 wallet(s) are in the top 10 of more than one coin"
         ]
       }
     }
@@ -268,7 +259,7 @@
     "coins": {}
   },
   "rewardsMaxRun": 1478,
-  "rewardsFrom": 1470,
+  "rewardsFrom": 1473,
   "x": {
     "day": "2026-11-01",
     "today": 5,
