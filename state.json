@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-02T04:37:44.421Z",
-      "finishedAt": "2026-11-02T04:40:27.382Z",
+      "startedAt": "2026-11-02T05:37:52.001Z",
+      "finishedAt": "2026-11-02T05:40:40.446Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
-        "configSha256": "7c366c00e2e260740c90f839c317055ca1186639c79dbc4b5a83540234902ae9",
+        "configSha256": "9e4aba0c1630bff01925fb683fa2f98028584d7abd1bc168b7d99d0141297265",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -21,62 +21,64 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 43,
-          "sell_tax": 11,
-          "withdraw_tax": 11,
+          "observe_sapling": 45,
           "settle_tax": 5,
-          "convert_tax_begin": 2,
-          "convert_tax_end": 2,
-          "settle": 13,
-          "collect_protocol_pool_fees": 7,
-          "close_rewards_run": 2,
-          "release_rewards": 2,
+          "convert_tax_begin": 3,
+          "convert_tax_end": 3,
+          "settle": 11,
+          "settle_sapling": 3,
+          "sell_tax": 9,
+          "withdraw_tax": 9,
+          "close_rewards_run": 5,
+          "release_rewards": 5,
           "convert_sapling_begin": 1,
           "convert_sapling_end": 1,
-          "settle_sapling": 1,
-          "draw_grove": 1,
-          "close_grove": 1,
+          "register_launchlab_coin": 1,
+          "declare_payee": 1,
           "convert_tax_sapling_begin": 1,
-          "convert_tax_sapling_end": 1
+          "convert_tax_sapling_end": 1,
+          "draw_lp": 1
         },
-        "unrecognised": 16,
+        "unrecognised": 15,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-02T04:40:27.384Z",
-      "finishedAt": "2026-11-02T04:40:43.869Z",
+      "startedAt": "2026-11-02T05:40:40.448Z",
+      "finishedAt": "2026-11-02T05:40:56.975Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-11-02T04:40:43.863Z",
-        "runs": 14,
-        "passed": 5,
-        "flagged": 9,
-        "unchecked": 9,
+        "checkedAt": "2026-11-02T05:40:56.969Z",
+        "runs": 15,
+        "passed": 4,
+        "flagged": 11,
+        "unchecked": 11,
         "firstUnchecked": 1435,
-        "zecPaidInDoneRuns": "1.85909871",
+        "zecPaidInDoneRuns": "1.03242648",
         "onChainChecks": true,
         "notes": [
           "run 1435: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1436: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1437: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1438: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1439: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1440: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1441: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1442: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1443: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
+          "run 1443: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1444: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1445: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1446: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1447: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1448: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
         ],
-        "maxRunId": 1443
+        "maxRunId": 1448
       }
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-02T03:33:38.718Z",
-      "finishedAt": "2026-11-02T03:41:08.188Z",
+      "startedAt": "2026-11-02T05:40:56.976Z",
+      "finishedAt": "2026-11-02T05:48:13.152Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -110,15 +112,15 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-02T04:40:43.870Z",
-      "finishedAt": "2026-11-02T04:40:44.462Z",
+      "startedAt": "2026-11-02T05:48:13.153Z",
+      "finishedAt": "2026-11-02T05:48:13.580Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "coins": 71,
-        "matching": 71,
-        "feeChangeable": 69,
+        "coins": 72,
+        "matching": 72,
+        "feeChangeable": 70,
         "feeRenounced": 2,
         "advertisedRange": [
           200,
@@ -130,21 +132,21 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-02T04:40:44.463Z",
-      "finishedAt": "2026-11-02T04:40:54.426Z",
+      "startedAt": "2026-11-02T05:48:13.580Z",
+      "finishedAt": "2026-11-02T05:48:16.520Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "burns": 132,
-        "burnsVerified": 132,
-        "boughtBackZat": "514411830",
+        "burns": 133,
+        "burnsVerified": 133,
+        "boughtBackZat": "517515726",
         "venues": {
           "pump amm": 76,
           "raydium cpmm": 18,
           "raydium launchlab": 2,
           "pump bonding curve": 1,
-          "jupiter": 35
+          "jupiter": 36
         },
         "perCoin": {
           "0": {
@@ -154,8 +156,8 @@
           },
           "1993": {
             "mint": "7Ypg1rKLu8q32E1AQEDjaPCg8dfGeCSsMkFnK98zcash",
-            "burns": 35,
-            "zat": "168455767"
+            "burns": 36,
+            "zat": "171559663"
           },
           "ZILLIONS": {
             "mint": "3sKZuSZF7onqPYFrWu3bH4Lh141duydt9MAmSd46jaLJ",
@@ -219,13 +221,13 @@
           }
         },
         "pot": {
-          "balanceZat": "1093858",
-          "shownZat": "1093858",
-          "inflowZat": "710454955",
+          "balanceZat": "2213504",
+          "shownZat": "2213504",
+          "inflowZat": "711574601",
           "buybackZat": "709361097",
           "movements": {
             "setup": 1,
-            "inflow": 1768,
+            "inflow": 1773,
             "buyback": 204
           },
           "reconciled": true,
@@ -237,32 +239,31 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "buyback 5ju1f88bc6s8vkm6HdRQ2ij7c4jaJN6apSsKTcX58hei1ZqVPXzdjg6DxJpAFa9dno91EnS1hAtymcTsS36aNLq2 drew 3103896 zat but is not in Sapling's burn list",
-          "headline 706257201 zat bought back, listed burns add up to 251906801"
+          "headline 709361097 zat bought back, listed burns add up to 250345127"
         ]
       }
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-02T04:40:54.426Z",
-      "finishedAt": "2026-11-02T04:58:35.434Z",
+      "startedAt": "2026-11-02T05:48:16.521Z",
+      "finishedAt": "2026-11-02T06:04:19.937Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "coins": 451,
-        "carded": 82,
+        "coins": 452,
+        "carded": 122,
         "refreshed": 40,
-        "flagged": 44,
+        "flagged": 70,
         "flagCounts": {
-          "N wallet(s) bought N in the first N seconds": 18,
-          "Creator has sold N of what they bought": 36,
-          "Creator bought N of supply at launch": 13
+          "N wallet(s) bought N in the first N seconds": 36,
+          "Creator has sold N of what they bought": 56,
+          "Creator bought N of supply at launch": 19
         },
         "notes": [
           "holder concentration not read for 40 coin(s) this run (rate-limited x40); tried again later",
           "trade paging: using \"before=s\"; tried before: HTTP 400, before=iso: HTTP 400, before=ms: HTTP 400, before=s: works; largest page 500",
-          "3 coin(s): trade history didn't reach the launch, so launch buys weren't judged"
+          "1 coin(s): trade history didn't reach the launch, so launch buys weren't judged"
         ]
       }
     }
@@ -276,7 +277,7 @@
     "coins": {}
   },
   "rewardsMaxRun": 1439,
-  "rewardsFrom": 1430,
+  "rewardsFrom": 1434,
   "x": {
     "day": "2026-11-01",
     "today": 5,
