@@ -58,6 +58,11 @@ async function listCoins() {
 // trades is used for the rest of the run. Failures never lose the first page.
 const PAGING = [
   ["before", (seen, oldest) => ({ before: oldest.signature })],
+  // Sapling answered HTTP 400 to a signature, so it may want a time
+  ["before=iso", (seen, oldest) => ({ before: oldest.blockTime })],
+  ["before=ms", (seen, oldest) => ({ before: String(Date.parse(oldest.blockTime)) })],
+  ["before=s", (seen, oldest) => ({ before: String(Math.floor(Date.parse(oldest.blockTime) / 1000)) })],
+  ["beforeTime", (seen, oldest) => ({ beforeTime: oldest.blockTime })],
   ["cursor", (seen, oldest) => ({ cursor: oldest.signature })],
   ["until", (seen, oldest) => ({ until: oldest.signature })],
   ["offset", (seen) => ({ offset: String(seen.size) })],
