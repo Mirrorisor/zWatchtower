@@ -211,6 +211,8 @@ function normalise(name, report) {
     const alerts = [];
     if (!report.withinCaps) alerts.push(`float ${report.currentFloatZec} ZEC / ${report.inFlight} in flight exceeds the published caps`);
     for (const s of report.stuck) alerts.push(`payout stuck at order address ${s.index} (${s.address}): ${s.zec} ZEC for ${s.minutes} min`);
+    // Sapling says every forward is a shielded note; checked on live data 2 Nov 2026 (14 of 14 to the shielded pool)
+    for (const f of report.privacy?.public ?? []) alerts.push(`forward from order address ${f.from} at ${f.at} went to a public (transparent) address, not a shielded note (${f.tx})`);
     return { ok: alerts.length === 0, alerts, summary: {
       currentFloatZec: report.currentFloatZec, custodyCapZec: report.custodyCapZec,
       inFlight: report.inFlight, inFlightCap: report.inFlightCap, deliveries: report.deliveries,

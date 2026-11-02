@@ -196,7 +196,7 @@ async function main() {
   const report = { checkedAt: new Date().toISOString(), source, scanned,
     ...analyse(rows, exits.caps, Date.now()) };
   if (source === "3xpl" && !args.includes("--no-privacy")) {
-    const privacy = { forwards: 0, shielded: 0, transparent: 0, mixed: 0, unknown: 0, poolNames: [], errors: 0, sample: null };
+    const privacy = { forwards: 0, shielded: 0, transparent: 0, mixed: 0, unknown: 0, poolNames: [], errors: 0, sample: null, public: [] };
     for (const r of rows) for (const e of r.events) {
       if (e.effect >= 0n || !e.tx) continue;
       try {
@@ -205,6 +205,7 @@ async function main() {
         privacy.sample ??= { tx: e.tx, events: evs.slice(0, 12) };
         const c = classifyForward(evs, r.address);
         privacy.forwards++; privacy[c.kind]++;
+        if (c.kind === "transparent" || c.kind === "mixed") privacy.public.push({ tx: e.tx, from: r.address, at: new Date(e.time).toISOString(), kind: c.kind });
         for (const p of c.pools) if (!privacy.poolNames.includes(p)) privacy.poolNames.push(p);
       } catch { privacy.errors++; }
       await sleep(delayMs);

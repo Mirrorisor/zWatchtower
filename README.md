@@ -119,8 +119,9 @@ The float check also looks up every forward out of Sapling's Zcash order
 addresses and counts how many went to a shielded pool and how many to a
 transparent address, since Sapling says each is forwarded "as a shielded
 note". The pool names 3xpl reports are listed with the counts so the
-classification can be checked; until it has been checked on live data it is
-reported, not alerted on. Terminal sales are paid out by NEAR Intents
+classification can be checked. First live run (2 Nov 2026): 14 of 14
+forwards went to the shielded pool. A forward to a transparent address is an
+alert. Terminal sales are paid out by NEAR Intents
 straight to the seller's wallet and, per Sapling's docs, are not shielded;
 zWatchtower doesn't follow those, since that would mean tracking users.
 

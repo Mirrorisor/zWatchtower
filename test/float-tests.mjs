@@ -81,7 +81,7 @@ const fx = JSON.parse(readFileSync(join(here, "fixtures/order-addresses-2026-10-
 const firstForward = Object.entries(fx).filter(([k]) => k !== "_note").flatMap(([, ev]) => ev).find(([, eff]) => BigInt(eff) < 0n)?.[2];
 globalThis.transparentTx = firstForward;
 const t = run([]);
-check("a forward to a t-address is counted as transparent", t.report.privacy.transparent === 1 &&
+check("a forward to a t-address is counted as transparent and listed", t.report.privacy.transparent === 1 && t.report.privacy.public.length === 1 &&
   t.report.privacy.shielded === t.report.privacy.forwards - 1, JSON.stringify(t.report.privacy));
 check("--no-privacy skips it", run(["--no-privacy"]).report.privacy === undefined);
 
