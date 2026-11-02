@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-02T12:32:50.263Z",
-      "finishedAt": "2026-11-02T12:35:34.792Z",
+      "startedAt": "2026-11-02T13:49:30.063Z",
+      "finishedAt": "2026-11-02T13:52:34.131Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,44 +21,39 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 49,
-          "collect_protocol_pool_fees": 7,
-          "settle_tax": 7,
+          "sell_tax": 6,
+          "withdraw_tax": 6,
+          "observe_sapling": 61,
+          "settle": 12,
+          "claim_payee": 1,
+          "settle_tax": 3,
           "convert_tax_begin": 3,
           "convert_tax_end": 3,
           "settle_sapling": 1,
-          "settle": 9,
-          "sell_tax": 11,
-          "withdraw_tax": 12,
-          "draw_grove": 1,
-          "close_grove": 1
+          "close_rewards_run": 3,
+          "release_rewards": 3
         },
-        "unrecognised": 14,
+        "unrecognised": 8,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-02T12:35:34.794Z",
-      "finishedAt": "2026-11-02T12:35:59.448Z",
+      "startedAt": "2026-11-02T13:52:34.134Z",
+      "finishedAt": "2026-11-02T13:52:57.680Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-11-02T12:35:59.440Z",
-        "runs": 19,
-        "passed": 4,
-        "flagged": 15,
-        "unchecked": 15,
-        "firstUnchecked": 1444,
-        "zecPaidInDoneRuns": "0.87121756",
+        "checkedAt": "2026-11-02T13:52:57.673Z",
+        "runs": 23,
+        "passed": 10,
+        "flagged": 13,
+        "unchecked": 13,
+        "firstUnchecked": 1453,
+        "zecPaidInDoneRuns": "1.45879578",
         "onChainChecks": true,
         "notes": [
-          "run 1444: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1445: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1449: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1450: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1452: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1453: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1454: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1455: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
@@ -68,15 +63,18 @@
           "run 1459: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1460: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
           "run 1461: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
-          "run 1462: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
+          "run 1462: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1463: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1464: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)",
+          "run 1465: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
         ],
-        "maxRunId": 1462
+        "maxRunId": 1465
       }
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-02T11:36:30.919Z",
-      "finishedAt": "2026-11-02T11:44:01.720Z",
+      "startedAt": "2026-11-02T13:52:57.681Z",
+      "finishedAt": "2026-11-02T14:00:26.863Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -110,8 +108,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-02T12:35:59.448Z",
-      "finishedAt": "2026-11-02T12:36:00.396Z",
+      "startedAt": "2026-11-02T14:00:26.863Z",
+      "finishedAt": "2026-11-02T14:00:27.518Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -130,8 +128,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-02T12:36:00.397Z",
-      "finishedAt": "2026-11-02T12:36:14.958Z",
+      "startedAt": "2026-11-02T14:00:27.518Z",
+      "finishedAt": "2026-11-02T14:00:45.323Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -219,14 +217,14 @@
           }
         },
         "pot": {
-          "balanceZat": "2124943",
-          "shownZat": "2124943",
-          "inflowZat": "727508423",
-          "buybackZat": "725383480",
+          "balanceZat": "33362",
+          "shownZat": "33362",
+          "inflowZat": "728708335",
+          "buybackZat": "728674973",
           "movements": {
             "setup": 1,
-            "inflow": 1797,
-            "buyback": 208
+            "inflow": 1801,
+            "buyback": 209
           },
           "reconciled": true,
           "caughtUp": true
@@ -237,14 +235,15 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
+          "buyback 4CmYvSNrWuqnH39DpoGESh576DuSPPci3XHEzqwANV7dhXbY3AbpGVU8H7HepdGjDCdfEAUakpS7BAAVN5wpaWMR drew 3291493 zat but is not in Sapling's burn list",
           "headline 725383480 zat bought back, listed burns add up to 233186483"
         ]
       }
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-02T12:36:14.959Z",
-      "finishedAt": "2026-11-02T12:45:58.324Z",
+      "startedAt": "2026-11-02T14:00:45.324Z",
+      "finishedAt": "2026-11-02T14:11:16.648Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -275,8 +274,8 @@
     "flywheel": {},
     "coins": {}
   },
-  "rewardsMaxRun": 1448,
-  "rewardsFrom": 1444,
+  "rewardsMaxRun": 1457,
+  "rewardsFrom": 1443,
   "x": {
     "day": "2026-11-01",
     "today": 5,
