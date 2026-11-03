@@ -278,7 +278,11 @@ async function handleAlerts(name, entry, cfg, store) {
   const open = store.state.openAlerts[name] ?? {};
   const now = new Set(entry.alerts);
   const raised = entry.alerts.filter((a) => !(a in open));
-  const keepOpen = name === "rewards" ? (a) => !now.has(a) && reRunIdBelow(a, store) : () => false;
+  // a reward run that wasn't checked this time (a failed lookup) keeps its alert:
+  // not being able to look is not the same as the problem going away
+  const unchecked = new Set((entry.summary?.notes ?? []).map((n) => n.match(/^run (\d+): (?:not checked|release not checked)/)?.[1]).filter(Boolean));
+  const runOf = (a) => a.match(/^reward run (\d+)/)?.[1];
+  const keepOpen = name === "rewards" ? (a) => !now.has(a) && (reRunIdBelow(a, store) || unchecked.has(runOf(a))) : () => false;
   const resolved = Object.keys(open).filter((a) => !now.has(a) && !keepOpen(a));
   for (const a of raised) {
     open[a] = entry.finishedAt;

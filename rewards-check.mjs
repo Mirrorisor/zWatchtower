@@ -23,6 +23,7 @@
 // Needs Node 18+ (built-in fetch and WebCrypto). Reads only; signs nothing.
 
 import { isOnCurve } from "./lib/coins.mjs";
+import { createHash } from "node:crypto";
 const API = "https://sapling.cash/api/rewards/";
 const REWARDS_WALLET = "37BBnMe6rTeH3Cxs1meobB6C564GJ7Gxj7SinQfgHPrL";
 const ZEC_MINT = "A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS";
@@ -41,8 +42,8 @@ const asJson = args.includes("--json");
 const concurrency = Number(opt("--concurrency", 8));
 
 const hex = (buf) => Buffer.from(buf).toString("hex");
-const sha256 = async (s) =>
-  hex(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)));
+// node:crypto works on every Node from 18 (the global WebCrypto object doesn't)
+const sha256 = async (s) => createHash("sha256").update(s).digest("hex");
 
 async function getJson(url, init) {
   for (let attempt = 0; attempt < 3; attempt++) {
