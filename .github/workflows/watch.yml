@@ -2,9 +2,9 @@
 # branch, and publishes the dashboard to GitHub Pages.
 # Alerts go to the webhook in the WATCHTOWER_WEBHOOK secret, if set.
 name: watch
+# The checks run every 5 minutes on the zWatchtower server (deploy/). This
+# workflow is the manual backup: Actions -> watch -> Run workflow.
 on:
-  schedule:
-    - cron: "*/15 * * * *"
   workflow_dispatch:
 
 permissions:
