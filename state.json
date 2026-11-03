@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T16:40:11.263Z",
-      "finishedAt": "2026-11-03T16:40:18.905Z",
+      "startedAt": "2026-11-03T16:45:02.387Z",
+      "finishedAt": "2026-11-03T16:45:10.546Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
-        "configSha256": "703b4cdfb7d18f019804a412083f8e2d932210c2433d627c00364449f1b168fd",
+        "configSha256": "952ad678e297517d48710f230c652e2efaa0bd5cce4a232bfd737db271e74ba5",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -21,18 +21,18 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
           "settle_tax": 7,
           "sell_tax": 7,
-          "withdraw_tax": 10,
-          "convert_tax_sapling_begin": 1,
-          "convert_tax_sapling_end": 1,
+          "withdraw_tax": 7,
+          "observe_sapling": 4,
+          "draw_zec_payee": 1,
           "close_rewards_run": 1,
           "release_rewards": 1,
           "convert_sapling_begin": 1,
           "convert_sapling_end": 1,
-          "settle": 10,
-          "settle_sapling": 1
+          "settle": 11,
+          "claim_payee": 3,
+          "draw_lp": 1
         },
         "unrecognised": 5,
         "baseline": false
