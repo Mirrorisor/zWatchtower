@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T14:00:03.439Z",
-      "finishedAt": "2026-11-03T14:00:08.706Z",
+      "startedAt": "2026-11-03T14:05:03.034Z",
+      "finishedAt": "2026-11-03T14:05:10.688Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,10 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5
+          "observe_sapling": 4,
+          "sell_tax": 2,
+          "withdraw_tax": 2,
+          "settle_tax": 1
         },
         "unrecognised": 0,
         "baseline": false
@@ -29,259 +32,36 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-03T13:33:34.660Z",
-      "finishedAt": "2026-11-03T13:33:46.643Z",
+      "startedAt": "2026-11-03T14:05:10.695Z",
+      "finishedAt": "2026-11-03T14:05:14.487Z",
       "status": "ran",
-      "ok": false,
-      "alerts": [
-        "reward run 1524 ZDOG: 39 shares not floor(pot*balance/sum); paid != confirmed shares - rent"
-      ],
+      "ok": true,
+      "alerts": [],
       "summary": {
-        "checkedAt": "2026-11-03T13:33:37.961Z",
-        "runs": 9,
-        "passed": 8,
-        "flagged": 1,
-        "unchecked": 0,
-        "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.34443162",
+        "checkedAt": "2026-11-03T14:05:14.472Z",
+        "runs": 8,
+        "passed": 0,
+        "flagged": 8,
+        "unchecked": 8,
+        "firstUnchecked": 1524,
+        "zecPaidInDoneRuns": "0.00000000",
         "onChainChecks": true,
-        "distinctReleases": 9,
-        "runsWithRelease": 9,
-        "followTheMoney": {
-          "run": 1524,
-          "releaseAt": "2026-11-03T11:34:28.000Z",
-          "window": "2 hours after the release",
-          "txsRead": 39,
-          "txsInWindow": 39,
-          "inflow": "16524057",
-          "outflow": "16524057",
-          "to": {
-            "thisRunHolders": "2257972",
-            "treasury": "69373",
-            "otherRunsHolders": "11943307",
-            "unknown": "2253405"
-          },
-          "topUnknown": [
-            {
-              "owner": "H9DAPPkoAH1DQUzc2L7hDFiXr1xqXGZgR13STEihyau9",
-              "zat": "688724",
-              "wallet": true,
-              "account": "no account",
-              "firstTx": "63jxkfsLBMZg7zzEzF1nUuub3E94yvggJZagPjdV1xZkUjN1C1tZvcryCmzE8No9SjB81RGns9LjisRutfHCPJGZ",
-              "alsoHolderOf": []
-            },
-            {
-              "owner": "6edVx9JNbN5BYsj99f4S7VpWsnuniPuteVUMLP6NP2th",
-              "zat": "688724",
-              "wallet": true,
-              "account": "no account",
-              "firstTx": "4c2wTAHBzeyb1uuSPnr3RgBvvyMJF8ycH4F3K8EVv1JXEaiBNBRA6Vq9F8kjfXZRZfNTq6c3kwwEWxc4iRFu4T2f",
-              "alsoHolderOf": []
-            },
-            {
-              "owner": "FZgnhjnqGttZxmPDoP3UxWRG888mjrKCh5FU3w9rNDFF",
-              "zat": "671950",
-              "wallet": true,
-              "account": "no account",
-              "firstTx": "5MSsoPGoRf2JxZx6872gTPANvvcSrrtJ4Dvtwz55eFNaNou53HtYaBBmAoD6sAHq3RCtZXBVdWMNXjRJ2A9K7SWa",
-              "alsoHolderOf": []
-            },
-            {
-              "owner": "H8aoNLAiJzYsZxng14wtaaFM7n1ehd25VGhtr4t6TEoY",
-              "zat": "105335",
-              "wallet": false,
-              "account": {
-                "owner": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
-                "executable": false,
-                "lamports": 1534160
-              },
-              "firstTx": "5Kt72qB5XwUvNm6mMmALSG52mHSJGzx82mJ6afJeRETGLkQTs6vD7AjanqABDH61vDaXUJJ25fBVyDx7HcFyiJAs",
-              "alsoHolderOf": []
-            },
-            {
-              "owner": "6r9g1aCQCKDuHz353Huh262rshPPDsi5DPvTKVYcEEpC",
-              "zat": "56080",
-              "wallet": false,
-              "account": {
-                "owner": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
-                "executable": false,
-                "lamports": 1534160
-              },
-              "firstTx": "5WXBaednyF9tkkGPftKfWs2Ddta4j5wEpnY2CJtpxTtamqYiSfJBKBeNAMWLJKBNkqcxb6L3tQ2UeEvFbD9yHHSY",
-              "alsoHolderOf": []
-            }
-          ]
-        },
-        "notes": [],
-        "diagnoses": [
-          {
-            "id": 1524,
-            "coin": "ZDOG",
-            "ratio": {
-              "min": "3.9976",
-              "max": "4.0000"
-            },
-            "rowFields": [
-              "owner",
-              "balance",
-              "share",
-              "rentZec",
-              "status",
-              "reason",
-              "signature"
-            ],
-            "pot": "2866514",
-            "sumOfBalances": "458040479944610",
-            "sumOfShares": "716668",
-            "paid": "2761179",
-            "rent": "0",
-            "rolledOver": "105335",
-            "holders": 39,
-            "payoutRows": 39,
-            "explainedBy": [],
-            "sample": [
-              {
-                "owner": "21KJ1m",
-                "balance": "3960019378481",
-                "expected": "24782",
-                "share": "6197",
-                "status": "confirmed"
-              },
-              {
-                "owner": "2AejdD",
-                "balance": "11180745660536",
-                "expected": "69971",
-                "share": "17495",
-                "status": "confirmed"
-              },
-              {
-                "owner": "2NTQmb",
-                "balance": "6902777470883",
-                "expected": "43199",
-                "share": "10802",
-                "status": "confirmed"
-              }
-            ],
-            "onChain": [
-              {
-                "owner": "21KJ1m",
-                "share": "6197",
-                "rentZec": "0",
-                "received": "6197",
-                "txMoves": [
-                  {
-                    "owner": "rewards wallet",
-                    "mint": "ZEC",
-                    "delta": "-371934"
-                  },
-                  {
-                    "owner": "21KJ1mRRSwP2N3kooChaQXkoKVWph59tnznLZZxTbsXS",
-                    "mint": "ZEC",
-                    "delta": "6197"
-                  },
-                  {
-                    "owner": "2AejdDXPkKJfBdRhv4VozFFZh8SkJF52VimYYHegSuRC",
-                    "mint": "ZEC",
-                    "delta": "17495"
-                  },
-                  {
-                    "owner": "2NTQmbYuv3cWfBZXP3ko2c5cLJ9d2jvUr9MJXUiMb9SA",
-                    "mint": "ZEC",
-                    "delta": "10802"
-                  },
-                  {
-                    "owner": "2goRcaYDxBvt1yfNqQ5WY6EZ3QM9u5MuTxiE2o8SUtkA",
-                    "mint": "ZEC",
-                    "delta": "10015"
-                  },
-                  {
-                    "owner": "2pxtSmRJRdchnb66wz27z22agzZD6wAfBAtNJBwyLyPA",
-                    "mint": "ZEC",
-                    "delta": "33265"
-                  },
-                  {
-                    "owner": "3DZNVBQxpaowav4Prz5fwyTG8ReNW6aL118Mod8fJxrg",
-                    "mint": "ZEC",
-                    "delta": "3727"
-                  },
-                  {
-                    "owner": "3GKLWAVj8tEtun8cGAdsYSZTsuspjKE2dtUSFPzBj6dZ",
-                    "mint": "ZEC",
-                    "delta": "34259"
-                  },
-                  {
-                    "owner": "3M3hLckT7M3jeGxkGqC5ZDVZXA86EwbJ8rAGFVdaphgs",
-                    "mint": "ZEC",
-                    "delta": "8972"
-                  },
-                  {
-                    "owner": "3NgJSsQw6o8stwDSoVjudmUAr6wdK2sJg6ENk1f9d9Fd",
-                    "mint": "ZEC",
-                    "delta": "16880"
-                  },
-                  {
-                    "owner": "3TBLyZc7sdgSozZLyf3393uoS8dtgbujsXpRj6auoBLS",
-                    "mint": "ZEC",
-                    "delta": "80357"
-                  },
-                  {
-                    "owner": "4TsVcRbjrMtC26sbX1a3zVYEezr1gfZDiQsiBwwkt5u9",
-                    "mint": "ZEC",
-                    "delta": "8912"
-                  },
-                  {
-                    "owner": "4XrxsJticKAEhdCpFgyaYdiPJkWdUwu5dVQy3KiQKhi7",
-                    "mint": "ZEC",
-                    "delta": "15765"
-                  },
-                  {
-                    "owner": "4b3ZctHLzPBQt3biFbDWp12hf6ADkaruQx4aj9kiDQKh",
-                    "mint": "ZEC",
-                    "delta": "37016"
-                  },
-                  {
-                    "owner": "52XDHvqoSUuBso8riCy9LGfyfidvVzKkN2MgLp4qCAQJ",
-                    "mint": "ZEC",
-                    "delta": "41257"
-                  },
-                  {
-                    "owner": "5MUaLJZFzr8mFyc4WtRHS13nvy1v3X5js2aPGwBQEk4q",
-                    "mint": "ZEC",
-                    "delta": "9637"
-                  },
-                  {
-                    "owner": "5bKMeZFtYLmiNZ4q81eJeyzyKZyPRVAvcrzuLsmLG5yi",
-                    "mint": "ZEC",
-                    "delta": "37378"
-                  }
-                ],
-                "signature": "26TAN2KkhKsbjUtb3Jbd6JBg262wfQx4KSrWyZw9V3xATDoLKCN5K3Yr25hfa87KP9Bokn4A1SDu5aUWy53wA6Um",
-                "fromRewardsWithin20min": {
-                  "payments": 1,
-                  "total": "6197",
-                  "share": "6197"
-                }
-              },
-              {
-                "owner": "2AejdD",
-                "share": "17495",
-                "rentZec": "0",
-                "received": "17495"
-              },
-              {
-                "owner": "2NTQmb",
-                "share": "10802",
-                "rentZec": "0",
-                "received": "10802"
-              },
-              {
-                "rewardsWalletHoldsZat": "0"
-              }
-            ]
-          }
+        "distinctReleases": 0,
+        "runsWithRelease": 0,
+        "notes": [
+          "run 1524: not checked: crypto is not defined",
+          "run 1525: not checked: crypto is not defined",
+          "run 1526: not checked: crypto is not defined",
+          "run 1527: not checked: crypto is not defined",
+          "run 1528: not checked: crypto is not defined",
+          "run 1529: not checked: crypto is not defined",
+          "run 1530: not checked: crypto is not defined",
+          "run 1531: not checked: crypto is not defined"
         ],
+        "diagnoses": [],
+        "followTheMoney": null,
         "batchGroups": null,
-        "maxRunId": 1529
+        "maxRunId": 0
       }
     },
     "float": {
@@ -666,8 +446,7 @@
       "reward run 1490 ZDOG: 55 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-03T01:17:44.677Z",
       "reward run 1491 ███: 11 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-03T01:17:44.677Z",
       "reward run 1501 ZDOG: 55 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-03T03:15:17.524Z",
-      "reward run 1514 ZDOG: 36 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-03T06:39:55.711Z",
-      "reward run 1524 ZDOG: 39 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-03T12:16:18.004Z"
+      "reward run 1514 ZDOG: 36 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-03T06:39:55.711Z"
     },
     "float": {},
     "tax": {},
@@ -676,7 +455,7 @@
     "programs": {}
   },
   "rewardsMaxRun": 1529,
-  "rewardsFrom": 1521,
+  "rewardsFrom": 1524,
   "x": {
     "day": "2026-11-03",
     "today": 10,
