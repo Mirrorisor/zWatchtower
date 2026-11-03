@@ -348,7 +348,7 @@ async function main() {
     const f = state.funders[w]; if (!f) continue; shared.set(f, (shared.get(f) ?? 0) + 1);
   }
   for (const [f, n] of shared) {
-    if (n < 2 || state.busyFunders[f] !== undefined) continue;
+    if (n < 2 || (state.busyFunders[f] !== undefined && state.busyInfo?.[f])) continue;   // judged before details were kept: judge again
     try {
       const info = busyInfo(await rpc("getSignaturesForAddress", [f, { limit: 1000 }]));
       state.busyFunders[f] = info.busy;
