@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T15:45:03.284Z",
-      "finishedAt": "2026-11-03T15:45:06.418Z",
+      "startedAt": "2026-11-03T15:50:11.182Z",
+      "finishedAt": "2026-11-03T15:50:16.024Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,26 +22,28 @@
         ],
         "vaultInstructions": {
           "withdraw_tax": 6,
-          "sell_tax": 1,
+          "settle_tax": 5,
+          "sell_tax": 5,
           "observe_sapling": 4,
-          "register_launchlab_coin": 1,
-          "convert_sapling_begin": 1,
-          "convert_sapling_end": 1,
-          "settle": 1
+          "draw_grove": 1,
+          "close_grove": 1,
+          "freeze_tax_config": 1,
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1
         },
-        "unrecognised": 3,
+        "unrecognised": 1,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-03T15:20:14.390Z",
-      "finishedAt": "2026-11-03T15:20:17.968Z",
+      "startedAt": "2026-11-03T15:50:16.031Z",
+      "finishedAt": "2026-11-03T15:50:19.524Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-11-03T15:20:17.948Z",
+        "checkedAt": "2026-11-03T15:50:19.507Z",
         "runs": 6,
         "passed": 6,
         "flagged": 0,
