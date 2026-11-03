@@ -326,7 +326,24 @@ async function followMoney(runId) {
         const a = await rpc("getAccountInfo", [o, { encoding: "base64", dataSlice: { offset: 0, length: 0 } }]);
         account = a?.value ? { owner: a.value.owner, executable: a.value.executable, lamports: a.value.lamports } : "no account";
       } catch {}
-      return { owner: o, zat: String(v), wallet: isOnCurve(o), account, firstTx: unknownTx.get(o),
+      // what happened to the ZEC afterwards: still there, or sent on, and by which programs
+      let after = null;
+      try {
+        const ta = await rpc("getTokenAccountsByOwner", [o, { mint: ZEC_MINT }, { encoding: "jsonParsed" }]);
+        const acct = ta?.value?.[0];
+        if (acct) {
+          const sigs2 = (await rpc("getSignaturesForAddress", [acct.pubkey, { limit: 5 }])) ?? [];
+          const progs = new Set();
+          for (const x2 of sigs2.slice(0, 3)) {
+            if (x2.signature === unknownTx.get(o)) continue;
+            const t2 = await rpc("getTransaction", [x2.signature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 }]);
+            for (const ix of [...(t2?.transaction?.message?.instructions ?? []), ...((t2?.meta?.innerInstructions ?? []).flatMap((i) => i.instructions ?? []))])
+              if (ix.programId) progs.add(ix.programId);
+          }
+          after = { zecLeft: acct.account.data.parsed.info.tokenAmount.amount, laterTxs: sigs2.length - 1, programs: [...progs] };
+        } else after = { zecAccount: "closed" };
+      } catch (e) { after = { error: e.message.slice(0, 50) }; }
+      return { owner: o, zat: String(v), wallet: isOnCurve(o), account, after, firstTx: unknownTx.get(o),
         alsoHolderOf: [...ownersByRun].filter(([, set]) => set.has(o)).map(([id]) => id) };
     })) };
 }
