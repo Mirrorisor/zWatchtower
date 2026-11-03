@@ -35,7 +35,7 @@ const scanCoins = Number(opt("--scan-coins", "60"));
 const scanPages = Number(opt("--scan-pages", "4"));
 const RESCAN_MS = 24 * 3600 * 1000;
 // who funded each early buyer: looked up once per wallet, this many per run
-const fundingLookups = Number(opt("--funding-lookups", "40"));
+const fundingLookups = Number(opt("--funding-lookups", "100"));
 
 // The wallet that first sent SOL to `wallet`: its oldest transaction, found by
 // paging its history (up to 4 pages of 1,000). "busy" when the wallet is too
