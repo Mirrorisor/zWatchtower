@@ -49,10 +49,13 @@ echo
 cat /home/zwatch/.ssh/deploy.pub
 echo
 read -rp "   Press Enter once it's added... " _
-if sudo -u zwatch ssh -o BatchMode=yes -T git@github.com 2>&1 | grep -qi "successfully authenticated"; then
+# ssh -T always exits 1 (GitHub gives no shell), so read its message instead of its exit code
+reply=$(sudo -u zwatch ssh -o BatchMode=yes -T git@github.com 2>&1 || true)
+if grep -qi "successfully authenticated" <<<"$reply"; then
   echo "   GitHub accepted the key."
 else
-  echo "   GitHub didn't accept the key yet. Check it was added with write access, then run: bash $APP/deploy/setup-server.sh"; exit 1
+  echo "   GitHub didn't accept the key yet. It said: $reply"
+  echo "   Check it was added with write access, then run this setup again."; exit 1
 fi
 
 cat > /etc/systemd/system/zwatchtower.service <<UNIT
