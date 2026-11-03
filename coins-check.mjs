@@ -12,7 +12,7 @@
 // Usage:
 //   node coins-check.mjs --rpc URL --state coins-state.json --out coins.json --json
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
-import { funderFromTx, fundingFacts, fundingFlags } from "./lib/funding.mjs";
+import { funderFromTx, fundingFacts, fundingFlags, isBusy } from "./lib/funding.mjs";
 import { dirname, join } from "node:path";
 import { buildCard, repeatHolders, cardEvents, launchSummary, creatorRecords, creatorHistory, serialCreators, creatorOf as creatorOfDetail, isAddress,
   LIMITS, EARLY_SECONDS, SOLD_OUT_PCT, PRIOR_SOLD_OUT } from "./lib/coins.mjs";
@@ -334,12 +334,23 @@ async function main() {
       await sleep(pauseMs);
     }
   }
+  // funders shared by early buyers: an exchange-like (very busy) wallet doesn't count
+  state.busyFunders ??= {};
+  const shared = new Map();
+  for (const card of Object.values(state.cards)) for (const w of earlyOf(card) ?? []) {
+    const f = state.funders[w]; if (!f) continue; shared.set(f, (shared.get(f) ?? 0) + 1);
+  }
+  for (const [f, n] of shared) {
+    if (n < 2 || state.busyFunders[f] !== undefined) continue;
+    try { state.busyFunders[f] = isBusy(await rpc("getSignaturesForAddress", [f, { limit: 1000 }])); } catch {}
+    await sleep(pauseMs);
+  }
   let fundingPending = 0;
   for (const card of Object.values(state.cards)) {
     const buyers = earlyOf(card);
     card.flags = card.flags.filter((f) => !/of the first buyers (was|were) funded/.test(f));
     if (buyers?.length) {
-      const ff = fundingFacts(buyers, state.funders, card.creator);
+      const ff = fundingFacts(buyers, state.funders, card.creator, state.busyFunders);
       card.facts.funding = ff;
       if (ff.lookedUp < ff.earlyBuyers) fundingPending++;
       card.flags.push(...fundingFlags(ff));
