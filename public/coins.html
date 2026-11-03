@@ -171,7 +171,7 @@ function render() {
   if (ser.length) {
     $("#serial").hidden = false;
     $("#serialIntro").textContent = `From every Sapling coin, not just the ones above $10k (${data.launchesKnown ?? "?"} read so far). "Sold out" means the creator sold at least ${data.soldOutPct ?? 90}% of what they bought; coins whose history doesn't reach the launch, or where the creator didn't buy, aren't judged.`;
-    $("#serialList").innerHTML = ser.slice(0, 15).map((x) => `<li><a href="https://solscan.io/account/${esc(x.creator)}"><code>${esc(x.creator.slice(0, 6))}…${esc(x.creator.slice(-4))}</code></a>
+    $("#serialList").innerHTML = ser.slice(0, 15).map((x) => `<li><a href="creators.html#${esc(x.creator)}"><code>${esc(x.creator.slice(0, 6))}…${esc(x.creator.slice(-4))}</code></a>
       launched ${x.launched} coins, sold out of <b>${x.soldOut} of ${x.checked}</b> checked:
       ${x.coins.slice(0, 8).map((k) => `$${esc(k.symbol)}${k.soldPct == null ? "" : k.bought === false ? " (didn't buy)" : ` (${p(k.soldPct)} sold)`}`).join(", ")}${x.coins.length > 8 ? "…" : ""}</li>`).join("");
   }
@@ -197,7 +197,7 @@ function render() {
       <td${hot(c.facts.top10Pct, L.top10Pct)} data-label="Top 10">${p(c.facts.top10Pct)}</td>
       <td data-label="Fees go to">${esc(c.feesTo)}</td>
       <td class="flagcell">${c.flagCount ? `<ul class="flags">${c.flags.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>` : '<span class="pill ok">No flags</span>'}
-        ${c.facts.creatorOtherCoins?.launched ? `<div class="note">Creator's other coins: ${c.facts.creatorOtherCoins.launched} launched, sold out of ${c.facts.creatorOtherCoins.soldOut} of ${c.facts.creatorOtherCoins.checked} checked</div>` : ""}
+        ${c.facts.creatorOtherCoins?.launched ? `<div class="note"><a href="creators.html#${esc(c.creator)}">Creator's other coins</a>: ${c.facts.creatorOtherCoins.launched} launched, sold out of ${c.facts.creatorOtherCoins.soldOut} of ${c.facts.creatorOtherCoins.checked} checked</div>` : ""}
         ${c.notes.length ? `<div class="note">${c.notes.map(esc).join(" · ")}</div>` : ""}
         <div class="note">Read ${ago(c.refreshedAt)} · <details class="badge"><summary>Badge</summary>
           <img src="badges/${esc(c.mint)}.svg" alt="zWatchtower badge for $${esc(c.symbol)}">

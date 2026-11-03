@@ -270,6 +270,10 @@ try {
   check("end to end: every coin's creator is read, not only carded ones; a shielded launch isn't a creator", p1.launchesKnown === 5 &&
     ser?.launched === 4 && ser.soldOut === 2 && s1.report.notes.some((n) => /creator scan: 5 coin\(s\) read this run, 5 of 5 read so far \(1 launched shielded, creator not public\)/.test(n)),
     JSON.stringify({ known: p1.launchesKnown, ser, notes: s1.report.notes }));
+  const cj = JSON.parse(readFileSync(join(dir, "creators.json"), "utf8"));
+  const me = cj.creators.find((x) => x.creator === creator);
+  check("end to end: every creator and their coins are written for the creator pages", cj.apiVersion === 1 &&
+    me?.launched === 4 && me.coins.length === 4 && !cj.creators.some((x) => x.creator === "shielded launch"), JSON.stringify(me));
   extraCoins.push(smallCoin("ee", new Date(Date.now() - 3600e3).toISOString(), false, { symbol: "CC" }));
   const s2 = await run("10000");
   check("end to end: a new coin by a creator who sold out of most of their coins is a warning, once",

@@ -96,7 +96,10 @@ creator sold out of at least two of them and most of those checked. A coin
 launched in the last day by such a creator is posted as a warning, once, as
 is any new coin that takes the name of an older coin worth $10,000 or more
 (a copycat), whoever launched it.
-The coins page lists creators with more than one coin.
+The coins page lists creators with more than one coin, and `creators.html`
+has a page for every creator (`creators.html#<wallet>`, data in
+`api/creators.json`): each coin they launched, what they bought at launch and
+how much they sold.
 
 Every coin with a card has a badge at `badges/<mint>.svg`, with an embed
 snippet on the coins page that links back to the card: green for no flags,

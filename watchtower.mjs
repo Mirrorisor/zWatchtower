@@ -354,6 +354,8 @@ function exportSite(cfg, store, dir) {
   writeFileSync(join(dir, "api", "history.json"), JSON.stringify(store.read("history.jsonl", () => true, 500)));
   writeFileSync(join(dir, "api", "x-posts.json"), JSON.stringify(store.read("x-posts.jsonl", () => true, 200)));
   const coins = join(cfg.dataDir, "coins.json");
+  const creators = join(cfg.dataDir, "creators.json");
+  if (existsSync(creators)) copyFileSync(creators, join(dir, "api", "creators.json"));
   if (existsSync(coins)) {
     copyFileSync(coins, join(dir, "api", "coins.json"));
     // a badge per carded coin: badges/<mint>.svg
@@ -364,7 +366,7 @@ function exportSite(cfg, store, dir) {
     } catch (e) { console.error(`badges not written: ${e.message}`); }
   }
   writeFileSync(join(dir, "api", "report.json"), JSON.stringify(weeklyReport(cfg, store)));
-  for (const f of ["coins.html", "posts.html", "report.html"])
+  for (const f of ["coins.html", "posts.html", "report.html", "creators.html"])
     if (existsSync(join(here, "public", f))) copyFileSync(join(here, "public", f), join(dir, f));
   writeFileSync(join(dir, ".nojekyll"), "");
 }
@@ -380,6 +382,12 @@ function serve(cfg, store) {
     };
     const limit = Math.min(500, Number(url.searchParams.get("limit") ?? 100));
     if (url.pathname === "/") { res.writeHead(200, { "content-type": "text/html; charset=utf-8" }); return res.end(page()); }
+    if (url.pathname === "/creators.html") { res.writeHead(200, { "content-type": "text/html; charset=utf-8" }); return res.end(readFileSync(join(here, "public", "creators.html"))); }
+    if (url.pathname === "/api/creators.json") {
+      const f = join(cfg.dataDir, "creators.json");
+      res.writeHead(existsSync(f) ? 200 : 404, { "content-type": "application/json" });
+      return res.end(existsSync(f) ? readFileSync(f) : "{}");
+    }
     if (url.pathname === "/report.html") { res.writeHead(200, { "content-type": "text/html; charset=utf-8" }); return res.end(readFileSync(join(here, "public", "report.html"))); }
     if (url.pathname === "/api/report.json") return json(weeklyReport(cfg, store));
     if (url.pathname === "/posts.html") { res.writeHead(200, { "content-type": "text/html; charset=utf-8" }); return res.end(readFileSync(join(here, "public", "posts.html"))); }

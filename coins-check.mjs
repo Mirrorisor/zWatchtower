@@ -12,6 +12,7 @@
 // Usage:
 //   node coins-check.mjs --rpc URL --state coins-state.json --out coins.json --json
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
+import { dirname, join } from "node:path";
 import { buildCard, repeatHolders, cardEvents, launchSummary, creatorRecords, creatorHistory, serialCreators, creatorOf as creatorOfDetail, isAddress,
   LIMITS, EARLY_SECONDS, SOLD_OUT_PCT, PRIOR_SOLD_OUT } from "./lib/coins.mjs";
 
@@ -324,6 +325,14 @@ async function main() {
     earlySeconds: EARLY_SECONDS, cards: publicCards, repeatHolders: repeats, events: state.events.slice(0, 30),
     soldOutPct: SOLD_OUT_PCT, serialCreators: serial, launchesKnown: known }));
   writeFileSync(statePath, JSON.stringify(state));
+  // every creator with their coins, for the creator pages
+  const creatorsOut = [...records].map(([creator, list]) => ({ creator, ...creatorHistory(list, null),
+    coins: list.map((l) => ({ mint: l.mint, symbol: l.symbol, launchedAt: l.launchedAt, marketCapUsd: l.marketCapUsd ?? null,
+      launchPct: l.creatorLaunchPct, soldPct: l.creatorSoldPct, bought: l.creatorBought, complete: l.complete }))
+      .sort((a, b) => String(b.launchedAt).localeCompare(String(a.launchedAt))) }))
+    .sort((a, b) => b.launched - a.launched || b.soldOut - a.soldOut);
+  writeFileSync(join(dirname(outPath), "creators.json"), JSON.stringify({ apiVersion: 1, generatedAt: new Date().toISOString(),
+    soldOutPct: SOLD_OUT_PCT, launchesRead: known, coinsListed: coins.length, creators: creatorsOut }));
 
   const flagCounts = {};
   for (const c of cards) for (const f of c.flags) {
