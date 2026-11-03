@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly report · zWatchtower</title>
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<style>
+  :root {
+    --bg: #f6f5f1; --surface: #ffffff; --ink: #1c1d1a; --muted: #62645d; --rule: #e2e0d8;
+    --ok: #1f7a4a; --ok-bg: #e4f2ea; --warn: #9a5b00; --warn-bg: #fbefd9; --bad: #b3261e; --bad-bg: #fbe5e3; --accent: #2f5d50;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141513; --surface: #1d1f1c; --ink: #ecebe6; --muted: #a2a49c; --rule: #2f322d;
+      --ok: #6fcf97; --ok-bg: #173323; --warn: #f2b45c; --warn-bg: #3a2b12; --bad: #f28b82; --bad-bg: #3b1c1a; --accent: #8fc5b4;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 56px; }
+  a { color: var(--accent); }
+  nav { font-size: 13px; margin-bottom: 14px; }
+  h1 { margin: 0; font-size: 28px; letter-spacing: -0.01em; }
+  .period { color: var(--muted); margin: 4px 0 20px; }
+  h2 { font-size: 18px; margin: 28px 0 8px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+  .stat { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 14px; }
+  .stat b { display: block; font-size: 22px; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: 13px; color: var(--muted); }
+  ul { padding-left: 20px; }
+  li { margin: 4px 0; }
+  .tag { font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 999px; }
+  .tag.open { background: var(--bad-bg); color: var(--bad); }
+  .tag.closed { background: var(--ok-bg); color: var(--ok); }
+  .muted { color: var(--muted); }
+  code { font-size: .88em; overflow-wrap: anywhere; }
+  footer { margin-top: 32px; font-size: 13px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="./">← Dashboard</a> · <a href="coins.html">Coin report cards</a></nav>
+  <h1>zWatchtower weekly report on Sapling</h1>
+  <p class="period" id="period">Loading…</p>
+  <div id="body"></div>
+  <footer>
+    An independent, open-source check of <a href="https://sapling.cash">Sapling</a> against the Solana and Zcash chains. Not affiliated with Sapling.
+    Every number here comes from the public data (<a href="api/report.json">report.json</a>) and can be reproduced from the
+    <a href="https://github.com/Mirrorisor/zWatchtower">source code</a>. Mistakes are listed in
+    <a href="https://github.com/Mirrorisor/zWatchtower/blob/main/CORRECTIONS.md">corrections</a>. Not financial advice.
+  </footer>
+</main>
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const d = (iso) => new Date(iso).toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+const t = (iso) => new Date(iso).toLocaleString(undefined, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "UTC" }) + " UTC";
+const stat = (n, label) => `<div class="stat"><b>${n ?? "–"}</b><span>${esc(label)}</span></div>`;
+const short = (s) => esc(String(s).replace(/[1-9A-HJ-NP-Za-km-z]{40,90}/g, (m) => `${m.slice(0, 6)}…${m.slice(-4)}`));
+(async () => {
+  let r;
+  try { r = await fetch("api/report.json", { cache: "no-store" }).then((x) => x.json()); }
+  catch { $("#period").textContent = "The report isn't available yet."; return; }
+  $("#period").textContent = `${d(r.from)} to ${d(r.to)} · ${r.checksRun} checks run`;
+  const c = r.code, open = r.problems.filter((p) => p.open), closed = r.problems.length - open.length;
+  let h = `<div class="grid">
+    ${stat(c.upgrades.length, "code upgrades")}
+    ${stat(c.controlChanges.length, "changes of control")}
+    ${stat(r.payouts.forwards ? `${r.payouts.shielded}/${r.payouts.forwards}` : null, "payouts forwarded shielded")}
+    ${stat(r.buybacks.burns ? `${r.buybacks.verified}/${r.buybacks.burns}` : null, "buybacks verified on chain")}
+    ${stat(r.taxes.coins ? `${r.taxes.matching}/${r.taxes.coins}` : null, "coin taxes as advertised")}
+    ${stat(r.rewards.runsChecked ? `${r.rewards.passed}/${r.rewards.runsChecked}` : null, "recent reward runs passing")}
+    ${stat(r.terminal ? `${r.terminal.tokensChecked - r.terminal.breakingRules}/${r.terminal.tokensChecked}` : null, "Terminal tokens within its rules")}
+    ${stat(open.length, "open problems")}
+  </div>`;
+  h += `<h2>Code and control</h2><ul>`;
+  h += c.upgrades.length ? c.upgrades.map((u) => `<li>${esc(t(u.at))}: ${short(u.text)}</li>`).join("") : "<li>No upgrades this week.</li>";
+  h += c.controlChanges.length ? c.controlChanges.map((u) => `<li><b>${esc(t(u.at))}: ${short(u.text)}</b></li>`).join("")
+    : `<li>Who can upgrade Sapling's ${c.saplingPrograms} programs didn't change.</li>`;
+  if (c.adminActions) h += `<li>${c.adminActions} admin instruction${c.adminActions === 1 ? "" : "s"} run on the vault.</li>`;
+  h += `</ul>`;
+  h += `<h2>Money</h2><ul>
+    <li>Payouts: ${r.payouts.forwards ?? "–"} forwarded from Sapling's Zcash order addresses, ${r.payouts.shielded ?? "–"} into the shielded pool; ${r.payouts.floatZec ?? "–"} ZEC waiting now.</li>
+    <li>Buybacks: ${r.buybacks.verified ?? "–"} of ${r.buybacks.burns ?? "–"} listed buy-and-burns found on chain; the tax pot ${r.buybacks.potReconciled ? "reconciles to the zat" : "does not reconcile"}.</li>
+    <li>Holder rewards: ${r.rewards.passed ?? "–"} of the ${r.rewards.runsChecked ?? "–"} most recent runs pass every check.</li>
+    <li>Coin taxes: ${r.taxes.matching ?? "–"} of ${r.taxes.coins ?? "–"} Raydium coins charge what Sapling advertises.</li></ul>`;
+  if (r.coins) {
+    const k = r.coins;
+    h += `<h2>Coins</h2><ul>
+      <li>${k.flagged} of ${k.carded} coins over $10k have at least one flag (<a href="coins.html">report cards</a>).</li>
+      <li>${k.launchesRead ?? "–"} coins' creators read so far; ${k.serialCreators} creators sold out of two or more coins.</li></ul>`;
+    if (k.warnings.length) h += `<p class="muted">New-coin warnings:</p><ul>${k.warnings.map((w) => `<li>${esc(w)}</li>`).join("")}</ul>`;
+    if (k.changes.length) h += `<p class="muted">Changes:</p><ul>${k.changes.map((w) => `<li>${esc(w)}</li>`).join("")}</ul>`;
+  }
+  h += `<h2>Problems found</h2>`;
+  h += open.length ? `<ul>${open.map((p) => `<li><span class="tag open">open</span> ${esc(t(p.at))} · ${esc(p.check)}: ${short(p.text)}</li>`).join("")}</ul>` : "<p>None open.</p>";
+  if (closed) h += `<p class="muted">${closed} earlier alert${closed === 1 ? "" : "s"} this week ${closed === 1 ? "was" : "were"} resolved; each is in the <a href="api/alerts.json">alert log</a>.</p>`;
+  $("#body").innerHTML = h;
+})();
+</script>
+</body>
+</html>

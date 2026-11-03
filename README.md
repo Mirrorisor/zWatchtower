@@ -134,6 +134,15 @@ alert. Terminal sales are paid out by NEAR Intents
 straight to the seller's wallet and, per Sapling's docs, are not shielded;
 zWatchtower doesn't follow those, since that would mean tracking users.
 
+### Weekly report
+
+`report.html` sums up the last seven days: every code upgrade and change of
+control, payouts forwarded shielded, buybacks verified, coin taxes, reward
+runs, Terminal tokens, flagged coins and new-coin warnings, and any problem
+still open. Failed lookups and alerts zWatchtower withdrew are left out, since
+they were its own mistakes. The data is `api/report.json`; a one-line summary
+is written to the posts feed each Monday.
+
 ### Public data and disputes
 
 Everything on the dashboard is free JSON anyone can build on, documented and

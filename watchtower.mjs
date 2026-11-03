@@ -26,6 +26,7 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { composePosts, composeSummary, fit, postToX } from "./lib/xpost.mjs";
 import { badgeSvg } from "./lib/badge.mjs";
+import { buildReport, composeWeekly } from "./lib/report.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
@@ -337,6 +338,13 @@ const statusBody = (cfg, store) => ({
 
 // Static copy of the dashboard and its API, for hosting without a server
 // (GitHub Pages). The page reads api/status.json and api/alerts.json.
+function weeklyReport(cfg, store, to = Date.now()) {
+  const coinsPath = join(cfg.dataDir, "coins.json");
+  return { apiVersion: 1, ...buildReport({ latest: store.state.latest, openAlerts: store.state.openAlerts, alerts: store.read("alerts.jsonl", () => true, 5000),
+    history: store.read("history.jsonl", () => true, 5000),
+    coins: existsSync(coinsPath) ? JSON.parse(readFileSync(coinsPath, "utf8")) : null, to }) };
+}
+
 function exportSite(cfg, store, dir) {
   mkdirSync(join(dir, "api"), { recursive: true });
   for (const f of ["index.html", "logo.svg", "logo.png"])
@@ -355,7 +363,8 @@ function exportSite(cfg, store, dir) {
         if (/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(card.mint)) writeFileSync(join(dir, "badges", `${card.mint}.svg`), badgeSvg(card));
     } catch (e) { console.error(`badges not written: ${e.message}`); }
   }
-  for (const f of ["coins.html", "posts.html"])
+  writeFileSync(join(dir, "api", "report.json"), JSON.stringify(weeklyReport(cfg, store)));
+  for (const f of ["coins.html", "posts.html", "report.html"])
     if (existsSync(join(here, "public", f))) copyFileSync(join(here, "public", f), join(dir, f));
   writeFileSync(join(dir, ".nojekyll"), "");
 }
@@ -371,6 +380,8 @@ function serve(cfg, store) {
     };
     const limit = Math.min(500, Number(url.searchParams.get("limit") ?? 100));
     if (url.pathname === "/") { res.writeHead(200, { "content-type": "text/html; charset=utf-8" }); return res.end(page()); }
+    if (url.pathname === "/report.html") { res.writeHead(200, { "content-type": "text/html; charset=utf-8" }); return res.end(readFileSync(join(here, "public", "report.html"))); }
+    if (url.pathname === "/api/report.json") return json(weeklyReport(cfg, store));
     if (url.pathname === "/posts.html") { res.writeHead(200, { "content-type": "text/html; charset=utf-8" }); return res.end(readFileSync(join(here, "public", "posts.html"))); }
     if (url.pathname === "/coins.html") { res.writeHead(200, { "content-type": "text/html; charset=utf-8" }); return res.end(readFileSync(join(here, "public", "coins.html"))); }
     if (url.pathname === "/api/coins.json") {
@@ -417,6 +428,13 @@ async function main() {
     if ((cfg.x.dailySummary || !cfg.x.creds) && store.state.xSummaryDay !== day && Object.keys(store.state.latest).length) {
       store.state.xSummaryDay = day;
       await publishToX("summary", [], [], cfg, store, [composeSummary(store.state.latest)]);
+      store.save();
+    }
+    // the weekly report post, on the first run of each Monday (UTC)
+    const week = day; // the Monday's date
+    if (new Date().getUTCDay() === 1 && store.state.xWeekly !== week && Object.keys(store.state.latest).length) {
+      store.state.xWeekly = week;
+      await publishToX("weekly", [], [], cfg, store, [composeWeekly(weeklyReport(cfg, store))]);
       store.save();
     }
     if (opt("--export")) exportSite(cfg, store, resolve(opt("--export")));
