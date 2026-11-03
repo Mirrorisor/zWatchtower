@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T15:55:03.566Z",
-      "finishedAt": "2026-11-03T15:55:07.875Z",
+      "startedAt": "2026-11-03T16:03:07.956Z",
+      "finishedAt": "2026-11-03T16:03:13.419Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,13 +21,19 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "settle_tax": 4,
-          "sell_tax": 4,
-          "withdraw_tax": 4,
-          "observe_sapling": 4,
-          "settle": 3
+          "observe_sapling": 7,
+          "settle_tax": 5,
+          "sell_tax": 6,
+          "withdraw_tax": 7,
+          "draw_grove": 1,
+          "close_grove": 1,
+          "close_rewards_run": 1,
+          "release_rewards": 1,
+          "settle": 2,
+          "settle_sapling": 1,
+          "claim_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 2,
         "baseline": false
       }
     },
@@ -277,29 +283,30 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-03T15:30:13.428Z",
-      "finishedAt": "2026-11-03T15:32:52.802Z",
+      "startedAt": "2026-11-03T16:03:13.423Z",
+      "finishedAt": "2026-11-03T16:04:14.793Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [
-        "$ᑓହꚡई ($15.0k) just passed $10.0k market cap with 3 flags: Creator has sold 100% of what they bought; 20 wallets bought 44.5% in the first 10 seconds; Creator sold out of 8 of their 8 other coins checked."
+        "Copycat: new coin $SARAH (5isL…cash) uses the same name as $SARAH (4LT4…cash, $84.0k). Check the address before you buy.",
+        "$SARAH ($84.0k) just passed $10.0k market cap with 1 flag: 21 wallets bought 36.8% in the first 10 seconds."
       ],
       "summary": {
-        "coins": 482,
-        "carded": 12,
-        "refreshed": 12,
-        "flagged": 10,
+        "coins": 484,
+        "carded": 13,
+        "refreshed": 13,
+        "flagged": 11,
         "flagCounts": {
-          "N wallet(s) bought N in the first N seconds": 9,
-          "N of the first buyers were funded by the same wallet(s)": 3,
+          "N wallet(s) bought N in the first N seconds": 10,
+          "N of the first buyers were funded by the same wallet(s)": 4,
           "Creator has sold N of what they bought": 5,
           "Creator sold out of N of their N other coins checked": 2,
           "Creator bought N of supply at launch": 2
         },
         "notes": [
-          "creator scan: 0 coin(s) read this run, 482 of 482 read so far (1 launched shielded, creator not public)",
-          "first-buyer funding: 93 wallet(s) looked up this run, 1 coin(s) still being looked up, 1 lookup(s) failed",
+          "creator scan: 2 coin(s) read this run, 484 of 484 read so far (1 launched shielded, creator not public)",
+          "first-buyer funding: 13 wallet(s) looked up this run, 1 coin(s) still being looked up, 1 lookup(s) failed",
           "1 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 1)",
           "23 shortlisted coin(s) were under $10,000 on their own page, so no card",
           "18 wallet(s) are in the top 10 of more than one coin"
@@ -308,8 +315,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-03T15:32:53.350Z",
-      "finishedAt": "2026-11-03T15:33:12.032Z",
+      "startedAt": "2026-11-03T16:04:15.200Z",
+      "finishedAt": "2026-11-03T16:04:42.699Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -319,7 +326,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 1685,
+            "seenInTxs": 1749,
             "withJupiter": 46,
             "seeds": [
               "upgradeAuthority",
@@ -353,17 +360,17 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 182
+            "seenInTxs": 185
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 176
+            "seenInTxs": 179
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
             "authority": "FytDrVzDybM1TwFQPGb8qaxZR7dBCzNeqT3vtQsceZQK",
-            "seenInTxs": 110
+            "seenInTxs": 114
           },
           {
             "id": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
@@ -388,12 +395,12 @@
           {
             "id": "LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj",
             "authority": "FytDrVzDybM1TwFQPGb8qaxZR7dBCzNeqT3vtQsceZQK",
-            "seenInTxs": 25
+            "seenInTxs": 27
           },
           {
             "id": "L2TExMFKdjpN9kozasaurPirfHy9P8sbXoAN1qA3S95",
             "authority": null,
-            "seenInTxs": 9
+            "seenInTxs": 10
           },
           {
             "id": "MNFSTqtC93rEfYHB6hF82sKdZpUDFWkViLByLd1k1Ms",
@@ -431,7 +438,7 @@
           "breakingRules": []
         },
         "programsSeen": 16,
-        "txsRead": 31,
+        "txsRead": 73,
         "notes": []
       }
     }
