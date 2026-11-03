@@ -110,11 +110,30 @@ async function sampleReceived(holders, payouts) {
       const m = tx?.meta;
       const post = m?.postTokenBalances?.find((b) => b.owner === owner && b.mint === ZEC_MINT);
       const pre = post && m.preTokenBalances.find((b) => b.accountIndex === post.accountIndex);
-      out.push({ owner: owner.slice(0, 6), share: row.share, rentZec: row.rentZec ?? null,
-        received: post ? String(BigInt(post.uiTokenAmount.amount) - BigInt(pre ? pre.uiTokenAmount.amount : 0)) : "no ZEC account change" });
+      const entry = { owner: owner.slice(0, 6), share: row.share, rentZec: row.rentZec ?? null,
+        received: post ? String(BigInt(post.uiTokenAmount.amount) - BigInt(pre ? pre.uiTokenAmount.amount : 0)) : "no ZEC account change" };
+      // for the first one, every token balance that moved in that transaction: where did the rest go?
+      if (!out.length && m) {
+        const key = (b) => `${b.owner}|${b.mint}`;
+        const net = new Map();
+        for (const b of m.preTokenBalances ?? []) net.set(key(b), (net.get(key(b)) ?? 0n) - BigInt(b.uiTokenAmount.amount));
+        for (const b of m.postTokenBalances ?? []) net.set(key(b), (net.get(key(b)) ?? 0n) + BigInt(b.uiTokenAmount.amount));
+        entry.txMoves = [...net].filter(([, v]) => v !== 0n).map(([k, v]) => {
+          const [o, mint] = k.split("|");
+          return { owner: o === REWARDS_WALLET ? "rewards wallet" : o, mint: mint === ZEC_MINT ? "ZEC" : mint, delta: String(v) };
+        });
+        entry.signature = sig;
+      }
+      out.push(entry);
     } catch (e) { out.push({ owner: owner.slice(0, 6), error: e.message.slice(0, 60) }); }
     if (out.length >= 3) break;
   }
+  // and what the rewards wallet holds now
+  try {
+    const accts = await rpc("getTokenAccountsByOwner", [REWARDS_WALLET, { mint: ZEC_MINT }, { encoding: "jsonParsed" }]);
+    const held = (accts?.value ?? []).reduce((a, x) => a + BigInt(x.account.data.parsed.info.tokenAmount.amount), 0n);
+    out.push({ rewardsWalletHoldsZat: String(held) });
+  } catch {}
   return out.length ? out : "payout rows don't name a transaction";
 }
 
