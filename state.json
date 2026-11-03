@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T14:10:01.811Z",
-      "finishedAt": "2026-11-03T14:10:06.892Z",
+      "startedAt": "2026-11-03T14:15:04.386Z",
+      "finishedAt": "2026-11-03T14:15:09.339Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,10 +22,10 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "settle": 2,
-          "settle_sapling": 1
+          "register_launchlab_coin": 1,
+          "declare_payee": 1
         },
-        "unrecognised": 1,
+        "unrecognised": 2,
         "baseline": false
       }
     },
@@ -282,14 +282,16 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-03T13:41:55.969Z",
-      "finishedAt": "2026-11-03T13:42:17.873Z",
+      "startedAt": "2026-11-03T14:15:09.345Z",
+      "finishedAt": "2026-11-03T14:20:16.970Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
-      "events": [],
+      "events": [
+        "New coin $zkSNARK (2SaA…cash) was launched by a creator who sold out of 8 of their 8 other Sapling coins checked ($**, $NU7, $SATOSHI…)."
+      ],
       "summary": {
-        "coins": 479,
+        "coins": 480,
         "carded": 11,
         "refreshed": 11,
         "flagged": 9,
@@ -300,7 +302,8 @@
           "Creator bought N of supply at launch": 2
         },
         "notes": [
-          "creator scan: 1 coin(s) read this run, 479 of 479 read so far (1 launched shielded, creator not public)",
+          "creator scan: 1 coin(s) read this run, 480 of 480 read so far (1 launched shielded, creator not public)",
+          "holder concentration not read for 11 coin(s) this run (rate-limited x11); tried again later",
           "1 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 1)",
           "23 shortlisted coin(s) were under $10,000 on their own page, so no card",
           "17 wallet(s) are in the top 10 of more than one coin"
@@ -309,8 +312,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-03T13:42:17.874Z",
-      "finishedAt": "2026-11-03T13:42:36.331Z",
+      "startedAt": "2026-11-03T14:20:17.410Z",
+      "finishedAt": "2026-11-03T14:21:06.955Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -320,7 +323,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 1628,
+            "seenInTxs": 1642,
             "withJupiter": 46,
             "seeds": [
               "upgradeAuthority",
@@ -354,12 +357,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 172
+            "seenInTxs": 174
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 166
+            "seenInTxs": 168
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -389,12 +392,12 @@
           {
             "id": "LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj",
             "authority": "FytDrVzDybM1TwFQPGb8qaxZR7dBCzNeqT3vtQsceZQK",
-            "seenInTxs": 22
+            "seenInTxs": 24
           },
           {
             "id": "L2TExMFKdjpN9kozasaurPirfHy9P8sbXoAN1qA3S95",
             "authority": null,
-            "seenInTxs": 6
+            "seenInTxs": 8
           },
           {
             "id": "MNFSTqtC93rEfYHB6hF82sKdZpUDFWkViLByLd1k1Ms",
@@ -426,13 +429,13 @@
           "guards": [
             "GzMQc5VQGggFnicdAKc7MmkQV3dn3i12ux9dbLKqzy6F"
           ],
-          "txsRead": 1,
+          "txsRead": 0,
           "tokensSeen": 2,
           "tokensChecked": 2,
           "breakingRules": []
         },
         "programsSeen": 16,
-        "txsRead": 71,
+        "txsRead": 29,
         "notes": []
       }
     }
