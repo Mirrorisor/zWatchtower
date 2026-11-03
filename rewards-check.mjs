@@ -211,6 +211,8 @@ async function checkRun(id) {
   const pot = BigInt(run.pot);
   const sum = s.holders.reduce((a, [, b]) => a + BigInt(b), 0n);
   const payouts = new Map((j.payouts || []).map((x) => [x.owner, x]));
+  ownersByRun.set(id, new Set(payouts.keys()));
+  if (run.releaseSignature) releases.set(id, run.releaseSignature);
   let confirmed = 0n, rent = 0n, badShares = 0, missing = 0, below = 0;
   const e = j.eligibility;
   for (const [owner, bal] of s.holders) {
@@ -255,6 +257,49 @@ async function checkRun(id) {
   return out;
 }
 
+// ---- follow the money: every payment out of the rewards wallet in the two
+// hours after a flagged run's release, sorted by who received it.
+const TREASURY = "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr";
+const ownersByRun = new Map();   // run id -> Set of owners in its payout rows
+const releases = new Map();      // run id -> release signature
+async function followMoney(runId) {
+  const sig = releases.get(runId);
+  const rel = await rpc("getTransaction", [sig, { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 }]);
+  const keysOf = (tx) => tx.transaction.message.accountKeys.map((k) => k.pubkey ?? k);
+  const rw = rel.meta.postTokenBalances.find((b) => b.owner === REWARDS_WALLET && b.mint === ZEC_MINT);
+  if (!rw) return { error: "rewards wallet not in the release" };
+  const ata = keysOf(rel)[rw.accountIndex], t0 = rel.blockTime, t1 = t0 + 2 * 3600;
+  const sigs = (await rpc("getSignaturesForAddress", [ata, { limit: 1000 }])) ?? [];
+  const inWindow = sigs.filter((x) => !x.err && x.blockTime >= t0 && x.blockTime <= t1);
+  const own = ownersByRun.get(runId) ?? new Set();
+  const others = new Set([...ownersByRun].filter(([id]) => id !== runId).flatMap(([, set]) => [...set]));
+  const by = { thisRunHolders: 0n, treasury: 0n, otherRunsHolders: 0n, unknown: 0n };
+  const unknown = new Map();
+  let inflow = 0n, outflow = 0n, txs = 0;
+  for (const x of inWindow.slice(0, 150)) {
+    const tx = await rpc("getTransaction", [x.signature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 }]);
+    const m = tx?.meta; if (!m) continue;
+    txs++;
+    const net = new Map();
+    for (const b of m.preTokenBalances ?? []) if (b.mint === ZEC_MINT) net.set(b.owner, (net.get(b.owner) ?? 0n) - BigInt(b.uiTokenAmount.amount));
+    for (const b of m.postTokenBalances ?? []) if (b.mint === ZEC_MINT) net.set(b.owner, (net.get(b.owner) ?? 0n) + BigInt(b.uiTokenAmount.amount));
+    const mine = net.get(REWARDS_WALLET) ?? 0n;
+    if (mine > 0n) { inflow += mine; continue; }
+    if (mine === 0n) continue;
+    outflow += -mine;
+    for (const [o, v] of net) {
+      if (o === REWARDS_WALLET || v <= 0n) continue;
+      const k = own.has(o) ? "thisRunHolders" : o === TREASURY ? "treasury" : others.has(o) ? "otherRunsHolders" : "unknown";
+      by[k] += v;
+      if (k === "unknown") unknown.set(o, (unknown.get(o) ?? 0n) + v);
+    }
+  }
+  return { run: runId, releaseAt: new Date(t0 * 1000).toISOString(), window: "2 hours after the release",
+    txsRead: txs, txsInWindow: inWindow.length, inflow: String(inflow), outflow: String(outflow),
+    to: Object.fromEntries(Object.entries(by).map(([k, v]) => [k, String(v)])),
+    topUnknown: [...unknown].sort((a, b) => (b[1] > a[1] ? 1 : -1)).slice(0, 5).map(([o, v]) => ({ owner: o, zat: String(v) })) };
+}
+
 async function main() {
   let last = to;
   if (last === null) {
@@ -290,6 +335,12 @@ async function main() {
     zecPaidInDoneRuns: (Number(paid) / 1e8).toFixed(8),
     onChainChecks: Boolean(rpcUrl),
   };
+  // where a flagged run's pot went, for the first one whose shares are off
+  const traced = flagged.find((r) => r.diagnosis && releases.has(r.id));
+  if (rpcUrl && traced) {
+    try { summary.followTheMoney = await followMoney(traced.id); }
+    catch (e) { summary.followTheMoney = { run: traced.id, error: e.message.slice(0, 80) }; }
+  }
 
   if (asJson) {
     console.log(JSON.stringify({ summary, flagged, results }, null, 2));
