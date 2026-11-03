@@ -22,6 +22,7 @@
 //
 // Needs Node 18+ (built-in fetch and WebCrypto). Reads only; signs nothing.
 
+import { isOnCurve } from "./lib/coins.mjs";
 const API = "https://sapling.cash/api/rewards/";
 const REWARDS_WALLET = "37BBnMe6rTeH3Cxs1meobB6C564GJ7Gxj7SinQfgHPrL";
 const ZEC_MINT = "A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS";
@@ -295,7 +296,7 @@ async function followMoney(runId) {
   const own = ownersByRun.get(runId) ?? new Set();
   const others = new Set([...ownersByRun].filter(([id]) => id !== runId).flatMap(([, set]) => [...set]));
   const by = { thisRunHolders: 0n, treasury: 0n, otherRunsHolders: 0n, unknown: 0n };
-  const unknown = new Map();
+  const unknown = new Map(), unknownTx = new Map();
   let inflow = 0n, outflow = 0n, txs = 0;
   for (const x of inWindow.slice(0, 150)) {
     const tx = await rpc("getTransaction", [x.signature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 }]);
@@ -312,13 +313,22 @@ async function followMoney(runId) {
       if (o === REWARDS_WALLET || v <= 0n) continue;
       const k = own.has(o) ? "thisRunHolders" : o === TREASURY ? "treasury" : others.has(o) ? "otherRunsHolders" : "unknown";
       by[k] += v;
-      if (k === "unknown") unknown.set(o, (unknown.get(o) ?? 0n) + v);
+      if (k === "unknown") { unknown.set(o, (unknown.get(o) ?? 0n) + v); if (!unknownTx.has(o)) unknownTx.set(o, x.signature); }
     }
   }
   return { run: runId, releaseAt: new Date(t0 * 1000).toISOString(), window: "2 hours after the release",
     txsRead: txs, txsInWindow: inWindow.length, inflow: String(inflow), outflow: String(outflow),
     to: Object.fromEntries(Object.entries(by).map(([k, v]) => [k, String(v)])),
-    topUnknown: [...unknown].sort((a, b) => (b[1] > a[1] ? 1 : -1)).slice(0, 5).map(([o, v]) => ({ owner: o, zat: String(v) })) };
+    topUnknown: await Promise.all([...unknown].sort((a, b) => (b[1] > a[1] ? 1 : -1)).slice(0, 5).map(async ([o, v]) => {
+      // who is it? a normal wallet (on the curve) or a program's address, and what owns its account
+      let account = null;
+      try {
+        const a = await rpc("getAccountInfo", [o, { encoding: "base64", dataSlice: { offset: 0, length: 0 } }]);
+        account = a?.value ? { owner: a.value.owner, executable: a.value.executable, lamports: a.value.lamports } : "no account";
+      } catch {}
+      return { owner: o, zat: String(v), wallet: isOnCurve(o), account, firstTx: unknownTx.get(o),
+        alsoHolderOf: [...ownersByRun].filter(([, set]) => set.has(o)).map(([id]) => id) };
+    })) };
 }
 
 async function main() {
