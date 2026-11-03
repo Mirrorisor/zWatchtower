@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T15:05:11.441Z",
-      "finishedAt": "2026-11-03T15:05:14.188Z",
+      "startedAt": "2026-11-03T15:10:11.176Z",
+      "finishedAt": "2026-11-03T15:10:13.251Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,10 +21,10 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5,
-          "settle_tax": 1,
-          "sell_tax": 2,
-          "withdraw_tax": 2
+          "settle": 2,
+          "observe_sapling": 3,
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1
         },
         "unrecognised": 0,
         "baseline": false
@@ -125,8 +125,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-03T14:55:33.386Z",
-      "finishedAt": "2026-11-03T14:55:35.379Z",
+      "startedAt": "2026-11-03T15:10:13.257Z",
+      "finishedAt": "2026-11-03T15:10:15.253Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -145,15 +145,15 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-03T14:55:35.381Z",
-      "finishedAt": "2026-11-03T14:55:38.875Z",
+      "startedAt": "2026-11-03T15:10:15.254Z",
+      "finishedAt": "2026-11-03T15:10:19.923Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "saplingBurn": {
-          "onChain": 223204793.99783194,
-          "claimed": 223200000,
+          "onChain": 223206473.58387697,
+          "claimed": 223210000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -250,13 +250,13 @@
           }
         },
         "pot": {
-          "balanceZat": "2270520",
-          "shownZat": "2270520",
-          "inflowZat": "936944994",
+          "balanceZat": "2546784",
+          "shownZat": "2546784",
+          "inflowZat": "937221258",
           "buybackZat": "934674474",
           "movements": {
             "setup": 1,
-            "inflow": 2232,
+            "inflow": 2233,
             "buyback": 248
           },
           "reconciled": true,
