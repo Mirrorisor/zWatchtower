@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T14:30:11.181Z",
-      "finishedAt": "2026-11-03T14:30:24.067Z",
+      "startedAt": "2026-11-03T14:35:03.998Z",
+      "finishedAt": "2026-11-03T14:35:08.760Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,53 +21,206 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1,
-          "close_rewards_run": 2,
-          "release_rewards": 2,
-          "convert_sapling_begin": 1,
-          "convert_sapling_end": 1,
-          "settle": 1,
-          "claim_payee": 1
+          "observe_sapling": 4
         },
-        "unrecognised": 3,
+        "unrecognised": 0,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-03T14:05:10.695Z",
-      "finishedAt": "2026-11-03T14:05:14.487Z",
+      "startedAt": "2026-11-03T14:35:08.769Z",
+      "finishedAt": "2026-11-03T14:36:53.380Z",
       "status": "ran",
-      "ok": true,
-      "alerts": [],
+      "ok": false,
+      "alerts": [
+        "reward run 1524 ZDOG: 39 shares not floor(pot*balance/sum); paid != confirmed shares - rent"
+      ],
       "summary": {
-        "checkedAt": "2026-11-03T14:05:14.472Z",
-        "runs": 8,
-        "passed": 0,
-        "flagged": 8,
-        "unchecked": 8,
-        "firstUnchecked": 1524,
-        "zecPaidInDoneRuns": "0.00000000",
+        "checkedAt": "2026-11-03T14:35:28.694Z",
+        "runs": 10,
+        "passed": 8,
+        "flagged": 2,
+        "unchecked": 1,
+        "firstUnchecked": 1530,
+        "zecPaidInDoneRuns": "0.33511260",
         "onChainChecks": true,
-        "distinctReleases": 0,
-        "runsWithRelease": 0,
+        "distinctReleases": 10,
+        "runsWithRelease": 10,
+        "followTheMoney": {
+          "run": 1524,
+          "holdings": {
+            "error": "HTTP error for https://api.mainnet-beta.solana.com"
+          },
+          "releaseAt": "2026-11-03T11:34:28.000Z",
+          "window": "2 hours after the release",
+          "txsRead": 39,
+          "txsInWindow": 39,
+          "inflow": "16524057",
+          "outflow": "16524057",
+          "to": {
+            "thisRunHolders": "2257972",
+            "treasury": "69373",
+            "otherRunsHolders": "11943307",
+            "unknown": "2253405"
+          },
+          "topUnknown": [
+            {
+              "owner": "H9DAPPkoAH1DQUzc2L7hDFiXr1xqXGZgR13STEihyau9",
+              "zat": "688724",
+              "wallet": true,
+              "account": "no account",
+              "after": {
+                "zecAccount": "closed"
+              },
+              "firstTx": "63jxkfsLBMZg7zzEzF1nUuub3E94yvggJZagPjdV1xZkUjN1C1tZvcryCmzE8No9SjB81RGns9LjisRutfHCPJGZ",
+              "alsoHolderOf": []
+            },
+            {
+              "owner": "6edVx9JNbN5BYsj99f4S7VpWsnuniPuteVUMLP6NP2th",
+              "zat": "688724",
+              "wallet": true,
+              "account": "no account",
+              "after": {
+                "zecAccount": "closed"
+              },
+              "firstTx": "4c2wTAHBzeyb1uuSPnr3RgBvvyMJF8ycH4F3K8EVv1JXEaiBNBRA6Vq9F8kjfXZRZfNTq6c3kwwEWxc4iRFu4T2f",
+              "alsoHolderOf": []
+            },
+            {
+              "owner": "FZgnhjnqGttZxmPDoP3UxWRG888mjrKCh5FU3w9rNDFF",
+              "zat": "671950",
+              "wallet": true,
+              "account": "no account",
+              "after": {
+                "zecAccount": "closed"
+              },
+              "firstTx": "5MSsoPGoRf2JxZx6872gTPANvvcSrrtJ4Dvtwz55eFNaNou53HtYaBBmAoD6sAHq3RCtZXBVdWMNXjRJ2A9K7SWa",
+              "alsoHolderOf": []
+            },
+            {
+              "owner": "H8aoNLAiJzYsZxng14wtaaFM7n1ehd25VGhtr4t6TEoY",
+              "zat": "105335",
+              "wallet": false,
+              "account": {
+                "owner": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
+                "executable": false,
+                "lamports": 1534160
+              },
+              "after": {
+                "zecLeft": "105335",
+                "laterTxs": 4,
+                "programs": [
+                  "ComputeBudget111111111111111111111111111111",
+                  "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+                  "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
+                  "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+                ]
+              },
+              "firstTx": "5Kt72qB5XwUvNm6mMmALSG52mHSJGzx82mJ6afJeRETGLkQTs6vD7AjanqABDH61vDaXUJJ25fBVyDx7HcFyiJAs",
+              "alsoHolderOf": []
+            },
+            {
+              "owner": "6r9g1aCQCKDuHz353Huh262rshPPDsi5DPvTKVYcEEpC",
+              "zat": "56080",
+              "wallet": false,
+              "account": {
+                "owner": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
+                "executable": false,
+                "lamports": 1534160
+              },
+              "after": {
+                "zecLeft": "56080",
+                "laterTxs": 4,
+                "programs": [
+                  "ComputeBudget111111111111111111111111111111",
+                  "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+                  "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
+                  "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+                ]
+              },
+              "firstTx": "5WXBaednyF9tkkGPftKfWs2Ddta4j5wEpnY2CJtpxTtamqYiSfJBKBeNAMWLJKBNkqcxb6L3tQ2UeEvFbD9yHHSY",
+              "alsoHolderOf": []
+            }
+          ]
+        },
         "notes": [
-          "run 1524: not checked: crypto is not defined",
-          "run 1525: not checked: crypto is not defined",
-          "run 1526: not checked: crypto is not defined",
-          "run 1527: not checked: crypto is not defined",
-          "run 1528: not checked: crypto is not defined",
-          "run 1529: not checked: crypto is not defined",
-          "run 1530: not checked: crypto is not defined",
-          "run 1531: not checked: crypto is not defined"
+          "run 1530: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
         ],
-        "diagnoses": [],
-        "followTheMoney": null,
+        "diagnoses": [
+          {
+            "id": 1524,
+            "coin": "ZDOG",
+            "ratio": {
+              "min": "3.9976",
+              "max": "4.0000"
+            },
+            "rowFields": [
+              "owner",
+              "balance",
+              "share",
+              "rentZec",
+              "status",
+              "reason",
+              "signature"
+            ],
+            "pot": "2866514",
+            "sumOfBalances": "458040479944610",
+            "sumOfShares": "716668",
+            "paid": "2761179",
+            "rent": "0",
+            "rolledOver": "105335",
+            "holders": 39,
+            "payoutRows": 39,
+            "explainedBy": [],
+            "sample": [
+              {
+                "owner": "21KJ1m",
+                "balance": "3960019378481",
+                "expected": "24782",
+                "share": "6197",
+                "status": "confirmed"
+              },
+              {
+                "owner": "2AejdD",
+                "balance": "11180745660536",
+                "expected": "69971",
+                "share": "17495",
+                "status": "confirmed"
+              },
+              {
+                "owner": "2NTQmb",
+                "balance": "6902777470883",
+                "expected": "43199",
+                "share": "10802",
+                "status": "confirmed"
+              }
+            ],
+            "onChain": [
+              {
+                "owner": "21KJ1m",
+                "error": "HTTP error for https://api.mainnet-beta.solana.com"
+              },
+              {
+                "owner": "2AejdD",
+                "share": "17495",
+                "rentZec": "0",
+                "received": "17495"
+              },
+              {
+                "owner": "2NTQmb",
+                "share": "10802",
+                "rentZec": "0",
+                "received": "10802"
+              },
+              {
+                "rewardsWalletHoldsZat": "0"
+              }
+            ]
+          }
+        ],
         "batchGroups": null,
-        "maxRunId": 0
+        "maxRunId": 1533
       }
     },
     "float": {
@@ -455,7 +608,8 @@
       "reward run 1490 ZDOG: 55 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-03T01:17:44.677Z",
       "reward run 1491 ███: 11 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-03T01:17:44.677Z",
       "reward run 1501 ZDOG: 55 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-03T03:15:17.524Z",
-      "reward run 1514 ZDOG: 36 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-03T06:39:55.711Z"
+      "reward run 1514 ZDOG: 36 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-03T06:39:55.711Z",
+      "reward run 1524 ZDOG: 39 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-03T14:36:53.380Z"
     },
     "float": {},
     "tax": {},
@@ -463,7 +617,7 @@
     "coins": {},
     "programs": {}
   },
-  "rewardsMaxRun": 1529,
+  "rewardsMaxRun": 1533,
   "rewardsFrom": 1524,
   "x": {
     "day": "2026-11-03",
