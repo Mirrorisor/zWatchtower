@@ -1779,3 +1779,5 @@
 {"check":"flywheel","at":"2026-11-03T19:50:24.783Z","type":"raised","text":"flywheel pot holds 986629 zat but the movements seen add up to 295566"}
 {"check":"rewards","at":"2026-11-03T19:55:49.891Z","type":"raised","text":"reward run 1552 ZDOG: failed run's release moved ZEC on chain"}
 {"check":"flywheel","at":"2026-11-03T20:05:51.982Z","type":"resolved","text":"flywheel pot holds 986629 zat but the movements seen add up to 295566"}
+{"check":"rewards","at":"2026-11-03T20:25:49.318Z","type":"raised","text":"reward run 1552 ZDOG: 36 shares not floor(pot*balance/sum); paid != confirmed shares - rent"}
+{"check":"rewards","at":"2026-11-03T20:25:49.318Z","type":"resolved","text":"reward run 1552 ZDOG: failed run's release moved ZEC on chain"}
