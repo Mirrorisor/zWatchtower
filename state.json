@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T22:55:11.199Z",
-      "finishedAt": "2026-11-03T22:55:16.366Z",
+      "startedAt": "2026-11-03T23:04:13.241Z",
+      "finishedAt": "2026-11-03T23:04:19.856Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
-        "configSha256": "bdbfdb116d8b797c56f8c76fc0854e94b0a93dd3a4f67f7ac5df46ce1adba0aa",
+        "configSha256": "5b4931ff2c3b18493b50296013649cc47a624b7fb098a905478b23be24b333a3",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -21,17 +21,15 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "release_rewards": 1,
-          "settle": 2,
-          "claim_payee": 1,
-          "observe_sapling": 4,
-          "settle_tax": 4,
-          "sell_tax": 4,
-          "withdraw_tax": 4,
-          "draw_grove": 1,
-          "close_grove": 1
+          "withdraw_tax": 9,
+          "observe_sapling": 7,
+          "settle_tax": 8,
+          "sell_tax": 8,
+          "draw_zec_payee": 1,
+          "close_rewards_run": 2,
+          "release_rewards": 1
         },
-        "unrecognised": 1,
+        "unrecognised": 0,
         "baseline": false
       }
     },
@@ -972,8 +970,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-03T22:26:39.717Z",
-      "finishedAt": "2026-11-03T22:27:22.185Z",
+      "startedAt": "2026-11-03T23:04:19.862Z",
+      "finishedAt": "2026-11-03T23:05:12.486Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -983,7 +981,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 3146,
+            "seenInTxs": 3265,
             "withJupiter": 46,
             "seeds": [
               "upgradeAuthority",
@@ -1017,17 +1015,17 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 233
+            "seenInTxs": 236
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 227
+            "seenInTxs": 230
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
             "authority": "FytDrVzDybM1TwFQPGb8qaxZR7dBCzNeqT3vtQsceZQK",
-            "seenInTxs": 180
+            "seenInTxs": 184
           },
           {
             "id": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
@@ -1095,7 +1093,7 @@
           "breakingRules": []
         },
         "programsSeen": 16,
-        "txsRead": 134,
+        "txsRead": 165,
         "notes": []
       }
     }
