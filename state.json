@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T15:15:03.291Z",
-      "finishedAt": "2026-11-03T15:15:06.340Z",
+      "startedAt": "2026-11-03T15:20:11.316Z",
+      "finishedAt": "2026-11-03T15:20:14.385Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,23 +21,30 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "sell_tax": 2,
-          "withdraw_tax": 2,
-          "observe_sapling": 4
+          "settle_tax": 3,
+          "observe_sapling": 5,
+          "convert_tax_begin": 1,
+          "convert_tax_end": 1,
+          "settle": 2,
+          "claim_payee": 1,
+          "draw_grove": 1,
+          "close_grove": 1,
+          "sell_tax": 1,
+          "withdraw_tax": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 3,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-03T14:48:02.148Z",
-      "finishedAt": "2026-11-03T14:48:05.763Z",
+      "startedAt": "2026-11-03T15:20:14.390Z",
+      "finishedAt": "2026-11-03T15:20:17.968Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-11-03T14:48:05.747Z",
+        "checkedAt": "2026-11-03T15:20:17.948Z",
         "runs": 6,
         "passed": 6,
         "flagged": 0,
