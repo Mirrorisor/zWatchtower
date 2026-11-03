@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T17:00:02.926Z",
-      "finishedAt": "2026-11-03T17:00:07.292Z",
+      "startedAt": "2026-11-03T17:05:02.030Z",
+      "finishedAt": "2026-11-03T17:05:06.847Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,12 +21,18 @@
           "recovery"
         ],
         "vaultInstructions": {
+          "close_rewards_run": 2,
           "observe_sapling": 4,
-          "settle_tax": 6,
-          "sell_tax": 6,
-          "withdraw_tax": 6
+          "release_rewards": 2,
+          "settle": 4,
+          "claim_payee": 1,
+          "settle_tax": 3,
+          "sell_tax": 4,
+          "withdraw_tax": 5,
+          "draw_grove": 1,
+          "close_grove": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false
       }
     },
@@ -467,8 +473,8 @@
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-03T15:55:07.881Z",
-      "finishedAt": "2026-11-03T16:02:46.013Z",
+      "startedAt": "2026-11-03T17:05:06.852Z",
+      "finishedAt": "2026-11-03T17:12:40.659Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -535,8 +541,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-03T16:50:26.717Z",
-      "finishedAt": "2026-11-03T16:50:28.318Z",
+      "startedAt": "2026-11-03T17:12:40.660Z",
+      "finishedAt": "2026-11-03T17:12:42.195Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -555,24 +561,24 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-03T16:50:28.320Z",
-      "finishedAt": "2026-11-03T16:50:40.337Z",
+      "startedAt": "2026-11-03T17:12:42.197Z",
+      "finishedAt": "2026-11-03T17:12:52.945Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "saplingBurn": {
-          "onChain": 223396030.227283,
-          "claimed": 223400000,
+          "onChain": 223453222.95927298,
+          "claimed": 223450000,
           "diffPct": 0,
           "verdict": "matches"
         },
-        "burns": 183,
-        "burnsVerified": 183,
-        "boughtBackZat": "790303593",
+        "burns": 184,
+        "burnsVerified": 184,
+        "boughtBackZat": "799265117",
         "venues": {
           "pump amm": 91,
-          "raydium cpmm": 33,
+          "raydium cpmm": 34,
           "raydium launchlab": 10,
           "pump bonding curve": 1,
           "jupiter": 48
@@ -660,19 +666,19 @@
           },
           "SARAH": {
             "mint": "4LT4uDp694w7soJerjRjSEVr2884J33EjLNG1WGzcash",
-            "burns": 5,
-            "zat": "44284124"
+            "burns": 6,
+            "zat": "53245648"
           }
         },
         "pot": {
-          "balanceZat": "2445519",
-          "shownZat": "2445519",
-          "inflowZat": "984594483",
-          "buybackZat": "982148964",
+          "balanceZat": "6009996",
+          "shownZat": "6009996",
+          "inflowZat": "997120484",
+          "buybackZat": "991110488",
           "movements": {
             "setup": 1,
-            "inflow": 2314,
-            "buyback": 254
+            "inflow": 2331,
+            "buyback": 255
           },
           "reconciled": true,
           "caughtUp": true
@@ -683,20 +689,18 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "headline 982148964 zat bought back, listed burns add up to 272787867"
+          "headline 991110488 zat bought back, listed burns add up to 278746225"
         ]
       }
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-03T16:35:45.299Z",
-      "finishedAt": "2026-11-03T16:36:30.989Z",
+      "startedAt": "2026-11-03T17:12:52.948Z",
+      "finishedAt": "2026-11-03T17:13:33.338Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
-      "events": [
-        "$ZDOG ($10.6k) just passed $10.0k market cap with 2 flags: Creator has sold 100% of what they bought; Creator sold out of 20 of their 20 other coins checked."
-      ],
+      "events": [],
       "summary": {
         "coins": 484,
         "carded": 14,
