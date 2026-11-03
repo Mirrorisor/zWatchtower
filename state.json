@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T22:15:11.259Z",
-      "finishedAt": "2026-11-03T22:15:15.629Z",
+      "startedAt": "2026-11-03T22:20:08.051Z",
+      "finishedAt": "2026-11-03T22:20:12.373Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,17 +21,12 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "settle_tax": 5,
-          "sell_tax": 4,
-          "withdraw_tax": 4,
-          "observe_sapling": 4,
-          "convert_tax_sapling_begin": 1,
-          "convert_tax_sapling_end": 1,
-          "settle": 7,
-          "settle_sapling": 1,
-          "claim_payee": 1
+          "settle_tax": 6,
+          "sell_tax": 6,
+          "withdraw_tax": 7,
+          "observe_sapling": 4
         },
-        "unrecognised": 4,
+        "unrecognised": 0,
         "baseline": false
       }
     },
