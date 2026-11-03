@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T15:25:11.170Z",
-      "finishedAt": "2026-11-03T15:25:13.645Z",
+      "startedAt": "2026-11-03T15:30:11.256Z",
+      "finishedAt": "2026-11-03T15:30:13.421Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,9 +22,9 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "settle_tax": 2,
-          "sell_tax": 2,
-          "withdraw_tax": 2
+          "settle_tax": 1,
+          "sell_tax": 1,
+          "withdraw_tax": 1
         },
         "unrecognised": 0,
         "baseline": false
@@ -275,37 +275,39 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-03T14:55:38.878Z",
-      "finishedAt": "2026-11-03T14:58:21.894Z",
+      "startedAt": "2026-11-03T15:30:13.428Z",
+      "finishedAt": "2026-11-03T15:32:52.802Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
-      "events": [],
+      "events": [
+        "$ᑓହꚡई ($15.0k) just passed $10.0k market cap with 3 flags: Creator has sold 100% of what they bought; 20 wallets bought 44.5% in the first 10 seconds; Creator sold out of 8 of their 8 other coins checked."
+      ],
       "summary": {
         "coins": 482,
-        "carded": 11,
-        "refreshed": 11,
-        "flagged": 9,
+        "carded": 12,
+        "refreshed": 12,
+        "flagged": 10,
         "flagCounts": {
-          "N wallet(s) bought N in the first N seconds": 8,
-          "N of the first buyers were funded by the same wallet(s)": 2,
-          "Creator has sold N of what they bought": 4,
-          "Creator sold out of N of their N other coins checked": 1,
+          "N wallet(s) bought N in the first N seconds": 9,
+          "N of the first buyers were funded by the same wallet(s)": 3,
+          "Creator has sold N of what they bought": 5,
+          "Creator sold out of N of their N other coins checked": 2,
           "Creator bought N of supply at launch": 2
         },
         "notes": [
-          "creator scan: 2 coin(s) read this run, 482 of 482 read so far (1 launched shielded, creator not public)",
-          "first-buyer funding: 100 wallet(s) looked up this run, 4 coin(s) still being looked up",
+          "creator scan: 0 coin(s) read this run, 482 of 482 read so far (1 launched shielded, creator not public)",
+          "first-buyer funding: 93 wallet(s) looked up this run, 1 coin(s) still being looked up, 1 lookup(s) failed",
           "1 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 1)",
           "23 shortlisted coin(s) were under $10,000 on their own page, so no card",
-          "17 wallet(s) are in the top 10 of more than one coin"
+          "18 wallet(s) are in the top 10 of more than one coin"
         ]
       }
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-03T14:58:21.895Z",
-      "finishedAt": "2026-11-03T14:58:40.829Z",
+      "startedAt": "2026-11-03T15:32:53.350Z",
+      "finishedAt": "2026-11-03T15:33:12.032Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -315,7 +317,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 1657,
+            "seenInTxs": 1685,
             "withJupiter": 46,
             "seeds": [
               "upgradeAuthority",
@@ -349,12 +351,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 177
+            "seenInTxs": 182
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 171
+            "seenInTxs": 176
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -421,16 +423,14 @@
           "guards": [
             "GzMQc5VQGggFnicdAKc7MmkQV3dn3i12ux9dbLKqzy6F"
           ],
-          "txsRead": 6,
+          "txsRead": 0,
           "tokensSeen": 2,
           "tokensChecked": 2,
           "breakingRules": []
         },
         "programsSeen": 16,
-        "txsRead": 25,
-        "notes": [
-          "tx 1azEBKYa… not read"
-        ]
+        "txsRead": 31,
+        "notes": []
       }
     }
   },
