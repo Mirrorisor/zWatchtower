@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="78%">
+      <stop offset="0" stop-color="#16324a"/>
+      <stop offset="1" stop-color="#07121d"/>
+    </radialGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f4b740" stop-opacity="0.65"/>
+      <stop offset="1" stop-color="#f4b740" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+  <!-- searchlight beam sweeping right -->
+  <polygon points="640,318 990,170 990,470" fill="url(#beam)"/>
+  <g fill="none" stroke="#e8edf2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- four splayed legs -->
+    <path d="M372,880 L430,440" stroke-width="30"/>
+    <path d="M652,880 L594,440" stroke-width="30"/>
+    <!-- cross bracing -->
+    <path d="M422,500 L602,620 M602,500 L422,620" stroke-width="16"/>
+    <path d="M407,620 L617,760 M617,620 L407,760" stroke-width="16"/>
+    <!-- horizontal ties -->
+    <path d="M416,620 H608" stroke-width="18"/>
+    <path d="M398,760 H626" stroke-width="18"/>
+  </g>
+  <!-- ladder up the middle -->
+  <g stroke="#c9d3dc" stroke-linecap="round">
+    <path d="M492,880 V440 M532,880 V440" stroke-width="10"/>
+    <path d="M492,820 H532 M492,770 H532 M492,720 H532 M492,670 H532 M492,620 H532 M492,570 H532 M492,520 H532 M492,470 H532" stroke-width="8"/>
+  </g>
+  <!-- platform / deck -->
+  <rect x="380" y="420" width="264" height="30" rx="8" fill="#e8edf2"/>
+  <!-- cabin -->
+  <rect x="404" y="300" width="216" height="122" rx="10" fill="#e8edf2"/>
+  <!-- window band (lit) with a z -->
+  <rect x="428" y="322" width="168" height="66" rx="8" fill="#f4b740"/>
+  <polygon points="486,334 538,334 538,350 506,372 540,372 540,380 484,380 484,364 516,342 486,342" fill="#0b1b2a"/>
+  <!-- searchlight on the cabin's right -->
+  <rect x="612" y="302" width="40" height="32" rx="7" fill="#c9d3dc"/>
+  <circle cx="652" cy="318" r="12" fill="#fff4d6"/>
+  <!-- roof -->
+  <polygon points="380,302 512,214 644,302" fill="#e8edf2"/>
+  <rect x="502" y="190" width="20" height="30" rx="4" fill="#e8edf2"/>
+  <!-- ground -->
+  <rect x="300" y="880" width="424" height="28" rx="10" fill="#c9d3dc"/>
+  <!-- ring -->
+  <circle cx="512" cy="512" r="470" fill="none" stroke="#f4b740" stroke-opacity="0.35" stroke-width="10" stroke-dasharray="2 34" stroke-linecap="round"/>
+</svg>

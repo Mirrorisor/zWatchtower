@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ready to post · zWatchtower</title>
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<meta name="robots" content="noindex">
+<style>
+  :root {
+    --bg: #f6f5f1; --surface: #ffffff; --ink: #1c1d1a; --muted: #62645d; --rule: #e2e0d8;
+    --ok: #1f7a4a; --ok-bg: #e4f2ea; --warn: #9a5b00; --warn-bg: #fbefd9; --accent: #2f5d50;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141513; --surface: #1d1f1c; --ink: #ecebe6; --muted: #a2a49c; --rule: #2f322d;
+      --ok: #6fcf97; --ok-bg: #173323; --warn: #f2b45c; --warn-bg: #3a2b12; --accent: #8fc5b4;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 32px 16px 48px; }
+  a { color: var(--accent); }
+  h1 { margin: 0; font-size: 26px; letter-spacing: -0.01em; }
+  h2 { font-size: 14px; color: var(--muted); font-weight: 600; margin: 26px 0 8px; text-transform: uppercase; letter-spacing: .04em; }
+  header p { margin: 6px 0 0; color: var(--muted); }
+  nav { font-size: 13px; margin-bottom: 14px; }
+  .post { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; }
+  .post p { margin: 0 0 8px; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 12px; color: var(--muted); }
+  .pill { font-weight: 600; padding: 1px 8px; border-radius: 999px; background: var(--ok-bg); color: var(--ok); }
+  .pill.posted { background: var(--warn-bg); color: var(--warn); }
+  button { margin-left: auto; font: inherit; font-size: 13px; padding: 5px 12px; border-radius: 8px; border: 1px solid var(--rule);
+    background: var(--accent); color: #fff; cursor: pointer; }
+  button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .empty { color: var(--muted); }
+  footer { margin-top: 24px; font-size: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="./">← Dashboard</a> · <a href="coins.html">Coin report cards</a></nav>
+  <header>
+    <h1>Ready to post</h1>
+    <p>Every post zWatchtower would make, newest first: alerts, coin changes and the daily summary, written from the checks' own results. Copy one and post it yourself. Each fits in an X post.</p>
+  </header>
+  <div id="list"><p class="empty">Loading…</p></div>
+  <footer>Raw: <a href="api/x-posts.json">x-posts.json</a>. Links cost more to post on X's API, so posts carry none; add the dashboard link in a reply.</footer>
+</main>
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const label = { keys: "Keys and upgrades", programs: "Sapling's programs", coins: "Coin report cards", summary: "Daily summary",
+  tax: "Coin taxes", flywheel: "Flywheel", float: "Payout float", rewards: "Holder rewards" };
+async function load() {
+  let posts;
+  try { posts = await fetch("api/x-posts.json", { cache: "no-store" }).then((r) => r.json()); }
+  catch { $("#list").innerHTML = '<p class="empty">Posts aren\'t available yet.</p>'; return; }
+  posts = posts.filter((p) => p.status !== "error");
+  if (!posts.length) { $("#list").innerHTML = '<p class="empty">Nothing to post yet.</p>'; return; }
+  const byDay = new Map();
+  for (const p of posts) { const d = p.at.slice(0, 10); if (!byDay.has(d)) byDay.set(d, []); byDay.get(d).push(p); }
+  $("#list").innerHTML = [...byDay].map(([day, list]) => `<h2>${esc(new Date(day + "T00:00:00Z").toLocaleDateString(undefined, { weekday: "long", day: "numeric", month: "short", timeZone: "UTC" }))}</h2>` +
+    list.map((p, i) => `<article class="post"><p>${esc(p.text)}</p><div class="meta">
+      <span>${esc(label[p.check] ?? p.check)}</span><span>${esc(p.at.slice(11, 16))} UTC</span><span>${[...p.text].length} chars</span>
+      ${p.status === "posted" ? '<span class="pill posted">posted</span>' : ""}
+      <button type="button" data-text="${esc(p.text)}">Copy</button></div></article>`).join("")).join("");
+}
+document.addEventListener("click", async (e) => {
+  const b = e.target.closest("button[data-text]"); if (!b) return;
+  try { await navigator.clipboard.writeText(b.dataset.text); b.textContent = "Copied"; }
+  catch { const t = document.createElement("textarea"); t.value = b.dataset.text; document.body.append(t); t.select(); document.execCommand("copy"); t.remove(); b.textContent = "Copied"; }
+  setTimeout(() => (b.textContent = "Copy"), 1500);
+});
+load();
+</script>
+</body>
+</html>

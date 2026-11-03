@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coin report cards · zWatchtower</title>
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<style>
+  :root {
+    --bg: #f6f5f1; --surface: #ffffff; --ink: #1c1d1a; --muted: #62645d; --rule: #e2e0d8;
+    --ok: #1f7a4a; --ok-bg: #e4f2ea; --warn: #9a5b00; --warn-bg: #fbefd9;
+    --bad: #b3261e; --bad-bg: #fbe5e3; --idle-bg: #ecebe6; --accent: #2f5d50;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141513; --surface: #1d1f1c; --ink: #ecebe6; --muted: #a2a49c; --rule: #2f322d;
+      --ok: #6fcf97; --ok-bg: #173323; --warn: #f2b45c; --warn-bg: #3a2b12;
+      --bad: #f28b82; --bad-bg: #3b1c1a; --idle-bg: #262824; --accent: #8fc5b4;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 1180px; margin: 0 auto; padding: 32px 16px 48px; }
+  a { color: var(--accent); }
+  h1 { margin: 0; font-size: 26px; letter-spacing: -0.01em; }
+  header p { margin: 6px 0 0; color: var(--muted); max-width: 760px; }
+  nav { font-size: 13px; margin-bottom: 14px; }
+  .totals { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0; }
+  .total { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 16px; min-width: 150px; }
+  .total b { display: block; font-size: 24px; font-variant-numeric: tabular-nums; }
+  .total span { font-size: 12px; color: var(--muted); }
+  .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 10px; font-size: 14px; }
+  .controls input[type=search] { flex: 1 1 220px; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 8px;
+    background: var(--surface); color: var(--ink); font: inherit; }
+  .box { overflow: auto; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { position: sticky; top: 0; background: var(--surface); color: var(--muted); font-weight: 600; white-space: nowrap; }
+  th button { all: unset; cursor: pointer; }
+  th button:focus-visible { outline: 2px solid var(--accent); }
+  td.num, th.num { text-align: right; }
+  tr:last-child td { border-bottom: 0; }
+  .coin b { display: block; }
+  .coin small { color: var(--muted); }
+  .hot { color: var(--bad); font-weight: 600; }
+  .pill { display: inline-block; font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
+  .pill.ok { color: var(--ok); background: var(--ok-bg); }
+  .pill.bad { color: var(--bad); background: var(--bad-bg); }
+  .flags { margin: 0; padding-left: 16px; color: var(--bad); }
+  .note { color: var(--muted); font-size: 12px; }
+  .muted { color: var(--muted); }
+  details.how { margin: 18px 0 0; font-size: 14px; color: var(--muted); max-width: 820px; }
+  details.how summary { cursor: pointer; color: var(--ink); }
+  footer { margin-top: 24px; font-size: 12px; color: var(--muted); }
+  .sortbar { display: none; gap: 8px; align-items: center; font-size: 14px; }
+  .sortbar select { font: inherit; padding: 6px; border-radius: 8px; border: 1px solid var(--rule); background: var(--surface); color: var(--ink); }
+  @media (max-width: 760px) {
+    .box { border: 0; background: none; overflow: visible; }
+    table, tbody, tr, td { display: block; }
+    thead { display: none; }
+    tr { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 10px 12px; margin-bottom: 10px; }
+    td { border: 0; padding: 3px 0; text-align: left !important; display: flex; justify-content: space-between; gap: 12px; }
+    td[data-label]::before { content: attr(data-label); color: var(--muted); font-weight: 400; }
+    td.coin, td.flagcell { display: block; }
+    td.flagcell { margin-top: 6px; }
+    .sortbar { display: flex; }
+  }
+  .repeats { padding-left: 1.1rem; line-height: 1.7; }
+  .repeats code { font-size: .9em; }
+  details.badge { display: inline; }
+  details.badge summary { display: inline; cursor: pointer; text-decoration: underline; }
+  details.badge[open] { display: block; margin-top: .4rem; }
+  details.badge img { display: block; margin: .3rem 0; }
+  details.badge input { display: block; width: 100%; font: 12px ui-monospace, monospace; margin: .2rem 0; padding: .25rem; }
+  #repeats h2, #events h2 { font-size: 1.05rem; margin: 1.5rem 0 .25rem; }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="./">← zWatchtower dashboard</a></nav>
+  <header>
+    <h1>Coin report cards</h1>
+    <p>Facts about every Sapling coin worth $10,000 or more, read from Sapling's own data and Solana. A flag marks a fact past a line, shown under "How the flags work". Flags are facts, not verdicts: check them yourself before you buy. Nothing here is financial advice.</p>
+  </header>
+
+  <div class="totals" id="totals"></div>
+
+  <div class="controls">
+    <input type="search" id="q" placeholder="Search by ticker, name or address" aria-label="Search coins">
+    <label><input type="checkbox" id="flaggedOnly"> Flagged only</label>
+    <label class="sortbar">Sort <select id="sortSel" aria-label="Sort coins">
+      <option value="mcap">Market cap</option><option value="flags">Flags</option><option value="creator">Creator at launch</option>
+      <option value="early">First 10 s</option><option value="top10">Top 10</option><option value="holders">Holders</option></select></label>
+  </div>
+
+  <div class="box">
+    <table>
+      <thead><tr>
+        <th><button data-sort="symbol">Coin</button></th>
+        <th class="num"><button data-sort="mcap">Market cap</button></th>
+        <th class="num"><button data-sort="holders">Holders</button></th>
+        <th class="num"><button data-sort="creator">Creator at launch</button></th>
+        <th class="num"><button data-sort="sold">Creator sold</button></th>
+        <th class="num"><button data-sort="early">First 10 s</button></th>
+        <th class="num"><button data-sort="top10">Top 10</button></th>
+        <th>Fees go to</th>
+        <th><button data-sort="flags">Flags</button></th>
+      </tr></thead>
+      <tbody id="rows"><tr><td colspan="9" class="muted">Loading…</td></tr></tbody>
+    </table>
+  </div>
+
+  <section id="events" hidden>
+    <h2>Recent changes</h2>
+    <ul id="eventList" class="repeats"></ul>
+  </section>
+
+  <section id="serial" hidden>
+    <h2>Creators with more than one coin</h2>
+    <p class="muted" id="serialIntro"></p>
+    <ul id="serialList" class="repeats"></ul>
+  </section>
+
+  <section id="repeats" hidden>
+    <h2>Wallets in the top 10 of more than one coin</h2>
+    <p class="muted">Big holders that turn up across coins. Often a trader or fund; worth knowing when it also created a coin or bought in its first seconds.</p>
+    <ul id="repeatList" class="repeats"></ul>
+  </section>
+
+  <details class="how" id="how">
+    <summary>How the flags work</summary>
+    <ul id="limits"></ul>
+    <p>"Creator's other coins" counts every other Sapling coin the same wallet launched; a card is flagged when the creator sold out of at least 2 of them and most of the ones checked. Any coin with a card has a badge (under "Badge") its team can post, linking back here.</p>
+    <p>Think a flag is wrong? Use "Dispute" on the card. Every dispute gets a public answer, and mistakes are fixed and listed in <a href="https://github.com/Mirrorisor/zWatchtower/blob/main/CORRECTIONS.md">corrections</a>.</p>
+    <p>Cards refresh a few dozen coins at a time, so each shows when it was last read. "Top 10" leaves out pools, bonding curves and other program accounts. Where Sapling's trade history doesn't reach back to a coin's launch, launch facts are left blank rather than guessed. A coin's history is read once and kept, so a long one fills in over a few runs.</p>
+  </details>
+
+  <footer id="foot">Source: <a href="https://github.com/Mirrorisor/zWatchtower">zWatchtower on GitHub</a> (coins-check.mjs). Raw data: <a href="api/coins.json">coins.json</a>.</footer>
+</main>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const usd = (n) => n == null ? "–" : n >= 1e6 ? `$${(n / 1e6).toFixed(2)}M` : n >= 1e3 ? `$${(n / 1e3).toFixed(1)}K` : `$${n.toFixed(0)}`;
+const p = (v) => v == null ? "–" : `${v < 1 && v > 0 ? v.toFixed(2) : Math.round(v * 10) / 10}%`;
+const ago = (iso) => { const h = Math.round((Date.now() - Date.parse(iso)) / 3600000); return h < 1 ? "under an hour ago" : h < 48 ? `${h} h ago` : `${Math.round(h / 24)} d ago`; };
+
+const site = location.href.replace(/[^/]*$/, "");
+const cardUrl = (c) => `${site}coins.html#${c.mint}`;
+const badgeHtml = (c) => `<a href="${cardUrl(c)}"><img src="${site}badges/${c.mint}.svg" alt="zWatchtower report card for $${c.symbol}"></a>`;
+const badgeMd = (c) => `[![zWatchtower report card for $${c.symbol}](${site}badges/${c.mint}.svg)](${cardUrl(c)})`;
+const disputeUrl = (c) => `https://github.com/Mirrorisor/zWatchtower/issues/new?template=dispute-a-flag.yml&title=${encodeURIComponent(`Dispute: $${c.symbol} – `)}&mint=${encodeURIComponent(c.mint)}`;
+let data = null, sortKey = "mcap", sortDir = -1;
+const val = (c, k) => ({
+  symbol: (c.symbol || "").toLowerCase(), mcap: c.mcapUsd ?? -1, holders: c.holders ?? -1,
+  creator: c.facts.creatorLaunchPct ?? -1, sold: c.facts.creatorSoldPct ?? -1,
+  early: c.facts.earlyBuyersPct ?? -1, top10: c.facts.top10Pct ?? -1, flags: c.flagCount,
+}[k]);
+
+function render() {
+  const q = $("#q").value.trim().toLowerCase();
+  const only = $("#flaggedOnly").checked;
+  const L = data.limits;
+  const evs = data.events ?? [];
+  if (evs.length) {
+    $("#events").hidden = false;
+    $("#eventList").innerHTML = evs.slice(0, 10).map((e) => `<li>${esc(e.text)} <span class="note">${ago(e.at)}</span></li>`).join("");
+  }
+  const ser = (data.serialCreators ?? []).filter((x) => x.launched >= 2);
+  if (ser.length) {
+    $("#serial").hidden = false;
+    $("#serialIntro").textContent = `From every Sapling coin, not just the ones above $10k (${data.launchesKnown ?? "?"} read so far). "Sold out" means the creator sold at least ${data.soldOutPct ?? 90}% of what they bought; coins whose history doesn't reach the launch, or where the creator didn't buy, aren't judged.`;
+    $("#serialList").innerHTML = ser.slice(0, 15).map((x) => `<li><a href="creators.html#${esc(x.creator)}"><code>${esc(x.creator.slice(0, 6))}…${esc(x.creator.slice(-4))}</code></a>
+      launched ${x.launched} coins, sold out of <b>${x.soldOut} of ${x.checked}</b> checked:
+      ${x.coins.slice(0, 8).map((k) => `$${esc(k.symbol)}${k.soldPct == null ? "" : k.bought === false ? " (didn't buy)" : ` (${p(k.soldPct)} sold)`}`).join(", ")}${x.coins.length > 8 ? "…" : ""}</li>`).join("");
+  }
+  const reps = data.repeatHolders ?? [];
+  if (reps.length) {
+    $("#repeats").hidden = false;
+    $("#repeatList").innerHTML = reps.map((r) => `<li><a href="https://solscan.io/account/${esc(r.owner)}"><code>${esc(r.owner.slice(0, 6))}…${esc(r.owner.slice(-4))}</code></a>
+      holds ${r.coins.map((c) => `$${esc(c.symbol)} ${p(c.pct)}`).join(", ")}${r.created.length ? ` · <b>created ${r.created.map((s) => "$" + esc(s)).join(", ")}</b>` : ""}${r.earlyBuyerIn.length ? ` · <b>bought in the first 10 s of ${r.earlyBuyerIn.map((s) => "$" + esc(s)).join(", ")}</b>` : ""}</li>`).join("");
+  }
+  let rows = data.cards.filter((c) => (!only || c.flagCount) &&
+    (!q || [c.symbol, c.name, c.mint].some((x) => (x || "").toLowerCase().includes(q))));
+  rows.sort((a, b) => { const x = val(a, sortKey), y = val(b, sortKey); return (x > y ? 1 : x < y ? -1 : 0) * sortDir; });
+  const hot = (v, lim, extra = "") => ` class="num${v != null && v > lim ? " hot" : ""}${extra ? " " + extra : ""}"`;
+  $("#rows").innerHTML = rows.length ? rows.map((c) => `
+    <tr id="${esc(c.mint)}">
+      <td class="coin"><b><a href="https://sapling.cash/coin/${esc(c.mint)}">$${esc(c.symbol)}</a></b>
+        <small>${esc(c.name)}${c.graduated ? " · graduated" : ""}${c.taxPct != null ? ` · ${c.taxPct}% tax` : ""}</small></td>
+      <td class="num" data-label="Market cap">${usd(c.mcapUsd)}</td>
+      <td class="num" data-label="Holders">${c.holders ?? "–"}</td>
+      <td${hot(c.facts.creatorLaunchPct, L.creatorLaunchPct)} data-label="Creator at launch">${p(c.facts.creatorLaunchPct)}</td>
+      <td${hot(c.facts.creatorSoldPct, L.creatorSoldPct)} data-label="Creator sold">${c.facts.creatorSoldPct == null ? "–" : p(c.facts.creatorSoldPct)}</td>
+      <td${hot(c.facts.earlyBuyersPct, L.earlyBuyersPct)} data-label="First 10 s"><span>${p(c.facts.earlyBuyersPct)}${c.facts.earlyBuyers ? ` <span class="note">(${c.facts.earlyBuyers} wallet${c.facts.earlyBuyers === 1 ? "" : "s"})</span>` : ""}</span></td>
+      <td${hot(c.facts.top10Pct, L.top10Pct)} data-label="Top 10">${p(c.facts.top10Pct)}</td>
+      <td data-label="Fees go to">${esc(c.feesTo)}</td>
+      <td class="flagcell">${c.flagCount ? `<ul class="flags">${c.flags.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>` : '<span class="pill ok">No flags</span>'}
+        ${c.facts.creatorOtherCoins?.launched ? `<div class="note"><a href="creators.html#${esc(c.creator)}">Creator's other coins</a>: ${c.facts.creatorOtherCoins.launched} launched, sold out of ${c.facts.creatorOtherCoins.soldOut} of ${c.facts.creatorOtherCoins.checked} checked</div>` : ""}
+        ${c.notes.length ? `<div class="note">${c.notes.map(esc).join(" · ")}</div>` : ""}
+        <div class="note">Read ${ago(c.refreshedAt)} · <details class="badge"><summary>Badge</summary>
+          <img src="badges/${esc(c.mint)}.svg" alt="zWatchtower badge for $${esc(c.symbol)}">
+          <input readonly onclick="this.select()" value="${esc(badgeHtml(c))}" aria-label="Badge HTML">
+          <input readonly onclick="this.select()" value="${esc(badgeMd(c))}" aria-label="Badge Markdown"></details>
+          · <a href="${disputeUrl(c)}">Dispute</a></div></td>
+    </tr>`).join("") : '<tr><td colspan="9" class="muted">No coins match.</td></tr>';
+  for (const b of document.querySelectorAll("th button")) {
+    const th = b.closest("th");
+    th.setAttribute("aria-sort", b.dataset.sort === sortKey ? (sortDir > 0 ? "ascending" : "descending") : "none");
+  }
+}
+
+async function load() {
+  try {
+    data = await fetch("api/coins.json", { cache: "no-store" }).then((r) => r.json());
+  } catch { $("#rows").innerHTML = '<tr><td colspan="9" class="muted">Report cards are not available yet.</td></tr>'; return; }
+  // the coin's own page; Sapling's list overstates coins still on their launch curve
+  for (const c of data.cards) c.mcapUsd = c.marketCapUsd ?? null;
+  const flagged = data.cards.filter((c) => c.flagCount).length;
+  const kinds = {};
+  for (const c of data.cards) for (const f of c.flags) {
+    const k = /other coins/.test(f) ? "Serial seller" : /Creator bought/.test(f) ? "Big creator buy" : /Creator has sold/.test(f) ? "Creator sold" : /first/.test(f) ? "Early buyers"
+      : /Top 10/.test(f) ? "Concentrated" : /minted|frozen/.test(f) ? "Mint or freeze" : "Other";
+    kinds[k] = (kinds[k] ?? 0) + 1;
+  }
+  $("#totals").innerHTML = [
+    [data.cards.length, "coins with a report card"], [flagged, "with at least one flag"],
+    ...Object.entries(kinds).sort((a, b) => b[1] - a[1]).map(([k, n]) => [n, k.toLowerCase()]),
+  ].map(([n, l]) => `<div class="total"><b>${n}</b><span>${esc(l)}</span></div>`).join("");
+  const L = data.limits;
+  $("#limits").innerHTML = [
+    `<b>Creator at launch</b>: the creator's own buy in the launch, as a share of supply. Flagged over ${L.creatorLaunchPct}%.`,
+    `<b>Creator sold</b>: how much of what the creator bought they have sold since. Flagged over ${L.creatorSoldPct}%.`,
+    `<b>First ${data.earlySeconds} s</b>: what other wallets bought in the first ${data.earlySeconds} seconds, often bots or insiders. Flagged over ${L.earlyBuyersPct}%; the number of wallets is in brackets.`,
+    `<b>Top 10</b>: the share of supply held by the 10 largest wallets. Flagged over ${L.top10Pct}%.`,
+    `<b>Mint or freeze authority</b>: someone can still create more coins or freeze wallets. Always flagged.`,
+  ].map((x) => `<li>${x}</li>`).join("");
+  $("#foot").insertAdjacentHTML("beforeend", ` Updated ${ago(data.generatedAt)}.`);
+  render();
+}
+
+for (const b of document.querySelectorAll("th button")) b.addEventListener("click", () => {
+  if (sortKey === b.dataset.sort) sortDir = -sortDir; else { sortKey = b.dataset.sort; sortDir = b.dataset.sort === "symbol" ? 1 : -1; }
+  render();
+});
+$("#q").addEventListener("input", () => data && render());
+$("#flaggedOnly").addEventListener("change", () => data && render());
+$("#sortSel").addEventListener("change", (e) => { sortKey = e.target.value; sortDir = -1; data && render(); });
+load();
+</script>
+</body>
+</html>
