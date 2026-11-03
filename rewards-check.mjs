@@ -213,6 +213,8 @@ async function checkRun(id) {
   const payouts = new Map((j.payouts || []).map((x) => [x.owner, x]));
   ownersByRun.set(id, new Set(payouts.keys()));
   if (run.releaseSignature) releases.set(id, run.releaseSignature);
+  runData.set(id, { holders: s.holders, payouts, pot, paid: BigInt(run.paid), rent: BigInt(run.rentZec || 0),
+    rolled: BigInt(run.rolledOver || 0), release: run.releaseSignature ?? null, coin: run.symbol });
   let confirmed = 0n, rent = 0n, badShares = 0, missing = 0, below = 0;
   const e = j.eligibility;
   for (const [owner, bal] of s.holders) {
@@ -261,6 +263,25 @@ async function checkRun(id) {
 // hours after a flagged run's release, sorted by who received it.
 const TREASURY = "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr";
 const ownersByRun = new Map();   // run id -> Set of owners in its payout rows
+const runData = new Map();       // run id -> holders, payouts, pot… (done runs)
+
+// Runs that share one release transaction are batches of one distribution:
+// each lists the whole pot, and shares are of the whole group's balances.
+// Re-check the formula across the group; true when every share then fits.
+function checkBatchGroup(ids) {
+  const rs = ids.map((i) => runData.get(i));
+  const pot = rs[0].pot;
+  if (!rs.every((r) => r.pot === pot)) return { ok: false, why: "batches list different pots" };
+  const sumAll = rs.reduce((a, r) => a + r.holders.reduce((b, [, bal]) => b + BigInt(bal), 0n), 0n);
+  let bad = 0, shares = 0n, confirmedMinusRent = 0n;
+  for (const r of rs) for (const [owner, bal] of r.holders) {
+    const row = r.payouts.get(owner); if (!row) continue;
+    shares += BigInt(row.share);
+    if (BigInt(row.share) !== (pot * BigInt(bal)) / sumAll) bad++;
+    if (row.status === "confirmed") confirmedMinusRent += BigInt(row.share) - BigInt(row.rentZec || 0);
+  }
+  return { ok: bad === 0, badShares: bad, batches: ids.length, pot: String(pot), sumOfShares: String(shares), paidToHolders: String(confirmedMinusRent) };
+}
 const releases = new Map();      // run id -> release signature
 async function followMoney(runId) {
   const sig = releases.get(runId);
@@ -335,6 +356,24 @@ async function main() {
     zecPaidInDoneRuns: (Number(paid) / 1e8).toFixed(8),
     onChainChecks: Boolean(rpcUrl),
   };
+  // batches: flagged runs whose release transaction is shared with other runs
+  const byRelease = new Map();
+  for (const [id, r] of runData) if (r.release) { if (!byRelease.has(r.release)) byRelease.set(r.release, []); byRelease.get(r.release).push(id); }
+  const groups = [];
+  for (const ids of byRelease.values()) {
+    if (ids.length < 2 || !ids.some((i) => flagged.some((f) => f.id === i && f.diagnosis))) continue;
+    const g = { runs: ids.sort((a, b) => a - b), ...checkBatchGroup(ids) };
+    groups.push(g);
+    if (g.ok) for (const f of flagged) if (ids.includes(f.id)) {
+      // the shares fit the whole distribution: not a problem with Sapling's payouts
+      f.problems = f.problems.filter((x) => !/shares not floor|paid != confirmed shares/.test(x));
+      f.note = `paid in ${ids.length} batches sharing one release (runs ${g.runs.join(", ")}); shares fit the whole distribution`;
+    }
+  }
+  if (groups.length) summary.batchGroups = groups;
+  summary.distinctReleases = byRelease.size;
+  summary.runsWithRelease = [...runData.values()].filter((r) => r.release).length;
+
   // where a flagged run's pot went, for the first one whose shares are off
   const traced = flagged.find((r) => r.diagnosis && releases.has(r.id));
   if (rpcUrl && traced) {

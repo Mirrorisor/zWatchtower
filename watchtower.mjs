@@ -183,6 +183,8 @@ function normalise(name, report) {
         notes: report.flagged.filter((r) => !r.problems?.length && r.note).map((r) => `run ${r.id}: ${r.note}`),
         diagnoses: failing.filter((r) => r.diagnosis).map((r) => ({ id: r.id, coin: r.coin, ...r.diagnosis })),
         followTheMoney: report.summary.followTheMoney ?? null,
+        batchGroups: report.summary.batchGroups ?? null, distinctReleases: report.summary.distinctReleases ?? null,
+        runsWithRelease: report.summary.runsWithRelease ?? null,
         maxRunId: Math.max(0, ...report.results.filter((r) => !r.notFound && !r.unchecked).map((r) => r.id)) },
     };
   }
