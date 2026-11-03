@@ -215,7 +215,8 @@ async function checkRun(id) {
   ownersByRun.set(id, new Set(payouts.keys()));
   if (run.releaseSignature) releases.set(id, run.releaseSignature);
   runData.set(id, { holders: s.holders, payouts, pot, paid: BigInt(run.paid), rent: BigInt(run.rentZec || 0),
-    rolled: BigInt(run.rolledOver || 0), release: run.releaseSignature ?? null, coin: run.symbol });
+    rolled: BigInt(run.rolledOver || 0), release: run.releaseSignature ?? null, coin: run.symbol,
+    mint: run.mint ?? run.coinMint ?? run.tokenMint ?? null, runFields: Object.keys(run) });
   let confirmed = 0n, rent = 0n, badShares = 0, missing = 0, below = 0;
   const e = j.eligibility;
   for (const [owner, bal] of s.holders) {
@@ -316,7 +317,30 @@ async function followMoney(runId) {
       if (k === "unknown") { unknown.set(o, (unknown.get(o) ?? 0n) + v); if (!unknownTx.has(o)) unknownTx.set(o, x.signature); }
     }
   }
-  return { run: runId, releaseAt: new Date(t0 * 1000).toISOString(), window: "2 hours after the release",
+  // The coin's biggest holdings, including program-controlled ones that holder
+  // lists leave out: is a big share held through Sapling accounts (the Terminal
+  // guard's holdings)? Their owners are program addresses owned by the guard.
+  let holdings = null;
+  const rd = runData.get(runId);
+  if (rd?.mint) {
+    try {
+      const largest = (await rpc("getTokenLargestAccounts", [rd.mint]))?.value ?? [];
+      const info = (await rpc("getMultipleAccounts", [largest.map((a) => a.address), { encoding: "jsonParsed" }]))?.value ?? [];
+      const owners = largest.map((a, i) => info[i]?.data?.parsed?.info?.owner ?? null);
+      const ownerAccts = (await rpc("getMultipleAccounts", [owners.filter(Boolean), { encoding: "base64", dataSlice: { offset: 0, length: 0 } }]))?.value ?? [];
+      const progOf = new Map(owners.filter(Boolean).map((o, i) => [o, ownerAccts[i]?.owner ?? null]));
+      const listed = new Set(rd.holders.map(([o]) => o));
+      const snapshotSum = rd.holders.reduce((a, [, b]) => a + BigInt(b), 0n);
+      const rows = largest.map((a, i) => ({ owner: owners[i], amount: a.amount, wallet: owners[i] ? isOnCurve(owners[i]) : null,
+        ownerProgram: progOf.get(owners[i]) ?? null, inSnapshot: listed.has(owners[i]) }));
+      const unlisted = rows.filter((r) => !r.inSnapshot);
+      const byProgram = {};
+      for (const r of unlisted) { const k = r.wallet ? "wallet" : (r.ownerProgram ?? "unknown"); byProgram[k] = String(BigInt(byProgram[k] ?? 0) + BigInt(r.amount)); }
+      holdings = { mint: rd.mint, snapshotSum: String(snapshotSum), top20: rows.map((r) => ({ ...r, owner: r.owner && r.owner.slice(0, 8) })),
+        notInSnapshotByOwnerProgram: byProgram };
+    } catch (e) { holdings = { error: e.message.slice(0, 80) }; }
+  } else holdings = { note: "the run doesn't name its coin's mint", runFields: rd?.runFields };
+  return { run: runId, holdings, releaseAt: new Date(t0 * 1000).toISOString(), window: "2 hours after the release",
     txsRead: txs, txsInWindow: inWindow.length, inflow: String(inflow), outflow: String(outflow),
     to: Object.fromEntries(Object.entries(by).map(([k, v]) => [k, String(v)])),
     topUnknown: await Promise.all([...unknown].sort((a, b) => (b[1] > a[1] ? 1 : -1)).slice(0, 5).map(async ([o, v]) => {
