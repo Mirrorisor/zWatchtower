@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T14:21:15.805Z",
-      "finishedAt": "2026-11-03T14:21:20.315Z",
+      "startedAt": "2026-11-03T14:25:11.160Z",
+      "finishedAt": "2026-11-03T14:25:15.786Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -23,11 +23,9 @@
         "vaultInstructions": {
           "observe_sapling": 4,
           "register_launchlab_coin": 1,
-          "declare_payee": 1,
-          "settle": 2,
-          "claim_payee": 1
+          "declare_payee": 1
         },
-        "unrecognised": 3,
+        "unrecognised": 2,
         "baseline": false
       }
     },
@@ -135,15 +133,15 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-03T14:10:06.900Z",
-      "finishedAt": "2026-11-03T14:10:08.749Z",
+      "startedAt": "2026-11-03T14:25:15.792Z",
+      "finishedAt": "2026-11-03T14:25:17.783Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "coins": 99,
-        "matching": 99,
-        "feeChangeable": 96,
+        "coins": 102,
+        "matching": 102,
+        "feeChangeable": 99,
         "feeRenounced": 3,
         "advertisedRange": [
           200,
@@ -155,8 +153,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-03T14:10:08.751Z",
-      "finishedAt": "2026-11-03T14:10:14.130Z",
+      "startedAt": "2026-11-03T14:25:17.785Z",
+      "finishedAt": "2026-11-03T14:25:23.659Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
