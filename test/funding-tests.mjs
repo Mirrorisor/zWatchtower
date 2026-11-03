@@ -1,5 +1,5 @@
 // Who funded a coin's first buyers.
-import { funderFromTx, fundingFacts, fundingFlags } from "../lib/funding.mjs";
+import { funderFromTx, fundingFacts, fundingFlags, KNOWN_EXCHANGES } from "../lib/funding.mjs";
 let failures = 0;
 const check = (label, cond, detail) => { if (!cond) failures++; console.log(`${cond ? "PASS" : "FAIL"} ${label}${detail ? ": " + detail : ""}`); };
 
@@ -22,6 +22,7 @@ check("two sharing a funder isn't enough to flag (setup)", true);
 const pending = fundingFacts(buyers, { a: "Y", b: "Y", c: "Y", d: "Y", e: null }, "C", {});
 check("a shared funder not yet checked for exchange-like activity isn't flagged yet", fundingFlags(pending).length === 0 && pending.busyPending === 1, JSON.stringify(pending));
 check("two sharing a funder isn't enough to flag", fundingFlags(ff).length === 0 && ff.largestGroup === 2);
+check("Binance 2 is a known exchange wallet", /Binance/.test(KNOWN_EXCHANGES["5tzFkiKscXHK5ZXCGbXZxdw7gTjjD1mBwuoFbhUvuAi9"] ?? ""));
 // an exchange's hot wallet funding several early buyers isn't a bundle
 import("../lib/funding.mjs").then(({ isBusy }) => {
   ff = fundingFacts(buyers, { a: "EX", b: "EX", c: "EX", d: "EX", e: null }, "C", { EX: true });

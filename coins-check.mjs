@@ -12,7 +12,7 @@
 // Usage:
 //   node coins-check.mjs --rpc URL --state coins-state.json --out coins.json --json
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
-import { funderFromTx, fundingFacts, fundingFlags, busyInfo } from "./lib/funding.mjs";
+import { funderFromTx, fundingFacts, fundingFlags, busyInfo, KNOWN_EXCHANGES } from "./lib/funding.mjs";
 import { dirname, join } from "node:path";
 import { buildCard, repeatHolders, cardEvents, launchSummary, creatorRecords, creatorHistory, serialCreators, creatorOf as creatorOfDetail, isAddress,
   LIMITS, EARLY_SECONDS, SOLD_OUT_PCT, PRIOR_SOLD_OUT } from "./lib/coins.mjs";
@@ -348,6 +348,7 @@ async function main() {
     const f = state.funders[w]; if (!f) continue; shared.set(f, (shared.get(f) ?? 0) + 1);
   }
   for (const [f, n] of shared) {
+    if (KNOWN_EXCHANGES[f]) { state.busyFunders[f] = true; (state.busyInfo ??= {})[f] = { exchange: KNOWN_EXCHANGES[f], busy: true }; continue; }
     if (n < 2 || (state.busyFunders[f] !== undefined && state.busyInfo?.[f])) continue;   // judged before details were kept: judge again
     try {
       const info = busyInfo(await rpc("getSignaturesForAddress", [f, { limit: 1000 }]));
