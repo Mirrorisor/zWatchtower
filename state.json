@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T10:38:29.746Z",
-      "finishedAt": "2026-11-03T10:38:43.585Z",
+      "startedAt": "2026-11-03T11:29:41.519Z",
+      "finishedAt": "2026-11-03T11:29:54.665Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,45 +21,43 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 44,
-          "settle_tax": 8,
-          "sell_tax": 9,
-          "withdraw_tax": 9,
+          "observe_sapling": 41,
+          "settle_tax": 4,
+          "sell_tax": 5,
+          "withdraw_tax": 5,
           "settle": 10,
-          "draw_lp": 1,
-          "draw_lp_sapling": 1,
-          "convert_tax_begin": 1,
-          "convert_tax_end": 1,
-          "settle_sapling": 1,
-          "draw_grove": 1,
-          "close_grove": 1,
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 1
+          "convert_sapling_begin": 1,
+          "convert_sapling_end": 1,
+          "collect_creator_fee": 2,
+          "collect_pool_fees": 2,
+          "close_rewards_run": 3,
+          "release_rewards": 3,
+          "settle_sapling": 1
         },
-        "unrecognised": 4,
+        "unrecognised": 3,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-03T10:38:43.587Z",
-      "finishedAt": "2026-11-03T10:38:50.711Z",
+      "startedAt": "2026-11-03T11:29:54.667Z",
+      "finishedAt": "2026-11-03T11:30:01.389Z",
       "status": "ran",
       "ok": false,
       "alerts": [
         "reward run 1514 ZDOG: 36 shares not floor(pot*balance/sum); paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-03T10:38:46.532Z",
-        "runs": 6,
-        "passed": 5,
+        "checkedAt": "2026-11-03T11:29:58.084Z",
+        "runs": 9,
+        "passed": 8,
         "flagged": 1,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.50262676",
+        "zecPaidInDoneRuns": "0.68249685",
         "onChainChecks": true,
-        "distinctReleases": 6,
-        "runsWithRelease": 6,
+        "distinctReleases": 9,
+        "runsWithRelease": 9,
         "followTheMoney": {
           "run": 1514,
           "releaseAt": "2026-11-03T06:11:44.000Z",
@@ -294,13 +292,13 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1519
+        "maxRunId": 1522
       }
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-03T09:45:12.575Z",
-      "finishedAt": "2026-11-03T09:53:25.077Z",
+      "startedAt": "2026-11-03T11:30:01.389Z",
+      "finishedAt": "2026-11-03T11:38:15.945Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -367,8 +365,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-03T10:38:50.712Z",
-      "finishedAt": "2026-11-03T10:38:51.210Z",
+      "startedAt": "2026-11-03T11:38:15.946Z",
+      "finishedAt": "2026-11-03T11:38:16.533Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -387,15 +385,15 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-03T10:38:51.211Z",
-      "finishedAt": "2026-11-03T10:38:54.685Z",
+      "startedAt": "2026-11-03T11:38:16.534Z",
+      "finishedAt": "2026-11-03T11:38:19.763Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "saplingBurn": {
-          "onChain": 223164326.72974396,
-          "claimed": 223160000,
+          "onChain": 223177976.17646694,
+          "claimed": 223180000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -492,13 +490,13 @@
           }
         },
         "pot": {
-          "balanceZat": "1521115",
-          "shownZat": "1521115",
-          "inflowZat": "932841192",
+          "balanceZat": "2629910",
+          "shownZat": "2629910",
+          "inflowZat": "933949987",
           "buybackZat": "931320077",
           "movements": {
             "setup": 1,
-            "inflow": 2217,
+            "inflow": 2221,
             "buyback": 247
           },
           "reconciled": true,
@@ -516,8 +514,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-03T10:38:54.688Z",
-      "finishedAt": "2026-11-03T10:39:13.688Z",
+      "startedAt": "2026-11-03T11:38:19.763Z",
+      "finishedAt": "2026-11-03T11:38:41.873Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -543,8 +541,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-03T10:39:13.689Z",
-      "finishedAt": "2026-11-03T10:39:28.917Z",
+      "startedAt": "2026-11-03T11:38:41.873Z",
+      "finishedAt": "2026-11-03T11:39:00.678Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -554,7 +552,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 1533,
+            "seenInTxs": 1566,
             "withJupiter": 46,
             "seeds": [
               "upgradeAuthority",
@@ -587,12 +585,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 159
+            "seenInTxs": 163
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 153
+            "seenInTxs": 157
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -665,7 +663,7 @@
           "breakingRules": []
         },
         "programsSeen": 16,
-        "txsRead": 33,
+        "txsRead": 69,
         "notes": []
       }
     }
@@ -686,7 +684,7 @@
     "coins": {},
     "programs": {}
   },
-  "rewardsMaxRun": 1519,
+  "rewardsMaxRun": 1522,
   "rewardsFrom": 1514,
   "x": {
     "day": "2026-11-03",
