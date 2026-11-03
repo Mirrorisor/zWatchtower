@@ -19,9 +19,12 @@ if ! git diff --cached --quiet; then
   git commit -qm "results $(date -u +%Y-%m-%dT%H:%MZ) (server)"
   git push -q origin HEAD:status || echo "push refused (another run pushed first); results are redone next round"
 fi
-# the dashboard: GitHub Pages serves the gh-pages branch
+# the dashboard: GitHub Pages serves the gh-pages branch. Pages rebuilds on
+# every push and suggests at most ~10 builds an hour, so publish at most
+# every 10 minutes (checks and alerts still run every 5).
 cd "$APP/pages"
 git fetch -q origin gh-pages && git reset -q --hard origin/gh-pages
+if [ $(( $(date +%s) - $(git log -1 --format=%ct) )) -lt 570 ]; then exit 0; fi
 find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 cp -r "$APP/site/." .
 git add -A
