@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T14:40:11.340Z",
-      "finishedAt": "2026-11-03T14:40:14.019Z",
+      "startedAt": "2026-11-03T14:47:59.763Z",
+      "finishedAt": "2026-11-03T14:48:02.142Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,216 +21,41 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle_tax": 1,
-          "convert_tax_begin": 1,
-          "convert_tax_end": 1,
-          "settle": 2
+          "observe_sapling": 6
         },
-        "unrecognised": 2,
+        "unrecognised": 0,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-03T14:35:08.769Z",
-      "finishedAt": "2026-11-03T14:36:53.380Z",
+      "startedAt": "2026-11-03T14:48:02.148Z",
+      "finishedAt": "2026-11-03T14:48:05.763Z",
       "status": "ran",
-      "ok": false,
-      "alerts": [
-        "reward run 1524 ZDOG: 39 shares not floor(pot*balance/sum); paid != confirmed shares - rent"
-      ],
+      "ok": true,
+      "alerts": [],
       "summary": {
-        "checkedAt": "2026-11-03T14:35:28.694Z",
-        "runs": 10,
-        "passed": 8,
-        "flagged": 2,
-        "unchecked": 1,
-        "firstUnchecked": 1530,
-        "zecPaidInDoneRuns": "0.33511260",
+        "checkedAt": "2026-11-03T14:48:05.747Z",
+        "runs": 6,
+        "passed": 6,
+        "flagged": 0,
+        "unchecked": 0,
+        "firstUnchecked": null,
+        "zecPaidInDoneRuns": "0.21690639",
         "onChainChecks": true,
-        "distinctReleases": 10,
-        "runsWithRelease": 10,
-        "followTheMoney": {
-          "run": 1524,
-          "holdings": {
-            "error": "HTTP error for https://api.mainnet-beta.solana.com"
-          },
-          "releaseAt": "2026-11-03T11:34:28.000Z",
-          "window": "2 hours after the release",
-          "txsRead": 39,
-          "txsInWindow": 39,
-          "inflow": "16524057",
-          "outflow": "16524057",
-          "to": {
-            "thisRunHolders": "2257972",
-            "treasury": "69373",
-            "otherRunsHolders": "11943307",
-            "unknown": "2253405"
-          },
-          "topUnknown": [
-            {
-              "owner": "H9DAPPkoAH1DQUzc2L7hDFiXr1xqXGZgR13STEihyau9",
-              "zat": "688724",
-              "wallet": true,
-              "account": "no account",
-              "after": {
-                "zecAccount": "closed"
-              },
-              "firstTx": "63jxkfsLBMZg7zzEzF1nUuub3E94yvggJZagPjdV1xZkUjN1C1tZvcryCmzE8No9SjB81RGns9LjisRutfHCPJGZ",
-              "alsoHolderOf": []
-            },
-            {
-              "owner": "6edVx9JNbN5BYsj99f4S7VpWsnuniPuteVUMLP6NP2th",
-              "zat": "688724",
-              "wallet": true,
-              "account": "no account",
-              "after": {
-                "zecAccount": "closed"
-              },
-              "firstTx": "4c2wTAHBzeyb1uuSPnr3RgBvvyMJF8ycH4F3K8EVv1JXEaiBNBRA6Vq9F8kjfXZRZfNTq6c3kwwEWxc4iRFu4T2f",
-              "alsoHolderOf": []
-            },
-            {
-              "owner": "FZgnhjnqGttZxmPDoP3UxWRG888mjrKCh5FU3w9rNDFF",
-              "zat": "671950",
-              "wallet": true,
-              "account": "no account",
-              "after": {
-                "zecAccount": "closed"
-              },
-              "firstTx": "5MSsoPGoRf2JxZx6872gTPANvvcSrrtJ4Dvtwz55eFNaNou53HtYaBBmAoD6sAHq3RCtZXBVdWMNXjRJ2A9K7SWa",
-              "alsoHolderOf": []
-            },
-            {
-              "owner": "H8aoNLAiJzYsZxng14wtaaFM7n1ehd25VGhtr4t6TEoY",
-              "zat": "105335",
-              "wallet": false,
-              "account": {
-                "owner": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
-                "executable": false,
-                "lamports": 1534160
-              },
-              "after": {
-                "zecLeft": "105335",
-                "laterTxs": 4,
-                "programs": [
-                  "ComputeBudget111111111111111111111111111111",
-                  "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
-                  "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
-                  "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
-                ]
-              },
-              "firstTx": "5Kt72qB5XwUvNm6mMmALSG52mHSJGzx82mJ6afJeRETGLkQTs6vD7AjanqABDH61vDaXUJJ25fBVyDx7HcFyiJAs",
-              "alsoHolderOf": []
-            },
-            {
-              "owner": "6r9g1aCQCKDuHz353Huh262rshPPDsi5DPvTKVYcEEpC",
-              "zat": "56080",
-              "wallet": false,
-              "account": {
-                "owner": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
-                "executable": false,
-                "lamports": 1534160
-              },
-              "after": {
-                "zecLeft": "56080",
-                "laterTxs": 4,
-                "programs": [
-                  "ComputeBudget111111111111111111111111111111",
-                  "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
-                  "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
-                  "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
-                ]
-              },
-              "firstTx": "5WXBaednyF9tkkGPftKfWs2Ddta4j5wEpnY2CJtpxTtamqYiSfJBKBeNAMWLJKBNkqcxb6L3tQ2UeEvFbD9yHHSY",
-              "alsoHolderOf": []
-            }
-          ]
-        },
-        "notes": [
-          "run 1530: release not checked on chain (HTTP error for https://api.mainnet-beta.solana.com)"
-        ],
-        "diagnoses": [
-          {
-            "id": 1524,
-            "coin": "ZDOG",
-            "ratio": {
-              "min": "3.9976",
-              "max": "4.0000"
-            },
-            "rowFields": [
-              "owner",
-              "balance",
-              "share",
-              "rentZec",
-              "status",
-              "reason",
-              "signature"
-            ],
-            "pot": "2866514",
-            "sumOfBalances": "458040479944610",
-            "sumOfShares": "716668",
-            "paid": "2761179",
-            "rent": "0",
-            "rolledOver": "105335",
-            "holders": 39,
-            "payoutRows": 39,
-            "explainedBy": [],
-            "sample": [
-              {
-                "owner": "21KJ1m",
-                "balance": "3960019378481",
-                "expected": "24782",
-                "share": "6197",
-                "status": "confirmed"
-              },
-              {
-                "owner": "2AejdD",
-                "balance": "11180745660536",
-                "expected": "69971",
-                "share": "17495",
-                "status": "confirmed"
-              },
-              {
-                "owner": "2NTQmb",
-                "balance": "6902777470883",
-                "expected": "43199",
-                "share": "10802",
-                "status": "confirmed"
-              }
-            ],
-            "onChain": [
-              {
-                "owner": "21KJ1m",
-                "error": "HTTP error for https://api.mainnet-beta.solana.com"
-              },
-              {
-                "owner": "2AejdD",
-                "share": "17495",
-                "rentZec": "0",
-                "received": "17495"
-              },
-              {
-                "owner": "2NTQmb",
-                "share": "10802",
-                "rentZec": "0",
-                "received": "10802"
-              },
-              {
-                "rewardsWalletHoldsZat": "0"
-              }
-            ]
-          }
-        ],
+        "distinctReleases": 6,
+        "runsWithRelease": 6,
+        "notes": [],
+        "diagnoses": [],
+        "followTheMoney": null,
         "batchGroups": null,
         "maxRunId": 1533
       }
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-03T14:40:14.026Z",
-      "finishedAt": "2026-11-03T14:47:44.654Z",
+      "startedAt": "2026-11-03T14:48:05.765Z",
+      "finishedAt": "2026-11-03T14:55:33.384Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -297,8 +122,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-03T14:47:44.656Z",
-      "finishedAt": "2026-11-03T14:47:46.903Z",
+      "startedAt": "2026-11-03T14:55:33.386Z",
+      "finishedAt": "2026-11-03T14:55:35.379Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -317,14 +142,14 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-03T14:47:46.904Z",
-      "finishedAt": "2026-11-03T14:47:51.736Z",
+      "startedAt": "2026-11-03T14:55:35.381Z",
+      "finishedAt": "2026-11-03T14:55:38.875Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "saplingBurn": {
-          "onChain": 223202870.26072395,
+          "onChain": 223204793.99783194,
           "claimed": 223200000,
           "diffPct": 0,
           "verdict": "matches"
@@ -446,28 +271,27 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-03T14:15:09.345Z",
-      "finishedAt": "2026-11-03T14:20:16.970Z",
+      "startedAt": "2026-11-03T14:55:38.878Z",
+      "finishedAt": "2026-11-03T14:58:21.894Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
-      "events": [
-        "New coin $zkSNARK (2SaA…cash) was launched by a creator who sold out of 8 of their 8 other Sapling coins checked ($**, $NU7, $SATOSHI…)."
-      ],
+      "events": [],
       "summary": {
-        "coins": 480,
+        "coins": 482,
         "carded": 11,
         "refreshed": 11,
         "flagged": 9,
         "flagCounts": {
           "N wallet(s) bought N in the first N seconds": 8,
+          "N of the first buyers were funded by the same wallet(s)": 2,
           "Creator has sold N of what they bought": 4,
           "Creator sold out of N of their N other coins checked": 1,
           "Creator bought N of supply at launch": 2
         },
         "notes": [
-          "creator scan: 1 coin(s) read this run, 480 of 480 read so far (1 launched shielded, creator not public)",
-          "holder concentration not read for 11 coin(s) this run (rate-limited x11); tried again later",
+          "creator scan: 2 coin(s) read this run, 482 of 482 read so far (1 launched shielded, creator not public)",
+          "first-buyer funding: 100 wallet(s) looked up this run, 4 coin(s) still being looked up",
           "1 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 1)",
           "23 shortlisted coin(s) were under $10,000 on their own page, so no card",
           "17 wallet(s) are in the top 10 of more than one coin"
@@ -476,8 +300,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-03T14:20:17.410Z",
-      "finishedAt": "2026-11-03T14:21:06.955Z",
+      "startedAt": "2026-11-03T14:58:21.895Z",
+      "finishedAt": "2026-11-03T14:58:40.829Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -487,7 +311,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 1642,
+            "seenInTxs": 1657,
             "withJupiter": 46,
             "seeds": [
               "upgradeAuthority",
@@ -521,12 +345,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 174
+            "seenInTxs": 177
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 168
+            "seenInTxs": 171
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -556,12 +380,12 @@
           {
             "id": "LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj",
             "authority": "FytDrVzDybM1TwFQPGb8qaxZR7dBCzNeqT3vtQsceZQK",
-            "seenInTxs": 24
+            "seenInTxs": 25
           },
           {
             "id": "L2TExMFKdjpN9kozasaurPirfHy9P8sbXoAN1qA3S95",
             "authority": null,
-            "seenInTxs": 8
+            "seenInTxs": 9
           },
           {
             "id": "MNFSTqtC93rEfYHB6hF82sKdZpUDFWkViLByLd1k1Ms",
@@ -593,14 +417,16 @@
           "guards": [
             "GzMQc5VQGggFnicdAKc7MmkQV3dn3i12ux9dbLKqzy6F"
           ],
-          "txsRead": 0,
+          "txsRead": 6,
           "tokensSeen": 2,
           "tokensChecked": 2,
           "breakingRules": []
         },
         "programsSeen": 16,
-        "txsRead": 29,
-        "notes": []
+        "txsRead": 25,
+        "notes": [
+          "tx 1azEBKYa… not read"
+        ]
       }
     }
   },
@@ -622,7 +448,7 @@
     "programs": {}
   },
   "rewardsMaxRun": 1533,
-  "rewardsFrom": 1524,
+  "rewardsFrom": 1528,
   "x": {
     "day": "2026-11-03",
     "today": 10,
