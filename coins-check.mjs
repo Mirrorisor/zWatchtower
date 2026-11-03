@@ -12,6 +12,7 @@
 // Usage:
 //   node coins-check.mjs --rpc URL --state coins-state.json --out coins.json --json
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
+import { funderFromTx, fundingFacts, fundingFlags } from "./lib/funding.mjs";
 import { dirname, join } from "node:path";
 import { buildCard, repeatHolders, cardEvents, launchSummary, creatorRecords, creatorHistory, serialCreators, creatorOf as creatorOfDetail, isAddress,
   LIMITS, EARLY_SECONDS, SOLD_OUT_PCT, PRIOR_SOLD_OUT } from "./lib/coins.mjs";
@@ -33,6 +34,26 @@ const maxPages = Number(opt("--max-pages", "60")); // 500 trades a page
 const scanCoins = Number(opt("--scan-coins", "60"));
 const scanPages = Number(opt("--scan-pages", "4"));
 const RESCAN_MS = 24 * 3600 * 1000;
+// who funded each early buyer: looked up once per wallet, this many per run
+const fundingLookups = Number(opt("--funding-lookups", "40"));
+
+// The wallet that first sent SOL to `wallet`: its oldest transaction, found by
+// paging its history (up to 4 pages of 1,000). "busy" when the wallet is too
+// old to reach its first transaction that way.
+async function firstFunder(wallet) {
+  let before, oldest = null;
+  for (let page = 0; page < 4; page++) {
+    const sigs = (await rpc("getSignaturesForAddress", [wallet, { limit: 1000, ...(before ? { before } : {}) }])) ?? [];
+    if (!sigs.length) break;
+    oldest = sigs.at(-1).signature;
+    if (sigs.length < 1000) break;
+    before = oldest;
+    if (page === 3) return "busy";
+  }
+  if (!oldest) return null;
+  const tx = await rpc("getTransaction", [oldest, { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 }]);
+  return funderFromTx(tx, wallet);
+}
 // Only coins worth at least this much (USD) get a card. Sapling's coin list
 // overstates coins still on their launch curve, so the list only shortlists;
 // each coin's own page decides.
@@ -293,6 +314,40 @@ async function main() {
     }
     await sleep(pauseMs);
   }
+  // ---- who funded the first buyers (bundling) ----------------------------
+  state.funders ??= {};
+  const earlyOf = (card) => {
+    const h = state.history[card.mint];
+    const launch = card.launchedAt ? Date.parse(card.launchedAt) : null;
+    if (!h?.complete || h.startsAfterLaunch || launch == null) return null;
+    return [...new Set(h.kept.filter((t) => t.isBuy && t.user !== card.creator &&
+      Date.parse(t.blockTime) - launch <= EARLY_SECONDS * 1000).map((t) => t.user))];
+  };
+  let looked = 0, lookErrors = 0;
+  const byCap = Object.values(state.cards).sort((a, b) => (b.marketCapUsd ?? 0) - (a.marketCapUsd ?? 0));
+  outer: for (const card of byCap) {
+    for (const w of earlyOf(card) ?? []) {
+      if (state.funders[w] !== undefined) continue;
+      if (looked >= fundingLookups) break outer;
+      try { const f = await firstFunder(w); state.funders[w] = f === "busy" ? null : f; looked++; }
+      catch { lookErrors++; if (lookErrors > 5) break outer; }
+      await sleep(pauseMs);
+    }
+  }
+  let fundingPending = 0;
+  for (const card of Object.values(state.cards)) {
+    const buyers = earlyOf(card);
+    card.flags = card.flags.filter((f) => !/of the first buyers (was|were) funded/.test(f));
+    if (buyers?.length) {
+      const ff = fundingFacts(buyers, state.funders, card.creator);
+      card.facts.funding = ff;
+      if (ff.lookedUp < ff.earlyBuyers) fundingPending++;
+      card.flags.push(...fundingFlags(ff));
+    }
+    card.flagCount = card.flags.length;
+  }
+  notes.push(`first-buyer funding: ${looked} wallet(s) looked up this run${fundingPending ? `, ${fundingPending} coin(s) still being looked up` : ""}${lookErrors ? `, ${lookErrors} lookup(s) failed` : ""}`);
+
   if (rpcFailures) notes.push(`holder concentration not read for ${rpcFailures} coin(s) this run (${Object.entries(holderErrors).map(([k, n]) => `${k} x${n}`).join(", ")}); tried again later`);
   if (tradeGaps) notes.push(`${tradeGaps} coin(s): trade history didn't reach the launch, so launch buys weren't judged (${Object.entries(gapWhy).map(([k, n]) => `${k}: ${n}`).join(", ")})`);
 

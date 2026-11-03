@@ -189,7 +189,14 @@ const server = createServer((req, res) => {
         if (params[0] === zwatch.mint) return send({ error: { code: 429, message: "rate limited" } });
         return send({ result: { value: holders.map((h, i) => ({ address: `acct${i}`, amount: h.amount })) } });
       }
-      if (method === "getMultipleAccounts") return send({ result: { value: params[0].map((a) => ({ data: { parsed: { info: { owner: holders[Number(a.slice(4))].owner } } } })) } });
+      if (method === "getMultipleAccounts") return send({ result: { value: params[0].map((a) => ({ data: { parsed: { info: { owner: holders[Number(a.slice(4))]?.owner ?? null } } } })) } });
+      // first funding of a wallet: the bad coin's second early buyer was funded by its creator, everyone else by unrelated wallets
+      if (method === "getSignaturesForAddress") return send({ result: [{ signature: `fund-${params[0]}` }] });
+      if (method === "getTransaction" && String(params[0]).startsWith("fund-")) {
+        const w = params[0].slice(5), from = w === "5H1gfdDcrtPq7V11uh457dHjZ75caZv6xNd7CeBiPAaV" ? creator : `F${w.slice(0, 6)}`;
+        return send({ result: { transaction: { message: { instructions: [{ program: "system", programId: "11111111111111111111111111111111",
+          parsed: { type: "transfer", info: { source: from, destination: w, lamports: 10000000 } } }] } }, meta: { innerInstructions: [] } } });
+      }
     }
     send({ error: "nope" }, 404);
   });
@@ -214,6 +221,8 @@ try {
   check("end to end: a rate-limited holder lookup is a note, not a crash", zCard && zCard.facts.top10Pct === undefined &&
     x.report.notes.some((n) => /concentration not read for 1/.test(n)), JSON.stringify(x.report?.notes));
   check("end to end: report counts flagged coins", x.report.flagged === 1 && x.report.carded === 2, JSON.stringify(x.report));
+  check("end to end: an early buyer funded by the creator is flagged", badCard?.facts.funding?.fundedByCreator === 1 &&
+    badCard.flags.includes("1 of the first buyers was funded by the creator"), JSON.stringify({ f: badCard?.facts.funding, flags: badCard?.flags }));
   check("end to end: a page ending partway through a second loses no trade", badCard?.facts.earlyBuyers === 2 &&
     badCard?.facts.earlyBuyersPct === 16, JSON.stringify(badCard?.facts));
   check("end to end: wallets in the top 10 of both coins are listed", pub.repeatHolders?.length === 0, JSON.stringify(pub.repeatHolders));

@@ -199,6 +199,9 @@ function render() {
       <td data-label="Fees go to">${esc(c.feesTo)}</td>
       <td class="flagcell">${c.flagCount ? `<ul class="flags">${c.flags.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>` : '<span class="pill ok">No flags</span>'}
         ${c.facts.creatorOtherCoins?.launched ? `<div class="note"><a href="creators.html#${esc(c.creator)}">Creator's other coins</a>: ${c.facts.creatorOtherCoins.launched} launched, sold out of ${c.facts.creatorOtherCoins.soldOut} of ${c.facts.creatorOtherCoins.checked} checked</div>` : ""}
+        ${c.facts.funding ? `<div class="note">First buyers' funding: ${c.facts.funding.lookedUp < c.facts.funding.earlyBuyers
+          ? `${c.facts.funding.lookedUp} of ${c.facts.funding.earlyBuyers} looked up so far`
+          : `${c.facts.funding.fundedByCreator} funded by the creator; largest group with one funder: ${c.facts.funding.largestGroup}`}</div>` : ""}
         ${c.notes.length ? `<div class="note">${c.notes.map(esc).join(" · ")}</div>` : ""}
         <div class="note">Read ${ago(c.refreshedAt)} · <details class="badge"><summary>Badge</summary>
           <img src="badges/${esc(c.mint)}.svg" alt="zWatchtower badge for $${esc(c.symbol)}">
@@ -221,7 +224,7 @@ async function load() {
   const flagged = data.cards.filter((c) => c.flagCount).length;
   const kinds = {};
   for (const c of data.cards) for (const f of c.flags) {
-    const k = /other coins/.test(f) ? "Serial seller" : /Creator bought/.test(f) ? "Big creator buy" : /Creator has sold/.test(f) ? "Creator sold" : /first/.test(f) ? "Early buyers"
+    const k = /first buyers (was|were) funded/.test(f) ? "Funded first buyers" : /other coins/.test(f) ? "Serial seller" : /Creator bought/.test(f) ? "Big creator buy" : /Creator has sold/.test(f) ? "Creator sold" : /first/.test(f) ? "Early buyers"
       : /Top 10/.test(f) ? "Concentrated" : /minted|frozen/.test(f) ? "Mint or freeze" : "Other";
     kinds[k] = (kinds[k] ?? 0) + 1;
   }

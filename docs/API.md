@@ -47,6 +47,7 @@ A **card**:
 | `facts.creatorSoldPct` | % of what the creator bought that they have sold |
 | `facts.earlyBuyers`, `facts.earlyBuyersPct` | Other wallets buying in the first `earlySeconds`, and the % of supply they bought |
 | `facts.top10Pct`, `facts.top10` | Share held by the 10 largest wallets (pools and program accounts left out) |
+| `facts.funding` | `{ earlyBuyers, lookedUp, fundedByCreator, largestGroup, sharedFunders: [{ funder, buyers, isCreator }] }`: who first sent SOL to each first-10-s buyer |
 | `facts.creatorOtherCoins` | `{ launched, checked, soldOut, soldOutCoins }` for the creator's other Sapling coins |
 | `facts.mintAuthority`, `facts.freezeAuthority`, `facts.taxChangeable` | On-chain mint settings |
 | `flags` | Plain-English facts past a line; `flagCount` is their number |

@@ -87,6 +87,14 @@ back to a coin's launch, launch facts are left blank rather than guessed.
 Each run refreshes 40 cards (new coins first, then the stalest), so the
 public RPC's limits are respected; market cap and holders refresh every run.
 
+### Who funded the first buyers
+
+A creator can launch without buying from their own wallet, then buy through
+wallets they funded ("bundling"). For every coin with a card, the check looks
+up who first sent SOL to each wallet that bought in the first 10 seconds
+(that wallet's oldest transaction; looked up once and kept), and flags the
+coin when any was funded by the creator, or when 3 or more share one funder.
+
 ### Creator track records and badges
 
 Every Sapling coin, not only the ones over $10,000, is read once a day: who
