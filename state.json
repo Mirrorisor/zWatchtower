@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T17:45:02.276Z",
-      "finishedAt": "2026-11-03T17:45:06.739Z",
+      "startedAt": "2026-11-03T17:50:01.507Z",
+      "finishedAt": "2026-11-03T17:50:05.748Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,33 +21,38 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle_tax": 7,
-          "sell_tax": 6,
-          "withdraw_tax": 6,
-          "set_coin_payee": 1
+          "settle_tax": 4,
+          "sell_tax": 4,
+          "withdraw_tax": 4,
+          "observe_sapling": 3,
+          "draw_grove": 1,
+          "close_grove": 1,
+          "claim_payee": 2,
+          "close_rewards_run": 1,
+          "release_rewards": 1,
+          "settle": 3
         },
-        "unrecognised": 1,
+        "unrecognised": 2,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-03T17:20:09.658Z",
-      "finishedAt": "2026-11-03T17:20:26.397Z",
+      "startedAt": "2026-11-03T17:50:05.753Z",
+      "finishedAt": "2026-11-03T17:50:25.076Z",
       "status": "ran",
       "ok": false,
       "alerts": [
         "reward run 1537 ZDOG: 44 shares not floor(pot*balance/sum); paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-03T17:20:14.836Z",
+        "checkedAt": "2026-11-03T17:50:11.613Z",
         "runs": 9,
         "passed": 8,
         "flagged": 1,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.82055336",
+        "zecPaidInDoneRuns": "0.79970408",
         "onChainChecks": true,
         "distinctReleases": 9,
         "runsWithRelease": 9,
@@ -59,7 +64,7 @@
             "top20": [
               {
                 "owner": "WLHv2UAZ",
-                "amount": "544051677235628",
+                "amount": "552378557716457",
                 "wallet": false,
                 "ownerProgram": null,
                 "inSnapshot": false
@@ -199,20 +204,20 @@
               }
             ],
             "notInSnapshotByOwnerProgram": {
-              "unknown": "544051677235628"
+              "unknown": "552378557716457"
             }
           },
           "releaseAt": "2026-11-03T16:36:39.000Z",
           "window": "2 hours after the release",
-          "txsRead": 50,
-          "txsInWindow": 50,
-          "inflow": "53694610",
-          "outflow": "53694610",
+          "txsRead": 63,
+          "txsInWindow": 63,
+          "inflow": "68127143",
+          "outflow": "68127143",
           "to": {
-            "thisRunHolders": "5308264",
-            "treasury": "395746",
-            "otherRunsHolders": "42797725",
-            "unknown": "5192875"
+            "thisRunHolders": "9124316",
+            "treasury": "429891",
+            "otherRunsHolders": "53340900",
+            "unknown": "5232036"
           },
           "topUnknown": [
             {
@@ -279,13 +284,12 @@
                 "lamports": 1534160
               },
               "after": {
-                "zecLeft": "376198",
+                "zecLeft": "1283481",
                 "laterTxs": 4,
                 "programs": [
                   "ComputeBudget111111111111111111111111111111",
                   "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
-                  "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-                  "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+                  "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
                 ]
               },
               "firstTx": "5bAY21i8eRF5oew99ENfdQk6PPHe5DHVAYhkz2rkh3sGZtDHnPnLZCFCQJDnt85QnTGH7qwDAvNjoaNCYUu84a8k",
@@ -462,7 +466,7 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1541
+        "maxRunId": 1544
       }
     },
     "float": {
@@ -865,8 +869,8 @@
     "coins": {},
     "programs": {}
   },
-  "rewardsMaxRun": 1541,
-  "rewardsFrom": 1533,
+  "rewardsMaxRun": 1544,
+  "rewardsFrom": 1536,
   "x": {
     "day": "2026-11-03",
     "today": 10,
