@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T17:55:02.030Z",
-      "finishedAt": "2026-11-03T17:55:06.870Z",
+      "startedAt": "2026-11-03T18:00:03.880Z",
+      "finishedAt": "2026-11-03T18:00:08.863Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
-        "configSha256": "952ad678e297517d48710f230c652e2efaa0bd5cce4a232bfd737db271e74ba5",
+        "configSha256": "323ad57d22e8f78c807169f7a0c576101303cf6b0661985d26bfce4919a50f7d",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -21,12 +21,16 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "settle_tax": 5,
-          "sell_tax": 5,
+          "settle_tax": 4,
+          "sell_tax": 4,
           "withdraw_tax": 5,
-          "observe_sapling": 5
+          "release_rewards": 3,
+          "observe_sapling": 4,
+          "close_rewards_run": 2,
+          "settle": 2,
+          "claim_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false
       }
     },
@@ -533,8 +537,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-03T17:45:06.744Z",
-      "finishedAt": "2026-11-03T17:45:08.709Z",
+      "startedAt": "2026-11-03T18:00:08.870Z",
+      "finishedAt": "2026-11-03T18:00:11.166Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -553,24 +557,24 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-03T17:45:08.710Z",
-      "finishedAt": "2026-11-03T17:45:18.443Z",
+      "startedAt": "2026-11-03T18:00:11.168Z",
+      "finishedAt": "2026-11-03T18:00:20.953Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "saplingBurn": {
-          "onChain": 223543435.42009103,
-          "claimed": 223540000,
+          "onChain": 223604430.068905,
+          "claimed": 223600000,
           "diffPct": 0,
           "verdict": "matches"
         },
-        "burns": 185,
-        "burnsVerified": 185,
-        "boughtBackZat": "808967862",
+        "burns": 187,
+        "burnsVerified": 187,
+        "boughtBackZat": "831481892",
         "venues": {
           "pump amm": 91,
-          "raydium cpmm": 35,
+          "raydium cpmm": 37,
           "raydium launchlab": 10,
           "pump bonding curve": 1,
           "jupiter": 48
@@ -658,19 +662,19 @@
           },
           "SARAH": {
             "mint": "4LT4uDp694w7soJerjRjSEVr2884J33EjLNG1WGzcash",
-            "burns": 7,
-            "zat": "62948393"
+            "burns": 9,
+            "zat": "85462423"
           }
         },
         "pot": {
-          "balanceZat": "9435032",
-          "shownZat": "9435032",
-          "inflowZat": "1021568969",
-          "buybackZat": "1012133937",
+          "balanceZat": "8532245",
+          "shownZat": "8532245",
+          "inflowZat": "1031859508",
+          "buybackZat": "1023327263",
           "movements": {
             "setup": 1,
-            "inflow": 2366,
-            "buyback": 257
+            "inflow": 2379,
+            "buyback": 258
           },
           "reconciled": true,
           "caughtUp": true
@@ -681,8 +685,7 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "buyback 4ShLLeWEz85AaQGfPkFdYn8rMjEfMB5gHHNXftAJfcHCGNGzsfVmbGZqeCx2v8HBhzrVHQQGXCgTb4dDtr37KQ3k drew 11320704 zat but is not in Sapling's burn list",
-          "headline 982148964 zat bought back, listed burns add up to 272787867"
+          "headline 1023327263 zat bought back, listed burns add up to 297943783"
         ]
       }
     },
