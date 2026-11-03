@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T22:05:11.156Z",
-      "finishedAt": "2026-11-03T22:05:16.866Z",
+      "startedAt": "2026-11-03T22:10:35.675Z",
+      "finishedAt": "2026-11-03T22:10:39.693Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,16 +21,16 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "settle_tax": 6,
-          "sell_tax": 6,
+          "settle_tax": 5,
+          "sell_tax": 5,
           "withdraw_tax": 6,
           "observe_sapling": 4,
-          "draw_zec_payee": 1,
-          "settle": 7,
-          "draw_lp": 1,
-          "claim_payee": 1
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1,
+          "draw_grove": 1,
+          "close_grove": 1
         },
-        "unrecognised": 1,
+        "unrecognised": 0,
         "baseline": false
       }
     },
@@ -538,8 +538,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-03T21:52:36.413Z",
-      "finishedAt": "2026-11-03T21:52:37.749Z",
+      "startedAt": "2026-11-03T22:10:39.699Z",
+      "finishedAt": "2026-11-03T22:10:41.193Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -558,26 +558,24 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-03T21:52:37.751Z",
-      "finishedAt": "2026-11-03T21:52:57.117Z",
+      "startedAt": "2026-11-03T22:10:41.194Z",
+      "finishedAt": "2026-11-03T22:10:54.863Z",
       "status": "ran",
-      "ok": false,
-      "alerts": [
-        "flywheel pot holds 4295034 zat but the movements seen add up to 3977339"
-      ],
+      "ok": true,
+      "alerts": [],
       "summary": {
         "saplingBurn": {
-          "onChain": 224260261.65183997,
-          "claimed": 224260000,
+          "onChain": 224309969.22587,
+          "claimed": 224310000,
           "diffPct": 0,
           "verdict": "matches"
         },
-        "burns": 203,
-        "burnsVerified": 203,
-        "boughtBackZat": "1006748490",
+        "burns": 204,
+        "burnsVerified": 204,
+        "boughtBackZat": "1025551858",
         "venues": {
           "pump amm": 93,
-          "raydium cpmm": 51,
+          "raydium cpmm": 52,
           "raydium launchlab": 10,
           "pump bonding curve": 1,
           "jupiter": 48
@@ -665,21 +663,21 @@
           },
           "SARAH": {
             "mint": "4LT4uDp694w7soJerjRjSEVr2884J33EjLNG1WGzcash",
-            "burns": 23,
-            "zat": "243126432"
+            "burns": 24,
+            "zat": "261929800"
           }
         },
         "pot": {
-          "balanceZat": "4295034",
-          "shownZat": "3977339",
-          "inflowZat": "1202571200",
-          "buybackZat": "1198593861",
+          "balanceZat": "4977331",
+          "shownZat": "4977331",
+          "inflowZat": "1222374560",
+          "buybackZat": "1217397229",
           "movements": {
             "setup": 1,
-            "inflow": 2602,
-            "buyback": 274
+            "inflow": 2624,
+            "buyback": 275
           },
-          "reconciled": false,
+          "reconciled": true,
           "caughtUp": true
         },
         "signers": [
@@ -688,8 +686,7 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "Sapling shows the pot at 3977339 zat, chain says 4295034 (may be a moment out of date)",
-          "headline 1198593861 zat bought back, listed burns add up to 386222536"
+          "headline 1217397229 zat bought back, listed burns add up to 400043064"
         ]
       }
     },
@@ -871,9 +868,7 @@
     },
     "float": {},
     "tax": {},
-    "flywheel": {
-      "flywheel pot holds 4295034 zat but the movements seen add up to 3977339": "2026-11-03T21:52:57.117Z"
-    },
+    "flywheel": {},
     "coins": {},
     "programs": {}
   },
