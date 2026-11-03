@@ -147,7 +147,8 @@ const p = (v) => v == null ? "–" : `${v < 1 && v > 0 ? v.toFixed(2) : Math.rou
 const ago = (iso) => { const h = Math.round((Date.now() - Date.parse(iso)) / 3600000); return h < 1 ? "under an hour ago" : h < 48 ? `${h} h ago` : `${Math.round(h / 24)} d ago`; };
 
 const site = location.href.replace(/[^/]*$/, "");
-const cardUrl = (c) => `${site}coins.html#${c.mint}`;
+// the public site's coin page (Lovable front end); the badge image stays on GitHub Pages
+const cardUrl = (c) => `https://zwatchtower.lovable.app/coin/${c.mint}`;
 const badgeHtml = (c) => `<a href="${cardUrl(c)}"><img src="${site}badges/${c.mint}.svg" alt="zWatchtower report card for $${c.symbol}"></a>`;
 const badgeMd = (c) => `[![zWatchtower report card for $${c.symbol}](${site}badges/${c.mint}.svg)](${cardUrl(c)})`;
 const disputeUrl = (c) => `https://github.com/Mirrorisor/zWatchtower/issues/new?template=dispute-a-flag.yml&title=${encodeURIComponent(`Dispute: $${c.symbol} – `)}&mint=${encodeURIComponent(c.mint)}`;
