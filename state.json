@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T20:50:11.149Z",
-      "finishedAt": "2026-11-03T20:50:16.746Z",
+      "startedAt": "2026-11-03T20:55:08.444Z",
+      "finishedAt": "2026-11-03T20:55:11.947Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,39 +21,32 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5,
-          "draw_grove": 1,
-          "close_grove": 1,
-          "settle_tax": 6,
-          "sell_tax": 6,
-          "withdraw_tax": 5,
-          "draw_zec_payee": 1,
-          "close_rewards_run": 1,
-          "release_rewards": 1,
-          "settle": 3,
-          "claim_payee": 1
+          "observe_sapling": 4,
+          "settle_tax": 3,
+          "sell_tax": 3,
+          "withdraw_tax": 4
         },
-        "unrecognised": 1,
+        "unrecognised": 0,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-03T20:25:39.386Z",
-      "finishedAt": "2026-11-03T20:25:49.318Z",
+      "startedAt": "2026-11-03T20:55:11.952Z",
+      "finishedAt": "2026-11-03T20:55:26.030Z",
       "status": "ran",
       "ok": false,
       "alerts": [
         "reward run 1552 ZDOG: 36 shares not floor(pot*balance/sum); paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-03T20:25:44.382Z",
+        "checkedAt": "2026-11-03T20:55:16.431Z",
         "runs": 8,
         "passed": 7,
         "flagged": 1,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.32763281",
+        "zecPaidInDoneRuns": "0.37455157",
         "onChainChecks": true,
         "distinctReleases": 8,
         "runsWithRelease": 8,
@@ -210,15 +203,15 @@
           },
           "releaseAt": "2026-11-03T19:54:32.000Z",
           "window": "2 hours after the release",
-          "txsRead": 25,
-          "txsInWindow": 25,
-          "inflow": "10904306",
-          "outflow": "10904306",
+          "txsRead": 44,
+          "txsInWindow": 44,
+          "inflow": "24399688",
+          "outflow": "24399688",
           "to": {
-            "thisRunHolders": "1402569",
-            "treasury": "11470",
-            "otherRunsHolders": "6342483",
-            "unknown": "3147784"
+            "thisRunHolders": "2650439",
+            "treasury": "79882",
+            "otherRunsHolders": "18433919",
+            "unknown": "3235448"
           },
           "topUnknown": [
             {
@@ -277,8 +270,8 @@
               "alsoHolderOf": []
             },
             {
-              "owner": "2yeBov94QcbYf1yrxcbnRQ6HXKHqVosoXyfmjvHBQ6QH",
-              "zat": "13329",
+              "owner": "144uEqybN7vEpby7Fqz66zYtwaTH4mnYNAc5pb1tTsuS",
+              "zat": "66706",
               "wallet": false,
               "account": {
                 "owner": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
@@ -286,7 +279,7 @@
                 "lamports": 1534160
               },
               "after": {
-                "zecLeft": "13329",
+                "zecLeft": "66706",
                 "laterTxs": 4,
                 "programs": [
                   "ComputeBudget111111111111111111111111111111",
@@ -295,7 +288,7 @@
                   "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
                 ]
               },
-              "firstTx": "4oZj4CSf9gmwNnaoKvGrs9rSu3Hq3C923yUyEwEoDg6gXjBW7hhQMd2bEAk8ma32Gj6FDWg2TYkQnVPvZu5rpqV9",
+              "firstTx": "xtBtnop76dZRi1Bv9wg2bLByHdCXzwttsRPxPU4BWpW6DFDqPZtNN7vVdcywDdCaHYkPWUxXpTrtKduFEh1xQc7",
               "alsoHolderOf": []
             }
           ]
@@ -469,7 +462,7 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1554
+        "maxRunId": 1556
       }
     },
     "float": {
@@ -874,8 +867,8 @@
     "coins": {},
     "programs": {}
   },
-  "rewardsMaxRun": 1554,
-  "rewardsFrom": 1547,
+  "rewardsMaxRun": 1556,
+  "rewardsFrom": 1549,
   "x": {
     "day": "2026-11-03",
     "today": 10,
