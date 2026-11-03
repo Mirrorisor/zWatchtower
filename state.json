@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T15:50:11.182Z",
-      "finishedAt": "2026-11-03T15:50:16.024Z",
+      "startedAt": "2026-11-03T15:55:03.566Z",
+      "finishedAt": "2026-11-03T15:55:07.875Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,17 +21,13 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "withdraw_tax": 6,
-          "settle_tax": 5,
-          "sell_tax": 5,
+          "settle_tax": 4,
+          "sell_tax": 4,
+          "withdraw_tax": 4,
           "observe_sapling": 4,
-          "draw_grove": 1,
-          "close_grove": 1,
-          "freeze_tax_config": 1,
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 1
+          "settle": 3
         },
-        "unrecognised": 1,
+        "unrecognised": 0,
         "baseline": false
       }
     },
@@ -62,8 +58,8 @@
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-03T14:48:05.765Z",
-      "finishedAt": "2026-11-03T14:55:33.384Z",
+      "startedAt": "2026-11-03T15:55:07.881Z",
+      "finishedAt": "2026-11-03T16:02:46.013Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -130,18 +126,16 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-03T15:40:14.078Z",
-      "finishedAt": "2026-11-03T15:40:15.531Z",
+      "startedAt": "2026-11-03T16:02:46.015Z",
+      "finishedAt": "2026-11-03T16:02:47.792Z",
       "status": "ran",
-      "ok": false,
-      "alerts": [
-        "tax SARAH (4LT4uDp694w7soJerjRjSEVr2884J33EjLNG1WGzcash): fee can be changed by 69nv6e1SZfdo9J6j45uuke4PBdLi6RYAiJpecG6HGLEY, not Sapling's program address"
-      ],
+      "ok": true,
+      "alerts": [],
       "summary": {
         "coins": 104,
-        "matching": 103,
-        "feeChangeable": 101,
-        "feeRenounced": 3,
+        "matching": 104,
+        "feeChangeable": 100,
+        "feeRenounced": 4,
         "advertisedRange": [
           200,
           500
@@ -152,15 +146,15 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-03T15:40:16.043Z",
-      "finishedAt": "2026-11-03T15:40:21.883Z",
+      "startedAt": "2026-11-03T16:02:48.271Z",
+      "finishedAt": "2026-11-03T16:02:59.552Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "saplingBurn": {
-          "onChain": 223216796.094926,
-          "claimed": 223220000,
+          "onChain": 223254086.821267,
+          "claimed": 223250000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -257,14 +251,14 @@
           }
         },
         "pot": {
-          "balanceZat": "1593091",
-          "shownZat": "1593091",
-          "inflowZat": "939457931",
-          "buybackZat": "937864840",
+          "balanceZat": "738198",
+          "shownZat": "738198",
+          "inflowZat": "947578310",
+          "buybackZat": "946840112",
           "movements": {
             "setup": 1,
-            "inflow": 2241,
-            "buyback": 249
+            "inflow": 2255,
+            "buyback": 251
           },
           "reconciled": true,
           "caughtUp": true
@@ -275,6 +269,8 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
+          "buyback 5bvQzGPS3GFvXA3v5ydje25YhVFqhJczBroeQ78jLNnob7NXeMxCSUf5FcvDN8M4HfKHb6m7VRZvYj1hwpbH18EX drew 3893227 zat but is not in Sapling's burn list",
+          "buyback 3mKn24aFan2efDCfwtX8SMn34HfpCQUiNHKF1UB1hjtGEntfyDi6GqX459vD5jp9GRyMQ1BRUzsNTmxGCQWzvHM7 drew 5082045 zat but is not in Sapling's burn list",
           "headline 937864840 zat bought back, listed burns add up to 255413030"
         ]
       }
@@ -452,9 +448,7 @@
       "reward run 1524 ZDOG: 39 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-03T14:36:53.380Z"
     },
     "float": {},
-    "tax": {
-      "tax SARAH (4LT4uDp694w7soJerjRjSEVr2884J33EjLNG1WGzcash): fee can be changed by 69nv6e1SZfdo9J6j45uuke4PBdLi6RYAiJpecG6HGLEY, not Sapling's program address": "2026-11-03T15:40:15.531Z"
-    },
+    "tax": {},
     "flywheel": {},
     "coins": {},
     "programs": {}
