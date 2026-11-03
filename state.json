@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-02T23:42:37.448Z",
-      "finishedAt": "2026-11-02T23:42:54.564Z",
+      "startedAt": "2026-11-03T00:14:30.236Z",
+      "finishedAt": "2026-11-03T00:14:41.273Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
-        "configSha256": "489d430dad17dc77e45f1363ce318c8cae57e1d374807e3a0372591d7b01fbf3",
+        "configSha256": "ee46a0c2463c72e776f9e7ce2ca2d6e3c10804c1d7c7133ba27e272504b533a9",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -21,49 +21,65 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "settle_tax": 20,
-          "sell_tax": 26,
-          "withdraw_tax": 31,
-          "observe_sapling": 15,
+          "observe_sapling": 24,
+          "close_rewards_run": 2,
+          "release_rewards": 1,
+          "convert_sapling_begin": 1,
+          "convert_sapling_end": 1,
+          "draw_lp": 1,
+          "settle": 5,
+          "settle_sapling": 1,
+          "settle_tax": 12,
+          "sell_tax": 11,
+          "withdraw_tax": 12,
           "draw_grove": 1,
           "close_grove": 1,
-          "convert_tax_begin": 1,
-          "convert_tax_end": 1,
-          "settle": 4,
-          "draw_pool_pot": 1,
-          "protocol_pool_deposit": 1,
-          "close_pool_pot": 1,
-          "protocol_pool_lock": 1
+          "register_launchlab_coin": 1,
+          "declare_payee": 1,
+          "convert_tax_begin": 2,
+          "convert_tax_end": 2
         },
-        "unrecognised": 6,
+        "unrecognised": 9,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-02T23:42:54.567Z",
-      "finishedAt": "2026-11-02T23:42:57.496Z",
+      "startedAt": "2026-11-03T00:14:41.275Z",
+      "finishedAt": "2026-11-03T00:14:43.696Z",
       "status": "ran",
       "ok": false,
       "alerts": [
-        "reward run 1486 ZDOG: 79 shares not floor(pot*balance/sum); paid != confirmed shares - rent"
+        "reward run 1486 ZDOG: 79 shares not floor(pot*balance/sum); paid != confirmed shares - rent",
+        "reward run 1487 PI: 1 shares not floor(pot*balance/sum); paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-02T23:42:57.488Z",
-        "runs": 6,
-        "passed": 4,
+        "checkedAt": "2026-11-03T00:14:43.691Z",
+        "runs": 7,
+        "passed": 5,
         "flagged": 2,
-        "unchecked": 1,
-        "firstUnchecked": 1487,
-        "zecPaidInDoneRuns": "1.01243518",
+        "unchecked": 0,
+        "firstUnchecked": null,
+        "zecPaidInDoneRuns": "1.15098669",
         "onChainChecks": true,
-        "notes": [
-          "run 1487: run status \"snapshotted\""
-        ],
+        "notes": [],
         "diagnoses": [
           {
             "id": 1486,
             "coin": "ZDOG",
+            "ratio": {
+              "min": "3.9998",
+              "max": "4.0000"
+            },
+            "rowFields": [
+              "owner",
+              "balance",
+              "share",
+              "rentZec",
+              "status",
+              "reason",
+              "signature"
+            ],
             "pot": "87166649",
             "sumOfBalances": "599620952321799",
             "sumOfShares": "21791736",
@@ -95,10 +111,73 @@
                 "share": "67700",
                 "status": "confirmed"
               }
+            ],
+            "onChain": [
+              {
+                "owner": "21KJ1m",
+                "share": "143918",
+                "rentZec": "0",
+                "received": "143918"
+              },
+              {
+                "owner": "23dhVU",
+                "share": "194050",
+                "rentZec": "0",
+                "received": "194050"
+              },
+              {
+                "owner": "2AaQa8",
+                "share": "67700",
+                "rentZec": "0",
+                "received": "67700"
+              }
+            ]
+          },
+          {
+            "id": 1487,
+            "coin": "PI",
+            "ratio": {
+              "min": "2.0000",
+              "max": "2.0000"
+            },
+            "rowFields": [
+              "owner",
+              "balance",
+              "share",
+              "rentZec",
+              "status",
+              "reason",
+              "signature"
+            ],
+            "pot": "7541887",
+            "sumOfBalances": "13071897670486",
+            "sumOfShares": "3770945",
+            "paid": "7530028",
+            "rent": "11859",
+            "rolledOver": "0",
+            "holders": 1,
+            "payoutRows": 1,
+            "explainedBy": [],
+            "sample": [
+              {
+                "owner": "3TBLyZ",
+                "balance": "13071897670486",
+                "expected": "7541887",
+                "share": "3770945",
+                "status": "confirmed"
+              }
+            ],
+            "onChain": [
+              {
+                "owner": "3TBLyZ",
+                "share": "3770945",
+                "rentZec": "0",
+                "received": "3770945"
+              }
             ]
           }
         ],
-        "maxRunId": 1487
+        "maxRunId": 1488
       }
     },
     "float": {
@@ -171,15 +250,15 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-02T23:51:10.009Z",
-      "finishedAt": "2026-11-02T23:51:10.781Z",
+      "startedAt": "2026-11-03T00:14:44.443Z",
+      "finishedAt": "2026-11-03T00:14:45.348Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "coins": 94,
-        "matching": 94,
-        "feeChangeable": 92,
+        "coins": 95,
+        "matching": 95,
+        "feeChangeable": 93,
         "feeRenounced": 2,
         "advertisedRange": [
           200,
@@ -191,17 +270,23 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-02T23:51:10.781Z",
-      "finishedAt": "2026-11-02T23:51:25.223Z",
+      "startedAt": "2026-11-03T00:14:45.348Z",
+      "finishedAt": "2026-11-03T00:14:48.648Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "burns": 152,
-        "burnsVerified": 152,
-        "boughtBackZat": "615211470",
+        "saplingBurn": {
+          "onChain": 222564353.57351506,
+          "claimed": 222560000,
+          "diffPct": 0,
+          "verdict": "matches"
+        },
+        "burns": 153,
+        "burnsVerified": 153,
+        "boughtBackZat": "620525954",
         "venues": {
-          "pump amm": 83,
+          "pump amm": 84,
           "raydium cpmm": 18,
           "raydium launchlab": 8,
           "pump bonding curve": 1,
@@ -225,8 +310,8 @@
           },
           "SEEDLING": {
             "mint": "JAxk7phmXL9G2syv6DJ72ibddzTDhybmhZTNjpgKwF5A",
-            "burns": 8,
-            "zat": "28670252"
+            "burns": 9,
+            "zat": "33984736"
           },
           "ZCASHCHAN": {
             "mint": "ACqTXUGTbgUDq6REYZQtB9E7BprHrnuJooC1tQKFmmoq",
@@ -285,14 +370,14 @@
           }
         },
         "pot": {
-          "balanceZat": "4516817",
-          "shownZat": "4516817",
-          "inflowZat": "811573658",
-          "buybackZat": "807056841",
+          "balanceZat": "1042533",
+          "shownZat": "1042533",
+          "inflowZat": "813413858",
+          "buybackZat": "812371325",
           "movements": {
             "setup": 1,
-            "inflow": 1938,
-            "buyback": 223
+            "inflow": 1943,
+            "buyback": 224
           },
           "reconciled": true,
           "caughtUp": true
@@ -303,7 +388,7 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "headline 807056841 zat bought back, listed burns add up to 226428869"
+          "headline 812371325 zat bought back, listed burns add up to 228263417"
         ]
       }
     },
@@ -466,7 +551,8 @@
   "openAlerts": {
     "keys": {},
     "rewards": {
-      "reward run 1486 ZDOG: 79 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-02T23:07:38.764Z"
+      "reward run 1486 ZDOG: 79 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-02T23:07:38.764Z",
+      "reward run 1487 PI: 1 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-03T00:14:43.696Z"
     },
     "float": {},
     "tax": {},
@@ -474,12 +560,12 @@
     "coins": {},
     "programs": {}
   },
-  "rewardsMaxRun": 1487,
+  "rewardsMaxRun": 1488,
   "rewardsFrom": 1482,
   "x": {
-    "day": "2026-11-02",
-    "today": 4,
-    "thisRun": 0
+    "day": "2026-11-03",
+    "today": 2,
+    "thisRun": 2
   },
-  "xSummaryDay": "2026-11-02"
+  "xSummaryDay": "2026-11-03"
 }
