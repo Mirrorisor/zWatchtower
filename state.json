@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T21:20:11.189Z",
-      "finishedAt": "2026-11-03T21:20:15.684Z",
+      "startedAt": "2026-11-03T21:25:11.112Z",
+      "finishedAt": "2026-11-03T21:25:14.967Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,40 +21,35 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "draw_grove": 1,
-          "close_grove": 1,
-          "settle": 2,
-          "settle_sapling": 1,
-          "claim_payee": 1,
-          "settle_tax": 4,
+          "settle_tax": 5,
           "sell_tax": 5,
-          "observe_sapling": 3,
-          "withdraw_tax": 5
+          "withdraw_tax": 6,
+          "observe_sapling": 4
         },
-        "unrecognised": 2,
+        "unrecognised": 0,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-03T20:55:11.952Z",
-      "finishedAt": "2026-11-03T20:55:26.030Z",
+      "startedAt": "2026-11-03T21:25:14.972Z",
+      "finishedAt": "2026-11-03T21:25:28.880Z",
       "status": "ran",
       "ok": false,
       "alerts": [
         "reward run 1552 ZDOG: 36 shares not floor(pot*balance/sum); paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-03T20:55:16.431Z",
-        "runs": 8,
-        "passed": 7,
+        "checkedAt": "2026-11-03T21:25:19.293Z",
+        "runs": 6,
+        "passed": 5,
         "flagged": 1,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.37455157",
+        "zecPaidInDoneRuns": "0.32811459",
         "onChainChecks": true,
-        "distinctReleases": 8,
-        "runsWithRelease": 8,
+        "distinctReleases": 6,
+        "runsWithRelease": 6,
         "followTheMoney": {
           "run": 1552,
           "holdings": {
@@ -63,7 +58,7 @@
             "top20": [
               {
                 "owner": "WLHv2UAZ",
-                "amount": "552572401856487",
+                "amount": "552521342696537",
                 "wallet": false,
                 "ownerProgram": null,
                 "inSnapshot": false
@@ -203,7 +198,7 @@
               }
             ],
             "notInSnapshotByOwnerProgram": {
-              "unknown": "552572401856487"
+              "unknown": "552521342696537"
             }
           },
           "releaseAt": "2026-11-03T19:54:32.000Z",
@@ -284,13 +279,13 @@
                 "lamports": 1534160
               },
               "after": {
-                "zecLeft": "66706",
+                "zecLeft": "222776",
                 "laterTxs": 4,
                 "programs": [
                   "ComputeBudget111111111111111111111111111111",
-                  "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
                   "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
-                  "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+                  "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+                  "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
                 ]
               },
               "firstTx": "xtBtnop76dZRi1Bv9wg2bLByHdCXzwttsRPxPU4BWpW6DFDqPZtNN7vVdcywDdCaHYkPWUxXpTrtKduFEh1xQc7",
@@ -874,7 +869,7 @@
     "programs": {}
   },
   "rewardsMaxRun": 1556,
-  "rewardsFrom": 1549,
+  "rewardsFrom": 1551,
   "x": {
     "day": "2026-11-03",
     "today": 10,
