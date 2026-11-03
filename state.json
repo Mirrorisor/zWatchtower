@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T15:40:11.179Z",
-      "finishedAt": "2026-11-03T15:40:14.072Z",
+      "startedAt": "2026-11-03T15:45:03.284Z",
+      "finishedAt": "2026-11-03T15:45:06.418Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,13 +21,13 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "declare_payee": 1,
-          "withdraw_tax": 4,
+          "withdraw_tax": 6,
+          "sell_tax": 1,
           "observe_sapling": 4,
           "register_launchlab_coin": 1,
-          "declare_zec_payee": 1,
-          "settle_tax": 2,
-          "sell_tax": 2
+          "convert_sapling_begin": 1,
+          "convert_sapling_end": 1,
+          "settle": 1
         },
         "unrecognised": 3,
         "baseline": false
