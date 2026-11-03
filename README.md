@@ -102,7 +102,8 @@ has a page for every creator (`creators.html#<wallet>`, data in
 how much they sold.
 
 Every coin with a card has a badge at `badges/<mint>.svg`, with an embed
-snippet on the coins page that links back to the card: green for no flags,
+snippet on the coins page that links to the coin's page on the public site
+(https://zwatchtower.lovable.app/coin/<mint>): green for no flags,
 amber for one or two, red for three or more, grey while the launch hasn't
 been read.
 

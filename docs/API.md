@@ -58,7 +58,7 @@ A field that couldn't be read is absent rather than guessed.
 ## `badges/<mint>.svg`: a badge per carded coin
 
 Green: no flags. Amber: 1–2 flags. Red: 3 or more. Grey: launch not read yet.
-Link it to `coins.html#<mint>`.
+Link it to the coin's page: `https://zwatchtower.lovable.app/coin/<mint>`.
 
 ## `api/status.json`: every check
 

@@ -71,7 +71,7 @@ function loadConfig() {
     creds: env.X_API_KEY && env.X_API_SECRET && env.X_ACCESS_TOKEN && env.X_ACCESS_SECRET
       ? { apiKey: env.X_API_KEY, apiSecret: env.X_API_SECRET, accessToken: env.X_ACCESS_TOKEN, accessSecret: env.X_ACCESS_SECRET }
       : null,
-    link: env.X_INCLUDE_LINKS === "1" ? (cfg.publicUrl ?? "mirrorisor.github.io/zWatchtower") : null, // links cost more per post
+    link: env.X_INCLUDE_LINKS === "1" ? (cfg.publicUrl ?? "zwatchtower.lovable.app") : null, // links cost more per post
     perRun: Number(env.X_MAX_PER_RUN ?? 3),
     perDay: Number(env.X_MAX_PER_DAY ?? 10),
     dailySummary: env.X_DAILY_SUMMARY === "1",
