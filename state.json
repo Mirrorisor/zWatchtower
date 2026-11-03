@@ -2,16 +2,11 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T16:35:21.198Z",
-      "finishedAt": "2026-11-03T16:35:29.138Z",
+      "startedAt": "2026-11-03T16:40:11.263Z",
+      "finishedAt": "2026-11-03T16:40:18.905Z",
       "status": "ran",
-      "ok": false,
-      "alerts": [
-        "privileged vault instruction set_zec_payees via multisig at 2026-11-03T16:32:40.000Z (3sykZggAokPs7myEGvDkvJL7kkVcWLRbBV8koZz5QuR3MQoQKgFUwTNHN5k48BnYyxhhobdYyej7xkBkdgfSuJoG)",
-        "multisig vault_transaction_execute at 2026-11-03T16:32:40.000Z (3sykZggAokPs7myEGvDkvJL7kkVcWLRbBV8koZz5QuR3MQoQKgFUwTNHN5k48BnYyxhhobdYyej7xkBkdgfSuJoG)",
-        "multisig proposal_approve at 2026-11-03T16:32:28.000Z (2gpKX8xRV1p8WhjoMhqbftGT3wxasfQwb522vvevtuw61XRgfirwRz5uuUeS8bFxDaMg4NbP8kvxksK5oUkzySW5)",
-        "multisig proposal_approve at 2026-11-03T16:32:12.000Z (3gh7QJWmwD425GW4zZ9Lrt6oJ7n36B8zReMT8Ag2eiHF6WVCyGAAHGfq5neU7qULdBNAFeGXEp4VYfuTnZ1iYnbH)"
-      ],
+      "ok": true,
+      "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
@@ -26,15 +21,20 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "settle_tax": 11,
-          "sell_tax": 11,
-          "withdraw_tax": 14,
           "observe_sapling": 4,
-          "draw_grove": 1,
-          "close_grove": 1,
-          "set_zec_payees": 1
+          "settle_tax": 7,
+          "sell_tax": 7,
+          "withdraw_tax": 10,
+          "convert_tax_sapling_begin": 1,
+          "convert_tax_sapling_end": 1,
+          "close_rewards_run": 1,
+          "release_rewards": 1,
+          "convert_sapling_begin": 1,
+          "convert_sapling_end": 1,
+          "settle": 10,
+          "settle_sapling": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 5,
         "baseline": false
       }
     },
@@ -447,12 +447,7 @@
     }
   },
   "openAlerts": {
-    "keys": {
-      "privileged vault instruction set_zec_payees via multisig at 2026-11-03T16:32:40.000Z (3sykZggAokPs7myEGvDkvJL7kkVcWLRbBV8koZz5QuR3MQoQKgFUwTNHN5k48BnYyxhhobdYyej7xkBkdgfSuJoG)": "2026-11-03T16:35:29.138Z",
-      "multisig vault_transaction_execute at 2026-11-03T16:32:40.000Z (3sykZggAokPs7myEGvDkvJL7kkVcWLRbBV8koZz5QuR3MQoQKgFUwTNHN5k48BnYyxhhobdYyej7xkBkdgfSuJoG)": "2026-11-03T16:35:29.138Z",
-      "multisig proposal_approve at 2026-11-03T16:32:28.000Z (2gpKX8xRV1p8WhjoMhqbftGT3wxasfQwb522vvevtuw61XRgfirwRz5uuUeS8bFxDaMg4NbP8kvxksK5oUkzySW5)": "2026-11-03T16:35:29.138Z",
-      "multisig proposal_approve at 2026-11-03T16:32:12.000Z (3gh7QJWmwD425GW4zZ9Lrt6oJ7n36B8zReMT8Ag2eiHF6WVCyGAAHGfq5neU7qULdBNAFeGXEp4VYfuTnZ1iYnbH)": "2026-11-03T16:35:29.138Z"
-    },
+    "keys": {},
     "rewards": {
       "reward run 1486 ZDOG: 79 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-02T23:07:38.764Z",
       "reward run 1487 PI: 1 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-03T00:14:43.696Z",
