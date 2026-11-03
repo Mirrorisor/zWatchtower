@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T14:05:03.034Z",
-      "finishedAt": "2026-11-03T14:05:10.688Z",
+      "startedAt": "2026-11-03T14:10:01.811Z",
+      "finishedAt": "2026-11-03T14:10:06.892Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,11 +22,10 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "sell_tax": 2,
-          "withdraw_tax": 2,
-          "settle_tax": 1
+          "settle": 2,
+          "settle_sapling": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false
       }
     },
@@ -134,8 +133,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-03T13:55:25.760Z",
-      "finishedAt": "2026-11-03T13:55:27.554Z",
+      "startedAt": "2026-11-03T14:10:06.900Z",
+      "finishedAt": "2026-11-03T14:10:08.749Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -154,14 +153,14 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-03T13:55:27.555Z",
-      "finishedAt": "2026-11-03T13:55:32.189Z",
+      "startedAt": "2026-11-03T14:10:08.751Z",
+      "finishedAt": "2026-11-03T14:10:14.130Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "saplingBurn": {
-          "onChain": 223196056.48612702,
+          "onChain": 223198736.47131598,
           "claimed": 223200000,
           "diffPct": 0,
           "verdict": "matches"
@@ -259,13 +258,13 @@
           }
         },
         "pot": {
-          "balanceZat": "1290631",
-          "shownZat": "1290631",
-          "inflowZat": "935965105",
+          "balanceZat": "1515488",
+          "shownZat": "1515488",
+          "inflowZat": "936189962",
           "buybackZat": "934674474",
           "movements": {
             "setup": 1,
-            "inflow": 2229,
+            "inflow": 2230,
             "buyback": 248
           },
           "reconciled": true,
