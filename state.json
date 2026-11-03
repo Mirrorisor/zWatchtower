@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T17:20:02.421Z",
-      "finishedAt": "2026-11-03T17:20:09.652Z",
+      "startedAt": "2026-11-03T17:25:02.085Z",
+      "finishedAt": "2026-11-03T17:25:06.215Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,23 +21,12 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "withdraw_tax": 12,
-          "settle_tax": 9,
-          "sell_tax": 10,
-          "draw_pool_pot": 1,
-          "protocol_pool_deposit": 1,
-          "close_pool_pot": 1,
-          "protocol_pool_lock": 1,
-          "observe_sapling": 5,
-          "draw_grove": 1,
-          "close_grove": 1,
-          "draw_zec_payee": 1,
-          "close_rewards_run": 1,
-          "release_rewards": 1,
-          "claim_payee": 2,
-          "settle": 4
+          "observe_sapling": 4,
+          "settle_tax": 5,
+          "sell_tax": 5,
+          "withdraw_tax": 4
         },
-        "unrecognised": 6,
+        "unrecognised": 0,
         "baseline": false
       }
     },
