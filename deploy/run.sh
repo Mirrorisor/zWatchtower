@@ -12,7 +12,10 @@ git fetch -q origin status && git reset -q --hard origin/status
 cd "$APP"
 set -a; . /etc/zwatchtower.env; set +a
 rm -rf "$APP/site"
-node watchtower.mjs --once --due --export site --config watchtower.ci.json || true   # exit 1 just means alerts are open
+# every check now, due or not:  touch /opt/zwatchtower/run-all && systemctl start zwatchtower
+DUE=--due
+if [ -e /opt/zwatchtower/run-all ]; then rm -f /opt/zwatchtower/run-all; DUE=; echo "running every check (run-all)"; fi
+node watchtower.mjs --once $DUE --export site --config watchtower.ci.json || true   # exit 1 just means alerts are open
 cd "$APP/data"
 git add -A
 if ! git diff --cached --quiet; then
@@ -24,7 +27,7 @@ fi
 # every 10 minutes (checks and alerts still run every 5).
 cd "$APP/pages"
 git fetch -q origin gh-pages && git reset -q --hard origin/gh-pages
-if [ $(( $(date +%s) - $(git log -1 --format=%ct) )) -lt 570 ]; then exit 0; fi
+if [ -n "$DUE" ] && [ $(( $(date +%s) - $(git log -1 --format=%ct) )) -lt 570 ]; then exit 0; fi
 find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 cp -r "$APP/site/." .
 git add -A
