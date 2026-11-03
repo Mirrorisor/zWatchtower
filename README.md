@@ -150,8 +150,10 @@ is written to the posts feed each Monday.
 
 ### Public data and disputes
 
-Everything on the dashboard is free JSON anyone can build on, documented and
-versioned in [docs/API.md](docs/API.md). Think a flag is wrong? Use the
+How every check works, what it can't see, and how to reproduce it:
+[docs/METHODOLOGY.md](docs/METHODOLOGY.md). Everything on the dashboard is
+free JSON anyone can build on, documented and versioned in
+[docs/API.md](docs/API.md). Think a flag is wrong? Use the
 "Dispute a flag or fact" issue form (linked from every card). Every dispute
 gets a public answer; mistakes are fixed and listed in
 [CORRECTIONS.md](CORRECTIONS.md).
