@@ -20,6 +20,7 @@
 //   node flywheel-check.mjs --rpc https://api.mainnet-beta.solana.com --state flywheel-state.json
 //
 // Read-only. Exit code 1 when there is an alert, 2 when the check cannot run.
+import { claimedBurn, compareBurn, SAPLING_MINT } from "./lib/claims.mjs";
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { checkBurn, classifyPotTx, GROVE_ACCOUNT } from "./lib/flywheel.mjs";
 
@@ -159,6 +160,18 @@ async function main() {
     notes.push(`headline ${live.hero.zat} zat bought back, listed burns add up to ${listedZat}`);
   }
 
+  // 3. Sapling's headline burn total against $SAPLING's supply on chain
+  let saplingBurn = null;
+  try {
+    const sup = await rpc("getTokenSupply", [SAPLING_MINT]);
+    const supply = Number(sup?.value?.uiAmountString ?? sup?.value?.uiAmount);
+    let claimed = null;
+    try { const r = await fetch(`${apiBase}/`); if (r.ok) claimed = claimedBurn(await r.text()); } catch {}
+    saplingBurn = compareBurn(claimed, supply);
+    if (saplingBurn.verdict === "differs")
+      notes.push(`Sapling's page says ${(claimed / 1e6).toFixed(2)}M $SAPLING burned; the chain says ${(saplingBurn.onChain / 1e6).toFixed(2)}M`);
+  } catch (e) { notes.push(`$SAPLING supply not read (${e.message.slice(0, 60)})`); }
+
   const results = Object.values(state.burns);
   const perCoin = {};
   for (const r of results) {
@@ -168,6 +181,7 @@ async function main() {
   }
   const report = {
     checkedAt: new Date().toISOString(),
+    saplingBurn,
     burns: results.length,
     burnsVerified: results.filter((r) => r.problems.length === 0).length,
     boughtBackZat: String(results.reduce((a, r) => a + BigInt(r.zat), 0n)),

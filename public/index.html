@@ -222,6 +222,8 @@ function renderFlywheel(e) {
       ["Tax paid into the pot", z(p.inflowZat)],
       ["Left in the pot", `${z(p.balanceZat)}${p.reconciled ? " · reconciled" : " · not reconciled"}`],
       ["Venues", venues],
+      ...(s.saplingBurn?.onChain ? [["$SAPLING burned", `${(s.saplingBurn.onChain / 1e6).toFixed(2)}M on chain` +
+        (s.saplingBurn.claimed != null ? ` · Sapling says ${(s.saplingBurn.claimed / 1e6).toFixed(2)}M · ${s.saplingBurn.verdict}` : "")]] : []),
       ["Signing keys", (s.signers ?? []).map((k) => `<span class="mono">${esc(short(k))}</span>`).join(" ") || "–"],
     ])}${notes}${footerLine(e)}`;
 }

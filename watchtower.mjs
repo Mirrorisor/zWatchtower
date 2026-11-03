@@ -206,7 +206,7 @@ function normalise(name, report) {
   if (name === "flywheel") return {
     ok: report.alerts.length === 0,
     alerts: report.alerts,
-    summary: { burns: report.burns, burnsVerified: report.burnsVerified, boughtBackZat: report.boughtBackZat,
+    summary: { saplingBurn: report.saplingBurn ?? null, burns: report.burns, burnsVerified: report.burnsVerified, boughtBackZat: report.boughtBackZat,
       venues: report.venues, perCoin: report.perCoin, pot: report.pot, signers: report.signers, notes: report.notes },
   };
   if (name === "float") {
