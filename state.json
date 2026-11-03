@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T19:40:11.096Z",
-      "finishedAt": "2026-11-03T19:40:14.990Z",
+      "startedAt": "2026-11-03T19:45:02.688Z",
+      "finishedAt": "2026-11-03T19:45:07.520Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,15 +21,19 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "sell_tax": 5,
-          "withdraw_tax": 5,
           "observe_sapling": 4,
-          "settle_tax": 4,
-          "declare_payee": 1,
-          "register_launchlab_coin": 1,
-          "set_basket": 1
+          "settle_tax": 5,
+          "draw_zec_payee": 1,
+          "sell_tax": 4,
+          "settle": 1,
+          "withdraw_tax": 4,
+          "claim_payee": 2,
+          "draw_pool_pot": 1,
+          "protocol_pool_deposit": 1,
+          "close_pool_pot": 1,
+          "protocol_pool_lock": 1
         },
-        "unrecognised": 3,
+        "unrecognised": 6,
         "baseline": false
       }
     },
