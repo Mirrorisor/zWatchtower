@@ -93,7 +93,9 @@ Every Sapling coin, not only the ones over $10,000, is read once a day: who
 launched it, and whether they sold out (sold at least 90% of what they
 bought). A card shows the creator's other coins, and is flagged when the
 creator sold out of at least two of them and most of those checked. A coin
-launched in the last day by such a creator is posted as a warning, once.
+launched in the last day by such a creator is posted as a warning, once, as
+is any new coin that takes the name of an older coin worth $10,000 or more
+(a copycat), whoever launched it.
 The coins page lists creators with more than one coin.
 
 Every coin with a card has a badge at `badges/<mint>.svg`, with an embed

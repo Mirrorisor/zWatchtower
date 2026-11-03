@@ -182,7 +182,7 @@ async function main() {
       state.history[c.mint] = hist;
       const was = state.launches[c.mint];
       state.launches[c.mint] = { ...launchSummary({ ...detail, mint: c.mint }, hist.kept, complete),
-        warned: was?.warned ?? false, scannedAt: new Date().toISOString() };
+        warned: was?.warned ?? false, copyWarned: was?.copyWarned ?? false, scannedAt: new Date().toISOString() };
       scannedNow.push(c.mint);
     } catch (e) { scanErrors++; }
     await sleep(pauseMs);
@@ -207,6 +207,27 @@ async function main() {
       }
     }
   }
+  // copycats: a coin launched in the last day with the same name as an older
+  // coin worth $10k or more. Buyers searching the name can land on the copy.
+  for (const mint of scannedNow) {
+    const l = state.launches[mint];
+    if (l.copyWarned || !l.symbol || !l.launchedAt || nowMs - Date.parse(l.launchedAt) > RESCAN_MS) continue;
+    const original = Object.values(state.launches).filter((o) => o.mint !== mint && o.symbol &&
+      o.symbol.toLowerCase() === l.symbol.toLowerCase() && o.launchedAt && Date.parse(o.launchedAt) < Date.parse(l.launchedAt) &&
+      (o.marketCapUsd ?? 0) >= minMcapUsd).sort((a, b) => (b.marketCapUsd ?? 0) - (a.marketCapUsd ?? 0))[0];
+    if (!original) continue;
+    l.copyWarned = true;
+    // the serial-seller warning already names the copy; don't say it twice
+    if (events.some((e) => e.includes(`(${mint.slice(0, 4)}…${mint.slice(-4)})`))) continue;
+    if (state.engine === ENGINE) {
+      const short = (m) => `${m.slice(0, 4)}…${m.slice(-4)}`;
+      const usd = (n) => n >= 1e6 ? `$${(n / 1e6).toFixed(1)}M` : `$${(n / 1e3).toFixed(1)}k`;
+      const text = `Copycat: new coin $${l.symbol} (${short(mint)}) uses the same name as $${original.symbol} (${short(original.mint)}, ${usd(original.marketCapUsd)}). Check the address before you buy.`;
+      events.push(text);
+      state.events.unshift({ at: new Date().toISOString(), mint, symbol: l.symbol, text });
+    }
+  }
+
   const known = Object.values(state.launches).filter((l) => l.scannedAt && l.symbol).length;
   const hidden = Object.values(state.launches).filter((l) => l.scannedAt && !isAddress(l.creator)).length;
   notes.push(`creator scan: ${scannedNow.length} coin(s) read this run, ${known} of ${coins.length} read so far (${hidden} launched shielded, creator not public)${scanErrors ? `, ${scanErrors} not read` : ""}`);

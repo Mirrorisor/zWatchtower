@@ -277,6 +277,19 @@ try {
     JSON.stringify(s2.report.events));
   const s3 = await run("10000");
   check("end to end: and only once", !s3.report.events.some((e) => /ee…ee/.test(e)), JSON.stringify(s3.report.events));
+  // a copycat of a coin worth $10k+, by a creator with a clean record
+  extraCoins = [{ ...smallCoin("big", "2026-10-01T00:00:00.000Z", false, { symbol: "BIG", marketCapUsd: 50000 }) },
+    smallCoin("kk", new Date(Date.now() - 1800e3).toISOString(), false, { symbol: "big", creator: "5H1gfdDcrtPq7V11uh457dHjZ75caZv6xNd7CeBiPAaV", launcher: "5H1gfdDcrtPq7V11uh457dHjZ75caZv6xNd7CeBiPAaV" })];
+  extraCoins[0].detail.marketCapUsd = 50000;
+  rmSync(st, { force: true });
+  await run("10000");                       // baseline
+  extraCoins.push(smallCoin("mm", new Date(Date.now() - 600e3).toISOString(), false, { symbol: "BIG", creator: "5H1gfdDcrtPq7V11uh457dHjZ75caZv6xNd7CeBiPAaV", launcher: "5H1gfdDcrtPq7V11uh457dHjZ75caZv6xNd7CeBiPAaV" }));
+  const cp = await run("10000");
+  check("end to end: a new coin copying the name of a coin worth $10k+ is a warning",
+    cp.report.events.some((e) => /^Copycat: new coin \$BIG \(mm…mm\) uses the same name as \$BIG \(big…big, \$50\.0k\)\. Check the address before you buy\.$/.test(e)),
+    JSON.stringify(cp.report.events));
+  const cp2 = await run("10000");
+  check("end to end: a copycat is warned about once", !cp2.report.events.some((e) => /Copycat/.test(e)), JSON.stringify(cp2.report.events));
   extraCoins = [];
 } finally {
   server.close();
