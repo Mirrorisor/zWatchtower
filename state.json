@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T14:25:11.160Z",
-      "finishedAt": "2026-11-03T14:25:15.786Z",
+      "startedAt": "2026-11-03T14:30:11.181Z",
+      "finishedAt": "2026-11-03T14:30:24.067Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,10 +22,17 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "register_launchlab_coin": 1,
-          "declare_payee": 1
+          "settle_tax": 1,
+          "sell_tax": 1,
+          "withdraw_tax": 1,
+          "close_rewards_run": 2,
+          "release_rewards": 2,
+          "convert_sapling_begin": 1,
+          "convert_sapling_end": 1,
+          "settle": 1,
+          "claim_payee": 1
         },
-        "unrecognised": 2,
+        "unrecognised": 3,
         "baseline": false
       }
     },
