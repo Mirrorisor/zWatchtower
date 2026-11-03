@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T13:47:40.890Z",
-      "finishedAt": "2026-11-03T13:48:06.860Z",
+      "startedAt": "2026-11-03T13:55:05.006Z",
+      "finishedAt": "2026-11-03T13:55:25.755Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
-        "configSha256": "47bef401a5ecb20c566573a60a597150f183eac3b8090594f8ed41a14a90d591",
+        "configSha256": "ea187c31bea9d6a6aba2562fb379423d619f62293784d4860b866a85d45c96a4",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -21,13 +21,13 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 12,
-          "sell_tax": 2,
-          "withdraw_tax": 2,
           "close_rewards_run": 1,
           "release_rewards": 1,
-          "settle": 2,
-          "settle_tax": 1
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1,
+          "observe_sapling": 5,
+          "sell_tax": 1,
+          "withdraw_tax": 1
         },
         "unrecognised": 0,
         "baseline": false
@@ -360,8 +360,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-03T13:41:49.950Z",
-      "finishedAt": "2026-11-03T13:41:51.037Z",
+      "startedAt": "2026-11-03T13:55:25.760Z",
+      "finishedAt": "2026-11-03T13:55:27.554Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -380,15 +380,15 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-03T13:41:51.038Z",
-      "finishedAt": "2026-11-03T13:41:55.969Z",
+      "startedAt": "2026-11-03T13:55:27.555Z",
+      "finishedAt": "2026-11-03T13:55:32.189Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "saplingBurn": {
-          "onChain": 223194205.92498696,
-          "claimed": 223190000,
+          "onChain": 223196056.48612702,
+          "claimed": 223200000,
           "diffPct": 0,
           "verdict": "matches"
         },
