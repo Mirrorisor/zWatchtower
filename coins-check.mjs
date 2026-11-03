@@ -12,7 +12,7 @@
 // Usage:
 //   node coins-check.mjs --rpc URL --state coins-state.json --out coins.json --json
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
-import { funderFromTx, fundingFacts, fundingFlags, isBusy } from "./lib/funding.mjs";
+import { funderFromTx, fundingFacts, fundingFlags, busyInfo } from "./lib/funding.mjs";
 import { dirname, join } from "node:path";
 import { buildCard, repeatHolders, cardEvents, launchSummary, creatorRecords, creatorHistory, serialCreators, creatorOf as creatorOfDetail, isAddress,
   LIMITS, EARLY_SECONDS, SOLD_OUT_PCT, PRIOR_SOLD_OUT } from "./lib/coins.mjs";
@@ -301,7 +301,14 @@ async function main() {
         card.flagCount = card.flags.length;
       }
       if (state.engine === ENGINE) {
-        for (const text of cardEvents(state.cards[c.mint], card, minMcapUsd)) {
+        state.passed ??= {};
+        const isNew = !state.cards[c.mint];
+        // a coin hovering around the line is announced once a week, not every crossing
+        const recentlyAnnounced = isNew && state.passed[c.mint] && Date.now() - Date.parse(state.passed[c.mint]) < 7 * 86400000;
+        if (isNew) state.passed[c.mint] ??= null;
+        for (const text0 of recentlyAnnounced ? [] : cardEvents(state.cards[c.mint], card, minMcapUsd)) {
+          const text = isNew ? text0.replace(/^\$(\S+) \(/, `$$${card.symbol} (${c.mint.slice(0, 4)}…${c.mint.slice(-4)}, `) : text0;
+          if (isNew) state.passed[c.mint] = new Date().toISOString();
           events.push(text);
           state.events.unshift({ at: new Date().toISOString(), mint: c.mint, symbol: card.symbol, text });
         }
@@ -342,7 +349,12 @@ async function main() {
   }
   for (const [f, n] of shared) {
     if (n < 2 || state.busyFunders[f] !== undefined) continue;
-    try { state.busyFunders[f] = isBusy(await rpc("getSignaturesForAddress", [f, { limit: 1000 }])); } catch {}
+    try {
+      const info = busyInfo(await rpc("getSignaturesForAddress", [f, { limit: 1000 }]));
+      state.busyFunders[f] = info.busy;
+      (state.busyInfo ??= {})[f] = info;
+      notes.push(`funder ${f.slice(0, 6)}…: ${info.txs} recent txs over ${info.spanHours} h, ${info.busy ? "exchange-like, not counted" : "counted"}`);
+    } catch (e) { notes.push(`funder ${f.slice(0, 6)}…: activity not read (${statusOf(e)}); its buyers aren't judged yet`); }
     await sleep(pauseMs);
   }
   let fundingPending = 0;
@@ -389,7 +401,7 @@ async function main() {
     .sort((a, b) => Number(b.marketCapZec ?? 0) - Number(a.marketCapZec ?? 0));
   writeFileSync(outPath, JSON.stringify({ apiVersion: 1, generatedAt: new Date().toISOString(), zecUsd, minMcapUsd, limits: LIMITS,
     earlySeconds: EARLY_SECONDS, cards: publicCards, repeatHolders: repeats, events: state.events.slice(0, 30),
-    soldOutPct: SOLD_OUT_PCT, serialCreators: serial, launchesKnown: known }));
+    soldOutPct: SOLD_OUT_PCT, serialCreators: serial, launchesKnown: known, busyFunders: state.busyInfo ?? {} }));
   writeFileSync(statePath, JSON.stringify(state));
   // every creator with their coins, for the creator pages
   const creatorsOut = [...records].map(([creator, list]) => ({ creator, ...creatorHistory(list, null),

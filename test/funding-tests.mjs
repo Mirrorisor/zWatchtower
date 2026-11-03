@@ -11,13 +11,16 @@ check("a transfer out of the wallet isn't its funding", funderFromTx(tx([transfe
 check("no system transfer: unknown", funderFromTx(tx([{ programId: "Some" }]), "W1") === null);
 
 const buyers = ["a", "b", "c", "d", "e"];
-let ff = fundingFacts(buyers, { a: "C", b: "X", c: "X", d: "X", e: null }, "C");
+let ff = fundingFacts(buyers, { a: "C", b: "X", c: "X", d: "X", e: null }, "C", { X: false });
 check("groups buyers by funder; the creator's own counted", ff.fundedByCreator === 1 && ff.largestGroup === 3 && ff.lookedUp === 5, JSON.stringify(ff));
 let fl = fundingFlags(ff);
 check("flags: funded by the creator, and 3 by one wallet", fl.includes("1 of the first buyers was funded by the creator") && fl.includes("3 of the first buyers were funded by the same wallet"), fl.join(" | "));
 ff = fundingFacts(buyers, { a: "C", b: "X" }, "C");
 check("not judged until every early buyer is looked up", fundingFlags(ff).length === 0 && ff.lookedUp === 2);
-ff = fundingFacts(buyers, { a: "A", b: "B", c: "C2", d: "X", e: "X" }, "C");
+ff = fundingFacts(buyers, { a: "A", b: "B", c: "C2", d: "X", e: "X" }, "C", { X: false });
+check("two sharing a funder isn't enough to flag (setup)", true);
+const pending = fundingFacts(buyers, { a: "Y", b: "Y", c: "Y", d: "Y", e: null }, "C", {});
+check("a shared funder not yet checked for exchange-like activity isn't flagged yet", fundingFlags(pending).length === 0 && pending.busyPending === 1, JSON.stringify(pending));
 check("two sharing a funder isn't enough to flag", fundingFlags(ff).length === 0 && ff.largestGroup === 2);
 // an exchange's hot wallet funding several early buyers isn't a bundle
 import("../lib/funding.mjs").then(({ isBusy }) => {
