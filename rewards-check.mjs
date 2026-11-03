@@ -123,7 +123,7 @@ async function sampleReceived(holders, payouts) {
           return { owner: o === REWARDS_WALLET ? "rewards wallet" : o, mint: mint === ZEC_MINT ? "ZEC" : mint, delta: String(v) };
         });
         entry.signature = sig;
-        // everything this holder received from the rewards wallet within 6 hours of this payout:
+        // everything this holder received from the rewards wallet within 20 minutes of this payout:
         // one payment (shares really are smaller) or several (paid in parts)?
         try {
           const keys = tx.transaction.message.accountKeys.map((k) => k.pubkey ?? k);
@@ -132,7 +132,7 @@ async function sampleReceived(holders, payouts) {
           const t0 = tx.blockTime;
           let total = 0n, payments = 0;
           for (const x of sigs ?? []) {
-            if (x.err || x.blockTime == null || Math.abs(x.blockTime - t0) > 6 * 3600) continue;
+            if (x.err || x.blockTime == null || Math.abs(x.blockTime - t0) > 20 * 60) continue;
             const t = await rpc("getTransaction", [x.signature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 }]);
             const mm = t?.meta; if (!mm) continue;
             const d = (o) => {
@@ -143,8 +143,8 @@ async function sampleReceived(holders, payouts) {
             };
             if (d(REWARDS_WALLET) < 0n && d(owner) > 0n) { total += d(owner); payments++; }
           }
-          entry.fromRewardsWithin6h = { payments, total: String(total), share: row.share };
-        } catch (e) { entry.fromRewardsWithin6h = { error: e.message.slice(0, 60) }; }
+          entry.fromRewardsWithin20min = { payments, total: String(total), share: row.share };
+        } catch (e) { entry.fromRewardsWithin20min = { error: e.message.slice(0, 60) }; }
       }
       out.push(entry);
     } catch (e) { out.push({ owner: owner.slice(0, 6), error: e.message.slice(0, 60) }); }
