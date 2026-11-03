@@ -64,9 +64,24 @@ jobs:
             git push --quiet origin status
           fi
 
+      - name: Save the site (gh-pages branch, which GitHub Pages can serve)
+        run: |
+          remote="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}"
+          git clone --quiet --depth 1 --branch gh-pages "$remote" pages
+          find pages -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -r site/. pages/
+          cd pages && git add -A
+          if ! git diff --cached --quiet; then
+            git -c user.name="zwatchtower-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit --quiet -m "site $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push --quiet origin gh-pages || echo "site push refused (the server pushed first)"
+          fi
+
       - uses: actions/upload-pages-artifact@v3
+        continue-on-error: true
         with:
           path: site
 
       - id: deploy
         uses: actions/deploy-pages@v4
+        continue-on-error: true   # fails once Pages serves the gh-pages branch instead

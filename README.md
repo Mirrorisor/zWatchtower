@@ -312,6 +312,22 @@ Tests: `node test/keys-tests.mjs` (19 cases).
 Independently re-checks every Sapling holder-reward run from public data.
 It reads `https://sapling.cash/api/rewards/<id>` and, optionally, a Solana RPC.
 
+## Run it every 5 minutes on a server
+
+GitHub starts scheduled runs 30–60 minutes apart. On a small Ubuntu 24.04
+server (a US$6 DigitalOcean droplet is plenty), as root:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/Mirrorisor/zWatchtower/main/deploy/setup-server.sh -o setup.sh && bash setup.sh
+```
+
+It installs Node, asks for the Solana RPC URL and webhook (kept in
+`/etc/zwatchtower.env`, readable only by the service), prints a deploy key to
+add to the repo with write access, and starts a 5-minute timer
+(`deploy/run.sh`). Each round runs the checks that are due, pushes results to
+the `status` branch and the dashboard to the `gh-pages` branch. Set GitHub
+Pages to serve `gh-pages` (Settings → Pages → Deploy from a branch).
+
 ## Run it
 
 ```
