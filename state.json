@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T23:50:10.796Z",
-      "finishedAt": "2026-11-03T23:50:15.895Z",
+      "startedAt": "2026-11-03T23:55:11.102Z",
+      "finishedAt": "2026-11-03T23:55:15.531Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,23 +21,25 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle_tax": 6,
-          "sell_tax": 6,
+          "settle_tax": 5,
+          "sell_tax": 5,
           "withdraw_tax": 6,
-          "draw_pool_pot": 1,
-          "protocol_pool_deposit": 1,
-          "close_pool_pot": 1,
-          "protocol_pool_lock": 1
+          "observe_sapling": 4,
+          "draw_grove": 1,
+          "close_grove": 1,
+          "draw_zec_payee": 1,
+          "settle_sapling": 1,
+          "settle": 2,
+          "claim_payee": 1
         },
-        "unrecognised": 4,
+        "unrecognised": 2,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-03T23:25:14.802Z",
-      "finishedAt": "2026-11-03T23:25:33.069Z",
+      "startedAt": "2026-11-03T23:55:15.537Z",
+      "finishedAt": "2026-11-03T23:55:33.096Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -45,16 +47,16 @@
         "reward run 1559 ZDOG: 38 shares not floor(pot*balance/sum); paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-03T23:25:20.156Z",
-        "runs": 9,
-        "passed": 7,
+        "checkedAt": "2026-11-03T23:55:20.191Z",
+        "runs": 7,
+        "passed": 5,
         "flagged": 2,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.80756117",
+        "zecPaidInDoneRuns": "0.64296281",
         "onChainChecks": true,
-        "distinctReleases": 9,
-        "runsWithRelease": 9,
+        "distinctReleases": 7,
+        "runsWithRelease": 7,
         "followTheMoney": {
           "run": 1558,
           "holdings": {
@@ -210,15 +212,15 @@
           },
           "releaseAt": "2026-11-03T22:32:21.000Z",
           "window": "2 hours after the release",
-          "txsRead": 61,
-          "txsInWindow": 61,
-          "inflow": "62775832",
-          "outflow": "62775832",
+          "txsRead": 64,
+          "txsInWindow": 64,
+          "inflow": "64822186",
+          "outflow": "64822186",
           "to": {
             "thisRunHolders": "4269664",
             "treasury": "339025",
-            "otherRunsHolders": "30594923",
-            "unknown": "27572220"
+            "otherRunsHolders": "32641275",
+            "unknown": "27572222"
           },
           "topUnknown": [
             {
@@ -527,7 +529,7 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1563
+        "maxRunId": 1564
       }
     },
     "float": {
@@ -942,8 +944,8 @@
     "coins": {},
     "programs": {}
   },
-  "rewardsMaxRun": 1563,
-  "rewardsFrom": 1555,
+  "rewardsMaxRun": 1564,
+  "rewardsFrom": 1558,
   "x": {
     "day": "2026-11-03",
     "today": 10,
