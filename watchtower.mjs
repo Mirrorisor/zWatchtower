@@ -61,8 +61,9 @@ function loadConfig() {
   for (const k of Object.keys(DEFAULTS.checks)) cfg.checks[k] = { ...DEFAULTS.checks[k], ...(user.checks?.[k] ?? {}) };
   if (opt("--port")) cfg.port = Number(opt("--port"));
   cfg.dataDir = resolve(cfg.dataDir);
-  if (process.env.WATCHTOWER_WEBHOOK) cfg.webhook = process.env.WATCHTOWER_WEBHOOK;
-  if (process.env.WATCHTOWER_SOLANA_RPC) cfg.solanaRpc = process.env.WATCHTOWER_SOLANA_RPC;
+  if (process.env.WATCHTOWER_WEBHOOK) cfg.webhook = process.env.WATCHTOWER_WEBHOOK.trim();
+  if (cfg.webhook && !/^https?:\/\//.test(cfg.webhook)) { console.error("webhook ignored: it isn't an http(s) URL"); cfg.webhook = null; }
+  if (process.env.WATCHTOWER_SOLANA_RPC) cfg.solanaRpc = process.env.WATCHTOWER_SOLANA_RPC.trim();
   // Posting to X: with all four keys set it posts; without them it only
   // records what it would have posted (x-posts.jsonl, status "preview").
   const env = process.env;

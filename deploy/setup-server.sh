@@ -36,6 +36,7 @@ echo "== 4/5 Your keys (typing is hidden; nothing is shown or sent anywhere but 
 if [ ! -f /etc/zwatchtower.env ]; then
   read -rsp "   Helius RPC URL (https://mainnet.helius-rpc.com/?api-key=...): " RPC; echo
   read -rsp "   Discord webhook URL + /slack (Enter to skip): " HOOK; echo
+  RPC=$(printf %s "$RPC" | tr -d '\r\n '); HOOK=$(printf %s "$HOOK" | tr -d '\r\n ')   # pasted text can carry stray characters
   umask 077
   { echo "WATCHTOWER_SOLANA_RPC=$RPC"; [ -n "$HOOK" ] && echo "WATCHTOWER_WEBHOOK=$HOOK"; } > /etc/zwatchtower.env
   chown root:zwatch /etc/zwatchtower.env; chmod 640 /etc/zwatchtower.env
