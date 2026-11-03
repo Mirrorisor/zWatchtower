@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-03T19:45:02.688Z",
-      "finishedAt": "2026-11-03T19:45:07.520Z",
+      "startedAt": "2026-11-03T19:50:09.214Z",
+      "finishedAt": "2026-11-03T19:50:13.125Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -23,17 +23,12 @@
         "vaultInstructions": {
           "observe_sapling": 4,
           "settle_tax": 5,
-          "draw_zec_payee": 1,
-          "sell_tax": 4,
-          "settle": 1,
-          "withdraw_tax": 4,
-          "claim_payee": 2,
-          "draw_pool_pot": 1,
-          "protocol_pool_deposit": 1,
-          "close_pool_pot": 1,
-          "protocol_pool_lock": 1
+          "sell_tax": 6,
+          "withdraw_tax": 7,
+          "draw_grove": 1,
+          "close_grove": 1
         },
-        "unrecognised": 6,
+        "unrecognised": 0,
         "baseline": false
       }
     },
@@ -602,15 +597,15 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-03T19:32:58.837Z",
-      "finishedAt": "2026-11-03T19:33:00.178Z",
+      "startedAt": "2026-11-03T19:50:13.132Z",
+      "finishedAt": "2026-11-03T19:50:14.440Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "coins": 105,
-        "matching": 105,
-        "feeChangeable": 101,
+        "coins": 106,
+        "matching": 106,
+        "feeChangeable": 102,
         "feeRenounced": 4,
         "advertisedRange": [
           200,
@@ -622,15 +617,17 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-03T19:33:00.180Z",
-      "finishedAt": "2026-11-03T19:33:13.916Z",
+      "startedAt": "2026-11-03T19:50:14.442Z",
+      "finishedAt": "2026-11-03T19:50:24.783Z",
       "status": "ran",
-      "ok": true,
-      "alerts": [],
+      "ok": false,
+      "alerts": [
+        "flywheel pot holds 986629 zat but the movements seen add up to 295566"
+      ],
       "summary": {
         "saplingBurn": {
-          "onChain": 223842065.759786,
-          "claimed": 223840000,
+          "onChain": 223891850.37544405,
+          "claimed": 223890000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -732,16 +729,16 @@
           }
         },
         "pot": {
-          "balanceZat": "9354758",
-          "shownZat": "9354758",
-          "inflowZat": "1096612356",
-          "buybackZat": "1087257598",
+          "balanceZat": "986629",
+          "shownZat": "295566",
+          "inflowZat": "1105901297",
+          "buybackZat": "1105605731",
           "movements": {
             "setup": 1,
-            "inflow": 2465,
-            "buyback": 264
+            "inflow": 2480,
+            "buyback": 266
           },
-          "reconciled": true,
+          "reconciled": false,
           "caughtUp": true
         },
         "signers": [
@@ -750,8 +747,10 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "buyback 2xDkrgiFAx9hPQyK4aXPjDhVbFJR88qgP2ZaW4jFsry9tk1RQSPNHEbMhrGXtFHmNh1MXDqE2XLZVPEXunQQ3Vti drew 10728360 zat but is not in Sapling's burn list",
-          "headline 1012133937 zat bought back, listed burns add up to 290145367"
+          "buyback 2D32teBSrbbcwzL4eCNynxmnzPSZeSbtowKhzyYujQZzXird6yMnQ2YRe8dBJTfQojnikLtooP6rdYsh8pMhG2wG drew 9993183 zat but is not in Sapling's burn list",
+          "buyback 4uEEdJEX2Z4gHH8cDRWBbayLffjPzGuUPuGp8J6puUnb8MEU4wZroVfZfnnWFeJsPY3aqMGbRYdzA7fjoAPsbRUM drew 8354950 zat but is not in Sapling's burn list",
+          "Sapling shows the pot at 295566 zat, chain says 986629 (may be a moment out of date)",
+          "headline 1033555109 zat bought back, listed burns add up to 304880136"
         ]
       }
     },
@@ -930,7 +929,9 @@
     },
     "float": {},
     "tax": {},
-    "flywheel": {},
+    "flywheel": {
+      "flywheel pot holds 986629 zat but the movements seen add up to 295566": "2026-11-03T19:50:24.783Z"
+    },
     "coins": {},
     "programs": {}
   },
