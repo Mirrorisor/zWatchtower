@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T06:25:05.779Z",
-      "finishedAt": "2026-11-04T06:25:08.548Z",
+      "startedAt": "2026-11-04T06:30:04.200Z",
+      "finishedAt": "2026-11-04T06:30:08.259Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,34 +21,34 @@
           "recovery"
         ],
         "vaultInstructions": {
+          "observe_sapling": 4,
           "settle_tax": 2,
           "sell_tax": 2,
           "withdraw_tax": 2,
-          "observe_sapling": 4,
-          "draw_grove": 1,
-          "close_grove": 1
+          "settle": 4,
+          "claim_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-04T06:00:13.426Z",
-      "finishedAt": "2026-11-04T06:01:14.420Z",
+      "startedAt": "2026-11-04T06:30:08.265Z",
+      "finishedAt": "2026-11-04T06:31:08.244Z",
       "status": "ran",
       "ok": false,
       "alerts": [
         "reward run 1491 ███: 11 shares not floor(pot*balance/sum); basket payout doesn't add up: hSOL: 6741284 of 160371735 bought wasn't paid out; BoTx…: 8 holders not paid in proportion to their share; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-04T06:00:46.742Z",
-        "runs": 8,
-        "passed": 5,
+        "checkedAt": "2026-11-04T06:30:42.797Z",
+        "runs": 9,
+        "passed": 6,
         "flagged": 3,
         "unchecked": 2,
         "firstUnchecked": 1573,
-        "zecPaidInDoneRuns": "0.52079660",
+        "zecPaidInDoneRuns": "0.54364147",
         "onChainChecks": true,
         "checkedIds": [
           1491,
@@ -56,10 +56,11 @@
           1570,
           1571,
           1572,
-          1574
+          1574,
+          1575
         ],
-        "distinctReleases": 8,
-        "runsWithRelease": 8,
+        "distinctReleases": 9,
+        "runsWithRelease": 9,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -222,8 +223,8 @@
           "to": {
             "thisRunHolders": "17729413",
             "treasury": "1190969",
-            "otherRunsHolders": "53370821",
-            "unknown": "93807933"
+            "otherRunsHolders": "53969391",
+            "unknown": "93209363"
           },
           "topUnknown": [
             {
@@ -499,7 +500,7 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1574
+        "maxRunId": 1575
       }
     },
     "float": {
@@ -898,7 +899,7 @@
     "coins": {},
     "programs": {}
   },
-  "rewardsMaxRun": 1574,
+  "rewardsMaxRun": 1575,
   "rewardsFrom": 1569,
   "x": {
     "day": "2026-11-04",
