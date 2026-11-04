@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T22:40:03.807Z",
-      "finishedAt": "2026-11-04T22:40:06.052Z",
+      "startedAt": "2026-11-04T22:45:03.157Z",
+      "finishedAt": "2026-11-04T22:45:06.019Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,13 +22,15 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "draw_grove": 1,
-          "close_grove": 1,
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1
+          "settle_tax": 2,
+          "convert_tax_begin": 1,
+          "convert_tax_end": 1,
+          "settle": 1,
+          "claim_payee": 1,
+          "sell_tax": 2,
+          "withdraw_tax": 2
         },
-        "unrecognised": 0,
+        "unrecognised": 3,
         "baseline": false
       }
     },
@@ -746,8 +748,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-04T22:30:04.927Z",
-      "finishedAt": "2026-11-04T22:30:06.507Z",
+      "startedAt": "2026-11-04T22:45:06.025Z",
+      "finishedAt": "2026-11-04T22:45:08.007Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -766,29 +768,29 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-04T22:30:06.508Z",
-      "finishedAt": "2026-11-04T22:30:12.626Z",
+      "startedAt": "2026-11-04T22:45:08.008Z",
+      "finishedAt": "2026-11-04T22:45:15.152Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1512324342",
-          "chainZat": "1515351778",
-          "notListedYetZat": "3027436",
+          "claimedZat": "1518798572",
+          "chainZat": "1518798572",
+          "notListedYetZat": "0",
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 225694695.68410206,
-          "claimed": 225690000,
+          "onChain": 225707911.53508198,
+          "claimed": 225700000,
           "diffPct": 0,
           "verdict": "matches"
         },
-        "burns": 249,
-        "burnsVerified": 249,
-        "boughtBackZat": "1320478971",
+        "burns": 251,
+        "burnsVerified": 251,
+        "boughtBackZat": "1326953201",
         "venues": {
-          "pump amm": 130,
+          "pump amm": 132,
           "raydium cpmm": 59,
           "raydium launchlab": 10,
           "pump bonding curve": 1,
@@ -807,8 +809,8 @@
           },
           "ZILLIONS": {
             "mint": "3sKZuSZF7onqPYFrWu3bH4Lh141duydt9MAmSd46jaLJ",
-            "burns": 58,
-            "zat": "239909729"
+            "burns": 60,
+            "zat": "246383959"
           },
           "SEEDLING": {
             "mint": "JAxk7phmXL9G2syv6DJ72ibddzTDhybmhZTNjpgKwF5A",
@@ -882,14 +884,14 @@
           }
         },
         "pot": {
-          "balanceZat": "1713400",
-          "shownZat": "1713400",
-          "inflowZat": "1517065178",
-          "buybackZat": "1515351778",
+          "balanceZat": "603143",
+          "shownZat": "603143",
+          "inflowZat": "1519401715",
+          "buybackZat": "1518798572",
           "movements": {
             "setup": 1,
-            "inflow": 3077,
-            "buyback": 321
+            "inflow": 3084,
+            "buyback": 322
           },
           "reconciled": true,
           "caughtUp": true
@@ -1087,18 +1089,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-04T22:31:49.070Z",
-      "finishedAt": "2026-11-04T22:31:52.862Z",
+      "startedAt": "2026-11-04T22:45:15.154Z",
+      "finishedAt": "2026-11-04T22:45:18.977Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 105667.26,
-        "nearSupply": 153902.24,
+        "solanaSupply": 105682.23,
+        "nearSupply": 153465.27,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 654.4405647800013,
+        "change24h": 669.4024768899981,
         "notes": []
       }
     }
