@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T10:05:08.967Z",
-      "finishedAt": "2026-11-04T10:05:15.380Z",
+      "startedAt": "2026-11-04T10:10:11.187Z",
+      "finishedAt": "2026-11-04T10:10:13.748Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,20 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "settle_tax": 3,
-          "convert_tax_begin": 1,
-          "convert_tax_end": 1,
-          "draw_zec_payee": 1,
-          "observe_sapling": 23,
-          "settle_sapling": 1,
-          "claim_payee": 2,
-          "sell_tax": 2,
-          "withdraw_tax": 2,
-          "settle": 1,
-          "draw_grove": 1,
-          "close_grove": 1
+          "observe_sapling": 4
         },
-        "unrecognised": 5,
+        "unrecognised": 0,
         "baseline": false
       }
     },
@@ -671,8 +660,8 @@
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-04T09:01:37.175Z",
-      "finishedAt": "2026-11-04T09:09:03.086Z",
+      "startedAt": "2026-11-04T10:10:13.754Z",
+      "finishedAt": "2026-11-04T10:17:39.893Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
