@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T03:55:11.218Z",
-      "finishedAt": "2026-11-04T03:55:13.031Z",
+      "startedAt": "2026-11-04T04:00:03.171Z",
+      "finishedAt": "2026-11-04T04:00:05.829Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,11 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 3
+          "settle": 1,
+          "observe_sapling": 4,
+          "settle_tax": 1,
+          "sell_tax": 1,
+          "withdraw_tax": 1
         },
         "unrecognised": 0,
         "baseline": false
@@ -29,25 +33,24 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-04T03:30:07.813Z",
-      "finishedAt": "2026-11-04T03:31:04.271Z",
+      "startedAt": "2026-11-04T04:00:05.838Z",
+      "finishedAt": "2026-11-04T04:01:02.058Z",
       "status": "ran",
       "ok": false,
       "alerts": [
         "reward run 1491 ███: 11 shares not floor(pot*balance/sum); basket payout doesn't add up: hSOL: 6741284 of 160371735 bought wasn't paid out; BoTx…: 8 holders not paid in proportion to their share; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-04T03:30:37.255Z",
-        "runs": 9,
-        "passed": 7,
+        "checkedAt": "2026-11-04T04:00:35.286Z",
+        "runs": 8,
+        "passed": 6,
         "flagged": 2,
         "unchecked": 1,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.53195245",
+        "zecPaidInDoneRuns": "0.51148893",
         "onChainChecks": true,
         "checkedIds": [
           1491,
-          1564,
           1565,
           1566,
           1567,
@@ -55,8 +58,8 @@
           1569,
           1570
         ],
-        "distinctReleases": 9,
-        "runsWithRelease": 9,
+        "distinctReleases": 8,
+        "runsWithRelease": 8,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -312,7 +315,7 @@
               "account": {
                 "owner": "11111111111111111111111111111111",
                 "executable": false,
-                "lamports": 650709195019
+                "lamports": 650426005580
               },
               "after": {
                 "zecLeft": "59852380",
@@ -895,7 +898,7 @@
     "programs": {}
   },
   "rewardsMaxRun": 1570,
-  "rewardsFrom": 1564,
+  "rewardsFrom": 1565,
   "x": {
     "day": "2026-11-04",
     "today": 10,
