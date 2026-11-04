@@ -88,4 +88,24 @@ j = judgeBasket({ ...run, rows: [...rows, { owner: C, balance: "1", share: "5000
 check("a tiny holder with no tokens is noted, not flagged", !j.problems.some((p) => /got none/.test(p)) && j.smallHoldersSkipped[0]?.holders === 1, JSON.stringify(j.problems));
 j = judgeBasket({ ...run, rows: [...rows, { owner: C, balance: "1", share: "500000" }] }, b);
 check("a real holder with no tokens is flagged", j.problems.some((p) => /1 holders got none/.test(p)), JSON.stringify(j.problems));
+
+// Real run 1491 legs (Solscan, 3 Nov 2026): BOT, every holder's account opened and charged the same cost
+const R1491 = { "29zkao": [47617, 18784], "4kP7hg": [66091, 28654], "8VSeYP": [48007, 18993], "AMwLPC": [57803, 24226], "Amxbqj": [286521, 146432],
+  "BTLtTy": [64372, 27735], "DiBiwF": [345167, 177767], "ELj5Rd": [285194, 145723], "ERjMjn": [124575, 59900], "F3LbGi": [89529, 41179], "GmfCfT": [199683, 100033] };
+const rows1491 = Object.entries(R1491).map(([o, [sh]]) => ({ owner: o, balance: String(sh * 10), share: String(sh) }));
+const shareSum1491 = rows1491.reduce((a, r) => a + BigInt(r.share), 0n);
+const botLeg = { mint: "BoTx8y9ynfdxf5ZjWtCoBVkff52qKA82ysaLU8ZM6d8T", bought: 789426n, from: ["w"], zecIn: shareSum1491,
+  sent: new Map(Object.entries(R1491).map(([o, [, g]]) => [o, BigInt(g)])), opened: new Set(Object.keys(R1491)) };
+const run1491 = { rows: rows1491, pot: shareSum1491 * 2n, sum: shareSum1491 * 10n, paid: shareSum1491 * 2n };
+j = judgeBasket(run1491, { swapWallets: ["w"], zecToSwaps: shareSum1491, zecBack: 0n, legs: [botLeg] });
+check("every holder charged one account cost (no uncharged holder to compare with) passes", j.ok, JSON.stringify(j.problems));
+// hSOL: one holder (64,372 zat share, ~$0.80 leg) got nothing; its share stayed in the rewards wallet
+const hsolSent = { "29zkao": 3741388, "4kP7hg": 5676072, "8VSeYP": 3782233, "AMwLPC": 6053311, "Amxbqj": 30007137, "DiBiwF": 34903701,
+  "ELj5Rd": 28622706, "ERjMjn": 11800495, "F3LbGi": 8130952, "GmfCfT": 20912456 };
+const hsolLeg = { mint: "he1iusmfkpAdwvxLNGV8Y1iSbj4rUy6yMhEA3fotn9A", bought: 160371735n, from: ["w"], zecIn: shareSum1491,
+  sent: new Map(Object.entries(hsolSent).map(([o, g]) => [o, BigInt(g)])), opened: new Set(["29zkao", "4kP7hg", "8VSeYP", "ELj5Rd", "ERjMjn", "F3LbGi", "DiBiwF"]) };
+j = judgeBasket(run1491, { swapWallets: ["w"], zecToSwaps: shareSum1491, zecBack: 0n, legs: [hsolLeg] });
+check("a holder left out of a leg worth far more than an account is flagged, with what wasn't paid",
+  j.problems.some((p) => /hSOL: 1 holders got none/.test(p)) && j.problems.some((p) => /hSOL: 6741284 of 160371735 bought wasn't paid out/.test(p)) &&
+  !j.problems.some((p) => /proportion/.test(p)), JSON.stringify(j.problems));
 process.exitCode = failures ? 1 : 0;
