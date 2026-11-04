@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T22:30:02.235Z",
-      "finishedAt": "2026-11-04T22:30:04.921Z",
+      "startedAt": "2026-11-04T22:35:04.561Z",
+      "finishedAt": "2026-11-04T22:35:08.387Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,11 +22,18 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "sell_tax": 2,
-          "withdraw_tax": 2,
-          "settle_tax": 1
+          "settle_tax": 4,
+          "convert_tax_begin": 1,
+          "convert_tax_end": 1,
+          "draw_zec_payee": 1,
+          "settle": 1,
+          "claim_payee": 1,
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1,
+          "sell_tax": 3,
+          "withdraw_tax": 3
         },
-        "unrecognised": 0,
+        "unrecognised": 3,
         "baseline": false
       }
     },
