@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T21:35:08.605Z",
-      "finishedAt": "2026-11-04T21:35:12.293Z",
+      "startedAt": "2026-11-04T21:40:03.004Z",
+      "finishedAt": "2026-11-04T21:40:05.589Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,17 +21,12 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "draw_grove": 1,
-          "close_grove": 1,
           "observe_sapling": 4,
           "settle_tax": 2,
           "sell_tax": 2,
-          "withdraw_tax": 2,
-          "draw_lp": 1,
-          "settle": 1,
-          "claim_payee": 1
+          "withdraw_tax": 3
         },
-        "unrecognised": 1,
+        "unrecognised": 0,
         "baseline": false
       }
     },
@@ -1235,18 +1230,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-04T21:23:23.800Z",
-      "finishedAt": "2026-11-04T21:23:27.575Z",
+      "startedAt": "2026-11-04T21:40:05.597Z",
+      "finishedAt": "2026-11-04T21:40:09.750Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 105691.13,
-        "nearSupply": 153930.89,
+        "solanaSupply": 105693.19,
+        "nearSupply": 153921.5,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 678.305183370001,
+        "change24h": 680.3671786100022,
         "notes": []
       }
     }
