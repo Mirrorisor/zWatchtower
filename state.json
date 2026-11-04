@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T05:25:10.843Z",
-      "finishedAt": "2026-11-04T05:25:15.526Z",
+      "startedAt": "2026-11-04T05:30:11.237Z",
+      "finishedAt": "2026-11-04T05:30:13.435Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,48 +21,46 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "settle_tax": 2,
-          "sell_tax": 2,
-          "withdraw_tax": 2,
           "observe_sapling": 4,
-          "collect_protocol_pool_fees": 13,
-          "settle": 3,
-          "claim_payee": 1
+          "settle_tax": 1,
+          "sell_tax": 1,
+          "withdraw_tax": 1
         },
-        "unrecognised": 14,
+        "unrecognised": 0,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-04T05:00:13.134Z",
-      "finishedAt": "2026-11-04T05:01:11.196Z",
+      "startedAt": "2026-11-04T05:30:13.441Z",
+      "finishedAt": "2026-11-04T05:31:14.590Z",
       "status": "ran",
       "ok": false,
       "alerts": [
         "reward run 1491 ███: 11 shares not floor(pot*balance/sum); basket payout doesn't add up: hSOL: 6741284 of 160371735 bought wasn't paid out; BoTx…: 8 holders not paid in proportion to their share; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-04T05:00:43.573Z",
-        "runs": 9,
-        "passed": 7,
-        "flagged": 2,
-        "unchecked": 1,
-        "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.58869147",
+        "checkedAt": "2026-11-04T05:30:48.677Z",
+        "runs": 11,
+        "passed": 8,
+        "flagged": 3,
+        "unchecked": 2,
+        "firstUnchecked": 1573,
+        "zecPaidInDoneRuns": "0.66148056",
         "onChainChecks": true,
         "checkedIds": [
           1491,
-          1565,
           1566,
           1567,
           1568,
           1569,
           1570,
-          1571
+          1571,
+          1572,
+          1574
         ],
-        "distinctReleases": 9,
-        "runsWithRelease": 9,
+        "distinctReleases": 11,
+        "runsWithRelease": 11,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -225,8 +223,8 @@
           "to": {
             "thisRunHolders": "17729413",
             "treasury": "1190969",
-            "otherRunsHolders": "52161075",
-            "unknown": "95017679"
+            "otherRunsHolders": "55809352",
+            "unknown": "91369402"
           },
           "topUnknown": [
             {
@@ -356,7 +354,8 @@
           ]
         },
         "notes": [
-          "run 1487: not checked: shares look like one leg of a basket, and the other legs couldn't be read or told apart (shares say 2 legs, found 1 on chain)"
+          "run 1487: not checked: shares look like one leg of a basket, and the other legs couldn't be read or told apart (shares say 2 legs, found 1 on chain)",
+          "run 1573: not checked: shares look like one leg of a basket, and the other legs couldn't be read or told apart (shares say 2 legs, found 1 on chain)"
         ],
         "diagnoses": [
           {
@@ -501,13 +500,13 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1571
+        "maxRunId": 1574
       }
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-04T04:20:37.897Z",
-      "finishedAt": "2026-11-04T04:28:02.964Z",
+      "startedAt": "2026-11-04T05:31:14.593Z",
+      "finishedAt": "2026-11-04T05:38:39.890Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -574,8 +573,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-04T05:15:14.546Z",
-      "finishedAt": "2026-11-04T05:15:16.274Z",
+      "startedAt": "2026-11-04T05:38:39.892Z",
+      "finishedAt": "2026-11-04T05:38:41.726Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -594,20 +593,20 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-04T05:15:16.275Z",
-      "finishedAt": "2026-11-04T05:15:23.559Z",
+      "startedAt": "2026-11-04T05:38:41.729Z",
+      "finishedAt": "2026-11-04T05:38:50.391Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1158740642",
+          "claimedZat": "1377770577",
           "chainZat": "1380814575",
           "notListedYetZat": "3043998",
-          "verdict": "differs from the chain"
+          "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 225015997.65276802,
+          "onChain": 225023168.73906302,
           "claimed": 225020000,
           "diffPct": 0,
           "verdict": "matches"
@@ -710,13 +709,13 @@
           }
         },
         "pot": {
-          "balanceZat": "401455",
-          "shownZat": "401455",
-          "inflowZat": "1381216030",
+          "balanceZat": "1627490",
+          "shownZat": "1627490",
+          "inflowZat": "1382442065",
           "buybackZat": "1380814575",
           "movements": {
             "setup": 1,
-            "inflow": 2818,
+            "inflow": 2823,
             "buyback": 293
           },
           "reconciled": true,
@@ -727,9 +726,7 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": [
-          "Sapling's headline says 1158740642 zat bought back; the pot paid 1380814575 zat on chain (3043998 of it not listed yet)"
-        ]
+        "notes": []
       }
     },
     "coins": {
@@ -902,8 +899,8 @@
     "coins": {},
     "programs": {}
   },
-  "rewardsMaxRun": 1571,
-  "rewardsFrom": 1565,
+  "rewardsMaxRun": 1574,
+  "rewardsFrom": 1566,
   "x": {
     "day": "2026-11-04",
     "today": 10,
