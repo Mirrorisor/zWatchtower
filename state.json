@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T01:15:02.041Z",
-      "finishedAt": "2026-11-04T01:15:05.003Z",
+      "startedAt": "2026-11-04T01:20:04.456Z",
+      "finishedAt": "2026-11-04T01:20:09.333Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,42 +21,39 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1,
+          "collect_protocol_pool_fees": 13,
           "observe_sapling": 4,
-          "close_rewards_run": 1,
-          "release_rewards": 1,
-          "settle": 1,
-          "claim_payee": 1
+          "settle_tax": 2,
+          "sell_tax": 2,
+          "withdraw_tax": 2
         },
-        "unrecognised": 1,
+        "unrecognised": 13,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-04T00:50:15.678Z",
-      "finishedAt": "2026-11-04T00:50:19.068Z",
+      "startedAt": "2026-11-04T01:20:09.338Z",
+      "finishedAt": "2026-11-04T01:20:13.642Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "checkedAt": "2026-11-04T00:50:19.053Z",
-        "runs": 6,
-        "passed": 6,
+        "checkedAt": "2026-11-04T01:20:13.626Z",
+        "runs": 8,
+        "passed": 8,
         "flagged": 0,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.27296776",
+        "zecPaidInDoneRuns": "0.38689387",
         "onChainChecks": true,
-        "distinctReleases": 6,
-        "runsWithRelease": 6,
+        "distinctReleases": 8,
+        "runsWithRelease": 8,
         "notes": [],
         "diagnoses": [],
         "followTheMoney": null,
         "batchGroups": null,
-        "maxRunId": 1566
+        "maxRunId": 1568
       }
     },
     "float": {
@@ -466,7 +463,7 @@
     "coins": {},
     "programs": {}
   },
-  "rewardsMaxRun": 1566,
+  "rewardsMaxRun": 1568,
   "rewardsFrom": 1561,
   "x": {
     "day": "2026-11-04",
