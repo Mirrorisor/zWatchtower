@@ -41,4 +41,10 @@ const cs = [{ mint: "M", symbol: "ZDOG", paidZec: 2.2005 }, { mint: "N", symbol:
 const res = crossCheck(cs, { M: "220000000", N: "150000000" });
 check("totals within 2% match; others are listed; missing pages unknown",
   cs[0].matchesSapling === true && cs[1].matchesSapling === false && cs[2].matchesSapling === null && res.checked === 2 && res.matching === 1 && res.differ[0].symbol === "X", JSON.stringify(res));
+
+const lag = [{ mint: "L", symbol: "1993", paidZec: 13.374307, recentZec: 0.41012811 }];
+check("a run Sapling's page hasn't counted yet still matches", crossCheck(lag, { L: "1296417929" }).matching === 1 && lag[0].matchesSapling === true);
+const own = [{ mint: "R", symbol: "RAYCAT", paidZec: 0.628956, recentZec: 0, paidInCoin: true }];
+const ro = crossCheck(own, { R: "59543876" });
+check("a coin paid partly in its own token is 'valued differently', not a mismatch", own[0].valuedDifferently === true && own[0].matchesSapling === null && ro.checked === 0 && !ro.differ.length);
 process.exitCode = failures ? 1 : 0;
