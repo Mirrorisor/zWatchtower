@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T16:40:03.374Z",
-      "finishedAt": "2026-11-04T16:40:07.402Z",
+      "startedAt": "2026-11-04T16:45:02.724Z",
+      "finishedAt": "2026-11-04T16:45:05.743Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,20 +21,12 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "draw_zec_payee": 1,
-          "close_rewards_run": 2,
-          "release_rewards": 2,
+          "withdraw_tax": 4,
           "observe_sapling": 4,
-          "settle": 5,
-          "settle_sapling": 1,
-          "claim_payee": 1,
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1,
-          "draw_grove": 1,
-          "close_grove": 1
+          "settle_tax": 2,
+          "sell_tax": 2
         },
-        "unrecognised": 2,
+        "unrecognised": 0,
         "baseline": false
       }
     },
