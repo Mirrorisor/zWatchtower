@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T04:40:11.217Z",
-      "finishedAt": "2026-11-04T04:40:14.138Z",
+      "startedAt": "2026-11-04T04:45:03.092Z",
+      "finishedAt": "2026-11-04T04:45:06.216Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,12 +21,13 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5,
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1
+          "observe_sapling": 3,
+          "draw_zec_payee": 1,
+          "settle": 1,
+          "settle_sapling": 1,
+          "claim_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 2,
         "baseline": false
       }
     },
@@ -570,8 +571,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-04T04:28:02.966Z",
-      "finishedAt": "2026-11-04T04:28:04.672Z",
+      "startedAt": "2026-11-04T04:45:06.224Z",
+      "finishedAt": "2026-11-04T04:45:07.720Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -590,8 +591,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-04T04:28:04.676Z",
-      "finishedAt": "2026-11-04T04:28:10.880Z",
+      "startedAt": "2026-11-04T04:45:07.723Z",
+      "finishedAt": "2026-11-04T04:45:12.136Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -603,7 +604,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 224997810.24104,
+          "onChain": 225004806.16592002,
           "claimed": 225000000,
           "diffPct": 0,
           "verdict": "matches"
@@ -706,13 +707,13 @@
           }
         },
         "pot": {
-          "balanceZat": "557329",
-          "shownZat": "557329",
-          "inflowZat": "1378327906",
+          "balanceZat": "1164997",
+          "shownZat": "1164997",
+          "inflowZat": "1378935574",
           "buybackZat": "1377770577",
           "movements": {
             "setup": 1,
-            "inflow": 2810,
+            "inflow": 2812,
             "buyback": 292
           },
           "reconciled": true,
