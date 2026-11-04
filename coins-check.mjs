@@ -51,7 +51,7 @@ async function firstFunder(wallet) {
     if (page === 3) return "busy";
   }
   if (!oldest) return null;
-  const tx = await rpc("getTransaction", [oldest, { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 }]);
+  const tx = await rpc("getTransaction", [oldest, { encoding: "jsonParsed", maxSupportedTransactionVersion: 1 }]);
   return funderFromTx(tx, wallet);
 }
 // Only coins worth at least this much (USD) get a card. Sapling's coin list

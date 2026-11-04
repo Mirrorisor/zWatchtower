@@ -24,6 +24,7 @@
 
 import { isOnCurve } from "./lib/coins.mjs";
 import { createHash } from "node:crypto";
+import { readBasket, judgeBasket } from "./lib/basket.mjs";
 const API = "https://sapling.cash/api/rewards/";
 const REWARDS_WALLET = "37BBnMe6rTeH3Cxs1meobB6C564GJ7Gxj7SinQfgHPrL";
 const ZEC_MINT = "A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS";
@@ -39,6 +40,8 @@ const from = Number(opt("--from", 1));
 const to = opt("--to", null) ? Number(opt("--to")) : null;
 const rpcUrl = opt("--rpc", null);
 const asJson = args.includes("--json");
+// earlier runs to check again as well (e.g. ones with alerts still open)
+const extraRuns = (opt("--runs", "") || "").split(",").map(Number).filter((n) => Number.isInteger(n) && n > 0);
 const concurrency = Number(opt("--concurrency", 8));
 
 const hex = (buf) => Buffer.from(buf).toString("hex");
@@ -77,7 +80,7 @@ async function checkReleaseOnChain(run) {
   if (!run.releaseSignature) return { release: "none" };
   const tx = await rpc("getTransaction", [
     run.releaseSignature,
-    { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 },
+    { encoding: "jsonParsed", maxSupportedTransactionVersion: 1 },
   ]);
   if (!tx) return { release: "signature-not-on-chain" };
   const m = tx.meta;
@@ -108,7 +111,7 @@ async function sampleReceived(holders, payouts) {
     const sig = row && Object.entries(row).find(([k, v]) => /sig/i.test(k) && typeof v === "string" && v.length > 60)?.[1];
     if (!sig || row.status !== "confirmed") continue;
     try {
-      const tx = await rpc("getTransaction", [sig, { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 }]);
+      const tx = await rpc("getTransaction", [sig, { encoding: "jsonParsed", maxSupportedTransactionVersion: 1 }]);
       const m = tx?.meta;
       const post = m?.postTokenBalances?.find((b) => b.owner === owner && b.mint === ZEC_MINT);
       const pre = post && m.preTokenBalances.find((b) => b.accountIndex === post.accountIndex);
@@ -135,7 +138,7 @@ async function sampleReceived(holders, payouts) {
           let total = 0n, payments = 0;
           for (const x of sigs ?? []) {
             if (x.err || x.blockTime == null || Math.abs(x.blockTime - t0) > 20 * 60) continue;
-            const t = await rpc("getTransaction", [x.signature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 }]);
+            const t = await rpc("getTransaction", [x.signature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 1 }]);
             const mm = t?.meta; if (!mm) continue;
             const d = (o) => {
               const po = mm.postTokenBalances?.find((b) => b.owner === o && b.mint === ZEC_MINT);
@@ -249,7 +252,43 @@ async function checkRun(id) {
   if (!e) p("no eligibility prices published");
   if (pot !== BigInt(run.paid) + BigInt(run.rolledOver || 0) + BigInt(run.rentZec || 0))
     p("pot != paid + rolledOver + rent");
-  if (BigInt(run.paid) !== confirmed - rent) p("paid != confirmed shares - rent");
+
+  // Shares off by a whole factor: is the run paid as a basket of tokens? The
+  // payout rows then list only the ZEC leg; read the other legs from the chain.
+  // (only when every share is well under its formula share, as one leg of a split is)
+  const legLike = badShares && s.holders.every(([owner, bal]) => {
+    const row = payouts.get(owner);
+    return !row || BigInt(row.share) === 0n || BigInt(row.share) * 3n <= ((pot * BigInt(bal)) / sum) * 2n;
+  });
+  if (legLike && rpcUrl && run.releaseSignature) {
+    try {
+      const rel = await rpc("getTransaction", [run.releaseSignature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 1 }]);
+      const b = rel?.meta?.postTokenBalances?.find((x) => x.owner === REWARDS_WALLET && x.mint === ZEC_MINT);
+      const zecAta = b && (rel.transaction.message.accountKeys[b.accountIndex]?.pubkey ?? rel.transaction.message.accountKeys[b.accountIndex]);
+      if (!zecAta) throw new Error("rewards wallet not in the release");
+      const t0 = Date.parse(run.startedAt) / 1000, t1 = Date.parse(run.finishedAt ?? run.startedAt) / 1000;
+      if (!Number.isFinite(t0)) throw new Error("run has no start time");
+      const rows = s.holders.map(([owner, balance]) => ({ owner, balance, row: payouts.get(owner) }))
+        .filter((x) => x.row?.status === "confirmed").map((x) => ({ owner: x.owner, balance: x.balance, share: x.row.share }));
+      const basket = await readBasket(rpc, { zecAta, start: Math.floor(t0) - 120, end: Math.ceil(t1) + 600, holders: new Set(payouts.keys()) });
+      const j2 = judgeBasket({ rows, pot, sum, paid: BigInt(run.paid) }, basket);
+      out.basket = j2;
+      if (j2.ok) {
+        out.problems = out.problems.filter((x) => !/shares not floor/.test(x));
+        delete out.diagnosis;
+        out.note = `paid as a basket of ${j2.tokens.length} tokens (${j2.tokens.join(", ")}): every holder got each token in proportion to their share`;
+      } else p(`basket payout doesn't add up: ${j2.problems.join("; ")}`);
+    } catch (err) {
+      // couldn't read the other legs: not checked (an open alert stays open), not a finding
+      out.basket = { error: err.message.slice(0, 80) };
+      out.unchecked = true;
+      out.problems = out.problems.filter((x) => !/shares not floor/.test(x));
+      delete out.diagnosis;
+      out.note = `not checked: shares look like one leg of a basket, and the other legs couldn't be read (${out.basket.error})`;
+    }
+  }
+  // paid covers every leg of a basket, the rows only the ZEC leg
+  if (BigInt(run.paid) !== confirmed - rent && !out.basket?.ok && !out.unchecked) p("paid != confirmed shares - rent");
 
   if (rpcUrl) {
     Object.assign(out, await checkRelease(run));
@@ -288,7 +327,7 @@ function checkBatchGroup(ids) {
 const releases = new Map();      // run id -> release signature
 async function followMoney(runId) {
   const sig = releases.get(runId);
-  const rel = await rpc("getTransaction", [sig, { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 }]);
+  const rel = await rpc("getTransaction", [sig, { encoding: "jsonParsed", maxSupportedTransactionVersion: 1 }]);
   const keysOf = (tx) => tx.transaction.message.accountKeys.map((k) => k.pubkey ?? k);
   const rw = rel.meta.postTokenBalances.find((b) => b.owner === REWARDS_WALLET && b.mint === ZEC_MINT);
   if (!rw) return { error: "rewards wallet not in the release" };
@@ -301,7 +340,7 @@ async function followMoney(runId) {
   const unknown = new Map(), unknownTx = new Map();
   let inflow = 0n, outflow = 0n, txs = 0;
   for (const x of inWindow.slice(0, 150)) {
-    const tx = await rpc("getTransaction", [x.signature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 }]);
+    const tx = await rpc("getTransaction", [x.signature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 1 }]);
     const m = tx?.meta; if (!m) continue;
     txs++;
     const net = new Map();
@@ -361,7 +400,7 @@ async function followMoney(runId) {
           const progs = new Set();
           for (const x2 of sigs2.slice(0, 3)) {
             if (x2.signature === unknownTx.get(o)) continue;
-            const t2 = await rpc("getTransaction", [x2.signature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 }]);
+            const t2 = await rpc("getTransaction", [x2.signature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 1 }]);
             for (const ix of [...(t2?.transaction?.message?.instructions ?? []), ...((t2?.meta?.innerInstructions ?? []).flatMap((i) => i.instructions ?? []))])
               if (ix.programId) progs.add(ix.programId);
           }
@@ -381,7 +420,7 @@ async function main() {
     while (!(await getJson(API + (last + 100))).notFound) last += 100;
     while (!(await getJson(API + (last + 1))).notFound) last += 1;
   }
-  const ids = [];
+  const ids = extraRuns.filter((i) => i < from);
   for (let i = from; i <= last; i++) ids.push(i);
 
   const results = [];
@@ -401,10 +440,12 @@ async function main() {
   const summary = {
     checkedAt: new Date().toISOString(),
     runs: runs.length,
-    passed: runs.length - flagged.length,
+    // a run paid as a basket that checks out has a note, not a problem: it passed
+    passed: runs.length - flagged.filter((r) => !(r.basket?.ok && !r.problems.length)).length,
     flagged: flagged.length,
     unchecked: unchecked.length,
-    firstUnchecked: unchecked.length ? Math.min(...unchecked.map((r) => r.id)) : null,
+    // only the range decides where the next pass starts; re-checked older runs (--runs) don't move it
+    firstUnchecked: unchecked.some((r) => r.id >= from) ? Math.min(...unchecked.filter((r) => r.id >= from).map((r) => r.id)) : null,
     zecPaidInDoneRuns: (Number(paid) / 1e8).toFixed(8),
     onChainChecks: Boolean(rpcUrl),
   };

@@ -57,7 +57,9 @@ const VAULT_ROUTINE = ["settle", "roots_to_pot", "draw_lp", "draw_donation", "dr
   "observe_sapling", "release_rewards", "close_rewards_run",
   "withdraw_tax", "sell_tax", "settle_tax", "collect_creator_fee", "collect_pool_fees", "draw_grove", "close_grove"];
 const VAULT_PRIVILEGED = ["retire_roots", "set_lp", "init_donation", "set_donation",
-  "pause_donations", "set_zec_payees", "pause_zec_payees"];
+  "pause_donations", "set_zec_payees", "pause_zec_payees",
+  // seen run through the multisig, 29 Oct - 3 Nov 2026
+  "set_terminal", "set_terminal_cashback", "set_stock_quote", "set_gas"];
 const SQUADS = ["multisig_create_v2", "config_transaction_create", "config_transaction_execute",
   "vault_transaction_create", "transaction_buffer_create", "vault_transaction_create_from_buffer",
   "proposal_create", "proposal_activate", "proposal_approve", "proposal_reject", "proposal_cancel",
@@ -79,6 +81,7 @@ const statePath = opt("--state", "keys-state.json");
 const webhook = opt("--webhook", null);
 const multisig = args.includes("--no-squads") ? null : opt("--squads-multisig", DEFAULT_MULTISIG);
 const txLimit = Number(opt("--limit", 100));
+const maxPages = Number(opt("--max-pages", 200));
 const asJson = args.includes("--json");
 
 let rpcId = 0;
@@ -177,10 +180,20 @@ function classify(table, name, caller, signers) {
 
 // 3 and 4. Recent instructions, named from logs or by Anchor discriminator
 async function recentInstructions(address, programId, table, sinceSig) {
-  const sigs = await rpc("getSignaturesForAddress", [address, { limit: txLimit, ...(sinceSig ? { until: sinceSig } : {}) }]);
+  // every transaction since the last run, not just the newest page: a gap
+  // here would be a privileged instruction nobody looked at
+  const sigs = [];
+  let before;
+  for (let page = 0; ; page++) {
+    const a = (await rpc("getSignaturesForAddress", [address, { limit: txLimit, ...(sinceSig ? { until: sinceSig } : {}), ...(before ? { before } : {}) }])) ?? [];
+    sigs.push(...a);
+    if (!sinceSig || a.length < txLimit) break;
+    if (page + 1 >= maxPages) throw new Error(`more than ${maxPages * txLimit} transactions since the last run; not skipping any, try again with a higher --max-pages`);
+    before = a.at(-1).signature;
+  }
   const out = [];
   for (const s of sigs.filter((x) => !x.err)) {
-    const tx = await rpc("getTransaction", [s.signature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 }]);
+    const tx = await rpc("getTransaction", [s.signature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 1 }]);
     if (!tx) continue;
     const ixs = [...tx.transaction.message.instructions,
       ...(tx.meta?.innerInstructions ?? []).flatMap((x) => x.instructions)];

@@ -49,7 +49,7 @@ const rpc = async (method, params) => {
   if (j.error) throw new Error(`${method}: ${JSON.stringify(j.error)}`);
   return j.result;
 };
-const getTx = (sig) => rpc("getTransaction", [sig, { encoding: "jsonParsed", maxSupportedTransactionVersion: 0, commitment: "confirmed" }]);
+const getTx = (sig) => rpc("getTransaction", [sig, { encoding: "jsonParsed", maxSupportedTransactionVersion: 1, commitment: "confirmed" }]);
 
 // New signatures on the pot account since the last one seen (oldest first).
 async function newPotSignatures(until) {

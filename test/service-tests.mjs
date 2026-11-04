@@ -33,10 +33,11 @@ const keysReport = (alerts = []) => ({ baseline: false, alerts,
   program: { upgradeAuthority: "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf", lastDeploySlot: 400000000 },
   config: { sha256: "ab".repeat(32), walletsPresent: ["treasury", "rewards"] },
   vaultInstructions: { settle: 12 }, unrecognised: [] });
-const rewardsReport = (ids, problems = {}) => ({
+const rewardsReport = (ids, problems = {}, notes = {}) => ({
   summary: { runs: ids.length, passed: ids.length - Object.keys(problems).length,
     flagged: Object.keys(problems).length, zecPaidInDoneRuns: "1.00000000", onChainChecks: true },
-  flagged: Object.entries(problems).map(([id, p]) => ({ id: Number(id), coin: "TEST", problems: [p] })),
+  flagged: [...Object.entries(problems).map(([id, p]) => ({ id: Number(id), coin: "TEST", problems: [p] })),
+    ...Object.entries(notes).map(([id, note]) => ({ id: Number(id), coin: "TEST", problems: [], note }))],
   results: ids.map((id) => ({ id, problems: problems[id] ? [problems[id]] : [] })),
 });
 const floatReport = (stuck = []) => ({ currentFloatZec: 0, custodyCapZec: 200, inFlight: stuck.length,
@@ -101,12 +102,25 @@ check("rewards failure is raised", r.newPosts.some((p) => p.includes("NEW: rewar
 const upTo115 = Array.from({ length: 20 }, (_, i) => 96 + i);
 r = await once({ keys: keysReport(), rewards: rewardsReport(upTo115, { 97: "snapshot hash mismatch" }), float: floatReport() });
 check("still-failing run is not posted twice", !r.newPosts.some((p) => p.includes("reward run 97")));
-// the pass after that starts at 110 and no longer covers 97
-r = await once({ keys: keysReport(), rewards: rewardsReport([110, 111, 112, 113, 114, 115]), float: floatReport() });
-check("run 97 stays open once later passes no longer re-check it",
-  rewardsArgs().at(-1).endsWith("--from 110") &&
+// the pass after that starts at 110, and checks 97 again because its alert is open
+r = await once({ keys: keysReport(), rewards: rewardsReport([97, 110, 111, 112, 113, 114, 115], { 97: "snapshot hash mismatch" }), float: floatReport() });
+check("an older run with an open alert is checked again",
+  rewardsArgs().at(-1).endsWith("--from 110 --runs 97") &&
   Object.keys(r.state.openAlerts.rewards).some((a) => a.startsWith("reward run 97")) &&
-  !r.newPosts.some((p) => p.includes("RESOLVED: reward run 97")), rewardsArgs().at(-1));
+  !r.newPosts.some((p) => p.includes("reward run 97")), rewardsArgs().at(-1));
+// 97 now checks out: resolved
+r = await once({ keys: keysReport(), rewards: rewardsReport([97, 110, 111, 112, 113, 114, 115]), float: floatReport() });
+check("an older run that checks out again is resolved",
+  !Object.keys(r.state.openAlerts.rewards).some((a) => a.startsWith("reward run 97")) &&
+  r.newPosts.some((p) => p.includes("RESOLVED: reward run 97")), r.newPosts.join(" | "));
+// shares that turn out to be one leg of a basket payout: withdrawn as our misreading, not resolved
+r = await once({ keys: keysReport(), rewards: rewardsReport([110, 111, 112, 113, 114, 115], { 112: "38 shares not floor(pot*balance/sum); paid != confirmed shares - rent" }), float: floatReport() });
+r = await once({ keys: keysReport(), rewards: rewardsReport([110, 111, 112, 113, 114, 115], {}, { 112: "paid as a basket of 4 tokens (ZEC, $SAPLING, CYPH, hSOL): every holder got each token in proportion to their share" }), float: floatReport() });
+const wd = readFileSync(join(dataDir, "alerts.jsonl"), "utf8").trim().split("\n").map((l) => JSON.parse(l)).filter((a) => a.type === "withdrawn" && /reward run 112/.test(a.text));
+check("a basket run's alert is withdrawn, not resolved",
+  wd.length === 1 && !r.newPosts.some((p) => p.includes("RESOLVED: reward run 112")) && r.newPosts.some((p) => p.includes("WITHDRAWN (our misreading): reward run 112")), r.newPosts.join(" | "));
+const xp = readFileSync(join(dataDir, "x-posts.jsonl"), "utf8").trim().split("\n").map((l) => JSON.parse(l));
+check("and one correction is posted", xp.filter((p) => /^Correction: we withdraw 1 holder-reward alert \(\$TEST\)/.test(p.text)).length === 1, xp.at(-1)?.text);
 
 // 7. a stuck payout
 r = await once({ keys: keysReport(), rewards: rewardsReport([115]), float: floatReport([
@@ -155,7 +169,7 @@ const xServer = createServer((req, res) => {
 });
 await new Promise((ok) => xServer.listen(0, ok));
 const xEnv = { X_API_KEY: "k", X_API_SECRET: "s", X_ACCESS_TOKEN: "t", X_ACCESS_SECRET: "u",
-  X_POST_URL: `http://127.0.0.1:${xServer.address().port}/2/tweets`, X_MAX_PER_RUN: "2" };
+  X_POST_URL: `http://127.0.0.1:${xServer.address().port}/2/tweets`, X_MAX_PER_RUN: "2", X_MAX_PER_DAY: "50" };
 r = await once({ keys: keysReport([...upgradeAlerts(5),
   "privileged vault instruction set_gas via multisig at 2026-10-29T20:23:48.000Z (3MUt)",
   "privileged vault instruction set_stock_quote via multisig at 2026-10-31T20:52:47.000Z (2Gau)"]),
@@ -172,7 +186,7 @@ xServer.close();
 // coin events: previewed once each, logged, never left open as alerts
 const evt = "$SHIELD ($13.6k): the creator has now sold everything they bought.";
 r = await once({ keys: keysReport(), rewards: rewardsReport([115]), float: floatReport(),
-  coins: { coins: 2, carded: 2, refreshed: 2, flagged: 1, flagCounts: {}, notes: [], alerts: [], events: [evt] } });
+  coins: { coins: 2, carded: 2, refreshed: 2, flagged: 1, flagCounts: {}, notes: [], alerts: [], events: [evt] } }, { X_MAX_PER_DAY: "50" });
 xs = xLog();
 const evLog = existsSync(join(dataDir, "coin-events.jsonl")) ? readFileSync(join(dataDir, "coin-events.jsonl"), "utf8") : "";
 check("a coin event becomes an X post and is logged", xs.some((x) => x.check === "coins" && x.text.startsWith(evt)) &&

@@ -121,7 +121,7 @@ function commandFor(name, cfg, store) {
     if (name !== "rewards") return cfg.commands[name];
     const from = Math.max(1, (store.state.rewardsMaxRun || 0) - cfg.checks.rewards.recheckLast);
     store.state.rewardsFrom = from;
-    return [...cfg.commands[name], "--from", String(from)];
+    return [...cfg.commands[name], "--from", String(from), ...rewardsRecheck(store, from)];
   }
   const node = process.execPath;
   if (name === "keys") return [node, join(here, "keys-check.mjs"), "--json", "--rpc", cfg.solanaRpc,
@@ -130,7 +130,7 @@ function commandFor(name, cfg, store) {
   if (name === "rewards") {
     const from = Math.max(1, (store.state.rewardsMaxRun || 0) - cfg.checks.rewards.recheckLast);
     store.state.rewardsFrom = from;
-    return [node, join(here, "rewards-check.mjs"), "--json", "--from", String(from),
+    return [node, join(here, "rewards-check.mjs"), "--json", "--from", String(from), ...rewardsRecheck(store, from),
       ...(cfg.checks.rewards.onChain ? ["--rpc", cfg.solanaRpc] : [])];
   }
   if (name === "tax") return [node, join(here, "tax-check.mjs"), "--json", "--rpc", cfg.solanaRpc,
@@ -283,7 +283,22 @@ async function handleAlerts(name, entry, cfg, store) {
   const unchecked = new Set((entry.summary?.notes ?? []).map((n) => n.match(/^run (\d+): (?:not checked|release not checked)/)?.[1]).filter(Boolean));
   const runOf = (a) => a.match(/^reward run (\d+)/)?.[1];
   const keepOpen = name === "rewards" ? (a) => !now.has(a) && (reRunIdBelow(a, store) || unchecked.has(runOf(a))) : () => false;
-  const resolved = Object.keys(open).filter((a) => !now.has(a) && !keepOpen(a));
+  let resolved = Object.keys(open).filter((a) => !now.has(a) && !keepOpen(a));
+  // reward alerts that went away because the run turned out to be paid as a
+  // basket of tokens were zWatchtower's misreading: withdrawn, with one correction post
+  const basketRuns = new Set((entry.summary?.notes ?? []).map((n) => n.match(/^run (\d+): paid as a basket/)?.[1]).filter(Boolean));
+  const misread = name === "rewards" ? resolved.filter((a) => basketRuns.has(runOf(a)) && /shares not floor/.test(a)) : [];
+  if (misread.length) {
+    resolved = resolved.filter((a) => !misread.includes(a));
+    for (const a of misread) {
+      delete open[a];
+      store.append("alerts.jsonl", { check: name, at: entry.finishedAt, type: "withdrawn", text: a,
+        reason: "the run pays holders in several tokens; zWatchtower counted only the ZEC. Every holder got every token in proportion (see CORRECTIONS.md)" });
+    }
+    const coins = [...new Set(misread.map((a) => a.match(/^reward run \d+ ([^:\s]+)\s*:/)?.[1]).filter(Boolean))];
+    await publishToX(name, [], [], cfg, store, [`Correction: we withdraw ${misread.length} holder-reward alert${misread.length === 1 ? "" : "s"}${coins.length ? ` (${coins.map((c) => "$" + c).join(", ")})` : ""}. Those runs pay holders in several tokens and we counted only the ZEC. On chain, every holder got every token in proportion. Our mistake, logged in CORRECTIONS.md.`]);
+    if (cfg.webhook) await postWebhook(cfg.webhook, `zWatchtower (${name} check)\n${misread.map((a) => `WITHDRAWN (our misreading): ${a}`).join("\n")}`);
+  }
   for (const a of raised) {
     open[a] = entry.finishedAt;
     store.append("alerts.jsonl", { check: name, at: entry.finishedAt, type: "raised", text: a });
@@ -328,10 +343,18 @@ async function publishToX(name, raised, resolved, cfg, store, override) {
 }
 
 // Incremental rewards passes start at state.rewardsFrom; an alert about an
-// earlier run was not re-checked, so it stays open.
+// earlier run stays open unless that run was checked again this pass.
 function reRunIdBelow(alert, store) {
   const m = alert.match(/^reward run (\d+)/);
-  return Boolean(m) && Number(m[1]) < (store.state.rewardsFrom ?? 1);
+  return Boolean(m) && Number(m[1]) < (store.state.rewardsFrom ?? 1) && !(store.state.rewardsRechecked ?? []).includes(Number(m[1]));
+}
+// Older runs with alerts still open are checked again on every pass (at most
+// 20, oldest first), so an alert closes as soon as the run checks out.
+function rewardsRecheck(store, from) {
+  const ids = [...new Set(Object.keys(store.state.openAlerts?.rewards ?? {})
+    .map((a) => Number(a.match(/^reward run (\d+)/)?.[1])).filter((n) => n && n < from))].sort((a, b) => a - b).slice(0, 20);
+  store.state.rewardsRechecked = ids;
+  return ids.length ? ["--runs", ids.join(",")] : [];
 }
 
 // ---- HTTP -------------------------------------------------------------------

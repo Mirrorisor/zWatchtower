@@ -99,7 +99,7 @@ async function main() {
     for (const s of sigs ?? []) {
       if (s.err) continue;
       let tx;
-      try { tx = await rpc("getTransaction", [s.signature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 }]); }
+      try { tx = await rpc("getTransaction", [s.signature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 1 }]); }
       catch (e) { notes.push(`tx ${s.signature.slice(0, 8)}… not read`); continue; }
       txsRead++;
       const { invoked, touched } = programsInTx(tx);
@@ -159,7 +159,7 @@ async function main() {
     for (const s of sigs) {
       if (s.err) continue;
       let tx;
-      try { tx = await rpc("getTransaction", [s.signature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 }]); }
+      try { tx = await rpc("getTransaction", [s.signature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 1 }]); }
       catch { continue; }
       guardTxsRead++;
       const { bought, sold } = tokensHandled(tx);
