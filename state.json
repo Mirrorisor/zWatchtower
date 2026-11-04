@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T06:40:06.671Z",
-      "finishedAt": "2026-11-04T06:40:10.343Z",
+      "startedAt": "2026-11-04T06:48:39.050Z",
+      "finishedAt": "2026-11-04T06:48:42.724Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,15 +21,12 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1,
-          "observe_sapling": 4,
-          "draw_grove": 1,
-          "close_grove": 1,
-          "draw_zec_payee": 1,
-          "settle": 4,
-          "claim_payee": 1
+          "observe_sapling": 8,
+          "settle": 3,
+          "claim_payee": 1,
+          "sell_tax": 2,
+          "withdraw_tax": 2,
+          "settle_tax": 1
         },
         "unrecognised": 1,
         "baseline": false
@@ -762,8 +759,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-04T06:12:04.263Z",
-      "finishedAt": "2026-11-04T06:12:17.633Z",
+      "startedAt": "2026-11-04T06:48:42.729Z",
+      "finishedAt": "2026-11-04T06:49:04.914Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -773,7 +770,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 3888,
+            "seenInTxs": 3933,
             "withJupiter": 48,
             "seeds": [
               "upgradeAuthority",
@@ -807,12 +804,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 296
+            "seenInTxs": 303
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 290
+            "seenInTxs": 297
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -885,7 +882,7 @@
           "breakingRules": []
         },
         "programsSeen": 16,
-        "txsRead": 19,
+        "txsRead": 48,
         "notes": []
       }
     }
