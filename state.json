@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T09:00:08.609Z",
-      "finishedAt": "2026-11-04T09:00:11.985Z",
+      "startedAt": "2026-11-04T09:09:17.762Z",
+      "finishedAt": "2026-11-04T09:09:23.427Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,10 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 8,
+          "close_rewards_run": 1,
+          "release_rewards": 1,
+          "settle": 3
         },
         "unrecognised": 0,
         "baseline": false
@@ -890,8 +893,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-04T08:31:38.428Z",
-      "finishedAt": "2026-11-04T08:32:22.697Z",
+      "startedAt": "2026-11-04T09:09:23.434Z",
+      "finishedAt": "2026-11-04T09:10:08.661Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -918,8 +921,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-04T08:32:22.701Z",
-      "finishedAt": "2026-11-04T08:32:50.603Z",
+      "startedAt": "2026-11-04T09:10:08.663Z",
+      "finishedAt": "2026-11-04T09:10:30.616Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -929,7 +932,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 3991,
+            "seenInTxs": 4002,
             "withJupiter": 48,
             "seeds": [
               "upgradeAuthority",
@@ -963,12 +966,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 316
+            "seenInTxs": 318
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 310
+            "seenInTxs": 312
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -1041,7 +1044,7 @@
           "breakingRules": []
         },
         "programsSeen": 16,
-        "txsRead": 32,
+        "txsRead": 18,
         "notes": []
       }
     }
