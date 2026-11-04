@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T05:50:11.179Z",
-      "finishedAt": "2026-11-04T05:50:13.008Z",
+      "startedAt": "2026-11-04T05:55:11.167Z",
+      "finishedAt": "2026-11-04T05:55:13.010Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,10 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 5,
+          "settle_sapling": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false
       }
     },
@@ -570,8 +571,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-04T05:38:39.892Z",
-      "finishedAt": "2026-11-04T05:38:41.726Z",
+      "startedAt": "2026-11-04T05:55:13.017Z",
+      "finishedAt": "2026-11-04T05:55:14.712Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -590,33 +591,33 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-04T05:38:41.729Z",
-      "finishedAt": "2026-11-04T05:38:50.391Z",
+      "startedAt": "2026-11-04T05:55:14.716Z",
+      "finishedAt": "2026-11-04T05:55:19.337Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1377770577",
+          "claimedZat": "1380814575",
           "chainZat": "1380814575",
-          "notListedYetZat": "3043998",
+          "notListedYetZat": "0",
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 225023168.73906302,
+          "onChain": 225024605.06357002,
           "claimed": 225020000,
           "diffPct": 0,
           "verdict": "matches"
         },
-        "burns": 221,
-        "burnsVerified": 221,
-        "boughtBackZat": "1185925206",
+        "burns": 222,
+        "burnsVerified": 222,
+        "boughtBackZat": "1188969204",
         "venues": {
           "pump amm": 103,
           "raydium cpmm": 59,
           "raydium launchlab": 10,
           "pump bonding curve": 1,
-          "jupiter": 48
+          "jupiter": 49
         },
         "perCoin": {
           "0": {
@@ -626,8 +627,8 @@
           },
           "1993": {
             "mint": "7Ypg1rKLu8q32E1AQEDjaPCg8dfGeCSsMkFnK98zcash",
-            "burns": 48,
-            "zat": "231658079"
+            "burns": 49,
+            "zat": "234702077"
           },
           "ZILLIONS": {
             "mint": "3sKZuSZF7onqPYFrWu3bH4Lh141duydt9MAmSd46jaLJ",
