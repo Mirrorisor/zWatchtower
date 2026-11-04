@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T07:15:02.135Z",
-      "finishedAt": "2026-11-04T07:15:08.416Z",
+      "startedAt": "2026-11-04T07:20:04.100Z",
+      "finishedAt": "2026-11-04T07:20:10.952Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,13 +22,13 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 1,
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1
+          "draw_zec_payee": 1,
+          "close_rewards_run": 1,
+          "release_rewards": 1,
+          "settle": 3,
+          "claim_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false
       }
     },
@@ -739,8 +739,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-04T07:05:09.205Z",
-      "finishedAt": "2026-11-04T07:05:10.827Z",
+      "startedAt": "2026-11-04T07:20:10.957Z",
+      "finishedAt": "2026-11-04T07:20:12.620Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -759,8 +759,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-04T07:05:10.829Z",
-      "finishedAt": "2026-11-04T07:05:18.097Z",
+      "startedAt": "2026-11-04T07:20:12.621Z",
+      "finishedAt": "2026-11-04T07:20:17.346Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -772,10 +772,10 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 225057035.82847595,
-          "claimed": 225060000,
-          "diffPct": 0,
-          "verdict": "matches"
+          "onChain": 225064000.35422397,
+          "claimed": 7.6707,
+          "diffPct": 100,
+          "verdict": "differs"
         },
         "burns": 224,
         "burnsVerified": 224,
@@ -875,13 +875,13 @@
           }
         },
         "pot": {
-          "balanceZat": "2357104",
-          "shownZat": "2357104",
-          "inflowZat": "1389685582",
+          "balanceZat": "2562872",
+          "shownZat": "2562872",
+          "inflowZat": "1389891350",
           "buybackZat": "1387328478",
           "movements": {
             "setup": 1,
-            "inflow": 2837,
+            "inflow": 2838,
             "buyback": 295
           },
           "reconciled": true,
@@ -892,13 +892,15 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": []
+        "notes": [
+          "Sapling's page says 0.00M $SAPLING burned; the chain says 225.06M"
+        ]
       }
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-04T06:47:47.040Z",
-      "finishedAt": "2026-11-04T06:48:30.351Z",
+      "startedAt": "2026-11-04T07:20:17.350Z",
+      "finishedAt": "2026-11-04T07:21:01.796Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -925,8 +927,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-04T06:48:42.729Z",
-      "finishedAt": "2026-11-04T06:49:04.914Z",
+      "startedAt": "2026-11-04T07:21:01.799Z",
+      "finishedAt": "2026-11-04T07:21:33.159Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -936,7 +938,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 3933,
+            "seenInTxs": 3955,
             "withJupiter": 48,
             "seeds": [
               "upgradeAuthority",
@@ -970,12 +972,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 303
+            "seenInTxs": 306
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 297
+            "seenInTxs": 300
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -1048,7 +1050,7 @@
           "breakingRules": []
         },
         "programsSeen": 16,
-        "txsRead": 48,
+        "txsRead": 31,
         "notes": []
       }
     }
