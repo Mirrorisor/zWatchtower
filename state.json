@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T00:05:11.125Z",
-      "finishedAt": "2026-11-04T00:05:14.904Z",
+      "startedAt": "2026-11-04T00:13:02.573Z",
+      "finishedAt": "2026-11-04T00:13:08.346Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,14 +21,19 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle_tax": 3,
-          "sell_tax": 3,
-          "withdraw_tax": 3,
-          "settle": 5,
-          "claim_payee": 2
+          "observe_sapling": 6,
+          "settle_tax": 6,
+          "sell_tax": 6,
+          "withdraw_tax": 6,
+          "draw_zec_payee": 1,
+          "close_rewards_run": 2,
+          "release_rewards": 2,
+          "settle": 2,
+          "claim_payee": 1,
+          "draw_grove": 1,
+          "close_grove": 1
         },
-        "unrecognised": 2,
+        "unrecognised": 1,
         "baseline": false
       }
     },
@@ -752,8 +757,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-03T23:35:26.369Z",
-      "finishedAt": "2026-11-03T23:37:50.862Z",
+      "startedAt": "2026-11-04T00:13:08.355Z",
+      "finishedAt": "2026-11-04T00:15:39.914Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -771,15 +776,6 @@
         },
         "notes": [
           "creator scan: 60 coin(s) read this run, 486 of 486 read so far (0 launched shielded, creator not public)",
-          "funder A77HEr…: 1000 recent txs over 7.7 h, exchange-like, not counted",
-          "funder iGdFcQ…: 1000 recent txs over 1.9 h, exchange-like, not counted",
-          "funder u6PJ8D…: 1000 recent txs over 6.92 h, exchange-like, not counted",
-          "funder DQ5JWb…: 1000 recent txs over 14.54 h, exchange-like, not counted",
-          "funder BmFdpr…: 1000 recent txs over 3.85 h, exchange-like, not counted",
-          "funder F7p3dF…: 1000 recent txs over 0.34 h, exchange-like, not counted",
-          "funder HDamvt…: 1000 recent txs over 57.93 h, counted",
-          "funder Dv34pr…: 1000 recent txs over 898.75 h, counted",
-          "funder B48kNV…: 1000 recent txs over 3.48 h, exchange-like, not counted",
           "first-buyer funding: 0 wallet(s) looked up this run, 1 coin(s) still being looked up, 1 lookup(s) failed",
           "2 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 2)",
           "24 shortlisted coin(s) were under $10,000 on their own page, so no card",
@@ -789,8 +785,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-03T23:37:50.865Z",
-      "finishedAt": "2026-11-03T23:38:33.136Z",
+      "startedAt": "2026-11-04T00:15:39.915Z",
+      "finishedAt": "2026-11-04T00:16:23.017Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -800,7 +796,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 3373,
+            "seenInTxs": 3495,
             "withJupiter": 46,
             "seeds": [
               "upgradeAuthority",
@@ -834,17 +830,17 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 246
+            "seenInTxs": 249
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 240
+            "seenInTxs": 243
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
             "authority": "FytDrVzDybM1TwFQPGb8qaxZR7dBCzNeqT3vtQsceZQK",
-            "seenInTxs": 186
+            "seenInTxs": 190
           },
           {
             "id": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
@@ -906,13 +902,13 @@
           "guards": [
             "GzMQc5VQGggFnicdAKc7MmkQV3dn3i12ux9dbLKqzy6F"
           ],
-          "txsRead": 5,
+          "txsRead": 0,
           "tokensSeen": 3,
           "tokensChecked": 3,
           "breakingRules": []
         },
         "programsSeen": 16,
-        "txsRead": 124,
+        "txsRead": 132,
         "notes": []
       }
     }
