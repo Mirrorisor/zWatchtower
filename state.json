@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T05:30:11.237Z",
-      "finishedAt": "2026-11-04T05:30:13.435Z",
+      "startedAt": "2026-11-04T05:38:58.657Z",
+      "finishedAt": "2026-11-04T05:39:01.716Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,12 +21,15 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
+          "observe_sapling": 7,
+          "settle_sapling": 1,
+          "settle": 2,
+          "claim_payee": 1,
           "settle_tax": 1,
           "sell_tax": 1,
           "withdraw_tax": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 2,
         "baseline": false
       }
     },
@@ -731,8 +734,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-04T05:01:17.434Z",
-      "finishedAt": "2026-11-04T05:03:03.253Z",
+      "startedAt": "2026-11-04T05:39:01.724Z",
+      "finishedAt": "2026-11-04T05:39:44.467Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -749,18 +752,18 @@
           "Creator bought N of supply at launch": 2
         },
         "notes": [
-          "creator scan: 60 coin(s) read this run, 487 of 487 read so far (0 launched shielded, creator not public)",
+          "creator scan: 0 coin(s) read this run, 487 of 487 read so far (0 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
           "1 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 1)",
-          "26 shortlisted coin(s) were under $10,000 on their own page, so no card",
-          "23 wallet(s) are in the top 10 of more than one coin"
+          "25 shortlisted coin(s) were under $10,000 on their own page, so no card",
+          "22 wallet(s) are in the top 10 of more than one coin"
         ]
       }
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-04T05:03:03.256Z",
-      "finishedAt": "2026-11-04T05:03:25.025Z",
+      "startedAt": "2026-11-04T05:39:44.469Z",
+      "finishedAt": "2026-11-04T05:40:15.555Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -770,8 +773,8 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 3826,
-            "withJupiter": 46,
+            "seenInTxs": 3877,
+            "withJupiter": 48,
             "seeds": [
               "upgradeAuthority",
               "admin",
@@ -804,17 +807,17 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 291
+            "seenInTxs": 294
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 285
+            "seenInTxs": 288
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
             "authority": "FytDrVzDybM1TwFQPGb8qaxZR7dBCzNeqT3vtQsceZQK",
-            "seenInTxs": 205
+            "seenInTxs": 220
           },
           {
             "id": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
@@ -824,17 +827,17 @@
           {
             "id": "LockrWmn6K5twhz3y9w1dQERbmgSaRkfnTeTKbpofwE",
             "authority": "FytDrVzDybM1TwFQPGb8qaxZR7dBCzNeqT3vtQsceZQK",
-            "seenInTxs": 73
+            "seenInTxs": 86
           },
           {
             "id": "JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4",
             "authority": "CvQZZ23qYDWF2RUpxYJ8y9K4skmuvYEEjH7fK58jtipQ",
-            "seenInTxs": 48
+            "seenInTxs": 50
           },
           {
             "id": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
             "authority": "JADaUV8kvDpDbJr55wxXJHVaBS3VCj8thZZHjfeuCVLd",
-            "seenInTxs": 46
+            "seenInTxs": 48
           },
           {
             "id": "LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj",
@@ -876,13 +879,13 @@
           "guards": [
             "GzMQc5VQGggFnicdAKc7MmkQV3dn3i12ux9dbLKqzy6F"
           ],
-          "txsRead": 0,
+          "txsRead": 5,
           "tokensSeen": 3,
           "tokensChecked": 3,
           "breakingRules": []
         },
         "programsSeen": 16,
-        "txsRead": 38,
+        "txsRead": 73,
         "notes": []
       }
     }
