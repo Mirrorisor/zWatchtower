@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T18:20:03.983Z",
-      "finishedAt": "2026-11-04T18:20:07.523Z",
+      "startedAt": "2026-11-04T18:29:06.033Z",
+      "finishedAt": "2026-11-04T18:29:10.638Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,12 +21,20 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle_tax": 3,
-          "sell_tax": 3,
-          "withdraw_tax": 3
+          "observe_sapling": 7,
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1,
+          "draw_grove": 1,
+          "close_grove": 1,
+          "close_rewards_run": 1,
+          "release_rewards": 1,
+          "settle": 6,
+          "claim_payee": 1,
+          "settle_tax": 2,
+          "sell_tax": 2,
+          "withdraw_tax": 2
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false
       }
     },
@@ -891,40 +899,36 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-04T17:51:28.691Z",
-      "finishedAt": "2026-11-04T17:53:07.195Z",
+      "startedAt": "2026-11-04T18:29:10.644Z",
+      "finishedAt": "2026-11-04T18:30:22.208Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
-      "events": [
-        "Creator dump: the creator of new coin $ZCASHERS (7bLF…cash) bought 6.1% of supply at launch and has sold 100% of it, most within 1 minute of launch. Market cap now $22.3k.",
-        "$ZCASHERS (7bLF…cash, $22.3k) just passed $10.0k market cap with 3 flags: Creator bought 6.1% of supply at launch; Creator has sold 100% of what they bought; 19 wallets bought 36.5% in the first 10 seconds."
-      ],
+      "events": [],
       "summary": {
         "coins": 490,
-        "carded": 15,
-        "refreshed": 15,
-        "flagged": 13,
+        "carded": 14,
+        "refreshed": 14,
+        "flagged": 12,
         "flagCounts": {
-          "N wallet(s) bought N in the first N seconds": 11,
-          "Creator has sold N of what they bought": 7,
+          "N wallet(s) bought N in the first N seconds": 10,
+          "Creator has sold N of what they bought": 6,
           "Creator sold out of N of their N other coins checked": 3,
-          "Creator bought N of supply at launch": 3
+          "Creator bought N of supply at launch": 2
         },
         "notes": [
-          "creator scan: 32 coin(s) read this run, 490 of 490 read so far (0 launched shielded, creator not public)",
-          "funder 6LY1Jz…: 1000 recent txs over 0.79 h, exchange-like, not counted",
-          "first-buyer funding: 18 wallet(s) looked up this run",
+          "creator scan: 30 coin(s) read this run, 490 of 490 read so far (0 launched shielded, creator not public)",
+          "first-buyer funding: 0 wallet(s) looked up this run",
           "1 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 1)",
           "25 shortlisted coin(s) were under $10,000 on their own page, so no card",
-          "22 wallet(s) are in the top 10 of more than one coin"
+          "20 wallet(s) are in the top 10 of more than one coin"
         ]
       }
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-04T17:53:07.650Z",
-      "finishedAt": "2026-11-04T17:53:56.967Z",
+      "startedAt": "2026-11-04T18:30:22.210Z",
+      "finishedAt": "2026-11-04T18:30:59.718Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -934,7 +938,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 4654,
+            "seenInTxs": 4742,
             "withJupiter": 48,
             "seeds": [
               "upgradeAuthority",
@@ -968,12 +972,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 394
+            "seenInTxs": 406
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 385
+            "seenInTxs": 397
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -1003,12 +1007,12 @@
           {
             "id": "LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj",
             "authority": "FytDrVzDybM1TwFQPGb8qaxZR7dBCzNeqT3vtQsceZQK",
-            "seenInTxs": 33
+            "seenInTxs": 34
           },
           {
             "id": "L2TExMFKdjpN9kozasaurPirfHy9P8sbXoAN1qA3S95",
             "authority": null,
-            "seenInTxs": 13
+            "seenInTxs": 14
           },
           {
             "id": "MNFSTqtC93rEfYHB6hF82sKdZpUDFWkViLByLd1k1Ms",
@@ -1046,7 +1050,7 @@
           "breakingRules": []
         },
         "programsSeen": 16,
-        "txsRead": 137,
+        "txsRead": 95,
         "notes": []
       }
     },
@@ -1071,18 +1075,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-04T18:10:05.835Z",
-      "finishedAt": "2026-11-04T18:10:09.821Z",
+      "startedAt": "2026-11-04T18:30:59.720Z",
+      "finishedAt": "2026-11-04T18:31:04.043Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 105266.73,
-        "nearSupply": 153432.37,
+        "solanaSupply": 105266.65,
+        "nearSupply": 153511.97,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 253.90738273999887,
+        "change24h": 253.82180828000128,
         "notes": []
       }
     }
