@@ -321,6 +321,18 @@ Tests: `node test/keys-tests.mjs` (19 cases).
 Independently re-checks every Sapling holder-reward run from public data.
 It reads `https://sapling.cash/api/rewards/<id>` and, optionally, a Solana RPC.
 
+## Telegram bot
+
+`telegram-bot.mjs` answers `/check TICKER` (or a coin address) with the
+coin's report card, warns when other coins use the same name, and posts
+everything zWatchtower writes to the posts feed (alerts, coin warnings, the
+daily summary) to an alert channel. It long-polls Telegram, so the server
+opens no ports. On a server set up as above:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/Mirrorisor/zWatchtower/main/deploy/setup-bot.sh -o setup-bot.sh && bash setup-bot.sh
+```
+
 ## Run it every 5 minutes on a server
 
 GitHub starts scheduled runs 30–60 minutes apart. On a small Ubuntu 24.04
