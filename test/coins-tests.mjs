@@ -1,6 +1,6 @@
 // Coin report cards: $ZWATCH's real launch (1 Nov 2026), and made-up coins
 // that must trip each flag.
-import { buildCard, isOnCurve, repeatHolders, cardEvents, creatorHistory, launchSummary, creatorRecords, serialCreators } from "../lib/coins.mjs";
+import { buildCard, isOnCurve, repeatHolders, cardEvents, creatorHistory, launchSummary, creatorRecords, serialCreators, dumpAlert, soldOutAt } from "../lib/coins.mjs";
 
 let failures = 0;
 const check = (label, cond, detail) => {
@@ -309,4 +309,23 @@ try {
   rmSync(dir, { recursive: true, force: true });
 }
 
+
+// ---- creator dumps on fresh coins
+{
+  const L = "2026-11-04T10:00:00.000Z", T = (min) => new Date(Date.parse(L) + min * 60000).toISOString();
+  const cr = "Creator111111111111111111111111111111111111";
+  const tr = [{ user: cr, isBuy: true, tokenAmount: "50000000000000", blockTime: T(0) }, { user: "x", isBuy: true, tokenAmount: "1", blockTime: T(1) },
+    { user: cr, isBuy: false, tokenAmount: "20000000000000", blockTime: T(12) }, { user: cr, isBuy: false, tokenAmount: "26000000000000", blockTime: T(38) }];
+  check("sold out at the sell that passed 90%", soldOutAt(tr, cr) === T(38));
+  check("not sold out yet", soldOutAt(tr.slice(0, 3), cr) === null);
+  const l = { mint: "Mint11111111111111111111111111111111111zcash", symbol: "FRESH", launchedAt: L, soldOutAt: T(38), creatorLaunchPct: 5, creatorSoldPct: 92, marketCapUsd: 1800 };
+  const now = Date.parse(T(60));
+  const a = dumpAlert(l, { soldOutAt: null }, now);
+  check("a fresh dump is an alert with the stake, how fast and the market cap",
+    /Creator dump: the creator of new coin \$FRESH \(Mint…cash\) bought 5% of supply at launch and has sold 92% of it, most within 38 minutes of launch\. Market cap now \$1\.8k\./.test(a ?? ""), a);
+  check("only once", dumpAlert(l, { dumpWarned: true }, now) === null);
+  check("a tiny creator buy isn't news", dumpAlert({ ...l, creatorLaunchPct: 0.5 }, null, now) === null);
+  check("an old coin isn't news", dumpAlert(l, null, Date.parse(L) + 49 * 3600e3) === null);
+  check("hours for slower dumps", /within 5 hours/.test(dumpAlert({ ...l, soldOutAt: T(300) }, null, now + 300 * 60000) ?? ""));
+}
 process.exitCode = failures ? 1 : 0;

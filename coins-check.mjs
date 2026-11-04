@@ -15,7 +15,7 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { funderFromTx, fundingFacts, fundingFlags, busyInfo, KNOWN_EXCHANGES } from "./lib/funding.mjs";
 import { dirname, join } from "node:path";
 import { buildCard, repeatHolders, cardEvents, launchSummary, creatorRecords, creatorHistory, serialCreators, creatorOf as creatorOfDetail, isAddress,
-  LIMITS, EARLY_SECONDS, SOLD_OUT_PCT, PRIOR_SOLD_OUT } from "./lib/coins.mjs";
+  LIMITS, EARLY_SECONDS, SOLD_OUT_PCT, PRIOR_SOLD_OUT, dumpAlert, DUMP_WINDOW_MS } from "./lib/coins.mjs";
 
 // Bump when a change to how cards are read would move facts by itself: the
 // first run after it sets a new baseline and posts no events.
@@ -189,9 +189,12 @@ async function main() {
   // ---- creator scan: who launched each coin, and did they sell out?
   state.launches ??= {};
   const nowMs = Date.now();
-  const toScan = coins.filter((c) => !state.launches[c.mint] || nowMs - Date.parse(state.launches[c.mint].scannedAt) > RESCAN_MS)
-    .sort((a, b) => (state.launches[a.mint] ? Date.parse(state.launches[a.mint].scannedAt) : 0) -
-      (state.launches[b.mint] ? Date.parse(state.launches[b.mint].scannedAt) : 0))
+  // coins under two days old are read again every run (that's when creators dump); the rest daily
+  const young = (c) => { const t = Date.parse(state.launches[c.mint]?.launchedAt ?? c.launchedAt ?? c.createdAt ?? ""); return Number.isFinite(t) && nowMs - t < DUMP_WINDOW_MS; };
+  const dueAfter = (c) => (young(c) ? 20 * 60 * 1000 : RESCAN_MS);
+  const toScan = coins.filter((c) => !state.launches[c.mint] || nowMs - Date.parse(state.launches[c.mint].scannedAt) > dueAfter(c))
+    .sort((a, b) => (young(b) - young(a)) || ((state.launches[a.mint] ? Date.parse(state.launches[a.mint].scannedAt) : 0) -
+      (state.launches[b.mint] ? Date.parse(state.launches[b.mint].scannedAt) : 0)))
     .slice(0, scanCoins);
   const scannedNow = [];
   let scanErrors = 0;
@@ -204,8 +207,16 @@ async function main() {
       state.history[c.mint] = hist;
       const was = state.launches[c.mint];
       state.launches[c.mint] = { ...launchSummary({ ...detail, mint: c.mint }, hist.kept, complete),
-        warned: was?.warned ?? false, copyWarned: was?.copyWarned ?? false, scannedAt: new Date().toISOString() };
+        warned: was?.warned ?? false, copyWarned: was?.copyWarned ?? false, dumpWarned: was?.dumpWarned ?? false, scannedAt: new Date().toISOString() };
       scannedNow.push(c.mint);
+      // a creator selling out of a coin under two days old
+      const dump = dumpAlert(state.launches[c.mint], was, nowMs);
+      if (dump) {
+        state.launches[c.mint].dumpWarned = true;
+        // read before dump alerts existed: a dump from then is recorded, not announced as news
+        const before = was && !("soldOutAt" in was);
+        if (state.engine === ENGINE && !before) { events.push(dump); state.events.unshift({ at: new Date().toISOString(), mint: c.mint, symbol: c.symbol, text: dump }); }
+      }
     } catch (e) { scanErrors++; }
     await sleep(pauseMs);
   }
