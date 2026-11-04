@@ -89,7 +89,8 @@ b = await readBasket(chain(1013, 1987), { zecAta: ZATA, start: T - 60, end: T + 
 const C = "HolderCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC";
 j = judgeBasket({ ...run, paid: run.paid + 5000n, rows: [...rows, { owner: C, balance: "1", share: "5000" }] }, b);
 check("a tiny holder with no tokens is noted, not flagged", !j.problems.some((p) => /got none/.test(p)) && j.smallHoldersSkipped[0]?.holders === 1, JSON.stringify(j.problems));
-j = judgeBasket({ ...run, paid: run.paid + 500000n, rows: [...rows, { owner: C, balance: "1", share: "500000" }] }, b);
+j = judgeBasket({ ...run, paid: run.paid + 500000n, rows: [...rows, { owner: C, balance: "1", share: "500000" }] },
+  { ...b, legs: [{ ...b.legs[0], zecIn: 2_000_000n }] });   // a leg big enough that C's slice is worth far more than an account
 check("a real holder with no tokens is flagged", j.problems.some((p) => /1 holders got none/.test(p)), JSON.stringify(j.problems));
 
 // Real run 1491 legs (Solscan, 3 Nov 2026): BOT, every holder's account opened and charged the same cost
@@ -111,4 +112,13 @@ j = judgeBasket(run1491, { swapWallets: ["w"], zecToSwaps: shareSum1491, zecBack
 check("a holder left out of a leg worth far more than an account is flagged, with what wasn't paid",
   j.problems.some((p) => /hSOL: 1 holders got none/.test(p)) && j.problems.some((p) => /hSOL: 6741284 of 160371735 bought wasn't paid out/.test(p)) &&
   !j.problems.some((p) => /proportion/.test(p)), JSON.stringify(j.problems));
+
+// a third-of-half token slice: a holder with a 30,000 zat ZEC share is owed ~8,700 zat of each token, less than an account
+{
+  const rowsT = [{ owner: "Big", balance: "1000", share: "1000000" }, { owner: "Mid", balance: "30", share: "30000" }];
+  const legT = { mint: "he1iusmfkpAdwvxLNGV8Y1iSbj4rUy6yMhEA3fotn9A", bought: 1000000n, from: ["w"], zecIn: 298_000n,
+    sent: new Map([["Big", 1000000n]]), opened: new Set() };
+  const jt = judgeBasket({ rows: rowsT, pot: 2_060_000n, sum: 1030n, paid: 1_328_000n }, { swapWallets: ["w"], zecToSwaps: 298_000n, zecBack: 0n, legs: [legT] });
+  check("a holder whose slice of one token is worth less than an account may be skipped", !jt.problems.some((p) => /got none/.test(p)) && jt.smallHoldersSkipped[0]?.holders === 1, JSON.stringify(jt.problems));
+}
 process.exitCode = failures ? 1 : 0;
