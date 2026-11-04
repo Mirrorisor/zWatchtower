@@ -11,5 +11,6 @@ const defaults = { tax: { alerts: [], notes: [], coins: 16, matching: 16, feeCha
     pot: { balanceZat: "2258", shownZat: "2258", inflowZat: "76977236", buybackZat: "76974978", movements: {}, reconciled: true },
     signers: [] },
   coins: { coins: 2, carded: 2, refreshed: 2, flagged: 1, flagCounts: {}, notes: [], alerts: [] },
-  programs: { saplingPrograms: [], otherPrograms: [], programsSeen: 0, txsRead: 0, notes: [], alerts: [] } };
+  programs: { saplingPrograms: [], otherPrograms: [], programsSeen: 0, txsRead: 0, notes: [], alerts: [] },
+  earnings: { ok: true, alerts: [], summary: { runsIndexed: 3, newRuns: 0, latestRun: 3, coinsPaying: 1, paid7dZec: 0.1, notes: [] } } };
 console.log(JSON.stringify(scen[name] ?? defaults[name]));

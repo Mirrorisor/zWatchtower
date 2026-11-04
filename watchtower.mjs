@@ -49,6 +49,7 @@ const DEFAULTS = {
     flywheel: { everyMinutes: 15 },
     coins: { everyMinutes: 30, maxCoins: 40 },
     programs: { everyMinutes: 30 },
+    earnings: { everyMinutes: 60 },
   },
   timeoutMinutes: 30,
   // Override the command for a check (tests use this): { keys: ["node", "fake.mjs"] }
@@ -148,6 +149,10 @@ function commandFor(name, cfg, store) {
     "--max-coins", String(cfg.checks.coins.maxCoins)];
   if (name === "programs") return [node, join(here, "programs-check.mjs"), "--json", "--rpc", cfg.solanaRpc,
     "--state", join(cfg.dataDir, "programs-state.json")];
+  if (name === "earnings") return [node, join(here, "rewards-explorer.mjs"), "--json",
+    "--state", join(cfg.dataDir, "rewards-index.json"), "--out", join(cfg.dataDir, "rewards.json"),
+    "--coins", join(cfg.dataDir, "coins.json"), "--creators", join(cfg.dataDir, "creators.json"),
+    "--baskets", join(cfg.dataDir, "state.json")];
   if (name === "float") return [node, join(here, "float-check.mjs"), "--json",
     "--stuck-minutes", String(cfg.checks.float.stuckMinutes),
     ...(cfg.zebra ? ["--source", "zebra", "--zebra", cfg.zebra] : []),
@@ -207,6 +212,7 @@ function normalise(name, report) {
     summary: { coins: report.coins, carded: report.carded, refreshed: report.refreshed, flagged: report.flagged,
       flagCounts: report.flagCounts, notes: report.notes },
   };
+  if (name === "earnings") return { ok: true, alerts: [], summary: report.summary ?? {} };
   if (name === "programs") return {
     ok: report.alerts.length === 0,
     alerts: report.alerts,
@@ -262,6 +268,9 @@ async function runCheck(name, cfg, store) {
       await publishToX(name, [], [], cfg, store, entry.events);
       if (cfg.webhook) await postWebhook(cfg.webhook, `zWatchtower (coin report cards)\n${entry.events.join("\n")}`);
     }
+    // what each basket coin pays, for the rewards explorer
+    if (name === "rewards") for (const b of entry.summary?.baskets ?? [])
+      if (b.mint) (store.state.rewardBaskets ??= {})[b.mint] = { tokens: b.tokens, run: b.id };
     // runs waiting for a re-check leave the list once one reads them
     if (name === "rewards" && entry.summary?.checkedIds && store.state.rewardsPending?.length)
       store.state.rewardsPending = store.state.rewardsPending.filter((id) => !entry.summary.checkedIds.includes(id));
@@ -397,6 +406,8 @@ function exportSite(cfg, store, dir) {
   const coins = join(cfg.dataDir, "coins.json");
   const creators = join(cfg.dataDir, "creators.json");
   if (existsSync(creators)) copyFileSync(creators, join(dir, "api", "creators.json"));
+  const earnings = join(cfg.dataDir, "rewards.json");
+  if (existsSync(earnings)) copyFileSync(earnings, join(dir, "api", "rewards.json"));
   if (existsSync(coins)) {
     copyFileSync(coins, join(dir, "api", "coins.json"));
     // a badge per carded coin: badges/<mint>.svg
@@ -407,7 +418,7 @@ function exportSite(cfg, store, dir) {
     } catch (e) { console.error(`badges not written: ${e.message}`); }
   }
   writeFileSync(join(dir, "api", "report.json"), JSON.stringify(weeklyReport(cfg, store)));
-  for (const f of ["coins.html", "posts.html", "report.html", "creators.html"])
+  for (const f of ["coins.html", "posts.html", "report.html", "creators.html", "rewards.html"])
     if (existsSync(join(here, "public", f))) copyFileSync(join(here, "public", f), join(dir, f));
   writeFileSync(join(dir, ".nojekyll"), "");
 }

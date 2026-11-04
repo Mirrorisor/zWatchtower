@@ -56,6 +56,28 @@ A **card**:
 
 A field that couldn't be read is absent rather than guessed.
 
+## `api/rewards.json`: what each coin pays its holders
+
+```jsonc
+{
+  "apiVersion": 1,
+  "generatedAt": "…",
+  "runsIndexed": 1580,               // reward runs read from Sapling's API
+  "latestRun": 1580,
+  "coins": [ /* biggest last-7-days payout first */ ]
+}
+```
+
+| Field | Meaning |
+| --- | --- |
+| `mint`, `symbol` | The coin |
+| `runs`, `runs7d`, `lastRun`, `lastRunAt` | Done reward runs, all time and in the last 7 days |
+| `paidZec`, `paid7dZec`, `paid7dUsd` | What Sapling paid holders (all tokens, valued in ZEC as paid); dollars at the latest run's ZEC price |
+| `tokens` | Tokens the rewards are paid in, once zWatchtower has checked a basket run on chain (`["ZEC"]` for all-ZEC coins), else `null` |
+| `zecFraction` | Share of each holder's amount paid as ZEC in the latest run (1 = all ZEC, 0.5 = half) |
+| `per1kWeekUsd` | Last 7 days' payouts over the value of the holdings that shared them (pools and holders under $20 don't), times $1,000, at the latest run's price. Past payouts, not a promise |
+| `eligibleUsd`, `marketCapUsd` | Value of the eligible holdings at the latest run; the coin's market cap |
+
 ## `badges/<mint>.svg`: a badge per carded coin
 
 Green: no flags. Amber: 1–2 flags. Red: 3 or more. Grey: launch not read yet.
@@ -67,7 +89,7 @@ Link it to the coin's page: `https://zwatchtower.lovable.app/coin/<mint>`.
 {
   "apiVersion": 1,
   "generatedAt": "…",
-  "schedule": { "keys": 5, "rewards": 30, "float": 60, "tax": 15, "flywheel": 15, "coins": 30, "programs": 30 },
+  "schedule": { "keys": 5, "rewards": 30, "float": 60, "tax": 15, "flywheel": 15, "coins": 30, "programs": 30, "earnings": 60 },
   "checks": {
     "keys": { "status": "ran", "ok": true, "finishedAt": "…", "alerts": [], "summary": { … } },
     …

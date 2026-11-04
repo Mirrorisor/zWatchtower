@@ -466,6 +466,8 @@ async function main() {
     zecPaidInDoneRuns: (Number(paid) / 1e8).toFixed(8),
     onChainChecks: Boolean(rpcUrl),
     checkedIds: runs.filter((r) => !r.unchecked && r.release !== "unchecked").map((r) => r.id),
+    // the tokens each verified basket run paid, for the rewards explorer
+    baskets: runs.filter((r) => r.basket?.ok).map((r) => ({ id: r.id, mint: runData.get(r.id)?.mint ?? null, tokens: r.basket.tokens })),
   };
   // batches: flagged runs whose release transaction is shared with other runs
   const byRelease = new Map();
