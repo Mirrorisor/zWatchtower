@@ -1,5 +1,5 @@
 // The Telegram bot: finding coins, writing cards, posting to the channel.
-import { findCoins, formatCheck, newPosts } from "../lib/telegram.mjs";
+import { findCoins, formatCheck, newPosts, watchEntry, watchUpdates, newLaunches, formatLaunch } from "../lib/telegram.mjs";
 import { mkdtempSync, writeFileSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
@@ -36,6 +36,26 @@ check("text is HTML-escaped", !formatCheck("<b>", []).includes("<b><b>"));
 const rows = [{ at: "2026-11-04T01:00:00Z", text: "a" }, { at: "2026-11-04T02:00:00Z", text: "b", status: "error" }, { at: "2026-11-04T03:00:00Z", text: "c" }];
 const np = newPosts(rows, "2026-11-04T00:30:00Z");
 check("channel: new posts since the cursor, oldest first, errors skipped", np.posts.map((p) => p.text).join() === "a,c" && np.cursor === "2026-11-04T03:00:00Z");
+
+
+// /watch: changes to a watched coin's card
+const w0 = { 42: { [SARAH]: watchEntry(findCoins("SARAH", coins, creators)[0]) } };
+let wu = watchUpdates(w0, coins);
+check("watch: no change, no message", wu.messages.length === 0);
+const sold = { cards: [{ ...coins.cards[0], flagCount: 2, flags: [...coins.cards[0].flags, "Creator has sold 60% of what they bought"] }] };
+wu = watchUpdates(w0, sold);
+check("watch: a new flag is reported to the chat", wu.messages.length === 1 && wu.messages[0].chat === "42" && /new flag: Creator has sold 60%/.test(wu.messages[0].text), JSON.stringify(wu.messages));
+check("watch: and not again once reported", watchUpdates(wu.watches, sold).messages.length === 0);
+check("watch: the same flag with a new number isn't news", watchUpdates(wu.watches, { cards: [{ ...sold.cards[0], flags: [coins.cards[0].flags[0], "Creator has sold 75% of what they bought"] }] }).messages.length === 0);
+check("watch: dropping under $10k is reported", /dropped under \$10k/.test(watchUpdates(w0, { cards: [] }).messages[0]?.text ?? ""));
+const small = { 7: { [COPY]: watchEntry(findCoins(COPY, coins, creators)[0]) } };
+check("watch: a small coin getting a card is reported", /now over \$10k/.test(watchUpdates(small, { cards: [{ mint: COPY, symbol: "SARAH", flagCount: 0, flags: [] }] }).messages[0]?.text ?? ""));
+
+// /new: launches after the cursor, oldest first, with the creator's record
+const nl = newLaunches(creators, "2026-11-03T15:38:00.000Z");
+check("new: launches after the cursor", nl.launches.length === 1 && nl.launches[0].mint === COPY && nl.cursor === "2026-11-03T15:40:00.000Z");
+const lt = formatLaunch(nl.launches[0], 1);
+check("new: names the creator's record and copycats", /\$SARAH/.test(lt) && /2 other Sapling coins, sold out of 2 of 2 checked ⚠/.test(lt) && /1 other coin uses this name/.test(lt), lt);
 
 // ---- end to end against a fake Telegram
 const here = dirname(fileURLToPath(import.meta.url));
@@ -77,5 +97,18 @@ try {
   check("end to end: a new post goes to the channel, once", posted.join() === "Copycat: new coin $X", JSON.stringify(posted));
   await run();
   check("end to end: and isn't posted again", sent.filter((s) => s.chat_id === "@alerts").length === 1);
+  // /watch and /new from a private chat
+  updates = [{ update_id: 9, message: { message_id: 5, chat: { id: 77 }, text: "/watch SARAH" } }, { update_id: 10, message: { message_id: 6, chat: { id: 77 }, text: "/new" } }];
+  await run();
+  check("end to end: /watch and /new are confirmed", sent.some((s) => s.chat_id === 77 && /Watching <b>\$SARAH<\/b>/.test(s.text) && /1 other coin uses this name/.test(s.text)) &&
+    sent.some((s) => s.chat_id === 77 && /New-launch messages are on/.test(s.text)));
+  updates = [];
+  writeFileSync(join(dir, "coins.json"), JSON.stringify({ cards: [{ ...coins.cards[0], flagCount: 2, flags: [...coins.cards[0].flags, "Creator has sold 60% of what they bought"] }] }));
+  const later = { creators: [...creators.creators, { creator: "NewCreator11111111111111111111111111111111111", launched: 1, checked: 0, soldOut: 0,
+    coins: [{ mint: "NewMint1111111111111111111111111111111111zcash", symbol: "FRESH", launchedAt: "2099-01-01T00:00:00.000Z" }] }] };
+  writeFileSync(join(dir, "creators.json"), JSON.stringify(later));
+  await run();
+  check("end to end: the watcher hears about the new flag", sent.some((s) => s.chat_id === "77" && /new flag: Creator has sold 60%/.test(s.text)), JSON.stringify(sent.slice(-3)));
+  check("end to end: the subscriber hears about the new launch", sent.some((s) => s.chat_id === "77" && /New on Sapling: <b>\$FRESH<\/b>/.test(s.text) && /first Sapling coin/.test(s.text)), JSON.stringify(sent.slice(-3)));
 } finally { server.close(); rmSync(dir, { recursive: true, force: true }); }
 process.exitCode = failures ? 1 : 0;
