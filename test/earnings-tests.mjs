@@ -1,5 +1,5 @@
 // The rewards explorer's per-coin numbers.
-import { runFacts, aggregate } from "../lib/earnings.mjs";
+import { runFacts, aggregate, crossCheck } from "../lib/earnings.mjs";
 let failures = 0;
 const check = (label, cond, detail) => { if (!cond) failures++; console.log(`${cond ? "PASS" : "FAIL"} ${label}${detail ? ": " + detail : ""}`); };
 
@@ -35,4 +35,10 @@ const rc = aggregate({ 9: coinRun }, { now }).find((c) => c.mint === "R");
 check("and listed as paying in its own token", rc.tokens.includes("$RAYCAT") && rc.paidZec < 1, JSON.stringify(rc));
 check("an unknown unit is left out", runFacts({ run: { ...coinRun, mint: "Q", status: "done", paid: "5", paidIn: "usdc" } }).paid === null);
 check("no $1,000 figure on a tiny holder base", aggregate({ 1: { ...f, eligibleZec: 0.2 } }, { now })[0].per1kWeekUsd === null);
+
+// against Sapling's own totals
+const cs = [{ mint: "M", symbol: "ZDOG", paidZec: 2.2005 }, { mint: "N", symbol: "X", paidZec: 1 }, { mint: "O", symbol: "Y", paidZec: 0.5 }];
+const res = crossCheck(cs, { M: "220000000", N: "150000000" });
+check("totals within 2% match; others are listed; missing pages unknown",
+  cs[0].matchesSapling === true && cs[1].matchesSapling === false && cs[2].matchesSapling === null && res.checked === 2 && res.matching === 1 && res.differ[0].symbol === "X", JSON.stringify(res));
 process.exitCode = failures ? 1 : 0;

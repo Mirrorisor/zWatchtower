@@ -10,11 +10,12 @@
 //
 // Reads only Sapling's public API. Needs Node 18+.
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
-import { runFacts, aggregate } from "./lib/earnings.mjs";
+import { runFacts, aggregate, crossCheck } from "./lib/earnings.mjs";
 
 const args = process.argv.slice(2);
 const opt = (n, d) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] : d; };
-const API = (opt("--api", "https://sapling.cash")).replace(/\/$/, "") + "/api/rewards/";
+const BASE = (opt("--api", "https://sapling.cash")).replace(/\/$/, "");
+const API = BASE + "/api/rewards/";
 const statePath = opt("--state", "./rewards-index.json");
 const outPath = opt("--out", "./rewards.json");
 const concurrency = Number(opt("--concurrency", 6));
@@ -67,14 +68,33 @@ async function main() {
   for (const c of readJson(opt("--coins"))?.cards ?? []) if (c.marketCapUsd != null) mcaps[c.mint] = c.marketCapUsd;
   const baskets = readJson(opt("--baskets"))?.rewardBaskets ?? {};
   const coins = aggregate(state.runs, { mcaps, baskets });
+
+  // Sapling's own "paid to holders" total for each coin, refreshed every few hours (60 coin pages a run)
+  state.saplingTotals ??= {};
+  const stale = coins.map((c) => c.mint).filter((m) => !state.saplingTotals[m] || Date.now() - state.saplingTotals[m].at > 3 * 3600e3)
+    .sort((a, b) => (state.saplingTotals[a]?.at ?? 0) - (state.saplingTotals[b]?.at ?? 0)).slice(0, 60);
+  for (let i = 0; i < stale.length; i += concurrency) {
+    await Promise.all(stale.slice(i, i + concurrency).map(async (m) => {
+      try {
+        const r = await fetch(`${BASE}/api/coins/${m}`);
+        if (!r.ok) return;
+        const j = await r.json(), c = j.coin ?? j;
+        if (c.holderRewardsPaidZec != null) state.saplingTotals[m] = { paid: String(c.holderRewardsPaidZec), at: Date.now() };
+      } catch {}
+    }));
+  }
+  writeFileSync(statePath, JSON.stringify(state));
+  const cc = crossCheck(coins, Object.fromEntries(Object.entries(state.saplingTotals).map(([m, v]) => [m, v.paid])));
   const out = {
     apiVersion: 1, generatedAt: new Date().toISOString(),
     runsIndexed: Object.keys(state.runs).length, latestRun: state.maxId,
+    // our totals against the "paid to holders" figure on each coin's Sapling page
+    crossCheck: { checked: cc.checked, matching: cc.matching, differ: cc.differ.slice(0, 20) },
     coins,
   };
   writeFileSync(outPath, JSON.stringify(out));
   const report = { ok: true, alerts: [], summary: { runsIndexed: out.runsIndexed, newRuns: added, latestRun: state.maxId,
-    coinsPaying: coins.length, paid7dZec: Math.round(coins.reduce((a, c) => a + c.paid7dZec, 0) * 1e4) / 1e4, notes: notes.slice(0, 5) } };
+    coinsPaying: coins.length, crossChecked: cc.checked, matchingSapling: cc.matching, differ: cc.differ.slice(0, 5), paid7dZec: Math.round(coins.reduce((a, c) => a + c.paid7dZec, 0) * 1e4) / 1e4, notes: notes.slice(0, 5) } };
   if (args.includes("--json")) console.log(JSON.stringify(report));
   else console.log(report.summary);
 }
