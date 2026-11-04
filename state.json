@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T06:30:04.200Z",
-      "finishedAt": "2026-11-04T06:30:08.259Z",
+      "startedAt": "2026-11-04T06:35:07.026Z",
+      "finishedAt": "2026-11-04T06:35:09.960Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -24,11 +24,9 @@
           "observe_sapling": 4,
           "settle_tax": 2,
           "sell_tax": 2,
-          "withdraw_tax": 2,
-          "settle": 4,
-          "claim_payee": 1
+          "withdraw_tax": 2
         },
-        "unrecognised": 1,
+        "unrecognised": 0,
         "baseline": false
       }
     },
