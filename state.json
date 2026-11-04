@@ -2,11 +2,14 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T21:50:02.554Z",
-      "finishedAt": "2026-11-04T21:50:06.556Z",
+      "startedAt": "2026-11-04T21:59:13.734Z",
+      "finishedAt": "2026-11-04T21:59:18.350Z",
       "status": "ran",
-      "ok": true,
-      "alerts": [],
+      "ok": false,
+      "alerts": [
+        "multisig vault_transaction_create at 2026-11-04T21:52:04.000Z (3YbeZAhey1bdhbwPevCbvXcekSmD1NS2mx4cWrZLhuKrD87BXbuiPecAwragfk2HtePY7mjMrxjPhYLPZ9YW13Vw)",
+        "multisig proposal_create at 2026-11-04T21:52:04.000Z (3YbeZAhey1bdhbwPevCbvXcekSmD1NS2mx4cWrZLhuKrD87BXbuiPecAwragfk2HtePY7mjMrxjPhYLPZ9YW13Vw)"
+      ],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
@@ -21,12 +24,18 @@
           "recovery"
         ],
         "vaultInstructions": {
+          "observe_sapling": 7,
+          "settle_tax": 5,
+          "sell_tax": 5,
           "withdraw_tax": 4,
-          "observe_sapling": 4,
-          "settle_tax": 4,
-          "sell_tax": 3
+          "convert_sapling_begin": 1,
+          "convert_sapling_end": 1,
+          "settle": 1,
+          "claim_payee": 1,
+          "draw_grove": 1,
+          "close_grove": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 3,
         "baseline": false
       }
     },
@@ -1049,8 +1058,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-04T21:21:58.575Z",
-      "finishedAt": "2026-11-04T21:23:05.579Z",
+      "startedAt": "2026-11-04T21:59:18.785Z",
+      "finishedAt": "2026-11-04T22:00:22.041Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1067,18 +1076,18 @@
           "Creator bought N of supply at launch": 2
         },
         "notes": [
-          "creator scan: 22 coin(s) read this run, 493 of 493 read so far (0 launched shielded, creator not public)",
+          "creator scan: 20 coin(s) read this run, 493 of 493 read so far (0 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
           "1 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 1)",
           "25 shortlisted coin(s) were under $10,000 on their own page, so no card",
-          "23 wallet(s) are in the top 10 of more than one coin"
+          "22 wallet(s) are in the top 10 of more than one coin"
         ]
       }
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-04T21:23:05.582Z",
-      "finishedAt": "2026-11-04T21:23:23.798Z",
+      "startedAt": "2026-11-04T22:00:22.043Z",
+      "finishedAt": "2026-11-04T22:01:01.656Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1088,7 +1097,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 4901,
+            "seenInTxs": 4987,
             "withJupiter": 48,
             "seeds": [
               "upgradeAuthority",
@@ -1122,22 +1131,22 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 430
+            "seenInTxs": 440
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 421
+            "seenInTxs": 431
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
             "authority": "FytDrVzDybM1TwFQPGb8qaxZR7dBCzNeqT3vtQsceZQK",
-            "seenInTxs": 261
+            "seenInTxs": 276
           },
           {
             "id": "LockrWmn6K5twhz3y9w1dQERbmgSaRkfnTeTKbpofwE",
             "authority": "FytDrVzDybM1TwFQPGb8qaxZR7dBCzNeqT3vtQsceZQK",
-            "seenInTxs": 127
+            "seenInTxs": 142
           },
           {
             "id": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
@@ -1199,13 +1208,13 @@
           "guards": [
             "GzMQc5VQGggFnicdAKc7MmkQV3dn3i12ux9dbLKqzy6F"
           ],
-          "txsRead": 0,
+          "txsRead": 5,
           "tokensSeen": 3,
           "tokensChecked": 3,
           "breakingRules": []
         },
         "programsSeen": 17,
-        "txsRead": 37,
+        "txsRead": 111,
         "notes": []
       }
     },
@@ -1230,24 +1239,27 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-04T21:40:05.597Z",
-      "finishedAt": "2026-11-04T21:40:09.750Z",
+      "startedAt": "2026-11-04T22:01:01.659Z",
+      "finishedAt": "2026-11-04T22:01:05.642Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 105693.19,
-        "nearSupply": 153921.5,
+        "solanaSupply": 105686.68,
+        "nearSupply": 153922.83,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 680.3671786100022,
+        "change24h": 673.8582790799992,
         "notes": []
       }
     }
   },
   "openAlerts": {
-    "keys": {},
+    "keys": {
+      "multisig vault_transaction_create at 2026-11-04T21:52:04.000Z (3YbeZAhey1bdhbwPevCbvXcekSmD1NS2mx4cWrZLhuKrD87BXbuiPecAwragfk2HtePY7mjMrxjPhYLPZ9YW13Vw)": "2026-11-04T21:59:18.350Z",
+      "multisig proposal_create at 2026-11-04T21:52:04.000Z (3YbeZAhey1bdhbwPevCbvXcekSmD1NS2mx4cWrZLhuKrD87BXbuiPecAwragfk2HtePY7mjMrxjPhYLPZ9YW13Vw)": "2026-11-04T21:59:18.350Z"
+    },
     "rewards": {
       "reward run 1491 ███: 11 shares not floor(pot*balance/sum); basket payout doesn't add up: hSOL: 6741284 of 160371735 bought wasn't paid out; hSOL: 1 holders got none; paid != confirmed shares - rent": "2026-11-04T07:01:45.840Z",
       "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent": "2026-11-04T07:01:45.840Z",
