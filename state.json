@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T12:55:03.745Z",
-      "finishedAt": "2026-11-04T12:55:06.778Z",
+      "startedAt": "2026-11-04T13:00:04.489Z",
+      "finishedAt": "2026-11-04T13:00:06.977Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,16 +21,14 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle_tax": 2,
-          "convert_tax_begin": 2,
-          "convert_tax_end": 2,
-          "close_rewards_run": 1,
-          "release_rewards": 1,
-          "settle_sapling": 1,
-          "settle": 1
+          "register_launchlab_coin": 1,
+          "declare_payee": 1,
+          "observe_sapling": 3,
+          "settle_tax": 1,
+          "convert_tax_begin": 1,
+          "convert_tax_end": 1
         },
-        "unrecognised": 5,
+        "unrecognised": 4,
         "baseline": false
       }
     },
@@ -1047,6 +1045,22 @@
         "txsRead": 41,
         "notes": []
       }
+    },
+    "earnings": {
+      "check": "earnings",
+      "startedAt": "2026-11-04T13:00:06.987Z",
+      "finishedAt": "2026-11-04T13:02:42.182Z",
+      "status": "ran",
+      "ok": true,
+      "alerts": [],
+      "summary": {
+        "runsIndexed": 1583,
+        "newRuns": 1583,
+        "latestRun": 1583,
+        "coinsPaying": 182,
+        "paid7dZec": 1295069.5163,
+        "notes": []
+      }
     }
   },
   "openAlerts": {
@@ -1059,7 +1073,8 @@
     "tax": {},
     "flywheel": {},
     "coins": {},
-    "programs": {}
+    "programs": {},
+    "earnings": {}
   },
   "rewardsMaxRun": 1582,
   "rewardsFrom": 1577,
