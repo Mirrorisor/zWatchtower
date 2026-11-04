@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T15:05:03.344Z",
-      "finishedAt": "2026-11-04T15:05:06.985Z",
+      "startedAt": "2026-11-04T15:10:04.653Z",
+      "finishedAt": "2026-11-04T15:10:07.475Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,16 +21,12 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5,
-          "draw_grove": 1,
-          "close_grove": 1,
-          "settle_tax": 2,
-          "convert_tax_begin": 2,
-          "convert_tax_end": 2,
-          "settle": 2,
-          "settle_sapling": 1
+          "observe_sapling": 3,
+          "settle_tax": 1,
+          "sell_tax": 1,
+          "withdraw_tax": 1
         },
-        "unrecognised": 5,
+        "unrecognised": 0,
         "baseline": false
       }
     },
@@ -1052,33 +1048,20 @@
     },
     "earnings": {
       "check": "earnings",
-      "startedAt": "2026-11-04T14:05:24.345Z",
-      "finishedAt": "2026-11-04T14:08:07.704Z",
+      "startedAt": "2026-11-04T15:10:07.481Z",
+      "finishedAt": "2026-11-04T15:10:13.784Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "runsIndexed": 1586,
-        "newRuns": 1586,
-        "latestRun": 1586,
+        "runsIndexed": 1587,
+        "newRuns": 1,
+        "latestRun": 1587,
         "coinsPaying": 182,
-        "crossChecked": 60,
-        "matchingSapling": 58,
-        "differ": [
-          {
-            "symbol": "1993",
-            "mint": "7Ypg1rKLu8q32E1AQEDjaPCg8dfGeCSsMkFnK98zcash",
-            "ours": 13.374307,
-            "sapling": 12.96417929
-          },
-          {
-            "symbol": "RAYCAT",
-            "mint": "7PaNF1aGK5Ag6BMqkKSBq6BMV3sdzrjw34Zc3mjzcash",
-            "ours": 0.628956,
-            "sapling": 0.59543876
-          }
-        ],
-        "paid7dZec": 62.524,
+        "crossChecked": 119,
+        "matchingSapling": 119,
+        "differ": [],
+        "paid7dZec": 62.0041,
         "notes": []
       }
     },
