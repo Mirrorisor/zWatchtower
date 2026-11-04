@@ -123,7 +123,8 @@ async function main() {
       (state.pot.problems ??= []).push({ signature: c.signature, problem: p });
     }
     if (c.kind === "buyback" && !listed.some((b) => b.signature === c.signature) && !state.burns[c.signature]) {
-      notes.push(`buyback ${c.signature} drew ${-BigInt(c.delta)} zat but is not in Sapling's burn list`);
+      // usually the newest buyback, before Sapling's list catches up; kept until it's listed
+      (state.pot.unlisted ??= {})[c.signature] = String(-BigInt(c.delta));
     }
     if (c.kind === "inflow") state.pot.inflowZat = String(BigInt(state.pot.inflowZat ?? "0") + BigInt(c.delta));
     if (c.kind === "buyback") state.pot.buybackZat = String(BigInt(state.pot.buybackZat ?? "0") - BigInt(c.delta));
@@ -155,9 +156,21 @@ async function main() {
   if (live.pot?.zat != null && BigInt(live.pot.zat) !== bal) {
     notes.push(`Sapling shows the pot at ${live.pot.zat} zat, chain says ${bal} (may be a moment out of date)`);
   }
-  const listedZat = listed.reduce((a, b) => a + BigInt(b.zat), 0n);
-  if (live.hero?.zat != null && BigInt(live.hero.zat) !== listedZat) {
-    notes.push(`headline ${live.hero.zat} zat bought back, listed burns add up to ${listedZat}`);
+  // Sapling's headline "bought back" total against every buyback the pot paid
+  // on chain since it was set up. (Its burn list only shows recent burns, so
+  // it can't be compared with the headline.) Buybacks not listed yet are the
+  // ones Sapling hasn't caught up with.
+  for (const sig of Object.keys(state.pot.unlisted ?? {}))
+    if (listed.some((b) => b.signature === sig) || state.burns[sig]) delete state.pot.unlisted[sig];
+  const unlistedZat = Object.values(state.pot.unlisted ?? {}).reduce((a, z) => a + BigInt(z), 0n);
+  let headline = null;
+  if (live.hero?.zat != null && state.pot.complete) {
+    const chain = BigInt(state.pot.buybackZat ?? "0"), claimed = BigInt(live.hero.zat);
+    const diff = chain - claimed;
+    headline = { claimedZat: String(claimed), chainZat: String(chain), notListedYetZat: String(unlistedZat),
+      verdict: diff === 0n || diff === unlistedZat ? "matches the chain" : "differs from the chain" };
+    if (headline.verdict !== "matches the chain")
+      notes.push(`Sapling's headline says ${claimed} zat bought back; the pot paid ${chain} zat on chain (${unlistedZat} of it not listed yet)`);
   }
 
   // 3. Sapling's headline burn total against $SAPLING's supply on chain
@@ -181,6 +194,7 @@ async function main() {
   }
   const report = {
     checkedAt: new Date().toISOString(),
+    headline,
     saplingBurn,
     burns: results.length,
     burnsVerified: results.filter((r) => r.problems.length === 0).length,

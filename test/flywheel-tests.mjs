@@ -162,8 +162,8 @@ try {
   x = await run();
   check("end to end: a new signing key raises an alert",
     x.report.alerts.some((a) => /new signing key NewHotKey/.test(a)), JSON.stringify(x.report?.alerts));
-  check("end to end: an unlisted buyback is noted", x.report.notes.some((n) => /NewKeyBuyback drew 247421 zat but is not in Sapling's burn list/.test(n)),
-    JSON.stringify(x.report?.notes));
+  check("end to end: a buyback not listed yet is counted, and the headline still matches the chain",
+    x.report.headline?.notListedYetZat === "247421" && x.report.headline.verdict === "matches the chain", JSON.stringify(x.report?.headline));
 
   // the balance stops matching what was seen
   world.balance -= 5n;

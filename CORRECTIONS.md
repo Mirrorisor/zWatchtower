@@ -6,6 +6,7 @@ issue form; each gets a public answer.
 
 | Date (UTC) | What was wrong | Fix |
 | --- | --- | --- |
+| 2026-11-04 | The flywheel check compared Sapling's "bought back" headline (13.41 ZEC) with its burn list (4.73 ZEC) and reported a gap. The list only shows recent burns; the headline covers everything. Against every buyback the pot paid on chain (13.50 ZEC, 285 buybacks) the headline matches, apart from one buyback not listed yet. | The headline is compared with the pot's on-chain buybacks, counting buybacks Sapling hasn't listed yet. |
 | 2026-11-03 | The first-buyer funding check flagged $1993 and $SHINU because several early buyers were first funded by the same wallet; that wallet funds wallets across many coins, like an exchange's withdrawal wallet. | Funders doing 1,000 transactions within a day no longer count, and labelled exchange wallets (starting with Binance 2, the one involved) never do. |
 | 2026-11-03 | After moving to a server running Node 18, the rewards check couldn't hash snapshots ("crypto is not defined"), so no run was checked for about 30 minutes, and run 1524's open alert was marked resolved because the run went unchecked. | Hashing uses node:crypto, which works on every supported Node; an unchecked run now keeps its alert open. |
 | 2026-11-02 | Coins launched from a shielded Zcash wallet (Sapling shows "shielded launch" as the creator) were counted as one creator. | Shielded launches now have no public creator; nothing is said about their buys or sells (aea3563). |
