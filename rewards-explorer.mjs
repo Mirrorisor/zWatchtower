@@ -34,7 +34,10 @@ async function getRun(id) {
 }
 
 async function main() {
-  const state = readJson(statePath) ?? { runs: {}, maxId: 0 };
+  // bump when runFacts changes what it keeps: the index is then rebuilt once
+  const VERSION = 2;   // 2: runs paid in the coin itself are valued in ZEC
+  let state = readJson(statePath);
+  if (!state || state.version !== VERSION) state = { version: VERSION, runs: {}, maxId: 0 };
   const notes = [];
   // runs that weren't finished last time are read again
   const redo = Object.entries(state.runs).filter(([, r]) => r && !["done", "failed"].includes(r.status)).map(([id]) => Number(id));

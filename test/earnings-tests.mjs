@@ -26,4 +26,13 @@ check("an all-ZEC coin pays ZEC", n.tokens.join() === "ZEC");
 check("$1,000 held earned: week's payout over eligible holdings", m.per1kWeekUsd === 10, String(m.per1kWeekUsd));   // 0.02 ZEC / 2 ZEC * 1000
 check("week's payout in dollars at the run's ZEC price", m.paid7dUsd === 24);
 check("biggest weekly payer first", out[0].mint === "N");
+
+// a run paid in the coin itself: valued in ZEC at the run's price
+const coinRun = runFacts({ run: { id: 9, mint: "R", symbol: "RAYCAT", status: "done", startedAt: "2026-11-03T00:00:00Z", pot: "74123216917649", paid: "74123216917649", paidIn: "coin" },
+  eligibility: { zecPerToken: "0.000000004712651560", zecUsd: "1265" }, snapshot: { holders: [["A", "1"]] }, payouts: [{ owner: "A", share: "1" }] });
+check("a run paid in the coin is valued in zat at its price, not read as zat", coinRun.paid === String(Math.round(74123216.917649 * 0.00000000471265156 * 1e8)) && coinRun.paidCoin === "74123216917649", JSON.stringify(coinRun));
+const rc = aggregate({ 9: coinRun }, { now }).find((c) => c.mint === "R");
+check("and listed as paying in its own token", rc.tokens.includes("$RAYCAT") && rc.paidZec < 1, JSON.stringify(rc));
+check("an unknown unit is left out", runFacts({ run: { ...coinRun, mint: "Q", status: "done", paid: "5", paidIn: "usdc" } }).paid === null);
+check("no $1,000 figure on a tiny holder base", aggregate({ 1: { ...f, eligibleZec: 0.2 } }, { now })[0].per1kWeekUsd === null);
 process.exitCode = failures ? 1 : 0;
