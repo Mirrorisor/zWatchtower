@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T13:30:11.489Z",
-      "finishedAt": "2026-11-04T13:30:13.544Z",
+      "startedAt": "2026-11-04T13:35:11.523Z",
+      "finishedAt": "2026-11-04T13:35:16.440Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,16 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "settle_tax": 3,
+          "convert_tax_begin": 2,
+          "convert_tax_end": 2,
+          "sell_tax": 1,
+          "withdraw_tax": 1,
+          "observe_sapling": 4,
+          "settle": 3,
+          "collect_protocol_pool_fees": 14
         },
-        "unrecognised": 0,
+        "unrecognised": 18,
         "baseline": false
       }
     },
@@ -1059,6 +1066,23 @@
         "paid7dZec": 1295069.5163,
         "notes": []
       }
+    },
+    "zec": {
+      "check": "zec",
+      "startedAt": "2026-11-04T13:35:16.445Z",
+      "finishedAt": "2026-11-04T13:35:20.276Z",
+      "status": "ran",
+      "ok": true,
+      "alerts": [],
+      "events": [],
+      "summary": {
+        "solanaSupply": 105012.82,
+        "nearSupply": 153305.17,
+        "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
+        "freezeAuthority": null,
+        "change24h": 0,
+        "notes": []
+      }
     }
   },
   "openAlerts": {
@@ -1072,7 +1096,8 @@
     "flywheel": {},
     "coins": {},
     "programs": {},
-    "earnings": {}
+    "earnings": {},
+    "zec": {}
   },
   "rewardsMaxRun": 1584,
   "rewardsFrom": 1577,
