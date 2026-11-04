@@ -50,6 +50,7 @@ const DEFAULTS = {
     coins: { everyMinutes: 30, maxCoins: 40 },
     programs: { everyMinutes: 30 },
     earnings: { everyMinutes: 60 },
+    zec: { everyMinutes: 15 },
   },
   timeoutMinutes: 30,
   // Override the command for a check (tests use this): { keys: ["node", "fake.mjs"] }
@@ -149,6 +150,8 @@ function commandFor(name, cfg, store) {
     "--max-coins", String(cfg.checks.coins.maxCoins)];
   if (name === "programs") return [node, join(here, "programs-check.mjs"), "--json", "--rpc", cfg.solanaRpc,
     "--state", join(cfg.dataDir, "programs-state.json")];
+  if (name === "zec") return [node, join(here, "zec-check.mjs"), "--json", "--rpc", cfg.solanaRpc,
+    "--state", join(cfg.dataDir, "zec-state.json"), "--out", join(cfg.dataDir, "zec.json")];
   if (name === "earnings") return [node, join(here, "rewards-explorer.mjs"), "--json",
     "--state", join(cfg.dataDir, "rewards-index.json"), "--out", join(cfg.dataDir, "rewards.json"),
     "--coins", join(cfg.dataDir, "coins.json"), "--creators", join(cfg.dataDir, "creators.json"),
@@ -213,6 +216,8 @@ function normalise(name, report) {
       flagCounts: report.flagCounts, notes: report.notes },
   };
   if (name === "earnings") return { ok: true, alerts: [], summary: report.summary ?? {} };
+  if (name === "zec") return { ok: report.alerts.length === 0, alerts: report.alerts, events: report.events ?? [],
+    summary: { ...report.summary, notes: report.notes ?? [] } };
   if (name === "programs") return {
     ok: report.alerts.length === 0,
     alerts: report.alerts,
@@ -266,7 +271,7 @@ async function runCheck(name, cfg, store) {
     if (entry.events?.length) {
       for (const text of entry.events) store.append("coin-events.jsonl", { at: entry.finishedAt, text });
       await publishToX(name, [], [], cfg, store, entry.events);
-      if (cfg.webhook) await postWebhook(cfg.webhook, `zWatchtower (coin report cards)\n${entry.events.join("\n")}`);
+      if (cfg.webhook) await postWebhook(cfg.webhook, `zWatchtower (${name === "coins" ? "coin report cards" : name + " check"})\n${entry.events.join("\n")}`);
     }
     // what each basket coin pays, for the rewards explorer
     if (name === "rewards") for (const b of entry.summary?.baskets ?? [])
@@ -406,6 +411,8 @@ function exportSite(cfg, store, dir) {
   const coins = join(cfg.dataDir, "coins.json");
   const creators = join(cfg.dataDir, "creators.json");
   if (existsSync(creators)) copyFileSync(creators, join(dir, "api", "creators.json"));
+  const zecOut = join(cfg.dataDir, "zec.json");
+  if (existsSync(zecOut)) copyFileSync(zecOut, join(dir, "api", "zec.json"));
   const earnings = join(cfg.dataDir, "rewards.json");
   if (existsSync(earnings)) copyFileSync(earnings, join(dir, "api", "rewards.json"));
   if (existsSync(coins)) {
