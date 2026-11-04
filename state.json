@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T14:45:11.228Z",
-      "finishedAt": "2026-11-04T14:45:13.206Z",
+      "startedAt": "2026-11-04T14:50:35.780Z",
+      "finishedAt": "2026-11-04T14:50:40.086Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,19 +21,26 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1
+          "observe_sapling": 5,
+          "draw_grove": 1,
+          "close_grove": 1,
+          "settle_tax": 2,
+          "convert_tax_begin": 2,
+          "convert_tax_end": 2,
+          "draw_zec_payee": 1,
+          "close_rewards_run": 1,
+          "release_rewards": 1,
+          "settle": 2,
+          "claim_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 5,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-04T14:20:09.881Z",
-      "finishedAt": "2026-11-04T14:21:14.631Z",
+      "startedAt": "2026-11-04T14:50:40.092Z",
+      "finishedAt": "2026-11-04T14:51:43.621Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -41,29 +48,28 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-04T14:20:46.741Z",
-        "runs": 10,
-        "passed": 8,
+        "checkedAt": "2026-11-04T14:51:16.584Z",
+        "runs": 9,
+        "passed": 7,
         "flagged": 2,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.87928885",
+        "zecPaidInDoneRuns": "0.87928531",
         "onChainChecks": true,
         "checkedIds": [
           1491,
           1573,
-          1579,
-          1580,
           1581,
           1582,
           1583,
           1584,
           1585,
-          1586
+          1586,
+          1587
         ],
         "baskets": [],
-        "distinctReleases": 10,
-        "runsWithRelease": 10,
+        "distinctReleases": 9,
+        "runsWithRelease": 9,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -226,8 +232,8 @@
           "to": {
             "thisRunHolders": "17729413",
             "treasury": "1190969",
-            "otherRunsHolders": "59018472",
-            "unknown": "88160282"
+            "otherRunsHolders": "58928728",
+            "unknown": "88250026"
           },
           "topUnknown": [
             {
@@ -661,13 +667,13 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1586
+        "maxRunId": 1587
       }
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-04T13:40:34.298Z",
-      "finishedAt": "2026-11-04T13:48:00.020Z",
+      "startedAt": "2026-11-04T14:51:43.624Z",
+      "finishedAt": "2026-11-04T14:59:08.650Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -734,8 +740,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-04T14:35:10.382Z",
-      "finishedAt": "2026-11-04T14:35:12.252Z",
+      "startedAt": "2026-11-04T14:59:08.652Z",
+      "finishedAt": "2026-11-04T14:59:10.319Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -754,29 +760,29 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-04T14:35:12.253Z",
-      "finishedAt": "2026-11-04T14:35:18.143Z",
+      "startedAt": "2026-11-04T14:59:10.321Z",
+      "finishedAt": "2026-11-04T14:59:16.913Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1409914451",
-          "chainZat": "1412912268",
-          "notListedYetZat": "2997817",
+          "claimedZat": "1412912268",
+          "chainZat": "1417379066",
+          "notListedYetZat": "4466798",
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 225186024.94354403,
+          "onChain": 225192959.93502104,
           "claimed": 225190000,
           "diffPct": 0,
           "verdict": "matches"
         },
-        "burns": 231,
-        "burnsVerified": 231,
-        "boughtBackZat": "1218069080",
+        "burns": 232,
+        "burnsVerified": 232,
+        "boughtBackZat": "1221066897",
         "venues": {
-          "pump amm": 112,
+          "pump amm": 113,
           "raydium cpmm": 59,
           "raydium launchlab": 10,
           "pump bonding curve": 1,
@@ -830,8 +836,8 @@
           },
           "INVISIBLE": {
             "mint": "2HcvsX12NyuLnhDXoU6yWL2XLcr3snCTQ7RhqVmZuCgr",
-            "burns": 8,
-            "zat": "26252228"
+            "burns": 9,
+            "zat": "29250045"
           },
           "SAFU": {
             "mint": "GJfKRv3GKF3mMrmUV7ZW3QT4Bm9d4cBJhhTU6tfzcash",
@@ -870,14 +876,14 @@
           }
         },
         "pot": {
-          "balanceZat": "247872",
-          "shownZat": "247872",
-          "inflowZat": "1413160140",
-          "buybackZat": "1412912268",
+          "balanceZat": "1808680",
+          "shownZat": "1808680",
+          "inflowZat": "1419187746",
+          "buybackZat": "1417379066",
           "movements": {
             "setup": 1,
-            "inflow": 2916,
-            "buyback": 303
+            "inflow": 2922,
+            "buyback": 304
           },
           "reconciled": true,
           "caughtUp": true
@@ -1111,8 +1117,8 @@
     "earnings": {},
     "zec": {}
   },
-  "rewardsMaxRun": 1586,
-  "rewardsFrom": 1579,
+  "rewardsMaxRun": 1587,
+  "rewardsFrom": 1581,
   "x": {
     "day": "2026-11-04",
     "today": 10,
