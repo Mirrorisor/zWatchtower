@@ -67,26 +67,29 @@ check("no other tokens: not a basket", !j.ok && /no other tokens/.test(j.problem
 
 b = await readBasket(chain(1013, 1987), { zecAta: ZATA, start: T - 60, end: T + 600, holders: new Set([A, B]) });
 j = judgeBasket({ ...run, paid: 40_000n }, b);
-check("ZEC that doesn't add up to what was paid fails", !j.ok && j.problems.some((p) => /from the published paid/.test(p)), JSON.stringify(j.problems));
+check("ZEC that doesn't add up to what was paid: swaps missing or mixed, so not checked", !j.ok && j.inconclusive && j.problems.some((p) => /from the published paid/.test(p)), JSON.stringify(j.problems));
 
 const strangerLeg = { ...b.legs[0], sent: new Map([...b.legs[0].sent, ["Stranger1111111111111111111111111111111111", 5n]]) };
 j = judgeBasket(run, { ...b, legs: [strangerLeg] });
 check("tokens sent to someone not in the payout rows fail", !j.ok && j.problems.some((p) => /not in the payout rows/.test(p)));
 
 // another coin's run paying the same token at the same time doesn't count
-const otherLeg = { ...b.legs[0] };
-j = judgeBasket({ ...run, expectedLegs: 3 }, b);
-check("legs found differ from what the shares say: inconclusive, not a finding", j.inconclusive && !j.ok, JSON.stringify(j.problems));
+j = judgeBasket({ ...run, paid: run.paid * 2n }, b);
+check("a swap not found: inconclusive, not a finding", j.inconclusive && !j.ok, JSON.stringify(j.problems));
 b = await readBasket(chain(1013, 1987), { zecAta: ZATA, start: T - 60, end: T + 600, holders: new Set([A]) });
 check("a payout that also goes to a non-holder is left to its own run", b.legs[0].otherRunTxs === 1 && b.legs[0].sent.size === 0, JSON.stringify(b.legs[0].otherRunTxs));
-b = await readBasket(chain(1013, 1987), { zecAta: ZATA, start: T - 60, end: T + 600, holders: new Set([A, B]), legZat: 1_000_000n });
-check("a swap far from the ZEC leg's size isn't taken for one", b.legs.length === 0);
+b = await readBasket(chain(1013, 1987), { zecAta: ZATA, start: T - 60, end: T + 600, holders: new Set([A, B]), otherZat: 1_000_000n });
+check("a sliver of what went to swaps isn't taken for one", b.legs.length === 0);
+b = await readBasket(chain(1013, 1987), { zecAta: ZATA, start: T - 60, end: T + 600, holders: new Set([A, B]), otherZat: 5_000n });
+check("nor a swap bigger than all of it", b.legs.length === 0);
+b = await readBasket(chain(1013, 1987), { zecAta: ZATA, start: T - 60, end: T + 600, holders: new Set([A, B]), otherZat: 30_000n });
+check("a swap that's half of it is (legs needn't be equal)", b.legs.length === 1);
 // a holder whose leg is worth less than an account can be skipped
 b = await readBasket(chain(1013, 1987), { zecAta: ZATA, start: T - 60, end: T + 600, holders: new Set([A, B]) });
 const C = "HolderCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC";
-j = judgeBasket({ ...run, rows: [...rows, { owner: C, balance: "1", share: "5000" }] }, b);
+j = judgeBasket({ ...run, paid: run.paid + 5000n, rows: [...rows, { owner: C, balance: "1", share: "5000" }] }, b);
 check("a tiny holder with no tokens is noted, not flagged", !j.problems.some((p) => /got none/.test(p)) && j.smallHoldersSkipped[0]?.holders === 1, JSON.stringify(j.problems));
-j = judgeBasket({ ...run, rows: [...rows, { owner: C, balance: "1", share: "500000" }] }, b);
+j = judgeBasket({ ...run, paid: run.paid + 500000n, rows: [...rows, { owner: C, balance: "1", share: "500000" }] }, b);
 check("a real holder with no tokens is flagged", j.problems.some((p) => /1 holders got none/.test(p)), JSON.stringify(j.problems));
 
 // Real run 1491 legs (Solscan, 3 Nov 2026): BOT, every holder's account opened and charged the same cost

@@ -284,12 +284,10 @@ async function checkRun(id) {
       if (!t0 || !Number.isFinite(t1)) throw new Error("can't tell when the run started and ended");
       const rows = s.holders.map(([owner, balance]) => ({ owner, balance, row: payouts.get(owner) }))
         .filter((x) => x.row?.status === "confirmed").map((x) => ({ owner: x.owner, balance: x.balance, share: x.row.share }));
-      // how many legs the shares say: formula share / listed share, rounded (median over rows)
-      const ratios = rows.filter((r) => BigInt(r.share) > 0n).map((r) => Number((pot * BigInt(r.balance)) / sum) / Number(r.share)).sort((a, b) => a - b);
-      const expectedLegs = Math.round(ratios[Math.floor(ratios.length / 2)]);
-      const legZat = rows.reduce((a, r) => a + BigInt(r.share), 0n);
-      const basket = await readBasket(rpc, { zecAta, start: t0 - 2, end: t1 + 2, holders: new Set(payouts.keys()), legZat });
-      const j2 = judgeBasket({ rows, pot, sum, paid: BigInt(run.paid), expectedLegs }, basket);
+      // what Sapling paid beyond the ZEC shares went to the swaps
+      const otherZat = BigInt(run.paid) - rows.reduce((a, r) => a + BigInt(r.share), 0n);
+      const basket = await readBasket(rpc, { zecAta, start: t0 - 2, end: t1 + 2, holders: new Set(payouts.keys()), otherZat: otherZat > 0n ? otherZat : null });
+      const j2 = judgeBasket({ rows, pot, sum, paid: BigInt(run.paid) }, basket);
       out.basket = j2;
       if (j2.inconclusive) throw new Error(j2.problems[0]);
       if (j2.ok) {
