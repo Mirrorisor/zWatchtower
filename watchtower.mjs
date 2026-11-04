@@ -425,7 +425,7 @@ function exportSite(cfg, store, dir) {
     } catch (e) { console.error(`badges not written: ${e.message}`); }
   }
   writeFileSync(join(dir, "api", "report.json"), JSON.stringify(weeklyReport(cfg, store)));
-  for (const f of ["coins.html", "posts.html", "report.html", "creators.html", "rewards.html", "holding.html"])
+  for (const f of ["coins.html", "posts.html", "report.html", "creators.html", "rewards.html", "holding.html", "zec.html"])
     if (existsSync(join(here, "public", f))) copyFileSync(join(here, "public", f), join(dir, f));
   writeFileSync(join(dir, ".nojekyll"), "");
 }
