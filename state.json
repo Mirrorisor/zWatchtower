@@ -2,13 +2,12 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T21:59:13.734Z",
-      "finishedAt": "2026-11-04T21:59:18.350Z",
+      "startedAt": "2026-11-04T22:05:03.911Z",
+      "finishedAt": "2026-11-04T22:05:07.703Z",
       "status": "ran",
       "ok": false,
       "alerts": [
-        "multisig vault_transaction_create at 2026-11-04T21:52:04.000Z (3YbeZAhey1bdhbwPevCbvXcekSmD1NS2mx4cWrZLhuKrD87BXbuiPecAwragfk2HtePY7mjMrxjPhYLPZ9YW13Vw)",
-        "multisig proposal_create at 2026-11-04T21:52:04.000Z (3YbeZAhey1bdhbwPevCbvXcekSmD1NS2mx4cWrZLhuKrD87BXbuiPecAwragfk2HtePY7mjMrxjPhYLPZ9YW13Vw)"
+        "multisig proposal_create at 2026-11-04T22:01:54.000Z (23SJCokDF9EdrSj9ct1vAz9wGBLBPuu8J2JjPte1cQb55ZqX6yJdV3fyJ9kMPz5XoyJ2XnKDdm6ukw7W2GkteK75)"
       ],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
@@ -24,18 +23,14 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 7,
-          "settle_tax": 5,
-          "sell_tax": 5,
-          "withdraw_tax": 4,
-          "convert_sapling_begin": 1,
-          "convert_sapling_end": 1,
-          "settle": 1,
-          "claim_payee": 1,
-          "draw_grove": 1,
-          "close_grove": 1
+          "settle_tax": 1,
+          "sell_tax": 1,
+          "withdraw_tax": 1,
+          "observe_sapling": 5,
+          "settle": 2,
+          "claim_payee": 1
         },
-        "unrecognised": 3,
+        "unrecognised": 1,
         "baseline": false
       }
     },
@@ -1257,8 +1252,7 @@
   },
   "openAlerts": {
     "keys": {
-      "multisig vault_transaction_create at 2026-11-04T21:52:04.000Z (3YbeZAhey1bdhbwPevCbvXcekSmD1NS2mx4cWrZLhuKrD87BXbuiPecAwragfk2HtePY7mjMrxjPhYLPZ9YW13Vw)": "2026-11-04T21:59:18.350Z",
-      "multisig proposal_create at 2026-11-04T21:52:04.000Z (3YbeZAhey1bdhbwPevCbvXcekSmD1NS2mx4cWrZLhuKrD87BXbuiPecAwragfk2HtePY7mjMrxjPhYLPZ9YW13Vw)": "2026-11-04T21:59:18.350Z"
+      "multisig proposal_create at 2026-11-04T22:01:54.000Z (23SJCokDF9EdrSj9ct1vAz9wGBLBPuu8J2JjPte1cQb55ZqX6yJdV3fyJ9kMPz5XoyJ2XnKDdm6ukw7W2GkteK75)": "2026-11-04T22:05:07.703Z"
     },
     "rewards": {
       "reward run 1491 ███: 11 shares not floor(pot*balance/sum); basket payout doesn't add up: hSOL: 6741284 of 160371735 bought wasn't paid out; hSOL: 1 holders got none; paid != confirmed shares - rent": "2026-11-04T07:01:45.840Z",
