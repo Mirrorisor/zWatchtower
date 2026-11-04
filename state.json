@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T06:10:11.267Z",
-      "finishedAt": "2026-11-04T06:10:13.480Z",
+      "startedAt": "2026-11-04T06:15:03.498Z",
+      "finishedAt": "2026-11-04T06:15:06.748Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,13 +21,13 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "close_rewards_run": 1,
-          "release_rewards": 1,
-          "convert_sapling_begin": 1,
-          "convert_sapling_end": 1
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1,
+          "sell_tax": 1,
+          "withdraw_tax": 1,
+          "observe_sapling": 4
         },
-        "unrecognised": 2,
+        "unrecognised": 0,
         "baseline": false
       }
     },
