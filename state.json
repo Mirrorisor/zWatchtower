@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T08:10:04.048Z",
-      "finishedAt": "2026-11-04T08:10:09.284Z",
+      "startedAt": "2026-11-04T08:15:09.074Z",
+      "finishedAt": "2026-11-04T08:15:14.366Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,13 +22,12 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1,
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 1
+          "close_rewards_run": 1,
+          "release_rewards": 1,
+          "settle": 2,
+          "claim_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false
       }
     },
@@ -736,8 +735,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-04T07:57:34.370Z",
-      "finishedAt": "2026-11-04T07:57:36.907Z",
+      "startedAt": "2026-11-04T08:15:14.375Z",
+      "finishedAt": "2026-11-04T08:15:16.444Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -756,8 +755,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-04T07:57:36.910Z",
-      "finishedAt": "2026-11-04T07:57:40.643Z",
+      "startedAt": "2026-11-04T08:15:16.447Z",
+      "finishedAt": "2026-11-04T08:15:22.008Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -769,8 +768,8 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 225069439.30974996,
-          "claimed": 225070000,
+          "onChain": 225080090.679116,
+          "claimed": 225080000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -872,13 +871,13 @@
           }
         },
         "pot": {
-          "balanceZat": "260327",
-          "shownZat": "260327",
-          "inflowZat": "1390603168",
+          "balanceZat": "2316698",
+          "shownZat": "2316698",
+          "inflowZat": "1392659539",
           "buybackZat": "1390342841",
           "movements": {
             "setup": 1,
-            "inflow": 2840,
+            "inflow": 2842,
             "buyback": 296
           },
           "reconciled": true,
