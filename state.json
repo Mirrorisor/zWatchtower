@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T06:35:07.026Z",
-      "finishedAt": "2026-11-04T06:35:09.960Z",
+      "startedAt": "2026-11-04T06:40:06.671Z",
+      "finishedAt": "2026-11-04T06:40:10.343Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,12 +21,17 @@
           "recovery"
         ],
         "vaultInstructions": {
+          "settle_tax": 1,
+          "sell_tax": 1,
+          "withdraw_tax": 1,
           "observe_sapling": 4,
-          "settle_tax": 2,
-          "sell_tax": 2,
-          "withdraw_tax": 2
+          "draw_grove": 1,
+          "close_grove": 1,
+          "draw_zec_payee": 1,
+          "settle": 4,
+          "claim_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false
       }
     },
@@ -503,8 +508,8 @@
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-04T05:31:14.593Z",
-      "finishedAt": "2026-11-04T05:38:39.890Z",
+      "startedAt": "2026-11-04T06:40:10.349Z",
+      "finishedAt": "2026-11-04T06:47:38.741Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -571,8 +576,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-04T06:25:08.554Z",
-      "finishedAt": "2026-11-04T06:25:09.957Z",
+      "startedAt": "2026-11-04T06:47:38.742Z",
+      "finishedAt": "2026-11-04T06:47:40.278Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -591,29 +596,29 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-04T06:25:09.959Z",
-      "finishedAt": "2026-11-04T06:25:15.303Z",
+      "startedAt": "2026-11-04T06:47:40.280Z",
+      "finishedAt": "2026-11-04T06:47:47.038Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1380814575",
-          "chainZat": "1383988908",
-          "notListedYetZat": "3174333",
+          "claimedZat": "1383988908",
+          "chainZat": "1387328478",
+          "notListedYetZat": "3339570",
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 225027015.71298397,
-          "claimed": 225030000,
+          "onChain": 225052713.07252002,
+          "claimed": 225050000,
           "diffPct": 0,
           "verdict": "matches"
         },
-        "burns": 222,
-        "burnsVerified": 222,
-        "boughtBackZat": "1188969204",
+        "burns": 223,
+        "burnsVerified": 223,
+        "boughtBackZat": "1192143537",
         "venues": {
-          "pump amm": 103,
+          "pump amm": 104,
           "raydium cpmm": 59,
           "raydium launchlab": 10,
           "pump bonding curve": 1,
@@ -657,8 +662,8 @@
           },
           "BLACKCAT": {
             "mint": "8LmWjjAh6ujYTcXeMFh6FkT7nn6CDeEwYucMdaxgYn6s",
-            "burns": 9,
-            "zat": "41162000"
+            "burns": 10,
+            "zat": "44336333"
           },
           "GNILPAS": {
             "mint": "HU9NV8anebM7dzxxStx4W1gyX1y5xZfmh3Eoxvfzcash",
@@ -707,14 +712,14 @@
           }
         },
         "pot": {
-          "balanceZat": "630323",
-          "shownZat": "630323",
-          "inflowZat": "1384619231",
-          "buybackZat": "1383988908",
+          "balanceZat": "1048232",
+          "shownZat": "1048232",
+          "inflowZat": "1388376710",
+          "buybackZat": "1387328478",
           "movements": {
             "setup": 1,
-            "inflow": 2828,
-            "buyback": 294
+            "inflow": 2834,
+            "buyback": 295
           },
           "reconciled": true,
           "caughtUp": true
@@ -729,8 +734,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-04T06:10:20.362Z",
-      "finishedAt": "2026-11-04T06:12:04.258Z",
+      "startedAt": "2026-11-04T06:47:47.040Z",
+      "finishedAt": "2026-11-04T06:48:30.351Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -747,7 +752,7 @@
           "Creator bought N of supply at launch": 2
         },
         "notes": [
-          "creator scan: 58 coin(s) read this run, 487 of 487 read so far (0 launched shielded, creator not public)",
+          "creator scan: 0 coin(s) read this run, 487 of 487 read so far (0 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
           "1 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 1)",
           "25 shortlisted coin(s) were under $10,000 on their own page, so no card",
