@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T16:00:11.274Z",
-      "finishedAt": "2026-11-04T16:00:15.678Z",
+      "startedAt": "2026-11-04T16:09:56.268Z",
+      "finishedAt": "2026-11-04T16:10:01.174Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,20 +21,18 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "register_launchlab_coin": 1,
-          "draw_zec_payee": 1,
+          "settle_tax": 3,
+          "sell_tax": 3,
+          "withdraw_tax": 3,
+          "observe_sapling": 8,
           "close_rewards_run": 1,
-          "declare_payee": 1,
           "release_rewards": 1,
           "settle": 5,
           "settle_sapling": 1,
           "claim_payee": 1,
-          "settle_tax": 2,
-          "sell_tax": 2,
-          "withdraw_tax": 2
+          "set_coin_payee": 1
         },
-        "unrecognised": 4,
+        "unrecognised": 3,
         "baseline": false
       }
     },
@@ -1055,20 +1053,27 @@
     },
     "earnings": {
       "check": "earnings",
-      "startedAt": "2026-11-04T15:10:07.481Z",
-      "finishedAt": "2026-11-04T15:10:13.784Z",
+      "startedAt": "2026-11-04T16:10:01.180Z",
+      "finishedAt": "2026-11-04T16:10:06.211Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "runsIndexed": 1587,
-        "newRuns": 1,
-        "latestRun": 1587,
-        "coinsPaying": 182,
-        "crossChecked": 119,
-        "matchingSapling": 119,
-        "differ": [],
-        "paid7dZec": 62.0041,
+        "runsIndexed": 1590,
+        "newRuns": 3,
+        "latestRun": 1590,
+        "coinsPaying": 183,
+        "crossChecked": 179,
+        "matchingSapling": 178,
+        "differ": [
+          {
+            "symbol": "1993",
+            "mint": "7Ypg1rKLu8q32E1AQEDjaPCg8dfGeCSsMkFnK98zcash",
+            "ours": 15.038818,
+            "sapling": 12.96417929
+          }
+        ],
+        "paid7dZec": 63.3474,
         "notes": []
       }
     },
