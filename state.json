@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T04:15:03.136Z",
-      "finishedAt": "2026-11-04T04:15:05.102Z",
+      "startedAt": "2026-11-04T04:20:35.811Z",
+      "finishedAt": "2026-11-04T04:20:37.889Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,6 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
+          "draw_zec_payee": 1,
+          "settle": 1,
           "observe_sapling": 4
         },
         "unrecognised": 0,
@@ -499,8 +501,8 @@
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-04T03:10:06.000Z",
-      "finishedAt": "2026-11-04T03:17:31.301Z",
+      "startedAt": "2026-11-04T04:20:37.897Z",
+      "finishedAt": "2026-11-04T04:28:02.964Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -567,8 +569,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-04T04:05:13.891Z",
-      "finishedAt": "2026-11-04T04:05:15.614Z",
+      "startedAt": "2026-11-04T04:28:02.966Z",
+      "finishedAt": "2026-11-04T04:28:04.672Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -587,29 +589,29 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-04T04:05:15.618Z",
-      "finishedAt": "2026-11-04T04:05:20.136Z",
+      "startedAt": "2026-11-04T04:28:04.676Z",
+      "finishedAt": "2026-11-04T04:28:10.880Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1368277455",
-          "chainZat": "1374594055",
-          "notListedYetZat": "3068022",
-          "verdict": "differs from the chain"
+          "claimedZat": "1377770577",
+          "chainZat": "1377770577",
+          "notListedYetZat": "0",
+          "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 224984536.76989996,
-          "claimed": 224980000,
+          "onChain": 224997810.24104,
+          "claimed": 225000000,
           "diffPct": 0,
           "verdict": "matches"
         },
-        "burns": 219,
-        "burnsVerified": 219,
-        "boughtBackZat": "1179680662",
+        "burns": 221,
+        "burnsVerified": 221,
+        "boughtBackZat": "1185925206",
         "venues": {
-          "pump amm": 101,
+          "pump amm": 103,
           "raydium cpmm": 59,
           "raydium launchlab": 10,
           "pump bonding curve": 1,
@@ -653,8 +655,8 @@
           },
           "BLACKCAT": {
             "mint": "8LmWjjAh6ujYTcXeMFh6FkT7nn6CDeEwYucMdaxgYn6s",
-            "burns": 7,
-            "zat": "34917456"
+            "burns": 9,
+            "zat": "41162000"
           },
           "GNILPAS": {
             "mint": "HU9NV8anebM7dzxxStx4W1gyX1y5xZfmh3Eoxvfzcash",
@@ -703,14 +705,14 @@
           }
         },
         "pot": {
-          "balanceZat": "2946375",
-          "shownZat": "2946375",
-          "inflowZat": "1377540430",
-          "buybackZat": "1374594055",
+          "balanceZat": "557329",
+          "shownZat": "557329",
+          "inflowZat": "1378327906",
+          "buybackZat": "1377770577",
           "movements": {
             "setup": 1,
-            "inflow": 2807,
-            "buyback": 291
+            "inflow": 2810,
+            "buyback": 292
           },
           "reconciled": true,
           "caughtUp": true
@@ -720,15 +722,13 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": [
-          "Sapling's headline says 1368277455 zat bought back; the pot paid 1374594055 zat on chain (3068022 of it not listed yet)"
-        ]
+        "notes": []
       }
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-04T03:50:42.926Z",
-      "finishedAt": "2026-11-04T03:51:26.356Z",
+      "startedAt": "2026-11-04T04:28:10.882Z",
+      "finishedAt": "2026-11-04T04:30:04.759Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -745,7 +745,7 @@
           "Creator bought N of supply at launch": 2
         },
         "notes": [
-          "creator scan: 0 coin(s) read this run, 487 of 487 read so far (0 launched shielded, creator not public)",
+          "creator scan: 60 coin(s) read this run, 487 of 487 read so far (0 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
           "2 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 2)",
           "25 shortlisted coin(s) were under $10,000 on their own page, so no card",
@@ -755,8 +755,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-04T03:51:26.358Z",
-      "finishedAt": "2026-11-04T03:51:41.786Z",
+      "startedAt": "2026-11-04T04:30:04.763Z",
+      "finishedAt": "2026-11-04T04:30:19.710Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -766,7 +766,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 3778,
+            "seenInTxs": 3799,
             "withJupiter": 46,
             "seeds": [
               "upgradeAuthority",
@@ -800,12 +800,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 284
+            "seenInTxs": 288
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 278
+            "seenInTxs": 282
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -878,7 +878,7 @@
           "breakingRules": []
         },
         "programsSeen": 16,
-        "txsRead": 32,
+        "txsRead": 23,
         "notes": []
       }
     }
