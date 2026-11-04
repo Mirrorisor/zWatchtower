@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T00:40:11.108Z",
-      "finishedAt": "2026-11-04T00:40:15.765Z",
+      "startedAt": "2026-11-04T00:45:02.476Z",
+      "finishedAt": "2026-11-04T00:45:06.648Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,14 +21,14 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "sell_tax": 6,
-          "withdraw_tax": 6,
           "observe_sapling": 4,
           "settle_tax": 5,
-          "draw_grove": 1,
-          "close_grove": 1
+          "sell_tax": 5,
+          "withdraw_tax": 5,
+          "settle": 4,
+          "claim_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false
       }
     },
@@ -535,8 +535,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-04T00:30:15.146Z",
-      "finishedAt": "2026-11-04T00:30:16.464Z",
+      "startedAt": "2026-11-04T00:45:06.654Z",
+      "finishedAt": "2026-11-04T00:45:08.361Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -555,15 +555,17 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-04T00:30:16.466Z",
-      "finishedAt": "2026-11-04T00:30:26.839Z",
+      "startedAt": "2026-11-04T00:45:08.363Z",
+      "finishedAt": "2026-11-04T00:45:17.436Z",
       "status": "ran",
-      "ok": true,
-      "alerts": [],
+      "ok": false,
+      "alerts": [
+        "flywheel pot holds 6293910 zat but the movements seen add up to 5477824"
+      ],
       "summary": {
         "saplingBurn": {
-          "onChain": 224810107.89104903,
-          "claimed": 224810000,
+          "onChain": 224867967.747195,
+          "claimed": 224870000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -665,16 +667,16 @@
           }
         },
         "pot": {
-          "balanceZat": "5753362",
-          "shownZat": "5753362",
-          "inflowZat": "1346304089",
-          "buybackZat": "1340550727",
+          "balanceZat": "6293910",
+          "shownZat": "5477824",
+          "inflowZat": "1355009773",
+          "buybackZat": "1349531949",
           "movements": {
             "setup": 1,
-            "inflow": 2746,
-            "buyback": 284
+            "inflow": 2758,
+            "buyback": 285
           },
-          "reconciled": true,
+          "reconciled": false,
           "caughtUp": true
         },
         "signers": [
@@ -683,14 +685,16 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
+          "buyback 3ZivK3TnvWXrrRpbJgzVZkEkcEC3uGbbK4yL1fsycQ3WRA1PeL4RHWxMNghzfuJvKLEs8t1e2WUomCttfECfoijK drew 8981222 zat but is not in Sapling's burn list",
+          "Sapling shows the pot at 5477824 zat, chain says 6293910 (may be a moment out of date)",
           "headline 1340550727 zat bought back, listed burns add up to 472619027"
         ]
       }
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-04T00:13:08.355Z",
-      "finishedAt": "2026-11-04T00:15:39.914Z",
+      "startedAt": "2026-11-04T00:45:17.899Z",
+      "finishedAt": "2026-11-04T00:46:00.635Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -707,7 +711,7 @@
           "Creator bought N of supply at launch": 2
         },
         "notes": [
-          "creator scan: 60 coin(s) read this run, 486 of 486 read so far (0 launched shielded, creator not public)",
+          "creator scan: 0 coin(s) read this run, 486 of 486 read so far (0 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run, 1 coin(s) still being looked up, 1 lookup(s) failed",
           "2 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 2)",
           "24 shortlisted coin(s) were under $10,000 on their own page, so no card",
@@ -717,8 +721,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-04T00:15:39.915Z",
-      "finishedAt": "2026-11-04T00:16:23.017Z",
+      "startedAt": "2026-11-04T00:46:00.639Z",
+      "finishedAt": "2026-11-04T00:46:32.262Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -728,7 +732,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 3495,
+            "seenInTxs": 3578,
             "withJupiter": 46,
             "seeds": [
               "upgradeAuthority",
@@ -762,12 +766,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 249
+            "seenInTxs": 256
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 243
+            "seenInTxs": 250
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -840,7 +844,7 @@
           "breakingRules": []
         },
         "programsSeen": 16,
-        "txsRead": 132,
+        "txsRead": 86,
         "notes": []
       }
     }
@@ -864,7 +868,9 @@
     },
     "float": {},
     "tax": {},
-    "flywheel": {},
+    "flywheel": {
+      "flywheel pot holds 6293910 zat but the movements seen add up to 5477824": "2026-11-04T00:45:17.436Z"
+    },
     "coins": {},
     "programs": {}
   },
@@ -872,8 +878,8 @@
   "rewardsFrom": 1559,
   "x": {
     "day": "2026-11-04",
-    "today": 1,
-    "thisRun": 0
+    "today": 2,
+    "thisRun": 1
   },
   "xSummaryDay": "2026-11-04"
 }
