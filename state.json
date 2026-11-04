@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T02:55:03.860Z",
-      "finishedAt": "2026-11-04T02:55:05.710Z",
+      "startedAt": "2026-11-04T03:00:10.581Z",
+      "finishedAt": "2026-11-04T03:00:13.459Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,51 +21,44 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 3
+          "observe_sapling": 5,
+          "settle": 2,
+          "settle_sapling": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-04T02:25:08.188Z",
-      "finishedAt": "2026-11-04T02:28:08.693Z",
+      "startedAt": "2026-11-04T03:00:13.465Z",
+      "finishedAt": "2026-11-04T03:01:11.776Z",
       "status": "ran",
       "ok": false,
       "alerts": [
         "reward run 1491 ███: 11 shares not floor(pot*balance/sum); basket payout doesn't add up: hSOL: 6741284 of 160371735 bought wasn't paid out; BoTx…: 8 holders not paid in proportion to their share; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-04T02:27:42.329Z",
-        "runs": 18,
-        "passed": 16,
-        "flagged": 12,
+        "checkedAt": "2026-11-04T03:00:44.314Z",
+        "runs": 9,
+        "passed": 7,
+        "flagged": 2,
         "unchecked": 1,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "2.54576028",
+        "zecPaidInDoneRuns": "0.52310102",
         "onChainChecks": true,
         "checkedIds": [
-          1486,
-          1490,
           1491,
-          1501,
-          1514,
-          1524,
-          1537,
-          1545,
-          1546,
-          1552,
-          1558,
           1563,
           1564,
           1565,
           1566,
           1567,
-          1568
+          1568,
+          1569
         ],
-        "distinctReleases": 18,
-        "runsWithRelease": 18,
+        "distinctReleases": 9,
+        "runsWithRelease": 9,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -199,17 +192,17 @@
                 "inSnapshot": false
               },
               {
-                "owner": "3oGmLgWq",
+                "owner": "AF6Fp2St",
                 "amount": "0",
                 "wallet": true,
                 "ownerProgram": "11111111111111111111111111111111",
                 "inSnapshot": false
               },
               {
-                "owner": "AF6Fp2St",
+                "owner": "HiR2Bdvx",
                 "amount": "0",
                 "wallet": true,
-                "ownerProgram": "11111111111111111111111111111111",
+                "ownerProgram": null,
                 "inSnapshot": false
               }
             ],
@@ -228,8 +221,8 @@
           "to": {
             "thisRunHolders": "17729413",
             "treasury": "1190969",
-            "otherRunsHolders": "55734212",
-            "unknown": "91444542"
+            "otherRunsHolders": "52084528",
+            "unknown": "95094226"
           },
           "topUnknown": [
             {
@@ -341,7 +334,7 @@
               "account": {
                 "owner": "11111111111111111111111111111111",
                 "executable": false,
-                "lamports": 184250247636
+                "lamports": 182376888366
               },
               "after": {
                 "zecLeft": "16218676",
@@ -359,17 +352,7 @@
           ]
         },
         "notes": [
-          "run 1486: paid as a basket of 4 tokens (ZEC, $SAPLING, CYPH, hSOL): every holder got each token in proportion to their share",
-          "run 1487: not checked: shares look like one leg of a basket, and the other legs couldn't be read or told apart (shares say 2 legs, found 1 on chain)",
-          "run 1490: paid as a basket of 4 tokens (ZEC, $SAPLING, CYPH, hSOL): every holder got each token in proportion to their share",
-          "run 1501: paid as a basket of 4 tokens (ZEC, hSOL, CYPH, $SAPLING): every holder got each token in proportion to their share",
-          "run 1514: paid as a basket of 4 tokens (ZEC, hSOL, CYPH, $SAPLING): every holder got each token in proportion to their share",
-          "run 1524: paid as a basket of 4 tokens (ZEC, CYPH, $SAPLING, hSOL): every holder got each token in proportion to their share",
-          "run 1537: paid as a basket of 4 tokens (ZEC, $SAPLING, CYPH, hSOL): every holder got each token in proportion to their share",
-          "run 1545: paid as a basket of 4 tokens (ZEC, CYPH, $SAPLING, hSOL): every holder got each token in proportion to their share",
-          "run 1546: paid as a basket of 4 tokens (ZEC, WXMR…, CYPH, 3ZLe…): every holder got each token in proportion to their share",
-          "run 1552: paid as a basket of 4 tokens (ZEC, CYPH, $SAPLING, hSOL): every holder got each token in proportion to their share",
-          "run 1558: paid as a basket of 4 tokens (ZEC, WXMR…, CYPH, 3ZLe…): every holder got each token in proportion to their share"
+          "run 1487: not checked: shares look like one leg of a basket, and the other legs couldn't be read or told apart (shares say 2 legs, found 1 on chain)"
         ],
         "diagnoses": [
           {
@@ -514,7 +497,7 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1568
+        "maxRunId": 1569
       }
     },
     "float": {
@@ -587,8 +570,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-04T02:45:05.631Z",
-      "finishedAt": "2026-11-04T02:45:07.379Z",
+      "startedAt": "2026-11-04T03:01:11.778Z",
+      "finishedAt": "2026-11-04T03:01:13.380Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -607,21 +590,21 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-04T02:45:07.381Z",
-      "finishedAt": "2026-11-04T02:45:11.968Z",
+      "startedAt": "2026-11-04T03:01:13.382Z",
+      "finishedAt": "2026-11-04T03:01:17.172Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1368277455",
+          "claimedZat": "1362176753",
           "chainZat": "1368277455",
           "notListedYetZat": "0",
-          "verdict": "matches the chain"
+          "verdict": "differs from the chain"
         },
         "saplingBurn": {
-          "onChain": 224952877.40666795,
-          "claimed": 224950000,
+          "onChain": 224955392.45489502,
+          "claimed": 224960000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -740,7 +723,9 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": []
+        "notes": [
+          "Sapling's headline says 1362176753 zat bought back; the pot paid 1368277455 zat on chain (0 of it not listed yet)"
+        ]
       }
     },
     "coins": {
@@ -913,7 +898,7 @@
     "coins": {},
     "programs": {}
   },
-  "rewardsMaxRun": 1568,
+  "rewardsMaxRun": 1569,
   "rewardsFrom": 1563,
   "x": {
     "day": "2026-11-04",
@@ -922,18 +907,8 @@
   },
   "xSummaryDay": "2026-11-04",
   "rewardsRechecked": [
-    1486,
     1487,
-    1490,
-    1491,
-    1501,
-    1514,
-    1524,
-    1537,
-    1545,
-    1546,
-    1552,
-    1558
+    1491
   ],
   "withdrawnBasketV1": "2026-11-04T02:00:04.434Z",
   "rewardsPending": []
