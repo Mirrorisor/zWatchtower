@@ -151,6 +151,23 @@ r = await once({ keys: keysReport(), rewards: rewardsReport([115]), float: float
 check("own failed lookups are withdrawn quietly", !Object.keys(r.state.openAlerts.rewards).some((a) => /HTTP error/.test(a)) &&
   !r.newPosts.some((p) => /HTTP error/.test(p)));
 
+// 9b. alerts raised by the faulty first basket check are withdrawn once, and those runs re-checked
+const sb = JSON.parse(readFileSync(statePathS, "utf8"));
+sb.openAlerts.rewards = { ...sb.openAlerts.rewards, "reward run 90 ZDOG: 55 shares not floor(pot*balance/sum); basket payout doesn't add up: $SAPLING: sent to 9 wallets not in the payout rows": "x" };
+delete sb.withdrawnBasketV1;
+writeFileSync(statePathS, JSON.stringify(sb));
+r = await once({ keys: keysReport(), rewards: rewardsReport([115]), float: floatReport() });
+const wb = readFileSync(join(dataDir, "alerts.jsonl"), "utf8").trim().split("\n").map((l) => JSON.parse(l)).filter((a) => a.type === "withdrawn" && /reward run 90/.test(a.text));
+check("faulty basket alerts are withdrawn, and the run queued for a re-check",
+  wb.length === 1 && !Object.keys(r.state.openAlerts.rewards).some((a) => /run 90/.test(a)) && rewardsArgs().at(-1).includes("--runs 90") &&
+  r.newPosts.some((p) => p.includes("WITHDRAWN (our bug): reward run 90")), rewardsArgs().at(-1));
+const sbAfter = JSON.parse(readFileSync(statePathS, "utf8"));
+check("the run stays queued until it's read", sbAfter.rewardsPending?.includes(90), JSON.stringify(sbAfter.rewardsPending));
+// a pass that reads run 90 takes it off the list
+const rr = rewardsReport([90, 115]); rr.summary.checkedIds = [90, 115];
+r = await once({ keys: keysReport(), rewards: rr, float: floatReport() });
+check("once read, it leaves the queue", !(r.state.rewardsPending ?? []).includes(90), JSON.stringify(r.state.rewardsPending));
+
 // 10. X posts: previewed without keys, posted with them, and capped
 const xLog = () => existsSync(join(dataDir, "x-posts.jsonl"))
   ? readFileSync(join(dataDir, "x-posts.jsonl"), "utf8").trim().split("\n").map((l) => JSON.parse(l)) : [];

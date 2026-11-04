@@ -25,6 +25,7 @@
 import { isOnCurve } from "./lib/coins.mjs";
 import { createHash } from "node:crypto";
 import { readBasket, judgeBasket } from "./lib/basket.mjs";
+import { redact } from "./lib/redact.mjs";
 const API = "https://sapling.cash/api/rewards/";
 const REWARDS_WALLET = "37BBnMe6rTeH3Cxs1meobB6C564GJ7Gxj7SinQfgHPrL";
 const ZEC_MINT = "A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS";
@@ -48,23 +49,34 @@ const hex = (buf) => Buffer.from(buf).toString("hex");
 // node:crypto works on every Node from 18 (the global WebCrypto object doesn't)
 const sha256 = async (s) => createHash("sha256").update(s).digest("hex");
 
-async function getJson(url, init) {
-  for (let attempt = 0; attempt < 3; attempt++) {
+async function getJson(url, init, attempts = 3) {
+  let status = null;
+  for (let attempt = 0; attempt < attempts; attempt++) {
     const r = await fetch(url, init);
     if (r.status === 404) return { notFound: true };
     if (r.ok) return r.json();
-    await new Promise((res) => setTimeout(res, 1000 * (attempt + 1)));
+    status = r.status;
+    // rate limited: back off harder
+    await new Promise((res) => setTimeout(res, (r.status === 429 ? 2000 * 2 ** attempt : 1000 * (attempt + 1))));
   }
-  throw new Error(`HTTP error for ${url}`);
+  throw new Error(`HTTP error${status ? ` ${status}` : ""} for ${redact(url)}`);
+}
+// RPC calls share one small pool, so re-checking several runs at once doesn't trip the provider's rate limit
+let inFlight = 0;
+const waiting = [];
+async function slot(fn) {
+  while (inFlight >= 3) await new Promise((r) => waiting.push(r));
+  inFlight++;
+  try { return await fn(); } finally { inFlight--; waiting.shift()?.(); }
 }
 
 async function rpc(method, params) {
   const body = JSON.stringify({ jsonrpc: "2.0", id: 1, method, params });
-  const j = await getJson(rpcUrl, {
+  const j = await slot(() => getJson(rpcUrl, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body,
-  });
+  }, 6));
   if (j.error) throw new Error(`${method}: ${JSON.stringify(j.error)}`);
   return j.result;
 }
@@ -266,13 +278,20 @@ async function checkRun(id) {
       const b = rel?.meta?.postTokenBalances?.find((x) => x.owner === REWARDS_WALLET && x.mint === ZEC_MINT);
       const zecAta = b && (rel.transaction.message.accountKeys[b.accountIndex]?.pubkey ?? rel.transaction.message.accountKeys[b.accountIndex]);
       if (!zecAta) throw new Error("rewards wallet not in the release");
-      const t0 = Date.parse(run.startedAt) / 1000, t1 = Date.parse(run.finishedAt ?? run.startedAt) / 1000;
-      if (!Number.isFinite(t0)) throw new Error("run has no start time");
+      // the run's own window: from its release to its return of the rolled-over ZEC
+      const ret = run.returnSignature ? await rpc("getTransaction", [run.returnSignature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 1 }]) : null;
+      const t0 = rel.blockTime, t1 = ret?.blockTime ?? Math.ceil(Date.parse(run.finishedAt) / 1000);
+      if (!t0 || !Number.isFinite(t1)) throw new Error("can't tell when the run started and ended");
       const rows = s.holders.map(([owner, balance]) => ({ owner, balance, row: payouts.get(owner) }))
         .filter((x) => x.row?.status === "confirmed").map((x) => ({ owner: x.owner, balance: x.balance, share: x.row.share }));
-      const basket = await readBasket(rpc, { zecAta, start: Math.floor(t0) - 120, end: Math.ceil(t1) + 600, holders: new Set(payouts.keys()) });
-      const j2 = judgeBasket({ rows, pot, sum, paid: BigInt(run.paid) }, basket);
+      // how many legs the shares say: formula share / listed share, rounded (median over rows)
+      const ratios = rows.filter((r) => BigInt(r.share) > 0n).map((r) => Number((pot * BigInt(r.balance)) / sum) / Number(r.share)).sort((a, b) => a - b);
+      const expectedLegs = Math.round(ratios[Math.floor(ratios.length / 2)]);
+      const legZat = rows.reduce((a, r) => a + BigInt(r.share), 0n);
+      const basket = await readBasket(rpc, { zecAta, start: t0 - 2, end: t1 + 2, holders: new Set(payouts.keys()), legZat });
+      const j2 = judgeBasket({ rows, pot, sum, paid: BigInt(run.paid), expectedLegs }, basket);
       out.basket = j2;
+      if (j2.inconclusive) throw new Error(j2.problems[0]);
       if (j2.ok) {
         out.problems = out.problems.filter((x) => !/shares not floor/.test(x));
         delete out.diagnosis;
@@ -284,7 +303,7 @@ async function checkRun(id) {
       out.unchecked = true;
       out.problems = out.problems.filter((x) => !/shares not floor/.test(x));
       delete out.diagnosis;
-      out.note = `not checked: shares look like one leg of a basket, and the other legs couldn't be read (${out.basket.error})`;
+      out.note = `not checked: shares look like one leg of a basket, and the other legs couldn't be read or told apart (${out.basket.error})`;
     }
   }
   // paid covers every leg of a basket, the rows only the ZEC leg
@@ -448,6 +467,7 @@ async function main() {
     firstUnchecked: unchecked.some((r) => r.id >= from) ? Math.min(...unchecked.filter((r) => r.id >= from).map((r) => r.id)) : null,
     zecPaidInDoneRuns: (Number(paid) / 1e8).toFixed(8),
     onChainChecks: Boolean(rpcUrl),
+    checkedIds: runs.filter((r) => !r.unchecked && r.release !== "unchecked").map((r) => r.id),
   };
   // batches: flagged runs whose release transaction is shared with other runs
   const byRelease = new Map();

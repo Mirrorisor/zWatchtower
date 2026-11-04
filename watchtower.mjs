@@ -21,12 +21,13 @@
 //   GET /healthz               200 while the scheduler is alive
 import { spawn } from "node:child_process";
 import { createServer } from "node:http";
-import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync, copyFileSync } from "node:fs";
+import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync, copyFileSync, readdirSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { composePosts, composeSummary, fit, postToX } from "./lib/xpost.mjs";
 import { badgeSvg } from "./lib/badge.mjs";
 import { buildReport, composeWeekly } from "./lib/report.mjs";
+import { redact } from "./lib/redact.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
@@ -100,12 +101,17 @@ class Store {
     this.dir = dir;
     mkdirSync(dir, { recursive: true });
     this.statePath = join(dir, "state.json");
+    // scrub any secret an older version wrote (an RPC key inside an error message)
+    for (const f of readdirSync(dir).filter((f) => /\.jsonl?$/.test(f))) {
+      const raw = readFileSync(join(dir, f), "utf8"), clean = redact(raw);
+      if (clean !== raw) writeFileSync(join(dir, f), clean);
+    }
     this.state = existsSync(this.statePath)
       ? JSON.parse(readFileSync(this.statePath, "utf8"))
       : { latest: {}, openAlerts: {}, rewardsMaxRun: 0 };
   }
-  save() { writeFileSync(this.statePath, JSON.stringify(this.state, null, 2)); }
-  append(file, obj) { appendFileSync(join(this.dir, file), JSON.stringify(obj) + "\n"); }
+  save() { writeFileSync(this.statePath, redact(JSON.stringify(this.state, null, 2))); }
+  append(file, obj) { appendFileSync(join(this.dir, file), redact(JSON.stringify(obj)) + "\n"); }
   read(file, filter, limit) {
     const p = join(this.dir, file);
     if (!existsSync(p)) return [];
@@ -229,7 +235,7 @@ function normalise(name, report) {
 
 async function postWebhook(url, text) {
   try {
-    await fetch(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ text }) });
+    await fetch(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ text: redact(text) }) });
   } catch (e) { console.error(`webhook failed: ${e.message}`); }
 }
 
@@ -243,12 +249,12 @@ async function runCheck(name, cfg, store) {
     const res = await runCommand(commandFor(name, cfg, store), cfg.timeoutMinutes * 60000);
     let entry;
     try {
-      const report = JSON.parse(res.out);
+      const report = JSON.parse(redact(res.out));
       entry = { check: name, startedAt: started, finishedAt: new Date().toISOString(), status: "ran", ...normalise(name, report) };
     } catch {
       // exit code 2 or garbage output = the check itself failed, not Sapling
       entry = { check: name, startedAt: started, finishedAt: new Date().toISOString(), status: "error",
-        ok: null, alerts: [], error: (res.err || res.signal || `exit ${res.code}`).toString().trim().slice(-500) };
+        ok: null, alerts: [], error: redact((res.err || res.signal || `exit ${res.code}`).toString().trim().slice(-500)) };
     }
     await handleAlerts(name, entry, cfg, store);
     if (entry.events?.length) {
@@ -256,6 +262,9 @@ async function runCheck(name, cfg, store) {
       await publishToX(name, [], [], cfg, store, entry.events);
       if (cfg.webhook) await postWebhook(cfg.webhook, `zWatchtower (coin report cards)\n${entry.events.join("\n")}`);
     }
+    // runs waiting for a re-check leave the list once one reads them
+    if (name === "rewards" && entry.summary?.checkedIds && store.state.rewardsPending?.length)
+      store.state.rewardsPending = store.state.rewardsPending.filter((id) => !entry.summary.checkedIds.includes(id));
     if (name === "rewards" && entry.summary?.maxRunId) {
       store.state.rewardsMaxRun = Math.max(store.state.rewardsMaxRun, entry.summary.maxRunId);
       // runs we could not check are re-checked next time
@@ -351,8 +360,9 @@ function reRunIdBelow(alert, store) {
 // Older runs with alerts still open are checked again on every pass (at most
 // 20, oldest first), so an alert closes as soon as the run checks out.
 function rewardsRecheck(store, from) {
-  const ids = [...new Set(Object.keys(store.state.openAlerts?.rewards ?? {})
-    .map((a) => Number(a.match(/^reward run (\d+)/)?.[1])).filter((n) => n && n < from))].sort((a, b) => a - b).slice(0, 20);
+  const ids = [...new Set([...Object.keys(store.state.openAlerts?.rewards ?? {})
+    .map((a) => Number(a.match(/^reward run (\d+)/)?.[1])), ...(store.state.rewardsPending ?? [])]
+    .filter((n) => n && n < from))].sort((a, b) => a - b).slice(0, 20);
   store.state.rewardsRechecked = ids;
   return ids.length ? ["--runs", ids.join(",")] : [];
 }
@@ -444,12 +454,38 @@ function serve(cfg, store) {
   return server;
 }
 
+// The first basket check (4 Nov 01:53 UTC) read each run over too wide a
+// window and mixed in other coins' payouts, raising 3 wrong alerts. Withdraw
+// them once, with a correction, and keep checking those runs until they're read.
+async function withdrawFaultyBasketAlerts(cfg, store) {
+  const st = store.state;
+  if (st.withdrawnBasketV1) return;
+  st.withdrawnBasketV1 = new Date().toISOString();
+  const open = st.openAlerts?.rewards ?? {};
+  const bad = Object.keys(open).filter((a) => /basket payout doesn't add up/.test(a));
+  if (!bad.length) { store.save(); return; }
+  const ids = [], coins = new Set();
+  for (const a of bad) {
+    delete open[a];
+    const m = a.match(/^reward run (\d+) ([^:\s]+)/);
+    if (m) { ids.push(Number(m[1])); coins.add(m[2]); }
+    store.append("alerts.jsonl", { check: "rewards", at: st.withdrawnBasketV1, type: "withdrawn", text: a,
+      reason: "raised by the first version of the basket check, which read too wide a window and mixed in other runs' payouts (see CORRECTIONS.md)" });
+  }
+  st.rewardsPending = [...new Set([...(st.rewardsPending ?? []), ...ids])].sort((a, b) => a - b);
+  store.save();
+  await publishToX("rewards", [], [], cfg, store, [`Correction: we withdraw ${bad.length} holder-reward alert${bad.length === 1 ? "" : "s"} (${[...coins].map((c) => "$" + c).join(", ")}) posted at 01:53 UTC. A bug in our new check mixed in other runs' payouts. Those runs are being checked again. Our mistake, logged in CORRECTIONS.md.`]);
+  if (cfg.webhook) await postWebhook(cfg.webhook, `zWatchtower (rewards check)\n${bad.map((a) => `WITHDRAWN (our bug): ${a.slice(0, 120)}`).join("\n")}`);
+  store.save();
+}
+
 // ---- main -------------------------------------------------------------------
 
 async function main() {
   const cfg = loadConfig();
   const store = new Store(cfg.dataDir);
   withdrawOwnFailures(store);
+  await withdrawFaultyBasketAlerts(cfg, store);
   const names = Object.keys(cfg.checks).filter((n) => cfg.checks[n].everyMinutes > 0);
   if (opt("--export") && !args.includes("--once")) return exportSite(cfg, store, resolve(opt("--export")));
   if (args.includes("--once")) {
