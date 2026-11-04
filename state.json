@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-04T01:55:03.463Z",
-      "finishedAt": "2026-11-04T01:55:07.019Z",
+      "startedAt": "2026-11-04T02:00:05.073Z",
+      "finishedAt": "2026-11-04T02:00:08.971Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -25,10 +25,12 @@
           "settle_tax": 3,
           "sell_tax": 3,
           "withdraw_tax": 3,
-          "draw_grove": 1,
-          "close_grove": 1
+          "draw_zec_payee": 1,
+          "settle": 1,
+          "settle_sapling": 1,
+          "claim_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 2,
         "baseline": false
       }
     },
@@ -314,17 +316,17 @@
           ]
         },
         "notes": [
-          "run 1486: not checked: shares look like one leg of a basket, and the other legs couldn't be read (HTTP error for https://mainnet.helius-rpc.com/?api-key=61b398c7-55b5-4b08-8425-8)",
-          "run 1487: not checked: shares look like one leg of a basket, and the other legs couldn't be read (HTTP error for https://mainnet.helius-rpc.com/?api-key=61b398c7-55b5-4b08-8425-8)",
-          "run 1491: not checked: shares look like one leg of a basket, and the other legs couldn't be read (HTTP error for https://mainnet.helius-rpc.com/?api-key=61b398c7-55b5-4b08-8425-8)",
-          "run 1501: not checked: shares look like one leg of a basket, and the other legs couldn't be read (HTTP error for https://mainnet.helius-rpc.com/?api-key=61b398c7-55b5-4b08-8425-8)",
-          "run 1514: not checked: shares look like one leg of a basket, and the other legs couldn't be read (HTTP error for https://mainnet.helius-rpc.com/?api-key=61b398c7-55b5-4b08-8425-8)",
-          "run 1537: not checked: shares look like one leg of a basket, and the other legs couldn't be read (HTTP error for https://mainnet.helius-rpc.com/?api-key=61b398c7-55b5-4b08-8425-8)",
-          "run 1545: not checked: shares look like one leg of a basket, and the other legs couldn't be read (HTTP error for https://mainnet.helius-rpc.com/?api-key=61b398c7-55b5-4b08-8425-8)",
-          "run 1552: not checked: shares look like one leg of a basket, and the other legs couldn't be read (HTTP error for https://mainnet.helius-rpc.com/?api-key=61b398c7-55b5-4b08-8425-8)",
-          "run 1558: not checked: shares look like one leg of a basket, and the other legs couldn't be read (HTTP error for https://mainnet.helius-rpc.com/?api-key=61b398c7-55b5-4b08-8425-8)",
+          "run 1486: not checked: shares look like one leg of a basket, and the other legs couldn't be read (HTTP error for https://mainnet.helius-rpc.com/?api-key=[redacted])",
+          "run 1487: not checked: shares look like one leg of a basket, and the other legs couldn't be read (HTTP error for https://mainnet.helius-rpc.com/?api-key=[redacted])",
+          "run 1491: not checked: shares look like one leg of a basket, and the other legs couldn't be read (HTTP error for https://mainnet.helius-rpc.com/?api-key=[redacted])",
+          "run 1501: not checked: shares look like one leg of a basket, and the other legs couldn't be read (HTTP error for https://mainnet.helius-rpc.com/?api-key=[redacted])",
+          "run 1514: not checked: shares look like one leg of a basket, and the other legs couldn't be read (HTTP error for https://mainnet.helius-rpc.com/?api-key=[redacted])",
+          "run 1537: not checked: shares look like one leg of a basket, and the other legs couldn't be read (HTTP error for https://mainnet.helius-rpc.com/?api-key=[redacted])",
+          "run 1545: not checked: shares look like one leg of a basket, and the other legs couldn't be read (HTTP error for https://mainnet.helius-rpc.com/?api-key=[redacted])",
+          "run 1552: not checked: shares look like one leg of a basket, and the other legs couldn't be read (HTTP error for https://mainnet.helius-rpc.com/?api-key=[redacted])",
+          "run 1558: not checked: shares look like one leg of a basket, and the other legs couldn't be read (HTTP error for https://mainnet.helius-rpc.com/?api-key=[redacted])",
           "run 1559: paid as a basket of 4 tokens (ZEC, $SAPLING, CYPH, hSOL): every holder got each token in proportion to their share",
-          "run 1565: release not checked on chain (HTTP error for https://mainnet.helius-rpc.com/?api-key=61b398c7-55b5-4b08-8425-8dd959a5946e)"
+          "run 1565: release not checked on chain (HTTP error for https://mainnet.helius-rpc.com/?api-key=[redacted])"
         ],
         "diagnoses": [
           {
@@ -743,8 +745,8 @@
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-04T00:50:19.070Z",
-      "finishedAt": "2026-11-04T00:57:45.181Z",
+      "startedAt": "2026-11-04T02:00:08.976Z",
+      "finishedAt": "2026-11-04T02:07:34.874Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -811,8 +813,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-04T01:45:04.246Z",
-      "finishedAt": "2026-11-04T01:45:06.101Z",
+      "startedAt": "2026-11-04T02:07:34.876Z",
+      "finishedAt": "2026-11-04T02:07:36.485Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -831,30 +833,30 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-04T01:45:06.102Z",
-      "finishedAt": "2026-11-04T01:45:10.772Z",
+      "startedAt": "2026-11-04T02:07:36.487Z",
+      "finishedAt": "2026-11-04T02:07:45.625Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1285041503",
-          "chainZat": "1362176753",
+          "claimedZat": "1365271797",
+          "chainZat": "1365271797",
           "notListedYetZat": "0",
-          "verdict": "differs from the chain"
+          "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 224919093.43044198,
-          "claimed": 224920000,
+          "onChain": 224940474.09885097,
+          "claimed": 224940000,
           "diffPct": 0,
           "verdict": "matches"
         },
-        "burns": 216,
-        "burnsVerified": 216,
-        "boughtBackZat": "1170331382",
+        "burns": 217,
+        "burnsVerified": 217,
+        "boughtBackZat": "1173426426",
         "venues": {
           "pump amm": 99,
-          "raydium cpmm": 58,
+          "raydium cpmm": 59,
           "raydium launchlab": 10,
           "pump bonding curve": 1,
           "jupiter": 48
@@ -942,19 +944,19 @@
           },
           "SARAH": {
             "mint": "4LT4uDp694w7soJerjRjSEVr2884J33EjLNG1WGzcash",
-            "burns": 30,
-            "zat": "347052230"
+            "burns": 31,
+            "zat": "350147274"
           }
         },
         "pot": {
-          "balanceZat": "1732575",
-          "shownZat": "1732575",
-          "inflowZat": "1363909328",
-          "buybackZat": "1362176753",
+          "balanceZat": "2516841",
+          "shownZat": "2516841",
+          "inflowZat": "1367788638",
+          "buybackZat": "1365271797",
           "movements": {
             "setup": 1,
-            "inflow": 2778,
-            "buyback": 287
+            "inflow": 2788,
+            "buyback": 288
           },
           "reconciled": true,
           "caughtUp": true
@@ -964,15 +966,13 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": [
-          "Sapling's headline says 1285041503 zat bought back; the pot paid 1362176753 zat on chain (0 of it not listed yet)"
-        ]
+        "notes": []
       }
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-04T01:30:09.648Z",
-      "finishedAt": "2026-11-04T01:32:03.592Z",
+      "startedAt": "2026-11-04T02:07:45.629Z",
+      "finishedAt": "2026-11-04T02:08:30.696Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -989,11 +989,11 @@
           "Creator bought N of supply at launch": 2
         },
         "notes": [
-          "creator scan: 60 coin(s) read this run, 487 of 487 read so far (0 launched shielded, creator not public)",
-          "first-buyer funding: 1 wallet(s) looked up this run",
+          "creator scan: 1 coin(s) read this run, 487 of 487 read so far (0 launched shielded, creator not public)",
+          "first-buyer funding: 0 wallet(s) looked up this run",
           "2 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 2)",
           "25 shortlisted coin(s) were under $10,000 on their own page, so no card",
-          "23 wallet(s) are in the top 10 of more than one coin"
+          "22 wallet(s) are in the top 10 of more than one coin"
         ]
       }
     },
@@ -1138,10 +1138,7 @@
       "reward run 1537 ZDOG: 44 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-03T16:50:26.187Z",
       "reward run 1545 ZDOG: 37 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-03T18:25:03.943Z",
       "reward run 1552 ZDOG: 36 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-03T20:25:49.318Z",
-      "reward run 1558 PI: 2 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-03T22:55:36.333Z",
-      "reward run 1490 ZDOG: 55 shares not floor(pot*balance/sum); basket payout doesn't add up: 55 ZEC shares aren't 1/10 of the formula share; ZEC to holders and swaps (97620673) is more than 2% from the published paid (84028577); $SAPLING: sent to 9 wallets not in the payout rows; $SAPLING: 54 holders not paid in proportion to their share; CYPH: sent to 9 wallets not in the payout rows; CYPH: 54 holders not paid in proportion to their share; hSOL: sent to 8 wallets not in the payout rows; hSOL: 54 holders not paid in proportion to their share; Xsc9…: sent to 9 wallets not in the payout rows; Xsc9…: 53 holders got none; Xsc9…: 1 holders not paid in proportion to their share; XsbE…: sent to 9 wallets not in the payout rows; XsbE…: 53 holders got none; XsbE…: 1 holders not paid in proportion to their share; Xsue…: sent to 9 wallets not in the payout rows; Xsue…: 53 holders got none; Xsue…: 1 holders not paid in proportion to their share; Xs6B…: sent to 9 wallets not in the payout rows; Xs6B…: 53 holders got none; Xs6B…: 1 holders not paid in proportion to their share; BABA…: sent to 9 wallets not in the payout rows; BABA…: 53 holders got none; BABA…: 1 holders not paid in proportion to their share; BoTx…: sent to 9 wallets not in the payout rows; BoTx…: 53 holders got none; BoTx…: 1 holders not paid in proportion to their share; paid != confirmed shares - rent": "2026-11-04T01:53:16.874Z",
-      "reward run 1524 ZDOG: 39 shares not floor(pot*balance/sum); basket payout doesn't add up: CYPH: 3 holders got none; $SAPLING: 3 holders got none; hSOL: 4 holders got none; paid != confirmed shares - rent": "2026-11-04T01:53:16.874Z",
-      "reward run 1546 PI: 2 shares not floor(pot*balance/sum); basket payout doesn't add up: 2 ZEC shares aren't 1/6 of the formula share; ZEC to holders and swaps (5003678) is more than 2% from the published paid (2071713); CYPH: sent to 31 wallets not in the payout rows; CYPH: 1 holders not paid in proportion to their share; $SAPLING: sent to 31 wallets not in the payout rows; $SAPLING: 1 holders not paid in proportion to their share; hSOL: sent to 30 wallets not in the payout rows; hSOL: 1 holders not paid in proportion to their share; paid != confirmed shares - rent": "2026-11-04T01:53:16.874Z"
+      "reward run 1558 PI: 2 shares not floor(pot*balance/sum); paid != confirmed shares - rent": "2026-11-03T22:55:36.333Z"
     },
     "float": {},
     "tax": {},
@@ -1153,7 +1150,7 @@
   "rewardsFrom": 1563,
   "x": {
     "day": "2026-11-04",
-    "today": 6,
+    "today": 7,
     "thisRun": 0
   },
   "xSummaryDay": "2026-11-04",
@@ -1171,5 +1168,11 @@
     1552,
     1558,
     1559
+  ],
+  "withdrawnBasketV1": "2026-11-04T02:00:04.434Z",
+  "rewardsPending": [
+    1490,
+    1524,
+    1546
   ]
 }
