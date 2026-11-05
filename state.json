@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T11:20:09.646Z",
-      "finishedAt": "2026-11-05T11:20:12.373Z",
+      "startedAt": "2026-11-05T11:25:02.849Z",
+      "finishedAt": "2026-11-05T11:25:06.822Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,10 +22,12 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "sell_tax": 1,
-          "withdraw_tax": 1
+          "close_rewards_run": 1,
+          "release_rewards": 1,
+          "settle_sapling": 1,
+          "settle": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -980,15 +982,15 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-05T11:08:12.474Z",
-      "finishedAt": "2026-11-05T11:08:16.274Z",
+      "startedAt": "2026-11-05T11:25:06.827Z",
+      "finishedAt": "2026-11-05T11:25:10.801Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 105709.08,
-        "nearSupply": 151871.82,
+        "nearSupply": 151806.12,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
         "change24h": null,
