@@ -2,11 +2,13 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T20:35:11.280Z",
-      "finishedAt": "2026-11-05T20:35:15.578Z",
+      "startedAt": "2026-11-05T20:40:11.226Z",
+      "finishedAt": "2026-11-05T20:40:14.366Z",
       "status": "ran",
-      "ok": true,
-      "alerts": [],
+      "ok": false,
+      "alerts": [
+        "multisig proposal_activate at 2026-11-05T20:37:23.000Z (2uqa8UA3zE9qmoSod4dE3F6A1NoRyQjxFc23kFLgbVSxBAWKgAfzEXQaQ77qhyWfP8KBGUA3PFixge7hVPpzi3yr)"
+      ],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
@@ -21,11 +23,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5,
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1,
-          "settle": 4
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -642,8 +640,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-05T20:25:15.191Z",
-      "finishedAt": "2026-11-05T20:25:17.174Z",
+      "startedAt": "2026-11-05T20:40:14.898Z",
+      "finishedAt": "2026-11-05T20:40:16.861Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -662,21 +660,21 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-05T20:25:17.177Z",
-      "finishedAt": "2026-11-05T20:25:21.123Z",
+      "startedAt": "2026-11-05T20:40:16.863Z",
+      "finishedAt": "2026-11-05T20:40:20.952Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1549058611",
+          "claimedZat": "1552095613",
           "chainZat": "1552095613",
           "notListedYetZat": "0",
-          "verdict": "differs from the chain"
+          "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 225942941.55228496,
-          "claimed": 225940000,
+          "onChain": 225946063.73856604,
+          "claimed": 225950000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -778,13 +776,13 @@
           }
         },
         "pot": {
-          "balanceZat": "2213524",
-          "shownZat": "2213524",
-          "inflowZat": "1554309137",
+          "balanceZat": "2691089",
+          "shownZat": "2691089",
+          "inflowZat": "1554786702",
           "buybackZat": "1552095613",
           "movements": {
             "setup": 1,
-            "inflow": 3191,
+            "inflow": 3192,
             "buyback": 332
           },
           "reconciled": true,
@@ -795,9 +793,7 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": [
-          "Sapling's headline says 1549058611 zat bought back; the pot paid 1552095613 zat on chain (0 of it not listed yet)"
-        ]
+        "notes": []
       }
     },
     "coins": {
@@ -983,18 +979,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-05T20:26:26.324Z",
-      "finishedAt": "2026-11-05T20:26:30.120Z",
+      "startedAt": "2026-11-05T20:40:20.954Z",
+      "finishedAt": "2026-11-05T20:40:24.788Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 105721.8,
-        "nearSupply": 151998.83,
+        "nearSupply": 152132.8,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 36.058207850001054,
+        "change24h": 36.058168029994704,
         "notes": []
       }
     },
@@ -1023,7 +1019,9 @@
     }
   },
   "openAlerts": {
-    "keys": {},
+    "keys": {
+      "multisig proposal_activate at 2026-11-05T20:37:23.000Z (2uqa8UA3zE9qmoSod4dE3F6A1NoRyQjxFc23kFLgbVSxBAWKgAfzEXQaQ77qhyWfP8KBGUA3PFixge7hVPpzi3yr)": "2026-11-05T20:40:14.366Z"
+    },
     "rewards": {
       "reward run 1491 ███: 11 shares not floor(pot*balance/sum); basket payout doesn't add up: hSOL: 6741284 of 160371735 bought wasn't paid out; hSOL: 1 holders got none; paid != confirmed shares - rent": "2026-11-04T07:01:45.840Z",
       "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent": "2026-11-04T07:01:45.840Z"
