@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T03:35:01.520Z",
-      "finishedAt": "2026-11-05T03:35:05.005Z",
+      "startedAt": "2026-11-05T03:40:02.063Z",
+      "finishedAt": "2026-11-05T03:40:05.860Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,19 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1,
+          "observe_sapling": 4,
+          "settle_tax": 1,
+          "sell_tax": 1,
+          "withdraw_tax": 1,
+          "close_rewards_run": 1,
+          "release_rewards": 1,
+          "convert_sapling_begin": 1,
+          "convert_sapling_end": 1,
+          "settle": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 2,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -687,8 +697,8 @@
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-05T02:30:14.573Z",
-      "finishedAt": "2026-11-05T02:37:41.016Z",
+      "startedAt": "2026-11-05T03:40:05.866Z",
+      "finishedAt": "2026-11-05T03:47:34.004Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -913,8 +923,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-05T03:10:10.288Z",
-      "finishedAt": "2026-11-05T03:11:57.093Z",
+      "startedAt": "2026-11-05T03:47:34.006Z",
+      "finishedAt": "2026-11-05T03:49:41.846Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1075,20 +1085,20 @@
     },
     "earnings": {
       "check": "earnings",
-      "startedAt": "2026-11-05T02:39:07.587Z",
-      "finishedAt": "2026-11-05T02:39:13.132Z",
+      "startedAt": "2026-11-05T03:49:41.848Z",
+      "finishedAt": "2026-11-05T03:49:46.637Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "runsIndexed": 1616,
+        "runsIndexed": 1619,
         "newRuns": 3,
-        "latestRun": 1616,
+        "latestRun": 1619,
         "coinsPaying": 185,
         "crossChecked": 184,
         "matchingSapling": 184,
         "differ": [],
-        "paid7dZec": 61.3259,
+        "paid7dZec": 60.861,
         "notes": []
       }
     },
