@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T10:35:04.156Z",
-      "finishedAt": "2026-11-05T10:35:07.021Z",
+      "startedAt": "2026-11-05T10:40:03.180Z",
+      "finishedAt": "2026-11-05T10:40:06.072Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,6 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
+          "settle": 1,
           "observe_sapling": 4
         },
         "unrecognised": 0,
@@ -986,15 +987,15 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-05T10:26:32.364Z",
-      "finishedAt": "2026-11-05T10:26:36.170Z",
+      "startedAt": "2026-11-05T10:40:06.078Z",
+      "finishedAt": "2026-11-05T10:40:09.938Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 105709.11,
-        "nearSupply": 152041.93,
+        "solanaSupply": 105709.09,
+        "nearSupply": 151967.89,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
         "change24h": null,
