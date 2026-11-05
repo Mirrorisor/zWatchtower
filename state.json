@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T23:10:11.262Z",
-      "finishedAt": "2026-11-05T23:10:14.914Z",
+      "startedAt": "2026-11-05T23:15:11.334Z",
+      "finishedAt": "2026-11-05T23:15:13.884Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,15 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 1,
-          "observe_sapling": 4,
-          "sell_tax": 1,
-          "withdraw_tax": 1,
-          "draw_zec_payee": 1,
-          "claim_payee": 1
+          "observe_sapling": 4
         },
-        "unrecognised": 1,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -65,8 +59,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-05T22:45:14.251Z",
-      "finishedAt": "2026-11-05T22:45:52.199Z",
+      "startedAt": "2026-11-05T23:15:13.890Z",
+      "finishedAt": "2026-11-05T23:15:51.101Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -74,18 +68,17 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-05T22:45:51.138Z",
-        "runs": 9,
-        "passed": 7,
+        "checkedAt": "2026-11-05T23:15:50.037Z",
+        "runs": 8,
+        "passed": 6,
         "flagged": 2,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.38537008",
+        "zecPaidInDoneRuns": "0.34455687",
         "onChainChecks": true,
         "checkedIds": [
           1491,
           1573,
-          1639,
           1640,
           1641,
           1642,
@@ -94,8 +87,8 @@
           1645
         ],
         "baskets": [],
-        "distinctReleases": 9,
-        "runsWithRelease": 9,
+        "distinctReleases": 8,
+        "runsWithRelease": 8,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -211,7 +204,7 @@
                 "owner": "HiR2Bdvx",
                 "amount": "0",
                 "wallet": true,
-                "ownerProgram": "11111111111111111111111111111111",
+                "ownerProgram": null,
                 "inSnapshot": false
               },
               {
@@ -1001,8 +994,8 @@
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-05T22:00:26.731Z",
-      "finishedAt": "2026-11-05T22:13:58.652Z",
+      "startedAt": "2026-11-05T23:15:51.104Z",
+      "finishedAt": "2026-11-05T23:29:13.745Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1039,7 +1032,7 @@
     "payees": {}
   },
   "rewardsMaxRun": 1645,
-  "rewardsFrom": 1639,
+  "rewardsFrom": 1640,
   "x": {
     "day": "2026-11-05",
     "today": 0,
