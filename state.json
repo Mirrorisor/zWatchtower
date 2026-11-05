@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T17:50:04.674Z",
-      "finishedAt": "2026-11-05T17:50:08.452Z",
+      "startedAt": "2026-11-05T17:55:11.226Z",
+      "finishedAt": "2026-11-05T17:55:15.355Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,6 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
+          "settle": 1,
           "observe_sapling": 4
         },
         "unrecognised": 0,
@@ -797,8 +798,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-05T17:22:39.966Z",
-      "finishedAt": "2026-11-05T17:23:36.193Z",
+      "startedAt": "2026-11-05T17:55:15.363Z",
+      "finishedAt": "2026-11-05T17:56:08.553Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -825,8 +826,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-05T17:23:36.195Z",
-      "finishedAt": "2026-11-05T17:23:56.242Z",
+      "startedAt": "2026-11-05T17:56:08.557Z",
+      "finishedAt": "2026-11-05T17:56:23.404Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -836,7 +837,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 5652,
+            "seenInTxs": 5658,
             "withJupiter": 48,
             "seeds": [
               "upgradeAuthority",
@@ -870,12 +871,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 550
+            "seenInTxs": 551
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 543
+            "seenInTxs": 544
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -953,7 +954,7 @@
           "breakingRules": []
         },
         "programsSeen": 17,
-        "txsRead": 26,
+        "txsRead": 12,
         "notes": []
       }
     },
