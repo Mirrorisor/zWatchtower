@@ -35,7 +35,7 @@ check("unknown coin: a helpful answer", /No Sapling coin called <b>NOPE<\/b>/.te
 check("text is HTML-escaped", !formatCheck("<b>", []).includes("<b><b>"));
 const rows = [{ at: "2026-11-04T01:00:00Z", text: "a" }, { at: "2026-11-04T02:00:00Z", text: "b", status: "error" }, { at: "2026-11-04T03:00:00Z", text: "c" }];
 const np = newPosts(rows, "2026-11-04T00:30:00Z");
-check("channel: new posts since the cursor, oldest first, errors skipped", np.posts.map((p) => p.text).join() === "a,c" && np.cursor === "2026-11-04T03:00:00Z");
+check("channel: new posts since the cursor, oldest first, including ones X refused", np.posts.map((p) => p.text).join() === "a,b,c" && np.cursor === "2026-11-04T03:00:00Z");
 
 
 // /watch: changes to a watched coin's card
