@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T10:15:02.492Z",
-      "finishedAt": "2026-11-05T10:15:05.750Z",
+      "startedAt": "2026-11-05T10:20:04.898Z",
+      "finishedAt": "2026-11-05T10:20:08.815Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,12 +21,10 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1
+          "observe_sapling": 5,
+          "settle_sapling": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -643,8 +641,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-05T10:05:06.925Z",
-      "finishedAt": "2026-11-05T10:05:08.274Z",
+      "startedAt": "2026-11-05T10:20:08.823Z",
+      "finishedAt": "2026-11-05T10:20:10.560Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -663,8 +661,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-05T10:05:08.276Z",
-      "finishedAt": "2026-11-05T10:05:11.887Z",
+      "startedAt": "2026-11-05T10:20:10.563Z",
+      "finishedAt": "2026-11-05T10:20:14.898Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -676,7 +674,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 225836541.35230005,
+          "onChain": 225840469.85146904,
           "claimed": 225840000,
           "diffPct": 0,
           "verdict": "matches"
@@ -779,13 +777,13 @@
           }
         },
         "pot": {
-          "balanceZat": "1786183",
-          "shownZat": "1786183",
-          "inflowZat": "1541577974",
+          "balanceZat": "2217899",
+          "shownZat": "2217899",
+          "inflowZat": "1542009690",
           "buybackZat": "1539791791",
           "movements": {
             "setup": 1,
-            "inflow": 3144,
+            "inflow": 3146,
             "buyback": 328
           },
           "reconciled": true,
