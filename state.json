@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T03:10:01.790Z",
-      "finishedAt": "2026-11-05T03:10:04.525Z",
+      "startedAt": "2026-11-05T03:15:02.948Z",
+      "finishedAt": "2026-11-05T03:15:06.944Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
-        "configSha256": "b2f65516478786c3b1628ee2302cc0a0321c43878626d17950b3d1ae4549665c",
+        "configSha256": "ee72811b6121b5cb1bb292cc51cfd6c29352304e48b498557f3b1c423381ceca",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -21,7 +21,12 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "sell_tax": 1,
+          "withdraw_tax": 1,
+          "release_rewards": 2,
+          "close_rewards_run": 1,
+          "observe_sapling": 4,
+          "settle": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -1110,24 +1115,24 @@
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-05T02:02:19.680Z",
-      "finishedAt": "2026-11-05T02:15:18.637Z",
+      "startedAt": "2026-11-05T03:15:06.951Z",
+      "finishedAt": "2026-11-05T03:28:36.817Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "coinsRead": 494,
+        "coinsRead": 496,
         "recipients": {
           "holders": 260,
-          "wallet": 222,
+          "wallet": 224,
           "creator": 3,
           "zcash-foundation": 9
         },
-        "donatedZec": 7.67073755,
+        "donatedZec": 7.89621813,
         "donationsAddUp": true,
         "payeeWallets": 100,
-        "baseline": true,
+        "baseline": false,
         "notes": []
       }
     }
