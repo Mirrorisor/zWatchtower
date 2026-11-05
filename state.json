@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T12:45:11.267Z",
-      "finishedAt": "2026-11-05T12:45:14.418Z",
+      "startedAt": "2026-11-05T12:50:35.771Z",
+      "finishedAt": "2026-11-05T12:50:37.895Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,16 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle": 2,
-          "claim_payee": 1,
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1,
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 1
+          "observe_sapling": 4
         },
-        "unrecognised": 1,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -645,8 +638,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-05T12:35:11.157Z",
-      "finishedAt": "2026-11-05T12:35:12.761Z",
+      "startedAt": "2026-11-05T12:50:37.902Z",
+      "finishedAt": "2026-11-05T12:50:39.296Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -665,8 +658,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-05T12:35:12.763Z",
-      "finishedAt": "2026-11-05T12:35:16.725Z",
+      "startedAt": "2026-11-05T12:50:39.297Z",
+      "finishedAt": "2026-11-05T12:50:42.909Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -678,8 +671,8 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 225853225.32801294,
-          "claimed": 225850000,
+          "onChain": 225857188.90194595,
+          "claimed": 225860000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -781,13 +774,13 @@
           }
         },
         "pot": {
-          "balanceZat": "1868771",
-          "shownZat": "1868771",
-          "inflowZat": "1544704063",
+          "balanceZat": "2405526",
+          "shownZat": "2405526",
+          "inflowZat": "1545240818",
           "buybackZat": "1542835292",
           "movements": {
             "setup": 1,
-            "inflow": 3154,
+            "inflow": 3155,
             "buyback": 329
           },
           "reconciled": true,
@@ -803,8 +796,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-05T12:21:16.045Z",
-      "finishedAt": "2026-11-05T12:22:17.793Z",
+      "startedAt": "2026-11-05T12:50:42.911Z",
+      "finishedAt": "2026-11-05T12:51:42.538Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -831,8 +824,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-05T12:22:17.796Z",
-      "finishedAt": "2026-11-05T12:22:28.968Z",
+      "startedAt": "2026-11-05T12:51:42.540Z",
+      "finishedAt": "2026-11-05T12:51:53.791Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -842,7 +835,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 5466,
+            "seenInTxs": 5477,
             "withJupiter": 48,
             "seeds": [
               "upgradeAuthority",
@@ -876,12 +869,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 521
+            "seenInTxs": 523
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 514
+            "seenInTxs": 516
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -959,7 +952,7 @@
           "breakingRules": []
         },
         "programsSeen": 17,
-        "txsRead": 12,
+        "txsRead": 13,
         "notes": []
       }
     },
