@@ -2,13 +2,13 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T20:15:03.572Z",
-      "finishedAt": "2026-11-05T20:15:11.348Z",
+      "startedAt": "2026-11-05T20:20:11.255Z",
+      "finishedAt": "2026-11-05T20:20:15.174Z",
       "status": "ran",
       "ok": false,
       "alerts": [
-        "multisig proposal_approve at 2026-11-05T20:12:12.000Z (mqp3v5CfquJqQdL1Ag6mLMGMy8dQ24HDQzKiwZb4s5Vdz2Y56X9ieWnQbH8gLBiVFdgkPTbDm6hTtM5iN7uCFGv)",
-        "multisig proposal_approve at 2026-11-05T20:11:39.000Z (2q6Zo3tL6YUtJmQMYtqZoEPmyn7VA9CxW7d4bQzeHXAGJg8RiK7227t6Te6VSvaPgKVXpir72rmfSv3srxvszui1)"
+        "privileged vault instruction set_stock_quote via multisig at 2026-11-05T20:16:04.000Z (2WCxDmsYgyRdMiDoyyypbFkQs6fSvmE11S5HuwdBTNPfjJV565Z3N2KwnBStQhcLnaqqdW5ZNoqk27NRauhebvsR)",
+        "multisig vault_transaction_execute at 2026-11-05T20:16:04.000Z (2WCxDmsYgyRdMiDoyyypbFkQs6fSvmE11S5HuwdBTNPfjJV565Z3N2KwnBStQhcLnaqqdW5ZNoqk27NRauhebvsR)"
       ],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
@@ -24,9 +24,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 1
+          "observe_sapling": 5,
+          "set_stock_quote": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -1023,8 +1022,8 @@
   },
   "openAlerts": {
     "keys": {
-      "multisig proposal_approve at 2026-11-05T20:12:12.000Z (mqp3v5CfquJqQdL1Ag6mLMGMy8dQ24HDQzKiwZb4s5Vdz2Y56X9ieWnQbH8gLBiVFdgkPTbDm6hTtM5iN7uCFGv)": "2026-11-05T20:15:11.348Z",
-      "multisig proposal_approve at 2026-11-05T20:11:39.000Z (2q6Zo3tL6YUtJmQMYtqZoEPmyn7VA9CxW7d4bQzeHXAGJg8RiK7227t6Te6VSvaPgKVXpir72rmfSv3srxvszui1)": "2026-11-05T20:15:11.348Z"
+      "privileged vault instruction set_stock_quote via multisig at 2026-11-05T20:16:04.000Z (2WCxDmsYgyRdMiDoyyypbFkQs6fSvmE11S5HuwdBTNPfjJV565Z3N2KwnBStQhcLnaqqdW5ZNoqk27NRauhebvsR)": "2026-11-05T20:20:15.174Z",
+      "multisig vault_transaction_execute at 2026-11-05T20:16:04.000Z (2WCxDmsYgyRdMiDoyyypbFkQs6fSvmE11S5HuwdBTNPfjJV565Z3N2KwnBStQhcLnaqqdW5ZNoqk27NRauhebvsR)": "2026-11-05T20:20:15.174Z"
     },
     "rewards": {
       "reward run 1491 ███: 11 shares not floor(pot*balance/sum); basket payout doesn't add up: hSOL: 6741284 of 160371735 bought wasn't paid out; hSOL: 1 holders got none; paid != confirmed shares - rent": "2026-11-04T07:01:45.840Z",
@@ -1042,8 +1041,8 @@
   "rewardsMaxRun": 1641,
   "rewardsFrom": 1636,
   "x": {
-    "day": "2026-11-04",
-    "today": 10,
+    "day": "2026-11-05",
+    "today": 0,
     "thisRun": 0
   },
   "xSummaryDay": "2026-11-04",
