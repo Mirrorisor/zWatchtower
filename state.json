@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T02:30:11.311Z",
-      "finishedAt": "2026-11-05T02:30:14.568Z",
+      "startedAt": "2026-11-05T02:39:26.445Z",
+      "finishedAt": "2026-11-05T02:39:32.506Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,10 +21,20 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "unrecognised:33434476f180c41b": 1,
-          "observe_sapling": 4
+          "observe_sapling": 8,
+          "settle_tax": 1,
+          "sell_tax": 4,
+          "collect_creator_fee": 1,
+          "withdraw_tax": 4,
+          "collect_pool_fees": 1,
+          "register_launchlab_coin": 1,
+          "declare_payee": 1,
+          "close_rewards_run": 1,
+          "release_rewards": 1,
+          "settle": 3,
+          "register_coin": 1
         },
-        "unrecognised": 1,
+        "unrecognised": 3,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -941,8 +951,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-05T02:01:57.295Z",
-      "finishedAt": "2026-11-05T02:02:15.520Z",
+      "startedAt": "2026-11-05T02:39:32.513Z",
+      "finishedAt": "2026-11-05T02:39:49.962Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -952,7 +962,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 5167,
+            "seenInTxs": 5189,
             "withJupiter": 48,
             "seeds": [
               "upgradeAuthority",
@@ -971,7 +981,7 @@
             "id": "GzMQc5VQGggFnicdAKc7MmkQV3dn3i12ux9dbLKqzy6F",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464167118,
-            "seenInTxs": 20,
+            "seenInTxs": 21,
             "withJupiter": 2,
             "seeds": [
               "admin",
@@ -986,12 +996,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 466
+            "seenInTxs": 468
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 457
+            "seenInTxs": 460
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -1021,7 +1031,7 @@
           {
             "id": "LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj",
             "authority": "FytDrVzDybM1TwFQPGb8qaxZR7dBCzNeqT3vtQsceZQK",
-            "seenInTxs": 36
+            "seenInTxs": 37
           },
           {
             "id": "L2TExMFKdjpN9kozasaurPirfHy9P8sbXoAN1qA3S95",
@@ -1031,6 +1041,11 @@
           {
             "id": "MNFSTqtC93rEfYHB6hF82sKdZpUDFWkViLByLd1k1Ms",
             "authority": "CDFU8tEWsVU2ZMiek57Sgk3Huha2yBNcSHLAts3V3Cbf",
+            "seenInTxs": 2
+          },
+          {
+            "id": "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P",
+            "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
             "seenInTxs": 2
           },
           {
@@ -1052,24 +1067,19 @@
             "id": "DRVSpZ2YUYYKgZP8XtLhAGtT1zYSCKzeHfb4DgRnrgqD",
             "authority": "6wdzUdicUXrBKhAJpZtmYVNq1tvopU3i8zVG383Rw24g",
             "seenInTxs": 1
-          },
-          {
-            "id": "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P",
-            "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 1
           }
         ],
         "terminal": {
           "guards": [
             "GzMQc5VQGggFnicdAKc7MmkQV3dn3i12ux9dbLKqzy6F"
           ],
-          "txsRead": 0,
-          "tokensSeen": 3,
-          "tokensChecked": 3,
+          "txsRead": 2,
+          "tokensSeen": 4,
+          "tokensChecked": 4,
           "breakingRules": []
         },
         "programsSeen": 17,
-        "txsRead": 31,
+        "txsRead": 33,
         "notes": []
       }
     },
