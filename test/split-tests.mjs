@@ -1,0 +1,49 @@
+// The "90% back" claim: Sapling's breakdown, its own share, and the lines we measure.
+import { findLegs, judgeSplit, splitFindings, flatten } from "../lib/split.mjs";
+let failures = 0;
+const check = (label, cond, detail) => { if (!cond) failures++; console.log(`${cond ? "PASS" : "FAIL"} ${label}${detail ? ": " + detail : ""}`); };
+const zat = (zec) => String(Math.round(zec * 1e8));
+
+// sapling.cash/stats on 2026-11-06 (amounts in ZEC); field names are a guess at Sapling's style
+const stats = {
+  volumeZec: zat(35532.57), coins: 503, holders: 10313, rewardsPaidZec: zat(175.34), donatedZec: zat(7.9),
+  revenue: { totalZec: zat(508.66), last7dZec: zat(60) },
+  split: { liquidityZec: zat(103.96), saplingBuybackZec: zat(111.63), flywheelZec: zat(15.55), holdersZec: zat(175.34),
+    payeesZec: zat(46.89), donatedZec: zat(7.9), saplingZec: zat(52.59), waitingZec: zat(0.62) },
+  buyback7dZec: zat(16.94),
+};
+check("flatten keeps numbers by path and drops arrays", flatten({ a: { b: "5" }, c: [1, 2], d: true, e: "x" })["a.b"] === 5 && Object.keys(flatten({ c: [1], d: true })).length === 0);
+
+let f = findLegs(stats);
+// holders and donated each match a top-level field (rewardsPaidZec, donatedZec): the shortest path wins
+check("finds every line", ["liquidity", "saplingBuyback", "flywheel", "holders", "payees", "donated", "sapling", "waiting"].every((l) => f.legs[l] != null), JSON.stringify(f.from));
+check("time windows are never the all-time figure", !Object.values(f.from).some((p) => /7d/.test(p)), JSON.stringify(f.from));
+check("a flywheel field isn't Sapling's buyback", f.from.flywheel === "split.flywheelZec" && f.from.saplingBuyback === "split.saplingBuybackZec");
+check("amounts are read as zat", Math.abs(f.legs.sapling - 52.59) < 1e-9);
+check("overrides win", findLegs(stats, { holders: "split.holdersZec" }).from.holders === "split.holdersZec");
+check("two equally good fields: left out, not guessed", findLegs({ a: { lpZec: "1" }, b: { liquidityZec: "2" } }).ambiguous.liquidity?.length === 2);
+
+let j = judgeSplit(f.legs, { holders: 175.333, donated: 7.896, flywheel: 15.55125887, payees: 13.72 });
+check("Sapling's share by its own numbers: 52.59 of 513.86 settled = 10.23%", j.saplingSharePct === 10.23 && j.backPct === 89.77, `${j.saplingSharePct} / ${j.backPct}`);
+check("the claim holds", j.claim === "holds");
+check("every measured line matches", j.checks.length === 4 && j.checks.every((c) => c.matches), JSON.stringify(j.checks));
+check("payees is only a lower bound", j.checks.find((c) => c.leg === "payees").lowerBound === true);
+let s = splitFindings(j);
+check("nothing to say when it holds", !s.alerts.length && !s.notes.length);
+
+// Sapling keeps more than it says
+j = judgeSplit({ ...f.legs, sapling: 80 }, {});
+check("a 14% share does not hold", j.claim === "does not hold" && splitFindings(j).notes.some((n) => /14\.\d+% of settled fees, not 10%/.test(n)), JSON.stringify(splitFindings(j)));
+check("10.7% is close", judgeSplit({ ...f.legs, sapling: 55 }).claim === "close");
+// a line that doesn't match what we measure
+j = judgeSplit(f.legs, { holders: 150 });
+s = splitFindings(j);
+check("holders paid differs: alert", s.alerts.some((a) => /stats say 175\.34 ZEC was paid to holders; we count 150 ZEC/.test(a)), JSON.stringify(s.alerts));
+check("first run: a difference is a note, not an alert", splitFindings(j, { baseline: true }).alerts.length === 0);
+s = splitFindings(judgeSplit(f.legs, { payees: 60 }));
+check("payees more than Sapling's whole line: alert", s.alerts.some((a) => /coin records alone show 60 ZEC/.test(a)));
+check("payees under Sapling's line: fine (deployers can be paid directly)", judgeSplit(f.legs, { payees: 1 }).checks[0].matches);
+check("a missing line: not checked", judgeSplit({ ...f.legs, liquidity: undefined }).claim === "not checked");
+
+console.log(failures ? `\n${failures} failed` : "\nall split tests passed");
+process.exitCode = failures ? 1 : 0;

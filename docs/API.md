@@ -78,6 +78,17 @@ A field that couldn't be read is absent rather than guessed.
 | `per1kWeekUsd` | Last 7 days' payouts over the value of the holdings that shared them (pools and holders under $20 don't), times $1,000, at the latest run's price. Past payouts, not a promise |
 | `eligibleUsd`, `marketCapUsd` | Value of the eligible holdings at the latest run; the coin's market cap |
 
+## `api/split.json`: the "90% back" claim
+
+Hourly. `claim` has Sapling's words, `verdict` ("holds", "close", "does not
+hold", "not checked"), `saplingSharePct`, `backPct` and `settledZec`, worked
+out from Sapling's own breakdown. `breakdown` is that breakdown in ZEC by line
+(`liquidity`, `saplingBuyback`, `flywheel`, `holders`, `payees`, `donated`,
+`sapling`, `waiting`), `fieldsUsed` the stats field each came from, and
+`checks` each line we measure ourselves (`sapling`, `ours`, `matches`;
+`lowerBound` on payees). `statsFields` lists the names of the fields in
+Sapling's stats.
+
 ## `badges/<mint>.svg`: a badge per carded coin
 
 Green: no flags. Amber: 1–2 flags. Red: 3 or more. Grey: launch not read yet.

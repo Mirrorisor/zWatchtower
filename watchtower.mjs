@@ -52,6 +52,7 @@ const DEFAULTS = {
     earnings: { everyMinutes: 60 },
     zec: { everyMinutes: 15 },
     payees: { everyMinutes: 60 },
+    split: { everyMinutes: 60 },   // last: it reads what payees and flywheel just wrote
   },
   timeoutMinutes: 30,
   // Override the command for a check (tests use this): { keys: ["node", "fake.mjs"] }
@@ -153,6 +154,9 @@ function commandFor(name, cfg, store) {
     "--state", join(cfg.dataDir, "programs-state.json")];
   if (name === "payees") return [node, join(here, "payees-check.mjs"), "--json",
     "--state", join(cfg.dataDir, "payees-state.json"), "--out", join(cfg.dataDir, "payees.json")];
+  if (name === "split") return [node, join(here, "split-check.mjs"), "--json",
+    "--payees", join(cfg.dataDir, "payees-state.json"), "--watchtower", join(cfg.dataDir, "state.json"),
+    "--out", join(cfg.dataDir, "split.json"), ...(cfg.checks.split.fields ? ["--fields", JSON.stringify(cfg.checks.split.fields)] : [])];
   if (name === "zec") return [node, join(here, "zec-check.mjs"), "--json", "--rpc", cfg.solanaRpc,
     "--state", join(cfg.dataDir, "zec-state.json"), "--out", join(cfg.dataDir, "zec.json")];
   if (name === "earnings") return [node, join(here, "rewards-explorer.mjs"), "--json",
@@ -221,6 +225,8 @@ function normalise(name, report) {
   };
   if (name === "earnings") return { ok: true, alerts: [], summary: report.summary ?? {} };
   if (name === "payees") return { ok: report.alerts.length === 0, alerts: report.alerts, events: report.events ?? [],
+    summary: { ...report.summary, notes: report.notes ?? [] } };
+  if (name === "split") return { ok: report.alerts.length === 0, alerts: report.alerts, events: report.events ?? [],
     summary: { ...report.summary, notes: report.notes ?? [] } };
   if (name === "zec") return { ok: report.alerts.length === 0, alerts: report.alerts, events: report.events ?? [],
     summary: { ...report.summary, notes: report.notes ?? [] } };
@@ -419,6 +425,8 @@ function exportSite(cfg, store, dir) {
   if (existsSync(creators)) copyFileSync(creators, join(dir, "api", "creators.json"));
   const payeesOut = join(cfg.dataDir, "payees.json");
   if (existsSync(payeesOut)) copyFileSync(payeesOut, join(dir, "api", "payees.json"));
+  const splitOut = join(cfg.dataDir, "split.json");
+  if (existsSync(splitOut)) copyFileSync(splitOut, join(dir, "api", "split.json"));
   const zecOut = join(cfg.dataDir, "zec.json");
   if (existsSync(zecOut)) copyFileSync(zecOut, join(dir, "api", "zec.json"));
   const earnings = join(cfg.dataDir, "rewards.json");

@@ -33,6 +33,23 @@ buyers; a creator selling can be planned. The cards say what happened on
 chain and leave the judgement to the reader. Anyone can dispute a flag with
 the "Dispute a flag or fact" issue form, and every dispute gets a public answer.
 
+**The "90% back" claim.** Sapling's company site (sapling.llc) says "Ninety
+percent of every fee goes back to the people who use Sapling, paid in ZEC.
+Always." and sapling.cash/stats lists where the fees went, with "Sapling's
+10%" as one line. Every hour the split check (split-check.mjs) reads that
+breakdown and works out Sapling's share of everything that has reached a
+destination (fees still waiting in the pots are left out). The claim "holds"
+when that share rounds to 10% or less, is "close" under 11%, and "does not
+hold" above. It then checks the lines we measure ourselves: paid to holders
+(the sum of every coin's holder-rewards total), received by the Zcash
+Foundation (the sum of every coin's donations) and bought back by coins'
+flywheels (the flywheel check's on-chain total), each within 2%. Paid to
+deployers and payees is a lower bound only, since deployers can be paid
+outside the coin records. Not yet measured independently: liquidity, the
+$SAPLING buyback in ZEC (the tokens burned are checked by the flywheel check)
+and Sapling's own share. Fields are found by name; the ones used are listed
+in api/split.json, and a line that can't be found is reported, never guessed.
+
 **Independence.** zWatchtower is not affiliated with Sapling. Its builder
 launched $ZWATCH on Sapling (one wallet, 0.34%, disclosed in the README),
 and alerts are never softened because of it. Posts about a coin competing
