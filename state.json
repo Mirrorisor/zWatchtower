@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T14:15:11.209Z",
-      "finishedAt": "2026-11-05T14:15:14.569Z",
+      "startedAt": "2026-11-05T14:20:11.347Z",
+      "finishedAt": "2026-11-05T14:20:14.569Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,10 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -643,8 +640,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-05T14:05:08.110Z",
-      "finishedAt": "2026-11-05T14:05:09.471Z",
+      "startedAt": "2026-11-05T14:20:14.577Z",
+      "finishedAt": "2026-11-05T14:20:16.536Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -663,8 +660,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-05T14:05:09.473Z",
-      "finishedAt": "2026-11-05T14:05:13.451Z",
+      "startedAt": "2026-11-05T14:20:16.538Z",
+      "finishedAt": "2026-11-05T14:20:20.501Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -676,7 +673,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 225870540.673949,
+          "onChain": 225872478.27321398,
           "claimed": 225870000,
           "diffPct": 0,
           "verdict": "matches"
@@ -779,13 +776,13 @@
           }
         },
         "pot": {
-          "balanceZat": "2076056",
-          "shownZat": "2076056",
-          "inflowZat": "1548005275",
+          "balanceZat": "2340501",
+          "shownZat": "2340501",
+          "inflowZat": "1548269720",
           "buybackZat": "1545929219",
           "movements": {
             "setup": 1,
-            "inflow": 3166,
+            "inflow": 3167,
             "buyback": 330
           },
           "reconciled": true,
