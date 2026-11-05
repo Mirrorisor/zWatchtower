@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T00:05:10.984Z",
-      "finishedAt": "2026-11-05T00:05:12.728Z",
+      "startedAt": "2026-11-05T00:10:35.720Z",
+      "finishedAt": "2026-11-05T00:10:38.568Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,13 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 3
+          "observe_sapling": 5,
+          "settle_tax": 1,
+          "sell_tax": 1,
+          "withdraw_tax": 1,
+          "close_rewards_run": 1,
+          "release_rewards": 1,
+          "settle": 1
         },
         "unrecognised": 0,
         "baseline": false
@@ -656,8 +662,8 @@
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-04T23:00:13.862Z",
-      "finishedAt": "2026-11-04T23:07:39.578Z",
+      "startedAt": "2026-11-05T00:10:38.575Z",
+      "finishedAt": "2026-11-05T00:18:04.091Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -724,8 +730,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-04T23:55:13.102Z",
-      "finishedAt": "2026-11-04T23:55:14.882Z",
+      "startedAt": "2026-11-05T00:18:04.093Z",
+      "finishedAt": "2026-11-05T00:18:05.553Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -744,8 +750,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-04T23:55:14.883Z",
-      "finishedAt": "2026-11-04T23:55:20.286Z",
+      "startedAt": "2026-11-05T00:18:05.556Z",
+      "finishedAt": "2026-11-05T00:18:09.741Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -757,7 +763,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 225733800.2594,
+          "onChain": 225734168.91154802,
           "claimed": 225730000,
           "diffPct": 0,
           "verdict": "matches"
@@ -860,13 +866,13 @@
           }
         },
         "pot": {
-          "balanceZat": "2365451",
-          "shownZat": "2365451",
-          "inflowZat": "1524143983",
+          "balanceZat": "2572170",
+          "shownZat": "2572170",
+          "inflowZat": "1524350702",
           "buybackZat": "1521778532",
           "movements": {
             "setup": 1,
-            "inflow": 3098,
+            "inflow": 3099,
             "buyback": 323
           },
           "reconciled": true,
@@ -882,8 +888,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-04T23:40:22.563Z",
-      "finishedAt": "2026-11-04T23:42:31.133Z",
+      "startedAt": "2026-11-05T00:18:09.744Z",
+      "finishedAt": "2026-11-05T00:20:33.122Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1044,27 +1050,20 @@
     },
     "earnings": {
       "check": "earnings",
-      "startedAt": "2026-11-04T23:09:17.393Z",
-      "finishedAt": "2026-11-04T23:09:23.455Z",
+      "startedAt": "2026-11-05T00:20:33.126Z",
+      "finishedAt": "2026-11-05T00:20:38.926Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "runsIndexed": 1608,
-        "newRuns": 3,
-        "latestRun": 1608,
+        "runsIndexed": 1612,
+        "newRuns": 4,
+        "latestRun": 1612,
         "coinsPaying": 184,
         "crossChecked": 183,
-        "matchingSapling": 182,
-        "differ": [
-          {
-            "symbol": "ᑓହꚡई",
-            "mint": "HAp8U1SB7bDGMa81AQom1ee6AR5iSFFTi57MEbTzcash",
-            "ours": 6.760293,
-            "sapling": 6.53539294
-          }
-        ],
-        "paid7dZec": 62.54,
+        "matchingSapling": 183,
+        "differ": [],
+        "paid7dZec": 62.334,
         "notes": []
       }
     },
