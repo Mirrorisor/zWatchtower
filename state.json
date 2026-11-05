@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T15:00:11.325Z",
-      "finishedAt": "2026-11-05T15:00:15.796Z",
+      "startedAt": "2026-11-05T15:05:11.307Z",
+      "finishedAt": "2026-11-05T15:05:14.583Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,12 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 6,
-          "settle": 3,
-          "claim_payee": 1,
-          "collect_creator_fee": 1
+          "observe_sapling": 4
         },
-        "unrecognised": 1,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -641,8 +638,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-05T14:51:44.099Z",
-      "finishedAt": "2026-11-05T14:51:45.895Z",
+      "startedAt": "2026-11-05T15:05:14.591Z",
+      "finishedAt": "2026-11-05T15:05:16.011Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -661,17 +658,17 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-05T14:51:45.897Z",
-      "finishedAt": "2026-11-05T14:51:50.824Z",
+      "startedAt": "2026-11-05T15:05:16.014Z",
+      "finishedAt": "2026-11-05T15:05:19.747Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1542835292",
+          "claimedZat": "1545929219",
           "chainZat": "1545929219",
           "notListedYetZat": "0",
-          "verdict": "differs from the chain"
+          "verdict": "matches the chain"
         },
         "saplingBurn": {
           "onChain": 225874750.94602394,
@@ -794,9 +791,7 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": [
-          "Sapling's headline says 1542835292 zat bought back; the pot paid 1545929219 zat on chain (0 of it not listed yet)"
-        ]
+        "notes": []
       }
     },
     "coins": {
