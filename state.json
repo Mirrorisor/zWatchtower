@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T00:45:02.761Z",
-      "finishedAt": "2026-11-05T00:45:04.804Z",
+      "startedAt": "2026-11-05T00:50:01.595Z",
+      "finishedAt": "2026-11-05T00:50:04.679Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,16 +21,20 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "close_rewards_run": 1,
+          "observe_sapling": 4,
+          "release_rewards": 1,
+          "convert_sapling_begin": 1,
+          "convert_sapling_end": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 2,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-05T00:20:50.341Z",
-      "finishedAt": "2026-11-05T00:21:52.961Z",
+      "startedAt": "2026-11-05T00:50:04.685Z",
+      "finishedAt": "2026-11-05T00:51:07.311Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -38,30 +42,28 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-05T00:21:26.964Z",
-        "runs": 11,
-        "passed": 9,
+        "checkedAt": "2026-11-05T00:50:42.323Z",
+        "runs": 9,
+        "passed": 7,
         "flagged": 2,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.54176786",
+        "zecPaidInDoneRuns": "0.42149929",
         "onChainChecks": true,
         "checkedIds": [
           1491,
           1573,
-          1604,
-          1605,
-          1606,
           1607,
           1608,
           1609,
           1610,
           1611,
-          1612
+          1612,
+          1613
         ],
         "baskets": [],
-        "distinctReleases": 11,
-        "runsWithRelease": 11,
+        "distinctReleases": 9,
+        "runsWithRelease": 9,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -217,15 +219,15 @@
           },
           "releaseAt": "2026-11-03T00:19:00.000Z",
           "window": "2 hours after the release",
-          "txsRead": 101,
-          "txsInWindow": 101,
-          "inflow": "171049228",
-          "outflow": "166099136",
+          "txsRead": 96,
+          "txsInWindow": 96,
+          "inflow": "154894814",
+          "outflow": "161626064",
           "to": {
             "thisRunHolders": "17729413",
             "treasury": "1190969",
-            "otherRunsHolders": "55700211",
-            "unknown": "91478543"
+            "otherRunsHolders": "55495044",
+            "unknown": "87210638"
           },
           "topUnknown": [
             {
@@ -284,7 +286,7 @@
               "account": {
                 "owner": "11111111111111111111111111111111",
                 "executable": false,
-                "lamports": 90859656512
+                "lamports": 93688632878
               },
               "after": {
                 "zecLeft": "0",
@@ -307,7 +309,7 @@
               "account": {
                 "owner": "11111111111111111111111111111111",
                 "executable": false,
-                "lamports": 221158938912
+                "lamports": 221211632731
               },
               "after": {
                 "zecLeft": "59852380",
@@ -653,7 +655,7 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1612
+        "maxRunId": 1613
       }
     },
     "float": {
@@ -726,8 +728,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-05T00:35:13.089Z",
-      "finishedAt": "2026-11-05T00:35:14.836Z",
+      "startedAt": "2026-11-05T00:51:07.315Z",
+      "finishedAt": "2026-11-05T00:51:08.931Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -746,21 +748,21 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-05T00:35:14.838Z",
-      "finishedAt": "2026-11-05T00:35:20.199Z",
+      "startedAt": "2026-11-05T00:51:08.933Z",
+      "finishedAt": "2026-11-05T00:51:12.923Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1518798572",
+          "claimedZat": "1521778532",
           "chainZat": "1525992669",
           "notListedYetZat": "4214137",
-          "verdict": "differs from the chain"
+          "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 225744495.22381794,
-          "claimed": 225740000,
+          "onChain": 225747317.346627,
+          "claimed": 225750000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -862,13 +864,13 @@
           }
         },
         "pot": {
-          "balanceZat": "249223",
-          "shownZat": "249223",
-          "inflowZat": "1526241892",
+          "balanceZat": "533955",
+          "shownZat": "533955",
+          "inflowZat": "1526526624",
           "buybackZat": "1525992669",
           "movements": {
             "setup": 1,
-            "inflow": 3101,
+            "inflow": 3102,
             "buyback": 324
           },
           "reconciled": true,
@@ -879,15 +881,13 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": [
-          "Sapling's headline says 1518798572 zat bought back; the pot paid 1525992669 zat on chain (4214137 of it not listed yet)"
-        ]
+        "notes": []
       }
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-05T00:18:09.744Z",
-      "finishedAt": "2026-11-05T00:20:33.122Z",
+      "startedAt": "2026-11-05T00:51:12.924Z",
+      "finishedAt": "2026-11-05T00:52:55.898Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -904,7 +904,7 @@
           "Creator bought N of supply at launch": 2
         },
         "notes": [
-          "creator scan: 60 coin(s) read this run, 494 of 494 read so far (0 launched shielded, creator not public)",
+          "creator scan: 52 coin(s) read this run, 494 of 494 read so far (0 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
           "1 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 1)",
           "25 shortlisted coin(s) were under $10,000 on their own page, so no card",
@@ -1097,8 +1097,8 @@
     "earnings": {},
     "zec": {}
   },
-  "rewardsMaxRun": 1612,
-  "rewardsFrom": 1604,
+  "rewardsMaxRun": 1613,
+  "rewardsFrom": 1607,
   "x": {
     "day": "2026-11-04",
     "today": 10,
