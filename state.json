@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T06:50:11.197Z",
-      "finishedAt": "2026-11-05T06:50:14.323Z",
+      "startedAt": "2026-11-05T06:55:11.299Z",
+      "finishedAt": "2026-11-05T06:55:14.665Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,12 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "close_rewards_run": 1,
+          "release_rewards": 1,
+          "claim_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -747,8 +750,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-05T06:40:14.001Z",
-      "finishedAt": "2026-11-05T06:40:16.039Z",
+      "startedAt": "2026-11-05T06:55:14.671Z",
+      "finishedAt": "2026-11-05T06:55:15.865Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -767,8 +770,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-05T06:40:16.042Z",
-      "finishedAt": "2026-11-05T06:40:19.723Z",
+      "startedAt": "2026-11-05T06:55:15.867Z",
+      "finishedAt": "2026-11-05T06:55:19.725Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -780,7 +783,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 225799902.83209002,
+          "onChain": 225801049.52337396,
           "claimed": 225800000,
           "diffPct": 0,
           "verdict": "matches"
@@ -883,13 +886,13 @@
           }
         },
         "pot": {
-          "balanceZat": "2067640",
-          "shownZat": "2067640",
-          "inflowZat": "1535281825",
+          "balanceZat": "2350909",
+          "shownZat": "2350909",
+          "inflowZat": "1535565094",
           "buybackZat": "1533214185",
           "movements": {
             "setup": 1,
-            "inflow": 3127,
+            "inflow": 3128,
             "buyback": 326
           },
           "reconciled": true,
