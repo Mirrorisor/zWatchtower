@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T07:24:18.842Z",
-      "finishedAt": "2026-11-05T07:24:22.670Z",
+      "startedAt": "2026-11-05T07:30:11.251Z",
+      "finishedAt": "2026-11-05T07:30:14.449Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,11 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "settle": 1,
-          "settle_sapling": 1,
-          "observe_sapling": 8
+          "observe_sapling": 5
         },
-        "unrecognised": 1,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -61,8 +59,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-05T07:00:14.426Z",
-      "finishedAt": "2026-11-05T07:00:59.508Z",
+      "startedAt": "2026-11-05T07:30:14.455Z",
+      "finishedAt": "2026-11-05T07:30:58.740Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -70,24 +68,24 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-05T07:00:51.911Z",
+        "checkedAt": "2026-11-05T07:30:51.292Z",
         "runs": 9,
         "passed": 7,
         "flagged": 2,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.40854267",
+        "zecPaidInDoneRuns": "0.37970400",
         "onChainChecks": true,
         "checkedIds": [
           1491,
           1573,
-          1617,
           1618,
           1619,
           1620,
           1621,
           1622,
-          1623
+          1623,
+          1624
         ],
         "baskets": [],
         "distinctReleases": 9,
@@ -247,15 +245,15 @@
           },
           "releaseAt": "2026-11-03T00:19:00.000Z",
           "window": "2 hours after the release",
-          "txsRead": 9,
-          "txsInWindow": 9,
+          "txsRead": 7,
+          "txsInWindow": 7,
           "inflow": "6564218",
-          "outflow": "4030611",
+          "outflow": "2999024",
           "to": {
             "thisRunHolders": "9638",
             "treasury": "0",
-            "otherRunsHolders": "989489",
-            "unknown": "3031484"
+            "otherRunsHolders": "443966",
+            "unknown": "2545420"
           },
           "topUnknown": [
             {
@@ -297,33 +295,6 @@
               "alsoHolderOf": []
             },
             {
-              "owner": "6uhFSixc4uEruG5whafKgBEnoLnoNgH6XHaZgc1Ge2Sv",
-              "zat": "131078",
-              "wallet": true,
-              "account": {
-                "owner": "11111111111111111111111111111111",
-                "executable": false,
-                "lamports": 8290731
-              },
-              "after": {
-                "zecLeft": "0",
-                "laterTxs": 4,
-                "programs": [
-                  "DF1ow4tspfHX9JwWJsAb9epbkA8hmpSEAtxXy1V27QBH",
-                  "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-                  "11111111111111111111111111111111",
-                  "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
-                  "DRVSpZ2YUYYKgZP8XtLhAGtT1zYSCKzeHfb4DgRnrgqD",
-                  "ComputeBudget111111111111111111111111111111",
-                  "BiSoNHVpsVZW2F7rx2eQ59yQwKxzU5NvBcmKshCSUypi",
-                  "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
-                  "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
-                ]
-              },
-              "firstTx": "Ld7PfnRVEY2YM1Tuf7Wt19QwAYAsGpruZQ8ATPL7Jf7nWKw8DzBVEX7PMmmhWiBLoJBQcwy1brRUv7uCZKwBLH7",
-              "alsoHolderOf": []
-            },
-            {
               "owner": "Diz54GnvcoX3F9oJbJhR84vutWzNwif1jomvT31wktk6",
               "zat": "130667",
               "wallet": true,
@@ -342,29 +313,59 @@
               "alsoHolderOf": []
             },
             {
-              "owner": "8LXgFCwW5LNpo48MY44kpkTj8khZRTvVmG6qzwnKZw5a",
-              "zat": "102612",
+              "owner": "EwQ1axtVMPcBxwQnGvtMupqsAH3zBbLNuVp5CzvJW3up",
+              "zat": "88952",
               "wallet": true,
-              "account": "no account",
+              "account": {
+                "owner": "11111111111111111111111111111111",
+                "executable": false,
+                "lamports": 3380160
+              },
               "after": {
-                "zecLeft": "0",
+                "zecLeft": "572019",
+                "laterTxs": 4,
+                "programs": [
+                  "ComputeBudget111111111111111111111111111111",
+                  "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+                  "DF1ow4tspfHX9JwWJsAb9epbkA8hmpSEAtxXy1V27QBH",
+                  "11111111111111111111111111111111",
+                  "AQU1FRd7papthgdrwPTTq5JacJh8YtwEXaBfKU3bTz45",
+                  "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+                  "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
+                  "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+                  "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+                ]
+              },
+              "firstTx": "3cGkRQyg2Gmk8gv3ECucwBjPofRYXkg9UHwegEVZrnDawAAQSEoBhCQad8Jfgsp1E4GC1GMGtsVXXbBMDE6koZZ7",
+              "alsoHolderOf": []
+            },
+            {
+              "owner": "FpCQ9Hw5fvgTT2xCHDZr8Q74LayKjvmzJEW1Wp1qT6JU",
+              "zat": "85366",
+              "wallet": true,
+              "account": {
+                "owner": "11111111111111111111111111111111",
+                "executable": false,
+                "lamports": 12821672
+              },
+              "after": {
+                "zecLeft": "3",
                 "laterTxs": 4,
                 "programs": [
                   "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
                   "JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4",
                   "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
                   "11111111111111111111111111111111",
-                  "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
+                  "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P",
                   "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
                   "ZERor4xhbUycZ6gb9ntrhqscUcZmAbQDjEAtCf4hbZY",
                   "DF1ow4tspfHX9JwWJsAb9epbkA8hmpSEAtxXy1V27QBH",
-                  "DRVSpZ2YUYYKgZP8XtLhAGtT1zYSCKzeHfb4DgRnrgqD",
+                  "BiSoNHVpsVZW2F7rx2eQ59yQwKxzU5NvBcmKshCSUypi",
                   "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
-                  "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
                   "TessVdML9pBGgG9yGks7o4HewRaXVAMuoVj4x83GLQH"
                 ]
               },
-              "firstTx": "Ld7PfnRVEY2YM1Tuf7Wt19QwAYAsGpruZQ8ATPL7Jf7nWKw8DzBVEX7PMmmhWiBLoJBQcwy1brRUv7uCZKwBLH7",
+              "firstTx": "2w3GbHQm258MWD26aCMQixCBWb5cCtAqu426WS5CAp1ZMgfcxv4Y2JWLFDWfQymwSL6fDyoEvvGjJYeCuTHYZCcc",
               "alsoHolderOf": []
             }
           ]
@@ -678,7 +679,7 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1623
+        "maxRunId": 1624
       }
     },
     "float": {
@@ -1146,8 +1147,8 @@
     "zec": {},
     "payees": {}
   },
-  "rewardsMaxRun": 1623,
-  "rewardsFrom": 1617,
+  "rewardsMaxRun": 1624,
+  "rewardsFrom": 1618,
   "x": {
     "day": "2026-11-04",
     "today": 10,
