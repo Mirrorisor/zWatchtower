@@ -1,0 +1,31 @@
+// Fee recipients and Sapling's permanence promises.
+import { coinFacts, comparePayees, payeeTable } from "../lib/payees.mjs";
+let failures = 0;
+const check = (label, cond, detail) => { if (!cond) failures++; console.log(`${cond ? "PASS" : "FAIL"} ${label}${detail ? ": " + detail : ""}`); };
+const W1 = "HbPR3bpDR8WxsqgBu6QUAZcEXhUJrdChvBt7UWyz8M82", W2 = "devkUZLxRCFeZqrNbL2XJUDgnoUaCZ57V64HHYxiEWX";
+const zebra = coinFacts({ mint: "GYHdoj51x95dZabW4n4s7fXLXXnqjcqti8LRQfwgn3W2", symbol: "ZEBRA", marketCapUsd: 21300, donates: true, holderRewards: false,
+  donation: { donatedZec: "400022568", waitingZec: "17355580", onTheWayZec: "0" } });
+const zdog = coinFacts({ mint: "B7h7XLtQMTWMNTzrt35TnRVixsi93vCpDuGLK4Rzcash", symbol: "ZDOG", marketCapUsd: 12000, holderRewards: true, holderRewardsPaidZec: "217403561" });
+const a = coinFacts({ mint: "A1", symbol: "AAA", marketCapUsd: 15000, payee: W1, payeePaidZec: "1000000" });
+const b = coinFacts({ mint: "B1", symbol: "BBB", marketCapUsd: 3000, payee: W1, payeePaidZec: "2000000" });
+check("recipient kinds", zebra.kind === "zcash-foundation" && zdog.kind === "holders" && a.kind === "wallet" && coinFacts({ mint: "C" }).kind === "creator");
+const prev = { [zebra.mint]: zebra, [zdog.mint]: zdog, A1: a, B1: b };
+let r = comparePayees(prev, { ...prev }, "400022568");
+check("nothing changed: nothing to say, donations add up", !r.alerts.length && !r.events.length && r.donationsAddUp.matches);
+r = comparePayees(prev, { [zebra.mint]: { ...zebra, donates: false, kind: "wallet", payee: W2 } });
+check("a coin that stops donating breaks a promise", r.alerts.some((x) => /ZEBRA.*Zcash Foundation, which Sapling's docs say is permanent, and no longer does/.test(x)), JSON.stringify(r.alerts));
+r = comparePayees(prev, { [zdog.mint]: { ...zdog, holderRewards: false, kind: "wallet", payee: W2 } });
+check("a coin that stops paying holder rewards breaks a promise", r.alerts.some((x) => /ZDOG.*holder rewards.*no longer does/.test(x)));
+r = comparePayees(prev, { [zdog.mint]: { ...zdog, holderPaidZat: "100" } });
+check("a paid total going down is an alert", r.alerts.some((x) => /total paid to holders went down, from 2\.17403561 to 0\.000001 ZEC/.test(x)), JSON.stringify(r.alerts));
+r = comparePayees(prev, { A1: { ...a, payee: W2 } });
+check("a fee share redirected to another wallet is news", r.events.some((x) => /AAA.*redirected from wallet HbPR…8M82 to devk…iEWX/.test(x)), JSON.stringify(r.events));
+r = comparePayees(prev, { A1: { ...a, kind: "holders", holderRewards: true } });
+check("switching to holder rewards is news", r.events.some((x) => /now goes to holder rewards \(it went to wallet HbPR…8M82\)/.test(x)));
+r = comparePayees(prev, { B1: { ...b, payee: W2 } });
+check("small coins are recorded, not posted", !r.events.length);
+r = comparePayees(prev, {}, "500000000");
+check("donations that don't add up to the platform total", r.donationsAddUp.matches === false);
+const t = payeeTable(prev);
+check("who collects fees: one wallet, two coins, paid total", t.length === 1 && t[0].payee === W1 && t[0].coinCount === 2 && t[0].paidZec === 0.03, JSON.stringify(t));
+process.exitCode = failures ? 1 : 0;

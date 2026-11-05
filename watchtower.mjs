@@ -51,6 +51,7 @@ const DEFAULTS = {
     programs: { everyMinutes: 30 },
     earnings: { everyMinutes: 60 },
     zec: { everyMinutes: 15 },
+    payees: { everyMinutes: 60 },
   },
   timeoutMinutes: 30,
   // Override the command for a check (tests use this): { keys: ["node", "fake.mjs"] }
@@ -150,6 +151,8 @@ function commandFor(name, cfg, store) {
     "--max-coins", String(cfg.checks.coins.maxCoins)];
   if (name === "programs") return [node, join(here, "programs-check.mjs"), "--json", "--rpc", cfg.solanaRpc,
     "--state", join(cfg.dataDir, "programs-state.json")];
+  if (name === "payees") return [node, join(here, "payees-check.mjs"), "--json",
+    "--state", join(cfg.dataDir, "payees-state.json"), "--out", join(cfg.dataDir, "payees.json")];
   if (name === "zec") return [node, join(here, "zec-check.mjs"), "--json", "--rpc", cfg.solanaRpc,
     "--state", join(cfg.dataDir, "zec-state.json"), "--out", join(cfg.dataDir, "zec.json")];
   if (name === "earnings") return [node, join(here, "rewards-explorer.mjs"), "--json",
@@ -217,6 +220,8 @@ function normalise(name, report) {
       flagCounts: report.flagCounts, notes: report.notes },
   };
   if (name === "earnings") return { ok: true, alerts: [], summary: report.summary ?? {} };
+  if (name === "payees") return { ok: report.alerts.length === 0, alerts: report.alerts, events: report.events ?? [],
+    summary: { ...report.summary, notes: report.notes ?? [] } };
   if (name === "zec") return { ok: report.alerts.length === 0, alerts: report.alerts, events: report.events ?? [],
     summary: { ...report.summary, notes: report.notes ?? [] } };
   if (name === "programs") return {
@@ -412,6 +417,8 @@ function exportSite(cfg, store, dir) {
   const coins = join(cfg.dataDir, "coins.json");
   const creators = join(cfg.dataDir, "creators.json");
   if (existsSync(creators)) copyFileSync(creators, join(dir, "api", "creators.json"));
+  const payeesOut = join(cfg.dataDir, "payees.json");
+  if (existsSync(payeesOut)) copyFileSync(payeesOut, join(dir, "api", "payees.json"));
   const zecOut = join(cfg.dataDir, "zec.json");
   if (existsSync(zecOut)) copyFileSync(zecOut, join(dir, "api", "zec.json"));
   const earnings = join(cfg.dataDir, "rewards.json");
