@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T16:40:03.737Z",
-      "finishedAt": "2026-11-05T16:40:05.886Z",
+      "startedAt": "2026-11-05T16:45:01.974Z",
+      "finishedAt": "2026-11-05T16:45:09.713Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -20,7 +20,13 @@
           "admin",
           "recovery"
         ],
-        "vaultInstructions": {},
+        "vaultInstructions": {
+          "observe_sapling": 9,
+          "settle_tax": 1,
+          "sell_tax": 2,
+          "withdraw_tax": 2,
+          "settle": 4
+        },
         "unrecognised": 0,
         "baseline": false,
         "multisig": {
@@ -637,8 +643,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-05T16:30:05.863Z",
-      "finishedAt": "2026-11-05T16:30:07.772Z",
+      "startedAt": "2026-11-05T16:45:09.721Z",
+      "finishedAt": "2026-11-05T16:45:11.246Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -657,8 +663,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-05T16:30:07.774Z",
-      "finishedAt": "2026-11-05T16:30:12.156Z",
+      "startedAt": "2026-11-05T16:45:11.247Z",
+      "finishedAt": "2026-11-05T16:45:16.009Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -670,7 +676,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 225910136.42686796,
+          "onChain": 225912851.79702604,
           "claimed": 225910000,
           "diffPct": 0,
           "verdict": "matches"
@@ -773,13 +779,13 @@
           }
         },
         "pot": {
-          "balanceZat": "2311374",
-          "shownZat": "2311374",
-          "inflowZat": "1551369985",
+          "balanceZat": "2547927",
+          "shownZat": "2547927",
+          "inflowZat": "1551606538",
           "buybackZat": "1549058611",
           "movements": {
             "setup": 1,
-            "inflow": 3180,
+            "inflow": 3181,
             "buyback": 331
           },
           "reconciled": true,
