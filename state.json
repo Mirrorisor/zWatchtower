@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T11:15:09.270Z",
-      "finishedAt": "2026-11-05T11:15:13.050Z",
+      "startedAt": "2026-11-05T11:20:09.646Z",
+      "finishedAt": "2026-11-05T11:20:12.373Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5,
-          "close_rewards_run": 1,
-          "release_rewards": 1
+          "observe_sapling": 4,
+          "sell_tax": 1,
+          "withdraw_tax": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -641,8 +641,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-05T11:06:46.518Z",
-      "finishedAt": "2026-11-05T11:06:47.972Z",
+      "startedAt": "2026-11-05T11:20:12.382Z",
+      "finishedAt": "2026-11-05T11:20:14.171Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -661,16 +661,16 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-05T11:06:47.974Z",
-      "finishedAt": "2026-11-05T11:06:52.141Z",
+      "startedAt": "2026-11-05T11:20:14.173Z",
+      "finishedAt": "2026-11-05T11:20:17.941Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1539791791",
+          "claimedZat": "1542835292",
           "chainZat": "1542835292",
-          "notListedYetZat": "3043501",
+          "notListedYetZat": "0",
           "verdict": "matches the chain"
         },
         "saplingBurn": {
@@ -679,11 +679,11 @@
           "diffPct": 0,
           "verdict": "matches"
         },
-        "burns": 257,
-        "burnsVerified": 257,
-        "boughtBackZat": "1347946420",
+        "burns": 258,
+        "burnsVerified": 258,
+        "boughtBackZat": "1350989921",
         "venues": {
-          "pump amm": 138,
+          "pump amm": 139,
           "raydium cpmm": 59,
           "raydium launchlab": 10,
           "pump bonding curve": 1,
@@ -702,8 +702,8 @@
           },
           "ZILLIONS": {
             "mint": "3sKZuSZF7onqPYFrWu3bH4Lh141duydt9MAmSd46jaLJ",
-            "burns": 66,
-            "zat": "267377178"
+            "burns": 67,
+            "zat": "270420679"
           },
           "SEEDLING": {
             "mint": "JAxk7phmXL9G2syv6DJ72ibddzTDhybmhZTNjpgKwF5A",
