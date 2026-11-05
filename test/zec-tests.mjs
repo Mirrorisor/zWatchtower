@@ -19,6 +19,7 @@ check("and the new one becomes the baseline", compare(r.state, snap(1.5, 108000,
 r = compare(s, snap(1.3, 108000, AUTH, "Freezer111111111111111111111111111111111111"));
 check("a freeze authority appearing is an alert", r.alerts.length === 1 && /can freeze ZEC accounts changed from none/.test(r.alerts[0]));
 check("change over a window", changeOver(s.history, "solana", 2 * 3600e3, at(1.1)) === 3000);
+check("no 7-day change until there are 7 days of history", changeOver(s.history, "solana", 7 * 24 * 3600e3, at(1.1)) === null);
 // history is thinned to hourly after a day
 let st = null;
 for (let h = 0; h < 48; h += 0.25) st = compare(st, snap(h, 105000)).state;
