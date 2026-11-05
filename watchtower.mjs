@@ -187,6 +187,7 @@ function normalise(name, report) {
       vaultInstructions: report.vaultInstructions,
       unrecognised: report.unrecognised?.length ?? 0,
       baseline: report.baseline,
+      multisig: report.multisig ?? null,
     },
   };
   if (name === "rewards") {

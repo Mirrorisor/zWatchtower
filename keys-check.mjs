@@ -3,7 +3,7 @@
 //
 // Watches the privileged parts of Sapling on Solana and alerts when they move:
 //   1. Upgrades: the vault program's upgrade authority must be the published
-//      2-of-3 Squads multisig vault, and its last-deployed slot must not change
+//      Squads multisig vault (2 of 4 members on chain; Sapling's docs say 2-of-3), and its last-deployed slot must not change
 //      without warning.
 //   2. Config: any change to the vault's on-chain Config account (fee split,
 //      treasury, rewards or buyback wallets, pauses). Reports which known
@@ -22,6 +22,7 @@
 //   node keys-check.mjs --rpc URL --squads-multisig <multisig account> --json
 //
 // Read-only. Exit code 1 when there is an alert.
+import { multisigClaim, compareMultisig } from "./lib/claims.mjs";
 import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { decode as b58decode, encode as b58encode } from "./lib/base58.mjs";
@@ -283,6 +284,14 @@ async function main() {
   for (const ix of (squads?.instructions ?? []).filter((x) => SQUADS_ALERT.has(x.name)))
     alerts.push(`multisig ${ix.name} at ${ix.time} (${ix.signature})`);
 
+  // what Sapling's docs say about the multisig, against the chain (a recorded fact, not an alert)
+  let docsClaim = null;
+  if (ms && !ms.error) {
+    try {
+      const r = await fetch(opt("--docs-url", "https://sapling.cash/docs"));
+      if (r.ok) docsClaim = compareMultisig(multisigClaim(await r.text()), { threshold: ms.threshold, members: ms.memberCount });
+    } catch {}
+  }
   const counts = (list) => list.reduce((m, x) => ((m[x.name] = (m[x.name] ?? 0) + 1), m), {});
   const report = {
     checkedAt: new Date().toISOString(),
@@ -292,7 +301,7 @@ async function main() {
     vaultInstructions: counts(vault.instructions),
     unrecognised: vault.instructions.filter((x) => x.kind === "unrecognised").map((x) => ({ name: x.name, signature: x.signature })),
     multisig: ms ? (ms.error ? ms : { address: multisig, threshold: ms.threshold, members: ms.memberCount,
-      timeLockSeconds: ms.timeLockSeconds, transactionIndex: ms.transactionIndex }) : "not watched",
+      memberKeys: ms.members, timeLockSeconds: ms.timeLockSeconds, transactionIndex: ms.transactionIndex, docsClaim }) : "not watched",
     multisigInstructions: squads ? counts(squads.instructions) : "not watched",
     alerts,
   };

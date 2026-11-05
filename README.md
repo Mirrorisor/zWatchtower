@@ -276,8 +276,9 @@ records a baseline in the state file; each later run compares against it.
 
 It alerts when:
 
-- the vault program's upgrade authority is not the published 2-of-3 Squads
-  vault (3eCXkz…57sMtf), or the program is frozen
+- the vault program's upgrade authority is not the published Squads vault
+  (3eCXkz…57sMtf; 2 of 4 members must approve on chain, Sapling's docs say
+  2-of-3), or the program is frozen
 - the vault program is redeployed (its last-deploy slot changes)
 - the vault Config account changes: reports which known wallets (treasury,
   rewards, buyback, LP wallet) appeared or disappeared, and which bytes moved
