@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T03:15:02.948Z",
-      "finishedAt": "2026-11-05T03:15:06.944Z",
+      "startedAt": "2026-11-05T03:28:45.365Z",
+      "finishedAt": "2026-11-05T03:28:51.150Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
-        "configSha256": "ee72811b6121b5cb1bb292cc51cfd6c29352304e48b498557f3b1c423381ceca",
+        "configSha256": "6159f4d873d6f0c061c5328c541fb101cd134e47a738135fc8d429d57318fbb1",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -21,14 +21,16 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "sell_tax": 1,
-          "withdraw_tax": 1,
-          "release_rewards": 2,
-          "close_rewards_run": 1,
-          "observe_sapling": 4,
-          "settle": 4
+          "observe_sapling": 11,
+          "settle": 2,
+          "draw_lp": 1,
+          "settle_sapling": 1,
+          "settle_tax": 1,
+          "convert_tax_begin": 1,
+          "convert_tax_end": 1,
+          "close_rewards_run": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 3,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -64,8 +66,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-05T02:50:07.191Z",
-      "finishedAt": "2026-11-05T02:51:07.599Z",
+      "startedAt": "2026-11-05T03:28:51.156Z",
+      "finishedAt": "2026-11-05T03:29:45.950Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -73,28 +75,29 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-05T02:50:44.686Z",
-        "runs": 9,
-        "passed": 7,
+        "checkedAt": "2026-11-05T03:29:29.127Z",
+        "runs": 10,
+        "passed": 8,
         "flagged": 2,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.41676281",
+        "zecPaidInDoneRuns": "0.43980017",
         "onChainChecks": true,
         "checkedIds": [
           1491,
           1573,
-          1610,
           1611,
           1612,
           1613,
           1614,
           1615,
-          1616
+          1616,
+          1617,
+          1618
         ],
         "baskets": [],
-        "distinctReleases": 9,
-        "runsWithRelease": 9,
+        "distinctReleases": 10,
+        "runsWithRelease": 10,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -250,15 +253,15 @@
           },
           "releaseAt": "2026-11-03T00:19:00.000Z",
           "window": "2 hours after the release",
-          "txsRead": 78,
-          "txsInWindow": 78,
-          "inflow": "154894814",
-          "outflow": "150336159",
+          "txsRead": 55,
+          "txsInWindow": 55,
+          "inflow": "152043963",
+          "outflow": "147093871",
           "to": {
-            "thisRunHolders": "16174249",
-            "treasury": "536827",
-            "otherRunsHolders": "55077876",
-            "unknown": "78547207"
+            "thisRunHolders": "16173324",
+            "treasury": "142666",
+            "otherRunsHolders": "53464058",
+            "unknown": "77313823"
           },
           "topUnknown": [
             {
@@ -317,7 +320,7 @@
               "account": {
                 "owner": "11111111111111111111111111111111",
                 "executable": false,
-                "lamports": 93688632878
+                "lamports": 93748547354
               },
               "after": {
                 "zecLeft": "0",
@@ -686,7 +689,7 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1616
+        "maxRunId": 1618
       }
     },
     "float": {
@@ -759,8 +762,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-05T03:10:04.533Z",
-      "finishedAt": "2026-11-05T03:10:06.525Z",
+      "startedAt": "2026-11-05T03:29:45.953Z",
+      "finishedAt": "2026-11-05T03:29:47.335Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -779,8 +782,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-05T03:10:06.528Z",
-      "finishedAt": "2026-11-05T03:10:10.286Z",
+      "startedAt": "2026-11-05T03:29:47.336Z",
+      "finishedAt": "2026-11-05T03:29:51.784Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -792,8 +795,8 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 225771621.73273206,
-          "claimed": 225770000,
+          "onChain": 225777752.187276,
+          "claimed": 225780000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -895,13 +898,13 @@
           }
         },
         "pot": {
-          "balanceZat": "265242",
-          "shownZat": "265242",
-          "inflowZat": "1530386166",
+          "balanceZat": "675944",
+          "shownZat": "675944",
+          "inflowZat": "1530796868",
           "buybackZat": "1530120924",
           "movements": {
             "setup": 1,
-            "inflow": 3112,
+            "inflow": 3113,
             "buyback": 325
           },
           "reconciled": true,
@@ -1098,15 +1101,15 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-05T03:12:12.877Z",
-      "finishedAt": "2026-11-05T03:12:16.733Z",
+      "startedAt": "2026-11-05T03:29:51.785Z",
+      "finishedAt": "2026-11-05T03:29:56.096Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 105677.13,
-        "nearSupply": 152373.32,
+        "nearSupply": 152371.37,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
         "change24h": null,
@@ -1152,8 +1155,8 @@
     "zec": {},
     "payees": {}
   },
-  "rewardsMaxRun": 1616,
-  "rewardsFrom": 1610,
+  "rewardsMaxRun": 1618,
+  "rewardsFrom": 1611,
   "x": {
     "day": "2026-11-04",
     "today": 10,
