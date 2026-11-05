@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T10:10:04.498Z",
-      "finishedAt": "2026-11-05T10:10:07.956Z",
+      "startedAt": "2026-11-05T10:15:02.492Z",
+      "finishedAt": "2026-11-05T10:15:05.750Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,15 +21,12 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "close_rewards_run": 1,
-          "observe_sapling": 3,
-          "release_rewards": 1,
-          "claim_payee": 1,
+          "observe_sapling": 4,
           "settle_tax": 1,
           "sell_tax": 1,
           "withdraw_tax": 1
         },
-        "unrecognised": 1,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -65,8 +62,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-05T09:43:44.554Z",
-      "finishedAt": "2026-11-05T09:44:22.344Z",
+      "startedAt": "2026-11-05T10:15:05.755Z",
+      "finishedAt": "2026-11-05T10:15:44.256Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -74,13 +71,13 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-05T09:44:21.462Z",
-        "runs": 8,
-        "passed": 6,
+        "checkedAt": "2026-11-05T10:15:42.987Z",
+        "runs": 10,
+        "passed": 8,
         "flagged": 2,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.35417774",
+        "zecPaidInDoneRuns": "0.39208832",
         "onChainChecks": true,
         "checkedIds": [
           1491,
@@ -90,11 +87,13 @@
           1623,
           1624,
           1625,
-          1626
+          1626,
+          1627,
+          1628
         ],
         "baskets": [],
-        "distinctReleases": 8,
-        "runsWithRelease": 8,
+        "distinctReleases": 10,
+        "runsWithRelease": 10,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -571,7 +570,7 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1626
+        "maxRunId": 1628
       }
     },
     "float": {
@@ -1044,7 +1043,7 @@
     "zec": {},
     "payees": {}
   },
-  "rewardsMaxRun": 1626,
+  "rewardsMaxRun": 1628,
   "rewardsFrom": 1621,
   "x": {
     "day": "2026-11-04",
