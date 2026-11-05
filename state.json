@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T23:45:11.279Z",
-      "finishedAt": "2026-11-05T23:45:15.031Z",
+      "startedAt": "2026-11-05T23:50:03.036Z",
+      "finishedAt": "2026-11-05T23:50:05.556Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5
+          "observe_sapling": 4,
+          "settle": 2
         },
         "unrecognised": 0,
         "baseline": false,
@@ -639,8 +640,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-05T23:36:54.067Z",
-      "finishedAt": "2026-11-05T23:36:56.464Z",
+      "startedAt": "2026-11-05T23:50:05.564Z",
+      "finishedAt": "2026-11-05T23:50:07.533Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -659,17 +660,17 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-05T23:36:56.465Z",
-      "finishedAt": "2026-11-05T23:37:01.351Z",
+      "startedAt": "2026-11-05T23:50:07.536Z",
+      "finishedAt": "2026-11-05T23:50:11.875Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1549058611",
+          "claimedZat": "1555125887",
           "chainZat": "1555125887",
           "notListedYetZat": "0",
-          "verdict": "differs from the chain"
+          "verdict": "matches the chain"
         },
         "saplingBurn": {
           "onChain": 225975636.463722,
@@ -792,9 +793,7 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": [
-          "Sapling's headline says 1549058611 zat bought back; the pot paid 1555125887 zat on chain (0 of it not listed yet)"
-        ]
+        "notes": []
       }
     },
     "coins": {
