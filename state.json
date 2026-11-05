@@ -2,11 +2,30 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T20:45:11.217Z",
-      "finishedAt": "2026-11-05T20:45:15.514Z",
+      "startedAt": "2026-11-05T20:59:59.533Z",
+      "finishedAt": "2026-11-05T21:00:08.602Z",
       "status": "ran",
-      "ok": true,
-      "alerts": [],
+      "ok": false,
+      "alerts": [
+        "privileged vault instruction set_stock_quote via multisig at 2026-11-05T20:58:17.000Z (54H4s8JqUSbRCVMPaxeEQTnxiQQCm17d5hAmnSCiafe2hAwx2zSxKn6rwZsH9im5QppkCFAMVYo27LgcyX29VBMY)",
+        "privileged vault instruction set_stock_quote via multisig at 2026-11-05T20:58:14.000Z (3QHkKgHQtp4tmvwvsRBZFc3EnuTfXcBkgZhsPh8mDmHzuzcfk8q82JFKtbD7iiTYW256eXULqdmXeDyMjKjT4fX6)",
+        "privileged vault instruction set_stock_quote via multisig at 2026-11-05T20:58:12.000Z (5KpgxKW8PC1tsmRrE87NTy5P4KnmDLfvyfa6LjPtxhBStiYWTvi6i1akUp4ZJRgbqwb1fR33Lh3HjHDUBqeVERk6)",
+        "privileged vault instruction set_stock_quote via multisig at 2026-11-05T20:58:09.000Z (u9YEkGXX46t388BnVJp8Rcs4g3vjLzLYF7q96QxWLe1yd4MZYnxc2wnLpGgk7wyZkibMHuknhMk5LaTea8TGUU8)",
+        "privileged vault instruction set_stock_quote via multisig at 2026-11-05T20:58:06.000Z (26uVutwXYVEnhWPt9AeKWfYhtYd36rUV8keZmccduuGJpfJRokZwCVx1dS6gn8yYmbjMkFpTc6Zin6qfuom7x2Nq)",
+        "privileged vault instruction set_stock_quote via multisig at 2026-11-05T20:58:04.000Z (5YMCjpmnKTnMHAmdpiuMgMQUPUDp5u4Qvnb2i1e4fyvQZdAY35yTQyw92M9KkyhyJuFYejXZYSN7J9ttum8T9Ynx)",
+        "privileged vault instruction set_stock_quote via multisig at 2026-11-05T20:58:02.000Z (J66kdM8gS4tr7u3wCiMqLSuG6W5uVF9XZ9yuCz1gFKeuZHUyzU3GuNrzUZteQS81u9FWdP1t2mjBn943Fh4c6KW)",
+        "privileged vault instruction set_stock_quote via multisig at 2026-11-05T20:57:59.000Z (2AUAJyqBsZmxNyvheKcApSxoZ7qSw5AUvzCx4MzHs67WKNpUdk1Xcs51k8djssHTKMcvKgmp5DeF7vbcW52xJCQ7)",
+        "multisig batch_execute_transaction at 2026-11-05T20:58:17.000Z (54H4s8JqUSbRCVMPaxeEQTnxiQQCm17d5hAmnSCiafe2hAwx2zSxKn6rwZsH9im5QppkCFAMVYo27LgcyX29VBMY)",
+        "multisig batch_execute_transaction at 2026-11-05T20:58:14.000Z (3QHkKgHQtp4tmvwvsRBZFc3EnuTfXcBkgZhsPh8mDmHzuzcfk8q82JFKtbD7iiTYW256eXULqdmXeDyMjKjT4fX6)",
+        "multisig batch_execute_transaction at 2026-11-05T20:58:12.000Z (5KpgxKW8PC1tsmRrE87NTy5P4KnmDLfvyfa6LjPtxhBStiYWTvi6i1akUp4ZJRgbqwb1fR33Lh3HjHDUBqeVERk6)",
+        "multisig batch_execute_transaction at 2026-11-05T20:58:09.000Z (u9YEkGXX46t388BnVJp8Rcs4g3vjLzLYF7q96QxWLe1yd4MZYnxc2wnLpGgk7wyZkibMHuknhMk5LaTea8TGUU8)",
+        "multisig batch_execute_transaction at 2026-11-05T20:58:06.000Z (26uVutwXYVEnhWPt9AeKWfYhtYd36rUV8keZmccduuGJpfJRokZwCVx1dS6gn8yYmbjMkFpTc6Zin6qfuom7x2Nq)",
+        "multisig batch_execute_transaction at 2026-11-05T20:58:04.000Z (5YMCjpmnKTnMHAmdpiuMgMQUPUDp5u4Qvnb2i1e4fyvQZdAY35yTQyw92M9KkyhyJuFYejXZYSN7J9ttum8T9Ynx)",
+        "multisig batch_execute_transaction at 2026-11-05T20:58:02.000Z (J66kdM8gS4tr7u3wCiMqLSuG6W5uVF9XZ9yuCz1gFKeuZHUyzU3GuNrzUZteQS81u9FWdP1t2mjBn943Fh4c6KW)",
+        "multisig batch_execute_transaction at 2026-11-05T20:57:59.000Z (2AUAJyqBsZmxNyvheKcApSxoZ7qSw5AUvzCx4MzHs67WKNpUdk1Xcs51k8djssHTKMcvKgmp5DeF7vbcW52xJCQ7)",
+        "multisig proposal_approve at 2026-11-05T20:57:42.000Z (2scWPFdENfTKbzgxJGrd8ryhqD7ki9qhsrPJYMZgiNZHT2TqgETg1aGYWspG3KyXwJg4uJKJpRoTUzwMVVv6kpUa)",
+        "multisig proposal_approve at 2026-11-05T20:57:28.000Z (4gG7ucYu59gp5vpVaR8MACTvhq4iZSLPQ3k6pa4bioUSzY1kAVNLjUq1Z8wYXeEDDimpEKLj9dwA9BmwpSyUWaZp)"
+      ],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
@@ -21,13 +40,23 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
+          "observe_sapling": 12,
+          "settle_tax": 2,
+          "sell_tax": 2,
+          "withdraw_tax": 2,
+          "set_stock_quote": 8,
+          "settle": 2,
+          "claim_payee": 1,
+          "draw_grove": 1,
+          "close_grove": 1,
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1,
           "close_rewards_run": 1,
           "release_rewards": 1,
-          "settle_sapling": 1,
-          "claim_payee": 1
+          "convert_sapling_begin": 1,
+          "convert_sapling_end": 1
         },
-        "unrecognised": 2,
+        "unrecognised": 3,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -575,8 +604,8 @@
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-05T19:44:40.461Z",
-      "finishedAt": "2026-11-05T19:52:05.762Z",
+      "startedAt": "2026-11-05T21:00:09.353Z",
+      "finishedAt": "2026-11-05T21:07:36.594Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -643,8 +672,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-05T20:40:14.898Z",
-      "finishedAt": "2026-11-05T20:40:16.861Z",
+      "startedAt": "2026-11-05T21:07:36.595Z",
+      "finishedAt": "2026-11-05T21:07:38.297Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -663,20 +692,20 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-05T20:40:16.863Z",
-      "finishedAt": "2026-11-05T20:40:20.952Z",
+      "startedAt": "2026-11-05T21:07:38.301Z",
+      "finishedAt": "2026-11-05T21:07:43.168Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
           "claimedZat": "1552095613",
-          "chainZat": "1552095613",
-          "notListedYetZat": "0",
+          "chainZat": "1555125887",
+          "notListedYetZat": "3030274",
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 225946063.73856604,
+          "onChain": 225954125.22987795,
           "claimed": 225950000,
           "diffPct": 0,
           "verdict": "matches"
@@ -779,14 +808,14 @@
           }
         },
         "pot": {
-          "balanceZat": "2691089",
-          "shownZat": "2691089",
-          "inflowZat": "1554786702",
-          "buybackZat": "1552095613",
+          "balanceZat": "613565",
+          "shownZat": "613565",
+          "inflowZat": "1555739452",
+          "buybackZat": "1555125887",
           "movements": {
             "setup": 1,
-            "inflow": 3192,
-            "buyback": 332
+            "inflow": 3195,
+            "buyback": 333
           },
           "reconciled": true,
           "caughtUp": true
@@ -801,8 +830,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-05T20:25:21.126Z",
-      "finishedAt": "2026-11-05T20:26:15.082Z",
+      "startedAt": "2026-11-05T21:07:43.169Z",
+      "finishedAt": "2026-11-05T21:08:34.237Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -819,7 +848,7 @@
           "Creator bought N of supply at launch": 1
         },
         "notes": [
-          "creator scan: 16 coin(s) read this run, 498 of 498 read so far (0 launched shielded, creator not public)",
+          "creator scan: 12 coin(s) read this run, 498 of 498 read so far (0 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
           "1 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 1)",
           "25 shortlisted coin(s) were under $10,000 on their own page, so no card",
@@ -829,8 +858,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-05T20:26:15.084Z",
-      "finishedAt": "2026-11-05T20:26:26.322Z",
+      "startedAt": "2026-11-05T21:08:34.239Z",
+      "finishedAt": "2026-11-05T21:09:02.829Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -840,7 +869,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 5725,
+            "seenInTxs": 5779,
             "withJupiter": 48,
             "seeds": [
               "upgradeAuthority",
@@ -874,12 +903,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 563
+            "seenInTxs": 569
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 556
+            "seenInTxs": 562
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -894,7 +923,7 @@
           {
             "id": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
             "authority": null,
-            "seenInTxs": 99
+            "seenInTxs": 130
           },
           {
             "id": "JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4",
@@ -957,43 +986,43 @@
           "breakingRules": []
         },
         "programsSeen": 17,
-        "txsRead": 10,
+        "txsRead": 66,
         "notes": []
       }
     },
     "earnings": {
       "check": "earnings",
-      "startedAt": "2026-11-05T19:53:18.801Z",
-      "finishedAt": "2026-11-05T19:53:24.093Z",
+      "startedAt": "2026-11-05T21:09:02.832Z",
+      "finishedAt": "2026-11-05T21:09:08.282Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "runsIndexed": 1641,
-        "newRuns": 3,
-        "latestRun": 1641,
+        "runsIndexed": 1643,
+        "newRuns": 2,
+        "latestRun": 1643,
         "coinsPaying": 187,
         "crossChecked": 186,
         "matchingSapling": 186,
         "differ": [],
-        "paid7dZec": 57.044,
+        "paid7dZec": 57.0895,
         "notes": []
       }
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-05T20:40:20.954Z",
-      "finishedAt": "2026-11-05T20:40:24.788Z",
+      "startedAt": "2026-11-05T21:09:08.284Z",
+      "finishedAt": "2026-11-05T21:09:12.066Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 105721.8,
-        "nearSupply": 152132.8,
+        "solanaSupply": 105721.73,
+        "nearSupply": 152364.59,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 36.058168029994704,
+        "change24h": 30.59699711999565,
         "notes": []
       }
     },
@@ -1022,7 +1051,26 @@
     }
   },
   "openAlerts": {
-    "keys": {},
+    "keys": {
+      "privileged vault instruction set_stock_quote via multisig at 2026-11-05T20:58:17.000Z (54H4s8JqUSbRCVMPaxeEQTnxiQQCm17d5hAmnSCiafe2hAwx2zSxKn6rwZsH9im5QppkCFAMVYo27LgcyX29VBMY)": "2026-11-05T21:00:08.602Z",
+      "privileged vault instruction set_stock_quote via multisig at 2026-11-05T20:58:14.000Z (3QHkKgHQtp4tmvwvsRBZFc3EnuTfXcBkgZhsPh8mDmHzuzcfk8q82JFKtbD7iiTYW256eXULqdmXeDyMjKjT4fX6)": "2026-11-05T21:00:08.602Z",
+      "privileged vault instruction set_stock_quote via multisig at 2026-11-05T20:58:12.000Z (5KpgxKW8PC1tsmRrE87NTy5P4KnmDLfvyfa6LjPtxhBStiYWTvi6i1akUp4ZJRgbqwb1fR33Lh3HjHDUBqeVERk6)": "2026-11-05T21:00:08.602Z",
+      "privileged vault instruction set_stock_quote via multisig at 2026-11-05T20:58:09.000Z (u9YEkGXX46t388BnVJp8Rcs4g3vjLzLYF7q96QxWLe1yd4MZYnxc2wnLpGgk7wyZkibMHuknhMk5LaTea8TGUU8)": "2026-11-05T21:00:08.602Z",
+      "privileged vault instruction set_stock_quote via multisig at 2026-11-05T20:58:06.000Z (26uVutwXYVEnhWPt9AeKWfYhtYd36rUV8keZmccduuGJpfJRokZwCVx1dS6gn8yYmbjMkFpTc6Zin6qfuom7x2Nq)": "2026-11-05T21:00:08.602Z",
+      "privileged vault instruction set_stock_quote via multisig at 2026-11-05T20:58:04.000Z (5YMCjpmnKTnMHAmdpiuMgMQUPUDp5u4Qvnb2i1e4fyvQZdAY35yTQyw92M9KkyhyJuFYejXZYSN7J9ttum8T9Ynx)": "2026-11-05T21:00:08.602Z",
+      "privileged vault instruction set_stock_quote via multisig at 2026-11-05T20:58:02.000Z (J66kdM8gS4tr7u3wCiMqLSuG6W5uVF9XZ9yuCz1gFKeuZHUyzU3GuNrzUZteQS81u9FWdP1t2mjBn943Fh4c6KW)": "2026-11-05T21:00:08.602Z",
+      "privileged vault instruction set_stock_quote via multisig at 2026-11-05T20:57:59.000Z (2AUAJyqBsZmxNyvheKcApSxoZ7qSw5AUvzCx4MzHs67WKNpUdk1Xcs51k8djssHTKMcvKgmp5DeF7vbcW52xJCQ7)": "2026-11-05T21:00:08.602Z",
+      "multisig batch_execute_transaction at 2026-11-05T20:58:17.000Z (54H4s8JqUSbRCVMPaxeEQTnxiQQCm17d5hAmnSCiafe2hAwx2zSxKn6rwZsH9im5QppkCFAMVYo27LgcyX29VBMY)": "2026-11-05T21:00:08.602Z",
+      "multisig batch_execute_transaction at 2026-11-05T20:58:14.000Z (3QHkKgHQtp4tmvwvsRBZFc3EnuTfXcBkgZhsPh8mDmHzuzcfk8q82JFKtbD7iiTYW256eXULqdmXeDyMjKjT4fX6)": "2026-11-05T21:00:08.602Z",
+      "multisig batch_execute_transaction at 2026-11-05T20:58:12.000Z (5KpgxKW8PC1tsmRrE87NTy5P4KnmDLfvyfa6LjPtxhBStiYWTvi6i1akUp4ZJRgbqwb1fR33Lh3HjHDUBqeVERk6)": "2026-11-05T21:00:08.602Z",
+      "multisig batch_execute_transaction at 2026-11-05T20:58:09.000Z (u9YEkGXX46t388BnVJp8Rcs4g3vjLzLYF7q96QxWLe1yd4MZYnxc2wnLpGgk7wyZkibMHuknhMk5LaTea8TGUU8)": "2026-11-05T21:00:08.602Z",
+      "multisig batch_execute_transaction at 2026-11-05T20:58:06.000Z (26uVutwXYVEnhWPt9AeKWfYhtYd36rUV8keZmccduuGJpfJRokZwCVx1dS6gn8yYmbjMkFpTc6Zin6qfuom7x2Nq)": "2026-11-05T21:00:08.602Z",
+      "multisig batch_execute_transaction at 2026-11-05T20:58:04.000Z (5YMCjpmnKTnMHAmdpiuMgMQUPUDp5u4Qvnb2i1e4fyvQZdAY35yTQyw92M9KkyhyJuFYejXZYSN7J9ttum8T9Ynx)": "2026-11-05T21:00:08.602Z",
+      "multisig batch_execute_transaction at 2026-11-05T20:58:02.000Z (J66kdM8gS4tr7u3wCiMqLSuG6W5uVF9XZ9yuCz1gFKeuZHUyzU3GuNrzUZteQS81u9FWdP1t2mjBn943Fh4c6KW)": "2026-11-05T21:00:08.602Z",
+      "multisig batch_execute_transaction at 2026-11-05T20:57:59.000Z (2AUAJyqBsZmxNyvheKcApSxoZ7qSw5AUvzCx4MzHs67WKNpUdk1Xcs51k8djssHTKMcvKgmp5DeF7vbcW52xJCQ7)": "2026-11-05T21:00:08.602Z",
+      "multisig proposal_approve at 2026-11-05T20:57:42.000Z (2scWPFdENfTKbzgxJGrd8ryhqD7ki9qhsrPJYMZgiNZHT2TqgETg1aGYWspG3KyXwJg4uJKJpRoTUzwMVVv6kpUa)": "2026-11-05T21:00:08.602Z",
+      "multisig proposal_approve at 2026-11-05T20:57:28.000Z (4gG7ucYu59gp5vpVaR8MACTvhq4iZSLPQ3k6pa4bioUSzY1kAVNLjUq1Z8wYXeEDDimpEKLj9dwA9BmwpSyUWaZp)": "2026-11-05T21:00:08.602Z"
+    },
     "rewards": {
       "reward run 1491 ███: 11 shares not floor(pot*balance/sum); basket payout doesn't add up: hSOL: 6741284 of 160371735 bought wasn't paid out; hSOL: 1 holders got none; paid != confirmed shares - rent": "2026-11-04T07:01:45.840Z",
       "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent": "2026-11-04T07:01:45.840Z"
