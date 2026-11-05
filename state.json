@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T01:45:01.810Z",
-      "finishedAt": "2026-11-05T01:45:04.580Z",
+      "startedAt": "2026-11-05T01:50:02.322Z",
+      "finishedAt": "2026-11-05T01:50:06.388Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,20 +21,17 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 3,
-          "settle_tax": 1,
-          "convert_tax_begin": 1,
-          "convert_tax_end": 1,
-          "settle": 2
+          "observe_sapling": 4,
+          "collect_protocol_pool_fees": 15
         },
-        "unrecognised": 2,
+        "unrecognised": 15,
         "baseline": false
       }
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-05T01:20:05.886Z",
-      "finishedAt": "2026-11-05T01:21:07.381Z",
+      "startedAt": "2026-11-05T01:50:06.394Z",
+      "finishedAt": "2026-11-05T01:51:09.155Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -42,13 +39,13 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-05T01:20:41.616Z",
-        "runs": 8,
-        "passed": 6,
+        "checkedAt": "2026-11-05T01:50:44.342Z",
+        "runs": 9,
+        "passed": 7,
         "flagged": 2,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.39905285",
+        "zecPaidInDoneRuns": "0.42905511",
         "onChainChecks": true,
         "checkedIds": [
           1491,
@@ -58,11 +55,12 @@
           1610,
           1611,
           1612,
-          1613
+          1613,
+          1614
         ],
         "baskets": [],
-        "distinctReleases": 8,
-        "runsWithRelease": 8,
+        "distinctReleases": 9,
+        "runsWithRelease": 9,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -71,7 +69,7 @@
             "top20": [
               {
                 "owner": "WLHv2UAZ",
-                "amount": "903292639682155",
+                "amount": "911324690654753",
                 "wallet": false,
                 "ownerProgram": null,
                 "inSnapshot": false
@@ -100,13 +98,6 @@
               {
                 "owner": "92DRSvGZ",
                 "amount": "10421193393589",
-                "wallet": true,
-                "ownerProgram": "11111111111111111111111111111111",
-                "inSnapshot": false
-              },
-              {
-                "owner": "FNuQf966",
-                "amount": "8280464920205",
                 "wallet": true,
                 "ownerProgram": "11111111111111111111111111111111",
                 "inSnapshot": false
@@ -182,6 +173,13 @@
                 "inSnapshot": false
               },
               {
+                "owner": "FNuQf966",
+                "amount": "0",
+                "wallet": true,
+                "ownerProgram": "11111111111111111111111111111111",
+                "inSnapshot": false
+              },
+              {
                 "owner": "5FqVdMih",
                 "amount": "0",
                 "wallet": true,
@@ -211,22 +209,22 @@
               }
             ],
             "notInSnapshotByOwnerProgram": {
-              "unknown": "903292639682155",
-              "wallet": "32412578956720",
+              "unknown": "911324690654753",
+              "wallet": "24132114036515",
               "11111111111111111111111111111111": "103133172880"
             }
           },
           "releaseAt": "2026-11-03T00:19:00.000Z",
           "window": "2 hours after the release",
-          "txsRead": 96,
-          "txsInWindow": 96,
+          "txsRead": 94,
+          "txsInWindow": 94,
           "inflow": "154894814",
-          "outflow": "161626064",
+          "outflow": "158621288",
           "to": {
             "thisRunHolders": "17729413",
             "treasury": "1190969",
             "otherRunsHolders": "53750405",
-            "unknown": "88955277"
+            "unknown": "85950501"
           },
           "topUnknown": [
             {
@@ -308,7 +306,7 @@
               "account": {
                 "owner": "11111111111111111111111111111111",
                 "executable": false,
-                "lamports": 221505034847
+                "lamports": 220700554321
               },
               "after": {
                 "zecLeft": "59852380",
@@ -654,7 +652,7 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1613
+        "maxRunId": 1614
       }
     },
     "float": {
@@ -1096,7 +1094,7 @@
     "earnings": {},
     "zec": {}
   },
-  "rewardsMaxRun": 1613,
+  "rewardsMaxRun": 1614,
   "rewardsFrom": 1608,
   "x": {
     "day": "2026-11-04",
