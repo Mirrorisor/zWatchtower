@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-05T23:55:11.163Z",
-      "finishedAt": "2026-11-05T23:55:13.169Z",
+      "startedAt": "2026-11-06T00:00:11.881Z",
+      "finishedAt": "2026-11-06T00:00:15.202Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "settle": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -1015,6 +1016,36 @@
         "baseline": false,
         "notes": []
       }
+    },
+    "split": {
+      "check": "split",
+      "startedAt": "2026-11-06T00:00:15.210Z",
+      "finishedAt": "2026-11-06T00:00:15.994Z",
+      "status": "ran",
+      "ok": true,
+      "alerts": [],
+      "events": [],
+      "summary": {
+        "claim": "not checked",
+        "saplingSharePct": null,
+        "backPct": null,
+        "checks": [
+          "holders: matches (Sapling 175.3059, ours 175.267)",
+          "donated: matches (Sapling 7.8962, ours 7.8962)"
+        ],
+        "unmapped": [
+          "saplingBuyback",
+          "flywheel",
+          "payees",
+          "sapling",
+          "waiting",
+          "revenue"
+        ],
+        "baseline": true,
+        "notes": [
+          "not found in Sapling's stats: saplingBuyback, flywheel, payees, sapling, waiting, revenue"
+        ]
+      }
     }
   },
   "openAlerts": {
@@ -1030,7 +1061,8 @@
     "programs": {},
     "earnings": {},
     "zec": {},
-    "payees": {}
+    "payees": {},
+    "split": {}
   },
   "rewardsMaxRun": 1646,
   "rewardsFrom": 1640,
