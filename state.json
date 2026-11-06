@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-06T07:55:10.591Z",
-      "finishedAt": "2026-11-06T07:55:13.968Z",
+      "startedAt": "2026-11-06T08:00:17.497Z",
+      "finishedAt": "2026-11-06T08:00:21.051Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,12 +21,14 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 3,
           "settle_tax": 1,
           "sell_tax": 1,
-          "withdraw_tax": 1
+          "withdraw_tax": 1,
+          "observe_sapling": 4,
+          "draw_zec_payee": 1,
+          "claim_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -62,8 +64,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-06T07:30:24.135Z",
-      "finishedAt": "2026-11-06T07:31:10.600Z",
+      "startedAt": "2026-11-06T08:00:21.056Z",
+      "finishedAt": "2026-11-06T08:00:57.960Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -71,18 +73,17 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-06T07:31:09.725Z",
-        "runs": 9,
-        "passed": 7,
-        "flagged": 3,
+        "checkedAt": "2026-11-06T08:00:57.287Z",
+        "runs": 8,
+        "passed": 6,
+        "flagged": 2,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.42046178",
+        "zecPaidInDoneRuns": "0.37959793",
         "onChainChecks": true,
         "checkedIds": [
           1491,
           1573,
-          1649,
           1650,
           1651,
           1652,
@@ -90,20 +91,9 @@
           1654,
           1655
         ],
-        "baskets": [
-          {
-            "id": 1649,
-            "mint": "B7h7XLtQMTWMNTzrt35TnRVixsi93vCpDuGLK4Rzcash",
-            "tokens": [
-              "ZEC",
-              "hSOL",
-              "$SAPLING",
-              "CYPH"
-            ]
-          }
-        ],
-        "distinctReleases": 9,
-        "runsWithRelease": 9,
+        "baskets": [],
+        "distinctReleases": 8,
+        "runsWithRelease": 8,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -112,7 +102,7 @@
             "top20": [
               {
                 "owner": "WLHv2UAZ",
-                "amount": "916861521064860",
+                "amount": "898482310982868",
                 "wallet": false,
                 "ownerProgram": null,
                 "inSnapshot": false
@@ -123,6 +113,13 @@
                 "wallet": true,
                 "ownerProgram": "11111111111111111111111111111111",
                 "inSnapshot": true
+              },
+              {
+                "owner": "G3r9iXny",
+                "amount": "24710973472965",
+                "wallet": true,
+                "ownerProgram": "11111111111111111111111111111111",
+                "inSnapshot": false
               },
               {
                 "owner": "ERjMjnbr",
@@ -160,6 +157,13 @@
                 "inSnapshot": true
               },
               {
+                "owner": "69nv6e1S",
+                "amount": "1976055764174",
+                "wallet": false,
+                "ownerProgram": "11111111111111111111111111111111",
+                "inSnapshot": false
+              },
+              {
                 "owner": "CYfVvQy9",
                 "amount": "397109131485",
                 "wallet": true,
@@ -170,13 +174,6 @@
                 "owner": "9xPqHYus",
                 "amount": "393124980933",
                 "wallet": true,
-                "ownerProgram": "11111111111111111111111111111111",
-                "inSnapshot": false
-              },
-              {
-                "owner": "69nv6e1S",
-                "amount": "103133172880",
-                "wallet": false,
                 "ownerProgram": "11111111111111111111111111111111",
                 "inSnapshot": false
               },
@@ -242,19 +239,12 @@
                 "wallet": true,
                 "ownerProgram": "11111111111111111111111111111111",
                 "inSnapshot": false
-              },
-              {
-                "owner": "97rZVRvz",
-                "amount": "0",
-                "wallet": true,
-                "ownerProgram": "11111111111111111111111111111111",
-                "inSnapshot": false
               }
             ],
             "notInSnapshotByOwnerProgram": {
-              "unknown": "916861521064860",
-              "wallet": "11281688942130",
-              "11111111111111111111111111111111": "103133172880"
+              "unknown": "898482310982868",
+              "wallet": "35992662415095",
+              "11111111111111111111111111111111": "1976055764174"
             }
           },
           "releaseAt": "2026-11-03T00:19:00.000Z",
@@ -271,9 +261,7 @@
           },
           "topUnknown": []
         },
-        "notes": [
-          "run 1649: paid as a basket of 4 tokens (ZEC, hSOL, $SAPLING, CYPH): every holder got each token in proportion to their share"
-        ],
+        "notes": [],
         "diagnoses": [
           {
             "id": 1491,
@@ -996,25 +984,25 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-06T07:42:10.893Z",
-      "finishedAt": "2026-11-06T07:42:14.708Z",
+      "startedAt": "2026-11-06T08:00:57.964Z",
+      "finishedAt": "2026-11-06T08:01:01.799Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 105763.15,
-        "nearSupply": 150215.94,
+        "nearSupply": 150218.7,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 52.86971110999002,
+        "change24h": 52.866998620011145,
         "notes": []
       }
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-06T06:45:17.822Z",
-      "finishedAt": "2026-11-06T06:58:45.857Z",
+      "startedAt": "2026-11-06T08:01:01.801Z",
+      "finishedAt": "2026-11-06T08:14:53.372Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1082,7 +1070,7 @@
     "split": {}
   },
   "rewardsMaxRun": 1655,
-  "rewardsFrom": 1649,
+  "rewardsFrom": 1650,
   "x": {
     "day": "2026-11-06",
     "today": 0,
