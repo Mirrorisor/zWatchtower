@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-06T00:55:31.407Z",
-      "finishedAt": "2026-11-06T00:55:35.332Z",
+      "startedAt": "2026-11-06T01:00:35.840Z",
+      "finishedAt": "2026-11-06T01:00:38.366Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,11 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 9,
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1,
-          "draw_lp": 1,
+          "observe_sapling": 3,
           "settle": 1
         },
         "unrecognised": 0,
@@ -1022,8 +1018,8 @@
     },
     "split": {
       "check": "split",
-      "startedAt": "2026-11-06T00:00:15.210Z",
-      "finishedAt": "2026-11-06T00:00:15.994Z",
+      "startedAt": "2026-11-06T01:00:38.372Z",
+      "finishedAt": "2026-11-06T01:00:39.218Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1033,7 +1029,7 @@
         "saplingSharePct": null,
         "backPct": null,
         "checks": [
-          "holders: matches (Sapling 175.3059, ours 175.267)",
+          "holders: matches (Sapling 175.3059, ours 175.2983)",
           "donated: matches (Sapling 7.8962, ours 7.8962)"
         ],
         "unmapped": [
@@ -1044,7 +1040,7 @@
           "waiting",
           "revenue"
         ],
-        "baseline": true,
+        "baseline": false,
         "notes": [
           "not found in Sapling's stats: saplingBuyback, flywheel, payees, sapling, waiting, revenue"
         ]
