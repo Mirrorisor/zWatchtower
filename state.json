@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-06T16:20:03.631Z",
-      "finishedAt": "2026-11-06T16:20:07.111Z",
+      "startedAt": "2026-11-06T16:25:01.614Z",
+      "finishedAt": "2026-11-06T16:25:06.353Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,12 +21,17 @@
           "recovery"
         ],
         "vaultInstructions": {
+          "draw_zec_payee": 1,
+          "close_rewards_run": 1,
           "observe_sapling": 4,
           "settle_tax": 1,
           "sell_tax": 1,
-          "withdraw_tax": 1
+          "release_rewards": 1,
+          "withdraw_tax": 1,
+          "claim_payee": 3,
+          "settle": 5
         },
-        "unrecognised": 0,
+        "unrecognised": 3,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -62,8 +67,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-06T15:53:55.789Z",
-      "finishedAt": "2026-11-06T15:54:33.713Z",
+      "startedAt": "2026-11-06T16:25:06.361Z",
+      "finishedAt": "2026-11-06T16:25:45.240Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -71,25 +76,25 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-06T15:54:33.045Z",
+        "checkedAt": "2026-11-06T16:25:44.093Z",
         "runs": 10,
         "passed": 8,
         "flagged": 2,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.40451926",
+        "zecPaidInDoneRuns": "0.42434011",
         "onChainChecks": true,
         "checkedIds": [
           1491,
           1573,
-          1655,
-          1656,
           1657,
           1658,
           1659,
           1660,
           1661,
-          1662
+          1662,
+          1663,
+          1664
         ],
         "baskets": [],
         "distinctReleases": 10,
@@ -570,7 +575,7 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1662
+        "maxRunId": 1664
       }
     },
     "float": {
@@ -803,38 +808,38 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-06T15:51:54.545Z",
-      "finishedAt": "2026-11-06T15:52:59.747Z",
+      "startedAt": "2026-11-06T16:25:45.242Z",
+      "finishedAt": "2026-11-06T16:26:49.368Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [
-        "$JACKJACK (2RSt…mU3z, $11.5k) just passed $10.0k market cap with 1 flag: Creator sold out of 6 of their 6 other coins checked."
+        "$SHIELD (8TUn…B1uC, $11.5k) just passed $10.0k market cap with 3 flags: Creator bought 7.3% of supply at launch; Creator has sold 100% of what they bought; 16 wallets bought 31.2% in the first 10 seconds."
       ],
       "summary": {
         "coins": 510,
-        "carded": 14,
-        "refreshed": 14,
-        "flagged": 12,
+        "carded": 15,
+        "refreshed": 15,
+        "flagged": 13,
         "flagCounts": {
-          "N wallet(s) bought N in the first N seconds": 9,
-          "Creator has sold N of what they bought": 6,
+          "N wallet(s) bought N in the first N seconds": 10,
+          "Creator has sold N of what they bought": 7,
           "Creator sold out of N of their N other coins checked": 4,
-          "Creator bought N of supply at launch": 1
+          "Creator bought N of supply at launch": 2
         },
         "notes": [
-          "creator scan: 24 coin(s) read this run, 510 of 510 read so far (0 launched shielded, creator not public)",
+          "creator scan: 23 coin(s) read this run, 510 of 510 read so far (0 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
           "2 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 2)",
-          "26 shortlisted coin(s) were under $10,000 on their own page, so no card",
-          "21 wallet(s) are in the top 10 of more than one coin"
+          "25 shortlisted coin(s) were under $10,000 on their own page, so no card",
+          "22 wallet(s) are in the top 10 of more than one coin"
         ]
       }
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-06T15:53:00.449Z",
-      "finishedAt": "2026-11-06T15:53:31.311Z",
+      "startedAt": "2026-11-06T16:26:50.020Z",
+      "finishedAt": "2026-11-06T16:27:13.936Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -844,7 +849,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 6276,
+            "seenInTxs": 6319,
             "withJupiter": 48,
             "seeds": [
               "upgradeAuthority",
@@ -878,12 +883,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 648
+            "seenInTxs": 652
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 641
+            "seenInTxs": 645
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -961,7 +966,7 @@
           "breakingRules": []
         },
         "programsSeen": 20,
-        "txsRead": 79,
+        "txsRead": 54,
         "notes": []
       }
     },
@@ -986,18 +991,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-06T16:10:06.898Z",
-      "finishedAt": "2026-11-06T16:10:11.048Z",
+      "startedAt": "2026-11-06T16:27:13.938Z",
+      "finishedAt": "2026-11-06T16:27:17.706Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 105931.83,
-        "nearSupply": 146317.76,
+        "solanaSupply": 106110.27,
+        "nearSupply": 146145.81,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 224.7071207400004,
+        "change24h": 403.1807987600041,
         "notes": []
       }
     },
@@ -1071,8 +1076,8 @@
     "payees": {},
     "split": {}
   },
-  "rewardsMaxRun": 1662,
-  "rewardsFrom": 1655,
+  "rewardsMaxRun": 1664,
+  "rewardsFrom": 1657,
   "x": {
     "day": "2026-11-06",
     "today": 0,
