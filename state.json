@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-06T04:39:52.938Z",
-      "finishedAt": "2026-11-06T04:39:57.376Z",
+      "startedAt": "2026-11-06T04:45:07.917Z",
+      "finishedAt": "2026-11-06T04:45:11.828Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,10 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 8,
-          "settle": 1,
-          "sell_tax": 3,
-          "withdraw_tax": 3
+          "observe_sapling": 4,
+          "sell_tax": 2,
+          "withdraw_tax": 2
         },
         "unrecognised": 0,
         "baseline": false,
@@ -62,8 +61,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-06T04:15:14.168Z",
-      "finishedAt": "2026-11-06T04:16:02.240Z",
+      "startedAt": "2026-11-06T04:45:11.835Z",
+      "finishedAt": "2026-11-06T04:45:58.133Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -71,18 +70,17 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-06T04:16:01.360Z",
-        "runs": 9,
-        "passed": 7,
+        "checkedAt": "2026-11-06T04:45:57.242Z",
+        "runs": 8,
+        "passed": 6,
         "flagged": 3,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.44788450",
+        "zecPaidInDoneRuns": "0.40307217",
         "onChainChecks": true,
         "checkedIds": [
           1491,
           1573,
-          1645,
           1646,
           1647,
           1648,
@@ -102,8 +100,8 @@
             ]
           }
         ],
-        "distinctReleases": 9,
-        "runsWithRelease": 9,
+        "distinctReleases": 8,
+        "runsWithRelease": 8,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -1082,7 +1080,7 @@
     "split": {}
   },
   "rewardsMaxRun": 1651,
-  "rewardsFrom": 1645,
+  "rewardsFrom": 1646,
   "x": {
     "day": "2026-11-06",
     "today": 0,
