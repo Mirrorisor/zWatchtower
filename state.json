@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-06T03:14:38.245Z",
-      "finishedAt": "2026-11-06T03:14:45.165Z",
+      "startedAt": "2026-11-06T03:25:41.075Z",
+      "finishedAt": "2026-11-06T03:25:45.285Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,19 +21,18 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "withdraw_tax": 8,
-          "observe_sapling": 11,
-          "draw_grove": 1,
-          "close_grove": 1,
-          "settle_tax": 4,
-          "sell_tax": 4,
-          "claim_payee": 2,
-          "register_launchlab_coin": 2,
-          "declare_payee": 3,
+          "observe_sapling": 9,
+          "sell_tax": 3,
+          "withdraw_tax": 3,
+          "convert_sapling_begin": 1,
+          "convert_sapling_end": 1,
+          "settle_tax": 2,
           "settle": 2,
-          "settle_sapling": 1
+          "register_coin": 1,
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1
         },
-        "unrecognised": 8,
+        "unrecognised": 3,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
