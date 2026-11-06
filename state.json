@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-06T02:40:14.192Z",
-      "finishedAt": "2026-11-06T02:40:17.385Z",
+      "startedAt": "2026-11-06T02:45:11.199Z",
+      "finishedAt": "2026-11-06T02:45:13.854Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -59,8 +59,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-06T02:15:07.872Z",
-      "finishedAt": "2026-11-06T02:15:44.670Z",
+      "startedAt": "2026-11-06T02:45:13.860Z",
+      "finishedAt": "2026-11-06T02:46:01.653Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -68,13 +68,13 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-06T02:15:43.408Z",
-        "runs": 8,
-        "passed": 6,
-        "flagged": 2,
+        "checkedAt": "2026-11-06T02:46:00.555Z",
+        "runs": 9,
+        "passed": 7,
+        "flagged": 3,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.34347095",
+        "zecPaidInDoneRuns": "0.38433480",
         "onChainChecks": true,
         "checkedIds": [
           1491,
@@ -84,11 +84,23 @@
           1645,
           1646,
           1647,
-          1648
+          1648,
+          1649
         ],
-        "baskets": [],
-        "distinctReleases": 8,
-        "runsWithRelease": 8,
+        "baskets": [
+          {
+            "id": 1649,
+            "mint": "B7h7XLtQMTWMNTzrt35TnRVixsi93vCpDuGLK4Rzcash",
+            "tokens": [
+              "ZEC",
+              "hSOL",
+              "$SAPLING",
+              "CYPH"
+            ]
+          }
+        ],
+        "distinctReleases": 9,
+        "runsWithRelease": 9,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -256,7 +268,9 @@
           },
           "topUnknown": []
         },
-        "notes": [],
+        "notes": [
+          "run 1649: paid as a basket of 4 tokens (ZEC, hSOL, $SAPLING, CYPH): every holder got each token in proportion to their share"
+        ],
         "diagnoses": [
           {
             "id": 1491,
@@ -565,7 +579,7 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1648
+        "maxRunId": 1649
       }
     },
     "float": {
@@ -1064,7 +1078,7 @@
     "payees": {},
     "split": {}
   },
-  "rewardsMaxRun": 1648,
+  "rewardsMaxRun": 1649,
   "rewardsFrom": 1643,
   "x": {
     "day": "2026-11-06",
@@ -1090,9 +1104,10 @@
       "tokens": [
         "ZEC",
         "hSOL",
-        "$SAPLING"
+        "$SAPLING",
+        "CYPH"
       ],
-      "run": 1600
+      "run": 1649
     }
   }
 }
