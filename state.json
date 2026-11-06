@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-06T22:20:05.740Z",
-      "finishedAt": "2026-11-06T22:20:10.683Z",
+      "startedAt": "2026-11-06T22:25:11.172Z",
+      "finishedAt": "2026-11-06T22:25:15.038Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,17 +21,11 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "sell_tax": 6,
-          "withdraw_tax": 6,
-          "observe_sapling": 3,
-          "settle_tax": 2,
-          "convert_tax_begin": 1,
-          "convert_tax_end": 1,
-          "draw_zec_payee": 1,
-          "settle": 3,
-          "claim_payee": 1
+          "sell_tax": 3,
+          "withdraw_tax": 4,
+          "observe_sapling": 4
         },
-        "unrecognised": 3,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -660,18 +654,16 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-06T22:07:46.363Z",
-      "finishedAt": "2026-11-06T22:07:55.893Z",
+      "startedAt": "2026-11-06T22:25:15.044Z",
+      "finishedAt": "2026-11-06T22:25:24.850Z",
       "status": "ran",
-      "ok": false,
-      "alerts": [
-        "tax MOOH (J4fWoyVecozyBj83NFk3qzHZR7qkt92YAhgoFvGzcash): fee can be changed by 69nv6e1SZfdo9J6j45uuke4PBdLi6RYAiJpecG6HGLEY, not Sapling's program address"
-      ],
+      "ok": true,
+      "alerts": [],
       "summary": {
         "coins": 127,
-        "matching": 126,
-        "feeChangeable": 123,
-        "feeRenounced": 4,
+        "matching": 127,
+        "feeChangeable": 122,
+        "feeRenounced": 5,
         "advertisedRange": [
           200,
           500
@@ -682,8 +674,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-06T22:07:56.578Z",
-      "finishedAt": "2026-11-06T22:08:24.502Z",
+      "startedAt": "2026-11-06T22:25:25.695Z",
+      "finishedAt": "2026-11-06T22:25:54.463Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -695,8 +687,8 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 226284927.63358295,
-          "claimed": 226280000,
+          "onChain": 226287578.95166004,
+          "claimed": 226290000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -798,13 +790,13 @@
           }
         },
         "pot": {
-          "balanceZat": "2226390",
-          "shownZat": "2226390",
-          "inflowZat": "1605571963",
+          "balanceZat": "2895532",
+          "shownZat": "2895532",
+          "inflowZat": "1606241105",
           "buybackZat": "1603420757",
           "movements": {
             "setup": 1,
-            "inflow": 3316,
+            "inflow": 3318,
             "buyback": 344,
             "other": 1,
             "failed": 1
@@ -1007,18 +999,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-06T22:10:12.707Z",
-      "finishedAt": "2026-11-06T22:10:16.505Z",
+      "startedAt": "2026-11-06T22:25:54.465Z",
+      "finishedAt": "2026-11-06T22:25:58.242Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 106492.38,
-        "nearSupply": 146764.7,
+        "solanaSupply": 106492.36,
+        "nearSupply": 146782.21,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 740.8745712200034,
+        "change24h": 724.8955367099989,
         "notes": []
       }
     },
@@ -1083,9 +1075,7 @@
       "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent": "2026-11-04T07:01:45.840Z"
     },
     "float": {},
-    "tax": {
-      "tax MOOH (J4fWoyVecozyBj83NFk3qzHZR7qkt92YAhgoFvGzcash): fee can be changed by 69nv6e1SZfdo9J6j45uuke4PBdLi6RYAiJpecG6HGLEY, not Sapling's program address": "2026-11-06T22:07:55.893Z"
-    },
+    "tax": {},
     "flywheel": {},
     "coins": {},
     "programs": {},
