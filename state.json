@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-06T12:55:11.209Z",
-      "finishedAt": "2026-11-06T12:55:13.999Z",
+      "startedAt": "2026-11-06T13:00:11.382Z",
+      "finishedAt": "2026-11-06T13:00:14.559Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 5,
+          "settle": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -996,17 +997,17 @@
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-06T11:45:46.419Z",
-      "finishedAt": "2026-11-06T11:59:16.560Z",
+      "startedAt": "2026-11-06T13:00:14.564Z",
+      "finishedAt": "2026-11-06T13:13:37.731Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "coinsRead": 506,
+        "coinsRead": 508,
         "recipients": {
           "holders": 264,
-          "wallet": 230,
+          "wallet": 232,
           "creator": 3,
           "zcash-foundation": 9
         },
