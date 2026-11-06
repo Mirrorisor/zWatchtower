@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-06T19:05:02.687Z",
-      "finishedAt": "2026-11-06T19:05:05.737Z",
+      "startedAt": "2026-11-06T19:10:11.241Z",
+      "finishedAt": "2026-11-06T19:10:14.592Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
-        "configSha256": "68f46a24ac9545faa042de2f254b67c719454ef689136716d9a956cfd1323f40",
+        "configSha256": "d1f20eafcc3897dad1eae06833ba88051d2c2d456001eca8e9c066f8c2034f50",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -21,12 +21,17 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
           "settle_tax": 1,
           "sell_tax": 1,
-          "withdraw_tax": 1
+          "withdraw_tax": 1,
+          "observe_sapling": 4,
+          "draw_zec_payee": 1,
+          "settle": 1,
+          "draw_lp": 1,
+          "settle_sapling": 1,
+          "claim_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 2,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -998,18 +1003,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-06T18:56:43.629Z",
-      "finishedAt": "2026-11-06T18:56:47.413Z",
+      "startedAt": "2026-11-06T19:10:14.598Z",
+      "finishedAt": "2026-11-06T19:10:18.568Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 106454.29,
-        "nearSupply": 147080.34,
+        "solanaSupply": 106451.84,
+        "nearSupply": 147075.42,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 746.8036828700133,
+        "change24h": 744.3630414900108,
         "notes": []
       }
     },
