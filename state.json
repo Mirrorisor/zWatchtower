@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-06T01:35:11.227Z",
-      "finishedAt": "2026-11-06T01:35:14.090Z",
+      "startedAt": "2026-11-06T01:40:21.055Z",
+      "finishedAt": "2026-11-06T01:40:25.022Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,8 +21,10 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle": 2
+          "observe_sapling": 5,
+          "settle_tax": 1,
+          "sell_tax": 1,
+          "withdraw_tax": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -640,8 +642,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-06T01:25:14.571Z",
-      "finishedAt": "2026-11-06T01:25:16.434Z",
+      "startedAt": "2026-11-06T01:40:25.027Z",
+      "finishedAt": "2026-11-06T01:40:28.046Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -660,8 +662,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-06T01:25:16.436Z",
-      "finishedAt": "2026-11-06T01:25:21.551Z",
+      "startedAt": "2026-11-06T01:40:28.048Z",
+      "finishedAt": "2026-11-06T01:40:32.777Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -776,13 +778,13 @@
           }
         },
         "pot": {
-          "balanceZat": "977829",
-          "shownZat": "977829",
-          "inflowZat": "1559340341",
+          "balanceZat": "1213389",
+          "shownZat": "1213389",
+          "inflowZat": "1559575901",
           "buybackZat": "1558362512",
           "movements": {
             "setup": 1,
-            "inflow": 3206,
+            "inflow": 3207,
             "buyback": 334
           },
           "reconciled": true,
@@ -979,18 +981,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-06T01:27:02.928Z",
-      "finishedAt": "2026-11-06T01:27:06.837Z",
+      "startedAt": "2026-11-06T01:40:32.779Z",
+      "finishedAt": "2026-11-06T01:40:36.565Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 105765.67,
-        "nearSupply": 150196.15,
+        "nearSupply": 150208.08,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 93.14624539999932,
+        "change24h": 87.6083348300017,
         "notes": []
       }
     },
