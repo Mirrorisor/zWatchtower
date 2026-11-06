@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-06T11:15:02.119Z",
-      "finishedAt": "2026-11-06T11:15:05.766Z",
+      "startedAt": "2026-11-06T11:20:02.501Z",
+      "finishedAt": "2026-11-06T11:20:05.958Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,13 +22,13 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "settle": 1,
+          "draw_grove": 1,
+          "close_grove": 1,
           "settle_tax": 1,
           "sell_tax": 1,
-          "withdraw_tax": 1,
-          "register_launchlab_coin": 1
+          "withdraw_tax": 1
         },
-        "unrecognised": 1,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
