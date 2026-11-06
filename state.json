@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-06T17:35:06.531Z",
-      "finishedAt": "2026-11-06T17:35:10.110Z",
+      "startedAt": "2026-11-06T17:40:11.293Z",
+      "finishedAt": "2026-11-06T17:40:14.547Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,12 +21,13 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1,
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "draw_zec_payee": 1,
+          "settle": 4,
+          "settle_sapling": 1,
+          "claim_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 2,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -674,29 +675,29 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-06T17:25:14.479Z",
-      "finishedAt": "2026-11-06T17:25:43.564Z",
+      "startedAt": "2026-11-06T17:40:14.554Z",
+      "finishedAt": "2026-11-06T17:40:43.738Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1574015499",
+          "claimedZat": "1577463641",
           "chainZat": "1577463641",
-          "notListedYetZat": "3448142",
+          "notListedYetZat": "0",
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 226124837.89811397,
-          "claimed": 226120000,
+          "onChain": 226133679.43569303,
+          "claimed": 226130000,
           "diffPct": 0,
           "verdict": "matches"
         },
-        "burns": 268,
-        "burnsVerified": 268,
-        "boughtBackZat": "1382170128",
+        "burns": 269,
+        "burnsVerified": 269,
+        "boughtBackZat": "1385618270",
         "venues": {
-          "pump amm": 148,
+          "pump amm": 149,
           "raydium cpmm": 60,
           "raydium launchlab": 10,
           "pump bonding curve": 1,
@@ -715,8 +716,8 @@
           },
           "ZILLIONS": {
             "mint": "3sKZuSZF7onqPYFrWu3bH4Lh141duydt9MAmSd46jaLJ",
-            "burns": 76,
-            "zat": "298586755"
+            "burns": 77,
+            "zat": "302034897"
           },
           "SEEDLING": {
             "mint": "JAxk7phmXL9G2syv6DJ72ibddzTDhybmhZTNjpgKwF5A",
@@ -790,13 +791,13 @@
           }
         },
         "pot": {
-          "balanceZat": "34910",
-          "shownZat": "34910",
-          "inflowZat": "1577423367",
+          "balanceZat": "502810",
+          "shownZat": "502810",
+          "inflowZat": "1577891267",
           "buybackZat": "1577463641",
           "movements": {
             "setup": 1,
-            "inflow": 3267,
+            "inflow": 3269,
             "buyback": 340,
             "other": 1,
             "failed": 1
@@ -814,32 +815,44 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-06T17:07:19.809Z",
-      "finishedAt": "2026-11-06T17:08:00.297Z",
+      "startedAt": "2026-11-06T17:40:43.740Z",
+      "finishedAt": "2026-11-06T17:41:50.410Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
-      "events": [],
+      "events": [
+        "$PRIVACY (J4Bc…6Wgk, $13.2k) just passed $10.0k market cap with 3 flags: Creator bought 5.6% of supply at launch; Creator has sold 100% of what they bought; Creator sold out of 20 of their 20 other coins checked.",
+        "$ᑓହꚡई (HAp8…cash, $45.1k) just passed $10.0k market cap with 3 flags: Creator has sold 100% of what they bought; 20 wallets bought 44.6% in the first 10 seconds; Creator sold out of 10 of their 11 other coins checked.",
+        "$0 (147a…szec, $21.3k) just passed $10.0k market cap with 2 flags: Creator has sold 100% of what they bought; 21 wallets bought 34.8% in the first 10 seconds.",
+        "$SHINU (AZ9N…evjg, $32.0k) just passed $10.0k market cap with 2 flags: Creator has sold 95.7% of what they bought; 34 wallets bought 86.8% in the first 10 seconds.",
+        "$BLACKCAT (8LmW…Yn6s, $28.9k) just passed $10.0k market cap with 2 flags: Creator has sold 100% of what they bought; Creator sold out of 20 of their 20 other coins checked.",
+        "$INVISIBLE (2Hcv…uCgr, $24.4k) just passed $10.0k market cap with 3 flags: Creator bought 21.9% of supply at launch; Creator has sold 100% of what they bought; 46 wallets bought 48.6% in the first 10 seconds.",
+        "$ZCASHCHAN (ACqT…mmoq, $16.3k) just passed $10.0k market cap with 1 flag: 19 wallets bought 38.7% in the first 10 seconds."
+      ],
       "summary": {
         "coins": 510,
-        "carded": 4,
-        "refreshed": 4,
-        "flagged": 4,
+        "carded": 16,
+        "refreshed": 15,
+        "flagged": 14,
         "flagCounts": {
-          "N wallet(s) bought N in the first N seconds": 4
+          "N wallet(s) bought N in the first N seconds": 10,
+          "Creator bought N of supply at launch": 3,
+          "Creator has sold N of what they bought": 8,
+          "Creator sold out of N of their N other coins checked": 5
         },
         "notes": [
-          "creator scan: 21 coin(s) read this run, 510 of 510 read so far (0 launched shielded, creator not public)",
+          "creator scan: 22 coin(s) read this run, 510 of 510 read so far (0 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
-          "18 shortlisted coin(s) were under $10,000 on their own page, so no card",
-          "3 wallet(s) are in the top 10 of more than one coin"
+          "2 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 2)",
+          "25 shortlisted coin(s) were under $10,000 on their own page, so no card",
+          "22 wallet(s) are in the top 10 of more than one coin"
         ]
       }
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-06T17:08:00.302Z",
-      "finishedAt": "2026-11-06T17:08:28.031Z",
+      "startedAt": "2026-11-06T17:41:51.438Z",
+      "finishedAt": "2026-11-06T17:42:13.059Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -849,7 +862,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 6350,
+            "seenInTxs": 6381,
             "withJupiter": 48,
             "seeds": [
               "upgradeAuthority",
@@ -883,12 +896,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 658
+            "seenInTxs": 663
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 651
+            "seenInTxs": 656
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -960,13 +973,13 @@
           "guards": [
             "GzMQc5VQGggFnicdAKc7MmkQV3dn3i12ux9dbLKqzy6F"
           ],
-          "txsRead": 5,
+          "txsRead": 1,
           "tokensSeen": 4,
           "tokensChecked": 4,
           "breakingRules": []
         },
         "programsSeen": 20,
-        "txsRead": 60,
+        "txsRead": 41,
         "notes": []
       }
     },
@@ -991,18 +1004,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-06T17:25:43.566Z",
-      "finishedAt": "2026-11-06T17:25:47.342Z",
+      "startedAt": "2026-11-06T17:42:13.063Z",
+      "finishedAt": "2026-11-06T17:42:17.194Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 106119.45,
-        "nearSupply": 146588.34,
+        "solanaSupply": 106119.4,
+        "nearSupply": 146969.89,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 412.3746393199981,
+        "change24h": 412.0992186599906,
         "notes": []
       }
     },
