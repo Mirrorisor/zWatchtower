@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-06T07:25:11.207Z",
-      "finishedAt": "2026-11-06T07:25:13.641Z",
+      "startedAt": "2026-11-06T07:30:21.276Z",
+      "finishedAt": "2026-11-06T07:30:24.127Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,10 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "close_rewards_run": 1,
+          "release_rewards": 1,
+          "settle": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -59,8 +62,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-06T06:58:58.584Z",
-      "finishedAt": "2026-11-06T06:59:45.768Z",
+      "startedAt": "2026-11-06T07:30:24.135Z",
+      "finishedAt": "2026-11-06T07:31:10.600Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -68,13 +71,13 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-06T06:59:44.906Z",
-        "runs": 8,
-        "passed": 6,
+        "checkedAt": "2026-11-06T07:31:09.725Z",
+        "runs": 9,
+        "passed": 7,
         "flagged": 3,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.40058712",
+        "zecPaidInDoneRuns": "0.42046178",
         "onChainChecks": true,
         "checkedIds": [
           1491,
@@ -84,7 +87,8 @@
           1651,
           1652,
           1653,
-          1654
+          1654,
+          1655
         ],
         "baskets": [
           {
@@ -98,8 +102,8 @@
             ]
           }
         ],
-        "distinctReleases": 8,
-        "runsWithRelease": 8,
+        "distinctReleases": 9,
+        "runsWithRelease": 9,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -578,7 +582,7 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1654
+        "maxRunId": 1655
       }
     },
     "float": {
@@ -1077,7 +1081,7 @@
     "payees": {},
     "split": {}
   },
-  "rewardsMaxRun": 1654,
+  "rewardsMaxRun": 1655,
   "rewardsFrom": 1649,
   "x": {
     "day": "2026-11-06",
