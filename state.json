@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-06T07:50:31.286Z",
-      "finishedAt": "2026-11-06T07:50:34.411Z",
+      "startedAt": "2026-11-06T07:55:10.591Z",
+      "finishedAt": "2026-11-06T07:55:13.968Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,8 +21,10 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5,
-          "settle": 2
+          "observe_sapling": 3,
+          "settle_tax": 1,
+          "sell_tax": 1,
+          "withdraw_tax": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -653,8 +655,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-06T07:40:35.723Z",
-      "finishedAt": "2026-11-06T07:40:37.274Z",
+      "startedAt": "2026-11-06T07:55:13.976Z",
+      "finishedAt": "2026-11-06T07:55:15.636Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -673,8 +675,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-06T07:40:37.275Z",
-      "finishedAt": "2026-11-06T07:40:41.439Z",
+      "startedAt": "2026-11-06T07:55:15.639Z",
+      "finishedAt": "2026-11-06T07:55:20.444Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -686,8 +688,8 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 226033420.66178405,
-          "claimed": 226030000,
+          "onChain": 226036592.98358798,
+          "claimed": 226040000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -789,13 +791,13 @@
           }
         },
         "pot": {
-          "balanceZat": "845075",
-          "shownZat": "845075",
-          "inflowZat": "1565488220",
+          "balanceZat": "1057037",
+          "shownZat": "1057037",
+          "inflowZat": "1565700182",
           "buybackZat": "1564718329",
           "movements": {
             "setup": 1,
-            "inflow": 3228,
+            "inflow": 3229,
             "buyback": 336,
             "other": 1,
             "failed": 1
