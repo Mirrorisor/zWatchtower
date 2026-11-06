@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-06T21:25:11.264Z",
-      "finishedAt": "2026-11-06T21:25:15.690Z",
+      "startedAt": "2026-11-06T21:30:05.245Z",
+      "finishedAt": "2026-11-06T21:30:09.556Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,17 +22,17 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "draw_grove": 1,
-          "close_grove": 1,
-          "settle_tax": 2,
-          "sell_tax": 1,
-          "withdraw_tax": 1,
-          "convert_tax_begin": 1,
-          "convert_tax_end": 1,
-          "draw_zec_payee": 1,
-          "settle": 5
+          "settle_tax": 1,
+          "sell_tax": 3,
+          "withdraw_tax": 3,
+          "draw_pool_pot": 1,
+          "protocol_pool_deposit": 1,
+          "close_pool_pot": 1,
+          "protocol_pool_lock": 1,
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1
         },
-        "unrecognised": 2,
+        "unrecognised": 4,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -68,8 +68,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-06T21:00:25.597Z",
-      "finishedAt": "2026-11-06T21:01:15.028Z",
+      "startedAt": "2026-11-06T21:30:09.562Z",
+      "finishedAt": "2026-11-06T21:30:57.982Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -77,20 +77,17 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-06T21:01:14.168Z",
-        "runs": 11,
-        "passed": 9,
+        "checkedAt": "2026-11-06T21:30:57.091Z",
+        "runs": 8,
+        "passed": 6,
         "flagged": 3,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.86968127",
+        "zecPaidInDoneRuns": "0.79395277",
         "onChainChecks": true,
         "checkedIds": [
           1491,
           1573,
-          1676,
-          1677,
-          1678,
           1679,
           1680,
           1681,
@@ -110,8 +107,8 @@
             ]
           }
         ],
-        "distinctReleases": 11,
-        "runsWithRelease": 11,
+        "distinctReleases": 8,
+        "runsWithRelease": 8,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -1090,7 +1087,7 @@
     "split": {}
   },
   "rewardsMaxRun": 1684,
-  "rewardsFrom": 1676,
+  "rewardsFrom": 1679,
   "x": {
     "day": "2026-11-06",
     "today": 0,
