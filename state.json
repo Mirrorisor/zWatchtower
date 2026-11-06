@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-06T02:15:02.654Z",
-      "finishedAt": "2026-11-06T02:15:07.867Z",
+      "startedAt": "2026-11-06T02:20:11.230Z",
+      "finishedAt": "2026-11-06T02:20:14.014Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,11 +21,12 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5,
-          "collect_protocol_pool_fees": 15,
-          "settle": 3
+          "register_launchlab_coin": 1,
+          "declare_payee": 1,
+          "observe_sapling": 4,
+          "set_basket": 1
         },
-        "unrecognised": 15,
+        "unrecognised": 3,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -640,15 +641,15 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-06T02:06:55.695Z",
-      "finishedAt": "2026-11-06T02:06:57.527Z",
+      "startedAt": "2026-11-06T02:20:14.023Z",
+      "finishedAt": "2026-11-06T02:20:15.388Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "coins": 116,
-        "matching": 116,
-        "feeChangeable": 112,
+        "coins": 117,
+        "matching": 117,
+        "feeChangeable": 113,
         "feeRenounced": 4,
         "advertisedRange": [
           200,
@@ -660,13 +661,11 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-06T02:06:57.529Z",
-      "finishedAt": "2026-11-06T02:07:03.178Z",
+      "startedAt": "2026-11-06T02:20:15.390Z",
+      "finishedAt": "2026-11-06T02:20:19.472Z",
       "status": "ran",
-      "ok": false,
-      "alerts": [
-        "flywheel pot 5pGuFKNqC3Dsocsc6qQMHuYe3bAFELa6n6cmN1U668pgh7zrecSQbhg1vhjjiUHDKZ6HXUteB1qw9E7NpxRx2Fvv: pot changed by 75184 zat in an unexpected transaction (no vault instruction)"
-      ],
+      "ok": true,
+      "alerts": [],
       "summary": {
         "headline": {
           "claimedZat": "1558362512",
@@ -1060,9 +1059,7 @@
     },
     "float": {},
     "tax": {},
-    "flywheel": {
-      "flywheel pot 5pGuFKNqC3Dsocsc6qQMHuYe3bAFELa6n6cmN1U668pgh7zrecSQbhg1vhjjiUHDKZ6HXUteB1qw9E7NpxRx2Fvv: pot changed by 75184 zat in an unexpected transaction (no vault instruction)": "2026-11-06T02:07:03.178Z"
-    },
+    "flywheel": {},
     "coins": {},
     "programs": {},
     "earnings": {},
