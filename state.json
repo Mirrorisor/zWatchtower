@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-06T12:20:02.048Z",
-      "finishedAt": "2026-11-06T12:20:04.986Z",
+      "startedAt": "2026-11-06T12:25:03.006Z",
+      "finishedAt": "2026-11-06T12:25:07.048Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,10 +21,14 @@
           "recovery"
         ],
         "vaultInstructions": {
+          "settle": 2,
+          "settle_sapling": 1,
+          "register_coin": 1,
           "observe_sapling": 4,
-          "unrecognised:33434476f180c41b": 1
+          "register_launchlab_coin": 1,
+          "declare_payee": 1
         },
-        "unrecognised": 1,
+        "unrecognised": 4,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -660,8 +664,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-06T12:07:00.497Z",
-      "finishedAt": "2026-11-06T12:07:08.009Z",
+      "startedAt": "2026-11-06T12:25:07.054Z",
+      "finishedAt": "2026-11-06T12:25:13.512Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -673,7 +677,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 226053336.77124596,
+          "onChain": 226053588.66916597,
           "claimed": 226050000,
           "diffPct": 0,
           "verdict": "matches"
@@ -981,18 +985,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-06T12:08:31.826Z",
-      "finishedAt": "2026-11-06T12:08:35.607Z",
+      "startedAt": "2026-11-06T12:25:13.514Z",
+      "finishedAt": "2026-11-06T12:25:17.316Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 105765.93,
-        "nearSupply": 149963.74,
+        "nearSupply": 149972.37,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 60.041647940000985,
+        "change24h": 60.056210430004285,
         "notes": []
       }
     },
