@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-06T00:25:11.264Z",
-      "finishedAt": "2026-11-06T00:25:13.784Z",
+      "startedAt": "2026-11-06T00:30:05.125Z",
+      "finishedAt": "2026-11-06T00:30:08.035Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,12 @@
           "recovery"
         ],
         "vaultInstructions": {
+          "draw_grove": 1,
+          "close_grove": 1,
           "observe_sapling": 4,
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 1
+          "settle_tax": 1,
+          "sell_tax": 1,
+          "withdraw_tax": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -979,34 +982,34 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-06T00:12:14.184Z",
-      "finishedAt": "2026-11-06T00:12:18.338Z",
+      "startedAt": "2026-11-06T00:30:08.043Z",
+      "finishedAt": "2026-11-06T00:30:11.945Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 105767.45,
-        "nearSupply": 150162.8,
+        "nearSupply": 150159.75,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 83.00710591000097,
+        "change24h": 83.0071059299953,
         "notes": []
       }
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-05T23:15:51.104Z",
-      "finishedAt": "2026-11-05T23:29:13.745Z",
+      "startedAt": "2026-11-06T00:30:11.947Z",
+      "finishedAt": "2026-11-06T00:44:11.871Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "coinsRead": 498,
+        "coinsRead": 499,
         "recipients": {
           "holders": 260,
-          "wallet": 226,
+          "wallet": 227,
           "creator": 3,
           "zcash-foundation": 9
         },
