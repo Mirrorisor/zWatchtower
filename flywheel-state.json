@@ -3947,18 +3947,26 @@
     }
   },
   "pot": {
-    "lastSig": "54gG6evLp25oiUR1PczvNU4cFbTsagkhx78S9rwX6L5cZnVq4GS7WpsskR5rhxfPrMuhBZTaQdrRFXiUSoxTnQfg",
-    "total": "1213389",
+    "lastSig": "5dPzd3fu5jKCHwV25uiRME4AiynXiA1bk7uTqjSS6UmypkcNZRYKrFaN9Djfy6TyjcznpQiVHR78PXEgggBmhjRk",
+    "total": "1493437",
     "complete": true,
     "kinds": {
       "setup": 1,
-      "inflow": 3207,
-      "buyback": 334
+      "inflow": 3208,
+      "buyback": 334,
+      "other": 1,
+      "failed": 1
     },
-    "inflowZat": "1559575901",
+    "inflowZat": "1559780765",
     "buybackZat": "1558362512",
     "caughtUp": true,
-    "unlisted": {}
+    "unlisted": {},
+    "problems": [
+      {
+        "signature": "5pGuFKNqC3Dsocsc6qQMHuYe3bAFELa6n6cmN1U668pgh7zrecSQbhg1vhjjiUHDKZ6HXUteB1qw9E7NpxRx2Fvv",
+        "problem": "pot changed by 75184 zat in an unexpected transaction (no vault instruction)"
+      }
+    ]
   },
   "signers": [
     "7yJnPdEDFS7KZbKvPsK8QgHqC61hoE2H5W8EpmNAuMCC",
