@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-06T18:45:01.927Z",
-      "finishedAt": "2026-11-06T18:45:06.370Z",
+      "startedAt": "2026-11-06T18:50:11.219Z",
+      "finishedAt": "2026-11-06T18:50:13.702Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
-        "configSha256": "e03809a331fd60592ce59c4b594f206c4c88c67d448282e558bce1e36647befc",
+        "configSha256": "68f46a24ac9545faa042de2f254b67c719454ef689136716d9a956cfd1323f40",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -21,12 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "release_rewards": 1,
-          "settle": 5,
           "observe_sapling": 4,
-          "settle_tax": 1,
-          "sell_tax": 2,
-          "withdraw_tax": 2
+          "close_rewards_run": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -655,8 +651,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-06T18:35:17.218Z",
-      "finishedAt": "2026-11-06T18:35:26.737Z",
+      "startedAt": "2026-11-06T18:50:13.708Z",
+      "finishedAt": "2026-11-06T18:50:23.518Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -675,8 +671,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-06T18:35:26.739Z",
-      "finishedAt": "2026-11-06T18:35:54.245Z",
+      "startedAt": "2026-11-06T18:50:23.519Z",
+      "finishedAt": "2026-11-06T18:50:51.592Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -688,8 +684,8 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 226148938.939237,
-          "claimed": 226150000,
+          "onChain": 226158854.97269905,
+          "claimed": 226160000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -791,13 +787,13 @@
           }
         },
         "pot": {
-          "balanceZat": "1482183",
-          "shownZat": "1482183",
-          "inflowZat": "1578870640",
+          "balanceZat": "1685836",
+          "shownZat": "1685836",
+          "inflowZat": "1579074293",
           "buybackZat": "1577463641",
           "movements": {
             "setup": 1,
-            "inflow": 3274,
+            "inflow": 3275,
             "buyback": 340,
             "other": 1,
             "failed": 1
