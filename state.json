@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-06T03:40:11.306Z",
-      "finishedAt": "2026-11-06T03:40:14.636Z",
+      "startedAt": "2026-11-06T03:45:04.468Z",
+      "finishedAt": "2026-11-06T03:45:07.241Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,11 +21,11 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 3,
-          "settle_sapling": 1,
-          "settle": 3
+          "observe_sapling": 4,
+          "sell_tax": 1,
+          "withdraw_tax": 1
         },
-        "unrecognised": 1,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -61,8 +61,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-06T03:14:45.169Z",
-      "finishedAt": "2026-11-06T03:15:31.683Z",
+      "startedAt": "2026-11-06T03:45:07.247Z",
+      "finishedAt": "2026-11-06T03:45:54.553Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -70,18 +70,17 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-06T03:15:30.849Z",
-        "runs": 9,
-        "passed": 7,
+        "checkedAt": "2026-11-06T03:45:53.678Z",
+        "runs": 8,
+        "passed": 6,
         "flagged": 3,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.38892616",
+        "zecPaidInDoneRuns": "0.36735359",
         "onChainChecks": true,
         "checkedIds": [
           1491,
           1573,
-          1644,
           1645,
           1646,
           1647,
@@ -101,8 +100,8 @@
             ]
           }
         ],
-        "distinctReleases": 9,
-        "runsWithRelease": 9,
+        "distinctReleases": 8,
+        "runsWithRelease": 8,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -111,7 +110,7 @@
             "top20": [
               {
                 "owner": "WLHv2UAZ",
-                "amount": "915705933492243",
+                "amount": "916476325207321",
                 "wallet": false,
                 "ownerProgram": null,
                 "inSnapshot": false
@@ -160,7 +159,7 @@
               },
               {
                 "owner": "CYfVvQy9",
-                "amount": "1588436525937",
+                "amount": "794218262969",
                 "wallet": true,
                 "ownerProgram": "11111111111111111111111111111111",
                 "inSnapshot": false
@@ -251,8 +250,8 @@
               }
             ],
             "notInSnapshotByOwnerProgram": {
-              "unknown": "915705933492243",
-              "wallet": "12473016336582",
+              "unknown": "916476325207321",
+              "wallet": "11678798073614",
               "11111111111111111111111111111111": "103133172880"
             }
           },
@@ -1084,7 +1083,7 @@
     "split": {}
   },
   "rewardsMaxRun": 1650,
-  "rewardsFrom": 1644,
+  "rewardsFrom": 1645,
   "x": {
     "day": "2026-11-06",
     "today": 0,
