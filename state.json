@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-07T10:00:11.249Z",
-      "finishedAt": "2026-11-07T10:00:13.688Z",
+      "startedAt": "2026-11-07T10:05:02.844Z",
+      "finishedAt": "2026-11-07T10:05:06.256Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "settle": 1
         },
         "unrecognised": 0,
         "baseline": false,
