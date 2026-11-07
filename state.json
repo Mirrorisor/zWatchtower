@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-07T13:50:18.512Z",
-      "finishedAt": "2026-11-07T13:50:21.652Z",
+      "startedAt": "2026-11-07T13:55:05.628Z",
+      "finishedAt": "2026-11-07T13:55:08.389Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5
+          "observe_sapling": 4,
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -639,8 +641,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-07T13:40:35.155Z",
-      "finishedAt": "2026-11-07T13:40:37.091Z",
+      "startedAt": "2026-11-07T13:55:08.399Z",
+      "finishedAt": "2026-11-07T13:55:10.182Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -659,17 +661,17 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-07T13:40:37.093Z",
-      "finishedAt": "2026-11-07T13:40:44.324Z",
+      "startedAt": "2026-11-07T13:55:10.185Z",
+      "finishedAt": "2026-11-07T13:55:14.475Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1659447601",
+          "claimedZat": "1662557207",
           "chainZat": "1662557207",
           "notListedYetZat": "0",
-          "verdict": "differs from the chain"
+          "verdict": "matches the chain"
         },
         "saplingBurn": {
           "onChain": 226541293.79711998,
@@ -799,9 +801,7 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": [
-          "Sapling's headline says 1659447601 zat bought back; the pot paid 1662557207 zat on chain (0 of it not listed yet)"
-        ]
+        "notes": []
       }
     },
     "coins": {
@@ -987,15 +987,15 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-07T13:41:53.385Z",
-      "finishedAt": "2026-11-07T13:41:57.150Z",
+      "startedAt": "2026-11-07T13:55:14.478Z",
+      "finishedAt": "2026-11-07T13:55:18.296Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 107280.18,
-        "nearSupply": 149346.9,
+        "nearSupply": 149343.49,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
         "change24h": 1514.3631956699974,
