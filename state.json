@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-07T07:35:11.179Z",
-      "finishedAt": "2026-11-07T07:35:14.356Z",
+      "startedAt": "2026-11-07T07:40:05.852Z",
+      "finishedAt": "2026-11-07T07:40:09.166Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,7 +22,9 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "settle": 2
+          "settle_tax": 1,
+          "sell_tax": 1,
+          "withdraw_tax": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -651,8 +653,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-07T07:25:14.008Z",
-      "finishedAt": "2026-11-07T07:25:15.378Z",
+      "startedAt": "2026-11-07T07:40:09.171Z",
+      "finishedAt": "2026-11-07T07:40:10.451Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -671,8 +673,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-07T07:25:15.379Z",
-      "finishedAt": "2026-11-07T07:25:20.718Z",
+      "startedAt": "2026-11-07T07:40:10.452Z",
+      "finishedAt": "2026-11-07T07:40:14.932Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -792,13 +794,13 @@
           }
         },
         "pot": {
-          "balanceZat": "1538435",
-          "shownZat": "1538435",
-          "inflowZat": "1660910852",
+          "balanceZat": "1758449",
+          "shownZat": "1758449",
+          "inflowZat": "1661130866",
           "buybackZat": "1659447601",
           "movements": {
             "setup": 1,
-            "inflow": 3365,
+            "inflow": 3366,
             "buyback": 350,
             "other": 1,
             "failed": 1
