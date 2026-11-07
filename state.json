@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-07T04:55:03.037Z",
-      "finishedAt": "2026-11-07T04:55:06.227Z",
+      "startedAt": "2026-11-07T05:00:02.395Z",
+      "finishedAt": "2026-11-07T05:00:06.833Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,12 +21,11 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1,
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "settle": 1,
+          "settle_sapling": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -62,28 +61,26 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-07T04:30:07.072Z",
-      "finishedAt": "2026-11-07T04:30:45.998Z",
+      "startedAt": "2026-11-07T05:00:06.841Z",
+      "finishedAt": "2026-11-07T05:01:06.485Z",
       "status": "ran",
       "ok": false,
       "alerts": [
         "reward run 1491 ███: 11 shares not floor(pot*balance/sum); basket payout doesn't add up: hSOL: 6741284 of 160371735 bought wasn't paid out; hSOL: 1 holders got none; paid != confirmed shares - rent",
-        "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent",
-        "reward run 1696 MOOH: failed run's release moved ZEC on chain"
+        "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-07T04:30:45.365Z",
-        "runs": 9,
+        "checkedAt": "2026-11-07T05:01:05.604Z",
+        "runs": 8,
         "passed": 6,
         "flagged": 3,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.48769434",
+        "zecPaidInDoneRuns": "2.87510297",
         "onChainChecks": true,
         "checkedIds": [
           1491,
           1573,
-          1690,
           1691,
           1692,
           1693,
@@ -91,7 +88,17 @@
           1695,
           1696
         ],
-        "baskets": [],
+        "baskets": [
+          {
+            "id": 1696,
+            "mint": "J4fWoyVecozyBj83NFk3qzHZR7qkt92YAhgoFvGzcash",
+            "tokens": [
+              "ZEC",
+              "hSOL",
+              "NEAR"
+            ]
+          }
+        ],
         "distinctReleases": 8,
         "runsWithRelease": 8,
         "followTheMoney": {
@@ -261,7 +268,9 @@
           },
           "topUnknown": []
         },
-        "notes": [],
+        "notes": [
+          "run 1696: paid as a basket of 3 tokens (ZEC, hSOL, NEAR): every holder got each token in proportion to their share"
+        ],
         "diagnoses": [
           {
             "id": 1491,
@@ -399,7 +408,7 @@
                 "received": "36128"
               },
               {
-                "rewardsWalletHoldsZat": "205809426"
+                "rewardsWalletHoldsZat": "0"
               }
             ]
           },
@@ -564,7 +573,7 @@
                 "received": "22057"
               },
               {
-                "rewardsWalletHoldsZat": "205809426"
+                "rewardsWalletHoldsZat": "0"
               }
             ]
           }
@@ -1062,8 +1071,7 @@
     "keys": {},
     "rewards": {
       "reward run 1491 ███: 11 shares not floor(pot*balance/sum); basket payout doesn't add up: hSOL: 6741284 of 160371735 bought wasn't paid out; hSOL: 1 holders got none; paid != confirmed shares - rent": "2026-11-04T07:01:45.840Z",
-      "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent": "2026-11-04T07:01:45.840Z",
-      "reward run 1696 MOOH: failed run's release moved ZEC on chain": "2026-11-07T04:30:45.998Z"
+      "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent": "2026-11-04T07:01:45.840Z"
     },
     "float": {},
     "tax": {},
@@ -1076,7 +1084,7 @@
     "split": {}
   },
   "rewardsMaxRun": 1696,
-  "rewardsFrom": 1690,
+  "rewardsFrom": 1691,
   "x": {
     "day": "2026-11-07",
     "today": 0,
@@ -1112,6 +1120,14 @@
         "AAPLx"
       ],
       "run": 1669
+    },
+    "J4fWoyVecozyBj83NFk3qzHZR7qkt92YAhgoFvGzcash": {
+      "tokens": [
+        "ZEC",
+        "hSOL",
+        "NEAR"
+      ],
+      "run": 1696
     }
   }
 }
