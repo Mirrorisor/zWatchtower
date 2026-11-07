@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-07T22:10:02.056Z",
-      "finishedAt": "2026-11-07T22:10:06.018Z",
+      "startedAt": "2026-11-07T22:15:03.516Z",
+      "finishedAt": "2026-11-07T22:15:07.776Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,12 +21,14 @@
           "recovery"
         ],
         "vaultInstructions": {
+          "observe_sapling": 4,
           "sell_tax": 1,
           "withdraw_tax": 1,
-          "observe_sapling": 4,
-          "settle": 3
+          "settle_tax": 1,
+          "convert_tax_begin": 1,
+          "convert_tax_end": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 2,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -62,8 +64,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-07T21:43:59.708Z",
-      "finishedAt": "2026-11-07T21:44:37.394Z",
+      "startedAt": "2026-11-07T22:15:07.781Z",
+      "finishedAt": "2026-11-07T22:15:45.521Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -72,7 +74,7 @@
         "reward run 1705 ZDOG: failed run's release moved ZEC on chain"
       ],
       "summary": {
-        "checkedAt": "2026-11-07T21:44:36.574Z",
+        "checkedAt": "2026-11-07T22:15:44.663Z",
         "runs": 8,
         "passed": 5,
         "flagged": 3,
