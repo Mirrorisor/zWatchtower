@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-07T17:20:03.520Z",
-      "finishedAt": "2026-11-07T17:20:07.028Z",
+      "startedAt": "2026-11-07T17:25:01.948Z",
+      "finishedAt": "2026-11-07T17:25:05.068Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,10 +22,13 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 1
+          "settle_tax": 1,
+          "convert_tax_begin": 1,
+          "convert_tax_end": 1,
+          "sell_tax": 1,
+          "withdraw_tax": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 2,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -641,8 +644,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-07T17:10:09.012Z",
-      "finishedAt": "2026-11-07T17:10:10.601Z",
+      "startedAt": "2026-11-07T17:25:05.073Z",
+      "finishedAt": "2026-11-07T17:25:06.581Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -661,8 +664,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-07T17:10:10.603Z",
-      "finishedAt": "2026-11-07T17:10:17.379Z",
+      "startedAt": "2026-11-07T17:25:06.584Z",
+      "finishedAt": "2026-11-07T17:25:11.611Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -674,8 +677,8 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 226563712.42976904,
-          "claimed": 226560000,
+          "onChain": 226566772.79474998,
+          "claimed": 226570000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -782,13 +785,13 @@
           }
         },
         "pot": {
-          "balanceZat": "1802310",
-          "shownZat": "1802310",
-          "inflowZat": "1667790002",
+          "balanceZat": "2500501",
+          "shownZat": "2500501",
+          "inflowZat": "1668488193",
           "buybackZat": "1666062876",
           "movements": {
             "setup": 1,
-            "inflow": 3390,
+            "inflow": 3391,
             "buyback": 352,
             "other": 1,
             "failed": 1
@@ -806,14 +809,14 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-07T16:52:28.699Z",
-      "finishedAt": "2026-11-07T16:53:26.195Z",
+      "startedAt": "2026-11-07T17:25:11.613Z",
+      "finishedAt": "2026-11-07T17:26:10.035Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "coins": 512,
+        "coins": 513,
         "carded": 13,
         "refreshed": 13,
         "flagged": 12,
@@ -824,7 +827,7 @@
           "Creator bought N of supply at launch": 1
         },
         "notes": [
-          "creator scan: 16 coin(s) read this run, 512 of 512 read so far (0 launched shielded, creator not public)",
+          "creator scan: 16 coin(s) read this run, 513 of 513 read so far (0 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
           "1 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 1)",
           "27 shortlisted coin(s) were under $10,000 on their own page, so no card",
@@ -834,8 +837,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-07T16:53:26.198Z",
-      "finishedAt": "2026-11-07T16:53:46.556Z",
+      "startedAt": "2026-11-07T17:26:10.037Z",
+      "finishedAt": "2026-11-07T17:26:30.663Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -845,7 +848,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 7165,
+            "seenInTxs": 7177,
             "withJupiter": 50,
             "seeds": [
               "upgradeAuthority",
@@ -879,12 +882,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 776
+            "seenInTxs": 778
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 767
+            "seenInTxs": 769
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -909,7 +912,7 @@
           {
             "id": "LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj",
             "authority": "FytDrVzDybM1TwFQPGb8qaxZR7dBCzNeqT3vtQsceZQK",
-            "seenInTxs": 50
+            "seenInTxs": 51
           },
           {
             "id": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
@@ -919,7 +922,7 @@
           {
             "id": "L2TExMFKdjpN9kozasaurPirfHy9P8sbXoAN1qA3S95",
             "authority": null,
-            "seenInTxs": 22
+            "seenInTxs": 23
           },
           {
             "id": "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P",
@@ -962,7 +965,7 @@
           "breakingRules": []
         },
         "programsSeen": 23,
-        "txsRead": 39,
+        "txsRead": 38,
         "notes": []
       }
     },
@@ -987,18 +990,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-07T17:10:17.382Z",
-      "finishedAt": "2026-11-07T17:10:21.178Z",
+      "startedAt": "2026-11-07T17:26:30.665Z",
+      "finishedAt": "2026-11-07T17:26:34.641Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 107339.04,
-        "nearSupply": 148885.38,
+        "nearSupply": 148937.42,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 1219.5985266500065,
+        "change24h": 1219.6456185100105,
         "notes": []
       }
     },
