@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-07T15:55:11.303Z",
-      "finishedAt": "2026-11-07T15:55:14.089Z",
+      "startedAt": "2026-11-07T16:00:06.664Z",
+      "finishedAt": "2026-11-07T16:00:09.988Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -59,8 +59,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-07T15:29:10.515Z",
-      "finishedAt": "2026-11-07T15:29:48.994Z",
+      "startedAt": "2026-11-07T16:00:09.995Z",
+      "finishedAt": "2026-11-07T16:00:47.572Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -69,18 +69,17 @@
         "reward run 1705 ZDOG: failed run's release moved ZEC on chain"
       ],
       "summary": {
-        "checkedAt": "2026-11-07T15:29:48.139Z",
-        "runs": 9,
-        "passed": 6,
+        "checkedAt": "2026-11-07T16:00:46.495Z",
+        "runs": 8,
+        "passed": 5,
         "flagged": 3,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.34247299",
+        "zecPaidInDoneRuns": "0.32184926",
         "onChainChecks": true,
         "checkedIds": [
           1491,
           1573,
-          1699,
           1700,
           1701,
           1702,
@@ -89,8 +88,8 @@
           1705
         ],
         "baskets": [],
-        "distinctReleases": 8,
-        "runsWithRelease": 8,
+        "distinctReleases": 7,
+        "runsWithRelease": 7,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -1073,7 +1072,7 @@
     "split": {}
   },
   "rewardsMaxRun": 1705,
-  "rewardsFrom": 1699,
+  "rewardsFrom": 1700,
   "x": {
     "day": "2026-11-07",
     "today": 0,
