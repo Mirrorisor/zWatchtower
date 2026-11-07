@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-07T08:25:11.256Z",
-      "finishedAt": "2026-11-07T08:25:14.348Z",
+      "startedAt": "2026-11-07T08:30:11.212Z",
+      "finishedAt": "2026-11-07T08:30:13.737Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,10 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -62,8 +59,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-07T07:59:48.292Z",
-      "finishedAt": "2026-11-07T08:00:46.535Z",
+      "startedAt": "2026-11-07T08:30:13.746Z",
+      "finishedAt": "2026-11-07T08:31:12.487Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -71,7 +68,7 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-07T08:00:43.654Z",
+        "checkedAt": "2026-11-07T08:31:09.525Z",
         "runs": 8,
         "passed": 6,
         "flagged": 3,
