@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-07T20:10:06.257Z",
-      "finishedAt": "2026-11-07T20:10:09.430Z",
+      "startedAt": "2026-11-07T20:15:05.991Z",
+      "finishedAt": "2026-11-07T20:15:09.676Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
-        "configSha256": "882bcc5b4ae3d510defeeeb89c169c1af2b89edd4263b1a53ed66527dd7e6692",
+        "configSha256": "10bb95f2511fd07a7656805d20a35d5f68c3f01a0b47d9e722ba937c7a5a2398",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -22,10 +22,11 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 1
+          "draw_lp": 1,
+          "settle": 1,
+          "settle_sapling": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -61,8 +62,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-07T19:45:13.475Z",
-      "finishedAt": "2026-11-07T19:45:50.480Z",
+      "startedAt": "2026-11-07T20:15:09.681Z",
+      "finishedAt": "2026-11-07T20:15:47.533Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -71,7 +72,7 @@
         "reward run 1705 ZDOG: failed run's release moved ZEC on chain"
       ],
       "summary": {
-        "checkedAt": "2026-11-07T19:45:49.589Z",
+        "checkedAt": "2026-11-07T20:15:46.580Z",
         "runs": 8,
         "passed": 5,
         "flagged": 3,
@@ -1004,8 +1005,8 @@
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-07T19:00:29.643Z",
-      "finishedAt": "2026-11-07T19:14:08.628Z",
+      "startedAt": "2026-11-07T20:15:47.535Z",
+      "finishedAt": "2026-11-07T20:29:32.100Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
