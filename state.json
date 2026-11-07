@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-07T10:50:11.198Z",
-      "finishedAt": "2026-11-07T10:50:13.649Z",
+      "startedAt": "2026-11-07T10:55:09.447Z",
+      "finishedAt": "2026-11-07T10:55:12.837Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "settle": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -638,8 +639,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-07T10:37:13.407Z",
-      "finishedAt": "2026-11-07T10:37:16.026Z",
+      "startedAt": "2026-11-07T10:55:12.844Z",
+      "finishedAt": "2026-11-07T10:55:14.512Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -658,30 +659,30 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-07T10:37:16.029Z",
-      "finishedAt": "2026-11-07T10:37:21.094Z",
+      "startedAt": "2026-11-07T10:55:14.515Z",
+      "finishedAt": "2026-11-07T10:55:19.704Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1659447601",
+          "claimedZat": "1662557207",
           "chainZat": "1662557207",
-          "notListedYetZat": "3109606",
+          "notListedYetZat": "0",
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 226528104.92142606,
+          "onChain": 226530583.431499,
           "claimed": 226530000,
           "diffPct": 0,
           "verdict": "matches"
         },
-        "burns": 279,
-        "burnsVerified": 279,
-        "boughtBackZat": "1467602230",
+        "burns": 280,
+        "burnsVerified": 280,
+        "boughtBackZat": "1470711836",
         "venues": {
           "pump amm": 155,
-          "raydium cpmm": 63,
+          "raydium cpmm": 64,
           "raydium launchlab": 10,
           "pump bonding curve": 1,
           "jupiter": 50
@@ -764,8 +765,8 @@
           },
           "ᑓହꚡई": {
             "mint": "HAp8U1SB7bDGMa81AQom1ee6AR5iSFFTi57MEbTzcash",
-            "burns": 16,
-            "zat": "119597106"
+            "burns": 17,
+            "zat": "122706712"
           },
           "SARAH": {
             "mint": "4LT4uDp694w7soJerjRjSEVr2884J33EjLNG1WGzcash",
@@ -779,13 +780,13 @@
           }
         },
         "pot": {
-          "balanceZat": "31507",
-          "shownZat": "31507",
-          "inflowZat": "1662513530",
+          "balanceZat": "237791",
+          "shownZat": "237791",
+          "inflowZat": "1662719814",
           "buybackZat": "1662557207",
           "movements": {
             "setup": 1,
-            "inflow": 3370,
+            "inflow": 3371,
             "buyback": 351,
             "other": 1,
             "failed": 1
@@ -984,18 +985,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-07T10:38:32.835Z",
-      "finishedAt": "2026-11-07T10:38:36.611Z",
+      "startedAt": "2026-11-07T10:55:19.708Z",
+      "finishedAt": "2026-11-07T10:55:23.695Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 106908.89,
-        "nearSupply": 149092.54,
+        "solanaSupply": 107120.48,
+        "nearSupply": 149089.39,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 1143.4442888699996,
+        "change24h": 1355.03044658,
         "notes": []
       }
     },
