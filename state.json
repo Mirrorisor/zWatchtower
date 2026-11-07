@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-07T12:05:02.785Z",
-      "finishedAt": "2026-11-07T12:05:05.547Z",
+      "startedAt": "2026-11-07T12:10:21.301Z",
+      "finishedAt": "2026-11-07T12:10:24.632Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,14 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "settle_tax": 1,
+          "sell_tax": 1,
+          "withdraw_tax": 1,
+          "observe_sapling": 4,
+          "settle": 1,
+          "claim_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -638,8 +643,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-07T11:52:23.137Z",
-      "finishedAt": "2026-11-07T11:52:25.857Z",
+      "startedAt": "2026-11-07T12:10:24.638Z",
+      "finishedAt": "2026-11-07T12:10:27.654Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -658,8 +663,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-07T11:52:25.860Z",
-      "finishedAt": "2026-11-07T11:52:31.914Z",
+      "startedAt": "2026-11-07T12:10:27.657Z",
+      "finishedAt": "2026-11-07T12:10:36.280Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -671,8 +676,8 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 226533484.59314203,
-          "claimed": 226530000,
+          "onChain": 226536285.397946,
+          "claimed": 226540000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -779,13 +784,13 @@
           }
         },
         "pot": {
-          "balanceZat": "504632",
-          "shownZat": "504632",
-          "inflowZat": "1662986655",
+          "balanceZat": "1219868",
+          "shownZat": "1219868",
+          "inflowZat": "1663701891",
           "buybackZat": "1662557207",
           "movements": {
             "setup": 1,
-            "inflow": 3372,
+            "inflow": 3374,
             "buyback": 351,
             "other": 1,
             "failed": 1
@@ -984,15 +989,15 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-07T11:53:46.354Z",
-      "finishedAt": "2026-11-07T11:53:50.319Z",
+      "startedAt": "2026-11-07T12:10:36.282Z",
+      "finishedAt": "2026-11-07T12:10:40.307Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 107125.43,
-        "nearSupply": 149126.58,
+        "nearSupply": 149152.54,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
         "change24h": 1359.499764940003,
