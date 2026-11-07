@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-07T09:50:11.204Z",
-      "finishedAt": "2026-11-07T09:50:14.677Z",
+      "startedAt": "2026-11-07T09:55:05.909Z",
+      "finishedAt": "2026-11-07T09:55:09.444Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5,
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 1
+          "observe_sapling": 4,
+          "settle": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -640,8 +639,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-07T09:40:12.735Z",
-      "finishedAt": "2026-11-07T09:40:14.549Z",
+      "startedAt": "2026-11-07T09:55:09.451Z",
+      "finishedAt": "2026-11-07T09:55:11.268Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -660,8 +659,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-07T09:40:14.550Z",
-      "finishedAt": "2026-11-07T09:40:19.695Z",
+      "startedAt": "2026-11-07T09:55:11.270Z",
+      "finishedAt": "2026-11-07T09:55:15.354Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -805,8 +804,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-07T09:23:09.341Z",
-      "finishedAt": "2026-11-07T09:24:06.530Z",
+      "startedAt": "2026-11-07T09:55:15.357Z",
+      "finishedAt": "2026-11-07T09:56:10.036Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -833,8 +832,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-07T09:24:06.534Z",
-      "finishedAt": "2026-11-07T09:24:18.381Z",
+      "startedAt": "2026-11-07T09:56:10.039Z",
+      "finishedAt": "2026-11-07T09:56:21.143Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -844,7 +843,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 7022,
+            "seenInTxs": 7024,
             "withJupiter": 50,
             "seeds": [
               "upgradeAuthority",
@@ -878,12 +877,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 754
+            "seenInTxs": 755
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 745
+            "seenInTxs": 746
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -961,7 +960,7 @@
           "breakingRules": []
         },
         "programsSeen": 23,
-        "txsRead": 6,
+        "txsRead": 3,
         "notes": []
       }
     },
@@ -986,18 +985,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-07T09:40:19.697Z",
-      "finishedAt": "2026-11-07T09:40:23.491Z",
+      "startedAt": "2026-11-07T09:56:21.145Z",
+      "finishedAt": "2026-11-07T09:56:24.947Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 106806.17,
-        "nearSupply": 148867.88,
+        "solanaSupply": 106806.45,
+        "nearSupply": 148823.44,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 1040.7216678300028,
+        "change24h": 1041.001227950008,
         "notes": []
       }
     },
