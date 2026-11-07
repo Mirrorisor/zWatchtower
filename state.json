@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-07T22:40:02.480Z",
-      "finishedAt": "2026-11-07T22:40:05.941Z",
+      "startedAt": "2026-11-07T22:45:02.481Z",
+      "finishedAt": "2026-11-07T22:45:05.725Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -59,8 +61,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-07T22:15:07.781Z",
-      "finishedAt": "2026-11-07T22:15:45.521Z",
+      "startedAt": "2026-11-07T22:45:05.730Z",
+      "finishedAt": "2026-11-07T22:45:43.099Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -69,7 +71,7 @@
         "reward run 1705 ZDOG: failed run's release moved ZEC on chain"
       ],
       "summary": {
-        "checkedAt": "2026-11-07T22:15:44.663Z",
+        "checkedAt": "2026-11-07T22:45:42.261Z",
         "runs": 8,
         "passed": 5,
         "flagged": 3,
@@ -184,7 +186,7 @@
                 "owner": "HiR2Bdvx",
                 "amount": "0",
                 "wallet": true,
-                "ownerProgram": "11111111111111111111111111111111",
+                "ownerProgram": null,
                 "inSnapshot": false
               },
               {
@@ -1002,17 +1004,17 @@
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-07T21:30:06.206Z",
-      "finishedAt": "2026-11-07T21:43:45.192Z",
+      "startedAt": "2026-11-07T22:45:43.101Z",
+      "finishedAt": "2026-11-07T22:59:33.693Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "coinsRead": 513,
+        "coinsRead": 514,
         "recipients": {
           "holders": 268,
-          "wallet": 233,
+          "wallet": 234,
           "creator": 3,
           "zcash-foundation": 9
         },
