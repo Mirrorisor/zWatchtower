@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-07T15:10:19.281Z",
-      "finishedAt": "2026-11-07T15:10:21.784Z",
+      "startedAt": "2026-11-07T15:15:11.227Z",
+      "finishedAt": "2026-11-07T15:15:14.161Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,12 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 3,
+          "settle_tax": 1,
+          "convert_tax_begin": 1,
+          "convert_tax_end": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 2,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -1001,8 +1004,8 @@
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-07T14:01:01.918Z",
-      "finishedAt": "2026-11-07T14:14:44.299Z",
+      "startedAt": "2026-11-07T15:15:14.167Z",
+      "finishedAt": "2026-11-07T15:28:57.212Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
