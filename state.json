@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-07T23:20:04.612Z",
-      "finishedAt": "2026-11-07T23:20:07.645Z",
+      "startedAt": "2026-11-07T23:25:01.628Z",
+      "finishedAt": "2026-11-07T23:25:04.884Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -639,8 +639,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-07T23:07:15.156Z",
-      "finishedAt": "2026-11-07T23:07:16.818Z",
+      "startedAt": "2026-11-07T23:25:04.891Z",
+      "finishedAt": "2026-11-07T23:25:06.207Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -659,29 +659,29 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-07T23:07:16.820Z",
-      "finishedAt": "2026-11-07T23:07:23.080Z",
+      "startedAt": "2026-11-07T23:25:06.208Z",
+      "finishedAt": "2026-11-07T23:25:12.948Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1672145600",
+          "claimedZat": "1675266329",
           "chainZat": "1675266329",
-          "notListedYetZat": "3120729",
+          "notListedYetZat": "0",
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 226620230.80448902,
+          "onChain": 226621241.62484002,
           "claimed": 226620000,
           "diffPct": 0,
           "verdict": "matches"
         },
-        "burns": 283,
-        "burnsVerified": 283,
-        "boughtBackZat": "1480300229",
+        "burns": 284,
+        "burnsVerified": 284,
+        "boughtBackZat": "1483420958",
         "venues": {
-          "pump amm": 157,
+          "pump amm": 158,
           "raydium cpmm": 65,
           "raydium launchlab": 10,
           "pump bonding curve": 1,
@@ -700,8 +700,8 @@
           },
           "ZILLIONS": {
             "mint": "3sKZuSZF7onqPYFrWu3bH4Lh141duydt9MAmSd46jaLJ",
-            "burns": 85,
-            "zat": "340957295"
+            "burns": 86,
+            "zat": "344078024"
           },
           "SEEDLING": {
             "mint": "JAxk7phmXL9G2syv6DJ72ibddzTDhybmhZTNjpgKwF5A",
@@ -985,18 +985,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-07T23:08:44.035Z",
-      "finishedAt": "2026-11-07T23:08:47.795Z",
+      "startedAt": "2026-11-07T23:25:12.950Z",
+      "finishedAt": "2026-11-07T23:25:16.935Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 107342.95,
-        "nearSupply": 149955.44,
+        "nearSupply": 149968.79,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 860.599854,
+        "change24h": 860.5993584600074,
         "notes": []
       }
     },
