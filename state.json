@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-07T18:45:09.809Z",
-      "finishedAt": "2026-11-07T18:45:12.477Z",
+      "startedAt": "2026-11-07T18:50:06.213Z",
+      "finishedAt": "2026-11-07T18:50:08.668Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -639,8 +639,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-07T18:35:13.844Z",
-      "finishedAt": "2026-11-07T18:35:15.663Z",
+      "startedAt": "2026-11-07T18:50:08.674Z",
+      "finishedAt": "2026-11-07T18:50:10.607Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -659,30 +659,30 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-07T18:35:15.667Z",
-      "finishedAt": "2026-11-07T18:35:20.091Z",
+      "startedAt": "2026-11-07T18:50:10.609Z",
+      "finishedAt": "2026-11-07T18:50:15.390Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1659447601",
+          "claimedZat": "1669079715",
           "chainZat": "1669079715",
-          "notListedYetZat": "3016839",
-          "verdict": "differs from the chain"
+          "notListedYetZat": "0",
+          "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 226575127.142964,
+          "onChain": 226576300.46276402,
           "claimed": 226580000,
           "diffPct": 0,
           "verdict": "matches"
         },
-        "burns": 281,
-        "burnsVerified": 281,
-        "boughtBackZat": "1474217505",
+        "burns": 282,
+        "burnsVerified": 282,
+        "boughtBackZat": "1477234344",
         "venues": {
           "pump amm": 156,
-          "raydium cpmm": 64,
+          "raydium cpmm": 65,
           "raydium launchlab": 10,
           "pump bonding curve": 1,
           "jupiter": 50
@@ -765,8 +765,8 @@
           },
           "ᑓହꚡई": {
             "mint": "HAp8U1SB7bDGMa81AQom1ee6AR5iSFFTi57MEbTzcash",
-            "burns": 17,
-            "zat": "122706712"
+            "burns": 18,
+            "zat": "125723551"
           },
           "SARAH": {
             "mint": "4LT4uDp694w7soJerjRjSEVr2884J33EjLNG1WGzcash",
@@ -799,9 +799,7 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": [
-          "Sapling's headline says 1659447601 zat bought back; the pot paid 1669079715 zat on chain (3016839 of it not listed yet)"
-        ]
+        "notes": []
       }
     },
     "coins": {
