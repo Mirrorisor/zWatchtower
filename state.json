@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-07T18:30:25.727Z",
-      "finishedAt": "2026-11-07T18:30:29.464Z",
+      "startedAt": "2026-11-07T18:35:11.247Z",
+      "finishedAt": "2026-11-07T18:35:13.838Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,12 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "convert_sapling_begin": 1,
-          "convert_sapling_end": 1,
-          "settle": 4
+          "observe_sapling": 4
         },
-        "unrecognised": 2,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -642,8 +639,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-07T18:20:08.799Z",
-      "finishedAt": "2026-11-07T18:20:10.411Z",
+      "startedAt": "2026-11-07T18:35:13.844Z",
+      "finishedAt": "2026-11-07T18:35:15.663Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -662,17 +659,17 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-07T18:20:10.414Z",
-      "finishedAt": "2026-11-07T18:20:15.928Z",
+      "startedAt": "2026-11-07T18:35:15.667Z",
+      "finishedAt": "2026-11-07T18:35:20.091Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1666062876",
+          "claimedZat": "1659447601",
           "chainZat": "1669079715",
           "notListedYetZat": "3016839",
-          "verdict": "matches the chain"
+          "verdict": "differs from the chain"
         },
         "saplingBurn": {
           "onChain": 226575127.142964,
@@ -802,7 +799,9 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": []
+        "notes": [
+          "Sapling's headline says 1659447601 zat bought back; the pot paid 1669079715 zat on chain (3016839 of it not listed yet)"
+        ]
       }
     },
     "coins": {
