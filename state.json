@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T22:30:02.773Z",
-      "finishedAt": "2026-11-08T22:30:07.560Z",
+      "startedAt": "2026-11-08T22:35:11.268Z",
+      "finishedAt": "2026-11-08T22:35:14.165Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,11 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "close_rewards_run": 2,
-          "observe_sapling": 4,
-          "release_rewards": 1,
-          "settle": 1,
-          "draw_zec_payee": 1
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -1407,7 +1403,7 @@
   "x": {
     "day": "2026-11-08",
     "today": 4,
-    "thisRun": 2
+    "thisRun": 0
   },
   "xSummaryDay": "2026-11-04",
   "rewardsRechecked": [
