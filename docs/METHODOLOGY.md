@@ -33,6 +33,18 @@ buyers; a creator selling can be planned. The cards say what happened on
 chain and leave the judgement to the reader. Anyone can dispute a flag with
 the "Dispute a flag or fact" issue form, and every dispute gets a public answer.
 
+**Pairing tokens.** Sapling coins can be paired with tokenized stocks
+(xStocks and Backpack Securities tokens such as NVDAx, TSLAx and SPYx) and a
+few other tokens. Sapling's multisig sets that list on chain (SetStockQuote:
+one config account per token, owned by the vault program); it doesn't set
+prices, which Sapling's docs say are checked against Pyth. Every 30 minutes
+the pairing tokens check (quotes-check.mjs) reads every config account and
+each token's issuer controls, and posts when Sapling adds, removes or changes
+a token, when an issuer pauses or unpauses one, when who can freeze, pause,
+create or move a token changes, or when a balance multiplier (a split) is
+scheduled. On 8 Nov 2026 there were 47; every tokenized stock's issuer can
+pause it, freeze accounts and move tokens out of any account.
+
 **Liquidity.** Sapling's docs say its liquidity is one protocol-owned
 $SAPLING/ZEC pool on PumpSwap (6ejg4a…K51G) whose LP tokens "are burned the
 moment they are minted, so nobody can ever pull it". Every 15 minutes the
