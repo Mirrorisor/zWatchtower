@@ -74,5 +74,14 @@ j = judgeSplit({}, {}, { shares: pg.pct });
 check("page shares alone give the same answer", j.fromShares && j.saplingSharePct === 10.42 && j.claim === "holds", String(j.saplingSharePct));
 check("no breakdown section: nothing found", parseStatsPage("<p>hello</p>").found.length === 0);
 
+// the real page (2026-11-08) tags its numbers: read those, never the text
+const tagged = `<p>Paid to holders 99%</p><span data-stat="revenue.zec">522.74 ZEC</span>` + [["liquidity", "20.2", "105.57"], ["buyback", "20.5", "107.30"], ["flywheel", "3.2", "16.81"], ["holders", "34.8", "181.73"],
+  ["payees", "9.2", "48.06"], ["zf", "1.5", "7.90"], ["sapling", "10.4", "54.42"], ["waiting", "0.2", "0.95"]]
+  .map(([k, p, z]) => `<div class="st-sh"><span data-stat="went.${k}.usd">$1.0K</span><span data-stat="went.${k}.pct" data-part="went:pct">${p}%</span> · <span data-stat="went.${k}.zec" data-part="went:zec">${z} ZEC</span></div>`).join("");
+const tg = parseStatsPage(tagged);
+check("tagged page: every line, by its tag", tg.via === "data-stat" && tg.found.length === 8 && tg.zec.saplingBuyback === 107.3 && tg.zec.donated === 7.9 && tg.pct.holders === 34.8 && tg.revenueZec === 522.74, JSON.stringify(tg));
+j = judgeSplit(tg.zec, { holders: 181.7, donated: 7.8962, flywheel: 16.81 });
+check("8 Nov: Sapling keeps 10.43% of 521.79 ZEC delivered; holds", j.saplingSharePct === 10.43 && j.settledZec === 521.79 && j.claim === "holds" && j.checks.every((c) => c.matches), JSON.stringify(j));
+
 console.log(failures ? `\n${failures} failed` : "\nall split tests passed");
 process.exitCode = failures ? 1 : 0;

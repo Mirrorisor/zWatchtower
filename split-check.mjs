@@ -85,7 +85,7 @@ async function main() {
     apiVersion: 1, generatedAt: new Date().toISOString(),
     claim: { text: "Ninety percent of every fee goes back to the people who use Sapling, paid in ZEC. Always.", source: "https://sapling.llc/",
       verdict: j.claim, saplingSharePct: j.saplingSharePct, backPct: j.backPct, settledZec: j.settledZec ?? null, fromShares: Boolean(j.fromShares) },
-    breakdown: legs, sharesShown: page.pct, fieldsUsed: from, checks: j.checks,
+    breakdown: legs, sharesShown: page.pct, revenueZec: page.revenueZec ?? null, pageReadVia: page.via ?? null, fieldsUsed: from, checks: j.checks,
     statsFields: Object.keys(flatten(stats)),   // names only, so a renamed field is easy to spot
     notes,
   };
