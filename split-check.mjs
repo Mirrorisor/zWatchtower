@@ -48,6 +48,8 @@ async function main() {
   const html = await getText("/stats");
   const page = html ? parseStatsPage(html) : { zec: {}, pct: {}, found: [] };
   if (!html) notes.push("stats page not read: breakdown from the API only");
+  else if (!page.found.length)
+    notes.push(`stats page read (${html.length} characters, ${(html.match(/data-stat/g) ?? []).length} data-stat, ${(html.match(/went\./g) ?? []).length} "went.") but no breakdown found in it`);
   // the page's lines win (they are the breakdown's own definitions); the API fills gaps
   const legs = { ...found.legs, ...page.zec };
   const from = { ...found.from, ...Object.fromEntries(Object.keys(page.zec).map((l) => [l, "stats page"])) };

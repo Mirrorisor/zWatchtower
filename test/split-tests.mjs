@@ -83,5 +83,10 @@ check("tagged page: every line, by its tag", tg.via === "data-stat" && tg.found.
 j = judgeSplit(tg.zec, { holders: 181.7, donated: 7.8962, flywheel: 16.81 });
 check("8 Nov: Sapling keeps 10.43% of 521.79 ZEC delivered; holds", j.saplingSharePct === 10.43 && j.settledZec === 521.79 && j.claim === "holds" && j.checks.every((c) => c.matches), JSON.stringify(j));
 
+// the same numbers inside the page's script payload (escaped JSON)
+const payload = `<script>self.__next_f.push([1,"[\\"$\\",\\"span\\",null,{\\"data-stat\\":\\"went.sapling.zec\\",\\"data-part\\":\\"went:zec\\",\\"children\\":\\"54.42 ZEC\\"}],[\\"$\\",\\"span\\",null,{\\"data-stat\\":\\"went.zf.pct\\",\\"children\\":\\"1.5%\\"}]"])</script>`;
+const pl = parseStatsPage(payload);
+check("script payload: read too", pl.zec.sapling === 54.42 && pl.pct.donated === 1.5, JSON.stringify(pl));
+
 console.log(failures ? `\n${failures} failed` : "\nall split tests passed");
 process.exitCode = failures ? 1 : 0;
