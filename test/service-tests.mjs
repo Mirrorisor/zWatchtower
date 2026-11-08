@@ -25,7 +25,7 @@ const fake = (name) => [process.execPath, join(here, "fake-check.mjs"), name];
 const config = (extra = {}) => {
   const p = join(dir, "config.json");
   writeFileSync(p, JSON.stringify({ dataDir, webhook: hookUrl,
-    commands: { keys: fake("keys"), rewards: fake("rewards"), float: fake("float"), tax: fake("tax"), flywheel: fake("flywheel"), coins: fake("coins"), programs: fake("programs"), earnings: fake("earnings"), zec: fake("zec"), payees: fake("payees"), split: fake("split") }, ...extra }));
+    commands: { keys: fake("keys"), rewards: fake("rewards"), float: fake("float"), tax: fake("tax"), flywheel: fake("flywheel"), coins: fake("coins"), programs: fake("programs"), earnings: fake("earnings"), zec: fake("zec"), payees: fake("payees"), split: fake("split"), liquidity: fake("liquidity") }, ...extra }));
   return p;
 };
 

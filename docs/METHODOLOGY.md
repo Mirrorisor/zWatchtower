@@ -33,6 +33,17 @@ buyers; a creator selling can be planned. The cards say what happened on
 chain and leave the judgement to the reader. Anyone can dispute a flag with
 the "Dispute a flag or fact" issue form, and every dispute gets a public answer.
 
+**Liquidity.** Sapling's docs say its liquidity is one protocol-owned
+$SAPLING/ZEC pool on PumpSwap (6ejg4a…K51G) whose LP tokens "are burned the
+moment they are minted, so nobody can ever pull it". Every 15 minutes the
+liquidity check (liquidity-check.mjs) reads the pool and its LP token
+(4A2HF1…MtBW) on chain and alerts if any LP token exists (whoever held it
+could withdraw that share), if anyone but the pool can create LP tokens, if
+the LP token can be frozen, or if the pool's tokens change. It also records
+where the pool's creator fee goes (Sapling's treasury, as the docs say). On
+8 Nov 2026 the LP token's supply was 0: all 682.06 LP shares the pool has
+issued had been burned.
+
 **The "90% back" claim.** Sapling's company site (sapling.llc) says "Ninety
 percent of every fee goes back to the people who use Sapling, paid in ZEC.
 Always." and sapling.cash/stats lists where the fees went, with "Sapling's

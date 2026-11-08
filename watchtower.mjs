@@ -52,6 +52,7 @@ const DEFAULTS = {
     earnings: { everyMinutes: 60 },
     zec: { everyMinutes: 15 },
     payees: { everyMinutes: 60 },
+    liquidity: { everyMinutes: 15 },
     split: { everyMinutes: 60 },   // last: it reads what payees and flywheel just wrote
   },
   timeoutMinutes: 30,
@@ -154,6 +155,8 @@ function commandFor(name, cfg, store) {
     "--state", join(cfg.dataDir, "programs-state.json")];
   if (name === "payees") return [node, join(here, "payees-check.mjs"), "--json",
     "--state", join(cfg.dataDir, "payees-state.json"), "--out", join(cfg.dataDir, "payees.json")];
+  if (name === "liquidity") return [node, join(here, "liquidity-check.mjs"), "--json", "--rpc", cfg.solanaRpc,
+    "--state", join(cfg.dataDir, "liquidity-state.json")];
   if (name === "split") return [node, join(here, "split-check.mjs"), "--json",
     "--payees", join(cfg.dataDir, "payees-state.json"), "--watchtower", join(cfg.dataDir, "state.json"),
     "--out", join(cfg.dataDir, "split.json"), ...(cfg.checks.split.fields ? ["--fields", JSON.stringify(cfg.checks.split.fields)] : [])];
@@ -225,6 +228,8 @@ function normalise(name, report) {
   };
   if (name === "earnings") return { ok: true, alerts: [], summary: report.summary ?? {} };
   if (name === "payees") return { ok: report.alerts.length === 0, alerts: report.alerts, events: report.events ?? [],
+    summary: { ...report.summary, notes: report.notes ?? [] } };
+  if (name === "liquidity") return { ok: report.alerts.length === 0, alerts: report.alerts, events: report.events ?? [],
     summary: { ...report.summary, notes: report.notes ?? [] } };
   if (name === "split") return { ok: report.alerts.length === 0, alerts: report.alerts, events: report.events ?? [],
     summary: { ...report.summary, notes: report.notes ?? [] } };

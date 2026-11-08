@@ -14,6 +14,7 @@ const defaults = { tax: { alerts: [], notes: [], coins: 16, matching: 16, feeCha
   programs: { saplingPrograms: [], otherPrograms: [], programsSeen: 0, txsRead: 0, notes: [], alerts: [] },
   payees: { alerts: [], events: [], notes: [], summary: { coinsRead: 494, recipients: { holders: 260, wallet: 222, "zcash-foundation": 9, creator: 3 }, donatedZec: 7.67, donationsAddUp: true, payeeWallets: 100, baseline: false } },
   zec: { alerts: [], events: [], notes: [], summary: { solanaSupply: 105012.82, nearSupply: 120000, mintAuthority: "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds", freezeAuthority: null, change24h: 12 } },
+  liquidity: { alerts: [], events: [], notes: [], summary: { lpSupply: "0", burned: true } },
   split: { alerts: [], events: [], notes: [], summary: { claim: "holds", saplingSharePct: 10.23, backPct: 89.77, checks: [], unmapped: [], baseline: false } },
   earnings: { ok: true, alerts: [], summary: { runsIndexed: 3, newRuns: 0, latestRun: 3, coinsPaying: 1, paid7dZec: 0.1, notes: [] } } };
 console.log(JSON.stringify(scen[name] ?? defaults[name]));
