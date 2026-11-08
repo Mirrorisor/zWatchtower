@@ -37,7 +37,8 @@ the "Dispute a flag or fact" issue form, and every dispute gets a public answer.
 percent of every fee goes back to the people who use Sapling, paid in ZEC.
 Always." and sapling.cash/stats lists where the fees went, with "Sapling's
 10%" as one line. Every hour the split check (split-check.mjs) reads that
-breakdown and works out Sapling's share of everything that has reached a
+breakdown (from the stats page itself, since the API carries only some lines)
+and works out Sapling's share of everything that has reached a
 destination (fees still waiting in the pots are left out). The claim "holds"
 when that share rounds to 10% or less, is "close" under 11%, and "does not
 hold" above. It then checks the lines we measure ourselves: paid to holders
