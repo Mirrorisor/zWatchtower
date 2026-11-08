@@ -26,6 +26,7 @@ const args = process.argv.slice(2);
 const opt = (n, d) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] : d; };
 const rpcUrl = opt("--rpc", "https://api.mainnet-beta.solana.com");
 const statePath = opt("--state", "quotes-state.json");
+const SETTINGS_BYTES = 337;   // layout read 2026-11-08 (611-byte accounts); not published by Sapling
 
 async function rpc(method, params) {
   for (let a = 0; a < 4; a++) {
@@ -40,14 +41,19 @@ async function rpc(method, params) {
 }
 
 async function main() {
-  const prev = existsSync(statePath) ? JSON.parse(readFileSync(statePath, "utf8")).quotes : null;
+  let prev = existsSync(statePath) ? JSON.parse(readFileSync(statePath, "utf8")).quotes : null;
+  // state written before settings-only fingerprints (8 Nov): record again rather than call every token changed
+  if (prev && Object.values(prev).some((q) => !("referenceRaw" in q))) prev = null;
   const disc = b58(Buffer.from(QUOTE_DISCRIMINATOR, "hex"));
   const accts = await rpc("getProgramAccounts", [VAULT_PROGRAM, { encoding: "base64", filters: [{ memcmp: { offset: 0, bytes: disc } }] }]);
   if (!Array.isArray(accts) || !accts.length) throw new Error("no pairing-token config accounts found");
   const now = {};
   for (const a of accts) {
     const data = Buffer.from(a.account.data[0], "base64");
-    now[a.pubkey] = { mint: b58(data.subarray(8, 40)), hash: createHash("sha256").update(data).digest("hex").slice(0, 16) };
+    // only the settings part (up to the round number at byte 329 that looks like a reference price): later bytes
+    // change on every conversion (its time and amount), and aren't settings
+    now[a.pubkey] = { mint: b58(data.subarray(8, 40)), hash: createHash("sha256").update(data.subarray(0, SETTINGS_BYTES)).digest("hex").slice(0, 16),
+      referenceRaw: data.length >= 337 ? data.readBigUInt64LE(329).toString() : null };
   }
   const configs = Object.keys(now);
   for (let i = 0; i < configs.length; i += 100) {

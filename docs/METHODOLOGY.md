@@ -36,8 +36,10 @@ the "Dispute a flag or fact" issue form, and every dispute gets a public answer.
 **Pairing tokens.** Sapling coins can be paired with tokenized stocks
 (xStocks and Backpack Securities tokens such as NVDAx, TSLAx and SPYx) and a
 few other tokens. Sapling's multisig sets that list on chain (SetStockQuote:
-one config account per token, owned by the vault program); it doesn't set
-prices, which Sapling's docs say are checked against Pyth. Every 30 minutes
+one config account per token, owned by the vault program). Each token's
+settings include a round number that matches its price where we could
+compare (NVDAx: 217.00); what the program uses it for isn't published, and
+Sapling's docs say fee conversions are checked against Pyth. Every 30 minutes
 the pairing tokens check (quotes-check.mjs) reads every config account and
 each token's issuer controls, and posts when Sapling adds, removes or changes
 a token, when an issuer pauses or unpauses one, when who can freeze, pause,
