@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T19:25:11.260Z",
-      "finishedAt": "2026-11-08T19:25:15.496Z",
+      "startedAt": "2026-11-08T19:30:11.393Z",
+      "finishedAt": "2026-11-08T19:30:17.858Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,6 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
+          "release_rewards": 24,
+          "close_rewards_run": 24,
           "observe_sapling": 4
         },
         "unrecognised": 0,
@@ -59,8 +61,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-08T19:00:16.509Z",
-      "finishedAt": "2026-11-08T19:01:14.376Z",
+      "startedAt": "2026-11-08T19:30:17.864Z",
+      "finishedAt": "2026-11-08T19:31:16.178Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -69,7 +71,7 @@
         "reward run 1727 GRIZZON🐻: 6 shares not floor(pot*balance/sum); basket payout doesn't add up: WXMR: 6 holders not paid in proportion to their share; hSOL: 6 holders not paid in proportion to their share; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-08T19:01:13.227Z",
+        "checkedAt": "2026-11-08T19:31:15.107Z",
         "runs": 9,
         "passed": 6,
         "flagged": 3,
@@ -1124,8 +1126,8 @@
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-08T18:15:13.893Z",
-      "finishedAt": "2026-11-08T18:29:01.382Z",
+      "startedAt": "2026-11-08T19:31:16.181Z",
+      "finishedAt": "2026-11-08T19:45:09.320Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1147,8 +1149,8 @@
     },
     "split": {
       "check": "split",
-      "startedAt": "2026-11-08T18:29:09.396Z",
-      "finishedAt": "2026-11-08T18:29:11.777Z",
+      "startedAt": "2026-11-08T19:45:17.672Z",
+      "finishedAt": "2026-11-08T19:45:20.160Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1158,10 +1160,10 @@
         "saplingSharePct": 10.43,
         "backPct": 89.57,
         "checks": [
-          "holders: matches (Sapling 182.09, ours 182.0506)",
+          "holders: matches (Sapling 182.11, ours 182.0709)",
           "donated: matches (Sapling 7.9, ours 7.8962)",
           "flywheel: matches (Sapling 16.88, ours 16.8779)",
-          "payees: matches (Sapling 48.14, ours 19.0419, lower bound)"
+          "payees: matches (Sapling 48.15, ours 19.0419, lower bound)"
         ],
         "unmapped": [],
         "baseline": false,
@@ -1192,8 +1194,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-08T19:01:14.379Z",
-      "finishedAt": "2026-11-08T19:01:23.636Z",
+      "startedAt": "2026-11-08T19:45:09.322Z",
+      "finishedAt": "2026-11-08T19:45:17.669Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
