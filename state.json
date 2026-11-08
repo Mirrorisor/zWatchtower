@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T03:59:55.806Z",
-      "finishedAt": "2026-11-08T04:00:00.306Z",
+      "startedAt": "2026-11-08T04:09:47.695Z",
+      "finishedAt": "2026-11-08T04:09:51.428Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,11 +21,10 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1,
-          "observe_sapling": 12,
-          "settle": 1
+          "observe_sapling": 8,
+          "close_rewards_run": 1,
+          "release_rewards": 1,
+          "settle": 3
         },
         "unrecognised": 0,
         "baseline": false,
