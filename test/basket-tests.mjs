@@ -1,8 +1,9 @@
 // Holder rewards paid as a basket of tokens: reading the legs from a fake
 // chain, and judging them. Numbers shaped like ZDOG run 1559.
 import { readBasket, judgeBasket, REWARDS_WALLET as R, ZEC_MINT as ZEC } from "../lib/basket.mjs";
+import { accountCostPlausible, fitRateAndCost as fit1727 } from "../lib/basket.mjs";
 let failures = 0;
-const check = (label, cond, detail) => { if (!cond) failures++; console.log(`${cond ? "PASS" : "FAIL"} ${label}${detail ? ": " + detail : ""}`); };
+const check = (label, cond, detail) => { if (!cond) failures++;  console.log(`${cond ? "PASS" : "FAIL"} ${label}${detail ? ": " + detail : ""}`); };
 
 const SAP = "BZFYNPeQAEW3HWQ4DNsTVahC1n4ZjTgn6jB2nnBbB96W";
 const A = "HolderAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", B = "HolderBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
@@ -120,5 +121,17 @@ check("a holder left out of a leg worth far more than an account is flagged, wit
     sent: new Map([["Big", 1000000n]]), opened: new Set() };
   const jt = judgeBasket({ rows: rowsT, pot: 2_060_000n, sum: 1030n, paid: 1_328_000n }, { swapWallets: ["w"], zecToSwaps: 298_000n, zecBack: 0n, legs: [legT] });
   check("a holder whose slice of one token is worth less than an account may be skipped", !jt.problems.some((p) => /got none/.test(p)) && jt.smallHoldersSkipped[0]?.holders === 1, JSON.stringify(jt.problems));
+}
+// run 1727 ($GRIZZON, 8 Nov): 6 holders; hSOL paid exactly in proportion, less the same cost on each of 5 new accounts
+{
+  const sh = { a: 80268, b: 63346, c: 55566, d: 65238, e: 278702, f: 68707 };
+  const hsol = [["a", 5877859, 1], ["b", 5620427, 0], ["c", 3686261, 1], ["d", 4544681, 1], ["e", 23484817, 1], ["f", 4852156, 1]];
+  const f = fit1727(hsol.map(([k, g, o]) => ({ s: sh[k], g, o })));
+  const sent = hsol.reduce((a, [, g]) => a + g, 0);
+  check("run 1727 hSOL: one rate, one account cost (~1.24M units)", Math.abs(f.cost - 1243700) < 2000, JSON.stringify(f));
+  check("run 1727 hSOL: 5 accounts at ~13% of a tiny leg is a believable account cost", accountCostPlausible({ cost: f.cost, opened: 5, bought: sent, costZat: 14018, holders: 6 }));
+  check("with only 2 holders the old tenth still applies", !accountCostPlausible({ cost: f.cost, opened: 1, bought: f.cost * 5, costZat: 14018, holders: 2 }));
+  check("an account cost over half the leg isn't", !accountCostPlausible({ cost: f.cost, opened: 5, bought: f.cost * 9, costZat: 14018 }));
+  check("an account cost worth over 100,000 zat isn't", !accountCostPlausible({ cost: 1, opened: 1, bought: 100, costZat: 100001 }));
 }
 process.exitCode = failures ? 1 : 0;
