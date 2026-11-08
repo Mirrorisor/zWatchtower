@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T21:25:03.760Z",
-      "finishedAt": "2026-11-08T21:25:06.565Z",
+      "startedAt": "2026-11-08T21:30:01.628Z",
+      "finishedAt": "2026-11-08T21:30:05.141Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,6 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
+          "settle": 1,
           "observe_sapling": 4
         },
         "unrecognised": 0,
@@ -59,8 +60,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-08T20:59:50.391Z",
-      "finishedAt": "2026-11-08T21:00:47.439Z",
+      "startedAt": "2026-11-08T21:30:05.150Z",
+      "finishedAt": "2026-11-08T21:31:01.709Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -69,25 +70,25 @@
         "reward run 1727 GRIZZON🐻: 6 shares not floor(pot*balance/sum); basket payout doesn't add up: WXMR: 6 holders not paid in proportion to their share; hSOL: 6 holders not paid in proportion to their share; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-08T21:00:46.555Z",
+        "checkedAt": "2026-11-08T21:31:00.816Z",
         "runs": 10,
         "passed": 7,
         "flagged": 3,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.37355242",
+        "zecPaidInDoneRuns": "0.40941576",
         "onChainChecks": true,
         "checkedIds": [
           1491,
           1573,
           1727,
-          1731,
           1732,
           1733,
           1734,
           1735,
           1736,
-          1737
+          1737,
+          1738
         ],
         "inProgressIds": [],
         "baskets": [],
@@ -689,7 +690,7 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1737
+        "maxRunId": 1738
       }
     },
     "float": {
@@ -1193,8 +1194,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-08T20:59:24.555Z",
-      "finishedAt": "2026-11-08T20:59:33.647Z",
+      "startedAt": "2026-11-08T21:31:01.712Z",
+      "finishedAt": "2026-11-08T21:31:11.162Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1331,8 +1332,8 @@
     "liquidity": {},
     "quotes": {}
   },
-  "rewardsMaxRun": 1737,
-  "rewardsFrom": 1731,
+  "rewardsMaxRun": 1738,
+  "rewardsFrom": 1732,
   "x": {
     "day": "2026-11-08",
     "today": 1,
