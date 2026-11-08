@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T16:15:11.365Z",
-      "finishedAt": "2026-11-08T16:15:14.279Z",
+      "startedAt": "2026-11-08T16:20:04.598Z",
+      "finishedAt": "2026-11-08T16:20:08.850Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,15 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5
+          "observe_sapling": 4,
+          "settle_tax": 1,
+          "convert_tax_begin": 1,
+          "convert_tax_end": 1,
+          "close_rewards_run": 1,
+          "release_rewards": 1,
+          "settle": 4
         },
-        "unrecognised": 0,
+        "unrecognised": 2,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -573,8 +579,8 @@
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-08T15:10:09.827Z",
-      "finishedAt": "2026-11-08T15:17:35.834Z",
+      "startedAt": "2026-11-08T16:20:08.858Z",
+      "finishedAt": "2026-11-08T16:27:37.157Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -968,20 +974,20 @@
     },
     "earnings": {
       "check": "earnings",
-      "startedAt": "2026-11-08T15:17:35.836Z",
-      "finishedAt": "2026-11-08T15:17:40.890Z",
+      "startedAt": "2026-11-08T16:27:37.158Z",
+      "finishedAt": "2026-11-08T16:27:42.459Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "runsIndexed": 1724,
-        "newRuns": 1,
-        "latestRun": 1724,
-        "coinsPaying": 190,
-        "crossChecked": 189,
-        "matchingSapling": 189,
+        "runsIndexed": 1727,
+        "newRuns": 3,
+        "latestRun": 1727,
+        "coinsPaying": 191,
+        "crossChecked": 190,
+        "matchingSapling": 190,
         "differ": [],
-        "paid7dZec": 30.9898,
+        "paid7dZec": 31.0219,
         "notes": []
       }
     },
