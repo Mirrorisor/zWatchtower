@@ -53,7 +53,7 @@ async function main() {
   // the page's lines win (they are the breakdown's own definitions); the API fills gaps
   const legs = { ...found.legs, ...page.zec };
   const from = { ...found.from, ...Object.fromEntries(Object.keys(page.zec).map((l) => [l, "stats page"])) };
-  const unmapped = found.unmapped.filter((l) => legs[l] == null && page.pct[l] == null);
+  const unmapped = found.unmapped.filter((l) => legs[l] == null && page.pct[l] == null && !(l === "revenue" && page.revenueZec != null));
 
   // our own measurements
   const ours = {};
