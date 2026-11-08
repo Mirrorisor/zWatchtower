@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T18:40:04.869Z",
-      "finishedAt": "2026-11-08T18:40:09.422Z",
+      "startedAt": "2026-11-08T18:49:06.160Z",
+      "finishedAt": "2026-11-08T18:49:09.692Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,15 +21,10 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle_tax": 1,
-          "convert_tax_begin": 1,
-          "convert_tax_end": 1,
-          "draw_zec_payee": 1,
-          "settle": 2,
-          "claim_payee": 1
+          "observe_sapling": 7,
+          "settle": 2
         },
-        "unrecognised": 3,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -782,8 +777,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-08T18:30:37.936Z",
-      "finishedAt": "2026-11-08T18:30:39.519Z",
+      "startedAt": "2026-11-08T18:49:09.698Z",
+      "finishedAt": "2026-11-08T18:49:11.798Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -802,20 +797,20 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-08T18:30:39.521Z",
-      "finishedAt": "2026-11-08T18:30:44.662Z",
+      "startedAt": "2026-11-08T18:49:11.800Z",
+      "finishedAt": "2026-11-08T18:49:16.785Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1687793828",
+          "claimedZat": "1684557753",
           "chainZat": "1687793828",
           "notListedYetZat": "0",
-          "verdict": "matches the chain"
+          "verdict": "differs from the chain"
         },
         "saplingBurn": {
-          "onChain": 226700206.91159105,
+          "onChain": 226703418.67974496,
           "claimed": 226700000,
           "diffPct": 0,
           "verdict": "matches"
@@ -923,13 +918,13 @@
           }
         },
         "pot": {
-          "balanceZat": "284681",
-          "shownZat": "284681",
-          "inflowZat": "1688003325",
+          "balanceZat": "882577",
+          "shownZat": "882577",
+          "inflowZat": "1688601221",
           "buybackZat": "1687793828",
           "movements": {
             "setup": 1,
-            "inflow": 3454,
+            "inflow": 3456,
             "buyback": 359,
             "other": 1,
             "failed": 1
@@ -942,7 +937,9 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": []
+        "notes": [
+          "Sapling's headline says 1684557753 zat bought back; the pot paid 1687793828 zat on chain (0 of it not listed yet)"
+        ]
       }
     },
     "coins": {
@@ -1128,18 +1125,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-08T18:30:44.667Z",
-      "finishedAt": "2026-11-08T18:30:49.154Z",
+      "startedAt": "2026-11-08T18:49:16.789Z",
+      "finishedAt": "2026-11-08T18:49:20.510Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 107354.16,
-        "nearSupply": 149989.36,
+        "solanaSupply": 107358.09,
+        "nearSupply": 149985,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 11.123568809998687,
+        "change24h": 15.049827979994006,
         "notes": []
       }
     },
@@ -1191,8 +1188,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-08T18:30:49.156Z",
-      "finishedAt": "2026-11-08T18:30:50.627Z",
+      "startedAt": "2026-11-08T18:49:20.512Z",
+      "finishedAt": "2026-11-08T18:49:21.692Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1203,8 +1200,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 682.183268732,
-        "saplingInPool": 50690842.569288,
-        "zecInPool": 144.64717464,
+        "saplingInPool": 50689019.573048,
+        "zecInPool": 144.65249,
         "zecAddedSaplingSays": 105.60646814,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
