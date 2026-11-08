@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T18:55:03.738Z",
-      "finishedAt": "2026-11-08T18:55:06.596Z",
+      "startedAt": "2026-11-08T19:00:12.858Z",
+      "finishedAt": "2026-11-08T19:00:16.501Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,10 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5
+          "observe_sapling": 4,
+          "settle_tax": 1,
+          "sell_tax": 1,
+          "withdraw_tax": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -59,8 +62,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-08T18:29:25.614Z",
-      "finishedAt": "2026-11-08T18:30:37.932Z",
+      "startedAt": "2026-11-08T19:00:16.509Z",
+      "finishedAt": "2026-11-08T19:01:14.376Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -69,21 +72,18 @@
         "reward run 1727 GRIZZON🐻: 6 shares not floor(pot*balance/sum); basket payout doesn't add up: WXMR: 6 holders not paid in proportion to their share; hSOL: 6 holders not paid in proportion to their share; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-08T18:30:37.061Z",
-        "runs": 12,
-        "passed": 9,
-        "flagged": 4,
+        "checkedAt": "2026-11-08T19:01:13.227Z",
+        "runs": 9,
+        "passed": 6,
+        "flagged": 3,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.45334887",
+        "zecPaidInDoneRuns": "0.34580986",
         "onChainChecks": true,
         "checkedIds": [
           1491,
           1573,
-          1726,
           1727,
-          1728,
-          1729,
           1730,
           1731,
           1732,
@@ -92,19 +92,9 @@
           1735
         ],
         "inProgressIds": [],
-        "baskets": [
-          {
-            "id": 1728,
-            "mint": "J4fWoyVecozyBj83NFk3qzHZR7qkt92YAhgoFvGzcash",
-            "tokens": [
-              "ZEC",
-              "hSOL",
-              "NEAR"
-            ]
-          }
-        ],
-        "distinctReleases": 12,
-        "runsWithRelease": 12,
+        "baskets": [],
+        "distinctReleases": 9,
+        "runsWithRelease": 9,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -272,9 +262,7 @@
           },
           "topUnknown": []
         },
-        "notes": [
-          "run 1728: paid as a basket of 3 tokens (ZEC, hSOL, NEAR): every holder got each token in proportion to their share"
-        ],
+        "notes": [],
         "diagnoses": [
           {
             "id": 1491,
@@ -1209,8 +1197,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-08T18:29:01.384Z",
-      "finishedAt": "2026-11-08T18:29:09.395Z",
+      "startedAt": "2026-11-08T19:01:14.379Z",
+      "finishedAt": "2026-11-08T19:01:23.636Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1348,7 +1336,7 @@
     "quotes": {}
   },
   "rewardsMaxRun": 1735,
-  "rewardsFrom": 1726,
+  "rewardsFrom": 1730,
   "x": {
     "day": "2026-11-08",
     "today": 1,
@@ -1357,7 +1345,8 @@
   "xSummaryDay": "2026-11-04",
   "rewardsRechecked": [
     1491,
-    1573
+    1573,
+    1727
   ],
   "withdrawnBasketV1": "2026-11-04T02:00:04.434Z",
   "rewardsPending": [],
