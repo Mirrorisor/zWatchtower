@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T20:40:03.087Z",
-      "finishedAt": "2026-11-08T20:40:06.319Z",
+      "startedAt": "2026-11-08T20:45:02.773Z",
+      "finishedAt": "2026-11-08T20:45:05.937Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "close_rewards_run": 1,
-          "release_rewards": 1
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1,
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -763,8 +763,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-08T20:31:04.556Z",
-      "finishedAt": "2026-11-08T20:31:06.600Z",
+      "startedAt": "2026-11-08T20:45:05.942Z",
+      "finishedAt": "2026-11-08T20:45:07.541Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -783,8 +783,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-08T20:31:06.603Z",
-      "finishedAt": "2026-11-08T20:31:10.750Z",
+      "startedAt": "2026-11-08T20:45:07.543Z",
+      "finishedAt": "2026-11-08T20:45:11.442Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -796,7 +796,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 226712106.40788305,
+          "onChain": 226712107.17021704,
           "claimed": 226710000,
           "diffPct": 0,
           "verdict": "matches"
@@ -1126,8 +1126,8 @@
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-08T19:31:16.181Z",
-      "finishedAt": "2026-11-08T19:45:09.320Z",
+      "startedAt": "2026-11-08T20:45:11.444Z",
+      "finishedAt": "2026-11-08T20:59:24.553Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1149,8 +1149,8 @@
     },
     "split": {
       "check": "split",
-      "startedAt": "2026-11-08T19:45:17.672Z",
-      "finishedAt": "2026-11-08T19:45:20.160Z",
+      "startedAt": "2026-11-08T20:59:33.649Z",
+      "finishedAt": "2026-11-08T20:59:36.514Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1160,10 +1160,10 @@
         "saplingSharePct": 10.43,
         "backPct": 89.57,
         "checks": [
-          "holders: matches (Sapling 182.11, ours 182.0709)",
+          "holders: matches (Sapling 182.14, ours 182.0994)",
           "donated: matches (Sapling 7.9, ours 7.8962)",
           "flywheel: matches (Sapling 16.88, ours 16.8779)",
-          "payees: matches (Sapling 48.15, ours 19.0419, lower bound)"
+          "payees: matches (Sapling 48.16, ours 19.0419, lower bound)"
         ],
         "unmapped": [],
         "baseline": false,
@@ -1194,8 +1194,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-08T20:15:18.050Z",
-      "finishedAt": "2026-11-08T20:15:25.633Z",
+      "startedAt": "2026-11-08T20:59:24.555Z",
+      "finishedAt": "2026-11-08T20:59:33.647Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
