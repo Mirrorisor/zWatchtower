@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T09:15:04.745Z",
-      "finishedAt": "2026-11-08T09:15:08.030Z",
+      "startedAt": "2026-11-08T09:20:17.202Z",
+      "finishedAt": "2026-11-08T09:20:20.560Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,12 +21,11 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5,
-          "close_rewards_run": 2,
-          "release_rewards": 2,
-          "settle": 1
+          "observe_sapling": 4,
+          "register_launchlab_coin": 1,
+          "declare_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 2,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -1056,6 +1055,28 @@
           "not found in Sapling's stats: saplingBuyback, flywheel, payees, sapling, waiting, revenue"
         ]
       }
+    },
+    "liquidity": {
+      "check": "liquidity",
+      "startedAt": "2026-11-08T09:20:20.576Z",
+      "finishedAt": "2026-11-08T09:20:22.748Z",
+      "status": "ran",
+      "ok": true,
+      "alerts": [],
+      "events": [],
+      "summary": {
+        "pool": "6ejg4aYJM3Mk1t2zBKjbJ43df3s7rBMpC9mgo526K51G",
+        "lpMint": "4A2HF17mm2Mf1yJ28hANemPDBHMKSF6Az5yzKF6WMtBW",
+        "lpSupply": "0",
+        "burned": true,
+        "lpShares": 682.064344013,
+        "saplingInPool": 51879552.647096,
+        "zecInPool": 141.17098944,
+        "zecAddedSaplingSays": 105.55414522,
+        "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
+        "creatorFeeToTreasury": true,
+        "notes": []
+      }
     }
   },
   "openAlerts": {
@@ -1072,7 +1093,8 @@
     "earnings": {},
     "zec": {},
     "payees": {},
-    "split": {}
+    "split": {},
+    "liquidity": {}
   },
   "rewardsMaxRun": 1722,
   "rewardsFrom": 1715,
