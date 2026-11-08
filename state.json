@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T15:05:02.857Z",
-      "finishedAt": "2026-11-08T15:05:06.611Z",
+      "startedAt": "2026-11-08T15:10:06.633Z",
+      "finishedAt": "2026-11-08T15:10:09.821Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,10 +22,8 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "settle": 1,
-          "withdraw_tax": 1
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -575,8 +573,8 @@
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-08T14:01:01.596Z",
-      "finishedAt": "2026-11-08T14:08:28.681Z",
+      "startedAt": "2026-11-08T15:10:09.827Z",
+      "finishedAt": "2026-11-08T15:17:35.834Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -970,8 +968,8 @@
     },
     "earnings": {
       "check": "earnings",
-      "startedAt": "2026-11-08T14:09:33.853Z",
-      "finishedAt": "2026-11-08T14:09:39.187Z",
+      "startedAt": "2026-11-08T15:17:35.836Z",
+      "finishedAt": "2026-11-08T15:17:40.890Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -983,7 +981,7 @@
         "crossChecked": 189,
         "matchingSapling": 189,
         "differ": [],
-        "paid7dZec": 31.1273,
+        "paid7dZec": 30.9898,
         "notes": []
       }
     },
