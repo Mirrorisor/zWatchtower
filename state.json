@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T10:00:02.757Z",
-      "finishedAt": "2026-11-08T10:00:05.268Z",
+      "startedAt": "2026-11-08T10:05:03.897Z",
+      "finishedAt": "2026-11-08T10:05:07.601Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -638,8 +638,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-08T09:47:05.298Z",
-      "finishedAt": "2026-11-08T09:47:06.877Z",
+      "startedAt": "2026-11-08T10:05:07.609Z",
+      "finishedAt": "2026-11-08T10:05:09.579Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -658,8 +658,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-08T09:47:06.879Z",
-      "finishedAt": "2026-11-08T09:47:11.284Z",
+      "startedAt": "2026-11-08T10:05:09.581Z",
+      "finishedAt": "2026-11-08T10:05:14.617Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -803,8 +803,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-08T09:31:31.433Z",
-      "finishedAt": "2026-11-08T09:32:22.130Z",
+      "startedAt": "2026-11-08T10:05:14.619Z",
+      "finishedAt": "2026-11-08T10:06:03.203Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -831,8 +831,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-08T09:32:22.132Z",
-      "finishedAt": "2026-11-08T09:32:42.469Z",
+      "startedAt": "2026-11-08T10:06:03.206Z",
+      "finishedAt": "2026-11-08T10:06:16.895Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -842,7 +842,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 7514,
+            "seenInTxs": 7521,
             "withJupiter": 50,
             "seeds": [
               "upgradeAuthority",
@@ -876,12 +876,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 834
+            "seenInTxs": 836
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 824
+            "seenInTxs": 826
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -953,13 +953,13 @@
           "guards": [
             "GzMQc5VQGggFnicdAKc7MmkQV3dn3i12ux9dbLKqzy6F"
           ],
-          "txsRead": 3,
+          "txsRead": 0,
           "tokensSeen": 6,
           "tokensChecked": 6,
           "breakingRules": []
         },
         "programsSeen": 23,
-        "txsRead": 27,
+        "txsRead": 9,
         "notes": []
       }
     },
@@ -984,18 +984,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-08T09:47:11.286Z",
-      "finishedAt": "2026-11-08T09:47:15.072Z",
+      "startedAt": "2026-11-08T10:06:16.897Z",
+      "finishedAt": "2026-11-08T10:06:20.639Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 107310.03,
-        "nearSupply": 150001.64,
+        "solanaSupply": 107310.02,
+        "nearSupply": 149936.72,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 503.57909098999517,
+        "change24h": 499.7713135699887,
         "notes": []
       }
     },
