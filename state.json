@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T14:00:18.629Z",
-      "finishedAt": "2026-11-08T14:00:22.470Z",
+      "startedAt": "2026-11-08T14:09:53.447Z",
+      "finishedAt": "2026-11-08T14:09:57.083Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,8 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5,
-          "settle": 1
+          "close_rewards_run": 1,
+          "observe_sapling": 8,
+          "release_rewards": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -1071,8 +1072,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-08T13:40:33.734Z",
-      "finishedAt": "2026-11-08T13:40:34.585Z",
+      "startedAt": "2026-11-08T14:09:57.088Z",
+      "finishedAt": "2026-11-08T14:09:57.835Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1143,9 +1144,7 @@
           "3ZLe…9wBG",
           "WXMR…teJp"
         ],
-        "notes": [
-          "first run: list recorded, nothing announced"
-        ]
+        "notes": []
       }
     }
   },
