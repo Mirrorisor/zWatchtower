@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T17:30:11.238Z",
-      "finishedAt": "2026-11-08T17:30:14.163Z",
+      "startedAt": "2026-11-08T17:39:28.499Z",
+      "finishedAt": "2026-11-08T17:39:31.865Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 8,
+          "settle": 2
         },
         "unrecognised": 0,
         "baseline": false,
@@ -938,8 +939,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-08T17:01:40.898Z",
-      "finishedAt": "2026-11-08T17:02:32.247Z",
+      "startedAt": "2026-11-08T17:39:31.870Z",
+      "finishedAt": "2026-11-08T17:40:22.717Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -956,7 +957,7 @@
           "Creator bought N of supply at launch": 1
         },
         "notes": [
-          "creator scan: 9 coin(s) read this run, 517 of 517 read so far (0 launched shielded, creator not public)",
+          "creator scan: 8 coin(s) read this run, 517 of 517 read so far (0 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
           "2 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 2)",
           "27 shortlisted coin(s) were under $10,000 on their own page, so no card",
@@ -966,8 +967,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-08T17:02:32.249Z",
-      "finishedAt": "2026-11-08T17:02:53.269Z",
+      "startedAt": "2026-11-08T17:40:22.721Z",
+      "finishedAt": "2026-11-08T17:40:39.801Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -977,7 +978,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 7668,
+            "seenInTxs": 7676,
             "withJupiter": 52,
             "seeds": [
               "upgradeAuthority",
@@ -1011,12 +1012,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 854
+            "seenInTxs": 855
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 844
+            "seenInTxs": 845
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -1094,7 +1095,7 @@
           "breakingRules": []
         },
         "programsSeen": 23,
-        "txsRead": 38,
+        "txsRead": 19,
         "notes": []
       }
     },
