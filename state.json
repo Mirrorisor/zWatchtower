@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T08:10:11.320Z",
-      "finishedAt": "2026-11-08T08:10:14.432Z",
+      "startedAt": "2026-11-08T08:15:11.169Z",
+      "finishedAt": "2026-11-08T08:15:14.071Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 3
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -59,8 +59,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-08T07:45:37.192Z",
-      "finishedAt": "2026-11-08T07:46:15.249Z",
+      "startedAt": "2026-11-08T08:15:14.077Z",
+      "finishedAt": "2026-11-08T08:15:51.119Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -68,18 +68,17 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-08T07:46:14.205Z",
-        "runs": 9,
-        "passed": 7,
+        "checkedAt": "2026-11-08T08:15:50.258Z",
+        "runs": 8,
+        "passed": 6,
         "flagged": 2,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.44293326",
+        "zecPaidInDoneRuns": "0.39136027",
         "onChainChecks": true,
         "checkedIds": [
           1491,
           1573,
-          1714,
           1715,
           1716,
           1717,
@@ -88,8 +87,8 @@
           1720
         ],
         "baskets": [],
-        "distinctReleases": 9,
-        "runsWithRelease": 9,
+        "distinctReleases": 8,
+        "runsWithRelease": 8,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -195,13 +194,6 @@
                 "inSnapshot": false
               },
               {
-                "owner": "82y6hK8K",
-                "amount": "0",
-                "wallet": true,
-                "ownerProgram": "11111111111111111111111111111111",
-                "inSnapshot": false
-              },
-              {
                 "owner": "97rZVRvz",
                 "amount": "0",
                 "wallet": true,
@@ -231,6 +223,13 @@
               },
               {
                 "owner": "3CrqQfpt",
+                "amount": "0",
+                "wallet": true,
+                "ownerProgram": "11111111111111111111111111111111",
+                "inSnapshot": false
+              },
+              {
+                "owner": "cfzGJ6fx",
                 "amount": "0",
                 "wallet": true,
                 "ownerProgram": "11111111111111111111111111111111",
@@ -1071,7 +1070,7 @@
     "split": {}
   },
   "rewardsMaxRun": 1720,
-  "rewardsFrom": 1714,
+  "rewardsFrom": 1715,
   "x": {
     "day": "2026-11-08",
     "today": 0,
