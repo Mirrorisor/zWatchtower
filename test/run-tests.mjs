@@ -30,6 +30,9 @@ runs.set(2004, badPot);
 // 2005: failed run whose release signature is not on chain (like run 845)
 runs.set(2005, { run: { id: 2005, symbol: "ZDOG", status: "failed", pot: null, paid: "0",
   releaseSignature: "MISSING", snapshotHash: "00" }, snapshot: null, payouts: [] });
+// 2006: a run still being paid: its ZEC is already released on chain (like runs 1696, 1705, 1707)
+runs.set(2006, { run: { id: 2006, symbol: "MOOH", status: "paying", pot: "4000", paid: "0",
+  releaseSignature: "REL2006", snapshotHash: "00" }, snapshot: null, payouts: [] });
 
 const REWARDS = "37BBnMe6rTeH3Cxs1meobB6C564GJ7Gxj7SinQfgHPrL";
 const ZEC = "A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS";
@@ -63,7 +66,7 @@ const logs = [];
 console.log = (...a) => logs.push(a.map((x) => typeof x === "string" ? x : JSON.stringify(x)).join(" "));
 process.stderr.write = () => true;
 
-process.argv = [process.argv[0], "rewards-check.mjs", "--from", "1028", "--to", "2005",
+process.argv = [process.argv[0], "rewards-check.mjs", "--from", "1028", "--to", "2006",
   "--rpc", "https://rpc.test", "--json"];
 await import("../rewards-check.mjs");
 await new Promise((r) => setTimeout(r, 200));
@@ -87,6 +90,13 @@ for (const [id, pattern] of Object.entries(expect)) {
   const pass = pattern ? pattern.test(text) : r.problems.length === 0 && !r.note;
   if (!pass) failures++;
   process.stdout.write(`${pass ? "PASS" : "FAIL"} run ${id}: ${text || "clean"}\n`);
+}
+{
+  const r = byId[2006];
+  const pass = r.inProgress === true && r.problems.length === 0 && report.summary.inProgressIds?.includes(2006) && !report.summary.checkedIds.includes(2006)
+    && !report.flagged.some((f) => f.id === 2006);
+  if (!pass) failures++;
+  process.stdout.write(`${pass ? "PASS" : "FAIL"} run 2006: a run still being paid isn't a problem; it's checked again later (${JSON.stringify(r)})\n`);
 }
 process.stdout.write(`summary: ${JSON.stringify(report.summary)}\n`);
 process.exitCode = failures ? 1 : 0;

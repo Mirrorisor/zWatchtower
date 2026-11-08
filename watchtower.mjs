@@ -296,6 +296,9 @@ async function runCheck(name, cfg, store) {
     // runs waiting for a re-check leave the list once one reads them
     if (name === "rewards" && entry.summary?.checkedIds && store.state.rewardsPending?.length)
       store.state.rewardsPending = store.state.rewardsPending.filter((id) => !entry.summary.checkedIds.includes(id));
+    // runs still being paid: checked again on later passes until they finish
+    if (name === "rewards" && entry.summary?.inProgressIds?.length)
+      store.state.rewardsPending = [...new Set([...(store.state.rewardsPending ?? []), ...entry.summary.inProgressIds])].sort((a, b) => a - b);
     if (name === "rewards" && entry.summary?.maxRunId) {
       store.state.rewardsMaxRun = Math.max(store.state.rewardsMaxRun, entry.summary.maxRunId);
       // runs we could not check are re-checked next time

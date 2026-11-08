@@ -206,6 +206,9 @@ function diagnoseShares(holders, payouts, run, pot, sum, e) {
   };
 }
 
+// statuses that mean a run ended without paying (anything else that isn't "done" is still going)
+const FAILED = /fail|error|abort|cancel|expire|revert/i;
+
 async function checkRun(id) {
   const j = await getJson(API + id);
   if (j.notFound) return { id, notFound: true };
@@ -215,6 +218,8 @@ async function checkRun(id) {
 
   if (run.status !== "done") {
     out.note = `run status "${run.status}"`;
+    // a run still being paid has released its ZEC already (one took 9 hours): check it again once it ends
+    if (!FAILED.test(run.status ?? "")) { out.inProgress = true; return out; }
     if (run.pot !== null && run.paid !== "0") p("non-done run reports a payout");
     if (rpcUrl && run.releaseSignature) Object.assign(out, await checkRelease(run));
     if (out.release === "ok") p("failed run's release moved ZEC on chain");
@@ -450,7 +455,7 @@ async function main() {
   if (!asJson) process.stderr.write("\n");
 
   const runs = results.filter((r) => !r.notFound);
-  const flagged = runs.filter((r) => r.problems.length || r.note);
+  const flagged = runs.filter((r) => r.problems.length || (r.note && !r.inProgress));
   const unchecked = runs.filter((r) => r.unchecked || r.release === "unchecked");
   const done = runs.filter((r) => r.status === "done");
   const paid = done.reduce((a, r) => a + BigInt(r.paid || 0), 0n);
@@ -465,7 +470,8 @@ async function main() {
     firstUnchecked: unchecked.some((r) => r.id >= from) ? Math.min(...unchecked.filter((r) => r.id >= from).map((r) => r.id)) : null,
     zecPaidInDoneRuns: (Number(paid) / 1e8).toFixed(8),
     onChainChecks: Boolean(rpcUrl),
-    checkedIds: runs.filter((r) => !r.unchecked && r.release !== "unchecked").map((r) => r.id),
+    checkedIds: runs.filter((r) => !r.unchecked && !r.inProgress && r.release !== "unchecked").map((r) => r.id),
+    inProgressIds: runs.filter((r) => r.inProgress).map((r) => r.id),
     // the tokens each verified basket run paid, for the rewards explorer
     baskets: runs.filter((r) => r.basket?.ok).map((r) => ({ id: r.id, mint: runData.get(r.id)?.mint ?? null, tokens: r.basket.tokens })),
   };
