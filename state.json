@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T16:35:11.247Z",
-      "finishedAt": "2026-11-08T16:35:14.287Z",
+      "startedAt": "2026-11-08T16:40:21.060Z",
+      "finishedAt": "2026-11-08T16:40:24.741Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
-        "configSha256": "1c0fc890ff0ac2761b2ac25ff0176e986dc746f682b8c4e2c716f04e12c57589",
+        "configSha256": "01b197096128df5ae300aa4f2ddfe7ac91306415e84180094a0b10c500e819fc",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -21,7 +21,11 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 6
+          "observe_sapling": 3,
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1,
+          "release_rewards": 1,
+          "settle": 1
         },
         "unrecognised": 0,
         "baseline": false,
