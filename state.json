@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T16:40:21.060Z",
-      "finishedAt": "2026-11-08T16:40:24.741Z",
+      "startedAt": "2026-11-08T16:45:11.224Z",
+      "finishedAt": "2026-11-08T16:45:13.787Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,11 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 3,
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 1,
-          "release_rewards": 1,
-          "settle": 1
+          "observe_sapling": 5
         },
         "unrecognised": 0,
         "baseline": false,
@@ -645,8 +641,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-08T16:30:44.719Z",
-      "finishedAt": "2026-11-08T16:30:48.082Z",
+      "startedAt": "2026-11-08T16:45:13.795Z",
+      "finishedAt": "2026-11-08T16:45:15.390Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -665,8 +661,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-08T16:30:48.084Z",
-      "finishedAt": "2026-11-08T16:30:53.190Z",
+      "startedAt": "2026-11-08T16:45:15.392Z",
+      "finishedAt": "2026-11-08T16:45:19.506Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -678,7 +674,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 226690526.93529296,
+          "onChain": 226691241.76844096,
           "claimed": 226690000,
           "diffPct": 0,
           "verdict": "matches"
@@ -991,18 +987,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-08T16:32:03.796Z",
-      "finishedAt": "2026-11-08T16:32:08.226Z",
+      "startedAt": "2026-11-08T16:45:19.509Z",
+      "finishedAt": "2026-11-08T16:45:23.652Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 107326.42,
-        "nearSupply": 149974.55,
+        "nearSupply": 149988.91,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": -12.622286330006318,
+        "change24h": -12.622295599998324,
         "notes": []
       }
     },
@@ -1054,8 +1050,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-08T16:32:08.230Z",
-      "finishedAt": "2026-11-08T16:32:09.460Z",
+      "startedAt": "2026-11-08T16:45:23.654Z",
+      "finishedAt": "2026-11-08T16:45:25.058Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1066,8 +1062,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 682.183268732,
-        "saplingInPool": 49304999.912252,
-        "zecInPool": 148.78335086,
+        "saplingInPool": 49329277.322932,
+        "zecInPool": 148.70157085,
         "zecAddedSaplingSays": 105.60646814,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
