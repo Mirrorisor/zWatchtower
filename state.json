@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T14:09:53.447Z",
-      "finishedAt": "2026-11-08T14:09:57.083Z",
+      "startedAt": "2026-11-08T14:15:11.500Z",
+      "finishedAt": "2026-11-08T14:15:13.914Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,11 +21,11 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "close_rewards_run": 1,
-          "observe_sapling": 8,
-          "release_rewards": 1
+          "observe_sapling": 4,
+          "register_launchlab_coin": 1,
+          "declare_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 2,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
