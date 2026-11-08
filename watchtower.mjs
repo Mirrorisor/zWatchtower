@@ -372,7 +372,8 @@ async function publishToX(name, raised, resolved, cfg, store, override) {
   for (const t of send) {
     const text = fit(cfg.x.link ? `${t}\n${cfg.x.link}` : t);
     const row = { at: new Date().toISOString(), check: name, text };
-    if (!cfg.x.creds) row.status = "preview";
+    // autopost off (watchtower.ci.json "x": { "autopost": false }): written down, and mirrored to Telegram, but not sent to X
+    if (!cfg.x.creds || cfg.x.autopost === false) row.status = "preview";
     else {
       try { row.id = await postToX(text, cfg.x.creds, cfg.x.postUrl); row.status = "posted"; }
       catch (e) { row.status = "error"; row.error = e.message; }
