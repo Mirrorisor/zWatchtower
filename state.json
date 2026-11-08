@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T17:55:11.274Z",
-      "finishedAt": "2026-11-08T17:55:15.716Z",
+      "startedAt": "2026-11-08T18:00:02.387Z",
+      "finishedAt": "2026-11-08T18:00:05.064Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,23 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "settle_tax": 2,
-          "convert_tax_begin": 1,
-          "convert_tax_end": 1,
-          "draw_zec_payee": 1,
-          "close_rewards_run": 1,
-          "release_rewards": 1,
-          "settle": 2,
-          "observe_sapling": 4,
-          "claim_payee": 1,
-          "sell_tax": 2,
-          "withdraw_tax": 2,
-          "draw_grove": 1,
-          "close_grove": 1,
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 1
+          "observe_sapling": 4
         },
-        "unrecognised": 3,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -73,8 +59,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-08T17:30:14.169Z",
-      "finishedAt": "2026-11-08T17:31:24.059Z",
+      "startedAt": "2026-11-08T18:00:05.071Z",
+      "finishedAt": "2026-11-08T18:01:14.192Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -83,24 +69,24 @@
         "reward run 1727 GRIZZON🐻: 6 shares not floor(pot*balance/sum); basket payout doesn't add up: WXMR: 6 holders not paid in proportion to their share; hSOL: 6 holders not paid in proportion to their share; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-08T17:31:23.394Z",
+        "checkedAt": "2026-11-08T18:01:13.338Z",
         "runs": 9,
         "passed": 6,
         "flagged": 4,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.39542292",
+        "zecPaidInDoneRuns": "0.39067094",
         "onChainChecks": true,
         "checkedIds": [
           1491,
           1573,
-          1724,
           1725,
           1726,
           1727,
           1728,
           1729,
-          1730
+          1730,
+          1731
         ],
         "inProgressIds": [],
         "baskets": [
@@ -210,7 +196,7 @@
                 "owner": "HiR2Bdvx",
                 "amount": "0",
                 "wallet": true,
-                "ownerProgram": null,
+                "ownerProgram": "11111111111111111111111111111111",
                 "inSnapshot": false
               },
               {
@@ -714,7 +700,7 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1730
+        "maxRunId": 1731
       }
     },
     "float": {
@@ -1358,8 +1344,8 @@
     "liquidity": {},
     "quotes": {}
   },
-  "rewardsMaxRun": 1730,
-  "rewardsFrom": 1724,
+  "rewardsMaxRun": 1731,
+  "rewardsFrom": 1725,
   "x": {
     "day": "2026-11-08",
     "today": 1,
