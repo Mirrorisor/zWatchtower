@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T18:35:11.180Z",
-      "finishedAt": "2026-11-08T18:35:14.754Z",
+      "startedAt": "2026-11-08T18:40:04.869Z",
+      "finishedAt": "2026-11-08T18:40:09.422Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,14 +21,15 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5,
-          "sell_tax": 2,
-          "withdraw_tax": 2,
+          "observe_sapling": 4,
           "settle_tax": 1,
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 1
+          "convert_tax_begin": 1,
+          "convert_tax_end": 1,
+          "draw_zec_payee": 1,
+          "settle": 2,
+          "claim_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 3,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -713,8 +714,8 @@
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-08T17:31:24.063Z",
-      "finishedAt": "2026-11-08T17:38:50.934Z",
+      "startedAt": "2026-11-08T18:40:09.431Z",
+      "finishedAt": "2026-11-08T18:47:36.052Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -946,8 +947,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-08T18:10:24.227Z",
-      "finishedAt": "2026-11-08T18:11:14.815Z",
+      "startedAt": "2026-11-08T18:47:36.054Z",
+      "finishedAt": "2026-11-08T18:48:29.620Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -964,7 +965,7 @@
           "Creator bought N of supply at launch": 1
         },
         "notes": [
-          "creator scan: 9 coin(s) read this run, 517 of 517 read so far (0 launched shielded, creator not public)",
+          "creator scan: 10 coin(s) read this run, 517 of 517 read so far (0 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
           "2 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 2)",
           "27 shortlisted coin(s) were under $10,000 on their own page, so no card",
@@ -974,8 +975,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-08T18:11:14.817Z",
-      "finishedAt": "2026-11-08T18:11:35.360Z",
+      "startedAt": "2026-11-08T18:48:29.623Z",
+      "finishedAt": "2026-11-08T18:48:49.384Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -985,7 +986,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 7697,
+            "seenInTxs": 7718,
             "withJupiter": 54,
             "seeds": [
               "upgradeAuthority",
@@ -1019,12 +1020,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 858
+            "seenInTxs": 861
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 848
+            "seenInTxs": 851
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -1108,20 +1109,20 @@
     },
     "earnings": {
       "check": "earnings",
-      "startedAt": "2026-11-08T17:39:09.355Z",
-      "finishedAt": "2026-11-08T17:39:14.299Z",
+      "startedAt": "2026-11-08T18:48:49.386Z",
+      "finishedAt": "2026-11-08T18:48:57.063Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "runsIndexed": 1730,
-        "newRuns": 3,
-        "latestRun": 1730,
+        "runsIndexed": 1735,
+        "newRuns": 5,
+        "latestRun": 1735,
         "coinsPaying": 191,
         "crossChecked": 190,
         "matchingSapling": 190,
         "differ": [],
-        "paid7dZec": 30.8034,
+        "paid7dZec": 30.8385,
         "notes": []
       }
     },
