@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T18:10:11.257Z",
-      "finishedAt": "2026-11-08T18:10:14.591Z",
+      "startedAt": "2026-11-08T18:15:11.270Z",
+      "finishedAt": "2026-11-08T18:15:13.888Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "close_rewards_run": 1,
-          "release_rewards": 1
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -1138,8 +1136,8 @@
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-08T17:02:57.257Z",
-      "finishedAt": "2026-11-08T17:16:25.146Z",
+      "startedAt": "2026-11-08T18:15:13.893Z",
+      "finishedAt": "2026-11-08T18:29:01.382Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1161,8 +1159,8 @@
     },
     "split": {
       "check": "split",
-      "startedAt": "2026-11-08T17:16:33.885Z",
-      "finishedAt": "2026-11-08T17:16:36.663Z",
+      "startedAt": "2026-11-08T18:29:09.396Z",
+      "finishedAt": "2026-11-08T18:29:11.777Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1172,10 +1170,10 @@
         "saplingSharePct": 10.43,
         "backPct": 89.57,
         "checks": [
-          "holders: matches (Sapling 181.97, ours 181.9318)",
+          "holders: matches (Sapling 182.09, ours 182.0506)",
           "donated: matches (Sapling 7.9, ours 7.8962)",
-          "flywheel: matches (Sapling 16.85, ours 16.8456)",
-          "payees: matches (Sapling 48.12, ours 19.0419, lower bound)"
+          "flywheel: matches (Sapling 16.88, ours 16.8779)",
+          "payees: matches (Sapling 48.14, ours 19.0419, lower bound)"
         ],
         "unmapped": [],
         "baseline": false,
@@ -1206,8 +1204,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-08T17:45:07.668Z",
-      "finishedAt": "2026-11-08T17:45:16.214Z",
+      "startedAt": "2026-11-08T18:29:01.384Z",
+      "finishedAt": "2026-11-08T18:29:09.395Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
