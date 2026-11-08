@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T10:37:47.600Z",
-      "finishedAt": "2026-11-08T10:37:50.839Z",
+      "startedAt": "2026-11-08T10:45:04.107Z",
+      "finishedAt": "2026-11-08T10:45:08.118Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 6
+          "settle": 1,
+          "observe_sapling": 5
         },
         "unrecognised": 0,
         "baseline": false,
@@ -1001,8 +1002,8 @@
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-08T09:32:50.656Z",
-      "finishedAt": "2026-11-08T09:46:45.054Z",
+      "startedAt": "2026-11-08T10:45:08.132Z",
+      "finishedAt": "2026-11-08T10:58:40.961Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1024,30 +1025,28 @@
     },
     "split": {
       "check": "split",
-      "startedAt": "2026-11-08T09:46:46.190Z",
-      "finishedAt": "2026-11-08T09:46:48.844Z",
+      "startedAt": "2026-11-08T10:58:40.963Z",
+      "finishedAt": "2026-11-08T10:58:43.720Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "claim": "not checked",
-        "saplingSharePct": null,
-        "backPct": null,
+        "claim": "holds",
+        "saplingSharePct": 10.43,
+        "backPct": 89.57,
         "checks": [
-          "holders: matches (Sapling 181.697, ours 181.6894)",
-          "donated: matches (Sapling 7.8962, ours 7.8962)"
+          "holders: matches (Sapling 181.73, ours 181.6894)",
+          "donated: matches (Sapling 7.9, ours 7.8962)",
+          "flywheel: matches (Sapling 16.81, ours 16.8141)",
+          "payees: matches (Sapling 48.09, ours 19.0419, lower bound)"
         ],
         "unmapped": [
-          "flywheel",
-          "payees",
-          "sapling",
-          "waiting",
           "revenue"
         ],
         "baseline": false,
         "notes": [
-          "not found in Sapling's stats: flywheel, payees, sapling, waiting, revenue"
+          "not found in Sapling's stats: revenue"
         ]
       }
     },
