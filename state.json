@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T15:10:06.633Z",
-      "finishedAt": "2026-11-08T15:10:09.821Z",
+      "startedAt": "2026-11-08T15:17:49.792Z",
+      "finishedAt": "2026-11-08T15:17:52.506Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 1
+          "observe_sapling": 6,
+          "settle": 2
         },
         "unrecognised": 0,
         "baseline": false,
@@ -641,8 +640,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-08T15:01:05.103Z",
-      "finishedAt": "2026-11-08T15:01:07.196Z",
+      "startedAt": "2026-11-08T15:17:52.511Z",
+      "finishedAt": "2026-11-08T15:17:54.000Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -661,8 +660,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-08T15:01:07.198Z",
-      "finishedAt": "2026-11-08T15:01:14.676Z",
+      "startedAt": "2026-11-08T15:17:54.002Z",
+      "finishedAt": "2026-11-08T15:17:58.482Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -674,8 +673,8 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 226673573.38465798,
-          "claimed": 226670000,
+          "onChain": 226676073.38864195,
+          "claimed": 226680000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -806,8 +805,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-08T14:45:07.526Z",
-      "finishedAt": "2026-11-08T14:45:55.852Z",
+      "startedAt": "2026-11-08T15:17:58.484Z",
+      "finishedAt": "2026-11-08T15:18:49.337Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -824,7 +823,7 @@
           "Creator bought N of supply at launch": 1
         },
         "notes": [
-          "creator scan: 7 coin(s) read this run, 516 of 516 read so far (0 launched shielded, creator not public)",
+          "creator scan: 10 coin(s) read this run, 516 of 516 read so far (0 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
           "2 coin(s): trade history didn't reach the launch, so launch buys weren't judged (history starts after launch: 2)",
           "26 shortlisted coin(s) were under $10,000 on their own page, so no card",
@@ -834,8 +833,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-08T14:45:55.854Z",
-      "finishedAt": "2026-11-08T14:46:11.862Z",
+      "startedAt": "2026-11-08T15:18:49.339Z",
+      "finishedAt": "2026-11-08T15:19:03.492Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -845,7 +844,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 7577,
+            "seenInTxs": 7584,
             "withJupiter": 50,
             "seeds": [
               "upgradeAuthority",
@@ -879,12 +878,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 845
+            "seenInTxs": 846
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 835
+            "seenInTxs": 836
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -962,7 +961,7 @@
           "breakingRules": []
         },
         "programsSeen": 23,
-        "txsRead": 21,
+        "txsRead": 8,
         "notes": []
       }
     },
@@ -987,18 +986,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-08T15:01:14.678Z",
-      "finishedAt": "2026-11-08T15:01:18.850Z",
+      "startedAt": "2026-11-08T15:19:03.494Z",
+      "finishedAt": "2026-11-08T15:19:07.660Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 107326.45,
-        "nearSupply": 149973.26,
+        "nearSupply": 149973.28,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": -12.235821519992896,
+        "change24h": -12.215597329995944,
         "notes": []
       }
     },
@@ -1050,8 +1049,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-08T15:01:18.852Z",
-      "finishedAt": "2026-11-08T15:01:20.309Z",
+      "startedAt": "2026-11-08T15:19:07.665Z",
+      "finishedAt": "2026-11-08T15:19:09.068Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1062,8 +1061,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 682.064344013,
-        "saplingInPool": 50545871.906726,
-        "zecInPool": 144.9816067,
+        "saplingInPool": 50187332.619819,
+        "zecInPool": 146.03835765,
         "zecAddedSaplingSays": 105.55414522,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
@@ -1072,8 +1071,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-08T14:46:16.752Z",
-      "finishedAt": "2026-11-08T14:47:17.838Z",
+      "startedAt": "2026-11-08T15:19:09.070Z",
+      "finishedAt": "2026-11-08T15:19:16.622Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1134,7 +1133,7 @@
           "WXMR…teJp"
         ],
         "conversions": 5,
-        "newConversions": 5,
+        "newConversions": 0,
         "priced": 4,
         "floorPctBelow": {
           "min": 4.44,
@@ -1187,10 +1186,7 @@
             "sig": "56HvErA34Lr8YtRE4x6qw4mbsG9FLdavYabHNotEzQjVm4D16LcQaa6eYJNXUWWznd7T8SMw7c67RneWKCeDMuXj"
           }
         ],
-        "notes": [
-          "first run: list recorded, nothing announced",
-          "first scan: 5 past conversion(s) recorded, nothing announced"
-        ]
+        "notes": []
       }
     }
   },
