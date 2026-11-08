@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T07:20:02.070Z",
-      "finishedAt": "2026-11-08T07:20:05.368Z",
+      "startedAt": "2026-11-08T07:25:02.624Z",
+      "finishedAt": "2026-11-08T07:25:05.472Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -638,8 +638,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-08T07:10:05.205Z",
-      "finishedAt": "2026-11-08T07:10:07.134Z",
+      "startedAt": "2026-11-08T07:25:05.479Z",
+      "finishedAt": "2026-11-08T07:25:06.882Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -658,17 +658,17 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-08T07:10:07.135Z",
-      "finishedAt": "2026-11-08T07:10:11.728Z",
+      "startedAt": "2026-11-08T07:25:06.884Z",
+      "finishedAt": "2026-11-08T07:25:10.754Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1678267083",
+          "claimedZat": "1675266329",
           "chainZat": "1678267083",
           "notListedYetZat": "0",
-          "verdict": "matches the chain"
+          "verdict": "differs from the chain"
         },
         "saplingBurn": {
           "onChain": 226653645.38297498,
@@ -798,7 +798,9 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": []
+        "notes": [
+          "Sapling's headline says 1675266329 zat bought back; the pot paid 1678267083 zat on chain (0 of it not listed yet)"
+        ]
       }
     },
     "coins": {
@@ -984,18 +986,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-08T07:11:36.519Z",
-      "finishedAt": "2026-11-08T07:11:40.328Z",
+      "startedAt": "2026-11-08T07:25:10.757Z",
+      "finishedAt": "2026-11-08T07:25:14.537Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 107308.27,
-        "nearSupply": 149901.06,
+        "nearSupply": 149906.41,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 502.13447194000764,
+        "change24h": 502.1344335199974,
         "notes": []
       }
     },
