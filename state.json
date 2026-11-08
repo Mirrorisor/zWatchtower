@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T06:05:06.318Z",
-      "finishedAt": "2026-11-08T06:05:09.407Z",
+      "startedAt": "2026-11-08T06:10:06.545Z",
+      "finishedAt": "2026-11-08T06:10:09.782Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "close_rewards_run": 1,
+          "release_rewards": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -638,8 +640,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-08T05:55:05.725Z",
-      "finishedAt": "2026-11-08T05:55:07.359Z",
+      "startedAt": "2026-11-08T06:10:09.787Z",
+      "finishedAt": "2026-11-08T06:10:11.715Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -658,8 +660,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-08T05:55:07.361Z",
-      "finishedAt": "2026-11-08T05:55:11.154Z",
+      "startedAt": "2026-11-08T06:10:11.717Z",
+      "finishedAt": "2026-11-08T06:10:18.413Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -671,7 +673,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 226649077.40974104,
+          "onChain": 226651209.99235404,
           "claimed": 226650000,
           "diffPct": 0,
           "verdict": "matches"
@@ -779,13 +781,13 @@
           }
         },
         "pot": {
-          "balanceZat": "490354",
-          "shownZat": "490354",
-          "inflowZat": "1678682253",
+          "balanceZat": "890297",
+          "shownZat": "890297",
+          "inflowZat": "1679082196",
           "buybackZat": "1678267083",
           "movements": {
             "setup": 1,
-            "inflow": 3425,
+            "inflow": 3426,
             "buyback": 356,
             "other": 1,
             "failed": 1
