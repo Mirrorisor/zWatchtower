@@ -22,8 +22,7 @@ r = compareQuotes(base, {});
 check("a token removed is news", r.events.some((e) => /removed \$TSLAx/.test(e)));
 r = compareQuotes(base, { C1: { ...base.C1, hash: "zz" } });
 check("its settings changed is news", r.events.some((e) => /changed the pairing settings for \$TSLAx\./.test(e)));
-r = compareQuotes({ C1: { ...base.C1, referenceRaw: "2170000000" } }, { C1: { ...base.C1, hash: "zz", referenceRaw: "2300000000" } });
-check("a new reference number is spelled out", r.events.some((e) => /looks like a reference price \(\$217\.00 → \$230\.00\)/.test(e)), JSON.stringify(r.events));
+
 r = compareQuotes(base, { C1: { ...base.C1, paused: true } });
 check("paused by its issuer is news", r.events.some((e) => /\$TSLAx has been paused by its issuer/.test(e)) && !r.alerts.length);
 r = compareQuotes(base, { C1: { ...base.C1, permanentDelegate: "NEW" } });
@@ -33,5 +32,25 @@ r = compareQuotes(base, { C1: { ...base.C1, ...split } });
 check("a scheduled split is news", r.events.some((e) => /scheduled balances to be shown ×3 from 2026-11-15/.test(e)), JSON.stringify(r.events));
 const s = quotesSummary({ ...base, C2: { mint: "M2", ...split, symbol: "X", paused: true } });
 check("summary", s.tokens === 2 && s.paused.length === 1 && s.withPermanentDelegate === 2 && s.scheduledMultiplier.length === 1, JSON.stringify(s));
+// the real NVDAx conversion of 2026-10-28 (4NAXcV…): 0.5112449 NVDAx → 111.48164 USDC → 0.0857895 ZEC
+import { parseConversion, judgeConversion, conversionFindings } from "../lib/quotes.mjs";
+import { encode as b58e } from "../lib/base58.mjs";
+const NV = "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh", USDCm = "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", ZECm = "A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS";
+const bal = (i, mint, ui, dec) => ({ accountIndex: i, mint, uiTokenAmount: { uiAmount: ui, decimals: dec } });
+const tx = { blockTime: 1793149604, transaction: { signatures: ["4NAXcV"] }, meta: { err: null,
+  logMessages: ["Program A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF invoke [1]", "Program log: Instruction: ConvertStockEnd",
+    "Program data: UIh6vUnRHCd8Tf1IlvlFaW3efnTIoQWikbiVm6yGXTNp8EYSSPCMAwfopQ4UD9pXkfRWapV/064/hz5qNGb/wT15EZ36mrUKChkMAwAAAACG54IAAAAAABGYgQAAAAAA2Bh9AAAAAAA+A5/NH2LRBQEAAAAAAAAA3AUBRAs66QAAAAAAAAAAAAAAChkMAwAAAAAB"],
+  preTokenBalances: [bal(1, NV, 0.5112449, 8), bal(3, USDCm, 200, 6), bal(4, USDCm, 50, 6), bal(5, ZECm, 0, 8)],
+  postTokenBalances: [bal(1, NV, 0, 8), bal(3, USDCm, 88.51836, 6), bal(4, USDCm, 161.48164, 6), bal(5, ZECm, 0.0857895, 8)] } };
+const cv = parseConversion(tx, b58e);
+check("reads a real conversion", cv && cv.mint === NV && cv.sold === "51124490" && cv.zecOut === "8578950" && cv.minOut === "8493073" && cv.floor === "8198360" && cv.usdcLeg === 111.48164 && cv.decimals === 8 && cv.at === "2026-10-28T01:06:44.000Z", JSON.stringify(cv));
+check("not a conversion: null", parseConversion({ meta: { logMessages: ["Program log: Instruction: Settle"] } }, b58e) === null);
+const jv = judgeConversion(cv);
+check("sold at $218.06 a token; the program's floor was 4.44% below what it got", jv.priceUsd === 218.06 && jv.floorPctBelow === 4.44 && !jv.belowFloor, JSON.stringify(jv));
+let fz = conversionFindings([jv], () => "$NVDAx");
+check("an ordinary conversion: nothing said", !fz.alerts.length && !fz.events.length);
+fz = conversionFindings([judgeConversion({ ...cv, zecOut: "8000000" })], () => "$NVDAx");
+check("got less than the program's own minimum: alert", fz.alerts.some((a) => /below the minimum its own program logged/.test(a)));
+
 console.log(failures ? `\n${failures} failed` : "\nall quotes tests passed");
 process.exitCode = failures ? 1 : 0;

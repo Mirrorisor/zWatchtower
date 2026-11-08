@@ -36,16 +36,21 @@ the "Dispute a flag or fact" issue form, and every dispute gets a public answer.
 **Pairing tokens.** Sapling coins can be paired with tokenized stocks
 (xStocks and Backpack Securities tokens such as NVDAx, TSLAx and SPYx) and a
 few other tokens. Sapling's multisig sets that list on chain (SetStockQuote:
-one config account per token, owned by the vault program). Each token's
-settings include a round number that matches its price where we could
-compare (NVDAx: 217.00); what the program uses it for isn't published, and
-Sapling's docs say fee conversions are checked against Pyth. Every 30 minutes
+one config account per token, owned by the vault program); Sapling's docs
+say fee conversions are checked against Pyth. Every 30 minutes
 the pairing tokens check (quotes-check.mjs) reads every config account and
 each token's issuer controls, and posts when Sapling adds, removes or changes
 a token, when an issuer pauses or unpauses one, when who can freeze, pause,
 create or move a token changes, or when a balance multiplier (a split) is
 scheduled. On 8 Nov 2026 there were 47; every tokenized stock's issuer can
 pause it, freeze accounts and move tokens out of any account.
+It also logs every conversion of Sapling's fees in such a token into ZEC
+(ConvertStockEnd): the token sold, the ZEC received, the dollar price when the
+swap went through USDC, and the program's own minimum and floor, and alerts
+if a conversion ever received less than either. It can't yet say whether the
+price was fair: Pyth's price service now needs an API key, and the conversion
+transactions read no Pyth price on chain. (The floor sat 4–13% below the ZEC
+received in the conversions we read by hand.)
 
 **Liquidity.** Sapling's docs say its liquidity is one protocol-owned
 $SAPLING/ZEC pool on PumpSwap (6ejg4a…K51G) whose LP tokens "are burned the

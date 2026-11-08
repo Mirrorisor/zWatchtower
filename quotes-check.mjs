@@ -18,7 +18,7 @@
 // Read-only. Exit code 2 when the check cannot run.
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { createHash } from "node:crypto";
-import { VAULT_PROGRAM, QUOTE_DISCRIMINATOR, tokenControls, compareQuotes, quotesSummary } from "./lib/quotes.mjs";
+import { VAULT_PROGRAM, QUOTE_DISCRIMINATOR, tokenControls, compareQuotes, quotesSummary, parseConversion, judgeConversion, conversionFindings } from "./lib/quotes.mjs";
 import { encode as b58 } from "./lib/base58.mjs";
 import { redact } from "./lib/redact.mjs";
 
@@ -41,7 +41,8 @@ async function rpc(method, params) {
 }
 
 async function main() {
-  let prev = existsSync(statePath) ? JSON.parse(readFileSync(statePath, "utf8")).quotes : null;
+  const saved = existsSync(statePath) ? JSON.parse(readFileSync(statePath, "utf8")) : {};
+  let prev = saved.quotes ?? null;
   // state written before settings-only fingerprints (8 Nov): record again rather than call every token changed
   if (prev && Object.values(prev).some((q) => !("referenceRaw" in q))) prev = null;
   const disc = b58(Buffer.from(QUOTE_DISCRIMINATOR, "hex"));
@@ -50,10 +51,9 @@ async function main() {
   const now = {};
   for (const a of accts) {
     const data = Buffer.from(a.account.data[0], "base64");
-    // only the settings part (up to the round number at byte 329 that looks like a reference price): later bytes
-    // change on every conversion (its time and amount), and aren't settings
+    // only the settings part: later bytes change on every conversion (its time and amount)
     now[a.pubkey] = { mint: b58(data.subarray(8, 40)), hash: createHash("sha256").update(data.subarray(0, SETTINGS_BYTES)).digest("hex").slice(0, 16),
-      referenceRaw: data.length >= 337 ? data.readBigUInt64LE(329).toString() : null };
+      referenceRaw: data.length >= 337 ? data.readBigUInt64LE(329).toString() : null };   // a stored number; its meaning isn't published (not a price)
   }
   const configs = Object.keys(now);
   for (let i = 0; i < configs.length; i += 100) {
@@ -62,8 +62,37 @@ async function main() {
     batch.forEach((c, j) => Object.assign(now[c], tokenControls(infos[j]?.data?.parsed?.info)));
   }
   const { alerts, events } = compareQuotes(prev, now);
-  writeFileSync(statePath, JSON.stringify({ quotes: now, at: new Date().toISOString() }));
-  const report = { alerts, events, notes: prev ? [] : ["first run: list recorded, nothing announced"], summary: quotesSummary(now) };
+  const notes = prev ? [] : ["first run: list recorded, nothing announced"];
+
+  // conversions: every transaction touching a token's settings since the last run; the ones with ConvertStockEnd
+  const lastSig = saved.lastSig ?? {}, firstScan = !saved.lastSig;
+  const log = saved.conversions ?? [];
+  const fresh = [];
+  for (const cfg of configs) {
+    let sigs;
+    try { sigs = await rpc("getSignaturesForAddress", [cfg, { limit: firstScan ? 50 : 100, ...(lastSig[cfg] ? { until: lastSig[cfg] } : {}) }]); }
+    catch (e) { notes.push(`${now[cfg].symbol ?? cfg}: history not read (${redact(e.message)})`); continue; }
+    if (!sigs?.length) continue;
+    lastSig[cfg] = sigs[0].signature;
+    for (const sg of sigs.filter((x) => !x.err)) {
+      if (log.some((c) => c.sig === sg.signature) || fresh.some((c) => c.sig === sg.signature)) continue;
+      let tx;
+      try { tx = await rpc("getTransaction", [sg.signature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 1 }]); } catch { continue; }
+      const c = parseConversion(tx, b58);
+      if (c) fresh.push(judgeConversion(c));
+    }
+  }
+  const labelOf = (mint) => { const q = Object.values(now).find((x) => x.mint === mint); return q?.symbol ? `$${q.symbol}` : `${mint.slice(0, 4)}…`; };
+  if (!firstScan) { const f = conversionFindings(fresh, labelOf); alerts.push(...f.alerts); events.push(...f.events); }
+  else if (fresh.length) notes.push(`first scan: ${fresh.length} past conversion(s) recorded, nothing announced`);
+  const conversions = [...fresh, ...log].sort((a, b) => (b.at ?? "").localeCompare(a.at ?? "")).slice(0, 300);
+
+  writeFileSync(statePath, JSON.stringify({ quotes: now, lastSig, conversions, at: new Date().toISOString() }));
+  const priced = conversions.filter((c) => c.priceUsd != null);
+  const report = { alerts, events, notes, summary: { ...quotesSummary(now),
+    conversions: conversions.length, newConversions: fresh.length, priced: priced.length,
+    floorPctBelow: conversions.length ? { min: Math.min(...conversions.map((c) => c.floorPctBelow ?? 0)), max: Math.max(...conversions.map((c) => c.floorPctBelow ?? 0)) } : null,
+    latest: conversions.slice(0, 5).map((c) => ({ at: c.at, token: labelOf(c.mint), sold: c.soldUi, zec: c.zecOutUi, priceUsd: c.priceUsd, floorPctBelow: c.floorPctBelow, sig: c.sig })) } };
   if (args.includes("--json")) console.log(JSON.stringify(report));
   else console.log(report);
 }
