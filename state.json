@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T13:35:11.211Z",
-      "finishedAt": "2026-11-08T13:35:14.045Z",
+      "startedAt": "2026-11-08T13:40:30.820Z",
+      "finishedAt": "2026-11-08T13:40:33.728Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 1
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -1071,6 +1069,85 @@
         "creatorFeeToTreasury": true,
         "notes": []
       }
+    },
+    "quotes": {
+      "check": "quotes",
+      "startedAt": "2026-11-08T13:40:33.734Z",
+      "finishedAt": "2026-11-08T13:40:34.585Z",
+      "status": "ran",
+      "ok": true,
+      "alerts": [],
+      "events": [],
+      "summary": {
+        "tokens": 47,
+        "paused": [],
+        "withPermanentDelegate": 45,
+        "withFreezeAuthority": 45,
+        "scheduledMultiplier": [
+          "$MCDx ×1.0211807004882871 2026-09-01T00:30:00.000Z",
+          "$KOx ×1.0225601246249238 2026-09-15T00:30:00.000Z",
+          "$NVDAx ×1.001701196801074 2026-09-10T00:30:00.000Z",
+          "$SPYx ×1.007474126658766 2026-10-31T13:45:00.000Z",
+          "$AAPLx ×1.0032690125398187 2026-08-08T00:30:00.000Z",
+          "$GOOGLx ×1.0023772500603487 2026-09-04T00:30:00.000Z",
+          "$METAx ×1.0028515433272898 2026-09-19T00:30:00.000Z",
+          "$MSFTx ×1.0059033904787456 2026-08-20T00:30:00.000Z",
+          "$GMEx ×1.005309167384 2025-10-08T23:55:00.000Z",
+          "$QQQx ×1.0034560758968376 2026-09-19T23:00:00.000Z"
+        ],
+        "symbols": [
+          "$AAPLx",
+          "$AMD",
+          "$AMZNx",
+          "$BABA",
+          "$BOT",
+          "$BRK.Bx",
+          "$COINx",
+          "$COPX",
+          "$CRCLx",
+          "$CYPH",
+          "$DELL",
+          "$DJT",
+          "$DKNG",
+          "$DRAM",
+          "$GLDx",
+          "$GMEx",
+          "$GOOGLx",
+          "$HIMS",
+          "$HOODx",
+          "$IBM",
+          "$INTC",
+          "$KOx",
+          "$LLY",
+          "$MCDx",
+          "$METAx",
+          "$MRVL",
+          "$MSFTx",
+          "$MSTRx",
+          "$MU",
+          "$NBIS",
+          "$NFLX",
+          "$NKE",
+          "$NVDAx",
+          "$PFE",
+          "$PLTRx",
+          "$QQQx",
+          "$QUBT",
+          "$RACE",
+          "$RDDT",
+          "$SKHY",
+          "$SNDK",
+          "$SPCX",
+          "$SPYx",
+          "$TSLAx",
+          "$TTWO",
+          "3ZLe…9wBG",
+          "WXMR…teJp"
+        ],
+        "notes": [
+          "first run: list recorded, nothing announced"
+        ]
+      }
     }
   },
   "openAlerts": {
@@ -1088,7 +1165,8 @@
     "zec": {},
     "payees": {},
     "split": {},
-    "liquidity": {}
+    "liquidity": {},
+    "quotes": {}
   },
   "rewardsMaxRun": 1723,
   "rewardsFrom": 1718,
