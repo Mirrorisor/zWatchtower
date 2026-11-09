@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-09T20:25:11.361Z",
-      "finishedAt": "2026-11-09T20:25:14.178Z",
+      "startedAt": "2026-11-09T20:30:31.866Z",
+      "finishedAt": "2026-11-09T20:30:34.517Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,12 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "convert_sapling_begin": 1,
-          "convert_sapling_end": 1,
-          "settle": 1
+          "observe_sapling": 4
         },
-        "unrecognised": 2,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -62,8 +59,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-09T20:00:13.749Z",
-      "finishedAt": "2026-11-09T20:00:59.917Z",
+      "startedAt": "2026-11-09T20:30:34.523Z",
+      "finishedAt": "2026-11-09T20:31:20.887Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -71,7 +68,7 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-09T20:00:59.074Z",
+        "checkedAt": "2026-11-09T20:31:19.609Z",
         "runs": 8,
         "passed": 6,
         "flagged": 3,
@@ -197,7 +194,7 @@
                 "owner": "HiR2Bdvx",
                 "amount": "0",
                 "wallet": true,
-                "ownerProgram": "11111111111111111111111111111111",
+                "ownerProgram": null,
                 "inSnapshot": false
               },
               {
@@ -1016,17 +1013,17 @@
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-09T19:15:07.698Z",
-      "finishedAt": "2026-11-09T19:29:25.153Z",
+      "startedAt": "2026-11-09T20:31:20.891Z",
+      "finishedAt": "2026-11-09T20:45:44.948Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "coinsRead": 520,
+        "coinsRead": 522,
         "recipients": {
           "holders": 272,
-          "wallet": 236,
+          "wallet": 238,
           "creator": 3,
           "zcash-foundation": 9
         },
@@ -1039,8 +1036,8 @@
     },
     "split": {
       "check": "split",
-      "startedAt": "2026-11-09T19:29:34.032Z",
-      "finishedAt": "2026-11-09T19:29:36.598Z",
+      "startedAt": "2026-11-09T20:45:55.241Z",
+      "finishedAt": "2026-11-09T20:45:57.843Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1052,7 +1049,7 @@
         "checks": [
           "holders: matches (Sapling 183.2, ours 183.1651)",
           "donated: matches (Sapling 7.9, ours 7.8962)",
-          "flywheel: matches (Sapling 17.05, ours 17.0464)",
+          "flywheel: matches (Sapling 17.08, ours 17.0836)",
           "payees: matches (Sapling 48.3, ours 19.0419, lower bound)"
         ],
         "unmapped": [],
@@ -1062,8 +1059,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-09T20:15:14.813Z",
-      "finishedAt": "2026-11-09T20:15:16.200Z",
+      "startedAt": "2026-11-09T20:45:44.950Z",
+      "finishedAt": "2026-11-09T20:45:46.312Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1074,8 +1071,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 682.616589732,
-        "saplingInPool": 56660759.878918,
-        "zecInPool": 129.46245124,
+        "saplingInPool": 56271685.90962,
+        "zecInPool": 130.36060129,
         "zecAddedSaplingSays": 106.75519423,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
@@ -1084,8 +1081,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-09T20:01:01.743Z",
-      "finishedAt": "2026-11-09T20:01:09.665Z",
+      "startedAt": "2026-11-09T20:45:46.313Z",
+      "finishedAt": "2026-11-09T20:45:55.238Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
