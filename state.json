@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-09T15:53:51.890Z",
-      "finishedAt": "2026-11-09T15:53:55.745Z",
+      "startedAt": "2026-11-09T16:00:04.869Z",
+      "finishedAt": "2026-11-09T16:00:08.182Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,16 +21,12 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 8,
-          "collect_pool_fees": 1,
-          "draw_grove": 1,
-          "close_grove": 1,
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1,
-          "settle": 2
+          "observe_sapling": 5,
+          "draw_zec_payee": 1,
+          "settle": 1,
+          "claim_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -66,8 +62,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-09T15:30:06.030Z",
-      "finishedAt": "2026-11-09T15:30:45.594Z",
+      "startedAt": "2026-11-09T16:00:08.188Z",
+      "finishedAt": "2026-11-09T16:00:46.695Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -75,7 +71,7 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-09T15:30:44.771Z",
+        "checkedAt": "2026-11-09T16:00:45.828Z",
         "runs": 8,
         "passed": 6,
         "flagged": 2,
@@ -1054,8 +1050,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-09T15:44:31.190Z",
-      "finishedAt": "2026-11-09T15:44:32.510Z",
+      "startedAt": "2026-11-09T16:00:46.697Z",
+      "finishedAt": "2026-11-09T16:00:48.201Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1066,8 +1062,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 682.616589732,
-        "saplingInPool": 53863023.554615,
-        "zecInPool": 136.24598312,
+        "saplingInPool": 54191104.853998,
+        "zecInPool": 135.38942459,
         "zecAddedSaplingSays": 106.75519423,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
