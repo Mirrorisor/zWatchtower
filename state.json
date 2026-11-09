@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-09T21:05:11.287Z",
-      "finishedAt": "2026-11-09T21:05:14.397Z",
+      "startedAt": "2026-11-09T21:10:11.329Z",
+      "finishedAt": "2026-11-09T21:10:14.088Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,8 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle": 2
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -653,8 +652,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-09T20:53:41.644Z",
-      "finishedAt": "2026-11-09T20:53:43.414Z",
+      "startedAt": "2026-11-09T21:10:14.094Z",
+      "finishedAt": "2026-11-09T21:10:15.895Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -673,17 +672,17 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-09T20:53:43.417Z",
-      "finishedAt": "2026-11-09T20:53:48.013Z",
+      "startedAt": "2026-11-09T21:10:15.897Z",
+      "finishedAt": "2026-11-09T21:10:20.097Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1708361814",
+          "claimedZat": "1697689902",
           "chainZat": "1708361814",
           "notListedYetZat": "0",
-          "verdict": "matches the chain"
+          "verdict": "differs from the chain"
         },
         "saplingBurn": {
           "onChain": 226841724.54734004,
@@ -813,7 +812,9 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": []
+        "notes": [
+          "Sapling's headline says 1697689902 zat bought back; the pot paid 1708361814 zat on chain (0 of it not listed yet)"
+        ]
       }
     },
     "coins": {
@@ -998,18 +999,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-09T20:55:00.531Z",
-      "finishedAt": "2026-11-09T20:55:04.716Z",
+      "startedAt": "2026-11-09T21:10:20.100Z",
+      "finishedAt": "2026-11-09T21:10:23.906Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 107554.04,
-        "nearSupply": 151756.46,
+        "solanaSupply": 107555.08,
+        "nearSupply": 151759.12,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 148.7578877999913,
+        "change24h": 149.81450618999952,
         "notes": []
       }
     },
