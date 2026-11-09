@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-09T01:25:03.776Z",
-      "finishedAt": "2026-11-09T01:25:06.307Z",
+      "startedAt": "2026-11-09T01:30:11.334Z",
+      "finishedAt": "2026-11-09T01:30:13.987Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,7 +22,8 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "settle": 1
+          "sell_tax": 1,
+          "withdraw_tax": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -60,8 +61,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-09T01:00:07.657Z",
-      "finishedAt": "2026-11-09T01:00:58.172Z",
+      "startedAt": "2026-11-09T01:30:13.994Z",
+      "finishedAt": "2026-11-09T01:31:02.358Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -70,19 +71,18 @@
         "reward run 1742 MOOH: 43 shares not floor(pot*balance/sum); basket payout doesn't add up: hSOL: sent to 1 wallets not in the payout rows; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-09T01:00:57.078Z",
-        "runs": 10,
-        "passed": 7,
+        "checkedAt": "2026-11-09T01:31:01.301Z",
+        "runs": 9,
+        "passed": 6,
         "flagged": 3,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.47099636",
+        "zecPaidInDoneRuns": "0.44915226",
         "onChainChecks": true,
         "checkedIds": [
           1491,
           1573,
           1742,
-          1743,
           1744,
           1745,
           1746,
@@ -92,8 +92,8 @@
         ],
         "inProgressIds": [],
         "baskets": [],
-        "distinctReleases": 10,
-        "runsWithRelease": 10,
+        "distinctReleases": 9,
+        "runsWithRelease": 9,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -1377,7 +1377,7 @@
     "quotes": {}
   },
   "rewardsMaxRun": 1749,
-  "rewardsFrom": 1742,
+  "rewardsFrom": 1744,
   "x": {
     "day": "2026-11-09",
     "today": 2,
@@ -1386,7 +1386,8 @@
   "xSummaryDay": "2026-11-04",
   "rewardsRechecked": [
     1491,
-    1573
+    1573,
+    1742
   ],
   "withdrawnBasketV1": "2026-11-04T02:00:04.434Z",
   "rewardsPending": [],
