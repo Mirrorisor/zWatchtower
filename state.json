@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-09T21:35:04.100Z",
-      "finishedAt": "2026-11-09T21:35:07.073Z",
+      "startedAt": "2026-11-09T21:40:04.447Z",
+      "finishedAt": "2026-11-09T21:40:07.968Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "settle": 2
         },
         "unrecognised": 0,
         "baseline": false,
@@ -651,15 +652,15 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-09T21:25:07.126Z",
-      "finishedAt": "2026-11-09T21:25:08.735Z",
+      "startedAt": "2026-11-09T21:40:07.976Z",
+      "finishedAt": "2026-11-09T21:40:09.890Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "coins": 139,
-        "matching": 139,
-        "feeChangeable": 134,
+        "coins": 140,
+        "matching": 140,
+        "feeChangeable": 135,
         "feeRenounced": 5,
         "advertisedRange": [
           200,
@@ -671,8 +672,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-09T21:25:08.739Z",
-      "finishedAt": "2026-11-09T21:25:13.957Z",
+      "startedAt": "2026-11-09T21:40:09.892Z",
+      "finishedAt": "2026-11-09T21:40:13.905Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -684,7 +685,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 226842974.456344,
+          "onChain": 226843974.09121,
           "claimed": 226840000,
           "diffPct": 0,
           "verdict": "matches"
@@ -996,18 +997,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-09T21:26:18.928Z",
-      "finishedAt": "2026-11-09T21:26:22.992Z",
+      "startedAt": "2026-11-09T21:40:13.909Z",
+      "finishedAt": "2026-11-09T21:40:18.023Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 107553.08,
-        "nearSupply": 151768.17,
+        "solanaSupply": 107498.55,
+        "nearSupply": 151770.71,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 142.848014349991,
+        "change24h": 88.31997121000313,
         "notes": []
       }
     },
