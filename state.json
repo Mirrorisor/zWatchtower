@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-09T00:00:10.203Z",
-      "finishedAt": "2026-11-09T00:00:14.162Z",
+      "startedAt": "2026-11-09T00:05:01.613Z",
+      "finishedAt": "2026-11-09T00:05:04.527Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,10 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "close_rewards_run": 1,
-          "release_rewards": 1,
-          "settle": 1
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -1384,7 +1381,7 @@
   "x": {
     "day": "2026-11-09",
     "today": 1,
-    "thisRun": 1
+    "thisRun": 0
   },
   "xSummaryDay": "2026-11-04",
   "rewardsRechecked": [
