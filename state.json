@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-09T06:25:01.875Z",
-      "finishedAt": "2026-11-09T06:25:04.613Z",
+      "startedAt": "2026-11-09T06:30:05.873Z",
+      "finishedAt": "2026-11-09T06:30:08.279Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,10 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle_sapling": 1
+          "observe_sapling": 5
         },
-        "unrecognised": 1,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -60,8 +59,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-09T06:00:14.989Z",
-      "finishedAt": "2026-11-09T06:01:02.894Z",
+      "startedAt": "2026-11-09T06:30:08.285Z",
+      "finishedAt": "2026-11-09T06:30:56.575Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -70,7 +69,7 @@
         "reward run 1742 MOOH: 43 shares not floor(pot*balance/sum); basket payout doesn't add up: hSOL: sent to 1 wallets not in the payout rows; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-09T06:01:01.849Z",
+        "checkedAt": "2026-11-09T06:30:55.619Z",
         "runs": 9,
         "passed": 6,
         "flagged": 3,
@@ -1215,8 +1214,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-09T06:15:06.060Z",
-      "finishedAt": "2026-11-09T06:15:07.283Z",
+      "startedAt": "2026-11-09T06:30:56.577Z",
+      "finishedAt": "2026-11-09T06:30:58.009Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1227,8 +1226,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 682.439786045,
-        "saplingInPool": 53704652.750599,
-        "zecInPool": 136.53446524,
+        "saplingInPool": 53609134.628913,
+        "zecInPool": 136.78302977,
         "zecAddedSaplingSays": 105.71002929,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
