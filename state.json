@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-09T00:54:22.167Z",
-      "finishedAt": "2026-11-09T00:54:26.589Z",
+      "startedAt": "2026-11-09T01:00:04.496Z",
+      "finishedAt": "2026-11-09T01:00:07.648Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 8,
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 1,
+          "close_rewards_run": 1,
+          "observe_sapling": 5,
+          "release_rewards": 1,
           "settle": 1
         },
         "unrecognised": 0,
@@ -62,8 +62,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-09T00:30:09.344Z",
-      "finishedAt": "2026-11-09T00:30:56.076Z",
+      "startedAt": "2026-11-09T01:00:07.657Z",
+      "finishedAt": "2026-11-09T01:00:58.172Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -72,13 +72,13 @@
         "reward run 1742 MOOH: 43 shares not floor(pot*balance/sum); basket payout doesn't add up: hSOL: sent to 1 wallets not in the payout rows; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-09T00:30:55.028Z",
-        "runs": 8,
-        "passed": 5,
+        "checkedAt": "2026-11-09T01:00:57.078Z",
+        "runs": 10,
+        "passed": 7,
         "flagged": 3,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.41052146",
+        "zecPaidInDoneRuns": "0.47099636",
         "onChainChecks": true,
         "checkedIds": [
           1491,
@@ -88,12 +88,14 @@
           1744,
           1745,
           1746,
-          1747
+          1747,
+          1748,
+          1749
         ],
         "inProgressIds": [],
         "baskets": [],
-        "distinctReleases": 8,
-        "runsWithRelease": 8,
+        "distinctReleases": 10,
+        "runsWithRelease": 10,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -735,7 +737,7 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1747
+        "maxRunId": 1749
       }
     },
     "float": {
@@ -1376,7 +1378,7 @@
     "liquidity": {},
     "quotes": {}
   },
-  "rewardsMaxRun": 1747,
+  "rewardsMaxRun": 1749,
   "rewardsFrom": 1742,
   "x": {
     "day": "2026-11-09",
