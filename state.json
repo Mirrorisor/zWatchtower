@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-09T07:45:01.934Z",
-      "finishedAt": "2026-11-09T07:45:05.564Z",
+      "startedAt": "2026-11-09T07:50:02.130Z",
+      "finishedAt": "2026-11-09T07:50:05.156Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,12 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "draw_zec_payee": 1,
-          "settle": 1,
-          "claim_payee": 1
+          "observe_sapling": 4
         },
-        "unrecognised": 1,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
