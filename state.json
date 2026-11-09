@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-08T23:55:11.345Z",
-      "finishedAt": "2026-11-08T23:55:15.169Z",
+      "startedAt": "2026-11-09T00:00:10.203Z",
+      "finishedAt": "2026-11-09T00:00:14.162Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,8 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "close_rewards_run": 1,
           "observe_sapling": 4,
+          "close_rewards_run": 1,
           "release_rewards": 1,
           "settle": 1
         },
@@ -62,8 +62,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-08T23:30:00.247Z",
-      "finishedAt": "2026-11-08T23:30:48.692Z",
+      "startedAt": "2026-11-09T00:00:14.169Z",
+      "finishedAt": "2026-11-09T00:01:04.503Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -72,13 +72,13 @@
         "reward run 1742 MOOH: 43 shares not floor(pot*balance/sum); basket payout doesn't add up: hSOL: sent to 1 wallets not in the payout rows; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-08T23:30:47.580Z",
-        "runs": 8,
-        "passed": 5,
+        "checkedAt": "2026-11-09T00:01:03.497Z",
+        "runs": 11,
+        "passed": 8,
         "flagged": 3,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.32522240",
+        "zecPaidInDoneRuns": "0.48330938",
         "onChainChecks": true,
         "checkedIds": [
           1491,
@@ -88,12 +88,15 @@
           1741,
           1742,
           1743,
-          1744
+          1744,
+          1745,
+          1746,
+          1747
         ],
         "inProgressIds": [],
         "baskets": [],
-        "distinctReleases": 8,
-        "runsWithRelease": 8,
+        "distinctReleases": 11,
+        "runsWithRelease": 11,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -188,7 +191,7 @@
                 "owner": "HiR2Bdvx",
                 "amount": "0",
                 "wallet": true,
-                "ownerProgram": "11111111111111111111111111111111",
+                "ownerProgram": null,
                 "inSnapshot": false
               },
               {
@@ -735,7 +738,7 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1744
+        "maxRunId": 1747
       }
     },
     "float": {
@@ -1238,8 +1241,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-08T23:29:35.310Z",
-      "finishedAt": "2026-11-08T23:29:44.362Z",
+      "startedAt": "2026-11-09T00:01:04.506Z",
+      "finishedAt": "2026-11-09T00:01:13.921Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1376,12 +1379,12 @@
     "liquidity": {},
     "quotes": {}
   },
-  "rewardsMaxRun": 1744,
+  "rewardsMaxRun": 1747,
   "rewardsFrom": 1739,
   "x": {
-    "day": "2026-11-08",
-    "today": 4,
-    "thisRun": 0
+    "day": "2026-11-09",
+    "today": 1,
+    "thisRun": 1
   },
   "xSummaryDay": "2026-11-04",
   "rewardsRechecked": [
@@ -1433,5 +1436,6 @@
       ],
       "run": 1727
     }
-  }
+  },
+  "xWeekly": "2026-11-09"
 }
