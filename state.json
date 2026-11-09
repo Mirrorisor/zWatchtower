@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-09T20:05:02.828Z",
-      "finishedAt": "2026-11-09T20:05:06.762Z",
+      "startedAt": "2026-11-09T20:10:11.252Z",
+      "finishedAt": "2026-11-09T20:10:14.645Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,7 +22,8 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "settle": 2
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -652,8 +653,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-09T19:55:12.454Z",
-      "finishedAt": "2026-11-09T19:55:14.046Z",
+      "startedAt": "2026-11-09T20:10:14.651Z",
+      "finishedAt": "2026-11-09T20:10:18.579Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -672,17 +673,17 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-09T19:55:14.048Z",
-      "finishedAt": "2026-11-09T19:55:19.189Z",
+      "startedAt": "2026-11-09T20:10:18.582Z",
+      "finishedAt": "2026-11-09T20:10:22.665Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1697689902",
+          "claimedZat": "1704635057",
           "chainZat": "1708361814",
           "notListedYetZat": "3726757",
-          "verdict": "differs from the chain"
+          "verdict": "matches the chain"
         },
         "saplingBurn": {
           "onChain": 226839302.23360395,
@@ -812,21 +813,19 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": [
-          "Sapling's headline says 1697689902 zat bought back; the pot paid 1708361814 zat on chain (3726757 of it not listed yet)"
-        ]
+        "notes": []
       }
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-09T19:38:11.005Z",
-      "finishedAt": "2026-11-09T19:38:58.078Z",
+      "startedAt": "2026-11-09T20:10:22.668Z",
+      "finishedAt": "2026-11-09T20:11:15.312Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "coins": 520,
+        "coins": 522,
         "carded": 10,
         "refreshed": 10,
         "flagged": 9,
@@ -837,7 +836,7 @@
           "Creator bought N of supply at launch": 1
         },
         "notes": [
-          "creator scan: 8 coin(s) read this run, 520 of 520 read so far (0 launched shielded, creator not public)",
+          "creator scan: 16 coin(s) read this run, 522 of 522 read so far (0 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
           "29 shortlisted coin(s) were under $10,000 on their own page, so no card",
           "15 wallet(s) are in the top 10 of more than one coin"
@@ -846,8 +845,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-09T19:38:58.080Z",
-      "finishedAt": "2026-11-09T19:39:11.989Z",
+      "startedAt": "2026-11-09T20:11:15.315Z",
+      "finishedAt": "2026-11-09T20:11:29.805Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -857,8 +856,8 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 8237,
-            "withJupiter": 60,
+            "seenInTxs": 8246,
+            "withJupiter": 62,
             "seeds": [
               "upgradeAuthority",
               "admin",
@@ -891,17 +890,17 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 930
+            "seenInTxs": 931
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 920
+            "seenInTxs": 921
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
             "authority": "FytDrVzDybM1TwFQPGb8qaxZR7dBCzNeqT3vtQsceZQK",
-            "seenInTxs": 744
+            "seenInTxs": 746
           },
           {
             "id": "LockrWmn6K5twhz3y9w1dQERbmgSaRkfnTeTKbpofwE",
@@ -916,17 +915,17 @@
           {
             "id": "JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4",
             "authority": "CvQZZ23qYDWF2RUpxYJ8y9K4skmuvYEEjH7fK58jtipQ",
-            "seenInTxs": 62
+            "seenInTxs": 64
           },
           {
             "id": "LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj",
             "authority": "FytDrVzDybM1TwFQPGb8qaxZR7dBCzNeqT3vtQsceZQK",
-            "seenInTxs": 60
+            "seenInTxs": 62
           },
           {
             "id": "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
             "authority": "JADaUV8kvDpDbJr55wxXJHVaBS3VCj8thZZHjfeuCVLd",
-            "seenInTxs": 56
+            "seenInTxs": 58
           },
           {
             "id": "L2TExMFKdjpN9kozasaurPirfHy9P8sbXoAN1qA3S95",
@@ -974,7 +973,7 @@
           "breakingRules": []
         },
         "programsSeen": 24,
-        "txsRead": 9,
+        "txsRead": 10,
         "notes": []
       }
     },
@@ -999,18 +998,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-09T19:55:19.191Z",
-      "finishedAt": "2026-11-09T19:55:22.906Z",
+      "startedAt": "2026-11-09T20:11:29.806Z",
+      "finishedAt": "2026-11-09T20:11:34.117Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 107546.05,
-        "nearSupply": 151310.1,
+        "solanaSupply": 107538.04,
+        "nearSupply": 151501.89,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 189.06118475999392,
+        "change24h": 165.0498755199951,
         "notes": []
       }
     },
