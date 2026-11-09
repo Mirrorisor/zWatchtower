@@ -134,4 +134,17 @@ check("a holder left out of a leg worth far more than an account is flagged, wit
   check("an account cost over half the leg isn't", !accountCostPlausible({ cost: f.cost, opened: 5, bought: f.cost * 9, costZat: 14018 }));
   check("an account cost worth over 100,000 zat isn't", !accountCostPlausible({ cost: 1, opened: 1, bought: 100, costZat: 100001 }));
 }
+
+// run 1742 ($MOOH, 8 Nov): a holder with no ZEC account had their ZEC share skipped but was paid hSOL at the same rate
+{
+  const rows = [{ owner: "A", balance: "1000", share: "16188" }, { owner: "B", balance: "500", share: "7973" }];
+  const skipped = [{ owner: "S", balance: "750", share: "12057" }];
+  const leg = { mint: "he1iusmfkpAdwvxLNGV8Y1iSbj4rUy6yMhEA3fotn9A", bought: 3758014n, from: ["w"], zecIn: 30000n,
+    sent: new Map([["A", 1903277n], ["B", 937235n], ["S", 1417552n]]), opened: new Set() };
+  const paid = 16188n + 7973n + 30000n;
+  const j = judgeBasket({ rows, pot: 100000n, sum: 2250n, paid, unpaidRows: skipped }, { swapWallets: ["w"], zecToSwaps: 30000n, zecBack: 0n, legs: [leg] });
+  check("run 1742: a holder whose ZEC was skipped but who got hSOL in proportion isn't a stranger", !j.problems.some((p) => /not in the payout rows|not paid in proportion/.test(p)), JSON.stringify(j.problems));
+  const j0 = judgeBasket({ rows, pot: 100000n, sum: 2250n, paid }, { swapWallets: ["w"], zecToSwaps: 30000n, zecBack: 0n, legs: [leg] });
+  check("without that row the same payout is a stranger (as before)", j0.problems.some((p) => /not in the payout rows/.test(p)));
+}
 process.exitCode = failures ? 1 : 0;

@@ -292,7 +292,10 @@ async function checkRun(id) {
       // what Sapling paid beyond the ZEC shares went to the swaps
       const otherZat = BigInt(run.paid) - rows.reduce((a, r) => a + BigInt(r.share), 0n);
       const basket = await readBasket(rpc, { zecAta, start: t0 - 2, end: t1 + 2, holders: new Set(payouts.keys()), otherZat: otherZat > 0n ? otherZat : null });
-      const j2 = judgeBasket({ rows, pot, sum, paid: BigInt(run.paid) }, basket);
+      // holders whose ZEC share was skipped (no ZEC account) are still paid the other tokens
+      const unpaidRows = s.holders.map(([owner, balance]) => ({ owner, balance, row: payouts.get(owner) }))
+        .filter((x) => x.row && x.row.status !== "confirmed" && x.row.reason === "no-account").map((x) => ({ owner: x.owner, balance: x.balance, share: x.row.share }));
+      const j2 = judgeBasket({ rows, pot, sum, paid: BigInt(run.paid), unpaidRows }, basket);
       out.basket = j2;
       if (j2.inconclusive) throw new Error(j2.problems[0]);
       if (j2.ok) {

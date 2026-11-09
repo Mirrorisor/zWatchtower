@@ -173,7 +173,7 @@ const xLog = () => existsSync(join(dataDir, "x-posts.jsonl"))
   ? readFileSync(join(dataDir, "x-posts.jsonl"), "utf8").trim().split("\n").map((l) => JSON.parse(l)) : [];
 const upgradeAlerts = (slot) => [`vault program upgraded: last deploy slot ${slot} -> ${slot + 1}`,
   "multisig vault_transaction_execute at 2026-10-31T23:24:37.000Z (54Toh)", "multisig proposal_approve at 2026-10-31T23:22:48.000Z (3cDV)"];
-r = await once({ keys: keysReport(upgradeAlerts(1)), rewards: rewardsReport([115]), float: floatReport() });
+r = await once({ keys: keysReport(upgradeAlerts(1)), rewards: rewardsReport([115]), float: floatReport() }, { X_MAX_PER_DAY: "50" });   // room for the Monday weekly report
 let xs = xLog();
 check("without X keys, posts are only previewed", xs.length >= 1 && xs.every((x) => x.status === "preview") &&
   /Sapling just upgraded its vault program at 23:24 UTC, through its Squads multisig/.test(xs.at(-1).text), JSON.stringify(xs.at(-1)));
