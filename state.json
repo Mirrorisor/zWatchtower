@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-09T05:54:41.152Z",
-      "finishedAt": "2026-11-09T05:54:44.651Z",
+      "startedAt": "2026-11-09T06:00:11.306Z",
+      "finishedAt": "2026-11-09T06:00:14.982Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,11 +21,14 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 8,
-          "sell_tax": 1,
-          "withdraw_tax": 1
+          "settle_tax": 1,
+          "convert_tax_begin": 1,
+          "convert_tax_end": 1,
+          "observe_sapling": 4,
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 2,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -61,8 +64,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-09T05:30:14.894Z",
-      "finishedAt": "2026-11-09T05:31:03.363Z",
+      "startedAt": "2026-11-09T06:00:14.989Z",
+      "finishedAt": "2026-11-09T06:01:02.894Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -71,7 +74,7 @@
         "reward run 1742 MOOH: 43 shares not floor(pot*balance/sum); basket payout doesn't add up: hSOL: sent to 1 wallets not in the payout rows; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-09T05:31:02.474Z",
+        "checkedAt": "2026-11-09T06:01:01.849Z",
         "runs": 9,
         "passed": 6,
         "flagged": 3,
@@ -1216,8 +1219,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-09T05:44:41.651Z",
-      "finishedAt": "2026-11-09T05:44:42.589Z",
+      "startedAt": "2026-11-09T06:01:02.896Z",
+      "finishedAt": "2026-11-09T06:01:04.317Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1228,8 +1231,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 682.439786045,
-        "saplingInPool": 53647326.402617,
-        "zecInPool": 136.68312952,
+        "saplingInPool": 53671680.430985,
+        "zecInPool": 136.62114796,
         "zecAddedSaplingSays": 105.71002929,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
