@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-09T12:50:11.232Z",
-      "finishedAt": "2026-11-09T12:50:14.319Z",
+      "startedAt": "2026-11-09T12:55:06.369Z",
+      "finishedAt": "2026-11-09T12:55:10.084Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,16 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "draw_zec_payee": 1,
-          "settle": 1,
-          "claim_payee": 1,
-          "observe_sapling": 4,
-          "draw_pool_pot": 1,
-          "protocol_pool_deposit": 1,
-          "close_pool_pot": 1,
-          "protocol_pool_lock": 1
+          "observe_sapling": 4
         },
-        "unrecognised": 5,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -813,8 +806,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-09T12:40:14.767Z",
-      "finishedAt": "2026-11-09T12:40:16.930Z",
+      "startedAt": "2026-11-09T12:55:10.090Z",
+      "finishedAt": "2026-11-09T12:55:12.754Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -833,8 +826,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-09T12:40:16.933Z",
-      "finishedAt": "2026-11-09T12:40:21.881Z",
+      "startedAt": "2026-11-09T12:55:12.757Z",
+      "finishedAt": "2026-11-09T12:55:18.083Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -846,7 +839,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 226789933.76651,
+          "onChain": 226791191.16433406,
           "claimed": 226790000,
           "diffPct": 0,
           "verdict": "matches"
@@ -1158,18 +1151,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-09T12:41:18.464Z",
-      "finishedAt": "2026-11-09T12:41:22.817Z",
+      "startedAt": "2026-11-09T12:55:18.086Z",
+      "finishedAt": "2026-11-09T12:55:22.278Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 107516.76,
-        "nearSupply": 150323.35,
+        "solanaSupply": 107516.75,
+        "nearSupply": 150316.51,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 190.59829646999424,
+        "change24h": 190.58654790998844,
         "notes": []
       }
     },
