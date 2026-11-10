@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-10T06:54:56.258Z",
-      "finishedAt": "2026-11-10T06:55:00.552Z",
+      "startedAt": "2026-11-10T07:00:04.418Z",
+      "finishedAt": "2026-11-10T07:00:07.379Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 8
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -59,8 +59,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-10T06:30:05.345Z",
-      "finishedAt": "2026-11-10T06:30:53.367Z",
+      "startedAt": "2026-11-10T07:00:07.387Z",
+      "finishedAt": "2026-11-10T07:00:54.886Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -68,7 +68,7 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-10T06:30:52.686Z",
+        "checkedAt": "2026-11-10T07:00:53.644Z",
         "runs": 8,
         "passed": 6,
         "flagged": 3,
@@ -1060,8 +1060,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-10T06:44:47.012Z",
-      "finishedAt": "2026-11-10T06:44:48.178Z",
+      "startedAt": "2026-11-10T07:00:54.890Z",
+      "finishedAt": "2026-11-10T07:00:56.301Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1072,8 +1072,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 682.745874425,
-        "saplingInPool": 56559725.701852,
-        "zecInPool": 129.76570383,
+        "saplingInPool": 56559319.320695,
+        "zecInPool": 129.76665748,
         "zecAddedSaplingSays": 106.80484221,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
