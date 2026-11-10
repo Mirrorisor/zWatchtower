@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-10T06:25:02.193Z",
-      "finishedAt": "2026-11-10T06:25:05.240Z",
+      "startedAt": "2026-11-10T06:30:02.395Z",
+      "finishedAt": "2026-11-10T06:30:05.340Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,8 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle": 1
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -60,8 +59,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-10T06:00:06.559Z",
-      "finishedAt": "2026-11-10T06:00:56.991Z",
+      "startedAt": "2026-11-10T06:30:05.345Z",
+      "finishedAt": "2026-11-10T06:30:53.367Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -69,18 +68,17 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-10T06:00:55.876Z",
-        "runs": 9,
-        "passed": 7,
+        "checkedAt": "2026-11-10T06:30:52.686Z",
+        "runs": 8,
+        "passed": 6,
         "flagged": 3,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.38926560",
+        "zecPaidInDoneRuns": "0.34673267",
         "onChainChecks": true,
         "checkedIds": [
           1491,
           1573,
-          1763,
           1764,
           1765,
           1766,
@@ -101,8 +99,8 @@
             ]
           }
         ],
-        "distinctReleases": 9,
-        "runsWithRelease": 9,
+        "distinctReleases": 8,
+        "runsWithRelease": 8,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -1016,8 +1014,8 @@
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-10T05:15:14.243Z",
-      "finishedAt": "2026-11-10T05:29:11.941Z",
+      "startedAt": "2026-11-10T06:30:53.369Z",
+      "finishedAt": "2026-11-10T06:44:47.010Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1039,8 +1037,8 @@
     },
     "split": {
       "check": "split",
-      "startedAt": "2026-11-10T05:29:19.924Z",
-      "finishedAt": "2026-11-10T05:29:22.457Z",
+      "startedAt": "2026-11-10T06:44:55.735Z",
+      "finishedAt": "2026-11-10T06:44:57.910Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1050,7 +1048,7 @@
         "saplingSharePct": 10.42,
         "backPct": 89.58,
         "checks": [
-          "holders: matches (Sapling 183.38, ours 183.3396)",
+          "holders: matches (Sapling 183.41, ours 183.3768)",
           "donated: matches (Sapling 7.9, ours 7.8962)",
           "flywheel: matches (Sapling 17.08, ours 17.0836)",
           "payees: matches (Sapling 48.3, ours 19.0419, lower bound)"
@@ -1062,8 +1060,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-10T06:15:10.307Z",
-      "finishedAt": "2026-11-10T06:15:11.761Z",
+      "startedAt": "2026-11-10T06:44:47.012Z",
+      "finishedAt": "2026-11-10T06:44:48.178Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1073,10 +1071,10 @@
         "lpMint": "4A2HF17mm2Mf1yJ28hANemPDBHMKSF6Az5yzKF6WMtBW",
         "lpSupply": "0",
         "burned": true,
-        "lpShares": 682.616589732,
-        "saplingInPool": 56557810.696846,
-        "zecInPool": 129.72043045,
-        "zecAddedSaplingSays": 106.75519423,
+        "lpShares": 682.745874425,
+        "saplingInPool": 56559725.701852,
+        "zecInPool": 129.76570383,
+        "zecAddedSaplingSays": 106.80484221,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
         "notes": []
@@ -1084,8 +1082,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-10T06:00:58.606Z",
-      "finishedAt": "2026-11-10T06:01:07.561Z",
+      "startedAt": "2026-11-10T06:44:48.180Z",
+      "finishedAt": "2026-11-10T06:44:55.733Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1222,7 +1220,7 @@
     "quotes": {}
   },
   "rewardsMaxRun": 1769,
-  "rewardsFrom": 1763,
+  "rewardsFrom": 1764,
   "x": {
     "day": "2026-11-09",
     "today": 5,
