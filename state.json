@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-10T18:20:11.358Z",
-      "finishedAt": "2026-11-10T18:20:14.397Z",
+      "startedAt": "2026-11-10T18:25:02.892Z",
+      "finishedAt": "2026-11-10T18:25:05.533Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -20,9 +20,7 @@
           "admin",
           "recovery"
         ],
-        "vaultInstructions": {
-          "observe_sapling": 3
-        },
+        "vaultInstructions": {},
         "unrecognised": 0,
         "baseline": false,
         "multisig": {
@@ -640,8 +638,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-10T18:07:47.469Z",
-      "finishedAt": "2026-11-10T18:07:50.042Z",
+      "startedAt": "2026-11-10T18:25:05.538Z",
+      "finishedAt": "2026-11-10T18:25:07.972Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -660,17 +658,19 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-10T18:07:50.043Z",
-      "finishedAt": "2026-11-10T18:07:55.603Z",
+      "startedAt": "2026-11-10T18:25:07.974Z",
+      "finishedAt": "2026-11-10T18:25:12.348Z",
       "status": "ran",
-      "ok": true,
-      "alerts": [],
+      "ok": false,
+      "alerts": [
+        "flywheel pot holds 342339 zat but the movements seen add up to 0"
+      ],
       "summary": {
         "headline": {
-          "claimedZat": "1714641659",
+          "claimedZat": "1708361814",
           "chainZat": "1719647668",
           "notListedYetZat": "5006009",
-          "verdict": "matches the chain"
+          "verdict": "differs from the chain"
         },
         "saplingBurn": {
           "onChain": 226921639.58713198,
@@ -781,8 +781,8 @@
           }
         },
         "pot": {
-          "balanceZat": "0",
-          "shownZat": "0",
+          "balanceZat": "342339",
+          "shownZat": "342339",
           "inflowZat": "1719572484",
           "buybackZat": "1719647668",
           "movements": {
@@ -792,7 +792,7 @@
             "other": 1,
             "failed": 1
           },
-          "reconciled": true,
+          "reconciled": false,
           "caughtUp": true
         },
         "signers": [
@@ -800,7 +800,9 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": []
+        "notes": [
+          "Sapling's headline says 1708361814 zat bought back; the pot paid 1719647668 zat on chain (5006009 of it not listed yet)"
+        ]
       }
     },
     "coins": {
@@ -987,18 +989,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-10T18:09:15.756Z",
-      "finishedAt": "2026-11-10T18:09:19.496Z",
+      "startedAt": "2026-11-10T18:25:12.790Z",
+      "finishedAt": "2026-11-10T18:25:16.733Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 108871.97,
-        "nearSupply": 152923.44,
+        "nearSupply": 152934.48,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 1314.1617816100043,
+        "change24h": 1316.216351449999,
         "notes": []
       }
     },
@@ -1199,7 +1201,9 @@
     },
     "float": {},
     "tax": {},
-    "flywheel": {},
+    "flywheel": {
+      "flywheel pot holds 342339 zat but the movements seen add up to 0": "2026-11-10T18:25:12.348Z"
+    },
     "coins": {},
     "programs": {},
     "earnings": {},
@@ -1213,8 +1217,8 @@
   "rewardsFrom": 1769,
   "x": {
     "day": "2026-11-10",
-    "today": 2,
-    "thisRun": 0
+    "today": 3,
+    "thisRun": 1
   },
   "xSummaryDay": "2026-11-04",
   "rewardsRechecked": [
