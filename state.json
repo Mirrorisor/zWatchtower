@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-10T18:50:11.328Z",
-      "finishedAt": "2026-11-10T18:50:26.443Z",
+      "startedAt": "2026-11-10T18:55:08.356Z",
+      "finishedAt": "2026-11-10T18:55:18.672Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,19 +21,11 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 25,
-          "close_rewards_run": 1,
-          "release_rewards": 1,
-          "settle": 3,
-          "claim_payee": 1,
-          "settle_tax": 2,
-          "convert_tax_begin": 2,
-          "convert_tax_end": 2,
-          "settle_sapling": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1
+          "observe_sapling": 4,
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1
         },
-        "unrecognised": 6,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -649,8 +641,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-10T18:40:14.093Z",
-      "finishedAt": "2026-11-10T18:40:16.741Z",
+      "startedAt": "2026-11-10T18:55:18.681Z",
+      "finishedAt": "2026-11-10T18:55:22.741Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -669,13 +661,11 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-10T18:40:16.745Z",
-      "finishedAt": "2026-11-10T18:40:22.477Z",
+      "startedAt": "2026-11-10T18:55:22.744Z",
+      "finishedAt": "2026-11-10T18:55:30.248Z",
       "status": "ran",
-      "ok": false,
-      "alerts": [
-        "flywheel pot holds 574202 zat but the movements seen add up to 0"
-      ],
+      "ok": true,
+      "alerts": [],
       "summary": {
         "headline": {
           "claimedZat": "1719647668",
@@ -684,8 +674,8 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 226924102.72398496,
-          "claimed": 226920000,
+          "onChain": 226926040.01606703,
+          "claimed": 226930000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -794,16 +784,16 @@
         "pot": {
           "balanceZat": "574202",
           "shownZat": "574202",
-          "inflowZat": "1719572484",
+          "inflowZat": "1720146686",
           "buybackZat": "1719647668",
           "movements": {
             "setup": 1,
-            "inflow": 3531,
+            "inflow": 3533,
             "buyback": 368,
             "other": 1,
             "failed": 1
           },
-          "reconciled": false,
+          "reconciled": true,
           "caughtUp": true
         },
         "signers": [
@@ -995,18 +985,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-10T18:41:20.981Z",
-      "finishedAt": "2026-11-10T18:41:24.992Z",
+      "startedAt": "2026-11-10T18:55:30.798Z",
+      "finishedAt": "2026-11-10T18:55:35.139Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 108879.96,
-        "nearSupply": 153054.36,
+        "nearSupply": 153061.12,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 1330.1420040399971,
+        "change24h": 1330.14200403,
         "notes": []
       }
     },
@@ -1207,9 +1197,7 @@
     },
     "float": {},
     "tax": {},
-    "flywheel": {
-      "flywheel pot holds 574202 zat but the movements seen add up to 0": "2026-11-10T18:40:22.477Z"
-    },
+    "flywheel": {},
     "coins": {},
     "programs": {},
     "earnings": {},
@@ -1223,8 +1211,8 @@
   "rewardsFrom": 1770,
   "x": {
     "day": "2026-11-10",
-    "today": 5,
-    "thisRun": 0
+    "today": 6,
+    "thisRun": 1
   },
   "xSummaryDay": "2026-11-04",
   "rewardsRechecked": [
