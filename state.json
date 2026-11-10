@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-10T02:05:01.566Z",
-      "finishedAt": "2026-11-10T02:05:05.160Z",
+      "startedAt": "2026-11-10T02:10:04.014Z",
+      "finishedAt": "2026-11-10T02:10:07.525Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,8 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle": 1
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -666,8 +665,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-10T01:53:12.581Z",
-      "finishedAt": "2026-11-10T01:53:13.811Z",
+      "startedAt": "2026-11-10T02:10:07.532Z",
+      "finishedAt": "2026-11-10T02:10:10.604Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -686,8 +685,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-10T01:53:13.814Z",
-      "finishedAt": "2026-11-10T01:53:18.193Z",
+      "startedAt": "2026-11-10T02:10:10.607Z",
+      "finishedAt": "2026-11-10T02:10:16.228Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -700,7 +699,7 @@
         },
         "saplingBurn": {
           "onChain": 226855875.419106,
-          "claimed": 226850000,
+          "claimed": 226860000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -1011,18 +1010,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-10T01:55:32.816Z",
-      "finishedAt": "2026-11-10T01:55:36.808Z",
+      "startedAt": "2026-11-10T02:10:16.231Z",
+      "finishedAt": "2026-11-10T02:10:20.077Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 107278.48,
-        "nearSupply": 151611.81,
+        "nearSupply": 151615.72,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": -147.91437869999208,
+        "change24h": -147.91425366999465,
         "notes": []
       }
     },
