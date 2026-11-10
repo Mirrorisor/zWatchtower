@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-10T01:55:46.795Z",
-      "finishedAt": "2026-11-10T01:55:53.083Z",
+      "startedAt": "2026-11-10T02:00:03.328Z",
+      "finishedAt": "2026-11-10T02:00:06.763Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,13 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 7,
-          "close_rewards_run": 1,
-          "release_rewards": 1,
-          "settle": 2,
-          "settle_tax": 1,
-          "sell_tax": 1,
-          "withdraw_tax": 1
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -65,8 +59,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-10T01:30:14.607Z",
-      "finishedAt": "2026-11-10T01:31:20.204Z",
+      "startedAt": "2026-11-10T02:00:06.768Z",
+      "finishedAt": "2026-11-10T02:01:31.254Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -74,13 +68,13 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-10T01:31:13.095Z",
-        "runs": 8,
-        "passed": 6,
-        "flagged": 3,
+        "checkedAt": "2026-11-10T02:01:30.361Z",
+        "runs": 11,
+        "passed": 9,
+        "flagged": 4,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.68163195",
+        "zecPaidInDoneRuns": "0.75946372",
         "onChainChecks": true,
         "checkedIds": [
           1491,
@@ -90,7 +84,10 @@
           1761,
           1762,
           1763,
-          1764
+          1764,
+          1765,
+          1766,
+          1767
         ],
         "inProgressIds": [],
         "baskets": [
@@ -102,10 +99,20 @@
               "hSOL",
               "NEAR"
             ]
+          },
+          {
+            "id": 1767,
+            "mint": "B7h7XLtQMTWMNTzrt35TnRVixsi93vCpDuGLK4Rzcash",
+            "tokens": [
+              "ZEC",
+              "$SAPLING",
+              "hSOL",
+              "CYPH"
+            ]
           }
         ],
-        "distinctReleases": 8,
-        "runsWithRelease": 8,
+        "distinctReleases": 11,
+        "runsWithRelease": 11,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -274,7 +281,8 @@
           "topUnknown": []
         },
         "notes": [
-          "run 1761: paid as a basket of 3 tokens (ZEC, hSOL, NEAR): every holder got each token in proportion to their share"
+          "run 1761: paid as a basket of 3 tokens (ZEC, hSOL, NEAR): every holder got each token in proportion to their share",
+          "run 1767: paid as a basket of 4 tokens (ZEC, $SAPLING, hSOL, CYPH): every holder got each token in proportion to their share"
         ],
         "diagnoses": [
           {
@@ -584,7 +592,7 @@
           }
         ],
         "batchGroups": null,
-        "maxRunId": 1764
+        "maxRunId": 1767
       }
     },
     "float": {
@@ -1065,8 +1073,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-10T01:45:17.825Z",
-      "finishedAt": "2026-11-10T01:45:18.827Z",
+      "startedAt": "2026-11-10T02:01:31.257Z",
+      "finishedAt": "2026-11-10T02:01:32.835Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1077,8 +1085,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 682.616589732,
-        "saplingInPool": 54787335.600229,
-        "zecInPool": 133.9858534,
+        "saplingInPool": 55077301.259653,
+        "zecInPool": 133.27870217,
         "zecAddedSaplingSays": 106.75519423,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
@@ -1224,7 +1232,7 @@
     "liquidity": {},
     "quotes": {}
   },
-  "rewardsMaxRun": 1764,
+  "rewardsMaxRun": 1767,
   "rewardsFrom": 1759,
   "x": {
     "day": "2026-11-09",
@@ -1249,11 +1257,11 @@
     "B7h7XLtQMTWMNTzrt35TnRVixsi93vCpDuGLK4Rzcash": {
       "tokens": [
         "ZEC",
-        "hSOL",
         "$SAPLING",
+        "hSOL",
         "CYPH"
       ],
-      "run": 1681
+      "run": 1767
     },
     "Akb4fZz47pR1BGxGKwuTwMNbwXWRmf3dxmuqtmDzcash": {
       "tokens": [
