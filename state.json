@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-10T18:35:05.445Z",
-      "finishedAt": "2026-11-10T18:35:08.620Z",
+      "startedAt": "2026-11-10T18:40:11.313Z",
+      "finishedAt": "2026-11-10T18:40:14.087Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -637,8 +637,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-10T18:25:05.538Z",
-      "finishedAt": "2026-11-10T18:25:07.972Z",
+      "startedAt": "2026-11-10T18:40:14.093Z",
+      "finishedAt": "2026-11-10T18:40:16.741Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -657,35 +657,35 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-10T18:25:07.974Z",
-      "finishedAt": "2026-11-10T18:25:12.348Z",
+      "startedAt": "2026-11-10T18:40:16.745Z",
+      "finishedAt": "2026-11-10T18:40:22.477Z",
       "status": "ran",
       "ok": false,
       "alerts": [
-        "flywheel pot holds 342339 zat but the movements seen add up to 0"
+        "flywheel pot holds 574202 zat but the movements seen add up to 0"
       ],
       "summary": {
         "headline": {
-          "claimedZat": "1708361814",
+          "claimedZat": "1719647668",
           "chainZat": "1719647668",
-          "notListedYetZat": "5006009",
-          "verdict": "differs from the chain"
+          "notListedYetZat": "0",
+          "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 226921639.58713198,
+          "onChain": 226924102.72398496,
           "claimed": 226920000,
           "diffPct": 0,
           "verdict": "matches"
         },
-        "burns": 296,
-        "burnsVerified": 296,
-        "boughtBackZat": "1522796288",
+        "burns": 297,
+        "burnsVerified": 297,
+        "boughtBackZat": "1527802297",
         "venues": {
           "pump amm": 161,
           "raydium cpmm": 67,
           "raydium launchlab": 10,
           "pump bonding curve": 1,
-          "jupiter": 57
+          "jupiter": 58
         },
         "perCoin": {
           "0": {
@@ -695,8 +695,8 @@
           },
           "1993": {
             "mint": "7Ypg1rKLu8q32E1AQEDjaPCg8dfGeCSsMkFnK98zcash",
-            "burns": 56,
-            "zat": "258140052"
+            "burns": 57,
+            "zat": "263146061"
           },
           "ZILLIONS": {
             "mint": "3sKZuSZF7onqPYFrWu3bH4Lh141duydt9MAmSd46jaLJ",
@@ -780,8 +780,8 @@
           }
         },
         "pot": {
-          "balanceZat": "342339",
-          "shownZat": "342339",
+          "balanceZat": "574202",
+          "shownZat": "574202",
           "inflowZat": "1719572484",
           "buybackZat": "1719647668",
           "movements": {
@@ -799,22 +799,17 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": [
-          "Sapling's headline says 1708361814 zat bought back; the pot paid 1719647668 zat on chain (5006009 of it not listed yet)"
-        ]
+        "notes": []
       }
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-10T18:07:55.606Z",
-      "finishedAt": "2026-11-10T18:08:47.248Z",
+      "startedAt": "2026-11-10T18:40:22.980Z",
+      "finishedAt": "2026-11-10T18:41:09.595Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
-      "events": [
-        "New coin $HCAT (6bbE…cash) was launched by a creator who sold out of 11 of their 12 other Sapling coins checked ($**, $NU7, $ZIPZAP…). It copies the name of an older coin, $HCAT (3kPk…cash).",
-        "$HCAT (6bbE…cash, $19.1k) just passed $10.0k market cap with 2 flags: Creator has sold 100% of what they bought; Creator sold out of 11 of their 12 other coins checked."
-      ],
+      "events": [],
       "summary": {
         "coins": 528,
         "carded": 9,
@@ -826,8 +821,8 @@
           "Creator sold out of N of their N other coins checked": 4
         },
         "notes": [
-          "creator scan: 12 coin(s) read this run, 528 of 528 read so far (0 launched shielded, creator not public)",
-          "first-buyer funding: 3 wallet(s) looked up this run",
+          "creator scan: 13 coin(s) read this run, 528 of 528 read so far (0 launched shielded, creator not public)",
+          "first-buyer funding: 0 wallet(s) looked up this run",
           "31 shortlisted coin(s) were under $10,000 on their own page, so no card",
           "10 wallet(s) are in the top 10 of more than one coin"
         ]
@@ -835,8 +830,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-10T18:08:47.743Z",
-      "finishedAt": "2026-11-10T18:09:09.998Z",
+      "startedAt": "2026-11-10T18:41:09.597Z",
+      "finishedAt": "2026-11-10T18:41:20.978Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -846,7 +841,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 8537,
+            "seenInTxs": 8538,
             "withJupiter": 66,
             "seeds": [
               "upgradeAuthority",
@@ -963,7 +958,7 @@
           "breakingRules": []
         },
         "programsSeen": 24,
-        "txsRead": 36,
+        "txsRead": 1,
         "notes": []
       }
     },
@@ -988,18 +983,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-10T18:25:12.790Z",
-      "finishedAt": "2026-11-10T18:25:16.733Z",
+      "startedAt": "2026-11-10T18:41:20.981Z",
+      "finishedAt": "2026-11-10T18:41:24.992Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 108871.97,
-        "nearSupply": 152934.48,
+        "solanaSupply": 108879.96,
+        "nearSupply": 153054.36,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 1316.216351449999,
+        "change24h": 1330.1420040399971,
         "notes": []
       }
     },
@@ -1201,7 +1196,7 @@
     "float": {},
     "tax": {},
     "flywheel": {
-      "flywheel pot holds 342339 zat but the movements seen add up to 0": "2026-11-10T18:25:12.348Z"
+      "flywheel pot holds 574202 zat but the movements seen add up to 0": "2026-11-10T18:40:22.477Z"
     },
     "coins": {},
     "programs": {},
@@ -1216,8 +1211,8 @@
   "rewardsFrom": 1770,
   "x": {
     "day": "2026-11-10",
-    "today": 3,
-    "thisRun": 0
+    "today": 5,
+    "thisRun": 2
   },
   "xSummaryDay": "2026-11-04",
   "rewardsRechecked": [

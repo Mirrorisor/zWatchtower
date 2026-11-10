@@ -1967,3 +1967,5 @@
 {"check":"programs","at":"2026-11-09T00:54:00.628Z","type":"resolved","text":"program GzMQc5VQGggFnicdAKc7MmkQV3dn3i12ux9dbLKqzy6F upgraded: last deploy slot 467079096 -> 467103280"}
 {"check":"rewards","at":"2026-11-09T14:00:56.309Z","type":"withdrawn","text":"reward run 1742 MOOH: 43 shares not floor(pot*balance/sum); basket payout doesn't add up: hSOL: sent to 1 wallets not in the payout rows; paid != confirmed shares - rent","reason":"the run pays holders in several tokens; zWatchtower counted only the ZEC. Every holder got every token in proportion (see CORRECTIONS.md)"}
 {"check":"flywheel","at":"2026-11-10T18:25:12.348Z","type":"raised","text":"flywheel pot holds 342339 zat but the movements seen add up to 0"}
+{"check":"flywheel","at":"2026-11-10T18:40:22.477Z","type":"raised","text":"flywheel pot holds 574202 zat but the movements seen add up to 0"}
+{"check":"flywheel","at":"2026-11-10T18:40:22.477Z","type":"resolved","text":"flywheel pot holds 342339 zat but the movements seen add up to 0"}
