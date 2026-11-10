@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-10T15:05:03.634Z",
-      "finishedAt": "2026-11-10T15:05:07.206Z",
+      "startedAt": "2026-11-10T15:10:11.462Z",
+      "finishedAt": "2026-11-10T15:10:13.748Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,10 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "close_rewards_run": 1,
-          "release_rewards": 1,
-          "settle": 1
+          "observe_sapling": 3,
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -656,15 +655,15 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-10T14:55:12.613Z",
-      "finishedAt": "2026-11-10T14:55:15.328Z",
+      "startedAt": "2026-11-10T15:10:13.758Z",
+      "finishedAt": "2026-11-10T15:10:15.226Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "coins": 141,
-        "matching": 141,
-        "feeChangeable": 136,
+        "coins": 142,
+        "matching": 142,
+        "feeChangeable": 137,
         "feeRenounced": 5,
         "advertisedRange": [
           200,
@@ -676,8 +675,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-10T14:55:15.330Z",
-      "finishedAt": "2026-11-10T14:55:19.468Z",
+      "startedAt": "2026-11-10T15:10:15.227Z",
+      "finishedAt": "2026-11-10T15:10:19.205Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1001,18 +1000,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-10T14:56:22.577Z",
-      "finishedAt": "2026-11-10T14:56:26.339Z",
+      "startedAt": "2026-11-10T15:10:19.207Z",
+      "finishedAt": "2026-11-10T15:10:23.232Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 107337.29,
-        "nearSupply": 151387.16,
+        "solanaSupply": 107353.44,
+        "nearSupply": 151400.21,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": -220.43993007000245,
+        "change24h": -204.28980184000102,
         "notes": []
       }
     },
