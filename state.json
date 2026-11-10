@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-10T18:25:02.892Z",
-      "finishedAt": "2026-11-10T18:25:05.533Z",
+      "startedAt": "2026-11-10T18:30:11.296Z",
+      "finishedAt": "2026-11-10T18:30:13.428Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -57,8 +57,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-10T17:59:40.149Z",
-      "finishedAt": "2026-11-10T18:00:18.581Z",
+      "startedAt": "2026-11-10T18:30:13.434Z",
+      "finishedAt": "2026-11-10T18:30:50.432Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -66,18 +66,17 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-10T18:00:17.729Z",
-        "runs": 9,
-        "passed": 7,
+        "checkedAt": "2026-11-10T18:30:49.574Z",
+        "runs": 8,
+        "passed": 6,
         "flagged": 2,
         "unchecked": 0,
         "firstUnchecked": null,
-        "zecPaidInDoneRuns": "0.47241237",
+        "zecPaidInDoneRuns": "0.43519911",
         "onChainChecks": true,
         "checkedIds": [
           1491,
           1573,
-          1769,
           1770,
           1771,
           1772,
@@ -87,8 +86,8 @@
         ],
         "inProgressIds": [],
         "baskets": [],
-        "distinctReleases": 9,
-        "runsWithRelease": 9,
+        "distinctReleases": 8,
+        "runsWithRelease": 8,
         "followTheMoney": {
           "run": 1491,
           "holdings": {
@@ -1052,8 +1051,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-10T18:15:14.220Z",
-      "finishedAt": "2026-11-10T18:15:15.473Z",
+      "startedAt": "2026-11-10T18:30:50.435Z",
+      "finishedAt": "2026-11-10T18:30:51.861Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1064,8 +1063,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 682.745874425,
-        "saplingInPool": 60573342.570352,
-        "zecInPool": 121.20921557,
+        "saplingInPool": 60776927.226249,
+        "zecInPool": 120.80240151,
         "zecAddedSaplingSays": 106.80484221,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
@@ -1074,8 +1073,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-10T17:59:15.275Z",
-      "finishedAt": "2026-11-10T17:59:22.468Z",
+      "startedAt": "2026-11-10T18:30:51.863Z",
+      "finishedAt": "2026-11-10T18:31:01.483Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1214,11 +1213,11 @@
     "quotes": {}
   },
   "rewardsMaxRun": 1775,
-  "rewardsFrom": 1769,
+  "rewardsFrom": 1770,
   "x": {
     "day": "2026-11-10",
     "today": 3,
-    "thisRun": 1
+    "thisRun": 0
   },
   "xSummaryDay": "2026-11-04",
   "rewardsRechecked": [
