@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-10T20:15:11.218Z",
-      "finishedAt": "2026-11-10T20:15:13.618Z",
+      "startedAt": "2026-11-10T20:20:02.821Z",
+      "finishedAt": "2026-11-10T20:20:07.863Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
-        "configSha256": "ee16c265ef8856a3fffbd7e784d3576609ada59b7669f383feef3552075deb63",
+        "configSha256": "8a76639cca23efa39e77c2ddc8e6c93cf9a607ca23087830d7680f029b7c78a4",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -21,9 +21,14 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "close_rewards_run": 1,
+          "observe_sapling": 4,
+          "release_rewards": 1,
+          "draw_lp": 1,
+          "settle": 5,
+          "settle_sapling": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -984,18 +989,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-10T20:06:12.559Z",
-      "finishedAt": "2026-11-10T20:06:16.347Z",
+      "startedAt": "2026-11-10T20:20:07.870Z",
+      "finishedAt": "2026-11-10T20:20:11.868Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 108879.97,
-        "nearSupply": 153066.69,
+        "solanaSupply": 108880.38,
+        "nearSupply": 153024.5,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 1341.9239808400016,
+        "change24h": 1342.3421206700004,
         "notes": []
       }
     },
