@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-11T23:40:05.024Z",
-      "finishedAt": "2026-11-11T23:40:07.930Z",
+      "startedAt": "2026-11-11T23:45:10.923Z",
+      "finishedAt": "2026-11-11T23:45:15.783Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 3,
-          "collect_pool_fees": 2,
-          "collect_creator_fee": 1
+          "observe_sapling": 4,
+          "settle": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -61,8 +60,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-11T23:15:14.802Z",
-      "finishedAt": "2026-11-11T23:15:55.840Z",
+      "startedAt": "2026-11-11T23:45:15.790Z",
+      "finishedAt": "2026-11-11T23:46:01.248Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -70,7 +69,7 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-11T23:15:54.980Z",
+        "checkedAt": "2026-11-11T23:46:00.470Z",
         "runs": 8,
         "passed": 6,
         "flagged": 2,
@@ -1060,8 +1059,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-11T23:30:10.472Z",
-      "finishedAt": "2026-11-11T23:30:11.740Z",
+      "startedAt": "2026-11-11T23:46:01.250Z",
+      "finishedAt": "2026-11-11T23:46:02.669Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1072,8 +1071,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 683.32170051,
-        "saplingInPool": 67899455.853588,
-        "zecInPool": 108.17474805,
+        "saplingInPool": 67622331.055073,
+        "zecInPool": 108.63362578,
         "zecAddedSaplingSays": 106.98169885,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
