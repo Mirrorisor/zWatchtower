@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-11T16:20:07.753Z",
-      "finishedAt": "2026-11-11T16:20:11.128Z",
+      "startedAt": "2026-11-11T16:25:11.279Z",
+      "finishedAt": "2026-11-11T16:25:14.340Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 5,
+          "settle": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -1010,8 +1011,8 @@
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-11T15:10:44.031Z",
-      "finishedAt": "2026-11-11T15:24:48.148Z",
+      "startedAt": "2026-11-11T16:25:14.346Z",
+      "finishedAt": "2026-11-11T16:39:08.751Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1033,8 +1034,8 @@
     },
     "split": {
       "check": "split",
-      "startedAt": "2026-11-11T15:24:55.641Z",
-      "finishedAt": "2026-11-11T15:24:58.379Z",
+      "startedAt": "2026-11-11T16:39:17.823Z",
+      "finishedAt": "2026-11-11T16:39:20.227Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1056,8 +1057,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-11T16:10:53.577Z",
-      "finishedAt": "2026-11-11T16:10:54.784Z",
+      "startedAt": "2026-11-11T16:39:08.753Z",
+      "finishedAt": "2026-11-11T16:39:09.884Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1068,8 +1069,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 683.189288041,
-        "saplingInPool": 63783902.491315,
-        "zecInPool": 115.23313936,
+        "saplingInPool": 63568658.331391,
+        "zecInPool": 115.64264764,
         "zecAddedSaplingSays": 106.95635822,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
@@ -1078,8 +1079,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-11T15:55:08.505Z",
-      "finishedAt": "2026-11-11T15:55:15.148Z",
+      "startedAt": "2026-11-11T16:39:09.885Z",
+      "finishedAt": "2026-11-11T16:39:17.820Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
