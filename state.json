@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-11T02:00:02.730Z",
-      "finishedAt": "2026-11-11T02:00:06.492Z",
+      "startedAt": "2026-11-11T02:05:06.030Z",
+      "finishedAt": "2026-11-11T02:05:12.395Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,11 +22,18 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "settle_tax": 2,
-          "sell_tax": 2,
-          "withdraw_tax": 3,
-          "register_launchlab_coin": 1,
-          "declare_payee": 1
+          "settle_tax": 5,
+          "convert_tax_begin": 1,
+          "convert_tax_end": 1,
+          "close_rewards_run": 1,
+          "sell_tax": 5,
+          "withdraw_tax": 5,
+          "release_rewards": 1,
+          "settle": 3,
+          "collect_creator_fee": 1,
+          "collect_pool_fees": 1,
+          "draw_grove": 1,
+          "close_grove": 1
         },
         "unrecognised": 2,
         "baseline": false,
@@ -645,15 +652,15 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-11T01:47:58.033Z",
-      "finishedAt": "2026-11-11T01:47:59.843Z",
+      "startedAt": "2026-11-11T02:05:12.402Z",
+      "finishedAt": "2026-11-11T02:05:13.929Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "coins": 144,
-        "matching": 144,
-        "feeChangeable": 139,
+        "coins": 145,
+        "matching": 145,
+        "feeChangeable": 140,
         "feeRenounced": 5,
         "advertisedRange": [
           200,
@@ -665,22 +672,24 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-11T01:47:59.846Z",
-      "finishedAt": "2026-11-11T01:48:05.768Z",
+      "startedAt": "2026-11-11T02:05:13.932Z",
+      "finishedAt": "2026-11-11T02:05:22.152Z",
       "status": "ran",
-      "ok": true,
-      "alerts": [],
+      "ok": false,
+      "alerts": [
+        "flywheel pot holds 8811635 zat but the movements seen add up to 7122793"
+      ],
       "summary": {
         "headline": {
           "claimedZat": "1726130143",
-          "chainZat": "1726130143",
-          "notListedYetZat": "0",
+          "chainZat": "1732138730",
+          "notListedYetZat": "6008587",
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 226994460.11968994,
+          "onChain": 227053840.86316395,
           "claimed": 226990000,
-          "diffPct": 0,
+          "diffPct": 0.03,
           "verdict": "matches"
         },
         "burns": 299,
@@ -786,18 +795,18 @@
           }
         },
         "pot": {
-          "balanceZat": "0",
-          "shownZat": "0",
-          "inflowZat": "1726054959",
-          "buybackZat": "1726130143",
+          "balanceZat": "8811635",
+          "shownZat": "7122793",
+          "inflowZat": "1739186339",
+          "buybackZat": "1732138730",
           "movements": {
             "setup": 1,
-            "inflow": 3552,
-            "buyback": 370,
+            "inflow": 3559,
+            "buyback": 371,
             "other": 1,
-            "failed": 1
+            "failed": 2
           },
-          "reconciled": true,
+          "reconciled": false,
           "caughtUp": true
         },
         "signers": [
@@ -805,7 +814,9 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": []
+        "notes": [
+          "Sapling shows the pot at 7122793 zat, chain says 8811635 (may be a moment out of date)"
+        ]
       }
     },
     "coins": {
@@ -990,18 +1001,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-11T01:49:16.389Z",
-      "finishedAt": "2026-11-11T01:49:20.497Z",
+      "startedAt": "2026-11-11T02:05:22.644Z",
+      "finishedAt": "2026-11-11T02:05:26.643Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 108925.21,
-        "nearSupply": 152263.63,
+        "solanaSupply": 108975.75,
+        "nearSupply": 152262.37,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 1646.7283711999917,
+        "change24h": 1697.2710227299976,
         "notes": []
       }
     },
@@ -1202,7 +1213,9 @@
     },
     "float": {},
     "tax": {},
-    "flywheel": {},
+    "flywheel": {
+      "flywheel pot holds 8811635 zat but the movements seen add up to 7122793": "2026-11-11T02:05:22.152Z"
+    },
     "coins": {},
     "programs": {},
     "earnings": {},
@@ -1215,9 +1228,9 @@
   "rewardsMaxRun": 1784,
   "rewardsFrom": 1778,
   "x": {
-    "day": "2026-11-10",
-    "today": 6,
-    "thisRun": 0
+    "day": "2026-11-11",
+    "today": 1,
+    "thisRun": 1
   },
   "xSummaryDay": "2026-11-04",
   "rewardsRechecked": [
