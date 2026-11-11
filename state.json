@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-11T01:00:11.396Z",
-      "finishedAt": "2026-11-11T01:00:16.675Z",
+      "startedAt": "2026-11-11T01:05:03.500Z",
+      "finishedAt": "2026-11-11T01:05:09.699Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,9 +22,9 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "settle": 1
+          "collect_protocol_pool_fees": 17
         },
-        "unrecognised": 0,
+        "unrecognised": 17,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -640,8 +640,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-11T00:50:14.534Z",
-      "finishedAt": "2026-11-11T00:50:16.156Z",
+      "startedAt": "2026-11-11T01:05:09.705Z",
+      "finishedAt": "2026-11-11T01:05:11.399Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -660,8 +660,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-11T00:50:16.159Z",
-      "finishedAt": "2026-11-11T00:50:20.473Z",
+      "startedAt": "2026-11-11T01:05:11.400Z",
+      "finishedAt": "2026-11-11T01:05:15.930Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -805,8 +805,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-11T00:33:35.728Z",
-      "finishedAt": "2026-11-11T00:34:21.808Z",
+      "startedAt": "2026-11-11T01:05:15.932Z",
+      "finishedAt": "2026-11-11T01:06:03.224Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -832,8 +832,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-11T00:34:21.812Z",
-      "finishedAt": "2026-11-11T00:34:39.465Z",
+      "startedAt": "2026-11-11T01:06:03.227Z",
+      "finishedAt": "2026-11-11T01:06:21.146Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -843,7 +843,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 8665,
+            "seenInTxs": 8689,
             "withJupiter": 68,
             "seeds": [
               "upgradeAuthority",
@@ -877,22 +877,22 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 989
+            "seenInTxs": 991
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 978
+            "seenInTxs": 980
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
             "authority": "FytDrVzDybM1TwFQPGb8qaxZR7dBCzNeqT3vtQsceZQK",
-            "seenInTxs": 873
+            "seenInTxs": 890
           },
           {
             "id": "LockrWmn6K5twhz3y9w1dQERbmgSaRkfnTeTKbpofwE",
             "authority": "FytDrVzDybM1TwFQPGb8qaxZR7dBCzNeqT3vtQsceZQK",
-            "seenInTxs": 699
+            "seenInTxs": 716
           },
           {
             "id": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
@@ -960,7 +960,7 @@
           "breakingRules": []
         },
         "programsSeen": 24,
-        "txsRead": 23,
+        "txsRead": 26,
         "notes": []
       }
     },
@@ -985,18 +985,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-11T00:50:20.475Z",
-      "finishedAt": "2026-11-11T00:50:24.435Z",
+      "startedAt": "2026-11-11T01:06:21.149Z",
+      "finishedAt": "2026-11-11T01:06:24.959Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 108908.09,
-        "nearSupply": 152393.48,
+        "solanaSupply": 108908.07,
+        "nearSupply": 152392.25,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 1629.492746789998,
+        "change24h": 1629.5145275000104,
         "notes": []
       }
     },
