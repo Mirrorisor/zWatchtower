@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-11T21:20:28.864Z",
-      "finishedAt": "2026-11-11T21:20:32.279Z",
+      "startedAt": "2026-11-11T21:25:10.738Z",
+      "finishedAt": "2026-11-11T21:25:13.894Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,11 +21,14 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "sell_tax": 2,
-          "withdraw_tax": 2,
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "settle_tax": 1,
+          "convert_tax_begin": 1,
+          "convert_tax_end": 1,
+          "settle": 1,
+          "collect_pool_fees": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 2,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -1014,31 +1017,17 @@
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-11T20:10:54.463Z",
-      "finishedAt": "2026-11-11T20:25:30.441Z",
-      "status": "ran",
-      "ok": true,
+      "startedAt": "2026-11-11T21:25:13.901Z",
+      "finishedAt": "2026-11-11T21:45:13.917Z",
+      "status": "error",
+      "ok": null,
       "alerts": [],
-      "events": [],
-      "summary": {
-        "coinsRead": 531,
-        "recipients": {
-          "holders": 276,
-          "wallet": 243,
-          "creator": 3,
-          "zcash-foundation": 9
-        },
-        "donatedZec": 7.89621813,
-        "donationsAddUp": true,
-        "payeeWallets": 100,
-        "baseline": false,
-        "notes": []
-      }
+      "error": "SIGKILL"
     },
     "split": {
       "check": "split",
-      "startedAt": "2026-11-11T20:25:39.040Z",
-      "finishedAt": "2026-11-11T20:25:41.394Z",
+      "startedAt": "2026-11-11T21:45:23.605Z",
+      "finishedAt": "2026-11-11T21:45:26.079Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1048,7 +1037,7 @@
         "saplingSharePct": 10.43,
         "backPct": 89.57,
         "checks": [
-          "holders: matches (Sapling 185.92, ours 185.877)",
+          "holders: matches (Sapling 185.97, ours 185.877)",
           "donated: matches (Sapling 7.9, ours 7.8962)",
           "flywheel: matches (Sapling 17.51, ours 17.5114)",
           "payees: matches (Sapling 48.38, ours 19.0485, lower bound)"
@@ -1060,8 +1049,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-11T21:11:12.706Z",
-      "finishedAt": "2026-11-11T21:11:14.523Z",
+      "startedAt": "2026-11-11T21:45:13.919Z",
+      "finishedAt": "2026-11-11T21:45:15.429Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1072,8 +1061,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 683.32170051,
-        "saplingInPool": 63856633.732354,
-        "zecInPool": 115.17436572,
+        "saplingInPool": 64959069.751991,
+        "zecInPool": 113.20464941,
         "zecAddedSaplingSays": 106.98169885,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
@@ -1082,18 +1071,22 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-11T20:55:17.128Z",
-      "finishedAt": "2026-11-11T20:55:24.586Z",
+      "startedAt": "2026-11-11T21:45:15.431Z",
+      "finishedAt": "2026-11-11T21:45:23.107Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
-      "events": [],
+      "events": [
+        "$AAPLx: its issuer has scheduled balances to be shown ×1.0038023030588032 from 2026-11-12T01:30:00.000Z (a split, or a dividend adjustment if it's small)."
+      ],
       "summary": {
         "tokens": 47,
         "paused": [],
         "withPermanentDelegate": 45,
         "withFreezeAuthority": 45,
-        "scheduledMultiplier": [],
+        "scheduledMultiplier": [
+          "$AAPLx ×1.0038023030588032 2026-11-12T01:30:00.000Z"
+        ],
         "symbols": [
           "$AAPLx",
           "$AMD",
@@ -1223,8 +1216,8 @@
   "rewardsFrom": 1794,
   "x": {
     "day": "2026-11-11",
-    "today": 2,
-    "thisRun": 0
+    "today": 3,
+    "thisRun": 1
   },
   "xSummaryDay": "2026-11-04",
   "rewardsRechecked": [
