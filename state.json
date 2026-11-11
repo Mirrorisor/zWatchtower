@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-11T17:30:03.476Z",
-      "finishedAt": "2026-11-11T17:30:08.580Z",
+      "startedAt": "2026-11-11T17:35:01.692Z",
+      "finishedAt": "2026-11-11T17:35:04.885Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,9 +22,10 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "collect_protocol_pool_fees": 17
+          "sell_tax": 1,
+          "withdraw_tax": 1
         },
-        "unrecognised": 17,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -640,8 +641,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-11T17:20:04.582Z",
-      "finishedAt": "2026-11-11T17:20:06.192Z",
+      "startedAt": "2026-11-11T17:35:04.892Z",
+      "finishedAt": "2026-11-11T17:35:06.562Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -660,8 +661,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-11T17:20:06.194Z",
-      "finishedAt": "2026-11-11T17:20:11.905Z",
+      "startedAt": "2026-11-11T17:35:06.564Z",
+      "finishedAt": "2026-11-11T17:35:15.988Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -994,18 +995,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-11T17:21:14.141Z",
-      "finishedAt": "2026-11-11T17:21:18.133Z",
+      "startedAt": "2026-11-11T17:35:15.989Z",
+      "finishedAt": "2026-11-11T17:35:19.969Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 109772.95,
-        "nearSupply": 152537.64,
+        "nearSupply": 152907.1,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 1141.060783189998,
+        "change24h": 1074.535398439999,
         "notes": []
       }
     },
