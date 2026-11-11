@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-11T19:45:11.257Z",
-      "finishedAt": "2026-11-11T19:45:13.687Z",
+      "startedAt": "2026-11-11T19:50:11.262Z",
+      "finishedAt": "2026-11-11T19:50:14.473Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
-        "configSha256": "a909882e56573b964f54d72256f5f2ebfe2ca19ecd29013cb95c10056c5e9745",
+        "configSha256": "75a7450dd76eb0ffd69d3b5ac786340d26cbdb566a0dde568f00860d2859989d",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -21,9 +21,17 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "collect_pool_fees": 1,
+          "observe_sapling": 4,
+          "close_rewards_run": 1,
+          "release_rewards": 1,
+          "convert_sapling_begin": 1,
+          "convert_sapling_end": 1,
+          "draw_lp": 1,
+          "draw_lp_sapling": 1,
+          "settle": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 3,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -640,15 +648,15 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-11T19:35:14.172Z",
-      "finishedAt": "2026-11-11T19:35:15.897Z",
+      "startedAt": "2026-11-11T19:50:14.479Z",
+      "finishedAt": "2026-11-11T19:50:16.636Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
-        "coins": 145,
-        "matching": 145,
-        "feeChangeable": 140,
+        "coins": 146,
+        "matching": 146,
+        "feeChangeable": 141,
         "feeRenounced": 5,
         "advertisedRange": [
           200,
@@ -660,20 +668,20 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-11T19:35:15.899Z",
-      "finishedAt": "2026-11-11T19:35:21.964Z",
+      "startedAt": "2026-11-11T19:50:16.638Z",
+      "finishedAt": "2026-11-11T19:50:21.817Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1751144380",
+          "claimedZat": "1747927996",
           "chainZat": "1751144380",
           "notListedYetZat": "0",
-          "verdict": "matches the chain"
+          "verdict": "differs from the chain"
         },
         "saplingBurn": {
-          "onChain": 227179924.73018205,
+          "onChain": 227184850.22832704,
           "claimed": 227180000,
           "diffPct": 0,
           "verdict": "matches"
@@ -810,19 +818,21 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": []
+        "notes": [
+          "Sapling's headline says 1747927996 zat bought back; the pot paid 1751144380 zat on chain (0 of it not listed yet)"
+        ]
       }
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-11T19:18:18.897Z",
-      "finishedAt": "2026-11-11T19:19:07.814Z",
+      "startedAt": "2026-11-11T19:50:21.820Z",
+      "finishedAt": "2026-11-11T19:51:10.877Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "coins": 530,
+        "coins": 531,
         "carded": 10,
         "refreshed": 10,
         "flagged": 8,
@@ -832,7 +842,7 @@
           "Creator sold out of N of their N other coins checked": 4
         },
         "notes": [
-          "creator scan: 12 coin(s) read this run, 530 of 530 read so far (0 launched shielded, creator not public)",
+          "creator scan: 12 coin(s) read this run, 531 of 531 read so far (0 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
           "29 shortlisted coin(s) were under $10,000 on their own page, so no card",
           "9 wallet(s) are in the top 10 of more than one coin"
@@ -841,8 +851,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-11T19:19:07.816Z",
-      "finishedAt": "2026-11-11T19:19:22.317Z",
+      "startedAt": "2026-11-11T19:51:10.880Z",
+      "finishedAt": "2026-11-11T19:51:27.860Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -852,7 +862,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 9019,
+            "seenInTxs": 9030,
             "withJupiter": 70,
             "seeds": [
               "upgradeAuthority",
@@ -886,12 +896,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 1042
+            "seenInTxs": 1046
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 1031
+            "seenInTxs": 1035
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -911,7 +921,7 @@
           {
             "id": "LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj",
             "authority": "FytDrVzDybM1TwFQPGb8qaxZR7dBCzNeqT3vtQsceZQK",
-            "seenInTxs": 78
+            "seenInTxs": 79
           },
           {
             "id": "JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4",
@@ -994,18 +1004,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-11T19:35:21.966Z",
-      "finishedAt": "2026-11-11T19:35:25.979Z",
+      "startedAt": "2026-11-11T19:51:27.862Z",
+      "finishedAt": "2026-11-11T19:51:31.613Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 109800.58,
-        "nearSupply": 153266.71,
+        "nearSupply": 153260.31,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 920.6157876700017,
+        "change24h": 920.615872549999,
         "notes": []
       }
     },
