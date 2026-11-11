@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-11T22:10:21.510Z",
-      "finishedAt": "2026-11-11T22:10:24.784Z",
+      "startedAt": "2026-11-11T22:15:11.302Z",
+      "finishedAt": "2026-11-11T22:15:14.558Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,8 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5,
-          "settle": 1
+          "observe_sapling": 3,
+          "collect_pool_fees": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -60,8 +60,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-11T21:45:47.392Z",
-      "finishedAt": "2026-11-11T21:46:25.619Z",
+      "startedAt": "2026-11-11T22:15:14.564Z",
+      "finishedAt": "2026-11-11T22:15:57.525Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -69,7 +69,7 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-11T21:46:24.934Z",
+        "checkedAt": "2026-11-11T22:15:56.446Z",
         "runs": 8,
         "passed": 6,
         "flagged": 2,
@@ -1050,8 +1050,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-11T22:00:09.155Z",
-      "finishedAt": "2026-11-11T22:00:10.903Z",
+      "startedAt": "2026-11-11T22:15:57.527Z",
+      "finishedAt": "2026-11-11T22:15:58.702Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1062,8 +1062,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 683.32170051,
-        "saplingInPool": 65901080.87464,
-        "zecInPool": 111.52547414,
+        "saplingInPool": 66424623.59175,
+        "zecInPool": 110.68487558,
         "zecAddedSaplingSays": 106.98169885,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
@@ -1072,14 +1072,12 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-11T21:45:15.431Z",
-      "finishedAt": "2026-11-11T21:45:23.107Z",
+      "startedAt": "2026-11-11T22:15:58.704Z",
+      "finishedAt": "2026-11-11T22:16:07.212Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
-      "events": [
-        "$AAPLx: its issuer has scheduled balances to be shown ×1.0038023030588032 from 2026-11-12T01:30:00.000Z (a split, or a dividend adjustment if it's small)."
-      ],
+      "events": [],
       "summary": {
         "tokens": 47,
         "paused": [],
