@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-11T08:35:11.373Z",
-      "finishedAt": "2026-11-11T08:35:13.938Z",
+      "startedAt": "2026-11-11T08:40:11.337Z",
+      "finishedAt": "2026-11-11T08:40:14.710Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,7 +22,7 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 4,
-          "collect_pool_fees": 1
+          "settle": 2
         },
         "unrecognised": 0,
         "baseline": false,
@@ -60,8 +60,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-11T08:10:14.132Z",
-      "finishedAt": "2026-11-11T08:10:58.175Z",
+      "startedAt": "2026-11-11T08:40:14.719Z",
+      "finishedAt": "2026-11-11T08:40:53.140Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -69,7 +69,7 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-11T08:10:57.441Z",
+        "checkedAt": "2026-11-11T08:40:52.432Z",
         "runs": 8,
         "passed": 6,
         "flagged": 2,
@@ -1058,8 +1058,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-11T08:25:09.894Z",
-      "finishedAt": "2026-11-11T08:25:11.141Z",
+      "startedAt": "2026-11-11T08:40:53.144Z",
+      "finishedAt": "2026-11-11T08:40:54.600Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1070,8 +1070,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 683.037936761,
-        "saplingInPool": 63829813.166768,
-        "zecInPool": 115.07560231,
+        "saplingInPool": 64391685.925309,
+        "zecInPool": 114.04788395,
         "zecAddedSaplingSays": 106.90532159,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
