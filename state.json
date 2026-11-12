@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-12T00:40:03.130Z",
-      "finishedAt": "2026-11-12T00:40:06.112Z",
+      "startedAt": "2026-11-12T00:45:04.058Z",
+      "finishedAt": "2026-11-12T00:45:07.428Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "collect_pool_fees": 1,
-          "settle": 3
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -61,8 +59,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-12T00:15:54.618Z",
-      "finishedAt": "2026-11-12T00:16:34.562Z",
+      "startedAt": "2026-11-12T00:45:07.433Z",
+      "finishedAt": "2026-11-12T00:45:51.645Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -70,7 +68,7 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-12T00:16:31.774Z",
+        "checkedAt": "2026-11-12T00:45:50.775Z",
         "runs": 8,
         "passed": 6,
         "flagged": 2,
@@ -1058,8 +1056,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-12T00:30:08.769Z",
-      "finishedAt": "2026-11-12T00:30:10.312Z",
+      "startedAt": "2026-11-12T00:45:51.647Z",
+      "finishedAt": "2026-11-12T00:45:52.843Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1070,8 +1068,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 683.32170051,
-        "saplingInPool": 66393534.475372,
-        "zecInPool": 110.7004351,
+        "saplingInPool": 66404454.463958,
+        "zecInPool": 110.68151759,
         "zecAddedSaplingSays": 106.98169885,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
@@ -1080,8 +1078,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-12T00:15:29.421Z",
-      "finishedAt": "2026-11-12T00:15:36.676Z",
+      "startedAt": "2026-11-12T00:45:52.845Z",
+      "finishedAt": "2026-11-12T00:46:03.521Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
