@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-12T04:50:04.042Z",
-      "finishedAt": "2026-11-12T04:50:07.154Z",
+      "startedAt": "2026-11-12T04:55:02.420Z",
+      "finishedAt": "2026-11-12T04:55:06.448Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 3
+          "observe_sapling": 4,
+          "collect_pool_fees": 1,
+          "settle": 2
         },
         "unrecognised": 0,
         "baseline": false,
@@ -640,8 +642,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-12T04:40:09.244Z",
-      "finishedAt": "2026-11-12T04:40:10.946Z",
+      "startedAt": "2026-11-12T04:55:06.456Z",
+      "finishedAt": "2026-11-12T04:55:08.157Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -660,8 +662,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-12T04:40:10.948Z",
-      "finishedAt": "2026-11-12T04:40:15.631Z",
+      "startedAt": "2026-11-12T04:55:08.160Z",
+      "finishedAt": "2026-11-12T04:55:12.631Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
