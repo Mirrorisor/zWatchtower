@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-12T10:50:02.461Z",
-      "finishedAt": "2026-11-12T10:50:05.717Z",
+      "startedAt": "2026-11-12T10:55:03.447Z",
+      "finishedAt": "2026-11-12T10:55:06.520Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -639,8 +639,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-12T10:40:04.412Z",
-      "finishedAt": "2026-11-12T10:40:05.847Z",
+      "startedAt": "2026-11-12T10:55:06.526Z",
+      "finishedAt": "2026-11-12T10:55:08.289Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -659,8 +659,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-12T10:40:05.849Z",
-      "finishedAt": "2026-11-12T10:40:10.567Z",
+      "startedAt": "2026-11-12T10:55:08.292Z",
+      "finishedAt": "2026-11-12T10:55:12.903Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -672,8 +672,8 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 227233121.67984605,
-          "claimed": 227230000,
+          "onChain": 227236017.50939095,
+          "claimed": 227240000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -814,8 +814,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-12T10:23:15.456Z",
-      "finishedAt": "2026-11-12T10:24:14.294Z",
+      "startedAt": "2026-11-12T10:55:12.905Z",
+      "finishedAt": "2026-11-12T10:55:56.426Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -831,7 +831,7 @@
           "Creator sold out of N of their N other coins checked": 4
         },
         "notes": [
-          "creator scan: 22 coin(s) read this run, 531 of 531 read so far (0 launched shielded, creator not public)",
+          "creator scan: 7 coin(s) read this run, 531 of 531 read so far (0 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
           "29 shortlisted coin(s) were under $10,000 on their own page, so no card",
           "9 wallet(s) are in the top 10 of more than one coin"
@@ -840,8 +840,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-12T10:24:14.297Z",
-      "finishedAt": "2026-11-12T10:24:25.854Z",
+      "startedAt": "2026-11-12T10:55:56.429Z",
+      "finishedAt": "2026-11-12T10:56:08.943Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -851,7 +851,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 9182,
+            "seenInTxs": 9185,
             "withJupiter": 70,
             "seeds": [
               "upgradeAuthority",
@@ -885,12 +885,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 1070
+            "seenInTxs": 1071
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 1058
+            "seenInTxs": 1059
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -968,7 +968,7 @@
           "breakingRules": []
         },
         "programsSeen": 24,
-        "txsRead": 1,
+        "txsRead": 4,
         "notes": []
       }
     },
@@ -993,18 +993,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-12T10:40:10.569Z",
-      "finishedAt": "2026-11-12T10:40:14.686Z",
+      "startedAt": "2026-11-12T10:56:08.945Z",
+      "finishedAt": "2026-11-12T10:56:12.726Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 109817.21,
-        "nearSupply": 152905.35,
+        "solanaSupply": 109817.24,
+        "nearSupply": 152986.74,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 378.4223964200064,
+        "change24h": 362.4383824499964,
         "notes": []
       }
     },
