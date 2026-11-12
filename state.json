@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-12T06:50:02.052Z",
-      "finishedAt": "2026-11-12T06:50:05.995Z",
+      "startedAt": "2026-11-12T06:55:03.709Z",
+      "finishedAt": "2026-11-12T06:55:07.009Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,11 +21,10 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5,
-          "collect_creator_fee": 1,
-          "collect_pool_fees": 2
+          "observe_sapling": 4,
+          "claim_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -641,8 +640,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-12T06:37:53.183Z",
-      "finishedAt": "2026-11-12T06:37:54.903Z",
+      "startedAt": "2026-11-12T06:55:07.017Z",
+      "finishedAt": "2026-11-12T06:55:08.830Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -661,20 +660,20 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-12T06:37:54.905Z",
-      "finishedAt": "2026-11-12T06:38:00.050Z",
+      "startedAt": "2026-11-12T06:55:08.831Z",
+      "finishedAt": "2026-11-12T06:55:14.543Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "headline": {
-          "claimedZat": "1754266362",
+          "claimedZat": "1751144380",
           "chainZat": "1754266362",
           "notListedYetZat": "0",
-          "verdict": "matches the chain"
+          "verdict": "differs from the chain"
         },
         "saplingBurn": {
-          "onChain": 227229706.46771204,
+          "onChain": 227231764.665195,
           "claimed": 227230000,
           "diffPct": 0,
           "verdict": "matches"
@@ -792,13 +791,13 @@
           }
         },
         "pot": {
-          "balanceZat": "1417015",
-          "shownZat": "1417015",
-          "inflowZat": "1755608193",
+          "balanceZat": "1630708",
+          "shownZat": "1630708",
+          "inflowZat": "1755821886",
           "buybackZat": "1754266362",
           "movements": {
             "setup": 1,
-            "inflow": 3603,
+            "inflow": 3604,
             "buyback": 376,
             "other": 1,
             "failed": 2
@@ -811,7 +810,9 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": []
+        "notes": [
+          "Sapling's headline says 1751144380 zat bought back; the pot paid 1754266362 zat on chain (0 of it not listed yet)"
+        ]
       }
     },
     "coins": {
@@ -995,18 +996,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-12T06:39:56.737Z",
-      "finishedAt": "2026-11-12T06:40:01.102Z",
+      "startedAt": "2026-11-12T06:55:14.545Z",
+      "finishedAt": "2026-11-12T06:55:18.388Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 109865.23,
-        "nearSupply": 153678.13,
+        "solanaSupply": 109881.23,
+        "nearSupply": 153685.76,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 857.3222668399976,
+        "change24h": 874.5201985800086,
         "notes": []
       }
     },
