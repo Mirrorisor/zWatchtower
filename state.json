@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-12T23:05:03.091Z",
-      "finishedAt": "2026-11-12T23:05:06.141Z",
+      "startedAt": "2026-11-12T23:10:04.795Z",
+      "finishedAt": "2026-11-12T23:10:07.262Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 464166898,
-        "configSha256": "1fd6bbb5bc177daf513a7bdeb24b78c8262558274e47a7141086467a91f4e963",
+        "configSha256": "2c0b110276c6307afc39a9e23c33453d2b6caf6515587e58ff59b87cf7a35923",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -21,8 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "release_rewards": 1,
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "close_rewards_run": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -640,8 +640,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-12T22:53:19.038Z",
-      "finishedAt": "2026-11-12T22:53:21.719Z",
+      "startedAt": "2026-11-12T23:10:07.268Z",
+      "finishedAt": "2026-11-12T23:10:09.102Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -660,8 +660,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-12T22:53:21.721Z",
-      "finishedAt": "2026-11-12T22:53:25.701Z",
+      "startedAt": "2026-11-12T23:10:09.106Z",
+      "finishedAt": "2026-11-12T23:10:13.231Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1006,15 +1006,15 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-12T22:54:20.261Z",
-      "finishedAt": "2026-11-12T22:54:24.227Z",
+      "startedAt": "2026-11-12T23:10:13.233Z",
+      "finishedAt": "2026-11-12T23:10:17.459Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 109784.28,
-        "nearSupply": 148976.18,
+        "nearSupply": 148980.66,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
         "change24h": -14.68883987001027,
