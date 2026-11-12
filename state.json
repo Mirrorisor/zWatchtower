@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-12T14:55:03.590Z",
-      "finishedAt": "2026-11-12T14:55:06.587Z",
+      "startedAt": "2026-11-12T15:00:11.443Z",
+      "finishedAt": "2026-11-12T15:00:13.951Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 3
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -1022,8 +1022,8 @@
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-12T13:45:50.224Z",
-      "finishedAt": "2026-11-12T14:00:14.582Z",
+      "startedAt": "2026-11-12T15:00:13.959Z",
+      "finishedAt": "2026-11-12T15:14:16.317Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1045,8 +1045,8 @@
     },
     "split": {
       "check": "split",
-      "startedAt": "2026-11-12T14:00:24.154Z",
-      "finishedAt": "2026-11-12T14:00:26.919Z",
+      "startedAt": "2026-11-12T15:14:25.011Z",
+      "finishedAt": "2026-11-12T15:14:27.777Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1056,7 +1056,7 @@
         "saplingSharePct": 10.43,
         "backPct": 89.57,
         "checks": [
-          "holders: matches (Sapling 186.2, ours 186.1582)",
+          "holders: matches (Sapling 186.23, ours 186.1943)",
           "donated: matches (Sapling 8, ours 8.0031)",
           "flywheel: matches (Sapling 17.54, ours 17.5427)",
           "payees: matches (Sapling 48.38, ours 19.0485, lower bound)"
@@ -1068,8 +1068,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-12T14:45:44.346Z",
-      "finishedAt": "2026-11-12T14:45:45.505Z",
+      "startedAt": "2026-11-12T15:14:16.320Z",
+      "finishedAt": "2026-11-12T15:14:17.839Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1080,8 +1080,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 683.509054182,
-        "saplingInPool": 71613436.500562,
-        "zecInPool": 102.53259327,
+        "saplingInPool": 71092528.325282,
+        "zecInPool": 103.30532605,
         "zecAddedSaplingSays": 107.03899538,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
@@ -1090,8 +1090,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-12T14:30:15.476Z",
-      "finishedAt": "2026-11-12T14:30:22.579Z",
+      "startedAt": "2026-11-12T15:14:17.842Z",
+      "finishedAt": "2026-11-12T15:14:25.008Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
