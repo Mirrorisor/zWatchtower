@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-12T12:05:02.761Z",
-      "finishedAt": "2026-11-12T12:05:06.025Z",
+      "startedAt": "2026-11-12T12:10:11.443Z",
+      "finishedAt": "2026-11-12T12:10:14.568Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,11 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle": 1,
-          "settle_sapling": 1
+          "observe_sapling": 4
         },
-        "unrecognised": 1,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -641,8 +639,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-12T11:55:09.430Z",
-      "finishedAt": "2026-11-12T11:55:11.287Z",
+      "startedAt": "2026-11-12T12:10:14.574Z",
+      "finishedAt": "2026-11-12T12:10:17.050Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -661,8 +659,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-12T11:55:11.289Z",
-      "finishedAt": "2026-11-12T11:55:16.767Z",
+      "startedAt": "2026-11-12T12:10:17.054Z",
+      "finishedAt": "2026-11-12T12:10:21.411Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -674,7 +672,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 227237955.109321,
+          "onChain": 227238418.46413803,
           "claimed": 227240000,
           "diffPct": 0,
           "verdict": "matches"
@@ -816,8 +814,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-12T11:38:11.878Z",
-      "finishedAt": "2026-11-12T11:38:52.722Z",
+      "startedAt": "2026-11-12T12:10:21.414Z",
+      "finishedAt": "2026-11-12T12:11:05.935Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -833,7 +831,7 @@
           "Creator sold out of N of their N other coins checked": 4
         },
         "notes": [
-          "creator scan: 6 coin(s) read this run, 531 of 531 read so far (0 launched shielded, creator not public)",
+          "creator scan: 8 coin(s) read this run, 531 of 531 read so far (0 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
           "29 shortlisted coin(s) were under $10,000 on their own page, so no card",
           "9 wallet(s) are in the top 10 of more than one coin"
@@ -842,8 +840,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-12T11:38:52.726Z",
-      "finishedAt": "2026-11-12T11:39:04.371Z",
+      "startedAt": "2026-11-12T12:11:05.937Z",
+      "finishedAt": "2026-11-12T12:11:16.297Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -853,7 +851,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 9187,
+            "seenInTxs": 9188,
             "withJupiter": 70,
             "seeds": [
               "upgradeAuthority",
@@ -970,7 +968,7 @@
           "breakingRules": []
         },
         "programsSeen": 24,
-        "txsRead": 3,
+        "txsRead": 1,
         "notes": []
       }
     },
@@ -995,18 +993,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-12T11:55:16.770Z",
-      "finishedAt": "2026-11-12T11:55:20.798Z",
+      "startedAt": "2026-11-12T12:11:16.299Z",
+      "finishedAt": "2026-11-12T12:11:20.020Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 109816.26,
-        "nearSupply": 152943.53,
+        "solanaSupply": 109816.63,
+        "nearSupply": 152929.58,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 84.90854600000603,
+        "change24h": 85.2819830399967,
         "notes": []
       }
     },
