@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-13T00:25:05.482Z",
-      "finishedAt": "2026-11-13T00:25:08.435Z",
+      "startedAt": "2026-11-13T00:30:21.492Z",
+      "finishedAt": "2026-11-13T00:30:24.595Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "settle": 3
         },
         "unrecognised": 0,
         "baseline": false,
@@ -1006,18 +1007,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-13T00:14:08.455Z",
-      "finishedAt": "2026-11-13T00:14:12.593Z",
+      "startedAt": "2026-11-13T00:30:24.600Z",
+      "finishedAt": "2026-11-13T00:30:28.801Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 109785.27,
-        "nearSupply": 148784.29,
+        "solanaSupply": 109785.41,
+        "nearSupply": 148803.6,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": -19.386865429987665,
+        "change24h": -19.247093669997412,
         "notes": []
       }
     },
@@ -1069,8 +1070,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-13T00:15:12.556Z",
-      "finishedAt": "2026-11-13T00:15:13.826Z",
+      "startedAt": "2026-11-13T00:30:28.803Z",
+      "finishedAt": "2026-11-13T00:30:30.008Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1081,8 +1082,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 683.716730513,
-        "saplingInPool": 68404233.276891,
-        "zecInPool": 107.57216826,
+        "saplingInPool": 68443371.220549,
+        "zecInPool": 107.50929793,
         "zecAddedSaplingSays": 107.07494249,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
@@ -1091,8 +1092,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-13T00:00:06.340Z",
-      "finishedAt": "2026-11-13T00:00:13.388Z",
+      "startedAt": "2026-11-13T00:30:30.010Z",
+      "finishedAt": "2026-11-13T00:30:38.712Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
