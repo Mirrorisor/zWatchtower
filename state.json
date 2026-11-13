@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-13T05:55:02.081Z",
-      "finishedAt": "2026-11-13T05:55:05.711Z",
+      "startedAt": "2026-11-13T06:05:04.964Z",
+      "finishedAt": "2026-11-13T06:05:08.927Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,12 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 8,
+          "convert_sapling_begin": 1,
+          "convert_sapling_end": 1,
+          "settle": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 2,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -1022,8 +1025,8 @@
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-13T04:45:46.963Z",
-      "finishedAt": "2026-11-13T05:00:22.443Z",
+      "startedAt": "2026-11-13T06:05:08.936Z",
+      "finishedAt": "2026-11-13T06:18:59.689Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1045,8 +1048,8 @@
     },
     "split": {
       "check": "split",
-      "startedAt": "2026-11-13T05:00:31.255Z",
-      "finishedAt": "2026-11-13T05:00:33.873Z",
+      "startedAt": "2026-11-13T06:19:07.960Z",
+      "finishedAt": "2026-11-13T06:19:10.748Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1068,8 +1071,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-13T05:45:56.310Z",
-      "finishedAt": "2026-11-13T05:45:57.543Z",
+      "startedAt": "2026-11-13T06:18:59.690Z",
+      "finishedAt": "2026-11-13T06:19:00.722Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1080,8 +1083,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 683.790085234,
-        "saplingInPool": 68898602.635782,
-        "zecInPool": 106.83611814,
+        "saplingInPool": 68807382.17866,
+        "zecInPool": 106.97591374,
         "zecAddedSaplingSays": 107.08649954,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
@@ -1090,8 +1093,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-13T05:30:09.940Z",
-      "finishedAt": "2026-11-13T05:30:16.875Z",
+      "startedAt": "2026-11-13T06:19:00.723Z",
+      "finishedAt": "2026-11-13T06:19:07.957Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
