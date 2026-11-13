@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-13T16:55:02.105Z",
-      "finishedAt": "2026-11-13T16:55:05.045Z",
+      "startedAt": "2026-11-13T17:00:05.793Z",
+      "finishedAt": "2026-11-13T17:00:08.813Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -639,8 +639,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-13T16:45:14.377Z",
-      "finishedAt": "2026-11-13T16:45:16.161Z",
+      "startedAt": "2026-11-13T17:00:08.821Z",
+      "finishedAt": "2026-11-13T17:00:10.699Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -659,8 +659,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-13T16:45:16.163Z",
-      "finishedAt": "2026-11-13T16:45:21.580Z",
+      "startedAt": "2026-11-13T17:00:10.701Z",
+      "finishedAt": "2026-11-13T17:00:14.952Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -814,8 +814,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-13T16:28:27.240Z",
-      "finishedAt": "2026-11-13T16:29:09.703Z",
+      "startedAt": "2026-11-13T17:00:14.955Z",
+      "finishedAt": "2026-11-13T17:00:53.805Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -831,7 +831,7 @@
           "Creator sold out of N of their N other coins checked": 4
         },
         "notes": [
-          "creator scan: 5 coin(s) read this run, 537 of 537 read so far (5 launched shielded, creator not public)",
+          "creator scan: 2 coin(s) read this run, 537 of 537 read so far (5 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
           "27 shortlisted coin(s) were under $10,000 on their own page, so no card",
           "9 wallet(s) are in the top 10 of more than one coin"
@@ -840,8 +840,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-13T16:29:09.705Z",
-      "finishedAt": "2026-11-13T16:29:23.662Z",
+      "startedAt": "2026-11-13T17:00:53.807Z",
+      "finishedAt": "2026-11-13T17:01:07.000Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -851,7 +851,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 9323,
+            "seenInTxs": 9325,
             "withJupiter": 70,
             "seeds": [
               "upgradeAuthority",
@@ -885,12 +885,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 1122
+            "seenInTxs": 1123
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 1103
+            "seenInTxs": 1104
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -962,7 +962,7 @@
           "guards": [
             "GzMQc5VQGggFnicdAKc7MmkQV3dn3i12ux9dbLKqzy6F"
           ],
-          "txsRead": 2,
+          "txsRead": 0,
           "tokensSeen": 13,
           "tokensChecked": 13,
           "breakingRules": [
@@ -980,7 +980,7 @@
           ]
         },
         "programsSeen": 25,
-        "txsRead": 6,
+        "txsRead": 3,
         "notes": []
       }
     },
@@ -1005,18 +1005,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-13T16:45:21.583Z",
-      "finishedAt": "2026-11-13T16:45:25.421Z",
+      "startedAt": "2026-11-13T17:01:07.001Z",
+      "finishedAt": "2026-11-13T17:01:11.163Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 109716.36,
-        "nearSupply": 150243.57,
+        "nearSupply": 150249.48,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": -129.05146803999378,
+        "change24h": -129.05146740000055,
         "notes": []
       }
     },
