@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-13T00:20:11.331Z",
-      "finishedAt": "2026-11-13T00:20:15.494Z",
+      "startedAt": "2026-11-13T00:25:05.482Z",
+      "finishedAt": "2026-11-13T00:25:08.435Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,11 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5,
-          "convert_sapling_begin": 1,
-          "convert_sapling_end": 1
+          "observe_sapling": 4
         },
-        "unrecognised": 2,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -641,8 +639,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-13T00:07:57.746Z",
-      "finishedAt": "2026-11-13T00:07:59.508Z",
+      "startedAt": "2026-11-13T00:25:08.441Z",
+      "finishedAt": "2026-11-13T00:25:10.183Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -661,8 +659,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-13T00:07:59.510Z",
-      "finishedAt": "2026-11-13T00:08:06.030Z",
+      "startedAt": "2026-11-13T00:25:10.185Z",
+      "finishedAt": "2026-11-13T00:25:14.206Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -674,7 +672,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 227296131.39104295,
+          "onChain": 227298347.02778602,
           "claimed": 227300000,
           "diffPct": 0,
           "verdict": "matches"
