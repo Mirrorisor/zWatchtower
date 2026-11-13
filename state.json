@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-13T07:20:03.552Z",
-      "finishedAt": "2026-11-13T07:20:06.287Z",
+      "startedAt": "2026-11-13T07:35:37.083Z",
+      "finishedAt": "2026-11-13T07:35:41.078Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,14 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 13,
+          "settle_sapling": 1,
+          "settle_tax": 1,
+          "convert_tax_begin": 1,
+          "convert_tax_end": 1,
+          "settle": 2
         },
-        "unrecognised": 0,
+        "unrecognised": 3,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -571,8 +576,8 @@
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-13T06:20:04.771Z",
-      "finishedAt": "2026-11-13T06:27:33.325Z",
+      "startedAt": "2026-11-13T07:35:41.086Z",
+      "finishedAt": "2026-11-13T07:43:08.993Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -639,8 +644,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-13T07:15:05.593Z",
-      "finishedAt": "2026-11-13T07:15:07.088Z",
+      "startedAt": "2026-11-13T07:43:08.995Z",
+      "finishedAt": "2026-11-13T07:43:10.353Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -659,8 +664,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-13T07:15:07.092Z",
-      "finishedAt": "2026-11-13T07:15:12.301Z",
+      "startedAt": "2026-11-13T07:43:10.355Z",
+      "finishedAt": "2026-11-13T07:43:16.728Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -672,7 +677,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 227308313.99486494,
+          "onChain": 227311424.25571406,
           "claimed": 227310000,
           "diffPct": 0,
           "verdict": "matches"
@@ -790,13 +795,13 @@
           }
         },
         "pot": {
-          "balanceZat": "1630708",
-          "shownZat": "1630708",
-          "inflowZat": "1755821886",
+          "balanceZat": "2017378",
+          "shownZat": "2017378",
+          "inflowZat": "1756208556",
           "buybackZat": "1754266362",
           "movements": {
             "setup": 1,
-            "inflow": 3604,
+            "inflow": 3605,
             "buyback": 376,
             "other": 1,
             "failed": 2
@@ -814,8 +819,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-13T07:00:12.045Z",
-      "finishedAt": "2026-11-13T07:01:37.226Z",
+      "startedAt": "2026-11-13T07:43:16.730Z",
+      "finishedAt": "2026-11-13T07:44:33.324Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -831,17 +836,17 @@
           "Creator sold out of N of their N other coins checked": 4
         },
         "notes": [
-          "creator scan: 44 coin(s) read this run, 536 of 536 read so far (5 launched shielded, creator not public)",
+          "creator scan: 39 coin(s) read this run, 536 of 536 read so far (5 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
-          "27 shortlisted coin(s) were under $10,000 on their own page, so no card",
+          "28 shortlisted coin(s) were under $10,000 on their own page, so no card",
           "9 wallet(s) are in the top 10 of more than one coin"
         ]
       }
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-13T07:01:37.229Z",
-      "finishedAt": "2026-11-13T07:01:49.582Z",
+      "startedAt": "2026-11-13T07:44:33.327Z",
+      "finishedAt": "2026-11-13T07:44:46.383Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -851,7 +856,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 464166898,
-            "seenInTxs": 9276,
+            "seenInTxs": 9283,
             "withJupiter": 70,
             "seeds": [
               "upgradeAuthority",
@@ -885,12 +890,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 1106
+            "seenInTxs": 1107
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 1087
+            "seenInTxs": 1088
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -980,14 +985,14 @@
           ]
         },
         "programsSeen": 25,
-        "txsRead": 0,
+        "txsRead": 8,
         "notes": []
       }
     },
     "earnings": {
       "check": "earnings",
-      "startedAt": "2026-11-13T06:29:12.871Z",
-      "finishedAt": "2026-11-13T06:29:21.998Z",
+      "startedAt": "2026-11-13T07:44:46.385Z",
+      "finishedAt": "2026-11-13T07:44:50.947Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -999,24 +1004,24 @@
         "crossChecked": 193,
         "matchingSapling": 193,
         "differ": [],
-        "paid7dZec": 10.7521,
+        "paid7dZec": 10.7323,
         "notes": []
       }
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-13T07:15:12.303Z",
-      "finishedAt": "2026-11-13T07:15:16.340Z",
+      "startedAt": "2026-11-13T07:44:50.949Z",
+      "finishedAt": "2026-11-13T07:44:54.783Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 109736.42,
-        "nearSupply": 150016.99,
+        "nearSupply": 150046.24,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": -144.80283300000883,
+        "change24h": -144.80283770000096,
         "notes": []
       }
     },
