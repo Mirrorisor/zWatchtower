@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-13T00:00:27.157Z",
-      "finishedAt": "2026-11-13T00:00:30.925Z",
+      "startedAt": "2026-11-13T00:14:23.439Z",
+      "finishedAt": "2026-11-13T00:14:26.999Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -22,7 +22,8 @@
         ],
         "vaultInstructions": {
           "observe_sapling": 11,
-          "settle_sapling": 1
+          "settle_sapling": 1,
+          "settle": 1
         },
         "unrecognised": 1,
         "baseline": false,
@@ -60,8 +61,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-12T23:45:05.214Z",
-      "finishedAt": "2026-11-12T23:45:51.010Z",
+      "startedAt": "2026-11-13T00:14:27.009Z",
+      "finishedAt": "2026-11-13T00:15:12.553Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -69,7 +70,7 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-12T23:45:48.023Z",
+        "checkedAt": "2026-11-13T00:15:11.651Z",
         "runs": 8,
         "passed": 6,
         "flagged": 2,
@@ -1070,8 +1071,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-13T00:00:04.734Z",
-      "finishedAt": "2026-11-13T00:00:06.336Z",
+      "startedAt": "2026-11-13T00:15:12.556Z",
+      "finishedAt": "2026-11-13T00:15:13.826Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1082,8 +1083,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 683.716730513,
-        "saplingInPool": 68549310.542921,
-        "zecInPool": 107.33844332,
+        "saplingInPool": 68404233.276891,
+        "zecInPool": 107.57216826,
         "zecAddedSaplingSays": 107.07494249,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
