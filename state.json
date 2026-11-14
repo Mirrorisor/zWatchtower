@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-14T16:55:08.214Z",
-      "finishedAt": "2026-11-14T16:55:11.698Z",
+      "startedAt": "2026-11-14T17:00:02.812Z",
+      "finishedAt": "2026-11-14T17:00:05.969Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,11 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle": 1,
-          "claim_payee": 1
+          "observe_sapling": 4
         },
-        "unrecognised": 1,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -641,8 +639,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-14T16:45:07.977Z",
-      "finishedAt": "2026-11-14T16:45:09.666Z",
+      "startedAt": "2026-11-14T17:00:05.975Z",
+      "finishedAt": "2026-11-14T17:00:07.580Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -661,8 +659,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-14T16:45:09.668Z",
-      "finishedAt": "2026-11-14T16:45:13.609Z",
+      "startedAt": "2026-11-14T17:00:07.582Z",
+      "finishedAt": "2026-11-14T17:00:13.178Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -674,7 +672,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 227507791.05750704,
+          "onChain": 227509457.28143704,
           "claimed": 8.0031,
           "diffPct": 100,
           "verdict": "differs"
@@ -1010,18 +1008,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-14T16:46:09.709Z",
-      "finishedAt": "2026-11-14T16:46:13.867Z",
+      "startedAt": "2026-11-14T17:00:13.183Z",
+      "finishedAt": "2026-11-14T17:00:17.311Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 109079.52,
-        "nearSupply": 148603.53,
+        "nearSupply": 149058.24,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": -636.8326917000086,
+        "change24h": -636.8327332000044,
         "notes": []
       }
     },
