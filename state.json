@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-14T12:45:08.718Z",
-      "finishedAt": "2026-11-14T12:45:10.773Z",
+      "startedAt": "2026-11-14T12:50:05.810Z",
+      "finishedAt": "2026-11-14T12:50:08.758Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "settle": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -59,8 +60,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-14T12:19:51.252Z",
-      "finishedAt": "2026-11-14T12:20:31.989Z",
+      "startedAt": "2026-11-14T12:50:08.763Z",
+      "finishedAt": "2026-11-14T12:50:46.418Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -68,7 +69,7 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-14T12:20:31.120Z",
+        "checkedAt": "2026-11-14T12:50:45.594Z",
         "runs": 8,
         "passed": 6,
         "flagged": 2,
@@ -1071,8 +1072,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-14T12:35:05.853Z",
-      "finishedAt": "2026-11-14T12:35:07.159Z",
+      "startedAt": "2026-11-14T12:50:46.420Z",
+      "finishedAt": "2026-11-14T12:50:48.078Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1082,9 +1083,9 @@
         "lpMint": "4A2HF17mm2Mf1yJ28hANemPDBHMKSF6Az5yzKF6WMtBW",
         "lpSupply": "0",
         "burned": true,
-        "lpShares": 684.463100089,
-        "saplingInPool": 72673172.338902,
-        "zecInPool": 101.51668263,
+        "lpShares": 684.6312073,
+        "saplingInPool": 72682085.572551,
+        "zecInPool": 101.55435786,
         "zecAddedSaplingSays": 107.24488095,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
@@ -1093,8 +1094,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-14T12:19:27.155Z",
-      "finishedAt": "2026-11-14T12:19:34.087Z",
+      "startedAt": "2026-11-14T12:50:48.081Z",
+      "finishedAt": "2026-11-14T12:50:56.808Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
