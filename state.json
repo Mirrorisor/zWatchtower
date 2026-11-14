@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-14T02:40:05.265Z",
-      "finishedAt": "2026-11-14T02:40:08.370Z",
+      "startedAt": "2026-11-14T02:45:11.381Z",
+      "finishedAt": "2026-11-14T02:45:14.714Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "settle": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -640,8 +641,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-14T02:28:35.591Z",
-      "finishedAt": "2026-11-14T02:28:37.294Z",
+      "startedAt": "2026-11-14T02:45:14.720Z",
+      "finishedAt": "2026-11-14T02:45:16.219Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -660,8 +661,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-14T02:28:37.296Z",
-      "finishedAt": "2026-11-14T02:28:41.628Z",
+      "startedAt": "2026-11-14T02:45:16.220Z",
+      "finishedAt": "2026-11-14T02:45:20.188Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1007,18 +1008,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-14T02:29:45.637Z",
-      "finishedAt": "2026-11-14T02:29:49.617Z",
+      "startedAt": "2026-11-14T02:45:20.190Z",
+      "finishedAt": "2026-11-14T02:45:24.022Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 109666.94,
-        "nearSupply": 150172.57,
+        "nearSupply": 150177.36,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": -91.55581397999777,
+        "change24h": -92.03108991999761,
         "notes": []
       }
     },
