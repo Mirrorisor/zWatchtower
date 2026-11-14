@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-14T20:10:05.858Z",
-      "finishedAt": "2026-11-14T20:10:08.797Z",
+      "startedAt": "2026-11-14T20:15:02.407Z",
+      "finishedAt": "2026-11-14T20:15:05.382Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,10 +21,10 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle": 2
+          "observe_sapling": 3,
+          "declare_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -640,8 +640,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-14T19:58:37.438Z",
-      "finishedAt": "2026-11-14T19:58:38.793Z",
+      "startedAt": "2026-11-14T20:15:05.391Z",
+      "finishedAt": "2026-11-14T20:15:08.170Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -660,8 +660,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-14T19:58:38.795Z",
-      "finishedAt": "2026-11-14T19:58:45.723Z",
+      "startedAt": "2026-11-14T20:15:08.172Z",
+      "finishedAt": "2026-11-14T20:15:13.721Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1009,18 +1009,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-14T19:59:50.772Z",
-      "finishedAt": "2026-11-14T19:59:54.890Z",
+      "startedAt": "2026-11-14T20:15:13.725Z",
+      "finishedAt": "2026-11-14T20:15:18.255Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 109064.61,
-        "nearSupply": 149564.04,
+        "nearSupply": 149560.64,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": -653.0041584199935,
+        "change24h": -653.0041584099963,
         "notes": []
       }
     },
