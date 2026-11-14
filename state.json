@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-14T06:25:11.378Z",
-      "finishedAt": "2026-11-14T06:25:14.925Z",
+      "startedAt": "2026-11-14T06:30:23.965Z",
+      "finishedAt": "2026-11-14T06:30:26.470Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5
+          "observe_sapling": 3,
+          "settle": 3
         },
         "unrecognised": 0,
         "baseline": false,
@@ -639,8 +640,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-14T06:13:14.894Z",
-      "finishedAt": "2026-11-14T06:13:22.529Z",
+      "startedAt": "2026-11-14T06:30:26.476Z",
+      "finishedAt": "2026-11-14T06:30:28.332Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -659,8 +660,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-14T06:13:22.531Z",
-      "finishedAt": "2026-11-14T06:13:27.466Z",
+      "startedAt": "2026-11-14T06:30:28.334Z",
+      "finishedAt": "2026-11-14T06:30:35.790Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -672,7 +673,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 227434595.84751797,
+          "onChain": 227437843.564494,
           "claimed": 8.0031,
           "diffPct": 100,
           "verdict": "differs"
@@ -810,7 +811,7 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "Sapling's page says 0.00M $SAPLING burned; the chain says 227.43M"
+          "Sapling's page says 0.00M $SAPLING burned; the chain says 227.44M"
         ]
       }
     },
@@ -1008,18 +1009,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-14T06:14:43.995Z",
-      "finishedAt": "2026-11-14T06:14:47.772Z",
+      "startedAt": "2026-11-14T06:30:35.794Z",
+      "finishedAt": "2026-11-14T06:30:40.005Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 109680.99,
-        "nearSupply": 149599.5,
+        "solanaSupply": 109681.17,
+        "nearSupply": 149585.2,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": -71.8628292499925,
+        "change24h": -71.67992324000807,
         "notes": []
       }
     },
