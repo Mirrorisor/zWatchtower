@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-14T04:25:03.097Z",
-      "finishedAt": "2026-11-14T04:25:06.113Z",
+      "startedAt": "2026-11-14T04:30:03.395Z",
+      "finishedAt": "2026-11-14T04:30:06.516Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -639,8 +639,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-14T04:15:14.519Z",
-      "finishedAt": "2026-11-14T04:15:16.257Z",
+      "startedAt": "2026-11-14T04:30:06.523Z",
+      "finishedAt": "2026-11-14T04:30:08.914Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -659,8 +659,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-14T04:15:16.259Z",
-      "finishedAt": "2026-11-14T04:15:20.287Z",
+      "startedAt": "2026-11-14T04:30:08.916Z",
+      "finishedAt": "2026-11-14T04:30:12.873Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -673,9 +673,9 @@
         },
         "saplingBurn": {
           "onChain": 227428688.15975296,
-          "claimed": 227430000,
-          "diffPct": 0,
-          "verdict": "matches"
+          "claimed": 8.0031,
+          "diffPct": 100,
+          "verdict": "differs"
         },
         "burns": 305,
         "burnsVerified": 305,
@@ -809,7 +809,9 @@
           "7fAC78BcLjvh8M5GAPRbJQtVPi7QWzeW4ohxvTtf9Pdu",
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
-        "notes": []
+        "notes": [
+          "Sapling's page says 0.00M $SAPLING burned; the chain says 227.43M"
+        ]
       }
     },
     "coins": {
