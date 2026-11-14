@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-14T14:15:11.396Z",
-      "finishedAt": "2026-11-14T14:15:14.536Z",
+      "startedAt": "2026-11-14T14:20:03.625Z",
+      "finishedAt": "2026-11-14T14:20:07.181Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,11 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 3,
+          "settle_sapling": 1,
+          "settle": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -59,8 +61,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-14T13:50:06.324Z",
-      "finishedAt": "2026-11-14T13:50:44.414Z",
+      "startedAt": "2026-11-14T14:20:07.187Z",
+      "finishedAt": "2026-11-14T14:20:45.462Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -68,7 +70,7 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-14T13:50:43.741Z",
+        "checkedAt": "2026-11-14T14:20:44.594Z",
         "runs": 8,
         "passed": 6,
         "flagged": 2,
@@ -1071,8 +1073,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-14T14:05:05.107Z",
-      "finishedAt": "2026-11-14T14:05:06.348Z",
+      "startedAt": "2026-11-14T14:20:45.465Z",
+      "finishedAt": "2026-11-14T14:20:46.887Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1083,8 +1085,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 684.6312073,
-        "saplingInPool": 66288475.804235,
-        "zecInPool": 111.71307417,
+        "saplingInPool": 65766926.942832,
+        "zecInPool": 112.60883887,
         "zecAddedSaplingSays": 107.24488095,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
