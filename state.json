@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-14T08:45:16.415Z",
-      "finishedAt": "2026-11-14T08:45:20.017Z",
+      "startedAt": "2026-11-14T08:50:08.647Z",
+      "finishedAt": "2026-11-14T08:50:11.511Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 8
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -59,8 +59,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-14T08:20:14.403Z",
-      "finishedAt": "2026-11-14T08:20:57.647Z",
+      "startedAt": "2026-11-14T08:50:11.517Z",
+      "finishedAt": "2026-11-14T08:50:56.415Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -68,7 +68,7 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-14T08:20:56.570Z",
+        "checkedAt": "2026-11-14T08:50:55.546Z",
         "runs": 8,
         "passed": 6,
         "flagged": 2,
@@ -1071,8 +1071,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-14T08:35:13.221Z",
-      "finishedAt": "2026-11-14T08:35:14.192Z",
+      "startedAt": "2026-11-14T08:50:56.418Z",
+      "finishedAt": "2026-11-14T08:50:57.705Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1083,8 +1083,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 684.463100089,
-        "saplingInPool": 73927640.708685,
-        "zecInPool": 99.71751621,
+        "saplingInPool": 75182015.70306,
+        "zecInPool": 98.01226418,
         "zecAddedSaplingSays": 107.24488095,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
