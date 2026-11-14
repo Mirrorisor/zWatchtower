@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-14T00:10:11.321Z",
-      "finishedAt": "2026-11-14T00:10:14.350Z",
+      "startedAt": "2026-11-14T00:15:05.310Z",
+      "finishedAt": "2026-11-14T00:15:08.394Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,8 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle": 1
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -640,8 +639,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-13T23:58:00.334Z",
-      "finishedAt": "2026-11-13T23:58:02.551Z",
+      "startedAt": "2026-11-14T00:15:08.403Z",
+      "finishedAt": "2026-11-14T00:15:10.619Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -660,8 +659,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-13T23:58:02.553Z",
-      "finishedAt": "2026-11-13T23:58:06.181Z",
+      "startedAt": "2026-11-14T00:15:10.621Z",
+      "finishedAt": "2026-11-14T00:15:15.020Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -673,8 +672,8 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 227422960.74342,
-          "claimed": 227420000,
+          "onChain": 227425151.86403,
+          "claimed": 227430000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -1007,18 +1006,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-13T23:59:20.093Z",
-      "finishedAt": "2026-11-13T23:59:23.933Z",
+      "startedAt": "2026-11-14T00:15:15.023Z",
+      "finishedAt": "2026-11-14T00:15:19.412Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 109667.3,
-        "nearSupply": 150706.15,
+        "nearSupply": 150204.38,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": -117.97470128000714,
+        "change24h": -118.11684147000778,
         "notes": []
       }
     },
