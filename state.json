@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-15T01:40:35.808Z",
-      "finishedAt": "2026-11-15T01:40:38.741Z",
+      "startedAt": "2026-11-15T01:45:11.269Z",
+      "finishedAt": "2026-11-15T01:45:14.268Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,13 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5
+          "convert_sapling_begin": 1,
+          "convert_sapling_end": 1,
+          "settle_sapling": 1,
+          "settle": 1,
+          "observe_sapling": 3
         },
-        "unrecognised": 0,
+        "unrecognised": 3,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -639,8 +643,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-15T01:30:31.142Z",
-      "finishedAt": "2026-11-15T01:30:32.745Z",
+      "startedAt": "2026-11-15T01:45:14.274Z",
+      "finishedAt": "2026-11-15T01:45:16.236Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -659,8 +663,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-15T01:30:32.748Z",
-      "finishedAt": "2026-11-15T01:30:38.067Z",
+      "startedAt": "2026-11-15T01:45:16.237Z",
+      "finishedAt": "2026-11-15T01:45:20.625Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -672,7 +676,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 227598214.91115296,
+          "onChain": 227602812.38559604,
           "claimed": 8.0031,
           "diffPct": 100,
           "verdict": "differs"
@@ -1008,18 +1012,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-15T01:31:34.669Z",
-      "finishedAt": "2026-11-15T01:31:38.395Z",
+      "startedAt": "2026-11-15T01:45:20.628Z",
+      "finishedAt": "2026-11-15T01:45:24.427Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 109085.56,
-        "nearSupply": 149928.81,
+        "solanaSupply": 109085.59,
+        "nearSupply": 149953.78,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": -581.6359623799945,
+        "change24h": -581.6139623799972,
         "notes": []
       }
     },
