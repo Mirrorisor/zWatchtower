@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-15T11:30:05.786Z",
-      "finishedAt": "2026-11-15T11:30:08.977Z",
+      "startedAt": "2026-11-15T11:35:02.164Z",
+      "finishedAt": "2026-11-15T11:35:05.725Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,8 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle": 1
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -1072,8 +1071,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-15T11:20:49.737Z",
-      "finishedAt": "2026-11-15T11:20:50.924Z",
+      "startedAt": "2026-11-15T11:35:05.731Z",
+      "finishedAt": "2026-11-15T11:35:06.935Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1084,8 +1083,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 685.437544554,
-        "saplingInPool": 72369728.96074,
-        "zecInPool": 102.54344799,
+        "saplingInPool": 72160209.85697,
+        "zecInPool": 102.8570736,
         "zecAddedSaplingSays": 107.24488095,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
