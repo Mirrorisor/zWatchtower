@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-15T01:10:10.565Z",
-      "finishedAt": "2026-11-15T01:10:13.138Z",
+      "startedAt": "2026-11-15T01:15:11.319Z",
+      "finishedAt": "2026-11-15T01:15:13.822Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,11 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "settle": 1,
+          "declare_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -639,8 +641,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-15T00:58:10.345Z",
-      "finishedAt": "2026-11-15T00:58:12.887Z",
+      "startedAt": "2026-11-15T01:15:13.832Z",
+      "finishedAt": "2026-11-15T01:15:16.010Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -659,8 +661,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-15T00:58:12.890Z",
-      "finishedAt": "2026-11-15T00:58:17.090Z",
+      "startedAt": "2026-11-15T01:15:16.014Z",
+      "finishedAt": "2026-11-15T01:15:21.475Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1008,18 +1010,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-15T00:59:14.337Z",
-      "finishedAt": "2026-11-15T00:59:18.085Z",
+      "startedAt": "2026-11-15T01:15:21.478Z",
+      "finishedAt": "2026-11-15T01:15:25.351Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 109075.63,
-        "nearSupply": 149909.76,
+        "solanaSupply": 109085.56,
+        "nearSupply": 149897.23,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": -591.5694653399987,
+        "change24h": -581.6359623799945,
         "notes": []
       }
     },
