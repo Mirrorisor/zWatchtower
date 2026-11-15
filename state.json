@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-15T10:35:02.002Z",
-      "finishedAt": "2026-11-15T10:35:05.130Z",
+      "startedAt": "2026-11-15T10:49:10.901Z",
+      "finishedAt": "2026-11-15T10:49:15.268Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 11,
+          "settle": 3
         },
         "unrecognised": 0,
         "baseline": false,
@@ -59,8 +60,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-15T10:20:07.940Z",
-      "finishedAt": "2026-11-15T10:20:54.447Z",
+      "startedAt": "2026-11-15T10:49:15.273Z",
+      "finishedAt": "2026-11-15T10:49:55.332Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -68,7 +69,7 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-15T10:20:53.580Z",
+        "checkedAt": "2026-11-15T10:49:54.644Z",
         "runs": 8,
         "passed": 6,
         "flagged": 2,
@@ -571,8 +572,8 @@
     },
     "float": {
       "check": "float",
-      "startedAt": "2026-11-15T09:35:15.465Z",
-      "finishedAt": "2026-11-15T09:42:46.621Z",
+      "startedAt": "2026-11-15T10:49:55.335Z",
+      "finishedAt": "2026-11-15T10:57:22.163Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -639,8 +640,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-15T10:30:07.835Z",
-      "finishedAt": "2026-11-15T10:30:09.324Z",
+      "startedAt": "2026-11-15T10:57:22.164Z",
+      "finishedAt": "2026-11-15T10:57:24.314Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -659,8 +660,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-15T10:30:09.326Z",
-      "finishedAt": "2026-11-15T10:30:13.222Z",
+      "startedAt": "2026-11-15T10:57:24.317Z",
+      "finishedAt": "2026-11-15T10:57:28.446Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -672,7 +673,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 227643627.84273303,
+          "onChain": 227645399.66584504,
           "claimed": 8.0031,
           "diffPct": 100,
           "verdict": "differs"
@@ -810,14 +811,14 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "Sapling's page says 0.00M $SAPLING burned; the chain says 227.64M"
+          "Sapling's page says 0.00M $SAPLING burned; the chain says 227.65M"
         ]
       }
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-15T10:15:13.499Z",
-      "finishedAt": "2026-11-15T10:16:10.180Z",
+      "startedAt": "2026-11-15T10:57:28.449Z",
+      "finishedAt": "2026-11-15T10:58:47.054Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -834,7 +835,7 @@
           "Creator bought N of supply at launch": 1
         },
         "notes": [
-          "creator scan: 22 coin(s) read this run, 537 of 537 read so far (5 launched shielded, creator not public)",
+          "creator scan: 43 coin(s) read this run, 537 of 537 read so far (5 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
           "26 shortlisted coin(s) were under $10,000 on their own page, so no card",
           "10 wallet(s) are in the top 10 of more than one coin"
@@ -843,8 +844,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-15T10:16:10.182Z",
-      "finishedAt": "2026-11-15T10:16:25.115Z",
+      "startedAt": "2026-11-15T10:58:47.056Z",
+      "finishedAt": "2026-11-15T10:58:59.646Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -854,7 +855,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 469051198,
-            "seenInTxs": 9607,
+            "seenInTxs": 9611,
             "withJupiter": 70,
             "seeds": [
               "upgradeAuthority",
@@ -888,12 +889,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 1237
+            "seenInTxs": 1239
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 1216
+            "seenInTxs": 1218
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -983,14 +984,14 @@
           ]
         },
         "programsSeen": 26,
-        "txsRead": 5,
+        "txsRead": 6,
         "notes": []
       }
     },
     "earnings": {
       "check": "earnings",
-      "startedAt": "2026-11-15T09:44:28.124Z",
-      "finishedAt": "2026-11-15T09:44:34.876Z",
+      "startedAt": "2026-11-15T10:58:59.649Z",
+      "finishedAt": "2026-11-15T10:59:07.394Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1008,18 +1009,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-15T10:30:13.225Z",
-      "finishedAt": "2026-11-15T10:30:17.011Z",
+      "startedAt": "2026-11-15T10:59:07.397Z",
+      "finishedAt": "2026-11-15T10:59:11.428Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 108984.76,
-        "nearSupply": 149699.71,
+        "nearSupply": 149706.66,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": -694.645356699999,
+        "change24h": -694.2481228399993,
         "notes": []
       }
     },
