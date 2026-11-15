@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-15T11:45:01.569Z",
-      "finishedAt": "2026-11-15T11:45:04.875Z",
+      "startedAt": "2026-11-15T11:50:03.068Z",
+      "finishedAt": "2026-11-15T11:50:06.438Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "settle": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -59,8 +60,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-15T11:20:05.328Z",
-      "finishedAt": "2026-11-15T11:20:49.735Z",
+      "startedAt": "2026-11-15T11:50:06.444Z",
+      "finishedAt": "2026-11-15T11:50:51.447Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -68,7 +69,7 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-15T11:20:48.691Z",
+        "checkedAt": "2026-11-15T11:50:50.681Z",
         "runs": 8,
         "passed": 6,
         "flagged": 2,
@@ -98,7 +99,7 @@
             "top20": [
               {
                 "owner": "WLHv2UAZ",
-                "amount": "985063967455296",
+                "amount": "985112116937488",
                 "wallet": false,
                 "ownerProgram": null,
                 "inSnapshot": false
@@ -134,13 +135,6 @@
               {
                 "owner": "9fRsYUCa",
                 "amount": "51086751175",
-                "wallet": true,
-                "ownerProgram": "11111111111111111111111111111111",
-                "inSnapshot": false
-              },
-              {
-                "owner": "CYfVvQy9",
-                "amount": "49638641436",
                 "wallet": true,
                 "ownerProgram": "11111111111111111111111111111111",
                 "inSnapshot": false
@@ -235,12 +229,19 @@
                 "wallet": true,
                 "ownerProgram": "11111111111111111111111111111111",
                 "inSnapshot": false
+              },
+              {
+                "owner": "HvMXC2fT",
+                "amount": "0",
+                "wallet": true,
+                "ownerProgram": "11111111111111111111111111111111",
+                "inSnapshot": false
               }
             ],
             "notInSnapshotByOwnerProgram": {
-              "unknown": "985063967455296",
+              "unknown": "985112116937488",
               "11111111111111111111111111111111": "1976055764174",
-              "wallet": "513025058492"
+              "wallet": "463386417056"
             }
           },
           "releaseAt": "2026-11-03T00:19:00.000Z",
@@ -1025,8 +1026,8 @@
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-15T10:35:05.136Z",
-      "finishedAt": "2026-11-15T10:48:48.387Z",
+      "startedAt": "2026-11-15T11:50:51.450Z",
+      "finishedAt": "2026-11-15T12:04:44.042Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1048,8 +1049,8 @@
     },
     "split": {
       "check": "split",
-      "startedAt": "2026-11-15T10:48:57.785Z",
-      "finishedAt": "2026-11-15T10:48:59.958Z",
+      "startedAt": "2026-11-15T12:04:51.729Z",
+      "finishedAt": "2026-11-15T12:04:54.334Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1071,8 +1072,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-15T11:35:05.731Z",
-      "finishedAt": "2026-11-15T11:35:06.935Z",
+      "startedAt": "2026-11-15T12:04:44.044Z",
+      "finishedAt": "2026-11-15T12:04:44.974Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1083,8 +1084,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 685.437544554,
-        "saplingInPool": 72160209.85697,
-        "zecInPool": 102.8570736,
+        "saplingInPool": 72151649.182251,
+        "zecInPool": 102.86532912,
         "zecAddedSaplingSays": 107.24488095,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
@@ -1093,8 +1094,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-15T11:20:50.926Z",
-      "finishedAt": "2026-11-15T11:20:58.686Z",
+      "startedAt": "2026-11-15T12:04:44.976Z",
+      "finishedAt": "2026-11-15T12:04:51.726Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
