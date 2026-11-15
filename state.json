@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-15T06:40:07.716Z",
-      "finishedAt": "2026-11-15T06:40:10.686Z",
+      "startedAt": "2026-11-15T06:45:11.397Z",
+      "finishedAt": "2026-11-15T06:45:14.459Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 469051198,
-        "configSha256": "b03d80c58058737567a0d082f24cd2667b3881a1fad76d6f50a6f473132a3664",
+        "configSha256": "fca8d4c72f8cc0a532cdffe4ea282f7a143cf3939dfba59b39b8b095a860791f",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -21,7 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5
+          "observe_sapling": 3,
+          "settle": 3,
+          "draw_lp": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -639,8 +641,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-15T06:30:14.035Z",
-      "finishedAt": "2026-11-15T06:30:15.697Z",
+      "startedAt": "2026-11-15T06:45:14.469Z",
+      "finishedAt": "2026-11-15T06:45:16.768Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -659,8 +661,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-15T06:30:15.699Z",
-      "finishedAt": "2026-11-15T06:30:19.888Z",
+      "startedAt": "2026-11-15T06:45:16.771Z",
+      "finishedAt": "2026-11-15T06:45:23.621Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -672,7 +674,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 227619038.328969,
+          "onChain": 227631053.44602704,
           "claimed": 8.0031,
           "diffPct": 100,
           "verdict": "differs"
@@ -810,7 +812,7 @@
           "78Az2cneg58DoaCzi3F8wqQmEjbvvEJmXk6AK77F4h1f"
         ],
         "notes": [
-          "Sapling's page says 0.00M $SAPLING burned; the chain says 227.62M"
+          "Sapling's page says 0.00M $SAPLING burned; the chain says 227.63M"
         ]
       }
     },
@@ -1008,15 +1010,15 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-15T06:31:25.873Z",
-      "finishedAt": "2026-11-15T06:31:29.640Z",
+      "startedAt": "2026-11-15T06:45:23.624Z",
+      "finishedAt": "2026-11-15T06:45:27.785Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 108983.77,
-        "nearSupply": 149750.8,
+        "nearSupply": 149633.36,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
         "change24h": -697.3902085699956,
