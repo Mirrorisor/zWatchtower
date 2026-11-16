@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-16T09:00:03.934Z",
-      "finishedAt": "2026-11-16T09:00:06.682Z",
+      "startedAt": "2026-11-16T09:05:01.707Z",
+      "finishedAt": "2026-11-16T09:05:04.751Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "settle": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -1023,8 +1024,8 @@
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-16T07:50:51.387Z",
-      "finishedAt": "2026-11-16T08:05:40.509Z",
+      "startedAt": "2026-11-16T09:05:04.758Z",
+      "finishedAt": "2026-11-16T09:19:43.309Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1046,8 +1047,8 @@
     },
     "split": {
       "check": "split",
-      "startedAt": "2026-11-16T08:05:51.256Z",
-      "finishedAt": "2026-11-16T08:05:54.184Z",
+      "startedAt": "2026-11-16T09:19:52.395Z",
+      "finishedAt": "2026-11-16T09:19:55.104Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1069,8 +1070,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-16T08:50:46.648Z",
-      "finishedAt": "2026-11-16T08:50:47.889Z",
+      "startedAt": "2026-11-16T09:19:43.313Z",
+      "finishedAt": "2026-11-16T09:19:44.314Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1080,10 +1081,10 @@
         "lpMint": "4A2HF17mm2Mf1yJ28hANemPDBHMKSF6Az5yzKF6WMtBW",
         "lpSupply": "0",
         "burned": true,
-        "lpShares": 685.879336157,
-        "saplingInPool": 64867561.609469,
-        "zecInPool": 115.08927847,
-        "zecAddedSaplingSays": 107.7207252,
+        "lpShares": 686.025608441,
+        "saplingInPool": 65288393.583499,
+        "zecInPool": 114.38959951,
+        "zecAddedSaplingSays": 107.7703539,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
         "notes": []
@@ -1091,8 +1092,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-16T08:35:07.761Z",
-      "finishedAt": "2026-11-16T08:35:22.503Z",
+      "startedAt": "2026-11-16T09:19:44.316Z",
+      "finishedAt": "2026-11-16T09:19:52.392Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
