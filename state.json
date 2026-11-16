@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-16T06:30:04.759Z",
-      "finishedAt": "2026-11-16T06:30:07.906Z",
+      "startedAt": "2026-11-16T06:35:02.777Z",
+      "finishedAt": "2026-11-16T06:35:05.609Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,8 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle": 1
+          "observe_sapling": 3
         },
         "unrecognised": 0,
         "baseline": false,
@@ -1007,25 +1006,25 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-16T06:17:03.101Z",
-      "finishedAt": "2026-11-16T06:17:07.403Z",
+      "startedAt": "2026-11-16T06:35:05.617Z",
+      "finishedAt": "2026-11-16T06:35:09.591Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 108947.47,
-        "nearSupply": 149254.22,
+        "nearSupply": 149268.56,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": -36.3031485399988,
+        "change24h": -36.303170029990724,
         "notes": []
       }
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-16T05:20:57.408Z",
-      "finishedAt": "2026-11-16T05:35:29.858Z",
+      "startedAt": "2026-11-16T06:35:09.593Z",
+      "finishedAt": "2026-11-16T06:49:44.433Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1047,8 +1046,8 @@
     },
     "split": {
       "check": "split",
-      "startedAt": "2026-11-16T05:35:40.429Z",
-      "finishedAt": "2026-11-16T05:35:43.134Z",
+      "startedAt": "2026-11-16T06:49:55.264Z",
+      "finishedAt": "2026-11-16T06:49:58.249Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1070,8 +1069,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-16T06:20:46.521Z",
-      "finishedAt": "2026-11-16T06:20:47.804Z",
+      "startedAt": "2026-11-16T06:49:44.436Z",
+      "finishedAt": "2026-11-16T06:49:45.896Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1082,8 +1081,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 685.879336157,
-        "saplingInPool": 63282036.331567,
-        "zecInPool": 118.0336932,
+        "saplingInPool": 63948644.197599,
+        "zecInPool": 116.77710489,
         "zecAddedSaplingSays": 107.7207252,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
@@ -1092,8 +1091,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-16T06:05:06.154Z",
-      "finishedAt": "2026-11-16T06:05:12.705Z",
+      "startedAt": "2026-11-16T06:49:45.898Z",
+      "finishedAt": "2026-11-16T06:49:55.263Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
