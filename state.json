@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-16T11:30:20.081Z",
-      "finishedAt": "2026-11-16T11:30:23.448Z",
+      "startedAt": "2026-11-16T11:35:02.851Z",
+      "finishedAt": "2026-11-16T11:35:06.158Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,11 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "settle": 3,
+          "declare_payee": 1
         },
-        "unrecognised": 0,
+        "unrecognised": 1,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -1024,17 +1026,17 @@
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-16T10:20:56.129Z",
-      "finishedAt": "2026-11-16T10:35:36.497Z",
+      "startedAt": "2026-11-16T11:35:06.164Z",
+      "finishedAt": "2026-11-16T11:49:28.064Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "coinsRead": 538,
+        "coinsRead": 539,
         "recipients": {
           "holders": 279,
-          "wallet": 247,
+          "wallet": 248,
           "creator": 3,
           "zcash-foundation": 9
         },
@@ -1047,8 +1049,8 @@
     },
     "split": {
       "check": "split",
-      "startedAt": "2026-11-16T10:35:45.186Z",
-      "finishedAt": "2026-11-16T10:35:47.651Z",
+      "startedAt": "2026-11-16T11:49:39.077Z",
+      "finishedAt": "2026-11-16T11:49:41.325Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1058,7 +1060,7 @@
         "saplingSharePct": 10.43,
         "backPct": 89.57,
         "checks": [
-          "holders: matches (Sapling 187.44, ours 187.4015)",
+          "holders: matches (Sapling 187.48, ours 187.4429)",
           "donated: matches (Sapling 8, ours 8.0031)",
           "flywheel: matches (Sapling 17.54, ours 17.5427)",
           "payees: matches (Sapling 48.38, ours 19.0485, lower bound)"
@@ -1070,8 +1072,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-16T11:20:53.804Z",
-      "finishedAt": "2026-11-16T11:20:55.054Z",
+      "startedAt": "2026-11-16T11:49:28.065Z",
+      "finishedAt": "2026-11-16T11:49:29.070Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1082,8 +1084,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 686.025608441,
-        "saplingInPool": 65655951.123437,
-        "zecInPool": 113.7320469,
+        "saplingInPool": 65556700.813897,
+        "zecInPool": 113.90896053,
         "zecAddedSaplingSays": 107.7703539,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
@@ -1092,8 +1094,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-16T11:05:08.192Z",
-      "finishedAt": "2026-11-16T11:05:17.335Z",
+      "startedAt": "2026-11-16T11:49:29.072Z",
+      "finishedAt": "2026-11-16T11:49:39.074Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
