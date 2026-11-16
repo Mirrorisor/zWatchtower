@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-16T21:25:11.353Z",
-      "finishedAt": "2026-11-16T21:25:14.233Z",
+      "startedAt": "2026-11-16T21:30:23.168Z",
+      "finishedAt": "2026-11-16T21:30:25.826Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 3
         },
         "unrecognised": 0,
         "baseline": false,
@@ -639,8 +639,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-16T21:15:13.982Z",
-      "finishedAt": "2026-11-16T21:15:15.705Z",
+      "startedAt": "2026-11-16T21:30:25.832Z",
+      "finishedAt": "2026-11-16T21:30:27.928Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -659,8 +659,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-16T21:15:15.708Z",
-      "finishedAt": "2026-11-16T21:15:21.475Z",
+      "startedAt": "2026-11-16T21:30:27.932Z",
+      "finishedAt": "2026-11-16T21:30:32.514Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -672,8 +672,8 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 227773995.30155694,
-          "claimed": 227770000,
+          "onChain": 227775357.26751697,
+          "claimed": 227780000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -1006,15 +1006,15 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-16T21:16:20.414Z",
-      "finishedAt": "2026-11-16T21:16:24.266Z",
+      "startedAt": "2026-11-16T21:30:32.516Z",
+      "finishedAt": "2026-11-16T21:30:36.593Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 108924.83,
-        "nearSupply": 149890.79,
+        "nearSupply": 149890.9,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
         "change24h": -70.35574018000625,
