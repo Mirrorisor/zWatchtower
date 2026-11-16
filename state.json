@@ -2,15 +2,15 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-16T02:30:02.132Z",
-      "finishedAt": "2026-11-16T02:30:05.129Z",
+      "startedAt": "2026-11-16T02:35:03.206Z",
+      "finishedAt": "2026-11-16T02:35:06.424Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
         "lastDeploySlot": 469051198,
-        "configSha256": "2f3f2ffa9ea92444e788025f0cdca5bc9aac141c38cdd92826b0d5ae68f26b4e",
+        "configSha256": "1f8cc70fd6492c82a466763ebac27c2e77c3699f8fa72471c00ab0d611b303df",
         "walletsInConfig": [
           "treasury",
           "rewards",
@@ -21,7 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "draw_lp": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -1082,8 +1083,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-16T02:20:52.551Z",
-      "finishedAt": "2026-11-16T02:20:53.857Z",
+      "startedAt": "2026-11-16T02:35:06.431Z",
+      "finishedAt": "2026-11-16T02:35:08.004Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1093,10 +1094,10 @@
         "lpMint": "4A2HF17mm2Mf1yJ28hANemPDBHMKSF6Az5yzKF6WMtBW",
         "lpSupply": "0",
         "burned": true,
-        "lpShares": 685.736248703,
-        "saplingInPool": 63950539.369249,
-        "zecInPool": 116.69580758,
-        "zecAddedSaplingSays": 107.67258933,
+        "lpShares": 685.879336157,
+        "saplingInPool": 65461841.378403,
+        "zecInPool": 113.97807828,
+        "zecAddedSaplingSays": 107.7207252,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
         "notes": []
