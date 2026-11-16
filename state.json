@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-16T04:55:11.727Z",
-      "finishedAt": "2026-11-16T04:55:15.530Z",
+      "startedAt": "2026-11-16T05:00:13.405Z",
+      "finishedAt": "2026-11-16T05:00:16.528Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,12 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5,
-          "convert_sapling_begin": 1,
-          "convert_sapling_end": 1,
-          "settle": 1
+          "observe_sapling": 4
         },
-        "unrecognised": 2,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -642,8 +639,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-16T04:45:05.286Z",
-      "finishedAt": "2026-11-16T04:45:07.904Z",
+      "startedAt": "2026-11-16T05:00:16.535Z",
+      "finishedAt": "2026-11-16T05:00:18.900Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -662,8 +659,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-16T04:45:07.908Z",
-      "finishedAt": "2026-11-16T04:45:12.616Z",
+      "startedAt": "2026-11-16T05:00:18.903Z",
+      "finishedAt": "2026-11-16T05:00:23.003Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -675,8 +672,8 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 227722954.92630696,
-          "claimed": 227720000,
+          "onChain": 227727954.58102202,
+          "claimed": 227730000,
           "diffPct": 0,
           "verdict": "matches"
         },
@@ -817,8 +814,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-16T04:28:23.309Z",
-      "finishedAt": "2026-11-16T04:29:54.737Z",
+      "startedAt": "2026-11-16T05:00:23.006Z",
+      "finishedAt": "2026-11-16T05:01:55.918Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -835,7 +832,7 @@
           "Creator bought N of supply at launch": 1
         },
         "notes": [
-          "creator scan: 46 coin(s) read this run, 542 of 542 read so far (5 launched shielded, creator not public)",
+          "creator scan: 47 coin(s) read this run, 542 of 542 read so far (5 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
           "27 shortlisted coin(s) were under $10,000 on their own page, so no card",
           "10 wallet(s) are in the top 10 of more than one coin"
@@ -844,8 +841,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-16T04:29:54.740Z",
-      "finishedAt": "2026-11-16T04:30:08.050Z",
+      "startedAt": "2026-11-16T05:01:55.920Z",
+      "finishedAt": "2026-11-16T05:02:10.192Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -855,7 +852,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 469051198,
-            "seenInTxs": 9728,
+            "seenInTxs": 9733,
             "withJupiter": 70,
             "seeds": [
               "upgradeAuthority",
@@ -889,12 +886,12 @@
           {
             "id": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 1274
+            "seenInTxs": 1276
           },
           {
             "id": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
             "authority": "7gZufwwAo17y5kg8FMyJy2phgpvv9RSdzWtdXiWHjFr8",
-            "seenInTxs": 1252
+            "seenInTxs": 1254
           },
           {
             "id": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
@@ -984,7 +981,7 @@
           ]
         },
         "programsSeen": 26,
-        "txsRead": 5,
+        "txsRead": 7,
         "notes": []
       }
     },
@@ -1009,18 +1006,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-16T04:45:12.618Z",
-      "finishedAt": "2026-11-16T04:45:16.505Z",
+      "startedAt": "2026-11-16T05:02:10.195Z",
+      "finishedAt": "2026-11-16T05:02:14.339Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 108947.62,
-        "nearSupply": 149259.97,
+        "nearSupply": 149242.81,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": -36.09792007000942,
+        "change24h": -36.09806553000817,
         "notes": []
       }
     },
