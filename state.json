@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-17T13:45:11.350Z",
-      "finishedAt": "2026-11-17T13:45:14.620Z",
+      "startedAt": "2026-11-17T13:50:11.393Z",
+      "finishedAt": "2026-11-17T13:50:14.058Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 3
         },
         "unrecognised": 0,
         "baseline": false,
@@ -59,8 +59,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-17T13:20:14.702Z",
-      "finishedAt": "2026-11-17T13:21:04.126Z",
+      "startedAt": "2026-11-17T13:50:14.067Z",
+      "finishedAt": "2026-11-17T13:50:58.571Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -68,7 +68,7 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-17T13:20:57.009Z",
+        "checkedAt": "2026-11-17T13:50:57.707Z",
         "runs": 8,
         "passed": 6,
         "flagged": 2,
@@ -1023,8 +1023,8 @@
     },
     "payees": {
       "check": "payees",
-      "startedAt": "2026-11-17T12:35:05.578Z",
-      "finishedAt": "2026-11-17T12:49:20.054Z",
+      "startedAt": "2026-11-17T13:50:58.574Z",
+      "finishedAt": "2026-11-17T14:05:06.955Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1046,8 +1046,8 @@
     },
     "split": {
       "check": "split",
-      "startedAt": "2026-11-17T12:49:29.631Z",
-      "finishedAt": "2026-11-17T12:49:32.365Z",
+      "startedAt": "2026-11-17T14:05:14.952Z",
+      "finishedAt": "2026-11-17T14:05:17.622Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1057,7 +1057,7 @@
         "saplingSharePct": 10.43,
         "backPct": 89.57,
         "checks": [
-          "holders: matches (Sapling 187.66, ours 187.6267)",
+          "holders: matches (Sapling 187.67, ours 187.6267)",
           "donated: matches (Sapling 8, ours 8.0031)",
           "flywheel: matches (Sapling 17.54, ours 17.5427)",
           "payees: matches (Sapling 48.38, ours 19.0485, lower bound)"
@@ -1069,8 +1069,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-17T13:35:06.123Z",
-      "finishedAt": "2026-11-17T13:35:07.559Z",
+      "startedAt": "2026-11-17T14:05:06.956Z",
+      "finishedAt": "2026-11-17T14:05:08.002Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1081,8 +1081,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 686.423502861,
-        "saplingInPool": 78541019.288727,
-        "zecInPool": 95.00083736,
+        "saplingInPool": 79603096.946996,
+        "zecInPool": 93.72513184,
         "zecAddedSaplingSays": 107.88144089,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
@@ -1091,8 +1091,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-17T13:21:05.369Z",
-      "finishedAt": "2026-11-17T13:21:13.551Z",
+      "startedAt": "2026-11-17T14:05:08.005Z",
+      "finishedAt": "2026-11-17T14:05:14.949Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
