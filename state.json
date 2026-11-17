@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-17T05:40:14.536Z",
-      "finishedAt": "2026-11-17T05:40:16.978Z",
+      "startedAt": "2026-11-17T05:45:11.336Z",
+      "finishedAt": "2026-11-17T05:45:13.833Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,8 +21,6 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "close_rewards_run": 1,
-          "release_rewards": 1,
           "observe_sapling": 4
         },
         "unrecognised": 0,
@@ -641,8 +639,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-17T05:28:15.397Z",
-      "finishedAt": "2026-11-17T05:28:17.725Z",
+      "startedAt": "2026-11-17T05:45:13.840Z",
+      "finishedAt": "2026-11-17T05:45:15.563Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -661,8 +659,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-17T05:28:17.727Z",
-      "finishedAt": "2026-11-17T05:28:22.154Z",
+      "startedAt": "2026-11-17T05:45:15.567Z",
+      "finishedAt": "2026-11-17T05:45:20.798Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -674,7 +672,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 227791350.129084,
+          "onChain": 227792803.861933,
           "claimed": 227790000,
           "diffPct": 0,
           "verdict": "matches"
@@ -1008,15 +1006,15 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-17T05:30:24.557Z",
-      "finishedAt": "2026-11-17T05:30:28.337Z",
+      "startedAt": "2026-11-17T05:45:20.802Z",
+      "finishedAt": "2026-11-17T05:45:24.714Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 108915.78,
-        "nearSupply": 150296.45,
+        "nearSupply": 150278.63,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
         "change24h": -31.826716969997506,
