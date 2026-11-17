@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-17T15:45:11.517Z",
-      "finishedAt": "2026-11-17T15:45:14.049Z",
+      "startedAt": "2026-11-17T15:50:11.480Z",
+      "finishedAt": "2026-11-17T15:50:13.987Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 3
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -59,8 +59,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-17T15:20:07.862Z",
-      "finishedAt": "2026-11-17T15:20:55.442Z",
+      "startedAt": "2026-11-17T15:50:13.993Z",
+      "finishedAt": "2026-11-17T15:50:58.206Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -68,7 +68,7 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-17T15:20:48.252Z",
+        "checkedAt": "2026-11-17T15:50:57.354Z",
         "runs": 8,
         "passed": 6,
         "flagged": 2,
@@ -1069,8 +1069,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-17T15:35:06.185Z",
-      "finishedAt": "2026-11-17T15:35:07.608Z",
+      "startedAt": "2026-11-17T15:50:58.208Z",
+      "finishedAt": "2026-11-17T15:50:59.611Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1081,8 +1081,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 686.423502861,
-        "saplingInPool": 78499242.267455,
-        "zecInPool": 95.06257218,
+        "saplingInPool": 78471546.146923,
+        "zecInPool": 95.09720669,
         "zecAddedSaplingSays": 107.88144089,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
@@ -1091,8 +1091,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-17T15:19:39.681Z",
-      "finishedAt": "2026-11-17T15:19:49.214Z",
+      "startedAt": "2026-11-17T15:50:59.614Z",
+      "finishedAt": "2026-11-17T15:51:13.111Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
