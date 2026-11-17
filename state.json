@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-17T06:45:22.764Z",
-      "finishedAt": "2026-11-17T06:45:25.840Z",
+      "startedAt": "2026-11-17T06:50:11.350Z",
+      "finishedAt": "2026-11-17T06:50:14.097Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 7
+          "observe_sapling": 4
         },
         "unrecognised": 0,
         "baseline": false,
@@ -59,8 +59,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-17T06:20:14.532Z",
-      "finishedAt": "2026-11-17T06:20:58.262Z",
+      "startedAt": "2026-11-17T06:50:14.103Z",
+      "finishedAt": "2026-11-17T06:50:56.968Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -68,7 +68,7 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-17T06:20:57.376Z",
+        "checkedAt": "2026-11-17T06:50:56.081Z",
         "runs": 8,
         "passed": 6,
         "flagged": 2,
@@ -1069,8 +1069,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-17T06:35:14.087Z",
-      "finishedAt": "2026-11-17T06:35:15.078Z",
+      "startedAt": "2026-11-17T06:50:56.970Z",
+      "finishedAt": "2026-11-17T06:50:58.174Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1081,8 +1081,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 686.185948729,
-        "saplingInPool": 78445375.601052,
-        "zecInPool": 95.02052796,
+        "saplingInPool": 78192710.567477,
+        "zecInPool": 95.35188279,
         "zecAddedSaplingSays": 107.82123311,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
