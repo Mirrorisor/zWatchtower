@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-17T13:25:11.321Z",
-      "finishedAt": "2026-11-17T13:25:13.732Z",
+      "startedAt": "2026-11-17T13:30:04.503Z",
+      "finishedAt": "2026-11-17T13:30:07.458Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -639,8 +639,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-17T13:15:14.237Z",
-      "finishedAt": "2026-11-17T13:15:16.018Z",
+      "startedAt": "2026-11-17T13:30:07.464Z",
+      "finishedAt": "2026-11-17T13:30:09.083Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -659,8 +659,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-17T13:15:16.021Z",
-      "finishedAt": "2026-11-17T13:15:20.245Z",
+      "startedAt": "2026-11-17T13:30:09.085Z",
+      "finishedAt": "2026-11-17T13:30:13.676Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -814,35 +814,35 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-17T12:58:04.976Z",
-      "finishedAt": "2026-11-17T12:58:48.409Z",
+      "startedAt": "2026-11-17T13:30:13.678Z",
+      "finishedAt": "2026-11-17T13:30:57.182Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "coins": 545,
-        "carded": 12,
-        "refreshed": 12,
-        "flagged": 10,
+        "carded": 11,
+        "refreshed": 11,
+        "flagged": 9,
         "flagCounts": {
-          "N wallet(s) bought N in the first N seconds": 8,
-          "Creator has sold N of what they bought": 7,
+          "N wallet(s) bought N in the first N seconds": 7,
+          "Creator has sold N of what they bought": 6,
           "Creator sold out of N of their N other coins checked": 4,
           "Creator bought N of supply at launch": 1
         },
         "notes": [
-          "creator scan: 6 coin(s) read this run, 545 of 545 read so far (5 launched shielded, creator not public)",
+          "creator scan: 5 coin(s) read this run, 545 of 545 read so far (5 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
-          "28 shortlisted coin(s) were under $10,000 on their own page, so no card",
-          "10 wallet(s) are in the top 10 of more than one coin"
+          "29 shortlisted coin(s) were under $10,000 on their own page, so no card",
+          "9 wallet(s) are in the top 10 of more than one coin"
         ]
       }
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-17T12:58:48.411Z",
-      "finishedAt": "2026-11-17T12:59:02.392Z",
+      "startedAt": "2026-11-17T13:30:57.185Z",
+      "finishedAt": "2026-11-17T13:31:10.202Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -852,7 +852,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 469051198,
-            "seenInTxs": 9893,
+            "seenInTxs": 9894,
             "withJupiter": 70,
             "seeds": [
               "upgradeAuthority",
@@ -981,7 +981,7 @@
           ]
         },
         "programsSeen": 27,
-        "txsRead": 3,
+        "txsRead": 1,
         "notes": []
       }
     },
@@ -1006,18 +1006,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-17T13:15:20.248Z",
-      "finishedAt": "2026-11-17T13:15:24.593Z",
+      "startedAt": "2026-11-17T13:31:10.205Z",
+      "finishedAt": "2026-11-17T13:31:14.251Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 108912.95,
-        "nearSupply": 149982.97,
+        "solanaSupply": 108912.35,
+        "nearSupply": 149967.72,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": -17.302554239999154,
+        "change24h": -17.890260389991454,
         "notes": []
       }
     },
