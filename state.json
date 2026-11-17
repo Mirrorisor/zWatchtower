@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-17T12:10:06.393Z",
-      "finishedAt": "2026-11-17T12:10:09.062Z",
+      "startedAt": "2026-11-17T12:15:11.388Z",
+      "finishedAt": "2026-11-17T12:15:14.329Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,12 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 5,
-          "convert_sapling_begin": 1,
-          "convert_sapling_end": 1,
-          "settle": 1
+          "observe_sapling": 4
         },
-        "unrecognised": 2,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -642,8 +639,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-17T12:00:09.048Z",
-      "finishedAt": "2026-11-17T12:00:11.224Z",
+      "startedAt": "2026-11-17T12:15:14.336Z",
+      "finishedAt": "2026-11-17T12:15:15.835Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -662,8 +659,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-17T12:00:11.228Z",
-      "finishedAt": "2026-11-17T12:00:16.142Z",
+      "startedAt": "2026-11-17T12:15:15.837Z",
+      "finishedAt": "2026-11-17T12:15:21.365Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -817,8 +814,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-17T11:43:29.244Z",
-      "finishedAt": "2026-11-17T11:44:57.120Z",
+      "startedAt": "2026-11-17T12:15:21.367Z",
+      "finishedAt": "2026-11-17T12:16:22.710Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -835,7 +832,7 @@
           "Creator bought N of supply at launch": 1
         },
         "notes": [
-          "creator scan: 47 coin(s) read this run, 545 of 545 read so far (5 launched shielded, creator not public)",
+          "creator scan: 21 coin(s) read this run, 545 of 545 read so far (5 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
           "28 shortlisted coin(s) were under $10,000 on their own page, so no card",
           "10 wallet(s) are in the top 10 of more than one coin"
@@ -844,8 +841,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-17T11:44:57.124Z",
-      "finishedAt": "2026-11-17T11:45:10.353Z",
+      "startedAt": "2026-11-17T12:16:22.713Z",
+      "finishedAt": "2026-11-17T12:16:34.776Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -855,7 +852,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 469051198,
-            "seenInTxs": 9890,
+            "seenInTxs": 9891,
             "withJupiter": 70,
             "seeds": [
               "upgradeAuthority",
@@ -984,7 +981,7 @@
           ]
         },
         "programsSeen": 27,
-        "txsRead": 4,
+        "txsRead": 1,
         "notes": []
       }
     },
@@ -1009,18 +1006,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-17T12:00:16.145Z",
-      "finishedAt": "2026-11-17T12:00:20.306Z",
+      "startedAt": "2026-11-17T12:16:34.779Z",
+      "finishedAt": "2026-11-17T12:16:38.607Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 108897.81,
-        "nearSupply": 149813.61,
+        "solanaSupply": 108913.81,
+        "nearSupply": 150001.13,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": -47.57905168000434,
+        "change24h": -31.579598210009863,
         "notes": []
       }
     },
