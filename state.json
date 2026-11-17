@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-17T01:10:35.860Z",
-      "finishedAt": "2026-11-17T01:10:38.530Z",
+      "startedAt": "2026-11-17T01:15:11.814Z",
+      "finishedAt": "2026-11-17T01:15:14.389Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,8 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 3,
+          "settle": 1
         },
         "unrecognised": 0,
         "baseline": false,
@@ -639,8 +640,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-17T01:00:29.586Z",
-      "finishedAt": "2026-11-17T01:00:35.336Z",
+      "startedAt": "2026-11-17T01:15:14.396Z",
+      "finishedAt": "2026-11-17T01:15:16.791Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -659,8 +660,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-17T01:00:35.341Z",
-      "finishedAt": "2026-11-17T01:00:40.288Z",
+      "startedAt": "2026-11-17T01:15:16.793Z",
+      "finishedAt": "2026-11-17T01:15:21.108Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -672,7 +673,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 227782970.965531,
+          "onChain": 227784238.50712,
           "claimed": 227780000,
           "diffPct": 0,
           "verdict": "matches"
@@ -1006,15 +1007,15 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-17T01:01:43.697Z",
-      "finishedAt": "2026-11-17T01:01:47.522Z",
+      "startedAt": "2026-11-17T01:15:21.111Z",
+      "finishedAt": "2026-11-17T01:15:24.965Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 108921.79,
-        "nearSupply": 149832.9,
+        "nearSupply": 149829.9,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
         "change24h": -26.995195049996255,
