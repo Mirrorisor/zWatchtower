@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-17T22:10:11.440Z",
-      "finishedAt": "2026-11-17T22:10:13.958Z",
+      "startedAt": "2026-11-17T22:15:11.426Z",
+      "finishedAt": "2026-11-17T22:15:14.796Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,9 +21,12 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 4,
+          "convert_sapling_begin": 1,
+          "convert_sapling_end": 1,
+          "settle": 2
         },
-        "unrecognised": 0,
+        "unrecognised": 2,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -639,8 +642,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-17T22:00:09.332Z",
-      "finishedAt": "2026-11-17T22:00:11.174Z",
+      "startedAt": "2026-11-17T22:15:14.803Z",
+      "finishedAt": "2026-11-17T22:15:16.363Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -659,8 +662,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-17T22:00:11.178Z",
-      "finishedAt": "2026-11-17T22:00:18.395Z",
+      "startedAt": "2026-11-17T22:15:16.364Z",
+      "finishedAt": "2026-11-17T22:15:20.849Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -672,7 +675,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 227842430.50574803,
+          "onChain": 227843206.95918798,
           "claimed": 227840000,
           "diffPct": 0,
           "verdict": "matches"
@@ -814,8 +817,8 @@
     },
     "coins": {
       "check": "coins",
-      "startedAt": "2026-11-17T21:44:15.815Z",
-      "finishedAt": "2026-11-17T21:44:59.459Z",
+      "startedAt": "2026-11-17T22:15:20.851Z",
+      "finishedAt": "2026-11-17T22:16:04.257Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -832,7 +835,7 @@
           "Creator bought N of supply at launch": 1
         },
         "notes": [
-          "creator scan: 8 coin(s) read this run, 545 of 545 read so far (5 launched shielded, creator not public)",
+          "creator scan: 7 coin(s) read this run, 545 of 545 read so far (5 launched shielded, creator not public)",
           "first-buyer funding: 0 wallet(s) looked up this run",
           "28 shortlisted coin(s) were under $10,000 on their own page, so no card",
           "7 wallet(s) are in the top 10 of more than one coin"
@@ -841,8 +844,8 @@
     },
     "programs": {
       "check": "programs",
-      "startedAt": "2026-11-17T21:44:59.462Z",
-      "finishedAt": "2026-11-17T21:45:12.131Z",
+      "startedAt": "2026-11-17T22:16:04.261Z",
+      "finishedAt": "2026-11-17T22:16:17.403Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -852,7 +855,7 @@
             "id": "A9zFnNZpVjBbcE1SAPY92Z6H7WhicysLNPYPpDz15UxF",
             "authority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
             "lastDeploySlot": 469051198,
-            "seenInTxs": 9925,
+            "seenInTxs": 9927,
             "withJupiter": 70,
             "seeds": [
               "upgradeAuthority",
@@ -981,7 +984,7 @@
           ]
         },
         "programsSeen": 27,
-        "txsRead": 3,
+        "txsRead": 2,
         "notes": []
       }
     },
@@ -1006,18 +1009,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-17T22:00:18.397Z",
-      "finishedAt": "2026-11-17T22:00:22.795Z",
+      "startedAt": "2026-11-17T22:16:17.405Z",
+      "finishedAt": "2026-11-17T22:16:21.540Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
-        "solanaSupply": 109078.35,
-        "nearSupply": 150854.32,
+        "solanaSupply": 109094.35,
+        "nearSupply": 150845.5,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 153.55924511999183,
+        "change24h": 169.55868935000035,
         "notes": []
       }
     },
