@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-18T09:15:03.172Z",
-      "finishedAt": "2026-11-18T09:15:07.073Z",
+      "startedAt": "2026-11-18T09:20:03.004Z",
+      "finishedAt": "2026-11-18T09:20:07.644Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -59,8 +59,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-18T08:50:28.462Z",
-      "finishedAt": "2026-11-18T08:51:18.835Z",
+      "startedAt": "2026-11-18T09:20:07.650Z",
+      "finishedAt": "2026-11-18T09:20:59.591Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -68,7 +68,7 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-18T08:51:16.671Z",
+        "checkedAt": "2026-11-18T09:20:57.612Z",
         "runs": 8,
         "passed": 6,
         "flagged": 2,
@@ -1069,8 +1069,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-18T09:05:06.579Z",
-      "finishedAt": "2026-11-18T09:05:08.661Z",
+      "startedAt": "2026-11-18T09:20:59.593Z",
+      "finishedAt": "2026-11-18T09:21:01.340Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1082,7 +1082,7 @@
         "burned": true,
         "lpShares": 686.590423262,
         "saplingInPool": 78489716.606566,
-        "zecInPool": 95.25046371,
+        "zecInPool": 95.24997418,
         "zecAddedSaplingSays": 107.9294425,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
@@ -1091,8 +1091,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-18T08:49:51.500Z",
-      "finishedAt": "2026-11-18T08:50:07.866Z",
+      "startedAt": "2026-11-18T09:21:01.342Z",
+      "finishedAt": "2026-11-18T09:21:16.358Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
