@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-18T15:55:03.535Z",
-      "finishedAt": "2026-11-18T15:55:06.456Z",
+      "startedAt": "2026-11-18T16:00:02.675Z",
+      "finishedAt": "2026-11-18T16:00:06.046Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,6 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
+          "settle": 1,
           "observe_sapling": 4
         },
         "unrecognised": 0,
@@ -639,8 +640,8 @@
     },
     "tax": {
       "check": "tax",
-      "startedAt": "2026-11-18T15:45:08.020Z",
-      "finishedAt": "2026-11-18T15:45:09.658Z",
+      "startedAt": "2026-11-18T16:00:06.053Z",
+      "finishedAt": "2026-11-18T16:00:08.316Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -659,8 +660,8 @@
     },
     "flywheel": {
       "check": "flywheel",
-      "startedAt": "2026-11-18T15:45:09.661Z",
-      "finishedAt": "2026-11-18T15:45:14.273Z",
+      "startedAt": "2026-11-18T16:00:08.317Z",
+      "finishedAt": "2026-11-18T16:00:13.559Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -672,7 +673,7 @@
           "verdict": "matches the chain"
         },
         "saplingBurn": {
-          "onChain": 227880732.82088995,
+          "onChain": 227882769.03196895,
           "claimed": 227880000,
           "diffPct": 0,
           "verdict": "matches"
@@ -1006,18 +1007,18 @@
     },
     "zec": {
       "check": "zec",
-      "startedAt": "2026-11-18T15:46:10.428Z",
-      "finishedAt": "2026-11-18T15:46:14.657Z",
+      "startedAt": "2026-11-18T16:00:13.561Z",
+      "finishedAt": "2026-11-18T16:00:17.428Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
       "events": [],
       "summary": {
         "solanaSupply": 109287.97,
-        "nearSupply": 149741.75,
+        "nearSupply": 149752.7,
         "mintAuthority": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds",
         "freezeAuthority": null,
-        "change24h": 315.67151859999285,
+        "change24h": 315.6715182600019,
         "notes": []
       }
     },
