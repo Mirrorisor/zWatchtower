@@ -2,17 +2,24 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-18T01:19:38.181Z",
-      "finishedAt": "2026-11-18T01:19:41.997Z",
+      "startedAt": "2026-11-18T01:29:26.664Z",
+      "finishedAt": "2026-11-18T01:29:30.492Z",
       "status": "ran",
       "ok": false,
       "alerts": [
-        "multisig vault_transaction_create at 2026-11-18T01:19:25.000Z (312mQzD6dZ6icXgDKg9Es1cCaP1hbtBaYvjXbzE8Hu7JxTG4FsFhBZHu43r34aVGYQ6Ni7ECo5vyUeWUdHHvzAef)",
-        "multisig proposal_create at 2026-11-18T01:19:25.000Z (312mQzD6dZ6icXgDKg9Es1cCaP1hbtBaYvjXbzE8Hu7JxTG4FsFhBZHu43r34aVGYQ6Ni7ECo5vyUeWUdHHvzAef)"
+        "vault program upgraded: last deploy slot 469051198 -> 470750284",
+        "multisig vault_transaction_execute at 2026-11-18T01:25:29.000Z (53HfMsyKiTkb9mTJjv3ewwCEtB18nyvZzu9rRchkTBd1vNTzwhpJNV3HHP7tzxtN4zcDbJ1iZC8GDAJpCDRaZGs5)",
+        "multisig proposal_approve at 2026-11-18T01:25:20.000Z (2zkTWuK5updiU2ieWbr6GHxtYdxnRMdVbe5aPFDCenmLP4xzaXo3PygyVtPYGbEmy81E6fee1mxYS5wniSg9kZKb)",
+        "multisig proposal_approve at 2026-11-18T01:25:12.000Z (32LKBNNeJDit9ic2rurEtt2q4m5JN3hN97uC5CyKKxJBkqct7eEDHBXoq3LvaeuCq2mjFKFyowVuZATyy7gRkDrc)",
+        "multisig vault_transaction_create at 2026-11-18T01:24:59.000Z (45eCK73MpTxVtiZtwyT7XzswFXXzz8C3hsSqxK9TDzvBcy4nhHiDnoj9pjSGhpgE4TnrPuRiK4T8DCtBurwPSphN)",
+        "multisig proposal_create at 2026-11-18T01:24:59.000Z (45eCK73MpTxVtiZtwyT7XzswFXXzz8C3hsSqxK9TDzvBcy4nhHiDnoj9pjSGhpgE4TnrPuRiK4T8DCtBurwPSphN)",
+        "multisig vault_transaction_execute at 2026-11-18T01:22:36.000Z (4xZs8AYcC2jRSNFZ2JHABY2qUTXNYEHcxSKeznJTYFBnf4JWbF9v56E3yjKezecZG1MasEFALyE9aMXihqs26vRE)",
+        "multisig proposal_approve at 2026-11-18T01:22:21.000Z (5yTSrqMi7KgPxVApk2pfSmNty4dFaN2UHRMUFLQ6QWSTJjkGAGRGeZ6KRKKNGAnadqpbX5ZnfQsrcDxEgmmeKEmN)",
+        "multisig proposal_approve at 2026-11-18T01:21:58.000Z (39QDXb8gAxfLEABWuoMrkCQhPw7nQ9saGq4F7xbj1Cm8xSQ9RNRUDWdcdghXA7hma3fQHZpwaSmvz7ajYuwjkCgF)"
       ],
       "summary": {
         "upgradeAuthority": "3eCXkzzn85PLe9zWmzPRAhxioNZRzaHcarL5yz57sMtf",
-        "lastDeploySlot": 469051198,
+        "lastDeploySlot": 470750284,
         "configSha256": "75292515992b450e5afd5a8bee20749d0db18721915edd9a64fa4fe0cbf4605b",
         "walletsInConfig": [
           "treasury",
@@ -24,7 +31,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 12,
+          "observe_sapling": 8,
           "settle": 1
         },
         "unrecognised": 0,
@@ -52,7 +59,7 @@
             }
           ],
           "timeLockSeconds": 0,
-          "transactionIndex": 69,
+          "transactionIndex": 70,
           "docsClaim": {
             "says": "2-of-3",
             "onChain": "2-of-4",
@@ -1218,8 +1225,15 @@
   },
   "openAlerts": {
     "keys": {
-      "multisig vault_transaction_create at 2026-11-18T01:19:25.000Z (312mQzD6dZ6icXgDKg9Es1cCaP1hbtBaYvjXbzE8Hu7JxTG4FsFhBZHu43r34aVGYQ6Ni7ECo5vyUeWUdHHvzAef)": "2026-11-18T01:19:41.997Z",
-      "multisig proposal_create at 2026-11-18T01:19:25.000Z (312mQzD6dZ6icXgDKg9Es1cCaP1hbtBaYvjXbzE8Hu7JxTG4FsFhBZHu43r34aVGYQ6Ni7ECo5vyUeWUdHHvzAef)": "2026-11-18T01:19:41.997Z"
+      "vault program upgraded: last deploy slot 469051198 -> 470750284": "2026-11-18T01:29:30.492Z",
+      "multisig vault_transaction_execute at 2026-11-18T01:25:29.000Z (53HfMsyKiTkb9mTJjv3ewwCEtB18nyvZzu9rRchkTBd1vNTzwhpJNV3HHP7tzxtN4zcDbJ1iZC8GDAJpCDRaZGs5)": "2026-11-18T01:29:30.492Z",
+      "multisig proposal_approve at 2026-11-18T01:25:20.000Z (2zkTWuK5updiU2ieWbr6GHxtYdxnRMdVbe5aPFDCenmLP4xzaXo3PygyVtPYGbEmy81E6fee1mxYS5wniSg9kZKb)": "2026-11-18T01:29:30.492Z",
+      "multisig proposal_approve at 2026-11-18T01:25:12.000Z (32LKBNNeJDit9ic2rurEtt2q4m5JN3hN97uC5CyKKxJBkqct7eEDHBXoq3LvaeuCq2mjFKFyowVuZATyy7gRkDrc)": "2026-11-18T01:29:30.492Z",
+      "multisig vault_transaction_create at 2026-11-18T01:24:59.000Z (45eCK73MpTxVtiZtwyT7XzswFXXzz8C3hsSqxK9TDzvBcy4nhHiDnoj9pjSGhpgE4TnrPuRiK4T8DCtBurwPSphN)": "2026-11-18T01:29:30.492Z",
+      "multisig proposal_create at 2026-11-18T01:24:59.000Z (45eCK73MpTxVtiZtwyT7XzswFXXzz8C3hsSqxK9TDzvBcy4nhHiDnoj9pjSGhpgE4TnrPuRiK4T8DCtBurwPSphN)": "2026-11-18T01:29:30.492Z",
+      "multisig vault_transaction_execute at 2026-11-18T01:22:36.000Z (4xZs8AYcC2jRSNFZ2JHABY2qUTXNYEHcxSKeznJTYFBnf4JWbF9v56E3yjKezecZG1MasEFALyE9aMXihqs26vRE)": "2026-11-18T01:29:30.492Z",
+      "multisig proposal_approve at 2026-11-18T01:22:21.000Z (5yTSrqMi7KgPxVApk2pfSmNty4dFaN2UHRMUFLQ6QWSTJjkGAGRGeZ6KRKKNGAnadqpbX5ZnfQsrcDxEgmmeKEmN)": "2026-11-18T01:29:30.492Z",
+      "multisig proposal_approve at 2026-11-18T01:21:58.000Z (39QDXb8gAxfLEABWuoMrkCQhPw7nQ9saGq4F7xbj1Cm8xSQ9RNRUDWdcdghXA7hma3fQHZpwaSmvz7ajYuwjkCgF)": "2026-11-18T01:29:30.492Z"
     },
     "rewards": {
       "reward run 1491 ███: 11 shares not floor(pot*balance/sum); basket payout doesn't add up: hSOL: 6741284 of 160371735 bought wasn't paid out; hSOL: 1 holders got none; paid != confirmed shares - rent": "2026-11-04T07:01:45.840Z",
@@ -1243,7 +1257,7 @@
   "rewardsFrom": 1834,
   "x": {
     "day": "2026-11-18",
-    "today": 1,
+    "today": 2,
     "thisRun": 1
   },
   "xSummaryDay": "2026-11-04",
