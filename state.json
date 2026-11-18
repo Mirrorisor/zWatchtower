@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-18T15:45:04.936Z",
-      "finishedAt": "2026-11-18T15:45:08.014Z",
+      "startedAt": "2026-11-18T15:50:02.581Z",
+      "finishedAt": "2026-11-18T15:50:05.628Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -59,8 +59,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-18T15:20:06.676Z",
-      "finishedAt": "2026-11-18T15:20:47.777Z",
+      "startedAt": "2026-11-18T15:50:05.636Z",
+      "finishedAt": "2026-11-18T15:50:48.034Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -68,7 +68,7 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-18T15:20:45.002Z",
+        "checkedAt": "2026-11-18T15:50:45.045Z",
         "runs": 8,
         "passed": 6,
         "flagged": 2,
@@ -1069,8 +1069,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-18T15:35:05.921Z",
-      "finishedAt": "2026-11-18T15:35:07.369Z",
+      "startedAt": "2026-11-18T15:50:48.036Z",
+      "finishedAt": "2026-11-18T15:50:51.358Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1081,8 +1081,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 686.590423262,
-        "saplingInPool": 78661697.476384,
-        "zecInPool": 95.08058097,
+        "saplingInPool": 78759661.265305,
+        "zecInPool": 94.95913877,
         "zecAddedSaplingSays": 107.9294425,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
