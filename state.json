@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-19T01:30:04.333Z",
-      "finishedAt": "2026-11-19T01:30:07.736Z",
+      "startedAt": "2026-11-19T01:35:03.067Z",
+      "finishedAt": "2026-11-19T01:35:06.649Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,11 +21,9 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4,
-          "settle": 4,
-          "settle_sapling": 1
+          "observe_sapling": 5
         },
-        "unrecognised": 1,
+        "unrecognised": 0,
         "baseline": false,
         "multisig": {
           "address": "7f4YokHyJYqTEcsCs1YVqyr4MdbJifjMhYRCCNFXPX59",
@@ -1071,8 +1069,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-19T01:20:42.861Z",
-      "finishedAt": "2026-11-19T01:20:44.150Z",
+      "startedAt": "2026-11-19T01:35:06.655Z",
+      "finishedAt": "2026-11-19T01:35:07.910Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1083,8 +1081,8 @@
         "lpSupply": "0",
         "burned": true,
         "lpShares": 686.927195396,
-        "saplingInPool": 81706737.364591,
-        "zecInPool": 91.55318981,
+        "saplingInPool": 82066453.683988,
+        "zecInPool": 91.13871048,
         "zecAddedSaplingSays": 108.00953435,
         "creatorFeeTo": "FauKh2enCxjqMDaEEmo3qMmA9toxyZPFvPhGEZNMzChr",
         "creatorFeeToTreasury": true,
@@ -1093,8 +1091,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-19T01:05:03.991Z",
-      "finishedAt": "2026-11-19T01:05:10.598Z",
+      "startedAt": "2026-11-19T01:35:07.913Z",
+      "finishedAt": "2026-11-19T01:35:14.912Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1104,9 +1102,7 @@
         "paused": [],
         "withPermanentDelegate": 45,
         "withFreezeAuthority": 45,
-        "scheduledMultiplier": [
-          "$MSFTx ×1.0072609810787718 2026-11-19T01:30:00.000Z"
-        ],
+        "scheduledMultiplier": [],
         "symbols": [
           "$AAPLx",
           "$AMD",
