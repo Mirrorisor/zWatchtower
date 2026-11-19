@@ -2,8 +2,8 @@
   "latest": {
     "keys": {
       "check": "keys",
-      "startedAt": "2026-11-19T00:15:06.535Z",
-      "finishedAt": "2026-11-19T00:15:09.390Z",
+      "startedAt": "2026-11-19T00:20:03.014Z",
+      "finishedAt": "2026-11-19T00:20:05.682Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -21,7 +21,7 @@
           "recovery"
         ],
         "vaultInstructions": {
-          "observe_sapling": 4
+          "observe_sapling": 3
         },
         "unrecognised": 0,
         "baseline": false,
@@ -59,8 +59,8 @@
     },
     "rewards": {
       "check": "rewards",
-      "startedAt": "2026-11-18T23:50:13.393Z",
-      "finishedAt": "2026-11-18T23:50:51.069Z",
+      "startedAt": "2026-11-19T00:20:05.688Z",
+      "finishedAt": "2026-11-19T00:20:48.152Z",
       "status": "ran",
       "ok": false,
       "alerts": [
@@ -68,7 +68,7 @@
         "reward run 1573 ZDOG: 32 shares not floor(pot*balance/sum); basket payout doesn't add up: 1 ZEC shares aren't the same fraction (1/2.00) of the formula share as the rest; paid != confirmed shares - rent"
       ],
       "summary": {
-        "checkedAt": "2026-11-18T23:50:50.008Z",
+        "checkedAt": "2026-11-19T00:20:47.395Z",
         "runs": 8,
         "passed": 6,
         "flagged": 2,
@@ -1069,8 +1069,8 @@
     },
     "liquidity": {
       "check": "liquidity",
-      "startedAt": "2026-11-19T00:05:05.385Z",
-      "finishedAt": "2026-11-19T00:05:06.909Z",
+      "startedAt": "2026-11-19T00:20:48.156Z",
+      "finishedAt": "2026-11-19T00:20:49.615Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
@@ -1091,8 +1091,8 @@
     },
     "quotes": {
       "check": "quotes",
-      "startedAt": "2026-11-18T23:49:47.784Z",
-      "finishedAt": "2026-11-18T23:49:54.314Z",
+      "startedAt": "2026-11-19T00:20:49.617Z",
+      "finishedAt": "2026-11-19T00:20:58.149Z",
       "status": "ran",
       "ok": true,
       "alerts": [],
